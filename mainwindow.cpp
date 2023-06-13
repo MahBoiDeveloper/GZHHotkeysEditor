@@ -1,7 +1,7 @@
+#pragma once
 #include "mainwindow.h"
 
-MainWindow::MainWindow()
-	: QMainWindow()
+MainWindow::MainWindow() : QMainWindow()
 {
 	setMinimumSize(700,500);
 }

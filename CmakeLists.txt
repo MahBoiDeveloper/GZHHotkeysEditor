@@ -1,5 +1,5 @@
-project(GZHHotkeysEditor)
 cmake_minimum_required(VERSION 3.27)
+project(GZHHotkeysEditor)
 
 # ----- qt -----
 if(WIN32)
@@ -23,7 +23,8 @@ file(
 
 # определение и настройка таргета
 add_executable(GZHHotkeysEditor ${SOURCES})
-set_target_properties(GZHHotkeysEditor
+set_target_properties(
+    GZHHotkeysEditor
     PROPERTIES
     CXX_STANDART 17
     CXX_STANDART_REQUIRED ON
