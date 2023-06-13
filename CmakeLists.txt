@@ -1,4 +1,5 @@
 project(GZHHotkeysEditor)
+cmake_minimum_required(VERSION 3.27)
 
 # ----- qt -----
 if(WIN32)
