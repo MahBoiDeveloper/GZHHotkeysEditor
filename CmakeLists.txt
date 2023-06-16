@@ -1,37 +1,4 @@
+cmake_minimum_required(VERSION 3.13)
 project(GZHHotkeysEditor)
 
-# ----- qt -----
-if(WIN32)
-    set(CMAKE_PREFIX_PATH C:/Qt/5.15.2/mingw81_64/lib/cmake)
-endif()
-
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-# ---------------
-
-# определить исходники
-file(
-    GLOB_RECURSE SOURCES
-    LIST_DIRECTORIES false
-    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    *.cpp
-)
-
-# определение и настройка таргета
-add_executable(GZHHotkeysEditor ${SOURCES})
-set_target_properties(GZHHotkeysEditor
-    PROPERTIES
-    CXX_STANDART 17
-    CXX_STANDART_REQUIRED ON
-)
-
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Sql Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Sql Widgets)
-target_link_libraries(GZHHotkeysEditor PRIVATE
-    Qt${QT_VERSION_MAJOR}::Core
-    Qt${QT_VERSION_MAJOR}::Sql
-    Qt${QT_VERSION_MAJOR}::Widgets
-)
+subdirs(src)

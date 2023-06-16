@@ -1,0 +1,30 @@
+project(GZHHotkeysEditor)
+
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
+find_package(QT NAMES Qt5 REQUIRED COMPONENTS Core Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets)
+
+# subdirs(gui)
+
+# определение и настройка таргета
+add_executable(GZHHotkeysEditor
+    main.cpp
+    gui/mainwindow.cpp
+    gui/mainwindow.h
+)
+set_target_properties(GZHHotkeysEditor
+    PROPERTIES
+    CXX_STANDART 17
+    CXX_STANDART_REQUIRED ON
+)
+target_link_libraries(GZHHotkeysEditor PRIVATE
+    Qt5::Core
+    Qt5::Widgets
+)
