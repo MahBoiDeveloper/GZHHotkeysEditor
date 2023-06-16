@@ -29,6 +29,8 @@
 
 # QtCreator
 *.user
+# vscode
+.vscode
 
 # Building
 *build*
