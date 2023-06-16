@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "mainwindow.hpp"
 #include <QMenuBar>
 
 MainWindow::MainWindow(QWidget *parent)
