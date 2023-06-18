@@ -1,28 +1,15 @@
 project(GZHHotkeysEditor)
 
-#---------------Qt-----------------
-set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
-# set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/msvc2019_64")
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-find_package(QT NAMES Qt5 REQUIRED COMPONENTS Core Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets)
-#----------------------------------
-
-# subdirs(gui)
-
 # project sources
 file(
-    GLOB_RECURSE SOURCES
+    GLOB SOURCES
     LIST_DIRECTORIES false
     RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
 )
 # project headers
 file(
-    GLOB_RECURSE HEADERS
+    GLOB HEADERS
     LIST_DIRECTORIES false
     RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
@@ -38,18 +25,17 @@ set_target_properties(GZHHotkeysEditor
     CXX_STANDART 17
     CXX_STANDART_REQUIRED ON
 )
+# link gui subproject
+subdirs(gui)
 target_link_libraries(GZHHotkeysEditor PRIVATE
-    Qt5::Core
-    Qt5::Widgets
+    Gui
 )
 
-set(QT_PLUGIN_PATH "${CMAKE_PREFIX_PATH}/plugins/platforms")
-
+#---------------Qt libs deploy-----------------
+set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
+# set(QT_PLUGIN_PATH "${CMAKE_PREFIX_PATH}/plugins/platforms")
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
     if(WIN32)
-        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
-        # set(LDFLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
-        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -platformpluginpath ${CMAKE_CURRENT_BINARY_DIR}/deploy")
         add_custom_command(
             TARGET GZHHotkeysEditor POST_BUILD
             COMMAND "${CMAKE_PREFIX_PATH}/bin/windeployqt.exe"
@@ -60,19 +46,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Release")
                 --dir "${CMAKE_CURRENT_BINARY_DIR}"
                 # --dir "${CMAKE_CURRENT_BINARY_DIR}/deploy"
                 $<TARGET_FILE:GZHHotkeysEditor>
-            # COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            #     $<TARGET_FILE:GZHHotkeysEditor>
-            #     ${CMAKE_CURRENT_BINARY_DIR}
         )
-        
-        # add_custom_command(
-        #     TARGET GZHHotkeysEditor POST_BUILD
-        #     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        #         "${CMAKE_CURRENT_BINARY_DIR}/deploy"
-        #         $<TARGET_FILE:GZHHotkeysEditor>
-        # )
-
-
-        
     endif()
 endif()
+#----------------------------------------------

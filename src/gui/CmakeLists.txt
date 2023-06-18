@@ -1,66 +1,42 @@
-# project(GZHHotkeysEditor)
+project(GZHHotkeysEditor)
 
-# # ----- qt -----
-# # if(WIN32)
-#     # set(CMAKE_PREFIX_PATH C:/Qt/5.15.2/mingw81_64/lib/cmake)
-# # set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
-# # set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5")
-# # set(CMAKE_PREFIX_PATH "C:\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5")
-# # endif()
+#---------------Qt-----------------
+set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
+# set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/msvc2019_64")
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+find_package(QT NAMES Qt5 REQUIRED COMPONENTS Core Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets)
+#----------------------------------
 
-# # set(QT_DIR "C:\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5")
-# # set(Qt5Core_DIR "C:\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Core")
-# # set(Qt5Widgets_DIR "C:\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Widgets")
+# project sources
+file(
+    GLOB_RECURSE SOURCES
+    LIST_DIRECTORIES false
+    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+)
+# project headers
+file(
+    GLOB_RECURSE HEADERS
+    LIST_DIRECTORIES false
+    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+)
 
-# # set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
-# # list(APPEND CMAKE_FIND_ROOT_PATH "C:/Qt/5.15.2/mingw81_64")
-
-# # set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-# # set(CMAKE_AUTOUIC ON)
-# # set(CMAKE_AUTOMOC ON)
-# # set(CMAKE_AUTORCC ON)
-
-# # find_package(QT NAMES Qt5 REQUIRED COMPONENTS Core Widgets)
-# # find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets)
-# # ---------------
-
-# # определить исходники
-# # file(
-# #     GLOB_RECURSE SOURCES
-# #     LIST_DIRECTORIES false
-# #     RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-# #     ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
-# # )
-# # file(
-# #     GLOB_RECURSE HEADERS
-# #     LIST_DIRECTORIES false
-# #     RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-# #     ${CMAKE_CURRENT_SOURCE_DIR}/*.h
-# # )
-
-# # include_directories("C:/Qt/5.15.2/mingw81_64/include/QtCore")
-# # include_directories("C:/Qt/5.15.2/mingw81_64/include")
-
-# # определение и настройка таргета
-# add_library(Gui
-#     # ${SOURCES}
-#     # ${HEADERS}
-#     mainwindow.cpp
-#     mainwindow.h
-# )
-# set_target_properties(Gui
-#     PROPERTIES
-#     CXX_STANDART 17
-#     CXX_STANDART_REQUIRED ON
-# )
-# target_link_libraries(Gui PRIVATE
-# Qt5::Core
-# # Qt${QT_VERSION_MAJOR}::Gui
-# Qt5::Widgets
-# )
-# # target_link_libraries(GZHHotkeysEditor PRIVATE
-# #     Qt${QT_VERSION_MAJOR}::Core
-# #     # Qt${QT_VERSION_MAJOR}::Gui
-# #     Qt${QT_VERSION_MAJOR}::Widgets
-# # )
+# main target
+add_library(Gui
+    ${SOURCES}
+    ${HEADERS}
+)
+set_target_properties(Gui
+    PROPERTIES
+    CXX_STANDART 17
+    CXX_STANDART_REQUIRED ON
+)
+target_link_libraries(Gui PUBLIC
+    Qt5::Core
+    Qt5::Widgets
+)
