@@ -1,17 +1,16 @@
-#include "mainwindow.hpp"
+#include "redactor.hpp"
 #include <QMenuBar>
 
-MainWindow::MainWindow(QWidget *parent)
+Redactor::Redactor(QWidget *parent)
 	: QMainWindow(parent)
 {
-	setMinimumSize(700,500);
     QMenu* fm = new QMenu("File");
-    fm->addAction("Ы");
+	fm->addAction("Special");
     menuBar()->addMenu(fm);
     menuBar()->addAction("View");
     menuBar()->addAction("Settings");
 }
 
-MainWindow::~MainWindow()
+Redactor::~Redactor()
 {
 }
