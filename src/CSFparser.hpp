@@ -21,7 +21,11 @@ public:
 struct CSFHeader
 {
 public:
-    uint8_t  csfChars[4];
+    //uint8_t  space;
+    //uint8_t  f;
+    //uint8_t  s;
+    //uint8_t  c;
+    uint8_t csfChars[4];
     uint32_t formatVersion;
     uint32_t numberOfLabels;
     uint32_t numberOfStrings;
@@ -32,11 +36,11 @@ public:
 class CSFparser
 {
 private: // Data
-    const char* FSC  = " FSC";          // Begining of CSF file header
-    const char* LBL  = " LBL";          // Begining of any string name aka "label"
-    const char* RTS  = " RTS";          // Begining of any string value aka "string"
-    const char* WRTS = "WRTS";          // Begining of extra string value
-    const uint32_t CNC_CSF_VERSION = 3; // Standart file format. Legacy by WW
+    const uint8_t FSC[4]  {' ', 'F', 'S', 'C'}; // Begining of CSF file header
+    const uint8_t LBL[4]  {' ', 'L', 'B', 'L'}; // Begining of any string name aka "label"
+    const uint8_t RTS[4]  {' ', 'R', 'T', 'S'}; // Begining of any string value aka "string"
+    const uint8_t WRTS[4] {'W', 'R', 'T', 'S'}; // Begining of extra string value
+    const uint32_t CNC_CSF_VERSION = 3;         // Standart file format. Legacy by WW
 
     string Path;
     CSFHeader Header;
@@ -45,8 +49,8 @@ private: // Data
     list<ExtraCompiledString>* pExtraTable;
 private: // Private methods
     void Parse();
-    void ParseHeader();
-    void ParseBody();
+    void ParseHeader(ifstream* openedCSF);
+    void ParseBody(ifstream* openedCSF);
 
     bool IsASCII(string strSample);
 public: // Public methods
