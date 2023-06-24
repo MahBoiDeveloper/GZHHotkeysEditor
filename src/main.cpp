@@ -1,15 +1,24 @@
+// Special C++ logic for working with strings
+#include <fcntl.h> // Allows to use UTF-16 encoding as the default encoding
+
+// Project files
 #include "gui/mainwidget.hpp"
 #include "CSFparser.hpp"
+
+// Internal cute logic
 #include <QApplication>
 // #include <QDebug>
 
 int main(int argc, char *argv[])
 {
-	// setlocale(LC_ALL, "");
+	// All out text MUST be showed via wcout and all chars should be converted as (wchar_t)
+	_setmode(_fileno(stdout), _O_U16TEXT);
+
 	// qDebug() << "!!!";
-	QApplication a(argc, argv);
+	QApplication HotkeyEditor(argc, argv);
 	MainWidget w;
 	w.show();
-	auto tmp = new CSFparser("..\\..\\src\\csfSamples\\ra2md.csf");
-	return a.exec();
+	auto tmp = new CSFparser("..\\..\\src\\csfSamples\\generalsRU.csf");
+	delete(tmp);
+	return HotkeyEditor.exec();
 }

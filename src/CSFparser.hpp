@@ -1,31 +1,36 @@
 #pragma once
+
 #include <string>
+#include <sstream>
+#include <cstring>
 #include <iostream>
 #include <fstream>
 #include <list>
+
+#define EMPTY_WSTRING to_wstring('\0')
+#define EMPTY_STRING  to_string ('\0')
+
 using namespace std;
 
 struct CompiledString
 {
 public:
-    string Name;
-    string Value;
+    string  Name;
+    wstring Value;
 };
 
-struct ExtraCompiledString : CompiledString
+struct ExtraCompiledString
 {
 public:
-    string ExtraValue;
+    string  Name;
+    wstring Value;
+    string  ExtraValue;
 };
 
 struct CSFHeader
 {
 public:
-    //uint8_t  space;
-    //uint8_t  f;
-    //uint8_t  s;
-    //uint8_t  c;
-    uint8_t csfChars[4];
+    uint8_t  csfChars[4];
     uint32_t formatVersion;
     uint32_t numberOfLabels;
     uint32_t numberOfStrings;
@@ -53,6 +58,8 @@ private: // Private methods
     void ParseBody(ifstream* openedCSF);
 
     bool IsASCII(string strSample);
+    string CharArrayToString(int arrayLength, char* pArray);
+    wstring WharArrayToWstring(int arrayLength, wchar_t* pArray);
 public: // Public methods
     CSFparser();
     CSFparser(const string& strFilePath);

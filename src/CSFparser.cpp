@@ -16,6 +16,7 @@
 
     CSFparser::~CSFparser()
     {
+        wcout << "Normal strings count [" << pTable->size() << "] | Extra strings count [" << pExtraTable->size() << ']' << endl;
         delete pTable;
         delete pExtraTable;
     }
@@ -39,15 +40,17 @@
     {
         csfFile->read(reinterpret_cast<char*>(&Header), sizeof(Header));
 
-        cout << "First 4th bytes are : [" << Header.csfChars[0] 
-                                          << Header.csfChars[1] 
-                                          << Header.csfChars[2] 
-                                          << Header.csfChars[3] << "]" << endl;
-        cout << "formatVersion       : [" << Header.formatVersion << "]" << endl;
-        cout << "numberOfLabels      : [" << Header.numberOfLabels << "]" << endl;
-        cout << "numberOfStrings     : [" << Header.numberOfStrings << "]" << endl;
-        cout << "uselessBytes        : [" << Header.uselessBytes << "]" << endl;
-        cout << "languageCode        : [" << Header.languageCode << "]" << endl << endl;
+        #if DEBUG
+        wcout << "First 4th bytes are : [" << (wchar_t)Header.csfChars[0] 
+                                          << (wchar_t)Header.csfChars[1] 
+                                          << (wchar_t)Header.csfChars[2] 
+                                          << (wchar_t)Header.csfChars[3] << "]" << endl;
+        wcout << "formatVersion       : [" << Header.formatVersion << "]" << endl;
+        wcout << "numberOfLabels      : [" << Header.numberOfLabels << "]" << endl;
+        wcout << "numberOfStrings     : [" << Header.numberOfStrings << "]" << endl;
+        wcout << "uselessBytes        : [" << Header.uselessBytes << "]" << endl;
+        wcout << "languageCode        : [" << Header.languageCode << "]" << endl << endl;
+        #endif
     }
 
     inline void CSFparser::ParseBody(ifstream* csfFile)
@@ -64,13 +67,13 @@
             csfFile->read(reinterpret_cast<char*>(&lbl), sizeof(lbl));
 
             // Comparing read characters with reference string
-            for (int tmp = 0; tmp < 4; tmp++)
+            for (uint8_t tmp = 0; tmp < 4; tmp++)
             {
                 if (lbl[tmp] != LBL[tmp])
                 {
                     if (i > 0) i--;
                     breakFlag = true;
-                    break;;
+                    break;
                 }
             }
             
@@ -86,14 +89,9 @@
             uint8_t labelName[labelNameLength];
             csfFile->read(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
-            cout << "countOfStrings  : [" << countOfStrings << ']' << endl;
-            cout << "labelNameLength : [" << labelNameLength << ']' << endl;
-            cout << "Name            : [" ;
-            for (uint8_t tmp: labelName) cout << (char)tmp;
-            cout << "]" << endl;
-
-            string stringValue = "";
-            string extraStringValue = "";
+            string  stringName = CSFparser::CharArrayToString(sizeof(labelName), reinterpret_cast<char*>(labelName));
+            wstring stringValue = EMPTY_WSTRING;
+            string  extraStringValue = EMPTY_STRING;
 
             // There possible situation where exists empty strings
             if(countOfStrings != 0)
@@ -110,56 +108,35 @@
                 wchar_t _stringValue[valueLenght];
                 csfFile->read(reinterpret_cast<char*>(&_stringValue), sizeof(_stringValue));
 
-                cout << "String : [" ;
-                for (const wchar_t tmp: _stringValue) cout << tmp;
-                cout << "]" << endl;
-
                 // Reverse read string
-                uint8_t tmpArray[valueLenght * 2];
-                
-                cout << "STOP, HAMMER TIME" << endl;
-                cin >> breakFlag;
+                for (int tmp = 0; tmp < valueLenght; tmp++)
+                    _stringValue[tmp] = ~_stringValue[tmp];
 
-                for (wchar_t &tmp: _stringValue)
-                    tmp = ~tmp;
+                stringValue = WharArrayToWstring(valueLenght, _stringValue);
 
-                cout << "STOP, HAMMER TIME" << endl;
-                cin >> breakFlag;
-                
-                cout << endl;
-
-                break; // DELETE THIS
-            }
-            /*
-             UInt32 labelNameLength = br.ReadUInt32();                    // длина названия лейбла
-                char[] labelName = br.ReadChars((int)labelNameLength); // само название лейбла
-
-                byte[] stringValue = FileEncoding.GetBytes(string.Empty);
-                char[] extraStringValue = string.Empty.ToCharArray();
-
-                if (countOfStrings != 0) // отбрасывание строк с пустыми значениями, а то падения проги не избежать
+                // Read extra value
+                if((char)rtsWrts[0] == 'W')
                 {
-                    // чтение значения лейбла
-                    char[] rtsOrWrts = br.ReadChars(4);                                // ' RTS' - доп. значения нет. 'WRTS' - доп. значение есть.
-                    UInt32 valueLength = br.ReadUInt32();                                // длина строки юникода, укороченная вдвое
-                    stringValue = br.ReadBytes(Convert.ToInt32(valueLength * 2)); // строка, конвертированная в интертированные байты
+                    uint32_t extraValueLength;
+                    csfFile->read(reinterpret_cast<char*>(&extraValueLength), sizeof(extraValueLength));
 
-                    InvertAllBytesInArray(stringValue);
+                    uint8_t extraValue[extraValueLength];
+                    csfFile->read(reinterpret_cast<char*>(&extraValue), sizeof(extraValue));
 
-                    // чтение дополнительного значения лейбла
-                    if (new string(rtsOrWrts) == new string(WRTS))
-                    {
-                        UInt32 extraValueLength = br.ReadUInt32();                                 // длина доп. значения
-                        extraStringValue = br.ReadChars(Convert.ToInt32(extraValueLength)); // само доп значение (проблема поддержки кодировки отличной от Unicode)
-                    }
+                    extraStringValue = CSFparser::CharArrayToString(sizeof(extraValue), reinterpret_cast<char*>(extraValue));
+
+                    pExtraTable->push_back({stringName, stringValue, extraStringValue});
                 }
-
-                if (extraStringValue == string.Empty.ToCharArray())
-                    Table.Add(new StringTableString(new string(labelName), new string(FileEncoding.GetChars(stringValue))));
-                else
-                    ExtraTable.Add(new StringTableExtraString(new string(labelName), new string(FileEncoding.GetChars(stringValue)), new string(extraStringValue)));
+                {
+                    pTable->push_back({stringName, stringValue});
+                }
             }
-            */
+            
+            #if DEBUG
+            wcout << "Name   : [" << stringName.c_str()       << "]" << endl;
+            wcout << "String : [" << stringValue              << "]" << endl;
+            wcout << "Extra  : [" << extraStringValue.c_str() << "]" << endl << endl;
+            #endif
         }
     }
 
@@ -177,4 +154,24 @@
 bool CSFparser::IsASCII(string strSample)
 {
     return false;
+}
+
+string CSFparser::CharArrayToString(int arrayLength, char* pArray)
+{
+    stringstream ss;
+    
+    for(int i = 0 ; i < arrayLength; i++)
+        ss << pArray[i];
+
+    return ss.str();
+}
+
+wstring CSFparser::WharArrayToWstring(int arrayLength, wchar_t* pArray)
+{
+    wstringstream wss;
+    
+    for(int i = 0 ; i < arrayLength; i++)
+        wss << pArray[i];
+
+    return wss.str();
 }
