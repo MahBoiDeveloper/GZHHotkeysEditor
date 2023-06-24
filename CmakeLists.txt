@@ -1,3 +1,5 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.15)
 project(GZHHotkeysEditor)
+set(PROJECT_DESTINATION_FOLDER "${CMAKE_BINARY_DIR}/exe" CACHE STRING "Global variable")
+file(MAKE_DIRECTORY ${PROJECT_DESTINATION_FOLDER})
 subdirs(src)
