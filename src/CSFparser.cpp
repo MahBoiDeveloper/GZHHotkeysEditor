@@ -12,18 +12,18 @@
         pTable = new list<CompiledString>();
         pExtraTable = new list<ExtraCompiledString>();
         Parse();
+        wcout << "Normal strings count [" << pTable->size() << "] | Extra strings count [" << pExtraTable->size() << ']' << endl;
     }
 
     CSFparser::~CSFparser()
     {
-        wcout << "Normal strings count [" << pTable->size() << "] | Extra strings count [" << pExtraTable->size() << ']' << endl;
         delete pTable;
         delete pExtraTable;
     }
 #pragma endregion
 
 #pragma region Parsing
-    void CSFparser::Parse()
+    inline void CSFparser::Parse()
     {
         ifstream csfFile{Path, ios::binary | ios::in};
 
