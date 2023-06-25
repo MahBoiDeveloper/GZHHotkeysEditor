@@ -1,8 +1,77 @@
 project(GZHHotkeysEditor)
+get_property(PROJECT_DESTINATION_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_FOLDER) # exe folder
+set(TARGET_NAME Gui)
+
+# project sources
+file(
+    GLOB_RECURSE SOURCES
+    LIST_DIRECTORIES false
+    # RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+)
+# project headers
+file(
+    GLOB_RECURSE HEADERS
+    LIST_DIRECTORIES false
+    # RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+)
+
+#-----------translation------------
+# available languages
+set(LANGUAGES
+    ru
+)
+
+add_custom_target(translationSources) # special target for translation sources (use from src: cmake --build ../build --target translationSources)
+
+set(TRANSLATION_DESTINATION_FOLDER ${PROJECT_DESTINATION_FOLDER}/translations)
+file(MAKE_DIRECTORY ${TRANSLATION_DESTINATION_FOLDER}) # create if doesn't exist
+# generate source translations files
+find_program(LUPDATE_EXECUTABLE lupdate)
+foreach(LANGUAGE ${LANGUAGES})
+    set(TS_FILE ${CMAKE_CURRENT_SOURCE_DIR}/translations/${TARGET_NAME}_${LANGUAGE}.ts) # source language file
+    set (QM ${TRANSLATION_DESTINATION_FOLDER}/${TARGET_NAME}_${LANGUAGE}.qm) # bin translation file
+    set (TRANSLATIONS ${TRANSLATIONS} ${TS_FILE}) # all source translation files
+    set (TRANSLATIONS_BINARY ${TRANSLATIONS_BINARY} ${QM})
+    add_custom_command(TARGET translationSources
+        POST_BUILD
+        # OUTPUT ${TS_FILE}
+        COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -recursive -ts ${TS_FILE} # -no-obsolete # generate source translation file
+        MAIN_DEPENDENCY ${SOURCES} ${HEADERS}
+        DEPENDS ${SOURCES} ${HEADERS}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+endforeach()
+
+# generate bin translations files
+find_program(LRELEASE_EXECUTABLE lrelease)
+file(GLOB_RECURSE TS_FILES "${CMAKE_CURRENT_SOURCE_DIR}/translations/*.ts") # find source language files
+foreach(TS_FILE ${TRANSLATIONS})
+    get_filename_component(TS_FILE_NAME ${TS_FILE} NAME_WE) # simple name without extension
+    set (QM ${TRANSLATION_DESTINATION_FOLDER}/${TS_FILE_NAME}.qm) # bin translation file
+    add_custom_command (
+        OUTPUT ${QM}
+        COMMAND ${LRELEASE_EXECUTABLE} ${TS_FILE} -qm ${QM} # generate bin translation file
+        DEPENDS ${TS_FILE}
+        MAIN_DEPENDENCY ${TS_FILE}
+    )
+endforeach()
+
+# add_custom_target (
+# 	translations
+# 	COMMAND ${LUPDATE_EXECUTABLE} ${HEADERS} ${SOURCES} -ts ${TRANSLATIONS}
+# )
+# add_custom_command(
+# 	TARGET translations
+#     # OUTPUT ${TRANSLATION_DESTINATION_FOLDER}
+# 	COMMAND ${LRELEASE_EXECUTABLE} ${TRANSLATIONS} -qm ${TRANSLATIONS_BINARY}
+#     # DEPENDS ${TRANSLATIONS}
+# )
+#----------------------------------
 
 #---------------Qt-----------------
 set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
-# set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/msvc2019_64")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -11,32 +80,22 @@ find_package(QT NAMES Qt5 REQUIRED COMPONENTS Core Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets)
 #----------------------------------
 
-# project sources
-file(
-    GLOB_RECURSE SOURCES
-    LIST_DIRECTORIES false
-    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
-)
-# project headers
-file(
-    GLOB_RECURSE HEADERS
-    LIST_DIRECTORIES false
-    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
-)
-
 # main target
-add_library(Gui
+add_library(${TARGET_NAME}
     ${SOURCES}
     ${HEADERS}
+    ${TRANSLATIONS}
 )
-set_target_properties(Gui
+# add_dependencies(
+#     ${TARGET_NAME}
+#     translations
+# )
+set_target_properties(${TARGET_NAME}
     PROPERTIES
     CXX_STANDART 17
     CXX_STANDART_REQUIRED ON
 )
-target_link_libraries(Gui PUBLIC
+target_link_libraries(${TARGET_NAME} PUBLIC
     Qt5::Core
     Qt5::Widgets
 )

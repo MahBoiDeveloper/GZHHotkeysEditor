@@ -1,4 +1,5 @@
 project(GZHHotkeysEditor)
+get_property(PROJECT_DESTINATION_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_FOLDER) # exe folder
 
 # project sources
 file(
@@ -24,6 +25,7 @@ set_target_properties(GZHHotkeysEditor
     PROPERTIES
     CXX_STANDART 17
     CXX_STANDART_REQUIRED ON
+    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_FOLDER}
 )
 # link gui subproject
 subdirs(gui)
@@ -43,7 +45,7 @@ if(WIN32)
                 # --no-compiler-runtime
                 --compiler-runtime
                 --force
-                --dir "${CMAKE_CURRENT_BINARY_DIR}"
+                --dir "${PROJECT_DESTINATION_FOLDER}"
                 # --dir "${CMAKE_CURRENT_BINARY_DIR}/deploy"
                 $<TARGET_FILE:GZHHotkeysEditor>
         )

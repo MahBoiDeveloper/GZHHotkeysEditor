@@ -1,6 +1,7 @@
 #pragma once
 #include <QWidget>
-#include "pushbutton.h"
+#include "pushbutton.hpp"
+#include "../configurations.hpp"
 //#include <QPushButton>
 
 class StartWidget : public QWidget
@@ -14,10 +15,11 @@ private:
 	void resizeEvent(QResizeEvent *event) override;
 
 public:
-	StartWidget(QWidget *parent = nullptr);
+	StartWidget(configurations::Languages language = configurations::Languages::English, QWidget *parent = nullptr);
 	~StartWidget();
 
 signals:
 	void resized(int h);
 	void pressed(int index);
+	void languageChanged(int index);
 };
