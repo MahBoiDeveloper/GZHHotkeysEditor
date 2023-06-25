@@ -21,8 +21,10 @@ file(
 # available languages
 set(LANGUAGES
     ru
-    en
 )
+
+add_custom_target(translationSources) # special target for translation sources (use from src: cmake --build ../build --target translationSources)
+
 set(TRANSLATION_DESTINATION_FOLDER ${PROJECT_DESTINATION_FOLDER}/translations)
 file(MAKE_DIRECTORY ${TRANSLATION_DESTINATION_FOLDER}) # create if doesn't exist
 # generate source translations files
@@ -32,9 +34,10 @@ foreach(LANGUAGE ${LANGUAGES})
     set (QM ${TRANSLATION_DESTINATION_FOLDER}/${TARGET_NAME}_${LANGUAGE}.qm) # bin translation file
     set (TRANSLATIONS ${TRANSLATIONS} ${TS_FILE}) # all source translation files
     set (TRANSLATIONS_BINARY ${TRANSLATIONS_BINARY} ${QM})
-    add_custom_command(
-        OUTPUT ${TS_FILE}
-        COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -recursive -ts ${TS_FILE} # generate source translation file
+    add_custom_command(TARGET translationSources
+        POST_BUILD
+        # OUTPUT ${TS_FILE}
+        COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -recursive -ts ${TS_FILE} # -no-obsolete # generate source translation file
         MAIN_DEPENDENCY ${SOURCES} ${HEADERS}
         DEPENDS ${SOURCES} ${HEADERS}
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}

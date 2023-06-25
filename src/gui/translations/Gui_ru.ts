@@ -16,58 +16,58 @@
     <message>
         <location filename="../creatorWidget/creatorwidget.cpp" line="22"/>
         <source>Save hotkey dirrectly to the game</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранять горячие клавиши непосредственно в игре</translation>
     </message>
     <message>
         <location filename="../creatorWidget/creatorwidget.cpp" line="26"/>
         <source>Start configurating</source>
-        <translation type="unfinished"></translation>
+        <translation>Начать конфигурацию</translation>
     </message>
     <message>
         <location filename="../creatorWidget/creatorwidget.cpp" line="27"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Назад</translation>
     </message>
 </context>
 <context>
     <name>Redactor</name>
     <message>
-        <location filename="../redactor.cpp" line="14"/>
+        <location filename="../redactor.cpp" line="9"/>
         <source>File</source>
-        <translation type="unfinished">Файл</translation>
+        <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../redactor.cpp" line="15"/>
+        <location filename="../redactor.cpp" line="10"/>
         <source>Special</source>
-        <translation type="unfinished">Дополнительно</translation>
+        <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../redactor.cpp" line="17"/>
+        <location filename="../redactor.cpp" line="12"/>
         <source>View</source>
-        <translation type="unfinished">Вид</translation>
+        <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../redactor.cpp" line="18"/>
+        <location filename="../redactor.cpp" line="13"/>
         <source>Settings</source>
-        <translation type="unfinished">Настройки</translation>
-    </message>
-    <message>
-        <location filename="../redactor.cpp" line="19"/>
-        <source>Language</source>
-        <translation type="unfinished">Язык</translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 <context>
     <name>StartWidget</name>
     <message>
-        <location filename="../startWidget/startwidget.cpp" line="31"/>
+        <location filename="../startWidget/startwidget.cpp" line="35"/>
         <source>NEW HOTKEY MAP</source>
-        <translation type="unfinished"></translation>
+        <translation>НОВАЯ КАРТА ГОРЯЧИХ КЛАВИШ</translation>
     </message>
     <message>
-        <location filename="../startWidget/startwidget.cpp" line="32"/>
+        <location filename="../startWidget/startwidget.cpp" line="36"/>
         <source>LOAD HOTKEY MAP</source>
-        <translation type="unfinished"></translation>
+        <translation>ЗАГРУЗИТЬ КАРТУ ГОРЯЧИХ КЛАВИШ</translation>
+    </message>
+    <message>
+        <location filename="../startWidget/startwidget.cpp" line="48"/>
+        <source>Language</source>
+        <translation>Язык</translation>
     </message>
 </context>
 </TS>
