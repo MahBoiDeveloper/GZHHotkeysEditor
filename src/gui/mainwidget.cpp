@@ -12,8 +12,13 @@ StartWidget* MainWidget::initRespawnStartWidget(configurations::Languages langua
 		[=](int index){
 			configurations::Languages lang = static_cast<configurations::Languages>(index);
 			// delete old translator
-			QCoreApplication::removeTranslator(translator);
-			delete translator;
+			if (translator != nullptr)
+			{
+				QCoreApplication::removeTranslator(translator);
+				// there was bug
+//				delete translator;
+//				translator->deleteLater();
+			}
 			// create new translator
 			if (lang != configurations::Languages::English) {
 				translator = new QTranslator;
