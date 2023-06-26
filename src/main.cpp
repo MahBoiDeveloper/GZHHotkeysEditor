@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
 
 	// qDebug() << "!!!";
 	QApplication HotkeyEditor(argc, argv);
-	MainWidget w;
-	w.show();
+	MainWidget HotkeyEditor_Window;
+	HotkeyEditor_Window.show();
 	auto tmp = new CSFparser("..\\..\\src\\csfSamples\\generalsRU.csf");
 	delete(tmp);
 	return HotkeyEditor.exec();
