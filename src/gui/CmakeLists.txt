@@ -92,8 +92,8 @@ add_library(${TARGET_NAME}
 # )
 set_target_properties(${TARGET_NAME}
     PROPERTIES
-    CXX_STANDART 17
-    CXX_STANDART_REQUIRED ON
+    CXX_STANDARD 17
+    CXX_STANDARD_REQUIRED ON
 )
 target_link_libraries(${TARGET_NAME} PUBLIC
     Qt5::Core
