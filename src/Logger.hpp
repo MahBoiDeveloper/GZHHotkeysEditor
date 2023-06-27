@@ -14,20 +14,25 @@ private:
 
 private:
     Logger();
-    string GetCurrentTime();
 public:
     Logger(const string& logFilePath);
     ~Logger();
     
-    ofstream* GetStream();
+    ofstream&& GetStream();
+    string GetCurrentTime();
 
     void Log(stringstream const& msg);
-    void Log(string msg);
+    void Log(string const& msg);
     void Log(char* msg);
     void Log(char msg);
 
     void Log(wstringstream const& msg);
-    void Log(wstring msg);
+    void Log(wstring const& msg);
     void Log(wchar_t* msg);
     void Log(wchar_t msg);
 };
+
+ofstream operator << (Logger* pLogger, stringstream const& msg);
+ofstream operator << (Logger* pLogger, string msg);
+ofstream operator << (Logger* pLogger, wstringstream const& msg);
+ofstream operator << (Logger* pLogger, wstring msg);
