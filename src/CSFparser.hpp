@@ -38,11 +38,14 @@ public:
 
 class CSFparser
 {
-private: // Data
-    const uint8_t FSC[4]  {' ', 'F', 'S', 'C'}; // Begining of CSF file header
+public: // Data
+    static inline CSFparser* Instance;
+
+private:
+    const uint8_t FSC[4]  {' ', 'F', 'S', 'C'}; // Begining of any CSF file header
     const uint8_t LBL[4]  {' ', 'L', 'B', 'L'}; // Begining of any string name aka "label"
     const uint8_t RTS[4]  {' ', 'R', 'T', 'S'}; // Begining of any string value aka "string"
-    const uint8_t WRTS[4] {'W', 'R', 'T', 'S'}; // Begining of extra string value
+    const uint8_t WRTS[4] {'W', 'R', 'T', 'S'}; // Begining of any string with extra value
     const uint32_t CNC_CSF_VERSION = 3;         // Standart file format. Legacy by WW
 
     string Path;
@@ -50,7 +53,11 @@ private: // Data
 
     list<CompiledString>* pTable;
     list<ExtraCompiledString>* pExtraTable;
-private: // Private methods
+
+private: // Methods
+    CSFparser();
+    ~CSFparser();
+
     void Parse();
     void ParseHeader(ifstream* openedCSF);
     void ParseBody(ifstream* openedCSF);
@@ -58,10 +65,10 @@ private: // Private methods
     bool IsASCII(string strSample);
     string CharArrayToString(int arrayLength, char* pArray);
     wstring WharArrayToWstring(int arrayLength, wchar_t* pArray);
-public: // Public methods
-    CSFparser();
+
+public:
     CSFparser(const string& strFilePath);
-    ~CSFparser();
+    void Dispose();
     
     void Save();
     void Save(string strFileName);

@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
 
 	// Define logger as the global variable
 	Logger::Instance = new Logger("Log.log");
+	CSFparser::Instance = new CSFparser("..\\..\\src\\csfSamples\\generalsRU.csf");
 
 	try
 	{
@@ -43,18 +44,14 @@ int main(int argc, char *argv[])
 		QApplication HotkeyEditor(argc, argv);
 		MainWidget HotkeyEditor_Window;
 		HotkeyEditor_Window.show();
-
-		auto tmp = new CSFparser("..\\..\\src\\csfSamples\\generalsRU.csf");
-		delete(tmp);
-
-		wchar_t wch;
-		wcin >> wch;
+		HotkeyEditor.exec();
 	}
 	catch(const exception& e)
 	{
 		Logger::Instance->Log(e.what());
 	}
 	
+	CSFparser::Instance->Dispose();
 	Logger::Instance->Dispose();
 	return 0;
 }

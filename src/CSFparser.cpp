@@ -25,6 +25,11 @@
         delete pTable;
         delete pExtraTable;
     }
+
+    void CSFparser::Dispose()
+    {
+        delete(CSFparser::Instance);
+    }
 #pragma endregion
 
 #pragma region Parsing
