@@ -16,8 +16,8 @@
         pExtraTable = new list<ExtraCompiledString>();
         Parse();
         
-        Logger::Instance << string("Normal strings count : ") << pTable->size() << endl;
-        Logger::Instance << string("Extra strings count  : ") << pExtraTable->size() << endl;
+        Logger::Instance->Log() << "Normal strings count : " << pTable->size() << endl;
+        Logger::Instance->Log() << "Extra strings count  : " << pExtraTable->size() << endl;
     }
 
     CSFparser::~CSFparser()
@@ -45,12 +45,15 @@
     {
         csfFile->read(reinterpret_cast<char*>(&Header), sizeof(Header));
 
-        Logger::Instance << string("First 4th bytes of file header are : ") << Header.csfChars << endl;
-        Logger::Instance << string("CSF file format version            : ") << Header.formatVersion << endl;
-        Logger::Instance << string("Number of labels in CSF file       : ") << Header.numberOfLabels << endl;
-        Logger::Instance << string("Number of strings in CSF file      : ") << Header.numberOfStrings << endl;
-        Logger::Instance << string("Useless bytes, i guess?            : ") << Header.uselessBytes << endl;
-        Logger::Instance << string("Language code                      : ") << Header.languageCode << endl;
+        Logger::Instance->Log() << "First 4th bytes of file header are : [" << Header.csfChars[0] 
+                                                                            << Header.csfChars[1] 
+                                                                            << Header.csfChars[2] 
+                                                                            << Header.csfChars[3] << ']' << endl;
+        Logger::Instance->Log() << "CSF file format version            : "  << Header.formatVersion      << endl;
+        Logger::Instance->Log() << "Number of labels in CSF file       : "  << Header.numberOfLabels     << endl;
+        Logger::Instance->Log() << "Number of strings in CSF file      : "  << Header.numberOfStrings    << endl;
+        Logger::Instance->Log() << "Useless bytes, i guess?            : "  << Header.uselessBytes       << endl;
+        Logger::Instance->Log() << "Language code                      : "  << Header.languageCode       << endl;
     }
 
     inline void CSFparser::ParseBody(ifstream* csfFile)

@@ -16,6 +16,12 @@ Logger::~Logger()
     if (LogFile.is_open())
         LogFile.close();
 }
+
+void Logger::Dispose()
+{
+    delete(Logger::Instance);
+}
+
 #pragma endregion
 
 string Logger::GetCurrentTime()
@@ -25,7 +31,7 @@ string Logger::GetCurrentTime()
     localtime_s(&timeNow, &timeStomp);
 
     char currentTime[128];
-    strftime(currentTime, sizeof(currentTime), "%X %Y-%m-%d", &timeNow);
+    strftime(currentTime, sizeof(currentTime), "%Y-%m-%d %X", &timeNow);
 
     stringstream ss;
     ss << currentTime;
@@ -33,75 +39,51 @@ string Logger::GetCurrentTime()
     return ss.str();
 }
 
-ofstream&& Logger::GetStream()
+#pragma region Log methods
+ofstream& Logger::Log()
 {
-    return move(LogFile);
+    LogFile << "[" << GetCurrentTime().c_str() << "]\t";
+    ofstream& tmpStream = LogFile;
+    return tmpStream;
 }
 
-#pragma region Log methods
-void Logger::Log(stringstream const& msg)
+void Logger::Log(const stringstream& msg)
 {
-    LogFile << "[" << GetCurrentTime().c_str() << "] " << msg.str() << endl;
+    Logger::Log() << msg.str() << endl;
 }
 
 void Logger::Log(string const& msg)
 {
-    LogFile << "[" << GetCurrentTime().c_str() << "] " << msg << endl;
+    Logger::Log() << msg << endl;
 }
 
 void Logger::Log(char* msg)
 {
-    LogFile << "[" << GetCurrentTime().c_str() << "] " << *msg << endl;
+    Logger::Log() << *msg << endl;
 }
 
 void Logger::Log(char msg)
 {
-    LogFile << "[" << GetCurrentTime().c_str() << "] " << msg << endl;
+    Logger::Log() << msg << endl;
 }
 
 void Logger::Log(wstringstream const& msg)
 {
-    LogFile << "[" << GetCurrentTime().c_str() << "] " << msg.str().c_str() << endl;
+    Logger::Log() << msg.str().c_str() << endl;
 }
 
 void Logger::Log(wstring const& msg)
 {
-    LogFile << "[" << GetCurrentTime().c_str() << "] " << msg.c_str() << endl;
+    Logger::Log() << msg.c_str() << endl;
 }
 
 void Logger::Log(wchar_t* msg)
 {
-    LogFile << "[" << GetCurrentTime().c_str() << "] " << *msg << endl;
+    Logger::Log() << *msg << endl;
 }
 
 void Logger::Log(wchar_t msg)
 {
-    LogFile << "[" << GetCurrentTime().c_str() << "] " << msg << endl;
-}
-#pragma endregion
-
-#pragma region Operators overloading
-ofstream operator << (Logger* pLogger, stringstream const& msg)
-{
-    pLogger->GetStream() << '[' << pLogger->GetCurrentTime() << "] " << msg.str();
-    return pLogger->GetStream();
-}
-
-ofstream operator << (Logger* pLogger, string msg)
-{
-    pLogger->GetStream() << '[' << pLogger->GetCurrentTime() << "] " << msg;
-    return pLogger->GetStream();
-}
-
-ofstream operator << (Logger* pLogger, wstringstream const& msg)
-{
-    pLogger->GetStream() << "[ " << pLogger->GetCurrentTime() << "] " << msg.str().c_str();
-    return pLogger->GetStream();
-}
-
-ofstream operator << (Logger* pLogger, wstring msg)
-{
-    pLogger->GetStream() << '[' << pLogger->GetCurrentTime() << "] " << msg.c_str();
-    return pLogger->GetStream();
+    Logger::Log() << msg << endl;
 }
 #pragma endregion

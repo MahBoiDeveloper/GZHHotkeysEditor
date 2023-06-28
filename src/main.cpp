@@ -43,19 +43,18 @@ int main(int argc, char *argv[])
 		QApplication HotkeyEditor(argc, argv);
 		MainWidget HotkeyEditor_Window;
 		HotkeyEditor_Window.show();
-		
 
 		auto tmp = new CSFparser("..\\..\\src\\csfSamples\\generalsRU.csf");
 		delete(tmp);
 
-		delete(Logger::Instance);
-		return HotkeyEditor.exec();
+		wchar_t wch;
+		wcin >> wch;
 	}
 	catch(const exception& e)
 	{
 		Logger::Instance->Log(e.what());
 	}
-
-	delete(Logger::Instance);
+	
+	Logger::Instance->Dispose();
 	return 0;
 }
