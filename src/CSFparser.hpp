@@ -56,8 +56,6 @@ private:
     list<ExtraCompiledString>* pExtraTable;
 
 private: // Methods
-	CSFparser();
-
     void Parse();
     void ParseHeader(ifstream* openedCSF);
     void ParseBody(ifstream* openedCSF);
@@ -67,6 +65,7 @@ private: // Methods
     wstring WharArrayToWstring(int arrayLength, wchar_t* pArray);
 
 public:
+	CSFparser() = delete;
     CSFparser(const string& strFilePath);
 	~CSFparser();
 //    void Dispose();

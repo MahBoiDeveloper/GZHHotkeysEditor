@@ -2,12 +2,6 @@
 #include "Logger.hpp"
 
 #pragma region Initialization and finilization
-    CSFparser::CSFparser()
-{
-    pTable = new list<CompiledString>();
-    pExtraTable = new list<ExtraCompiledString>();
-}
-
     CSFparser::CSFparser(const string& filePath) : Path(filePath)
     {
         Logger::Instance->Log(string("Attempt to parse " + filePath));

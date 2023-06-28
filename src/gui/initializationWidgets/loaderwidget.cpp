@@ -1,6 +1,4 @@
 #include "loaderwidget.hpp"
-#include "../config.hpp"
-
 #include <QDialogButtonBox>
 #include <QRadioButton>
 #include <QVBoxLayout>
