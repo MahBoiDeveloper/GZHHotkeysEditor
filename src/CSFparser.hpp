@@ -40,7 +40,6 @@ class CSFparser
 {
 public: // Data
     static inline CSFparser* Instance;
-
 private:
     const uint8_t FSC[4]  {' ', 'F', 'S', 'C'}; // Begining of any CSF file header
     const uint8_t LBL[4]  {' ', 'L', 'B', 'L'}; // Begining of any string name aka "label"
@@ -55,7 +54,6 @@ private:
     list<ExtraCompiledString>* pExtraTable;
 
 private: // Methods
-    CSFparser();
     ~CSFparser();
 
     void Parse();
@@ -65,7 +63,6 @@ private: // Methods
     bool IsASCII(string strSample);
     string CharArrayToString(int arrayLength, char* pArray);
     wstring WharArrayToWstring(int arrayLength, wchar_t* pArray);
-
 public:
     CSFparser(const string& strFilePath);
     void Dispose();

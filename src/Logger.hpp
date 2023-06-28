@@ -13,11 +13,10 @@ private:
     ofstream LogFile;
 
 private:
-    Logger();
+    ~Logger();
     string GetCurrentTime();
 public:
     Logger(const string& logFilePath);
-    ~Logger();
     void Dispose();
 
     ofstream& Log();
