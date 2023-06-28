@@ -35,8 +35,8 @@ int main(int argc, char *argv[])
 	_setmode(_fileno(stdout), _O_U16TEXT);
 
 	// Define logger as the global variable
-	Logger::Instance = new Logger("Log.log");
-	CSFparser::Instance = new CSFparser("..\\..\\src\\csfSamples\\generalsRU.csf");
+	Logger::Instance = make_unique<Logger>("Log.log");
+	CSFparser::Instance = make_unique<CSFparser>("..\\..\\src\\csfSamples\\generalsRU.csf");
 
 	try
 	{
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 		Logger::Instance->Log(e.what());
 	}
 	
-	CSFparser::Instance->Dispose();
-	Logger::Instance->Dispose();
+//	CSFparser::Instance->Dispose();
+//	Logger::Instance->Dispose();
 	return 0;
 }

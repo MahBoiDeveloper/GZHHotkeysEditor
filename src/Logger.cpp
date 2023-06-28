@@ -1,26 +1,21 @@
 ﻿#include "Logger.hpp"
 
 #pragma region Constructors and destructor
-Logger::Logger()
-{
-}
 
-Logger::Logger(const string& fileName) : LogFilePath(fileName)
+Logger::Logger(const string& fileName)
 {
-    LogFilePath = fileName;
-    LogFile.open(LogFilePath);
+	LogFile.open(fileName);
 }
 
 Logger::~Logger()
 {
-    if (LogFile.is_open())
-        LogFile.close();
+	if (LogFile.is_open()) LogFile.close();
 }
 
-void Logger::Dispose()
-{
-    delete(Logger::Instance);
-}
+//void Logger::Dispose()
+//{
+//    delete(Logger::Instance);
+//}
 
 #pragma endregion
 

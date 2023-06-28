@@ -2,23 +2,23 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <memory>
 using namespace std;
 
 class Logger
 {
 public:
-    static inline Logger* Instance;
+	static inline unique_ptr<Logger> Instance;
 private:
-    string LogFilePath;
     ofstream LogFile;
 
 private:
-    Logger();
     string GetCurrentTime();
 public:
-    Logger(const string& logFilePath);
-    ~Logger();
-    void Dispose();
+	Logger() = delete;
+	Logger(const string& logFilePath);
+	~Logger();
+//    void Dispose();
 
     ofstream& Log();
 
@@ -30,5 +30,5 @@ public:
     void Log(const wstringstream& msg);
     void Log(const wstring& msg);
     void Log(wchar_t* msg);
-    void Log(wchar_t msg);
+	void Log(wchar_t msg);
 };

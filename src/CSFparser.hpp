@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <list>
+#include <memory>
 
 #define EMPTY_WSTRING to_wstring('\0')
 #define EMPTY_STRING  to_string ('\0')
@@ -39,7 +40,7 @@ public:
 class CSFparser
 {
 public: // Data
-    static inline CSFparser* Instance;
+	static inline unique_ptr<CSFparser> Instance;
 
 private:
     const uint8_t FSC[4]  {' ', 'F', 'S', 'C'}; // Begining of any CSF file header
@@ -55,8 +56,7 @@ private:
     list<ExtraCompiledString>* pExtraTable;
 
 private: // Methods
-    CSFparser();
-    ~CSFparser();
+	CSFparser();
 
     void Parse();
     void ParseHeader(ifstream* openedCSF);
@@ -68,7 +68,8 @@ private: // Methods
 
 public:
     CSFparser(const string& strFilePath);
-    void Dispose();
+	~CSFparser();
+//    void Dispose();
     
     void Save();
     void Save(string strFileName);
