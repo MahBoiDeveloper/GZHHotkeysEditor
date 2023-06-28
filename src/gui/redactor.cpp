@@ -3,7 +3,7 @@
 #include <QApplication>
 #include <QTranslator>
 
-Redactor::Redactor(configurations::Games game, bool saveToGame, QWidget *parent)
+Redactor::Redactor(Config::Games game, bool saveToGame, QWidget *parent)
 	: QMainWindow(parent)
 {
 	QMenu* fm = new QMenu(tr("File"));

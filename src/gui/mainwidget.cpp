@@ -1,16 +1,17 @@
 #include <QApplication>
 #include "mainwidget.hpp"
 #include "redactor.hpp"
-#include "creatorWidget/creatorwidget.hpp"
-//#include <QDebug>
+#include "initializationWidgets/creatorwidget.hpp"
+#include "initializationWidgets/loaderwidget.hpp"
+#include <QDebug>
 
 // method for recreating the start widget
-StartWidget* MainWidget::initRespawnStartWidget(configurations::Languages language)
+StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
 {
 	StartWidget* startWidget = new StartWidget(language);
 	connect(startWidget, &StartWidget::languageChanged, this,
 		[=](int index){
-			configurations::Languages lang = static_cast<configurations::Languages>(index);
+			Config::Languages lang = static_cast<Config::Languages>(index);
 			// delete old translator
 			if (translator != nullptr)
 			{
@@ -20,9 +21,9 @@ StartWidget* MainWidget::initRespawnStartWidget(configurations::Languages langua
 //				translator->deleteLater();
 			}
 			// create new translator
-			if (lang != configurations::Languages::English) {
+			if (lang != Config::Languages::English) {
 				translator = new QTranslator;
-				translator->load(configurations::langEnumToString(lang), "translations");
+				translator->load(Config::langEnumToString(lang), "translations");
 				QCoreApplication::installTranslator(translator);
 			}
 			// recreate StartWidget
@@ -41,10 +42,25 @@ StartWidget* MainWidget::initRespawnStartWidget(configurations::Languages langua
 				setCurrentWidget(creatorWidget); // next window (creator)
 				// if accepted -> create redactor with configs and delete other widgets
 				connect(creatorWidget, &CreatorWidget::acceptedConfiguration, this,
-					[=](configurations::Games game, bool saveToGame){
+					[=](Config::Games game, bool saveToGame){
 						for(int i = 0; i < count(); i++) // delete other widgets
 							widget(i)->deleteLater();
 						addWidget(new Redactor(game, saveToGame));
+					}
+				);
+				break;
+			}
+			case 1: {
+				LoaderWidget* loaderWidget = new LoaderWidget;
+				addWidget(loaderWidget);
+				setCurrentWidget(loaderWidget); // next window (creator)
+				// if accepted -> create redactor with configs and delete other widgets
+				connect(loaderWidget, &LoaderWidget::acceptedConfiguration, this,
+					[=](const QString& filePath){
+						qDebug() << filePath;
+						for(int i = 0; i < count(); i++) // delete other widgets
+							widget(i)->deleteLater();
+						addWidget(new Redactor(Config::Games::GENERALS, false));
 					}
 				);
 				break;

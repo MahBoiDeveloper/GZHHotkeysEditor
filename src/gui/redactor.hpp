@@ -1,12 +1,12 @@
 #pragma once
 #include <QMainWindow>
-#include "configurations.hpp"
+#include "config.hpp"
 
 class Redactor : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	Redactor(configurations::Games game, bool saveToGame, QWidget *parent = nullptr);
+	Redactor(Config::Games game, bool saveToGame, QWidget *parent = nullptr);
 	~Redactor();
 };

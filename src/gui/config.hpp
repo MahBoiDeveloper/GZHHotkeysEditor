@@ -1,8 +1,9 @@
 #pragma once
 #include <QString>
 
-namespace configurations
+class Config
 {
+public:
 	enum class Games {
 		GENERALS = 0,
 		GENERALS_ZERO_HOUR = 1
@@ -13,5 +14,6 @@ namespace configurations
 		Russian = 1
 	};
 
-	QString langEnumToString(Languages lang);
-}
+	static QString gameEnumToString(const Games& game);
+	static QString langEnumToString(const Languages& lang);
+};
