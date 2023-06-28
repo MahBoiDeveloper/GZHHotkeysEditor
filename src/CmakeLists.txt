@@ -27,6 +27,7 @@ set_target_properties(GZHHotkeysEditor
     CXX_STANDARD_REQUIRED ON
     RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_FOLDER}
 )
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 # link gui subproject
 subdirs(gui)
 target_link_libraries(GZHHotkeysEditor PRIVATE
