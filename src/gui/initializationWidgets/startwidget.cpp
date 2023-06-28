@@ -13,6 +13,7 @@ PushButton* StartWidget::initButton(const QString& name) const
 	PushButton* button = new PushButton(name);
     button->setMaximumHeight(250);
 	button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	// changing the button size relative to the window size
 	connect(this, &StartWidget::resized, button,
 		[button](int height){
 			button->setFixedHeight(button->getBaseHeight() + height/10);
@@ -21,13 +22,14 @@ PushButton* StartWidget::initButton(const QString& name) const
     return button;
 }
 
+// when resized emit height
 void StartWidget::resizeEvent(QResizeEvent *event)
 {
 	QWidget::resizeEvent(event);
 	emit resized(event->size().height());
 }
 
-StartWidget::StartWidget(configurations::Languages language, QWidget *parent)
+StartWidget::StartWidget(Config::Languages language, QWidget *parent)
 	: QWidget(parent)
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -40,11 +42,12 @@ StartWidget::StartWidget(configurations::Languages language, QWidget *parent)
 			emit StartWidget::pressed(index);
         }
     );
+
+	// languages config
 	QComboBox* langBox = new QComboBox;
 	langBox->addItem("English");
 	langBox->addItem("Русский");
 	langBox->setCurrentIndex(static_cast<int>(language));
-//	langBox->setContentsMargins(10, 0, 10, 0);
 	connect(langBox, QOverload<int>::of(&QComboBox::activated), this, &StartWidget::languageChanged);
 	QLabel* languageName = new QLabel(tr("Language"));
 	QHBoxLayout* languageL = new QHBoxLayout;
@@ -55,17 +58,13 @@ StartWidget::StartWidget(configurations::Languages language, QWidget *parent)
 
     QVBoxLayout* vl = new QVBoxLayout;
 	vl->addStretch(5);
-    // vl->addSpacerItem(new QSpacerItem(10, 100, QSizePolicy::Minimum, QSizePolicy::Maximum));
 	vl->addWidget(bg->buttons().at(0));
 	vl->addStretch(2);
-    // vl->addSpacerItem(new QSpacerItem(10, 20, QSizePolicy::Minimum, QSizePolicy::Maximum));
 	vl->addWidget(bg->buttons().at(1));
-    // vl->addSpacerItem(new QSpacerItem(10, 100, QSizePolicy::Minimum, QSizePolicy::Maximum));
 	vl->addStretch(5);
     vl->setContentsMargins(70, 10, 70, 30);
     vl->setAlignment(Qt::AlignCenter);
 	vl->addLayout(languageL);
-//	vl->setSpacing(30);
 	setLayout(vl);
 }
 

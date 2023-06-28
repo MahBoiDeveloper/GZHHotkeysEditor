@@ -23,8 +23,8 @@ add_executable(GZHHotkeysEditor
 )
 set_target_properties(GZHHotkeysEditor
     PROPERTIES
-    CXX_STANDART 17
-    CXX_STANDART_REQUIRED ON
+    CXX_STANDARD 17
+    CXX_STANDARD_REQUIRED ON
     RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_FOLDER}
 )
 # link gui subproject

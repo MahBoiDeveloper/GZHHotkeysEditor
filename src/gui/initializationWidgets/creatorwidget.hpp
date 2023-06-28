@@ -3,7 +3,7 @@
 #include <QDialog>
 #include <QButtonGroup>
 #include <QCheckBox>
-#include "configurations.hpp"
+#include "config.hpp"
 
 class CreatorWidget : public QDialog
 {
@@ -13,5 +13,5 @@ class CreatorWidget : public QDialog
 public:
 	CreatorWidget(QWidget *parent = nullptr);
 signals:
-	void acceptedConfiguration(configurations::Games game, bool saveToGame);
+	void acceptedConfiguration(Config::Games game, bool saveToGame);
 };
