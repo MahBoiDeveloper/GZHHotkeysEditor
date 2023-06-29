@@ -2,6 +2,9 @@
 #include <Windows.h>
 #include <fcntl.h> // Allows to use UTF-16 encoding as the default encoding
 
+// Internal cute logic
+#include <QApplication>
+
 // Project files
 #include "gui/mainwidget.hpp"
 #include "CSFparser.hpp"
@@ -46,7 +49,7 @@ int main(int argc, char *argv[])
 	}
 	catch(const exception& e)
 	{
-		Logger::Instance->Log(e.what());
+		Logger::Instance->Log(string(e.what()));
 	}
 	
 	Logger::Instance->Log("UUID:" + GetUUID());

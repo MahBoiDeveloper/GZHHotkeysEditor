@@ -1,8 +1,11 @@
-﻿#include <ctime>
+﻿#pragma once
+
+#include <ctime>
 #include <string>
 #include <sstream>
 #include <fstream>
 #include <memory>
+
 using namespace std;
 
 class Logger
@@ -18,17 +21,12 @@ public:
 	Logger() = delete;
 	Logger(const string& logFilePath);
 	~Logger();
-//    void Dispose();
 
     ofstream& Log();
 
-    void Log(const stringstream& msg);
-    void Log(const string& msg);
-    void Log(char* msg);
-    void Log(char msg);
+	void Log(const stringstream& msg);
+	void Log(const string& msg);
 
-    void Log(const wstringstream& msg);
-    void Log(const wstring& msg);
-    void Log(wchar_t* msg);
-	void Log(wchar_t msg);
+	void Log(const wstringstream& msg);
+	void Log(const wstring& msg);
 };
