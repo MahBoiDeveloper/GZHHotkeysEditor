@@ -18,7 +18,6 @@ private:
 private:
     string GetCurrentTime();
 public:
-	Logger() = delete;
 	Logger(const string& logFilePath);
 	~Logger();
 

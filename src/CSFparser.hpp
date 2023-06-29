@@ -67,7 +67,6 @@ private: // Methods
     wstring WharArrayToWstring(int arrayLength, wchar_t* pArray);
 
 public:
-	CSFparser() = delete;
     CSFparser(const string& strFilePath);
 	~CSFparser();
     
