@@ -1,4 +1,5 @@
 // Special C++ logic for working with strings
+#include <Windows.h>
 #include <fcntl.h> // Allows to use UTF-16 encoding as the default encoding
 
 // Project files
@@ -8,26 +9,24 @@
 
 // Internal cute logic
 #include <QApplication>
+//#include <QDebug>
 
-// Don't ask me why this shit placed in main.cpp
-/*
-// #pragma comment(lib, "rpcrt4.lib")
-// #include <Windows.h>
-// string GetUUID()
-// {
-//     stringstream ss;
+#pragma comment(lib, "rpcrt4.lib")
+string GetUUID()
+{
+	stringstream ss;
 
-//     // Magic code by stackoverflow: https://stackoverflow.com/questions/24365331/how-can-i-generate-uuid-in-c-without-using-boost-library
-//     UUID uuid;
-//     auto tmpUuidCreate = UuidCreate(&uuid);
-//     char* str;
-//     auto tmpUuidToStringA = UuidToStringA(&uuid, (RPC_CSTR*)(&str));
-//     ss << str << endl;
-//     RpcStringFreeA((RPC_CSTR*)(&str));
+	// Magic code by stackoverflow: https://stackoverflow.com/questions/24365331/how-can-i-generate-uuid-in-c-without-using-boost-library
+	UUID uuid;
+	auto tmpUuidCreate = UuidCreate(&uuid);
+	char* str;
+	auto tmpUuidToStringA = UuidToStringA(&uuid, (RPC_CSTR*)(&str));
+	ss << str << endl;
+	RpcStringFreeA((RPC_CSTR*)(&str));
 
-//     return ss.str();
-// }
-*/
+	return ss.str();
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -40,7 +39,6 @@ int main(int argc, char *argv[])
 
 	try
 	{
-		// qDebug() << "!!!";
 		QApplication HotkeyEditor(argc, argv);
 		MainWidget HotkeyEditor_Window;
 		HotkeyEditor_Window.show();
@@ -51,7 +49,6 @@ int main(int argc, char *argv[])
 		Logger::Instance->Log(e.what());
 	}
 	
-//	CSFparser::Instance->Dispose();
-//	Logger::Instance->Dispose();
+	Logger::Instance->Log("UUID:" + GetUUID());
 	return 0;
 }
