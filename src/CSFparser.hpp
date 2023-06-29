@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include <sstream>
 #include <cstring>
@@ -68,7 +70,6 @@ public:
 	CSFparser() = delete;
     CSFparser(const string& strFilePath);
 	~CSFparser();
-//    void Dispose();
     
     void Save();
     void Save(string strFileName);

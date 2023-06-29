@@ -1,13 +1,13 @@
 // Special C++ logic for working with strings
 #include <fcntl.h> // Allows to use UTF-16 encoding as the default encoding
 
+// Internal cute logic
+#include <QApplication>
+
 // Project files
 #include "gui/mainwidget.hpp"
 #include "CSFparser.hpp"
 #include "Logger.hpp"
-
-// Internal cute logic
-#include <QApplication>
 
 // Don't ask me why this shit placed in main.cpp
 /*
@@ -50,8 +50,6 @@ int main(int argc, char *argv[])
 	{
 		Logger::Instance->Log(e.what());
 	}
-	
-//	CSFparser::Instance->Dispose();
-//	Logger::Instance->Dispose();
+
 	return 0;
 }
