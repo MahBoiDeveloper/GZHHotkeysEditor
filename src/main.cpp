@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
 	// Define logger as the global variable
 	Logger::Instance = make_unique<Logger>("Log.log");
 	CSFparser::Instance = make_unique<CSFparser>("..\\..\\src\\csfSamples\\generalsRU.csf");
+	CSFparser::Instance->Save("CHANGED_generalsRU.csf");
 
 	try
 	{

@@ -20,11 +20,9 @@ public:
     wstring Value;
 };
 
-struct ExtraCompiledString
+struct ExtraCompiledString : CompiledString
 {
 public:
-    string  Name;
-    wstring Value;
     string  ExtraValue;
 };
 
@@ -59,8 +57,11 @@ private:
 
 private: // Methods
     void Parse();
-    void ParseHeader(ifstream* openedCSF);
-    void ParseBody(ifstream* openedCSF);
+    void ReadHeader(ifstream* csfFile);
+    void ReadBody(ifstream* csfFile);
+
+    void WriteHeader(ofstream* csfFile);
+    void WriteBody(ofstream* csfFile);
 
     bool IsASCII(string strSample);
     string CharArrayToString(int arrayLength, char* pArray);

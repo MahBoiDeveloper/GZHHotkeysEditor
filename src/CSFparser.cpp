@@ -19,11 +19,6 @@
         delete pTable;
         delete pExtraTable;
     }
-
-//    void CSFparser::Dispose()
-//    {
-//        delete(CSFparser::Instance);
-//    }
 #pragma endregion
 
 #pragma region Parsing
@@ -31,16 +26,22 @@
     {
         ifstream csfFile{Path, ios::binary | ios::in};
 
+        Logger::Instance->Log() << "Attempt to read binary file \"" << Path << "\"" << endl;
+
         if (csfFile.is_open())
         {
-            CSFparser::ParseHeader(&csfFile);
-            CSFparser::ParseBody(&csfFile);
+            CSFparser::ReadHeader(&csfFile);
+            CSFparser::ReadBody(&csfFile);
+        }
+        else
+        {
+            Logger::Instance->Log() << "Could not open file \"" << Path << "\" to read" << endl;
         }
 
         csfFile.close();
     }
 
-    inline void CSFparser::ParseHeader(ifstream* csfFile)
+    inline void CSFparser::ReadHeader(ifstream* csfFile)
     {
         csfFile->read(reinterpret_cast<char*>(&Header), sizeof(Header));
 
@@ -55,7 +56,7 @@
         Logger::Instance->Log() << "Language code                      : "  << Header.languageCode       << endl;
     }
 
-    inline void CSFparser::ParseBody(ifstream* csfFile)
+    inline void CSFparser::ReadBody(ifstream* csfFile)
     {
         uint8_t lbl[4];
         uint8_t rts[4];
@@ -144,12 +145,100 @@
 
     void CSFparser::Save()
     {
+        ofstream csfFile{Path, ios::binary | ios::out};
 
+        if(csfFile.is_open())
+        {
+            Logger::Instance->Log() << "Attempt to write binary file \"" << Path << "\"" << endl;
+
+            CSFparser::WriteHeader(&csfFile);
+            CSFparser::WriteBody(&csfFile);
+        }
+        else
+        {
+            Logger::Instance->Log() << "Could not open file \"" << Path << "\" to save" << endl;
+        }
+
+        Logger::Instance->Log() << "File save as \"" << Path << "\"" << endl;
+
+        csfFile.close();
     }
 
     void CSFparser::Save(string strFileName)
     {
+        string tmp = Path;
+        Path = strFileName;
+        CSFparser::Save();
+        Path = tmp;
+    }
 
+    inline void CSFparser::WriteHeader(ofstream* csfFile)
+    {
+        // Struct Header has the same length as the original file
+        csfFile->write(reinterpret_cast<char*>(&Header), sizeof(Header));
+    }
+
+    inline void CSFparser::WriteBody(ofstream* csfFile)
+    {
+        uint32_t one = 1;
+
+        // Write normal strings
+        for(auto elem : *pTable)
+        {
+            uint32_t labelLength  = elem.Name.size();
+            uint32_t valueLength  = elem.Value.size();
+            char labelName[labelLength];
+            wchar_t valueInversed[valueLength];
+            
+            for(uint32_t i = 0; i < labelLength; i++)
+                labelName[i] = elem.Name[i];
+
+            for(uint32_t i = 0; i < valueLength; i++)
+                valueInversed[i] = ~elem.Value[i];
+
+            csfFile->write(reinterpret_cast<const char*>(LBL), sizeof(LBL));
+            csfFile->write(reinterpret_cast<char*>(&one), sizeof(one));
+            csfFile->write(reinterpret_cast<char*>(&labelLength), sizeof(labelLength));
+            csfFile->write(reinterpret_cast<char*>(&labelName), sizeof(labelName));
+
+            csfFile->write(reinterpret_cast<const char*>(RTS), sizeof(RTS));
+            csfFile->write(reinterpret_cast<char*>(&valueLength), sizeof(valueLength));
+            csfFile->write(reinterpret_cast<char*>(&valueInversed), sizeof(valueInversed));
+        }
+
+        // TODO REFACTORING
+        // Write extra strings
+        // for (auto elem : *pExtraTable)
+        // {
+        //     uint32_t labelLength      = elem.Name.size();
+        //     uint32_t valueLength      = elem.Value.size();
+        //     char     labelName[labelLength];
+        //     wchar_t  valueInversed[valueLength];
+
+        //     uint32_t extraValueLength = elem.ExtraValue.size();
+        //     char     extraValue[extraValueLength];
+
+        //     for(uint32_t i = 0; i < labelLength; i++)
+        //         extraValue[i] = elem.ExtraValue[i];
+
+        //     for(uint32_t i = 0; i < labelLength; i++)
+        //         labelName[i] = elem.Name[i];
+
+        //     for(uint32_t i = 0; i < valueLength; i++)
+        //         valueInversed[i] = ~elem.Value[i];
+
+        //     csfFile->write(reinterpret_cast<const char*>(LBL), sizeof(LBL));
+        //     csfFile->write(reinterpret_cast<char*>(&one), sizeof(one));
+        //     csfFile->write(reinterpret_cast<char*>(&labelLength), sizeof(labelLength));
+        //     csfFile->write(reinterpret_cast<char*>(&(elem.Name)), sizeof(elem.Name));
+
+        //     csfFile->write(reinterpret_cast<const char*>(WRTS), sizeof(WRTS));
+        //     csfFile->write(reinterpret_cast<char*>(&valueLength), sizeof(valueLength));
+        //     csfFile->write(reinterpret_cast<char*>(&valueInversed), sizeof(valueInversed));
+
+        //     csfFile->write(reinterpret_cast<char*>(&extraValueLength), sizeof(extraValueLength));
+        //     csfFile->write(reinterpret_cast<char*>(&extraValue), sizeof(extraValue));
+        // }
     }
 #pragma endregion
 
