@@ -4,20 +4,15 @@
 #pragma region Initialization and finilization
     CSFparser::CSFparser(const string& filePath) : Path(filePath)
     {
-        Logger::Instance->Log(string("Attempt to parse " + filePath));
-
         pTable = new list<CompiledString>();
-        pExtraTable = new list<ExtraCompiledString>();
         Parse();
         
-        Logger::Instance->Log() << "Normal strings count : " << pTable->size() << endl;
-        Logger::Instance->Log() << "Extra strings count  : " << pExtraTable->size() << endl;
+        Logger::Instance->Log() << "File has been parsed; strings count : " << pTable->size() << endl;
     }
 
     CSFparser::~CSFparser()
     {
         delete pTable;
-        delete pExtraTable;
     }
 #pragma endregion
 
@@ -32,6 +27,8 @@
         {
             CSFparser::ReadHeader(&csfFile);
             CSFparser::ReadBody(&csfFile);
+
+            Logger::Instance->Log() << "File \"" << Path << "\" has been parsed" << endl;
         }
         else
         {
@@ -45,15 +42,17 @@
     {
         csfFile->read(reinterpret_cast<char*>(&Header), sizeof(Header));
 
-        Logger::Instance->Log() << "First 4th bytes of file header are : [" << Header.csfChars[0] 
-                                                                            << Header.csfChars[1] 
-                                                                            << Header.csfChars[2] 
-                                                                            << Header.csfChars[3] << ']' << endl;
-        Logger::Instance->Log() << "CSF file format version            : "  << Header.formatVersion      << endl;
-        Logger::Instance->Log() << "Number of labels in CSF file       : "  << Header.numberOfLabels     << endl;
-        Logger::Instance->Log() << "Number of strings in CSF file      : "  << Header.numberOfStrings    << endl;
-        Logger::Instance->Log() << "Useless bytes, i guess?            : "  << Header.uselessBytes       << endl;
-        Logger::Instance->Log() << "Language code                      : "  << Header.languageCode       << endl;
+        Logger::Instance->Log() << "File header data:" << endl;
+
+        Logger::Instance->Log() << '\t' << "First 4th bytes of file header are : [" << Header.csfChars[0] 
+                                                                                    << Header.csfChars[1] 
+                                                                                    << Header.csfChars[2] 
+                                                                                    << Header.csfChars[3] << ']' << endl;
+        Logger::Instance->Log() << '\t' << "CSF file format version            : "  << Header.formatVersion      << endl;
+        Logger::Instance->Log() << '\t' << "Number of labels in CSF file       : "  << Header.numberOfLabels     << endl;
+        Logger::Instance->Log() << '\t' << "Number of strings in CSF file      : "  << Header.numberOfStrings    << endl;
+        Logger::Instance->Log() << '\t' << "Useless bytes, i guess?            : "  << Header.uselessBytes       << endl;
+        Logger::Instance->Log() << '\t' << "Language code                      : "  << Header.languageCode       << endl;
     }
 
     inline void CSFparser::ReadBody(ifstream* csfFile)
@@ -100,8 +99,8 @@
             if(countOfStrings != 0)
             {
                 // Read string type
-                uint8_t  rtsWrts[4];
-                csfFile->read(reinterpret_cast<char*>(&rtsWrts), sizeof(rtsWrts));
+                uint8_t  rtsOrWrts[4];
+                csfFile->read(reinterpret_cast<char*>(&rtsOrWrts), sizeof(rtsOrWrts));
 
                 // Read string lenght
                 uint32_t valueLenght;
@@ -117,8 +116,8 @@
 
                 stringValue = WharArrayToWstring(valueLenght, _stringValue);
 
-                // Read extra value
-                if((char)rtsWrts[0] == 'W')
+                // Read extra value and do not write bcs it's useless
+                if((char)rtsOrWrts[0] == 'W')
                 {
                     uint32_t extraValueLength;
                     csfFile->read(reinterpret_cast<char*>(&extraValueLength), sizeof(extraValueLength));
@@ -127,12 +126,9 @@
                     csfFile->read(reinterpret_cast<char*>(&extraValue), sizeof(extraValue));
 
                     extraStringValue = CSFparser::CharArrayToString(sizeof(extraValue), reinterpret_cast<char*>(extraValue));
-
-                    pExtraTable->push_back({stringName, stringValue, extraStringValue});
                 }
-                {
-                    pTable->push_back({stringName, stringValue});
-                }
+                    
+                pTable->push_back({stringName, stringValue});
             }
             
             #if DEBUG
@@ -153,13 +149,13 @@
 
             CSFparser::WriteHeader(&csfFile);
             CSFparser::WriteBody(&csfFile);
+
+            Logger::Instance->Log() << "File saved as \"" << Path << "\"" << endl;
         }
         else
         {
             Logger::Instance->Log() << "Could not open file \"" << Path << "\" to save" << endl;
         }
-
-        Logger::Instance->Log() << "File save as \"" << Path << "\"" << endl;
 
         csfFile.close();
     }
@@ -187,8 +183,8 @@
         {
             uint32_t labelLength  = elem.Name.size();
             uint32_t valueLength  = elem.Value.size();
-            char labelName[labelLength];
-            wchar_t valueInversed[valueLength];
+            char     labelName      [labelLength];
+            wchar_t  valueInversed  [valueLength];
             
             for(uint32_t i = 0; i < labelLength; i++)
                 labelName[i] = elem.Name[i];
@@ -205,40 +201,6 @@
             csfFile->write(reinterpret_cast<char*>(&valueLength), sizeof(valueLength));
             csfFile->write(reinterpret_cast<char*>(&valueInversed), sizeof(valueInversed));
         }
-
-        // TODO REFACTORING
-        // Write extra strings
-        // for (auto elem : *pExtraTable)
-        // {
-        //     uint32_t labelLength      = elem.Name.size();
-        //     uint32_t valueLength      = elem.Value.size();
-        //     char     labelName[labelLength];
-        //     wchar_t  valueInversed[valueLength];
-
-        //     uint32_t extraValueLength = elem.ExtraValue.size();
-        //     char     extraValue[extraValueLength];
-
-        //     for(uint32_t i = 0; i < labelLength; i++)
-        //         extraValue[i] = elem.ExtraValue[i];
-
-        //     for(uint32_t i = 0; i < labelLength; i++)
-        //         labelName[i] = elem.Name[i];
-
-        //     for(uint32_t i = 0; i < valueLength; i++)
-        //         valueInversed[i] = ~elem.Value[i];
-
-        //     csfFile->write(reinterpret_cast<const char*>(LBL), sizeof(LBL));
-        //     csfFile->write(reinterpret_cast<char*>(&one), sizeof(one));
-        //     csfFile->write(reinterpret_cast<char*>(&labelLength), sizeof(labelLength));
-        //     csfFile->write(reinterpret_cast<char*>(&(elem.Name)), sizeof(elem.Name));
-
-        //     csfFile->write(reinterpret_cast<const char*>(WRTS), sizeof(WRTS));
-        //     csfFile->write(reinterpret_cast<char*>(&valueLength), sizeof(valueLength));
-        //     csfFile->write(reinterpret_cast<char*>(&valueInversed), sizeof(valueInversed));
-
-        //     csfFile->write(reinterpret_cast<char*>(&extraValueLength), sizeof(extraValueLength));
-        //     csfFile->write(reinterpret_cast<char*>(&extraValue), sizeof(extraValue));
-        // }
     }
 #pragma endregion
 

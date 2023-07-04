@@ -20,12 +20,6 @@ public:
     wstring Value;
 };
 
-struct ExtraCompiledString : CompiledString
-{
-public:
-    string  ExtraValue;
-};
-
 struct CSFHeader
 {
 public:
@@ -53,7 +47,6 @@ private:
     CSFHeader Header;
 
     list<CompiledString>* pTable;
-    list<ExtraCompiledString>* pExtraTable;
 
 private: // Methods
     void Parse();
@@ -77,20 +70,14 @@ public:
 
     void AddString(CompiledString csString);
     void AddString(list<CompiledString> csList);
-    void AddString(ExtraCompiledString csString);
-    void AddString(list<ExtraCompiledString> csList);
     void AddEmptyString(string strName);
 
     list<string> GetStringNames();
     string GetStringValue(string strName);
-    list<string> GetExtraStringNames();
-    string GetExtraStringValue(string strName);
 
     void ChangeStringName(string strOldName, string strNewName);
     void ChangeStringValue(string strOldValue, string strNewValue);
     
     void DeleteString(string strName);
     void DeleteString(CompiledString csString);
-
-    void ConvertExtraStringsToNormal();
 };
