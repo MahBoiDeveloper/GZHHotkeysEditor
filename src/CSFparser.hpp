@@ -3,10 +3,11 @@
 #include <string>
 #include <sstream>
 #include <cstring>
-#include <iostream>
 #include <fstream>
 #include <list>
 #include <memory>
+
+#include "Helper.hpp"
 
 #define EMPTY_WSTRING to_wstring('\0')
 #define EMPTY_STRING  to_string ('\0')
@@ -55,10 +56,6 @@ private: // Methods
 
     void WriteHeader(ofstream* csfFile);
     void WriteBody(ofstream* csfFile);
-
-    bool IsASCII(string strSample);
-    string CharArrayToString(int arrayLength, char* pArray);
-    wstring WharArrayToWstring(int arrayLength, wchar_t* pArray);
 
 public:
 	CSFparser() = delete;

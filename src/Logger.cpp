@@ -13,25 +13,10 @@
     }
 #pragma endregion
 
-string Logger::GetCurrentTime()
-{
-    time_t timeStomp = time(nullptr);
-    tm timeNow;
-    localtime_s(&timeNow, &timeStomp);
-
-    char currentTime[128];
-    strftime(currentTime, sizeof(currentTime), "%Y-%m-%d %X", &timeNow);
-
-    stringstream ss;
-    ss << currentTime;
-
-    return ss.str();
-}
-
 #pragma region Log methods
     ofstream& Logger::Log()
     {
-        LogFile << "[" << GetCurrentTime().c_str() << "]\t";
+        LogFile << "[" << Helper::Instance->GetCurrentTime().c_str() << "]\t";
         ofstream& tmpStream = LogFile;
         return tmpStream;
     }

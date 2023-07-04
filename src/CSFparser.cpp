@@ -91,7 +91,7 @@
             uint8_t labelName[labelNameLength];
             csfFile->read(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
-            string  stringName = CSFparser::CharArrayToString(sizeof(labelName), reinterpret_cast<char*>(labelName));
+            string  stringName = Helper::Instance->CharArrayToString(sizeof(labelName), reinterpret_cast<char*>(labelName));
             wstring stringValue = EMPTY_WSTRING;
             string  extraStringValue = EMPTY_STRING;
 
@@ -114,7 +114,7 @@
                 for (int tmp = 0; tmp < valueLenght; tmp++)
                     _stringValue[tmp] = ~_stringValue[tmp];
 
-                stringValue = WharArrayToWstring(valueLenght, _stringValue);
+                stringValue = Helper::Instance->WharArrayToWstring(valueLenght, _stringValue);
 
                 // Read extra value and do not write bcs it's useless
                 if((char)rtsOrWrts[0] == 'W')
@@ -125,7 +125,7 @@
                     uint8_t extraValue[extraValueLength];
                     csfFile->read(reinterpret_cast<char*>(&extraValue), sizeof(extraValue));
 
-                    extraStringValue = CSFparser::CharArrayToString(sizeof(extraValue), reinterpret_cast<char*>(extraValue));
+                    extraStringValue = Helper::Instance->CharArrayToString(sizeof(extraValue), reinterpret_cast<char*>(extraValue));
                 }
                     
                 pTable->push_back({stringName, stringValue});
@@ -260,28 +260,3 @@
     }
 
 #pragma endregion
-
-bool CSFparser::IsASCII(string strSample)
-{
-    return false;
-}
-
-string CSFparser::CharArrayToString(int arrayLength, char* pArray)
-{
-    stringstream ss;
-    
-    for(int i = 0 ; i < arrayLength; i++)
-        ss << pArray[i];
-
-    return ss.str();
-}
-
-wstring CSFparser::WharArrayToWstring(int arrayLength, wchar_t* pArray)
-{
-    wstringstream wss;
-    
-    for(int i = 0 ; i < arrayLength; i++)
-        wss << pArray[i];
-
-    return wss.str();
-}

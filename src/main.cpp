@@ -1,35 +1,15 @@
 // Special C++ logic for working with strings
-#include <Windows.h>
 #include <fcntl.h> // Allows to use UTF-16 encoding as the default encoding
-
-// Internal cute logic
-#include <QApplication>
-
-// Project files
-#include "gui/mainwidget.hpp"
-#include "CSFparser.hpp"
-#include "Logger.hpp"
 
 // Internal cute logic
 #include <QApplication>
 //#include <QDebug>
 
-#pragma comment(lib, "rpcrt4.lib")
-string GetUUID()
-{
-	stringstream ss;
-
-	// Magic code by stackoverflow: https://stackoverflow.com/questions/24365331/how-can-i-generate-uuid-in-c-without-using-boost-library
-	UUID uuid;
-	auto tmpUuidCreate = UuidCreate(&uuid);
-	char* str;
-	auto tmpUuidToStringA = UuidToStringA(&uuid, (RPC_CSTR*)(&str));
-	ss << str << endl;
-	RpcStringFreeA((RPC_CSTR*)(&str));
-
-	return ss.str();
-}
-
+// Project files
+#include "gui/mainwidget.hpp"
+#include "Logger.hpp"
+#include "Helper.hpp"
+#include "CSFparser.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -37,12 +17,15 @@ int main(int argc, char *argv[])
 	_setmode(_fileno(stdout), _O_U16TEXT);
 
 	// Define logger as the global variable
-	Logger::Instance = make_unique<Logger>("Log.log");
+	Logger::Instance    = make_unique<Logger>("Log.log");
+	Helper::Instance    = make_unique<Helper>();
 	CSFparser::Instance = make_unique<CSFparser>("..\\..\\src\\csfSamples\\generalsRU.csf");
-	CSFparser::Instance->Save("CHANGED_generalsRU.csf");
 
 	try
 	{
+		Logger::Instance->Log() << "UUID: " + Helper::Instance->GetUUID();
+		CSFparser::Instance->Save("CHANGED_generalsRU.csf");
+
 		QApplication HotkeyEditor(argc, argv);
 		MainWidget HotkeyEditor_Window;
 		HotkeyEditor_Window.show();
@@ -50,9 +33,9 @@ int main(int argc, char *argv[])
 	}
 	catch(const exception& e)
 	{
+		Logger::Instance->Log() << "I'VE GOT A PRESENT FOR YA" << endl;
 		Logger::Instance->Log(string(e.what()));
 	}
 	
-	Logger::Instance->Log("UUID:" + GetUUID());
 	return 0;
 }

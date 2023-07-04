@@ -30,8 +30,9 @@ set_target_properties(GZHHotkeysEditor
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 # link gui subproject
 subdirs(gui)
-target_link_libraries(GZHHotkeysEditor PRIVATE
-    Gui
+target_link_libraries(GZHHotkeysEditor
+    PRIVATE Gui
+    PRIVATE rpcrt4
 )
 
 #---------------Qt libs deploy-----------------

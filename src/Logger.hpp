@@ -1,10 +1,11 @@
 ﻿#pragma once
 
-#include <ctime>
 #include <string>
 #include <sstream>
 #include <fstream>
 #include <memory>
+
+#include "Helper.hpp"
 
 using namespace std;
 
@@ -15,8 +16,6 @@ public:
 private:
     ofstream LogFile;
 
-private:
-    string GetCurrentTime();
 public:
 	Logger() = delete;
 	Logger(const string& logFilePath);
