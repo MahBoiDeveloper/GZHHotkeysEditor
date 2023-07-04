@@ -72,8 +72,10 @@ public:
     void AddString(list<CompiledString> csList);
     void AddEmptyString(string strName);
 
-    list<string> GetStringNames();
-    string GetStringValue(string strName);
+    list<string>* GetStringNames();
+    wstring GetStringValue(string strName);
+    list<string>* GetCategories();
+    list<string>* GetCategoryStrings(string strCategoryname);
 
     void ChangeStringName(string strOldName, string strNewName);
     void ChangeStringValue(string strOldValue, string strNewValue);

@@ -176,7 +176,7 @@
 
     inline void CSFparser::WriteBody(ofstream* csfFile)
     {
-        uint32_t one = 1;
+        const uint32_t ONE_STRING = 1;
 
         // Write normal strings
         for(auto elem : *pTable)
@@ -193,7 +193,7 @@
                 valueInversed[i] = ~elem.Value[i];
 
             csfFile->write(reinterpret_cast<const char*>(LBL), sizeof(LBL));
-            csfFile->write(reinterpret_cast<char*>(&one), sizeof(one));
+            csfFile->write(reinterpret_cast<const char*>(&ONE_STRING), sizeof(ONE_STRING));
             csfFile->write(reinterpret_cast<char*>(&labelLength), sizeof(labelLength));
             csfFile->write(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
@@ -202,6 +202,63 @@
             csfFile->write(reinterpret_cast<char*>(&valueInversed), sizeof(valueInversed));
         }
     }
+#pragma endregion
+
+#pragma region Getters and setters
+    wstring CSFparser::GetStringValue(string strName)
+    {
+        for (auto elem : *pTable)
+            if (elem.Name == strName)
+                return elem.Value;
+
+        return EMPTY_WSTRING;
+    }
+
+    list<string>* CSFparser::GetStringNames()
+    {
+        list<string>* returnList = new list<string>();
+        
+        for (auto elem : *pTable)
+            returnList->push_back(elem.Name);
+
+        return returnList;
+    }
+
+    list<string>* CSFparser::GetCategories()
+    {
+        list<string>* returnList    = new list<string>();
+        string categoryNameCurrent  = EMPTY_STRING;
+        string categoryNamePrevious = EMPTY_STRING;
+
+        for (auto elem : *pTable)
+        {
+            categoryNameCurrent = elem.Name.substr(0, elem.Name.find_first_of(':', 0) - 1);
+
+            if (categoryNameCurrent != categoryNamePrevious)
+                returnList->push_back(categoryNameCurrent);
+            
+            categoryNamePrevious = categoryNameCurrent;
+        }
+
+        return returnList;
+    }
+
+    list<string>* CSFparser::GetCategoryStrings(string strCategoryname)
+    {
+        list<string>* returnList = new list<string>();
+        string strCategory = EMPTY_STRING;
+
+        for (auto elem : *pTable)
+        {
+            strCategory = elem.Name.substr(0, elem.Name.find_first_of(':', 0) - 1);
+
+            if (strCategory == strCategoryname)
+                returnList->push_back(elem.Name.substr(elem.Name.find_first_of(':', 0), elem.Name.size() - 1));
+        }
+
+        return returnList;
+    }
+
 #pragma endregion
 
 bool CSFparser::IsASCII(string strSample)
