@@ -58,7 +58,7 @@
     </message>
 </context>
 <context>
-    <name>Redactor</name>
+    <name>Editor</name>
     <message>
         <location filename="../redactor.cpp" line="9"/>
         <source>File</source>
