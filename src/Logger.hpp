@@ -17,7 +17,6 @@ private:
     ofstream LogFile;
 
 public:
-	Logger() = delete;
 	Logger(const string& logFilePath);
 	~Logger();
 

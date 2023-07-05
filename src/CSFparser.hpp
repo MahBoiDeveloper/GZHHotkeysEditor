@@ -58,7 +58,6 @@ private: // Methods
     void WriteBody(ofstream* csfFile);
 
 public:
-	CSFparser() = delete;
     CSFparser(const string& strFilePath);
 	~CSFparser();
     

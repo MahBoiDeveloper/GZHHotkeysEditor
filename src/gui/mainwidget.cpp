@@ -1,6 +1,6 @@
 #include <QApplication>
 #include "mainwidget.hpp"
-#include "redactor.hpp"
+#include "editor/editor.hpp"
 #include "initializationWidgets/creatorwidget.hpp"
 #include "initializationWidgets/loaderwidget.hpp"
 #include <QDebug>
@@ -45,7 +45,7 @@ StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
 					[=](Config::Games game, bool saveToGame){
 						for(int i = 0; i < count(); i++) // delete other widgets
 							widget(i)->deleteLater();
-						addWidget(new Redactor(game, saveToGame));
+						addWidget(new Editor(game, saveToGame));
 					}
 				);
 				break;
@@ -60,7 +60,7 @@ StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
 						qDebug() << filePath;
 						for(int i = 0; i < count(); i++) // delete other widgets
 							widget(i)->deleteLater();
-						addWidget(new Redactor(Config::Games::GENERALS, false));
+						addWidget(new Editor(Config::Games::GENERALS, false));
 					}
 				);
 				break;
