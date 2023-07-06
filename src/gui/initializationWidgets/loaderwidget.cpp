@@ -30,7 +30,7 @@ LoaderWidget::LoaderWidget(QWidget *parent)
 	connect(reviewButton, &QPushButton::clicked, fileDialog, &QFileDialog::exec);
 
 	// configure choise buttons
-	QRadioButton* loadFromFileButton = new QRadioButton(tr("Load hotkey map from file"));
+	QRadioButton* loadFromFileButton = new QRadioButton(tr("Load project"));
 	connect(loadFromFileButton, &QPushButton::toggled, this,
 		[=](bool checked){
 			pathToFileLineEdit->setEnabled(checked);

@@ -27,4 +27,6 @@ public:
 
 	void Log(const wstringstream& msg);
 	void Log(const wstring& msg);
+
+	void LogSystemInformation();
 };

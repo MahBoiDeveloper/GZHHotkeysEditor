@@ -6,12 +6,12 @@
     <message>
         <location filename="../initializationWidgets/creatorwidget.cpp" line="22"/>
         <source>Save hotkey dirrectly to the game</source>
-        <translation>Сохранять горячие клавиши непосредственно в игре</translation>
+        <translation>Сохранять горячие клавиши в игру</translation>
     </message>
     <message>
         <location filename="../initializationWidgets/creatorwidget.cpp" line="26"/>
         <source>Start configurating</source>
-        <translation>Начать конфигурацию</translation>
+        <translation>Начать настройку</translation>
     </message>
     <message>
         <location filename="../initializationWidgets/creatorwidget.cpp" line="27"/>
@@ -20,64 +20,76 @@
     </message>
 </context>
 <context>
-    <name>LoaderWidget</name>
-    <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="25"/>
-        <source>Text files</source>
-        <translation>Текстовые файлы</translation>
-    </message>
-    <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="26"/>
-        <source>Any files</source>
-        <translation>Все файлы</translation>
-    </message>
-    <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="29"/>
-        <source>Review</source>
-        <translation>Обзор</translation>
-    </message>
-    <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="35"/>
-        <source>Load hotkey map from file</source>
-        <translation>Загрузить карту горячих клавиш из файла</translation>
-    </message>
-    <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="42"/>
-        <source>Load installed game hotkey map</source>
-        <translation>Загрузить карту горячих клавиш из игры</translation>
-    </message>
-    <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="58"/>
-        <source>Start configurating</source>
-        <translation>Начать конфигурацию</translation>
-    </message>
-    <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="59"/>
-        <source>Back</source>
-        <translation>Назад</translation>
-    </message>
-</context>
-<context>
     <name>Editor</name>
     <message>
-        <location filename="../redactor.cpp" line="9"/>
+        <location filename="../editor/editor.cpp" line="11"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../redactor.cpp" line="10"/>
+        <location filename="../editor/editor.cpp" line="12"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../redactor.cpp" line="12"/>
+        <location filename="../editor/editor.cpp" line="14"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../redactor.cpp" line="13"/>
+        <location filename="../editor/editor.cpp" line="15"/>
         <source>Settings</source>
         <translation>Настройки</translation>
+    </message>
+</context>
+<context>
+    <name>HotkeyElement</name>
+    <message>
+        <location filename="../editor/hotkeyelement.cpp" line="36"/>
+        <source>press the letter key</source>
+        <translation>Нажмите любую клавишу</translation>
+    </message>
+</context>
+<context>
+    <name>LoaderWidget</name>
+    <message>
+        <location filename="../initializationWidgets/loaderwidget.cpp" line="23"/>
+        <source>Text files</source>
+        <translation>Текстовые файлы</translation>
+    </message>
+    <message>
+        <location filename="../initializationWidgets/loaderwidget.cpp" line="24"/>
+        <source>Any files</source>
+        <translation>Все файлы</translation>
+    </message>
+    <message>
+        <location filename="../initializationWidgets/loaderwidget.cpp" line="27"/>
+        <source>Review</source>
+        <translation>Обзор</translation>
+    </message>
+    <message>
+        <location filename="../initializationWidgets/loaderwidget.cpp" line="33"/>
+        <source>Load project</source>
+        <translation>Загрузить проект</translation>
+    </message>
+    <message>
+        <source>Load hotkey map from file</source>
+        <translation type="vanished">Загрузить проект</translation>
+    </message>
+    <message>
+        <location filename="../initializationWidgets/loaderwidget.cpp" line="40"/>
+        <source>Load installed game hotkey map</source>
+        <translation>Загрузить горячие клавиши из игры</translation>
+    </message>
+    <message>
+        <location filename="../initializationWidgets/loaderwidget.cpp" line="56"/>
+        <source>Start configurating</source>
+        <translation>Начать настройку</translation>
+    </message>
+    <message>
+        <location filename="../initializationWidgets/loaderwidget.cpp" line="57"/>
+        <source>Back</source>
+        <translation>Назад</translation>
     </message>
 </context>
 <context>

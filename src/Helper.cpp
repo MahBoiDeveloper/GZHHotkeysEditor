@@ -1,11 +1,45 @@
 #include "Helper.hpp"
+#include <iostream>
 
-Helper::Helper()
+string Helper::GetWindowsVersion()
 {
+    wstring returnValue = EMPTY_WSTRING;
+
+    HKEY rKey;
+    DWORD Size = 256;
+    TCHAR Reget[Size] = { 0 };
+    DWORD RegetPath = sizeof(Reget);
+    RegOpenKeyExA(HKEY_LOCAL_MACHINE, _T("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"), NULL, KEY_QUERY_VALUE, &rKey);
+    RegQueryValueExA(rKey, _T("ProductName"), NULL, NULL, (LPBYTE)&Reget, &RegetPath);
+    RegCloseKey(rKey);
+    // RegGetValueW
+    // (
+    //     HKEY_LOCAL_MACHINE,
+    //     _T("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion")
+    //     _T("ProductName"),
+    //     RRF_RT_REG_SZ,
+    //     NULL,
+    //     (PVOID)&Reget[0],
+    //     &Size
+    // );
+
+    std::wcout << Reget << std::endl;
+
+    return Helper::CharArrayToString(sizeof(Reget), &Reget[0]);
 }
 
-Helper::~Helper()
+wstring Helper::GetProcessorInfo()
 {
+    wstring returnValue = EMPTY_WSTRING;
+
+    return returnValue;
+}
+
+wstring Helper::GetMemoryInfo()
+{
+    wstring returnValue = EMPTY_WSTRING;
+    
+    return returnValue;
 }
 
 string Helper::GetUUID()
@@ -37,7 +71,6 @@ string Helper::GetCurrentTime()
 
     return ss.str();
 }
-
 
 bool Helper::IsASCII(string strSample)
 {

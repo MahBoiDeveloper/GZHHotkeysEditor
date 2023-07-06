@@ -9,9 +9,6 @@
 
 #include "Helper.hpp"
 
-#define EMPTY_WSTRING to_wstring('\0')
-#define EMPTY_STRING  to_string ('\0')
-
 using namespace std;
 
 struct CompiledString
@@ -69,7 +66,7 @@ public:
     void AddEmptyString(string strName);
 
     list<string>* GetStringNames();
-    wstring GetStringValue(string strName);
+    wstring       GetStringValue(string strName);
     list<string>* GetCategories();
     list<string>* GetCategoryStrings(string strCategoryname);
 

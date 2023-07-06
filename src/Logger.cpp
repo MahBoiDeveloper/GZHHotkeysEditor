@@ -4,6 +4,13 @@
     Logger::Logger(const string& fileName)
     {
 	    LogFile.open(fileName);
+        
+	    Logger::Log() << "C&C Generals and Generals Zero Hour hotkey editor" << endl; 
+	    Logger::Log() << "Version: " << VERSION << endl;
+	    Logger::Log() << "Authors: " << AUTHORS << endl << endl;
+
+	    Logger::LogSystemInformation();
+        LogFile << endl;
     }
 
     Logger::~Logger()
@@ -14,9 +21,22 @@
 #pragma endregion
 
 #pragma region Log methods
+    void Logger::LogSystemInformation()
+    {
+        LogFile << "[" << Helper::GetCurrentTime().c_str() << "]\t"
+                << "OS version: "
+                << Helper::GetWindowsVersion().c_str() << endl;
+
+        LogFile << "[" << Helper::GetCurrentTime().c_str() << "]\t"
+                << Helper::GetProcessorInfo().c_str() << endl;
+
+        LogFile << "[" << Helper::GetCurrentTime().c_str() << "]\t"
+                << Helper::GetMemoryInfo().c_str() << endl;
+    }
+
     ofstream& Logger::Log()
     {
-        LogFile << "[" << Helper::Instance->GetCurrentTime().c_str() << "]\t";
+        LogFile << "[" << Helper::GetCurrentTime().c_str() << "]\t";
         ofstream& tmpStream = LogFile;
         return tmpStream;
     }
