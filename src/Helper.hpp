@@ -26,6 +26,8 @@ public:
     static string  GetMemoryInfo();
     static string  GetWindowsBit();
     static string  GetWindowsVersion();
+    static string  GetPathToCNCG();
+    static string  GetPathToCNCGZH();
 
     // Uses in CSFparser
     static string  GetUUID();

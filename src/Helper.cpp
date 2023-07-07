@@ -7,7 +7,7 @@ string Helper::GetRegTextValue(const char* pPathToFolder, const char* pKeyName)
     TCHAR Reget[Size] = { 0 };
 
     RegOpenKeyExA(HKEY_LOCAL_MACHINE, pPathToFolder, 0, KEY_READ, &rKey);
-    RegQueryValueExA(rKey, pKeyName, NULL, NULL, (LPBYTE)&Reget, NULL);
+    RegQueryValueExA(rKey, pKeyName, NULL, NULL, (LPBYTE)&Reget, &Size);
     RegCloseKey(rKey);
 
     string returnValue(Reget);
@@ -55,6 +55,60 @@ string Helper::GetMemoryInfo()
 
     ss << (MemStat.ullTotalPhys/1024)/1024 << "MB";
     return ss.str();
+}
+
+string Helper::GetPathToCNCG()
+{
+    int windowsBit;
+    string Path, Key = "InstallPath";
+
+    if (Helper::GetWindowsBit() == "32-bit")
+        windowsBit = 0;
+    else
+        windowsBit = 1;
+
+    switch (windowsBit)
+    {
+    case 0: // 32-bit
+        Path = "SOFTWARE\\Electronic Arts\\EA Games\\Generals";
+        break;
+
+    case 1: // 64-bit
+        Path = "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Generals";
+        break;
+    }
+
+    return Helper::GetRegTextValue(Path.c_str(), Key.c_str());
+}
+
+string Helper::GetPathToCNCGZH()
+{
+    int windowsBit;
+    string Path, Key = "UserDataLeafName";
+
+    if (Helper::GetWindowsBit() == "32-bit")
+        windowsBit = 0;
+    else
+        windowsBit = 1;
+
+    switch (windowsBit)
+    {
+    case 0: // 32-bit
+        Path = "SOFTWARE\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour";
+        break;
+
+    case 1: // 64-bit
+        Path = "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour";
+        break;
+    }
+
+    std::wcout << "Try to get access to " << Key.c_str() <<" in " << Path.c_str() << std::endl;
+    std::wcout << Helper::GetRegTextValue(Path.c_str(), Key.c_str()).c_str() << std::endl;
+
+    const char* _path = Path.c_str();
+    const char* _key  = Key.c_str();
+
+    return Helper::GetRegTextValue(_path, _key);
 }
 
 string Helper::GetUUID()
