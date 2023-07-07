@@ -17,11 +17,15 @@ using namespace std;
 class Helper
 {
 public:
+    // Uses in Helper
+    static string GetRegTextValue(const char* pPathToFolder, const char* pKeyName);
+
     // Uses in Logger
     static string  GetCurrentTime();
-    static wstring GetProcessorInfo();
-    static wstring GetMemoryInfo();
-    static string GetWindowsVersion();
+    static string  GetProcessorInfo();
+    static string  GetMemoryInfo();
+    static string  GetWindowsBit();
+    static string  GetWindowsVersion();
 
     // Uses in CSFparser
     static string  GetUUID();

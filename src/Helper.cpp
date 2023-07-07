@@ -1,45 +1,61 @@
 #include "Helper.hpp"
-#include <iostream>
 
-string Helper::GetWindowsVersion()
+string Helper::GetRegTextValue(const char* pPathToFolder, const char* pKeyName)
 {
-    wstring returnValue = EMPTY_WSTRING;
-
     HKEY rKey;
     DWORD Size = 256;
     TCHAR Reget[Size] = { 0 };
     DWORD RegetPath = sizeof(Reget);
-    RegOpenKeyExA(HKEY_LOCAL_MACHINE, _T("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"), NULL, KEY_QUERY_VALUE, &rKey);
-    RegQueryValueExA(rKey, _T("ProductName"), NULL, NULL, (LPBYTE)&Reget, &RegetPath);
+
+    RegOpenKeyExA(HKEY_LOCAL_MACHINE, pPathToFolder, 0, /*KEY_QUERY_VALUE*/ KEY_READ, &rKey);
+    RegQueryValueExA(rKey, pKeyName, NULL, NULL, (LPBYTE)&Reget, &RegetPath);
     RegCloseKey(rKey);
-    // RegGetValueW
-    // (
-    //     HKEY_LOCAL_MACHINE,
-    //     _T("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion")
-    //     _T("ProductName"),
-    //     RRF_RT_REG_SZ,
-    //     NULL,
-    //     (PVOID)&Reget[0],
-    //     &Size
-    // );
 
-    std::wcout << Reget << std::endl;
-
-    return Helper::CharArrayToString(sizeof(Reget), &Reget[0]);
-}
-
-wstring Helper::GetProcessorInfo()
-{
-    wstring returnValue = EMPTY_WSTRING;
+    string returnValue(Reget);
+    returnValue.shrink_to_fit();
 
     return returnValue;
 }
 
-wstring Helper::GetMemoryInfo()
+string Helper::GetWindowsVersion()
 {
-    wstring returnValue = EMPTY_WSTRING;
-    
-    return returnValue;
+    const char Path[]  = {"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"};
+    const char Value[] = {"ProductName"};
+    return Helper::GetRegTextValue(&Path[0], &Value[0]);
+}
+
+string Helper::GetWindowsBit()
+{
+    HKEY rKey;
+    int result = RegOpenKeyExA(HKEY_LOCAL_MACHINE, _T("SOFTWARE\\WOW6432Node"), 0, KEY_QUERY_VALUE, &rKey);
+    RegCloseKey(rKey);
+
+    if (result != ERROR_SUCCESS)
+    {
+        return "32-bit";
+    }
+    else
+    {
+        return "64-bit";
+    }
+}
+
+string Helper::GetProcessorInfo()
+{
+    const char Path[]  = {"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"};
+    const char Value[] = {"ProcessorNameString"};
+    return Helper::GetRegTextValue(&Path[0], &Value[0]);
+}
+
+string Helper::GetMemoryInfo()
+{
+    stringstream ss;
+    MEMORYSTATUSEX MemStat;
+    MemStat.dwLength = sizeof (MemStat);
+    GlobalMemoryStatusEx(&MemStat);
+
+    ss << (MemStat.ullTotalPhys/1024)/1024 << "MB";
+    return ss.str();
 }
 
 string Helper::GetUUID()

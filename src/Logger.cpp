@@ -10,7 +10,6 @@
 	    Logger::Log() << "Authors: " << AUTHORS << endl << endl;
 
 	    Logger::LogSystemInformation();
-        LogFile << endl;
     }
 
     Logger::~Logger()
@@ -24,14 +23,19 @@
     void Logger::LogSystemInformation()
     {
         LogFile << "[" << Helper::GetCurrentTime().c_str() << "]\t"
-                << "OS version: "
-                << Helper::GetWindowsVersion().c_str() << endl;
+                << "OS version : "
+                << Helper::GetWindowsVersion() << ' '
+                << Helper::GetWindowsBit() << endl;
 
         LogFile << "[" << Helper::GetCurrentTime().c_str() << "]\t"
-                << Helper::GetProcessorInfo().c_str() << endl;
+                << "Processor  : "
+                << Helper::GetProcessorInfo() << endl;
 
         LogFile << "[" << Helper::GetCurrentTime().c_str() << "]\t"
-                << Helper::GetMemoryInfo().c_str() << endl;
+                << "Memory     : "
+                << Helper::GetMemoryInfo() << endl;
+
+        LogFile << endl;
     }
 
     ofstream& Logger::Log()
