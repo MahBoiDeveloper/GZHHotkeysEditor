@@ -53,7 +53,7 @@ LoaderWidget::LoaderWidget(QWidget *parent)
 
 	// configure dialog buttons
 	QDialogButtonBox* dialogBB = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
-	dialogBB->button(QDialogButtonBox::Ok)->setText(tr("Start configurating"));
+	dialogBB->button(QDialogButtonBox::Ok)->setText(tr("Configure"));
 	dialogBB->button(QDialogButtonBox::Cancel)->setText(tr("Back"));
 	// emit accepted configurations
 	connect(dialogBB, &QDialogButtonBox::accepted, this,

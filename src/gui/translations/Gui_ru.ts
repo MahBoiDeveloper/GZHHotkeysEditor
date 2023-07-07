@@ -4,14 +4,22 @@
 <context>
     <name>CreatorWidget</name>
     <message>
-        <location filename="../initializationWidgets/creatorwidget.cpp" line="22"/>
         <source>Save hotkey dirrectly to the game</source>
-        <translation>Сохранять горячие клавиши в игру</translation>
+        <translation type="vanished">Сохранять горячие клавиши в игре</translation>
+    </message>
+    <message>
+        <source>Start configurating</source>
+        <translation type="vanished">Начать настройку</translation>
+    </message>
+    <message>
+        <location filename="../initializationWidgets/creatorwidget.cpp" line="22"/>
+        <source>Save hotkeys dirrectly to the game</source>
+        <translation>Сохранять горячие клавиши в игре</translation>
     </message>
     <message>
         <location filename="../initializationWidgets/creatorwidget.cpp" line="26"/>
-        <source>Start configurating</source>
-        <translation>Начать настройку</translation>
+        <source>Configure</source>
+        <translation>Настройка</translation>
     </message>
     <message>
         <location filename="../initializationWidgets/creatorwidget.cpp" line="27"/>
@@ -45,9 +53,13 @@
 <context>
     <name>HotkeyElement</name>
     <message>
-        <location filename="../editor/hotkeyelement.cpp" line="36"/>
         <source>press the letter key</source>
-        <translation>Нажмите любую клавишу</translation>
+        <translation type="vanished">Нажмите любую клавишу...</translation>
+    </message>
+    <message>
+        <location filename="../editor/hotkeyelement.cpp" line="36"/>
+        <source>Press any key...</source>
+        <translation>Нажмите любую клавишу...</translation>
     </message>
 </context>
 <context>
@@ -73,6 +85,11 @@
         <translation>Загрузить проект</translation>
     </message>
     <message>
+        <location filename="../initializationWidgets/loaderwidget.cpp" line="56"/>
+        <source>Configure</source>
+        <translation>Настройка</translation>
+    </message>
+    <message>
         <source>Load hotkey map from file</source>
         <translation type="vanished">Загрузить проект</translation>
     </message>
@@ -82,9 +99,8 @@
         <translation>Загрузить горячие клавиши из игры</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="56"/>
         <source>Start configurating</source>
-        <translation>Начать настройку</translation>
+        <translation type="vanished">Начать настройку</translation>
     </message>
     <message>
         <location filename="../initializationWidgets/loaderwidget.cpp" line="57"/>
@@ -95,14 +111,22 @@
 <context>
     <name>StartWidget</name>
     <message>
-        <location filename="../initializationWidgets/startwidget.cpp" line="37"/>
         <source>NEW HOTKEY MAP</source>
-        <translation>НОВАЯ КАРТА ГОРЯЧИХ КЛАВИШ</translation>
+        <translation type="vanished">Новый проект</translation>
+    </message>
+    <message>
+        <source>LOAD HOTKEY MAP</source>
+        <translation type="vanished">Загрузить проект</translation>
+    </message>
+    <message>
+        <location filename="../initializationWidgets/startwidget.cpp" line="37"/>
+        <source>New project</source>
+        <translation>Новый проект</translation>
     </message>
     <message>
         <location filename="../initializationWidgets/startwidget.cpp" line="38"/>
-        <source>LOAD HOTKEY MAP</source>
-        <translation>ЗАГРУЗИТЬ КАРТУ ГОРЯЧИХ КЛАВИШ</translation>
+        <source>Load project</source>
+        <translation>Загрузить проект</translation>
     </message>
     <message>
         <location filename="../initializationWidgets/startwidget.cpp" line="52"/>

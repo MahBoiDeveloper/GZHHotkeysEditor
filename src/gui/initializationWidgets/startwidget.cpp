@@ -34,8 +34,8 @@ StartWidget::StartWidget(Config::Languages language, QWidget *parent)
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	bg = new QButtonGroup;
-	bg->addButton(initButton(tr("NEW HOTKEY MAP")));
-	bg->addButton(initButton(tr("LOAD HOTKEY MAP")));
+	bg->addButton(initButton(tr("New project")));
+	bg->addButton(initButton(tr("Load project")));
     connect(bg, QOverload<int>::of(&QButtonGroup::idClicked), this,
         [=](int id){
 			int index = (-1)*id - 2; // QButtonGroup assign index -2 to first button

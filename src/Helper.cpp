@@ -5,10 +5,9 @@ string Helper::GetRegTextValue(const char* pPathToFolder, const char* pKeyName)
     HKEY rKey;
     DWORD Size = 256;
     TCHAR Reget[Size] = { 0 };
-    DWORD RegetPath = sizeof(Reget);
 
-    RegOpenKeyExA(HKEY_LOCAL_MACHINE, pPathToFolder, 0, /*KEY_QUERY_VALUE*/ KEY_READ, &rKey);
-    RegQueryValueExA(rKey, pKeyName, NULL, NULL, (LPBYTE)&Reget, &RegetPath);
+    RegOpenKeyExA(HKEY_LOCAL_MACHINE, pPathToFolder, 0, KEY_READ, &rKey);
+    RegQueryValueExA(rKey, pKeyName, NULL, NULL, (LPBYTE)&Reget, NULL);
     RegCloseKey(rKey);
 
     string returnValue(Reget);

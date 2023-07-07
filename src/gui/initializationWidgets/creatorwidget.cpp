@@ -19,11 +19,11 @@ CreatorWidget::CreatorWidget(QWidget *parent)
 	choiseL->addWidget(zeroHourButton);
 
 	// configure save option
-	saveToGameBox.setText(tr("Save hotkey dirrectly to the game"));
+	saveToGameBox.setText(tr("Save hotkeys dirrectly to the game"));
 
 	// configure dialog buttons
 	QDialogButtonBox* dialogBB = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
-	dialogBB->button(QDialogButtonBox::Ok)->setText(tr("Start configurating"));
+	dialogBB->button(QDialogButtonBox::Ok)->setText(tr("Configure"));
 	dialogBB->button(QDialogButtonBox::Cancel)->setText(tr("Back"));
 	// emit accepted configurations
 	connect(dialogBB, &QDialogButtonBox::accepted, this,

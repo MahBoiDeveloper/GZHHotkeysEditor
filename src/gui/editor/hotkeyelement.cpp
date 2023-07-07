@@ -33,7 +33,7 @@ HotkeyElement::HotkeyElement(const QString& actionName, const QString& hotkeyStr
 			[this]()
 			{
 				// decoration
-				hotkeyLb.setText(tr("press the letter key"));
+				hotkeyLb.setText(tr("Press any key..."));
 				QFont f(hotkeyLb.font());
 				f.setItalic(true);
 				hotkeyLb.setFont(f);
