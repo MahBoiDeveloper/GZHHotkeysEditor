@@ -1,6 +1,6 @@
 ﻿#include "Logger.hpp"
 
-#pragma region Constructors and destructor
+#pragma region ctor and dtor
     Logger::Logger(const string& fileName)
     {
 	    LogFile.open(fileName);
@@ -22,25 +22,31 @@
 #pragma region Log methods
     void Logger::LogSystemInformation()
     {
-        LogFile << "[" << Helper::GetCurrentTime().c_str() << "]\t"
-                << "OS version : "
-                << Helper::GetWindowsVersion() << ' '
-                << Helper::GetWindowsBit() << endl;
+        Logger::Log() << "Hardware information" << endl;
+        Logger::Log() << "OS version : "
+                      << Helper::Instance->GetWindowsVersion() << ' '
+                      << Helper::Instance->GetWindowsBit()     << endl;
+        Logger::Log() << "Processor  : " << Helper::Instance->GetProcessorInfo() << endl;
+        Logger::Log() << "Memory     : " << Helper::Instance->GetMemoryInfo() << endl << endl;
 
-        LogFile << "[" << Helper::GetCurrentTime().c_str() << "]\t"
-                << "Processor  : "
-                << Helper::GetProcessorInfo() << endl;
+        Logger::Log() << "Software information" << endl;
 
-        LogFile << "[" << Helper::GetCurrentTime().c_str() << "]\t"
-                << "Memory     : "
-                << Helper::GetMemoryInfo() << endl;
+        if (Helper::Instance->GetPathToCNCG() == "")
+            Logger::Log() << "C&C: Generals not installed at          ["<< Helper::Instance->GetPathToCNCG() << ']' << endl;
+        else
+            Logger::Log() << "C&C: Generals installed at              ["<< Helper::Instance->GetPathToCNCG() << ']' << endl;
+
+        if (Helper::Instance->GetPathToCNCGZH() == "")
+           Logger::Log() << "C&C: Generals Zero Hour not installed at ["<< Helper::Instance->GetPathToCNCGZH() << ']' << endl;
+        else
+            Logger::Log() << "C&C: Generals Zero Hour installed at    ["<< Helper::Instance->GetPathToCNCGZH() << ']' << endl;
 
         LogFile << endl;
     }
 
     ofstream& Logger::Log()
     {
-        LogFile << "[" << Helper::GetCurrentTime().c_str() << "]\t";
+        LogFile << "[" << Helper::Instance->GetCurrentTime().c_str() << "]\t";
         ofstream& tmpStream = LogFile;
         return tmpStream;
     }

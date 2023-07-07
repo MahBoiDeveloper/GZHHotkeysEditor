@@ -7,8 +7,6 @@
 
 #include "Helper.hpp"
 
-using namespace std;
-
 class Logger
 {
 public:
@@ -27,6 +25,6 @@ public:
 
 	void Log(const wstringstream& msg);
 	void Log(const wstring& msg);
-
+private:
 	void LogSystemInformation();
 };

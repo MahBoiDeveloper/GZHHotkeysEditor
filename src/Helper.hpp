@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <ctime>
@@ -17,21 +18,36 @@ using namespace std;
 class Helper
 {
 public:
-    // Uses in Helper
-    static string GetRegTextValue(const char* pPathToFolder, const char* pKeyName);
+    inline static unique_ptr<Helper> Instance;
+private:
+    bool   Win32;
+    string PathG;
+    string PathGZH;
+
+public:
+    Helper();
+    ~Helper();
 
     // Uses in Logger
-    static string  GetCurrentTime();
-    static string  GetProcessorInfo();
-    static string  GetMemoryInfo();
-    static string  GetWindowsBit();
-    static string  GetWindowsVersion();
-    static string  GetPathToCNCG();
-    static string  GetPathToCNCGZH();
+    string GetCurrentTime();
+    string GetProcessorInfo();
+    string GetMemoryInfo();
+    string GetWindowsBit();
+    string GetWindowsVersion();
+    string GetPathToCNCG();
+    string GetPathToCNCGZH();
 
     // Uses in CSFparser
-    static string  GetUUID();
-    static bool    IsASCII(string strSample);
-    static string  CharArrayToString(int arrayLength, char* pArray);
-    static wstring WharArrayToWstring(int arrayLength, wchar_t* pArray);
+    string  GetUUID();
+    bool    IsASCII(string strSample);
+    string  CharArrayToString(int arrayLength, char* pArray);
+    wstring WharArrayToWstring(int arrayLength, wchar_t* pArray);
+
+    bool    IsWindow64bit();
+    bool    IsWindow32bit();
+private:
+    string GetRegTextValue(const char* pPathToFolder, const char* pKeyName);
+    string SetPathToCNCG();
+    string SetPathToCNCGZH();
+    bool   SetWindowsBit();
 };

@@ -16,6 +16,9 @@ int main(int argc, char *argv[])
 	// All out text MUST be showed via wcout and all chars should be converted as (wchar_t)
 	_setmode(_fileno(stdout), _O_U16TEXT);
 
+	// Walk around class with collection of useful methods
+	Helper::Instance = make_unique<Helper>();
+
 	// Define logger as the global variable
 	Logger::Instance = make_unique<Logger>("Log.log");
 
