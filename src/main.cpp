@@ -25,7 +25,11 @@ int main(int argc, char *argv[])
 	try
 	{
 		CSFparser::Instance = make_unique<CSFparser>("..\\..\\src\\csfSamples\\generalsRU.csf");
-		CSFparser::Instance->Save("CHANGED_generalsRU.csf");
+		list<string>* tmp_list = CSFparser::Instance->GetStringsContainsSymbol(L'&', string("CONTROLBAR"));
+		for(string tmp : *tmp_list)
+			wcout << tmp.c_str() << endl;
+		
+		CSFparser::Instance->Save("LTMP.csf");
 
 		QApplication HotkeyEditor(argc, argv);
 		MainWidget HotkeyEditor_Window;

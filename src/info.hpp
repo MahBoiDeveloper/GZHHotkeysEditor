@@ -1,4 +1,4 @@
-#define VERSION "0.0.1"
+#define VERSION "0.1"
 #define AUTHORS "mah_boi, nikitvs"
 
 #define EMPTY_WSTRING to_wstring('\0')

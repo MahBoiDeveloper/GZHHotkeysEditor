@@ -204,7 +204,7 @@
     }
 #pragma endregion
 
-#pragma region Getters and setters
+#pragma region Getters
     wstring CSFparser::GetStringValue(string strName)
     {
         for (auto elem : *pTable)
@@ -216,47 +216,99 @@
 
     list<string>* CSFparser::GetStringNames()
     {
-        list<string>* returnList = new list<string>();
+        list<string>* pReturnList = new list<string>();
         
         for (auto elem : *pTable)
-            returnList->push_back(elem.Name);
+            pReturnList->push_back(elem.Name);
 
-        return returnList;
+        pReturnList->sort();
+
+        return pReturnList;
     }
 
     list<string>* CSFparser::GetCategories()
     {
-        list<string>* returnList    = new list<string>();
-        string categoryNameCurrent  = EMPTY_STRING;
-        string categoryNamePrevious = EMPTY_STRING;
+        list<string>* pReturnList = new list<string>();
 
         for (auto elem : *pTable)
-        {
-            categoryNameCurrent = elem.Name.substr(0, elem.Name.find_first_of(':', 0) - 1);
+            pReturnList->push_back(elem.Name.substr(0, elem.Name.find_first_of(':', 0) ));
 
-            if (categoryNameCurrent != categoryNamePrevious)
-                returnList->push_back(categoryNameCurrent);
-            
-            categoryNamePrevious = categoryNameCurrent;
-        }
+        pReturnList->sort();
+        pReturnList->unique();
 
-        return returnList;
+        return pReturnList;
     }
 
-    list<string>* CSFparser::GetCategoryStrings(string strCategoryname)
+    list<string>* CSFparser::GetCategoryStrings(string strCategoryName)
     {
-        list<string>* returnList = new list<string>();
-        string strCategory = EMPTY_STRING;
+        list<string>* pReturnList = new list<string>();
 
         for (auto elem : *pTable)
-        {
-            strCategory = elem.Name.substr(0, elem.Name.find_first_of(':', 0) - 1);
+            if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
+                pReturnList->push_back(elem.Name.substr(elem.Name.find_first_of(':', 0) + 1, elem.Name.size() - 1));
 
-            if (strCategory == strCategoryname)
-                returnList->push_back(elem.Name.substr(elem.Name.find_first_of(':', 0), elem.Name.size() - 1));
-        }
-
-        return returnList;
+        pReturnList->sort();
+        return pReturnList;
     }
 
+    list<string>* CSFparser::GetCategoryStringsWithFullNames(string strCategoryName)
+    {
+        list<string>* pReturnList = new list<string>();
+
+        for (auto elem : *pTable)
+            if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
+                pReturnList->push_back(elem.Name);
+
+        pReturnList->sort();
+        return pReturnList;
+    }
+    
+    list<string>* CSFparser::GetStringsContainsSymbol(wchar_t wch)
+    {
+        list<string>* pReturnList = new list<string>();
+        
+        for (auto elem : *pTable)
+            if (elem.Value.find(wch) <= elem.Value.size())
+                pReturnList->push_back(elem.Name);
+
+        pReturnList->sort();
+
+        return pReturnList;
+    }
+
+    list<string>* CSFparser::GetStringsContainsSymbol(wchar_t wch, string strCategoryName)
+    {
+        list<string>* pReturnList = new list<string>();
+
+        for (auto elem : *pTable)
+            if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
+                if (elem.Value.find_first_of(wch) <= elem.Value.size())
+                    pReturnList->push_back(elem.Name);
+
+        pReturnList->sort();
+
+        return pReturnList;
+    }
+#pragma endregion
+
+#pragma region Setters
+    void CSFparser::SetStringValue(string strName, wstring wstrValue)
+    {
+        for (auto& elem : *pTable)
+            if (elem.Name == strName)
+                elem.Value = wstrValue;
+    }
+
+    void CSFparser::SetStringValue(CompiledString stString)
+    {
+        for (auto& elem : *pTable)
+            if (elem.Name == stString.Name)
+                elem.Value = stString.Value;
+    }
+
+    void CSFparser::SetStringsValue(list<CompiledString>* pListOfChanges)
+    {
+        for (auto elem : *pListOfChanges)
+            CSFparser::SetStringValue(elem);
+    }
 #pragma endregion

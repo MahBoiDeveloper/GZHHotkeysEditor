@@ -61,18 +61,15 @@ public:
     void Save();
     void Save(string strFileName);
 
-    void AddString(CompiledString csString);
-    void AddString(list<CompiledString> csList);
-    void AddEmptyString(string strName);
-
     list<string>* GetStringNames();
     wstring       GetStringValue(string strName);
     list<string>* GetCategories();
-    list<string>* GetCategoryStrings(string strCategoryname);
+    list<string>* GetCategoryStrings(string strCategoryName);
+    list<string>* GetCategoryStringsWithFullNames(string strCategoryName);
+    list<string>* GetStringsContainsSymbol(wchar_t wch);
+    list<string>* GetStringsContainsSymbol(wchar_t wch, string strCategoryName);
 
-    void ChangeStringName(string strOldName, string strNewName);
-    void ChangeStringValue(string strOldValue, string strNewValue);
-    
-    void DeleteString(string strName);
-    void DeleteString(CompiledString csString);
+    void SetStringValue(string strName, wstring wstrValue);
+    void SetStringValue(CompiledString stString);
+    void SetStringsValue(list<CompiledString>* pListOfChanges);
 };
