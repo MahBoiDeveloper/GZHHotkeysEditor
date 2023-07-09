@@ -4,6 +4,7 @@
 class Config
 {
 public:
+	Config() = delete;
 	enum class Games {
 		GENERALS = 0,
 		GENERALS_ZERO_HOUR = 1

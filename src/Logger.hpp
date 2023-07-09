@@ -12,7 +12,10 @@ class Logger
 public:
 	static inline unique_ptr<Logger> Instance;
 private:
-    ofstream LogFile;
+	ofstream LogFile;
+
+private:
+	void LogSystemInformation();
 
 public:
 	Logger(const string& logFilePath);
@@ -25,6 +28,4 @@ public:
 
 	void Log(const wstringstream& msg);
 	void Log(const wstring& msg);
-private:
-	void LogSystemInformation();
 };

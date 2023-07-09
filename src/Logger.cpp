@@ -14,8 +14,7 @@
 
     Logger::~Logger()
     {
-	    if (LogFile.is_open()) 
-            LogFile.close();
+		if (LogFile.is_open()) LogFile.close();
     }
 #pragma endregion
 
@@ -46,9 +45,8 @@
 
     ofstream& Logger::Log()
     {
-        LogFile << "[" << Helper::Instance->GetCurrentTime().c_str() << "]\t";
-        ofstream& tmpStream = LogFile;
-        return tmpStream;
+		LogFile << "[" << Helper::Instance->GetCurrentTime().c_str() << "]\t";
+		return LogFile;
     }
 
 	void Logger::Log(const stringstream& msg)

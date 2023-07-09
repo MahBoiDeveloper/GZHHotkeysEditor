@@ -3,21 +3,14 @@
 
 #pragma region ctor and dtor
     CSFparser::CSFparser(const string& filePath) : Path(filePath)
-    {
-        pTable = new list<CompiledString>();
-        Parse();
-        
-        Logger::Instance->Log() << "File has been parsed; strings count : " << pTable->size() << endl;
-    }
-
-    CSFparser::~CSFparser()
-    {
-        delete pTable;
-    }
+	{
+		Parse();
+		Logger::Instance->Log() << "File has been parsed; strings count : " << pTable.size() << endl;
+	}
 #pragma endregion
 
 #pragma region Parsing
-    inline void CSFparser::Parse()
+	void CSFparser::Parse()
     {
         ifstream csfFile{Path, ios::binary | ios::in};
 
@@ -38,7 +31,7 @@
         csfFile.close();
     }
 
-    inline void CSFparser::ReadHeader(ifstream* csfFile)
+	void CSFparser::ReadHeader(ifstream* csfFile)
     {
         csfFile->read(reinterpret_cast<char*>(&Header), sizeof(Header));
 
@@ -55,7 +48,7 @@
         Logger::Instance->Log() << '\t' << "Language code                      : "  << Header.languageCode       << endl;
     }
 
-    inline void CSFparser::ReadBody(ifstream* csfFile)
+	void CSFparser::ReadBody(ifstream* csfFile)
     {
         uint8_t lbl[4];
         uint8_t rts[4];
@@ -91,7 +84,7 @@
             uint8_t labelName[labelNameLength];
             csfFile->read(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
-            string  stringName = Helper::Instance->CharArrayToString(sizeof(labelName), reinterpret_cast<char*>(labelName));
+			string  stringName(reinterpret_cast<char*>(labelName));
             wstring stringValue = EMPTY_WSTRING;
             string  extraStringValue = EMPTY_STRING;
 
@@ -114,7 +107,7 @@
                 for (int tmp = 0; tmp < valueLenght; tmp++)
                     _stringValue[tmp] = ~_stringValue[tmp];
 
-                stringValue = Helper::Instance->WharArrayToWstring(valueLenght, _stringValue);
+				stringValue = wstring(_stringValue);
 
                 // Read extra value and do not write bcs it's useless
                 if((char)rtsOrWrts[0] == 'W')
@@ -125,10 +118,10 @@
                     uint8_t extraValue[extraValueLength];
                     csfFile->read(reinterpret_cast<char*>(&extraValue), sizeof(extraValue));
 
-                    extraStringValue = Helper::Instance->CharArrayToString(sizeof(extraValue), reinterpret_cast<char*>(extraValue));
+					extraStringValue = string(reinterpret_cast<char*>(extraValue));
                 }
                     
-                pTable->push_back({stringName, stringValue});
+				pTable.push_back({stringName, stringValue});
             }
             
             #if DEBUG
@@ -168,18 +161,18 @@
         Path = tmp;
     }
 
-    inline void CSFparser::WriteHeader(ofstream* csfFile)
+	void CSFparser::WriteHeader(ofstream* csfFile)
     {
         // Struct Header has the same length as the original file
         csfFile->write(reinterpret_cast<char*>(&Header), sizeof(Header));
     }
 
-    inline void CSFparser::WriteBody(ofstream* csfFile)
+	void CSFparser::WriteBody(ofstream* csfFile)
     {
         const uint32_t ONE_STRING = 1;
 
         // Write normal strings
-        for(auto elem : *pTable)
+		for(auto const & elem : pTable)
         {
             uint32_t labelLength  = elem.Name.size();
             uint32_t valueLength  = elem.Value.size();
@@ -207,7 +200,7 @@
 #pragma region Getters
     wstring CSFparser::GetStringValue(string strName)
     {
-        for (auto elem : *pTable)
+		for (auto const & elem : pTable)
             if (elem.Name == strName)
                 return elem.Value;
 
@@ -218,7 +211,7 @@
     {
         list<string>* pReturnList = new list<string>();
         
-        for (auto elem : *pTable)
+		for (auto const & elem : pTable)
             pReturnList->push_back(elem.Name);
 
         pReturnList->sort();
@@ -230,7 +223,7 @@
     {
         list<string>* pReturnList = new list<string>();
 
-        for (auto elem : *pTable)
+		for (auto const & elem : pTable)
             pReturnList->push_back(elem.Name.substr(0, elem.Name.find_first_of(':', 0) ));
 
         pReturnList->sort();
@@ -243,7 +236,7 @@
     {
         list<string>* pReturnList = new list<string>();
 
-        for (auto elem : *pTable)
+		for (auto const & elem : pTable)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
                 pReturnList->push_back(elem.Name.substr(elem.Name.find_first_of(':', 0) + 1, elem.Name.size() - 1));
 
@@ -255,7 +248,7 @@
     {
         list<string>* pReturnList = new list<string>();
 
-        for (auto elem : *pTable)
+		for (auto const & elem : pTable)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
                 pReturnList->push_back(elem.Name);
 
@@ -267,7 +260,7 @@
     {
         list<string>* pReturnList = new list<string>();
         
-        for (auto elem : *pTable)
+		for (auto const & elem : pTable)
             if (elem.Value.find(wch) <= elem.Value.size())
                 pReturnList->push_back(elem.Name);
 
@@ -280,7 +273,7 @@
     {
         list<string>* pReturnList = new list<string>();
 
-        for (auto elem : *pTable)
+		for (auto const & elem : pTable)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
                 if (elem.Value.find_first_of(wch) <= elem.Value.size())
                     pReturnList->push_back(elem.Name);
@@ -292,23 +285,23 @@
 #pragma endregion
 
 #pragma region Setters
-    void CSFparser::SetStringValue(string strName, wstring wstrValue)
+	void CSFparser::SetStringValue(const string& strName, const wstring& wstrValue)
     {
-        for (auto& elem : *pTable)
+		for (auto& elem : pTable)
             if (elem.Name == strName)
                 elem.Value = wstrValue;
     }
 
-    void CSFparser::SetStringValue(CompiledString stString)
+	void CSFparser::SetStringValue(const CompiledString& stString)
     {
-        for (auto& elem : *pTable)
+		for (auto& elem : pTable)
             if (elem.Name == stString.Name)
                 elem.Value = stString.Value;
     }
 
-    void CSFparser::SetStringsValue(list<CompiledString>* pListOfChanges)
+	void CSFparser::SetStringsValue(const list<CompiledString>& pListOfChanges)
     {
-        for (auto elem : *pListOfChanges)
+		for (auto const & elem : pListOfChanges)
             CSFparser::SetStringValue(elem);
     }
 #pragma endregion

@@ -7,8 +7,6 @@
 #include <list>
 #include <memory>
 
-#include "Helper.hpp"
-
 using namespace std;
 
 struct CompiledString
@@ -44,7 +42,7 @@ private:
     string Path;
     CSFHeader Header;
 
-    list<CompiledString>* pTable;
+	list<CompiledString> pTable;
 
 private: // Methods
     void Parse();
@@ -55,9 +53,8 @@ private: // Methods
     void WriteBody(ofstream* csfFile);
 
 public:
-    CSFparser(const string& strFilePath);
-	~CSFparser();
-    
+	CSFparser(const string& strFilePath);
+
     void Save();
     void Save(string strFileName);
 
@@ -69,7 +66,7 @@ public:
     list<string>* GetStringsContainsSymbol(wchar_t wch);
     list<string>* GetStringsContainsSymbol(wchar_t wch, string strCategoryName);
 
-    void SetStringValue(string strName, wstring wstrValue);
-    void SetStringValue(CompiledString stString);
-    void SetStringsValue(list<CompiledString>* pListOfChanges);
+	void SetStringValue(const string& strName, const wstring& wstrValue);
+	void SetStringValue(const CompiledString& stString);
+	void SetStringsValue(const list<CompiledString>& pListOfChanges);
 };

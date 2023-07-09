@@ -25,8 +25,7 @@ private:
     string PathGZH;
 
 public:
-    Helper();
-    ~Helper();
+	Helper();
 
     // Uses in Logger
     string GetCurrentTime();
@@ -38,10 +37,7 @@ public:
     string GetPathToCNCGZH();
 
     // Uses in CSFparser
-    string  GetUUID();
-    bool    IsASCII(string strSample);
-    string  CharArrayToString(int arrayLength, char* pArray);
-    wstring WharArrayToWstring(int arrayLength, wchar_t* pArray);
+	string  GetUUID();
 
     bool    IsWindow64bit();
     bool    IsWindow32bit();

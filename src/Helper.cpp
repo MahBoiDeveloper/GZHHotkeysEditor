@@ -6,11 +6,7 @@
         PathG   = Helper::SetPathToCNCG();
         PathGZH = Helper::SetPathToCNCGZH();
         Win32   = Helper::SetWindowsBit();
-    }
-
-    Helper::~Helper()
-    {
-    }
+	}
 #pragma endregion
 
 #pragma region Setters
@@ -67,10 +63,10 @@
     {
         HKEY rKey;
         DWORD Size = 256;
-        TCHAR Reget[Size] = { 0 };
+		TCHAR Reget[Size] = { 0 };
     
         RegOpenKeyExA(HKEY_LOCAL_MACHINE, pPathToFolder, 0, KEY_READ, &rKey);
-        RegQueryValueExA(rKey, pKeyName, NULL, NULL, (LPBYTE)&Reget, &Size);
+		RegQueryValueExA(rKey, pKeyName, NULL, NULL, (LPBYTE)&Reget, &Size);
         RegCloseKey(rKey);
     
         string returnValue(Reget);
@@ -162,30 +158,5 @@
     bool Helper::IsWindow32bit()
     {
         return Win32;
-    }
-    
-    bool Helper::IsASCII(string strSample)
-    {
-        return false;
-    }
-    
-    string Helper::CharArrayToString(int arrayLength, char* pArray)
-    {
-        stringstream ss;
-        
-        for(int i = 0 ; i < arrayLength; i++)
-            ss << pArray[i];
-    
-        return ss.str();
-    }
-    
-    wstring Helper::WharArrayToWstring(int arrayLength, wchar_t* pArray)
-    {
-        wstringstream wss;
-        
-        for(int i = 0 ; i < arrayLength; i++)
-            wss << pArray[i];
-    
-        return wss.str();
-    }
+	}
 #pragma endregion
