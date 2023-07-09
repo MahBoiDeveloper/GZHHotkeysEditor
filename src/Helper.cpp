@@ -35,14 +35,12 @@
         string Path, Key = "InstallPath";
     
         if (RegOpenKeyExA(HKEY_LOCAL_MACHINE, _T("SOFTWARE\\WOW6432Node"), 0, KEY_QUERY_VALUE, &rKey) == ERROR_SUCCESS)
-        {
             Path = "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour";
-        }
         else
-        {
             Path = "SOFTWARE\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour";
-        }
     
+        RegCloseKey(rKey);
+
         return Helper::GetRegTextValue(Path.c_str(), Key.c_str());
     }
 
