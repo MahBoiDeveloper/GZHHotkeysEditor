@@ -1,5 +1,6 @@
 #include "CSFparser.hpp"
 #include "Logger.hpp"
+#include "info.hpp"
 
 #pragma region ctor and dtor
     CSFparser::CSFparser(const string& filePath) : Path(filePath)

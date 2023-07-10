@@ -1,4 +1,7 @@
 ﻿#include "Logger.hpp"
+#include "Helper.hpp"
+#include "info.hpp"
+#include <ctime>
 
 #pragma region ctor and dtor
     Logger::Logger(const string& fileName)
@@ -23,47 +26,59 @@
     {
         Logger::Log() << "Hardware information" << endl;
         Logger::Log() << "OS version : "
-                      << Helper::Instance->GetWindowsVersion() << ' '
-                      << Helper::Instance->GetWindowsBit()     << endl;
+					  << Helper::Instance->GetWindowsVersion()   << ' '
+					  << Helper::Instance->GetWindowsBitString() << endl;
         Logger::Log() << "Processor  : " << Helper::Instance->GetProcessorInfo() << endl;
         Logger::Log() << "Memory     : " << Helper::Instance->GetMemoryInfo() << endl << endl;
 
         Logger::Log() << "Software information" << endl;
 
-        if (Helper::Instance->GetPathToCNCG() == "")
-            Logger::Log() << "C&C: Generals not installed at          ["<< Helper::Instance->GetPathToCNCG() << ']' << endl;
-        else
-            Logger::Log() << "C&C: Generals installed at              ["<< Helper::Instance->GetPathToCNCG() << ']' << endl;
+		// log all games paths
+		for (const auto & game : {Helper::GAMES::GENERALS, Helper::GAMES::GENERALS_ZERO_HOUR})
+		{
+			if (Helper::pathToGame(game).empty())
+				Logger::Log() << "C&C: " << Helper::gameEnumToString(game) << " not installed" << endl;
+			else
+				Logger::Log() << "C&C: " << Helper::gameEnumToString(game) << " installed at ["
+							  << Helper::pathToGame(game) << ']' << endl;
+		}
+		LogFile << endl;
+	}
 
-        if (Helper::Instance->GetPathToCNCGZH() == "")
-           Logger::Log() << "C&C: Generals Zero Hour not installed at ["<< Helper::Instance->GetPathToCNCGZH() << ']' << endl;
-        else
-            Logger::Log() << "C&C: Generals Zero Hour installed at    ["<< Helper::Instance->GetPathToCNCGZH() << ']' << endl;
+	// get current log time
+	string Logger::GetCurrTime() const
+	{
+		time_t timeStomp = time(nullptr);
+		tm timeNow;
+		localtime_s(&timeNow, &timeStomp);
 
-        LogFile << endl;
-    }
+		char currentTime[128];
+		strftime(currentTime, sizeof(currentTime), "%Y-%m-%d %X", &timeNow);
 
+		stringstream ss;
+		ss << currentTime;
+
+		return ss.str();
+	}
+
+	// log methods
     ofstream& Logger::Log()
     {
-		LogFile << "[" << Helper::Instance->GetCurrentTime().c_str() << "]\t";
+		LogFile << "[" << Logger::GetCurrTime().c_str() << "]\t";
 		return LogFile;
     }
-
 	void Logger::Log(const stringstream& msg)
     {
         Logger::Log() << msg.str() << endl;
     }
-
 	void Logger::Log(string const& msg)
     {
         Logger::Log() << msg << endl;
     }
-
 	void Logger::Log(wstringstream const& msg)
     {
         Logger::Log() << msg.str().c_str() << endl;
     }
-
 	void Logger::Log(wstring const& msg)
     {
         Logger::Log() << msg.c_str() << endl;

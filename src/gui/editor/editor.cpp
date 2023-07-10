@@ -5,7 +5,7 @@
 #include <QApplication>
 #include <QTranslator>
 
-Editor::Editor(Config::Games game, bool saveToGame, QWidget *parent)
+Editor::Editor(Helper::GAMES game, bool saveToGame, QWidget *parent)
 	: QMainWindow(parent)
 {
 	QMenu* fm = new QMenu(tr("File"));

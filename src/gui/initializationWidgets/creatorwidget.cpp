@@ -8,8 +8,10 @@ CreatorWidget::CreatorWidget(QWidget *parent)
 	: QDialog(parent)
 {
 	// configure game buttons
-	QRadioButton* generalsButton = new QRadioButton(Config::gameEnumToString(Config::Games::GENERALS));
-	QRadioButton* zeroHourButton = new QRadioButton(Config::gameEnumToString(Config::Games::GENERALS_ZERO_HOUR));
+	QRadioButton* generalsButton = new QRadioButton(
+				QString::fromStdString(Helper::gameEnumToString(Helper::GAMES::GENERALS)));
+	QRadioButton* zeroHourButton = new QRadioButton(
+				QString::fromStdString(Helper::gameEnumToString(Helper::GAMES::GENERALS_ZERO_HOUR)));
 	groupB.setExclusive(true);
 	generalsButton->setChecked(true);
 	groupB.addButton(generalsButton);
@@ -28,7 +30,7 @@ CreatorWidget::CreatorWidget(QWidget *parent)
 	// emit accepted configurations
 	connect(dialogBB, &QDialogButtonBox::accepted, this,
 		[=](){
-			emit acceptedConfiguration(static_cast<Config::Games>(groupB.checkedId()),
+			emit acceptedConfiguration(static_cast<Helper::GAMES>(groupB.checkedId()),
 																  saveToGameBox.isChecked());
 		;}
 	);

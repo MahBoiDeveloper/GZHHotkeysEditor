@@ -5,7 +5,7 @@
 #include <fstream>
 #include <memory>
 
-#include "Helper.hpp"
+using namespace std;
 
 class Logger
 {
@@ -16,12 +16,13 @@ private:
 
 private:
 	void LogSystemInformation();
+	string GetCurrTime() const;
 
 public:
 	Logger(const string& logFilePath);
 	~Logger();
 
-    ofstream& Log();
+	ofstream& Log();
 
 	void Log(const stringstream& msg);
 	void Log(const string& msg);
