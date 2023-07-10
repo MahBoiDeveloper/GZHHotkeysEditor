@@ -31,12 +31,12 @@
         Logger::Log() << "Software information" << endl;
 
         if (Helper::Instance->GetPathToCNCG() == "")
-            Logger::Log() << "C&C: Generals not installed at          ["<< Helper::Instance->GetPathToCNCG() << ']' << endl;
+            Logger::Log() << "C&C: Generals not installed" << endl;
         else
             Logger::Log() << "C&C: Generals installed at              ["<< Helper::Instance->GetPathToCNCG() << ']' << endl;
 
         if (Helper::Instance->GetPathToCNCGZH() == "")
-           Logger::Log() << "C&C: Generals Zero Hour not installed at ["<< Helper::Instance->GetPathToCNCGZH() << ']' << endl;
+           Logger::Log() << "C&C: Generals Zero Hour not installed" << endl;
         else
             Logger::Log() << "C&C: Generals Zero Hour installed at    ["<< Helper::Instance->GetPathToCNCGZH() << ']' << endl;
 

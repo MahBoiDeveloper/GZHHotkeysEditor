@@ -5,14 +5,13 @@
     CSFparser::CSFparser(const string& filePath) : Path(filePath)
 	{
 		Parse();
-		Logger::Instance->Log() << "File has been parsed; strings count : " << Table.size() << endl;
 	}
 #pragma endregion
 
 #pragma region Parsing
 	void CSFparser::Parse()
     {
-        ifstream csfFile{Path, ios::binary | ios::in};
+        ifstream csfFile(Path, ios::binary | ios::in);
 
         Logger::Instance->Log() << "Attempt to read binary file \"" << Path << "\"" << endl;
 
@@ -21,7 +20,7 @@
             CSFparser::ReadHeader(&csfFile);
             CSFparser::ReadBody(&csfFile);
 
-            Logger::Instance->Log() << "File \"" << Path << "\" has been parsed" << endl;
+            Logger::Instance->Log() << "File \"" << Path << "\" has been parsed; strings count : " << Table.size() << endl;
         }
         else
         {

@@ -25,7 +25,6 @@ int main(int argc, char *argv[])
 	try
 	{
 		CSFparser::Instance = make_unique<CSFparser>("..\\..\\src\\csfSamples\\generalsRU.csf");
-		
 		CSFparser::Instance->Save("LTMP.csf");
 
 		QApplication HotkeyEditor(argc, argv);
