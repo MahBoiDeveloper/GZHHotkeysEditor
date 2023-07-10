@@ -42,7 +42,7 @@ private:
     string Path;
     CSFHeader Header;
 
-	list<CompiledString> pTable;
+	list<CompiledString> Table;
 
 private: // Methods
     void Parse();

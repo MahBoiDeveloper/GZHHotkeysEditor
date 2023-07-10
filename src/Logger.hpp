@@ -14,8 +14,6 @@ public:
 private:
 	ofstream LogFile;
 
-private:
-	void LogSystemInformation();
 
 public:
 	Logger(const string& logFilePath);
@@ -28,4 +26,6 @@ public:
 
 	void Log(const wstringstream& msg);
 	void Log(const wstring& msg);
+private:
+	void LogSystemInformation();
 };
