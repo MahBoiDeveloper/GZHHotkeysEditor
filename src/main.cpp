@@ -1,9 +1,10 @@
 // Special C++ logic for working with strings
 #include <fcntl.h> // Allows to use UTF-16 encoding as the default encoding
+#include <iostream>
 
 // Internal cute logic
 #include <QApplication>
-#include <iostream>
+#include <QFile>
 //#include <QDebug>
 
 // Project files
@@ -38,6 +39,9 @@ int main(int argc, char *argv[])
 		Logger::Instance->Log() << "I'VE GOT A PRESENT FOR YA" << endl;
 		Logger::Instance->Log(string(e.what()));
 	}
-	
+
+	// test file removing
+	QFile::remove("test.log");
+
 	return 0;
 }
