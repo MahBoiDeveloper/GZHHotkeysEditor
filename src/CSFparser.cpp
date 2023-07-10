@@ -6,14 +6,13 @@
     CSFparser::CSFparser(const string& filePath) : Path(filePath)
 	{
 		Parse();
-		Logger::Instance->Log() << "File has been parsed; strings count : " << pTable.size() << endl;
 	}
 #pragma endregion
 
 #pragma region Parsing
 	void CSFparser::Parse()
     {
-        ifstream csfFile{Path, ios::binary | ios::in};
+        ifstream csfFile(Path, ios::binary | ios::in);
 
         Logger::Instance->Log() << "Attempt to read binary file \"" << Path << "\"" << endl;
 
@@ -22,7 +21,7 @@
             CSFparser::ReadHeader(&csfFile);
             CSFparser::ReadBody(&csfFile);
 
-            Logger::Instance->Log() << "File \"" << Path << "\" has been parsed" << endl;
+            Logger::Instance->Log() << "File \"" << Path << "\" has been parsed; strings count : " << Table.size() << endl;
         }
         else
         {
@@ -101,14 +100,14 @@
                 csfFile->read(reinterpret_cast<char*>(&valueLenght), sizeof(valueLenght));
 
                 // Read byte-like compiled string
-                wchar_t _stringValue[valueLenght];
-                csfFile->read(reinterpret_cast<char*>(&_stringValue), sizeof(_stringValue));
+                wchar_t wchBufferValue[valueLenght];
+                csfFile->read(reinterpret_cast<char*>(&wchBufferValue), sizeof(wchBufferValue));
 
                 // Reverse read string
                 for (int tmp = 0; tmp < valueLenght; tmp++)
-                    _stringValue[tmp] = ~_stringValue[tmp];
+                    wchBufferValue[tmp] = ~wchBufferValue[tmp];
 
-				stringValue = wstring(_stringValue);
+				stringValue = wstring(wchBufferValue);
 
                 // Read extra value and do not write bcs it's useless
                 if((char)rtsOrWrts[0] == 'W')
@@ -122,14 +121,8 @@
 					extraStringValue = string(reinterpret_cast<char*>(extraValue));
                 }
                     
-				pTable.push_back({stringName, stringValue});
+				Table.push_back({stringName, stringValue});
             }
-            
-            #if DEBUG
-            wcout << "Name   : [" << stringName.c_str()       << "]" << endl;
-            wcout << "String : [" << stringValue              << "]" << endl;
-            wcout << "Extra  : [" << extraStringValue.c_str() << "]" << endl << endl;
-            #endif
         }
     }
 
@@ -173,7 +166,7 @@
         const uint32_t ONE_STRING = 1;
 
         // Write normal strings
-		for(auto const & elem : pTable)
+		for(auto const & elem : Table)
         {
             uint32_t labelLength  = elem.Name.size();
             uint32_t valueLength  = elem.Value.size();
@@ -201,7 +194,7 @@
 #pragma region Getters
     wstring CSFparser::GetStringValue(string strName)
     {
-		for (auto const & elem : pTable)
+		for (auto const & elem : Table)
             if (elem.Name == strName)
                 return elem.Value;
 
@@ -212,7 +205,7 @@
     {
         list<string>* pReturnList = new list<string>();
         
-		for (auto const & elem : pTable)
+		for (auto const & elem : Table)
             pReturnList->push_back(elem.Name);
 
         pReturnList->sort();
@@ -224,7 +217,7 @@
     {
         list<string>* pReturnList = new list<string>();
 
-		for (auto const & elem : pTable)
+		for (auto const & elem : Table)
             pReturnList->push_back(elem.Name.substr(0, elem.Name.find_first_of(':', 0) ));
 
         pReturnList->sort();
@@ -237,7 +230,7 @@
     {
         list<string>* pReturnList = new list<string>();
 
-		for (auto const & elem : pTable)
+		for (auto const & elem : Table)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
                 pReturnList->push_back(elem.Name.substr(elem.Name.find_first_of(':', 0) + 1, elem.Name.size() - 1));
 
@@ -249,7 +242,7 @@
     {
         list<string>* pReturnList = new list<string>();
 
-		for (auto const & elem : pTable)
+		for (auto const & elem : Table)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
                 pReturnList->push_back(elem.Name);
 
@@ -261,7 +254,7 @@
     {
         list<string>* pReturnList = new list<string>();
         
-		for (auto const & elem : pTable)
+		for (auto const & elem : Table)
             if (elem.Value.find(wch) <= elem.Value.size())
                 pReturnList->push_back(elem.Name);
 
@@ -274,7 +267,7 @@
     {
         list<string>* pReturnList = new list<string>();
 
-		for (auto const & elem : pTable)
+		for (auto const & elem : Table)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
                 if (elem.Value.find_first_of(wch) <= elem.Value.size())
                     pReturnList->push_back(elem.Name);
@@ -288,14 +281,14 @@
 #pragma region Setters
 	void CSFparser::SetStringValue(const string& strName, const wstring& wstrValue)
     {
-		for (auto& elem : pTable)
+		for (auto& elem : Table)
             if (elem.Name == strName)
                 elem.Value = wstrValue;
     }
 
 	void CSFparser::SetStringValue(const CompiledString& stString)
     {
-		for (auto& elem : pTable)
+		for (auto& elem : Table)
             if (elem.Name == stString.Name)
                 elem.Value = stString.Value;
     }

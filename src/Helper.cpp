@@ -97,7 +97,7 @@
     	auto tmpUuidCreate = UuidCreate(&uuid);
     	char* str;
     	auto tmpUuidToStringA = UuidToStringA(&uuid, (RPC_CSTR*)(&str));
-    	ss << str << endl;
+    	ss << str;
     	RpcStringFreeA((RPC_CSTR*)(&str));
     
     	return ss.str();
