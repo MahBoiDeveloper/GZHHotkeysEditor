@@ -4,8 +4,8 @@
 
 // Internal cute logic
 #include <QApplication>
-#include <QFile>
-//#include <QDebug>
+// #include <QFile>
+// #include <QDebug>
 
 // Project files
 #include "gui/mainwidget.hpp"
@@ -39,9 +39,6 @@ int main(int argc, char *argv[])
 		Logger::Instance->Log() << "I'VE GOT A PRESENT FOR YA" << endl;
 		Logger::Instance->Log(string(e.what()));
 	}
-
-	// test file removing
-	QFile::remove("test.log");
 
 	return 0;
 }

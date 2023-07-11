@@ -58,13 +58,13 @@ public:
     void Save();
     void Save(string strFileName);
 
-    list<string>* GetStringNames();
-    wstring       GetStringValue(string strName);
-    list<string>* GetCategories();
-    list<string>* GetCategoryStrings(string strCategoryName);
-    list<string>* GetCategoryStringsWithFullNames(string strCategoryName);
-    list<string>* GetStringsContainsSymbol(wchar_t wch);
-    list<string>* GetStringsContainsSymbol(wchar_t wch, string strCategoryName);
+    list<string> GetStringNames();
+    wstring      GetStringValue(string strName);
+    list<string> GetCategories();
+    list<string> GetCategoryStrings(string strCategoryName);
+    list<string> GetCategoryStringsWithFullNames(string strCategoryName);
+    list<string> GetStringsContainsSymbol(wchar_t wch);
+    list<string> GetStringsContainsSymbol(wchar_t wch, string strCategoryName);
 
 	void SetStringValue(const string& strName, const wstring& wstrValue);
 	void SetStringValue(const CompiledString& stString);

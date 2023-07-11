@@ -166,7 +166,7 @@
         const uint32_t ONE_STRING = 1;
 
         // Write normal strings
-		for(auto const & elem : Table)
+		for(const auto& elem : Table)
         {
             uint32_t labelLength  = elem.Name.size();
             uint32_t valueLength  = elem.Value.size();
@@ -194,87 +194,87 @@
 #pragma region Getters
     wstring CSFparser::GetStringValue(string strName)
     {
-		for (auto const & elem : Table)
+		for (const auto& elem : Table)
             if (elem.Name == strName)
                 return elem.Value;
 
         return EMPTY_WSTRING;
     }
 
-    list<string>* CSFparser::GetStringNames()
+    list<string> CSFparser::GetStringNames()
     {
-        list<string>* pReturnList = new list<string>();
+        list<string> returnList;
         
-		for (auto const & elem : Table)
-            pReturnList->push_back(elem.Name);
+		for (const auto& elem : Table)
+            returnList.push_back(elem.Name);
 
-        pReturnList->sort();
+        returnList.sort();
 
-        return pReturnList;
+        return returnList;
     }
 
-    list<string>* CSFparser::GetCategories()
+    list<string> CSFparser::GetCategories()
     {
-        list<string>* pReturnList = new list<string>();
+        list<string>returnList;
 
-		for (auto const & elem : Table)
-            pReturnList->push_back(elem.Name.substr(0, elem.Name.find_first_of(':', 0) ));
+		for (const auto& elem : Table)
+            returnList.push_back(elem.Name.substr(0, elem.Name.find_first_of(':', 0) ));
 
-        pReturnList->sort();
-        pReturnList->unique();
+        returnList.sort();
+        returnList.unique();
 
-        return pReturnList;
+        return returnList;
     }
 
-    list<string>* CSFparser::GetCategoryStrings(string strCategoryName)
+    list<string> CSFparser::GetCategoryStrings(string strCategoryName)
     {
-        list<string>* pReturnList = new list<string>();
+        list<string>returnList;
 
-		for (auto const & elem : Table)
+		for (const auto& elem : Table)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
-                pReturnList->push_back(elem.Name.substr(elem.Name.find_first_of(':', 0) + 1, elem.Name.size() - 1));
+                returnList.push_back(elem.Name.substr(elem.Name.find_first_of(':', 0) + 1, elem.Name.size() - 1));
 
-        pReturnList->sort();
-        return pReturnList;
+        returnList.sort();
+        return returnList;
     }
 
-    list<string>* CSFparser::GetCategoryStringsWithFullNames(string strCategoryName)
+    list<string> CSFparser::GetCategoryStringsWithFullNames(string strCategoryName)
     {
-        list<string>* pReturnList = new list<string>();
+        list<string>returnList;
 
-		for (auto const & elem : Table)
+		for (const auto& elem : Table)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
-                pReturnList->push_back(elem.Name);
+                returnList.push_back(elem.Name);
 
-        pReturnList->sort();
-        return pReturnList;
+        returnList.sort();
+        return returnList;
     }
     
-    list<string>* CSFparser::GetStringsContainsSymbol(wchar_t wch)
+    list<string> CSFparser::GetStringsContainsSymbol(wchar_t wch)
     {
-        list<string>* pReturnList = new list<string>();
+        list<string>returnList;
         
-		for (auto const & elem : Table)
+		for (const auto& elem : Table)
             if (elem.Value.find(wch) <= elem.Value.size())
-                pReturnList->push_back(elem.Name);
+                returnList.push_back(elem.Name);
 
-        pReturnList->sort();
+        returnList.sort();
 
-        return pReturnList;
+        return returnList;
     }
 
-    list<string>* CSFparser::GetStringsContainsSymbol(wchar_t wch, string strCategoryName)
+    list<string> CSFparser::GetStringsContainsSymbol(wchar_t wch, string strCategoryName)
     {
-        list<string>* pReturnList = new list<string>();
+        list<string>returnList;
 
-		for (auto const & elem : Table)
+		for (const auto& elem : Table)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
                 if (elem.Value.find_first_of(wch) <= elem.Value.size())
-                    pReturnList->push_back(elem.Name);
+                    returnList.push_back(elem.Name);
 
-        pReturnList->sort();
+        returnList.sort();
 
-        return pReturnList;
+        return returnList;
     }
 #pragma endregion
 
@@ -295,7 +295,7 @@
 
 	void CSFparser::SetStringsValue(const list<CompiledString>& pListOfChanges)
     {
-		for (auto const & elem : pListOfChanges)
+		for (const auto& elem : pListOfChanges)
             CSFparser::SetStringValue(elem);
     }
 #pragma endregion
