@@ -1,0 +1,169 @@
+{
+	// "Common" : 
+	// {
+	// 	"SellBuilding"       : "CONTROLBAR:Sell",
+	// 	"CancelConstruction" : "CONTROLBAR:CancelBuild",
+	// 	"Unmine"             : "CONTROLBAR:DisarmMinesAtPosition"
+	// },
+
+	"TechTree" : 
+	[
+		{
+			"SWG" :
+			{
+				"USACommandCenter" : 
+				{
+					"TechoType"  : "Building",
+					"IngameName" : "OBJECT:CommandCenter",
+					"Icons"      :
+					[
+						{
+							"TechoType"   : "Unit",
+							"IconName"    : "USADozer",
+							"CSFString"   : "CONTROLBAR:ConstructAmericaDozer",
+							"USADozer"    :
+							[
+								{
+									"IconName"  : "USAPowerPlant",
+									"CSFString" : "CONTROLBAR:ConstructAmericaPowerPlant"
+								},
+
+								{
+									"IconName"  : "USAbarracks",
+									"CSFString" : "CONTROLBAR:ConstructAmericaBarracks"
+								},
+
+								{
+									"IconName"  : "USACommandCenter",
+									"CSFString" : "CONTROLBAR:ConstructAmericaCommandCenter"
+								},
+
+								{
+									"IconName"  : "USAParticleCannon",
+									"CSFString" : "CONTROLBAR:ConstructAmericaParticleCannonUplink"
+								},
+
+								{
+									"IconName"  : "USADropZone",
+									"CSFString" : "CONTROLBAR:ConstructAmericaSupplyDropZone"
+								},
+
+								{
+									"IconName"  : "USAStrategyCenter",
+									"CSFString" : "CONTROLBAR:ConstructAmericaStrategyCenter"
+								},
+
+								{
+									"IconName"  : "USAAirfield",
+									"CSFString" : "CONTROLBAR:ConstructAmericaAirfield"
+								},
+
+								{
+									"IconName"  : "USAWarFactory",
+									"CSFString" : "CONTROLBAR:ConstructAmericaWarFactory"
+								},
+
+								{
+									"IconName"  : "USAFireBase",
+									"CSFString" : "CONTROLBAR:ConstructAmericaFireBase"
+								},
+
+								{
+									"IconName"  : "SWGPatriot",
+									"CSFString" : "CONTROLBAR:SupW_ConstructAmericaPatriotBattery"
+								},
+
+								{
+									"IconName"  : "USASupply",
+									"CSFString" : "CONTROLBAR:ConstructAmericaSupplyCenter"
+								},
+
+								{
+									"IconName"  : "CommonUnmine",
+									"CSFString" : "CONTROLBAR:DisarmMinesAtPosition"
+								}
+							]
+						},
+
+						{
+							"TechoType"   : "SpecialAbility",
+							"Name"        : "USASpySat",
+							"CSFString"   : "CONTROLBAR:SpySatellite"
+						},
+
+						{
+							"Name"        : "SellBuilding",
+							"CSFString"   : "CONTROLBAR:Sell"
+						}
+					]
+				}
+			}
+		},
+
+		{
+			"AIR" :
+			{
+			}
+		},
+
+		{
+			"LSR" :
+			{
+			}
+		},
+
+		{
+			"USA" :
+			{
+			}
+		},
+
+		{
+			"INF" :
+			{
+			}
+		},
+
+		{
+			"TNK" :
+			{
+			}
+		},
+
+		{
+			"NUK" :
+			{
+			}
+		},
+
+		{
+			"PRC" :
+			{
+			}
+		},
+
+		{
+			"TOX" :
+			{
+			}
+		},
+
+		{
+			"STL" :
+			{
+			}
+		},
+
+		{
+			"DML" :
+			{
+			}
+		},
+
+		{
+			"GLA" :
+			{
+			}
+		}
+	]
+}
