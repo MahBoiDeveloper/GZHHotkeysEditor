@@ -86,10 +86,6 @@ add_library(${TARGET_NAME}
     ${HEADERS}
     ${TRANSLATIONS}
 )
-# add_dependencies(
-#     ${TARGET_NAME}
-#     translations
-# )
 set_target_properties(${TARGET_NAME}
     PROPERTIES
     CXX_STANDARD 17
@@ -98,4 +94,13 @@ set_target_properties(${TARGET_NAME}
 target_link_libraries(${TARGET_NAME} PUBLIC
     Qt5::Core
     Qt5::Widgets
+)
+
+# adding lib for decoding image webp format
+subdirs(libwebp)
+target_link_libraries(${TARGET_NAME} PRIVATE
+    webp
+)
+target_include_directories(${TARGET_NAME} PRIVATE
+    libwebp/src
 )

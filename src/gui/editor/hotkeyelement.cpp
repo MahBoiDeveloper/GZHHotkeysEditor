@@ -1,6 +1,9 @@
 #include "hotkeyelement.h"
 #include <QHBoxLayout>
 #include <QKeyEvent>
+#include <QFile>
+#include "webp/decode.h"
+
 #include <QDebug>
 
 void HotkeyElement::keyPressEvent(QKeyEvent* event)
@@ -18,17 +21,37 @@ void HotkeyElement::keyPressEvent(QKeyEvent* event)
 	QWidget::keyPressEvent(event);
 }
 
-HotkeyElement::HotkeyElement(const QString& actionName, const QString& hotkeyStr, QWidget* parent)
+HotkeyElement::HotkeyElement(const QString& actionName,
+							 const QString& hotkeyStr,
+							 const QString& imagePath,
+							 QWidget* parent)
 	: QWidget(parent)
 	, actionNameLb(actionName)
 	, hotkeyLb(hotkeyStr)
 {
+	// image
+	QFile imageFile(imagePath);
+	if(!imageFile.open(QIODevice::ReadOnly))
+	{
+		imageFile.setFileName(HotkeyElement::imageNotAllowedPath);
+		if(!imageFile.open(QIODevice::ReadOnly))
+			qDebug() << "Not read.";
+	}
+	QByteArray imageData = imageFile.readAll();
+	imageFile.close();
+	int w,h;
+	uint8_t* decodedImage = WebPDecodeRGBA((const uint8_t*)imageData.constData(), imageData.size(), &w, &h);
+	QImage image(decodedImage, w, h, QImage::Format_RGBA8888);
+	QLabel* imageLb = new QLabel;
+	imageLb->setPixmap(QPixmap::fromImage(image));
+
+	// hotkey
 	hotkeyLb.setAlignment(Qt::AlignCenter);
 	hotkeyLb.setStyleSheet("padding-left: 30px; padding-right: 30px; background-color: gray");
 	QPushButton* newHotkeyB = new QPushButton("+");
 	// square button
 	newHotkeyB->setFixedSize(newHotkeyB->sizeHint().height(), newHotkeyB->sizeHint().height());
-	// suggest entering a hotлун
+	// suggest entering a hotkey
 	connect(newHotkeyB, &QPushButton::pressed, this,
 			[this]()
 			{
@@ -46,6 +69,7 @@ HotkeyElement::HotkeyElement(const QString& actionName, const QString& hotkeyStr
 
 	QHBoxLayout* mainL = new QHBoxLayout(this);
 	mainL->setAlignment(Qt::AlignTop);
+	mainL->addWidget(imageLb);
 	mainL->addWidget(&actionNameLb);
 	mainL->setStretch(0, 1);
 	mainL->addWidget(&hotkeyLb);

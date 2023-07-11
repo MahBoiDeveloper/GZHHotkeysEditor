@@ -79,6 +79,7 @@ MainWidget::MainWidget(QWidget *parent)
 	// Application settings
 	QFont mainFont(QApplication::font());
 	mainFont.setPointSize(12);
+	mainFont.setFamily("Consolas");
 	QApplication::setFont(mainFont);
 	qApp->setStyleSheet("QPushButton { padding: 10px; }"); // spacing between border and text
 

@@ -4,6 +4,7 @@
 #include <QMenuBar>
 #include <QApplication>
 #include <QTranslator>
+#include <QScrollArea>
 
 Editor::Editor(Helper::GAMES game, bool saveToGame, QWidget *parent)
 	: QMainWindow(parent)
@@ -19,7 +20,12 @@ Editor::Editor(Helper::GAMES game, bool saveToGame, QWidget *parent)
 	QVBoxLayout* mainL = new QVBoxLayout;
 	for(int i = 0; i < 7; i++)
 		mainL->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
-										   QString("hotkey_%1").arg(i+1)));
+										   QString("hotkey_%1").arg(i+1),
+										   QString("sources/icons/Gen1_Hacker_Icons.webp")));
 	hotkeysWidget->setLayout(mainL);
-	setCentralWidget(hotkeysWidget);
+
+	QScrollArea* scrollArea = new QScrollArea;
+	scrollArea->setWidget(hotkeysWidget);
+
+	setCentralWidget(scrollArea);
 }
