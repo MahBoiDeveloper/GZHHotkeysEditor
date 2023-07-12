@@ -20,12 +20,17 @@
 					[
 						{
 							"IconName"    : "USADozer",
-							"CSFString"   : "CONTROLBAR:ConstructAmericaDozer",
+							"CSFString"   : "CONTROLBAR:ConstructAmericaDozer"
 						},
 
 						{
 							"IconName"    : "USASpySat",
 							"CSFString"   : "CONTROLBAR:SpySatellite"
+						},
+
+						{
+							"IconName"    : "USADrone",
+							"CSFString"   : "CONTROLBAR:SpyDrone"
 						},
 
 						{
@@ -38,8 +43,9 @@
 				"USADozer" :
 				{
 					"TechoType"  : "Unit",
-					"IngameName" : "%PARENT_NAME%",
-					"Icons" : 
+					"IconName"   : "%PARENT_NAME%",
+					"IngameName" : "OBJECT:Dozer",
+					"Icons"      : 
 					[
 						{
 							"IconName"  : "USAColdFusionReactor",
@@ -101,8 +107,70 @@
 							"CSFString" : "CONTROLBAR:DisarmMinesAtPosition"
 						}
 					]
-				}
+				},
 
+				"USAColdFusionReactor" : 
+				{
+					"TechoType"  : "Building",
+					"IconName"   : "%PARENT_NAME%",
+					"IngameName" : "OBJECT:SpyDrone",
+					"Icons"      : 
+					[
+						{
+							"IconName"    : "SWGAdvancedControlRods",
+							"CSFString"   : "CONTROLBAR:SupW_UpgradeAmericaAdvancedControlRods"
+						},
+
+						{
+							"IconName"    : "SellBuilding",
+							"CSFString"   : "CONTROLBAR:Sell"
+						}
+					]
+				},
+
+				"USABarracks" : 
+				{
+					"TechoType"  : "Building",
+					"IconName"   : "%PARENT_NAME%",
+					"IngameName" : "OBJECT:Barracks",
+					"Icons"      : 
+					[
+						{
+							"IconName"    : "USARanger",
+							"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryRanger"
+						},
+
+						{
+							"IconName"    : "USAMissileDefender",
+							"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryMissileDefender"
+						},
+
+						{
+							"IconName"    : "USABurton",
+							"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryColonelBurton"
+						},
+
+						{
+							"IconName"    : "USAPathfinder",
+							"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryPathfinder"
+						},
+
+						{
+							"IconName"    : "USAFlashbangs",
+							"CSFString"   : "CONTROLBAR:UpgradeAmericaFlashBangGrenade"
+						},
+
+						{
+							"IconName"    : "CommonCaptureBuilding",
+							"CSFString"   : "CONTROLBAR:UpgradeAmericaRangerCaptureBuilding"
+						},
+
+						{
+							"IconName"    : "SellBuilding",
+							"CSFString"   : "CONTROLBAR:Sell"
+						}
+					]
+				},
 			}
 		},
 
