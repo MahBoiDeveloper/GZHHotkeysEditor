@@ -192,7 +192,7 @@
 #pragma endregion
 
 #pragma region Getters
-    wstring CSFparser::GetStringValue(string strName)
+    wstring CSFparser::GetStringValue(const string& strName)
     {
 		for (const auto& elem : Table)
             if (elem.Name == strName)
@@ -215,7 +215,7 @@
 
     list<string> CSFparser::GetCategories()
     {
-        list<string>returnList;
+        list<string> returnList;
 
 		for (const auto& elem : Table)
             returnList.push_back(elem.Name.substr(0, elem.Name.find_first_of(':', 0) ));
@@ -226,9 +226,9 @@
         return returnList;
     }
 
-    list<string> CSFparser::GetCategoryStrings(string strCategoryName)
+    list<string> CSFparser::GetCategoryStrings(const string& strCategoryName)
     {
-        list<string>returnList;
+        list<string> returnList;
 
 		for (const auto& elem : Table)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
@@ -238,9 +238,9 @@
         return returnList;
     }
 
-    list<string> CSFparser::GetCategoryStringsWithFullNames(string strCategoryName)
+    list<string> CSFparser::GetCategoryStringsWithFullNames(const string& strCategoryName)
     {
-        list<string>returnList;
+        list<string> returnList;
 
 		for (const auto& elem : Table)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
@@ -250,9 +250,9 @@
         return returnList;
     }
     
-    list<string> CSFparser::GetStringsContainsSymbol(wchar_t wch)
+    list<string> CSFparser::GetStringsContainsSymbol(const wchar_t& wch)
     {
-        list<string>returnList;
+        list<string> returnList;
         
 		for (const auto& elem : Table)
             if (elem.Value.find(wch) <= elem.Value.size())
@@ -263,9 +263,9 @@
         return returnList;
     }
 
-    list<string> CSFparser::GetStringsContainsSymbol(wchar_t wch, string strCategoryName)
+    list<string> CSFparser::GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName)
     {
-        list<string>returnList;
+        list<string> returnList;
 
 		for (const auto& elem : Table)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
@@ -273,6 +273,21 @@
                     returnList.push_back(elem.Name);
 
         returnList.sort();
+
+        return returnList;
+    }
+
+    list<CompiledString> CSFparser::GetStringsByNameList(const list<string>& lstNames)
+    {
+        list<CompiledString> returnList;
+
+        for (const auto& strName : lstNames)
+            for (const auto& elem : Table)
+                if (elem.Name == strName)
+                {
+                    returnList.push_back(elem);
+                    break;
+                }
 
         return returnList;
     }
@@ -293,9 +308,9 @@
                 elem.Value = stString.Value;
     }
 
-	void CSFparser::SetStringsValue(const list<CompiledString>& pListOfChanges)
+	void CSFparser::SetStringsValue(const list<CompiledString>& lstChanges)
     {
-		for (const auto& elem : pListOfChanges)
+		for (const auto& elem : lstChanges)
             CSFparser::SetStringValue(elem);
     }
 #pragma endregion
