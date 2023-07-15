@@ -5,6 +5,10 @@
 #include <list>
 #include <string>
 #include <memory>
+#include <iostream>
+
+#define EMPTY_WSTRING to_wstring('\0')
+#define EMPTY_STRING  to_string ('\0')
 
 using namespace std;
 
@@ -12,38 +16,44 @@ using namespace std;
 class Helper
 {
 public:
-	enum class WINDOWS_BIT {
+	enum class WINDOWS_BIT
+	{
 		WIN_32 = 0,
 		WIN_64 = 1
 	};
 
-	enum class GAMES {
+	enum class GAMES
+	{
 		GENERALS = 0,
 		GENERALS_ZERO_HOUR = 1
 	};
-	static inline string gameEnumToString(GAMES game)
+
+	inline static string GameEnumToString(GAMES game)
 	{
-		switch (game) {
-		case GAMES::GENERALS:
-			return "Generals";
-			break;
-		case GAMES::GENERALS_ZERO_HOUR:
-			return "Generals Zero Hour";
-			break;
-		default:
-			return gameEnumToString(GAMES::GENERALS);
-			break;
+		string returnValue = EMPTY_STRING;
+
+		switch (game)
+		{
+			case GAMES::GENERALS:
+				returnValue = "Generals";
+				break;
+			case GAMES::GENERALS_ZERO_HOUR:
+				returnValue = "Generals Zero Hour";
+				break;
 		}
+
+		return returnValue;
 	}
 
-	static inline const map<GAMES,map<WINDOWS_BIT,string>> pathsToGamesMap =
+	inline static const map<GAMES,map<WINDOWS_BIT,string>> pathsToGamesMap =
 	{
 		{GAMES::GENERALS,           {{WINDOWS_BIT::WIN_32, "SOFTWARE\\Electronic Arts\\EA Games\\Generals"},
 									 {WINDOWS_BIT::WIN_64, "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Generals"}}},
 		{GAMES::GENERALS_ZERO_HOUR,	{{WINDOWS_BIT::WIN_32, "SOFTWARE\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour"},
 									 {WINDOWS_BIT::WIN_64, "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour"}}},
 	};
-	static string pathToGame(GAMES game);
+
+	static string PathToGame(GAMES game);
 
 	inline static unique_ptr<Helper> Instance;
 
@@ -53,13 +63,18 @@ private:
 
 public:
 	// Uses in Logger
-	string GetProcessorInfo() const;
-	string GetMemoryInfo() const;
-	string GetWindowsBitString() const;
+	string GetProcessorInfo();
+	string GetMemoryInfo();
+	string GetWindowsBitString();
 	static WINDOWS_BIT winBit();
-	string GetWindowsVersion() const;
+	string GetWindowsVersion();
+
     // Uses in CSFparser
 	string  GetUUID();
+    string  CharArrayToString(const int& arrayLength, const char* pArray);
+    wstring WharArrayToWstring(const int& arrayLength, const wchar_t* pArray);
+
+	// Functions for general use
 	bool    IsWindow64bit();
     bool    IsWindow32bit();
 private:

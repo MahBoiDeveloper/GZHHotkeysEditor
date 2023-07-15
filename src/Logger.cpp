@@ -26,23 +26,23 @@
     {
         Logger::Log() << "Hardware information" << endl;
         Logger::Log() << "OS version : "
-					  << Helper::Instance->GetWindowsVersion()   << ' '
-					  << Helper::Instance->GetWindowsBitString() << endl;
+                      << Helper::Instance->GetWindowsVersion()   << ' '
+                      << Helper::Instance->GetWindowsBitString() << endl;
         Logger::Log() << "Processor  : " << Helper::Instance->GetProcessorInfo() << endl;
         Logger::Log() << "Memory     : " << Helper::Instance->GetMemoryInfo() << endl << endl;
 
+        // Log all games paths
         Logger::Log() << "Software information" << endl;
+        for (const auto& game : {Helper::GAMES::GENERALS, Helper::GAMES::GENERALS_ZERO_HOUR})
+        {
+            if (Helper::PathToGame(game).empty())
+                Logger::Log() << "C&C: " << Helper::GameEnumToString(game) << " not installed" << endl;
+            else
+                Logger::Log() << "C&C: " << Helper::GameEnumToString(game) << " installed at ["
+                              << Helper::PathToGame(game) << ']' << endl;
+        }
 
-		// log all games paths
-		for (const auto & game : {Helper::GAMES::GENERALS, Helper::GAMES::GENERALS_ZERO_HOUR})
-		{
-			if (Helper::pathToGame(game).empty())
-				Logger::Log() << "C&C: " << Helper::gameEnumToString(game) << " not installed" << endl;
-			else
-				Logger::Log() << "C&C: " << Helper::gameEnumToString(game) << " installed at ["
-							  << Helper::pathToGame(game) << ']' << endl;
-		}
-		LogFile << endl;
+        LogFile << endl;
 	}
 
 	// get current log time

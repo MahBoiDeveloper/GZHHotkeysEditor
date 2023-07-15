@@ -4,15 +4,10 @@
 #include <tchar.h>
 #include <sstream>
 
-#pragma region ctor and dtor
-#pragma endregion
-
 #pragma region Setters
-
-	string Helper::pathToGame(GAMES game)
+	string Helper::PathToGame(GAMES game)
 	{
 		string Key = "InstallPath";
-		// get path from map
 		string Path = pathsToGamesMap.find(game)->second.find(winBit())->second;
         return Helper::GetRegTextValue(Path.c_str(), Key.c_str());
 	}
@@ -33,7 +28,6 @@
 #pragma endregion
 
 #pragma region Getters
-	// reading from reg
 	string Helper::GetRegTextValue(const char* pPathToFolder, const char* pKeyName)
     {
 		HKEY rKey;
@@ -50,14 +44,14 @@
 		return returnValue;
 	}
     
-	string Helper::GetWindowsVersion() const
+	string Helper::GetWindowsVersion()
     {
         const char Path[]  = {"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"};
         const char Value[] = {"ProductName"};
         return Helper::GetRegTextValue(&Path[0], &Value[0]);
     }
     
-	string Helper::GetWindowsBitString() const
+	string Helper::GetWindowsBitString()
     {
 		if (winBit() == WINDOWS_BIT::WIN_32)
             return "32-bit";
@@ -70,14 +64,14 @@
 		return WinBit;
 	}
     
-	string Helper::GetProcessorInfo() const
+	string Helper::GetProcessorInfo()
     {
         const char Path[]  = {"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"};
         const char Value[] = {"ProcessorNameString"};
         return Helper::GetRegTextValue(&Path[0], &Value[0]);
     }
     
-	string Helper::GetMemoryInfo() const
+	string Helper::GetMemoryInfo()
     {
         stringstream ss;
         MEMORYSTATUSEX MemStat;
@@ -105,6 +99,26 @@
 #pragma endregion
 
 #pragma region Checks and array merging
+    string Helper::CharArrayToString(const int& arrayLength, const char* pArray)
+    {
+        stringstream ss;
+        
+        for(int i = 0 ; i < arrayLength; i++)
+            ss << pArray[i];
+    
+        return ss.str();
+    }
+    
+    wstring Helper::WharArrayToWstring(const int& arrayLength, const wchar_t* pArray)
+    {
+        wstringstream wss;
+        
+        for(int i = 0 ; i < arrayLength; i++)
+            wss << pArray[i];
+    
+        return wss.str();
+    }
+
     bool Helper::IsWindow64bit()
     {
 		return winBit() == WINDOWS_BIT::WIN_64;

@@ -1,5 +1,6 @@
 #include "CSFparser.hpp"
 #include "Logger.hpp"
+#include "Helper.hpp"
 #include "info.hpp"
 
 #pragma region ctor and dtor
@@ -84,7 +85,7 @@
             uint8_t labelName[labelNameLength];
             csfFile->read(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
-			string  stringName(reinterpret_cast<char*>(labelName));
+			string  stringName = Helper::Instance->CharArrayToString(sizeof(labelName), reinterpret_cast<char*>(labelName));
             wstring stringValue = EMPTY_WSTRING;
             string  extraStringValue = EMPTY_STRING;
 
@@ -107,7 +108,7 @@
                 for (int tmp = 0; tmp < valueLenght; tmp++)
                     wchBufferValue[tmp] = ~wchBufferValue[tmp];
 
-				stringValue = wstring(wchBufferValue);
+				stringValue = Helper::Instance->WharArrayToWstring(valueLenght, wchBufferValue);
 
                 // Read extra value and do not write bcs it's useless
                 if((char)rtsOrWrts[0] == 'W')
