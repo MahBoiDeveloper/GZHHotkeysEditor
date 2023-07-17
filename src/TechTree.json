@@ -171,6 +171,88 @@
 						}
 					]
 				},
+
+				"USARanger" : 
+				{
+					"TechoType"  : "Unit",
+					"IconName"   : "%PARENT_NAME",
+					"IngameName" : "OBJECT:Ranger",
+					"Icons"      : 
+					[
+						{
+							"IconName"    : "CommonCaptureBuilding",
+							"CSFString"   : "CONTROLBAR:CaptureBuilding"
+						},
+
+						{
+							"IconName"    : "USARangerMachineGun",
+							"CSFString"   : "CONTROLBAR:RangerMachineGun"
+						},
+
+						{
+							"IconName"    : "USAFlashbangs",
+							"CSFString"   : "CONTROLBAR:FlashBangGrenadeMode"
+						}
+					]
+				},
+
+				"USAMissileDefender" :
+				{
+					"TechoType" : "Unit",
+					"IconName"  : "%PARENT_NAME%",
+					"CSFString" : "OBJECT:MissileTeam",
+					"Icons"     : 
+					[
+						{
+							"IconName"  : "USALaserLock",
+							"CSFString" : "CONTROLBAR:LaserMissileAttack"
+						}
+					]
+				},
+
+				"USABurton" :
+				{
+					"TechoType" : "Unit",
+					"IconName"  : "%PARENT_NAME%",
+					"CSFString" : "OBJECT:ColonelBurton",
+					"Icons"     : 
+					[
+						{
+							"IconName"   : "USAKnifeAttack",
+							"CSFString"  : "CONTROLBAR:KnifeAttack"
+						},
+						
+						{
+							"IconName"   : "USATimedDemoCharge",
+							"CSFString"  : "CONTROLBAR:TimedDemoCharge"
+						},
+						
+						{
+							"IconName"   : "USARemoteDemoCharge",
+							"CSFString"  : "CONTROLBAR:RemoteDemoCharge"
+						},
+
+						{
+							"IconName"   : "USADetonateCharges",
+							"CSFString"  : "CONTROLBAR:DetonateCharges"
+						}
+					]
+				},
+
+				"USAPathfinder" :
+				{
+					"TechoType" : "Unit",
+					"IconName"  : "%PARENT_NAME%",
+					"CSFString" : "OBJECT:Pathfinder",
+					"Icons"     : 
+					[
+					]
+				},
+
+				"USAFlashbangs" :
+				{
+					"TechoType"  : "Upgrade",
+				},
 			}
 		},
 
