@@ -6,7 +6,7 @@
 #include <QTranslator>
 #include <QScrollArea>
 
-Editor::Editor(Helper::GAMES game, bool saveToGame, QWidget *parent)
+Editor::Editor(Helper::Games game, bool saveToGame, QWidget *parent)
 	: QMainWindow(parent)
 {
 	QMenu* fm = new QMenu(tr("File"));

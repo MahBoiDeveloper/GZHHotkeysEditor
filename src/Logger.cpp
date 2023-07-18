@@ -1,23 +1,23 @@
 ﻿#include "Logger.hpp"
 #include "Helper.hpp"
-#include "info.hpp"
+#include "Info.hpp"
 #include <ctime>
 
 #pragma region ctor and dtor
     Logger::Logger(const string& fileName)
     {
-	    LogFile.open(fileName);
+        LogFile.open(fileName);
         
-	    Logger::Log() << "C&C Generals and Generals Zero Hour hotkey editor" << endl; 
-	    Logger::Log() << "Version: " << VERSION << endl;
-	    Logger::Log() << "Authors: " << AUTHORS << endl << endl;
+        Logger::Log() << "C&C Generals and Generals Zero Hour hotkey editor" << endl; 
+        Logger::Log() << "Version: " << VERSION << endl;
+        Logger::Log() << "Authors: " << AUTHORS << endl << endl;
 
-	    Logger::LogSystemInformation();
+        Logger::LogSystemInformation();
     }
 
     Logger::~Logger()
     {
-		if (LogFile.is_open()) LogFile.close();
+       if (LogFile.is_open()) LogFile.close();
     }
 #pragma endregion
 
@@ -33,7 +33,7 @@
 
         // Log all games paths
         Logger::Log() << "Software information" << endl;
-        for (const auto& game : {Helper::GAMES::GENERALS, Helper::GAMES::GENERALS_ZERO_HOUR})
+        for (const auto& game : {Helper::Games::Generals, Helper::Games::GeneralsZeroHour})
         {
             if (Helper::PathToGame(game).empty())
                 Logger::Log() << "C&C: " << Helper::GameEnumToString(game) << " not installed" << endl;
@@ -43,43 +43,46 @@
         }
 
         LogFile << endl;
-	}
+    }
 
-	// get current log time
-	string Logger::GetCurrTime() const
-	{
-		time_t timeStomp = time(nullptr);
-		tm timeNow;
-		localtime_s(&timeNow, &timeStomp);
+    /// @brief Get current time in yyyy-MM-dd format
+    string Logger::GetCurrentTime() const
+    {
+        time_t timeStomp = time(nullptr);
+        tm timeNow;
+        localtime_s(&timeNow, &timeStomp);
 
-		char currentTime[128];
-		strftime(currentTime, sizeof(currentTime), "%Y-%m-%d %X", &timeNow);
+        char currentTime[128];
+        strftime(currentTime, sizeof(currentTime), "%Y-%m-%d %X", &timeNow);
 
-		stringstream ss;
-		ss << currentTime;
+        stringstream ss;
+        ss << currentTime;
 
-		return ss.str();
-	}
+        return ss.str();
+    }
 
-	// log methods
     ofstream& Logger::Log()
     {
-		LogFile << "[" << Logger::GetCurrTime().c_str() << "]\t";
-		return LogFile;
+        LogFile << "[" << Logger::GetCurrentTime().c_str() << "]\t";
+        return LogFile;
     }
-	void Logger::Log(const stringstream& msg)
+    
+    void Logger::Log(const stringstream& msg)
     {
         Logger::Log() << msg.str() << endl;
     }
-	void Logger::Log(string const& msg)
+
+    void Logger::Log(string const& msg)
     {
         Logger::Log() << msg << endl;
     }
-	void Logger::Log(wstringstream const& msg)
+
+    void Logger::Log(wstringstream const& msg)
     {
         Logger::Log() << msg.str().c_str() << endl;
     }
-	void Logger::Log(wstring const& msg)
+
+    void Logger::Log(wstring const& msg)
     {
         Logger::Log() << msg.c_str() << endl;
     }

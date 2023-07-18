@@ -9,5 +9,5 @@ class Editor : public QMainWindow
 	Q_OBJECT
 
 public:
-	Editor(Helper::GAMES game, bool saveToGame, QWidget *parent = nullptr);
+	Editor(Helper::Games game, bool saveToGame, QWidget *parent = nullptr);
 };
