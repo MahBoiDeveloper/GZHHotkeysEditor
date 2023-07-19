@@ -124,33 +124,30 @@
 		}
 	}
 
-	void CSFparser::Save()
+	void CSFparser::Save(string strFileName)
 	{
-		ofstream csfFile{Path, ios::binary | ios::out};
+		ofstream csfFile{strFileName, ios::binary | ios::out};
 
 		if(csfFile.is_open())
 		{
-			Logger::Instance->Log() << "Attempt to write binary file \"" << Path << "\"" << endl;
+			Logger::Instance->Log() << "Attempt to write binary file \"" << strFileName << "\"" << endl;
 
 			CSFparser::WriteHeader(&csfFile);
 			CSFparser::WriteBody(&csfFile);
 
-			Logger::Instance->Log() << "File saved as \"" << Path << "\"" << endl;
+			Logger::Instance->Log() << "File saved as \"" << strFileName << "\"" << endl;
 		}
 		else
 		{
-			Logger::Instance->Log() << "Could not open file \"" << Path << "\" to save" << endl;
+			Logger::Instance->Log() << "Could not open file \"" << strFileName << "\" to save" << endl;
 		}
 
 		csfFile.close();
 	}
 
-	void CSFparser::Save(string strFileName)
+	void CSFparser::Save()
 	{
-		string tmp = Path;
-		Path = strFileName;
-		CSFparser::Save();
-		Path = tmp;
+		Save(Path);
 	}
 
 	void CSFparser::WriteHeader(ofstream* csfFile)
@@ -159,7 +156,7 @@
 		csfFile->write(reinterpret_cast<char*>(&Header), sizeof(Header));
 	}
 
-	void CSFparser::WriteBody(ofstream* csfFile)
+	void CSFparser::WriteBody(ofstream* csfFile) const
 	{
 		const uint32_t ONE_STRING = 1;
 
@@ -190,7 +187,7 @@
 #pragma endregion
 
 #pragma region Getters
-	wstring CSFparser::GetStringValue(const string& strName)
+	wstring CSFparser::GetStringValue(const string& strName) const
 	{
 		for (const auto& elem : Table)
 			if (elem.Name == strName)
@@ -199,7 +196,7 @@
 		return EMPTY_WSTRING;
 	}
 
-	list<string> CSFparser::GetStringNames()
+	list<string> CSFparser::GetStringNames() const
 	{
 		list<string> returnList;
 		
@@ -211,7 +208,7 @@
 		return returnList;
 	}
 
-	list<string> CSFparser::GetCategories()
+	list<string> CSFparser::GetCategories() const
 	{
 		list<string>returnList;
 
@@ -224,7 +221,7 @@
 		return returnList;
 	}
 
-	list<string> CSFparser::GetCategoryStrings(const string& strCategoryName)
+	list<string> CSFparser::GetCategoryStrings(const string& strCategoryName) const
 	{
 		list<string>returnList;
 
@@ -236,7 +233,7 @@
 		return returnList;
 	}
 
-	list<string> CSFparser::GetCategoryStringsWithFullNames(const string& strCategoryName)
+	list<string> CSFparser::GetCategoryStringsWithFullNames(const string& strCategoryName) const
 	{
 		list<string>returnList;
 
@@ -248,7 +245,7 @@
 		return returnList;
 	}
 	
-	list<string> CSFparser::GetStringsContainsSymbol(const wchar_t& wch)
+	list<string> CSFparser::GetStringsContainsSymbol(const wchar_t& wch) const
 	{
 		list<string>returnList;
 		
@@ -261,7 +258,7 @@
 		return returnList;
 	}
 
-	list<string> CSFparser::GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName)
+	list<string> CSFparser::GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName) const
 	{
 		list<string>returnList;
 
@@ -275,7 +272,7 @@
 		return returnList;
 	}
 
-	list<CompiledString> CSFparser::GetStringsByNameList(const list<string>& lstNames)
+	list<CompiledString> CSFparser::GetStringsByNameList(const list<string>& lstNames) const
 	{
 		list<CompiledString> returnList;
 
