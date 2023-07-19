@@ -67,13 +67,16 @@ public:
 
 	wstring      GetStringValue(const string& strName);
 	list<string> GetStringNames() const;
-	wstring	GetStringValue(const string& strName) const;
+	wstring      GetStringValue(const string& strName) const;
 	list<string> GetCategories() const;
 	list<string> GetCategoryStrings(const string& strCategoryName) const;
 	list<string> GetCategoryStringsWithFullNames(const string& strCategoryName) const;
 	list<string> GetStringsContainsSymbol(const wchar_t& wch) const;
 	list<string> GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName) const;
 	list<CompiledString> GetStringsByNameList(const list<string>& lstNames) const;
+
+	wchar_t GetHotkey(const string& strName);
+	list<HotkeyAssociation> GetHotkeys(const list<string>& lstStringNames);
 
 	void SetStringValue(const string& strName, const wstring& wstrValue);
 	void SetStringValue(const CompiledString& stString);
