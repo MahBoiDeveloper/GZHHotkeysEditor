@@ -1,5 +1,8 @@
 project(GZHHotkeysEditor)
+# get global vars
 get_property(PROJECT_DESTINATION_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_FOLDER) # exe folder
+get_property(PROJECT_DESTINATION_SOURCES_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_SOURCES_FOLDER) # sources folder
+# current main target
 set(TARGET_NAME Gui)
 
 # project sources
@@ -25,7 +28,8 @@ set(LANGUAGES
 	ru
 )
 
-add_custom_target(translationSources) # special target for translation sources (use from src: cmake --build ../build --target translationSources)
+# special target for translation sources (use from src: cmake --build ../build --target translationSources)
+add_custom_target(translationSources)
 
 set(TRANSLATION_DESTINATION_FOLDER ${PROJECT_DESTINATION_FOLDER}/translations)
 file(MAKE_DIRECTORY ${TRANSLATION_DESTINATION_FOLDER}) # create if doesn't exist
@@ -36,10 +40,11 @@ foreach(LANGUAGE ${LANGUAGES})
 	set (QM ${TRANSLATION_DESTINATION_FOLDER}/${TARGET_NAME}_${LANGUAGE}.qm) # bin translation file
 	set (TRANSLATIONS ${TRANSLATIONS} ${TS_FILE}) # all source translation files
 	set (TRANSLATIONS_BINARY ${TRANSLATIONS_BINARY} ${QM})
-	add_custom_command(TARGET translationSources
+	add_custom_command(
+		TARGET translationSources
 		POST_BUILD
-		# OUTPUT ${TS_FILE}
-		COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -recursive -ts ${TS_FILE} # -no-obsolete # generate source translation file
+		# generate translation source file
+		COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -recursive -ts ${TS_FILE} # -no-obsolete
 		MAIN_DEPENDENCY ${SOURCES} ${HEADERS}
 		DEPENDS ${SOURCES} ${HEADERS}
 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
@@ -89,7 +94,6 @@ target_link_libraries(${TARGET_NAME} PUBLIC
 	Qt5::Widgets
 )
 
-
 #---------------------------------------------------------------------------------
 #-----------------------------------Lbwebp----------------------------------------
 #---------------------------------------------------------------------------------
@@ -110,7 +114,9 @@ file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${LIB_WEBP_DIR})
 # define a command to build libwebp (only for the selected target) if the sources have changed
 add_custom_command(
 	OUTPUT ${LIB_WEBP_FILE_INDICATOR}
+	# create/update file indicator
 	COMMAND ${CMAKE_COMMAND} -E touch ${LIB_WEBP_FILE_INDICATOR}
+	# cmake configure
 	COMMAND ${CMAKE_COMMAND} --no-warn-unused-cli
 							 -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
 							 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
@@ -118,6 +124,7 @@ add_custom_command(
 							 -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
 							 -G ${CMAKE_GENERATOR}
 							 ${CMAKE_CURRENT_SOURCE_DIR}/${LIB_WEBP_DIR}
+	# cmake build
 	COMMAND ${CMAKE_COMMAND} --build .
 							 --config ${CMAKE_BUILD_TYPE}
 							 --target ${LIB_WEBP_NAME}
@@ -139,16 +146,18 @@ target_link_libraries(${TARGET_NAME} PRIVATE
 target_include_directories(${TARGET_NAME} PRIVATE
 	${LIB_WEBP_DIR}/src
 )
+
+#------------------------copying icons to the build folder------------------------
+set(ICONS_WEBP_DIR icons)
+file(
+	GLOB_RECURSE ICONS_WEBP_FILES
+	LIST_DIRECTORIES TRUE
+	${CMAKE_CURRENT_SOURCE_DIR}/${ICONS_WEBP_DIR}/*
+)
+
+file(
+	COPY ${CMAKE_CURRENT_SOURCE_DIR}/${ICONS_WEBP_DIR}
+	DESTINATION ${PROJECT_DESTINATION_SOURCES_FOLDER}
+	FILES_MATCHING PATTERN "*"
+)
 #---------------------------------------------------------------------------------
-
-# set(ICONS_WEBP_DIR icons)
-# file(
-# 	GLOB_RECURSE WEBP_FILES
-# 	LIST_DIRECTORIES TRUE
-# 	${CMAKE_CURRENT_SOURCE_DIR}/${ICONS_WEBP_DIR}/*
-# )
-
-# install(
-# 	DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/icons
-# 	DESTINATION ${PROJECT_DESTINATION_FOLDER}/sources
-# )

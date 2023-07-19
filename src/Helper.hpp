@@ -30,7 +30,7 @@ public:
 
 	inline static const map<Games,map<WindowsBit,string>> pathsToGamesMap =
 	{
-		{Games::Generals,		 {{WindowsBit::Win32, "SOFTWARE\\Electronic Arts\\EA Games\\Generals"},
+		{Games::Generals,		  {{WindowsBit::Win32, "SOFTWARE\\Electronic Arts\\EA Games\\Generals"},
 								   {WindowsBit::Win64, "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Generals"}}},
 		{Games::GeneralsZeroHour, {{WindowsBit::Win32, "SOFTWARE\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour"},
 								   {WindowsBit::Win64, "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour"}}},
@@ -44,13 +44,8 @@ private:
 
 public:
 	// Uses in Logger
-	string GetProcessorInfo();
-	string GetMemoryInfo();
-	string GetWindowsBitString();
 	static WindowsBit GetWinBit();
-	string GetWindowsVersion();
 	static string PathToGame(Games game);
-
 	inline static string GameEnumToString(Games game)
 	{
 		string returnValue = EMPTY_STRING;
@@ -67,15 +62,19 @@ public:
 
 		return returnValue;
 	}
+	string GetProcessorInfo() const;
+	string GetMemoryInfo() const;
+	string GetWindowsBitString() const;
+	string GetWindowsVersion() const;
 
 	// Uses in CSFparser
-	string  GetUUID();
-	string  CharArrayToString(const int& arrayLength, const char* pArray);
-	wstring WharArrayToWstring(const int& arrayLength, const wchar_t* pArray);
+	string  GetUUID() const;
+	string  CharArrayToString(const int& arrayLength, const char* pArray) const;
+	wstring WharArrayToWstring(const int& arrayLength, const wchar_t* pArray) const;
 
 	// Functions for general use
-	bool	IsWindow64bit();
-	bool	IsWindow32bit();
+	bool IsWindow64bit() const;
+	bool IsWindow32bit() const;
 private:
 	static string GetRegTextValue(const char* pPathToFolder, const char* pKeyName);
 };

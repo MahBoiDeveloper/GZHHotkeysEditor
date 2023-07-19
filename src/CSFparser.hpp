@@ -57,7 +57,7 @@ private: // Methods
 	void ReadBody(ifstream* csfFile);
 
 	void WriteHeader(ofstream* csfFile);
-	void WriteBody(ofstream* csfFile);
+	void WriteBody(ofstream* csfFile) const;
 
 public:
 	CSFparser(const string& strFilePath);
@@ -65,16 +65,15 @@ public:
 	void Save();
 	void Save(string strFileName);
 
-	list<string> GetStringNames();
 	wstring      GetStringValue(const string& strName);
-	list<string> GetCategories();
-	list<string> GetCategoryStrings(const string& strCategoryName);
-	list<string> GetCategoryStringsWithFullNames(const string& strCategoryName);
-	list<string> GetStringsContainsSymbol(const wchar_t& wch);
-	list<string> GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName);
-	list<CompiledString> GetStringsByNameList(const list<string>& lstNames);
-	wchar_t GetHotkey(const string& strName);
-	list<HotkeyAssociation> GetHotkeys(const list<string>& lstStringNames);
+	list<string> GetStringNames() const;
+	wstring	GetStringValue(const string& strName) const;
+	list<string> GetCategories() const;
+	list<string> GetCategoryStrings(const string& strCategoryName) const;
+	list<string> GetCategoryStringsWithFullNames(const string& strCategoryName) const;
+	list<string> GetStringsContainsSymbol(const wchar_t& wch) const;
+	list<string> GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName) const;
+	list<CompiledString> GetStringsByNameList(const list<string>& lstNames) const;
 
 	void SetStringValue(const string& strName, const wstring& wstrValue);
 	void SetStringValue(const CompiledString& stString);

@@ -21,14 +21,14 @@
 		return returnValue;
 	}
 	
-	string Helper::GetWindowsVersion()
+	string Helper::GetWindowsVersion() const
 	{
 		const char Path[]  = {"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"};
 		const char Value[] = {"ProductName"};
 		return Helper::GetRegTextValue(&Path[0], &Value[0]);
 	}
 	
-	string Helper::GetWindowsBitString()
+	string Helper::GetWindowsBitString() const
 	{
 		if (GetWinBit() == WindowsBit::Win32)
 			return "32-bit";
@@ -41,14 +41,14 @@
 	   return WinBit;
 	}
 	
-	string Helper::GetProcessorInfo()
+	string Helper::GetProcessorInfo() const
 	{
 		const char Path[]  = {"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"};
 		const char Value[] = {"ProcessorNameString"};
 		return Helper::GetRegTextValue(&Path[0], &Value[0]);
 	}
 	
-	string Helper::GetMemoryInfo()
+	string Helper::GetMemoryInfo() const
 	{
 		stringstream ss;
 		MEMORYSTATUSEX MemStat;
@@ -59,7 +59,7 @@
 		return ss.str();
 	}
 	
-	string Helper::GetUUID()
+	string Helper::GetUUID() const
 	{
 		stringstream ss;
 	
@@ -100,7 +100,7 @@
 #pragma endregion
 
 #pragma region Checks and array merging
-	string Helper::CharArrayToString(const int& arrayLength, const char* pArray)
+	string Helper::CharArrayToString(const int& arrayLength, const char* pArray) const
 	{
 		stringstream ss;
 		
@@ -110,7 +110,7 @@
 		return ss.str();
 	}
 	
-	wstring Helper::WharArrayToWstring(const int& arrayLength, const wchar_t* pArray)
+	wstring Helper::WharArrayToWstring(const int& arrayLength, const wchar_t* pArray) const
 	{
 		wstringstream wss;
 		
@@ -120,12 +120,12 @@
 		return wss.str();
 	}
 
-	bool Helper::IsWindow64bit()
+	bool Helper::IsWindow64bit() const
 	{
 		return GetWinBit() == WindowsBit::Win64;
 	}
 	
-	bool Helper::IsWindow32bit()
+	bool Helper::IsWindow32bit() const
 	{
 		return GetWinBit() == WindowsBit::Win32;
 	}
