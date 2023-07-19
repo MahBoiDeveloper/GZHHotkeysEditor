@@ -4,11 +4,11 @@
 class Config
 {
 public:
-	Config() = delete;
+    Config() = delete;
 
-	enum class Languages {
-		English = 0,
-		Russian = 1
-	};
-	static QString langEnumToString(const Languages& lang);
+    enum class Languages {
+        English = 0,
+        Russian = 1
+    };
+    static QString langEnumToString(const Languages& lang);
 };

@@ -5,13 +5,13 @@
 
 class MainWidget : public QStackedWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 private:
-	QTranslator* translator = nullptr;
+    QTranslator* translator = nullptr;
 
-	StartWidget* initRespawnStartWidget(Config::Languages language = Config::Languages::English);
+    StartWidget* initRespawnStartWidget(Config::Languages language = Config::Languages::English);
 
 public:
-	MainWidget(QWidget *parent = nullptr);
-	~MainWidget();
+    MainWidget(QWidget *parent = nullptr);
+    ~MainWidget();
 };

@@ -8,11 +8,11 @@
 
 class CreatorWidget : public QDialog
 {
-	Q_OBJECT
-	QButtonGroup groupB;
-	QCheckBox saveToGameBox;
+    Q_OBJECT
+    QButtonGroup groupB;
+    QCheckBox saveToGameBox;
 public:
-	CreatorWidget(QWidget *parent = nullptr);
+    CreatorWidget(QWidget *parent = nullptr);
 signals:
-	void acceptedConfiguration(Helper::Games game, bool saveToGame);
+    void acceptedConfiguration(Helper::Games game, bool saveToGame);
 };

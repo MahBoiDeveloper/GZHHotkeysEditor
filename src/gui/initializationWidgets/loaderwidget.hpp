@@ -5,13 +5,13 @@
 
 class LoaderWidget : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 private:
-	QButtonGroup groupB;
+    QButtonGroup groupB;
 
 public:
-	explicit LoaderWidget(QWidget *parent = nullptr);
+    explicit LoaderWidget(QWidget *parent = nullptr);
 signals:
-	void acceptedConfiguration(const QString& selectedFileName);
+    void acceptedConfiguration(const QString& selectedFileName);
 
 };

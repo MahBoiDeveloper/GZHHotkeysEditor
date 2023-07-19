@@ -6,15 +6,15 @@
 
 int PushButton::getBaseHeight() const
 {
-	return baseHeight;
+    return baseHeight;
 }
 
 void PushButton::setBaseHeight(int newbaseHeight)
 {
-	baseHeight = newbaseHeight;
+    baseHeight = newbaseHeight;
 }
 
 PushButton::PushButton(const QString& text, QWidget* parent)
-	: QPushButton(text, parent)
+    : QPushButton(text, parent)
 {
 }

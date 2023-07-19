@@ -41,11 +41,11 @@
                                                                                     << Header.csfChars[1] 
                                                                                     << Header.csfChars[2] 
                                                                                     << Header.csfChars[3] << ']' << endl;
-        Logger::Instance->Log() << '\t' << "CSF file format version         : "  << Header.formatVersion   << endl;
-        Logger::Instance->Log() << '\t' << "Number of labels in CSF file     : "  << Header.numberOfLabels  << endl;
-        Logger::Instance->Log() << '\t' << "Number of strings in CSF file    : "  << Header.numberOfStrings   << endl;
-        Logger::Instance->Log() << '\t' << "Useless bytes, i guess?         : "  << Header.uselessBytes     << endl;
-        Logger::Instance->Log() << '\t' << "Language code              : "  << Header.languageCode     << endl;
+        Logger::Instance->Log() << '\t' << "CSF file format version             : " << Header.formatVersion      << endl;
+        Logger::Instance->Log() << '\t' << "Number of labels in CSF file        : " << Header.numberOfLabels     << endl;
+        Logger::Instance->Log() << '\t' << "Number of strings in CSF file       : " << Header.numberOfStrings    << endl;
+        Logger::Instance->Log() << '\t' << "Useless bytes, i guess?             : " << Header.uselessBytes       << endl;
+        Logger::Instance->Log() << '\t' << "Language code                       : " << Header.languageCode       << endl;
     }
 
     void CSFParser::ReadBody(ifstream* csfFile)
@@ -84,7 +84,8 @@
             uint8_t labelName[labelNameLength];
             csfFile->read(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
-            string  stringName       = Helper::Instance->CharArrayToString(sizeof(labelName), reinterpret_cast<const char*>(labelName));
+            string  stringName       = Helper::Instance->CharArrayToString(sizeof(labelName),
+                                                                           reinterpret_cast<const char*>(labelName));
             wstring stringValue      = EMPTY_WSTRING;
             string  extraStringValue = EMPTY_STRING;
 
