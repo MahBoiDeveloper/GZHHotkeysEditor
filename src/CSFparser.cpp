@@ -107,7 +107,7 @@
 				for (int tmp = 0; tmp < valueLenght; tmp++)
 					wchBufferValue[tmp] = ~wchBufferValue[tmp];
 
-                stringValue = Helper::Instance->WharArrayToWstring(valueLenght, wchBufferValue);
+				stringValue = Helper::Instance->WharArrayToWstring(valueLenght, wchBufferValue);
 
 				// Read extra value and do not write bcs it's useless
 				if((char)rtsOrWrts[0] == 'W')
@@ -170,7 +170,7 @@
 		{
 			uint32_t labelLength  = elem.Name.size();
 			uint32_t valueLength  = elem.Value.size();
-			char	 labelName	    [labelLength];
+			char	 labelName		[labelLength];
 			wchar_t  valueInversed  [valueLength];
 			
 			for(uint32_t i = 0; i < labelLength; i++)
@@ -274,23 +274,23 @@
 
 		returnList.sort();
 
-        return returnList;
-    }
+		return returnList;
+	}
 
-    list<CompiledString> CSFparser::GetStringsByNameList(const list<string>& lstNames)
-    {
-        list<CompiledString> returnList;
+	list<CompiledString> CSFparser::GetStringsByNameList(const list<string>& lstNames)
+	{
+		list<CompiledString> returnList;
 
-        for (const auto& strName : lstNames)
-            for (const auto& elem : Table)
-                if (elem.Name == strName)
-                {
-                    returnList.push_back(elem);
-                    break;
-                }
+		for (const auto& strName : lstNames)
+			for (const auto& elem : Table)
+				if (elem.Name == strName)
+				{
+					returnList.push_back(elem);
+					break;
+				}
 
-        return returnList;
-    }
+		return returnList;
+	}
 #pragma endregion
 
 #pragma region Setters

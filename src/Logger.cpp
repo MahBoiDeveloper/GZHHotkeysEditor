@@ -45,21 +45,21 @@
 		LogFile << endl;
 	}
 
-    /// @brief Get current time in yyyy-MM-dd format
-    string Logger::GetCurrentTime() const
-    {
-        time_t timeStomp = time(nullptr);
-        tm timeNow;
-        localtime_s(&timeNow, &timeStomp);
+	/// @brief Get current time in yyyy-MM-dd format
+	string Logger::GetCurrentTime() const
+	{
+		time_t timeStomp = time(nullptr);
+		tm timeNow;
+		localtime_s(&timeNow, &timeStomp);
 
-        char currentTime[128];
-        strftime(currentTime, sizeof(currentTime), "%Y-%m-%d %X", &timeNow);
+		char currentTime[128];
+		strftime(currentTime, sizeof(currentTime), "%Y-%m-%d %X", &timeNow);
 
-        stringstream ss;
-        ss << currentTime;
+		stringstream ss;
+		ss << currentTime;
 
-        return ss.str();
-    }
+		return ss.str();
+	}
 
 	// log methods
 	ofstream& Logger::Log()
