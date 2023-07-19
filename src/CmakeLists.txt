@@ -3,56 +3,56 @@ get_property(PROJECT_DESTINATION_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_FOLD
 
 # project sources
 file(
-    GLOB SOURCES
-    LIST_DIRECTORIES false
-    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+	GLOB SOURCES
+	LIST_DIRECTORIES false
+	RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+	${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
 )
 # project headers
 file(
-    GLOB HEADERS
-    LIST_DIRECTORIES false
-    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+	GLOB HEADERS
+	LIST_DIRECTORIES false
+	RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+	${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
 )
 
 # main target
 add_executable(GZHHotkeysEditor
-    ${SOURCES}
-    ${HEADERS}
+	${SOURCES}
+	${HEADERS}
 )
 set_target_properties(GZHHotkeysEditor
-    PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED ON
-    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_FOLDER}
+	PROPERTIES
+	CXX_STANDARD 17
+	CXX_STANDARD_REQUIRED ON
+	RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_FOLDER}
 )
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 # link gui subproject
 subdirs(gui)
 target_link_libraries(GZHHotkeysEditor
-    PRIVATE Gui
+	PRIVATE Gui
 )
 
 #---------------Qt libs deploy-----------------
 # set(QT_PLUGIN_PATH "${CMAKE_PREFIX_PATH}/plugins/platforms")
 if(WIN32)
-    target_link_libraries(GZHHotkeysEditor
-        PRIVATE rpcrt4
-    )
-    set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
-    if(CMAKE_BUILD_TYPE STREQUAL "Release")
-        add_custom_command(
-            TARGET GZHHotkeysEditor POST_BUILD
-            COMMAND "${CMAKE_PREFIX_PATH}/bin/windeployqt.exe"
-                # --release
-                # --no-compiler-runtime
-                --compiler-runtime
-                --force
-                --dir "${PROJECT_DESTINATION_FOLDER}"
-                # --dir "${CMAKE_CURRENT_BINARY_DIR}/deploy"
-                $<TARGET_FILE:GZHHotkeysEditor>
-        )
-    endif()
+	target_link_libraries(GZHHotkeysEditor
+		PRIVATE rpcrt4
+	)
+	set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
+	if(CMAKE_BUILD_TYPE STREQUAL "Release")
+		add_custom_command(
+			TARGET GZHHotkeysEditor POST_BUILD
+			COMMAND "${CMAKE_PREFIX_PATH}/bin/windeployqt.exe"
+				# --release
+				# --no-compiler-runtime
+				--compiler-runtime
+				--force
+				--dir "${PROJECT_DESTINATION_FOLDER}"
+				# --dir "${CMAKE_CURRENT_BINARY_DIR}/deploy"
+				$<TARGET_FILE:GZHHotkeysEditor>
+		)
+	endif()
 endif()
 #----------------------------------------------

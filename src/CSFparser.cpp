@@ -3,7 +3,7 @@
 #include "info.hpp"
 
 #pragma region ctor and dtor
-    CSFparser::CSFparser(const string& filePath) : Path(filePath)
+	CSFparser::CSFparser(const string& filePath) : Path(filePath)
 	{
 		Parse();
 	}
@@ -11,291 +11,291 @@
 
 #pragma region Parsing
 	void CSFparser::Parse()
-    {
-        ifstream csfFile(Path, ios::binary | ios::in);
+	{
+		ifstream csfFile(Path, ios::binary | ios::in);
 
-        Logger::Instance->Log() << "Attempt to read binary file \"" << Path << "\"" << endl;
+		Logger::Instance->Log() << "Attempt to read binary file \"" << Path << "\"" << endl;
 
-        if (csfFile.is_open())
-        {
-            CSFparser::ReadHeader(&csfFile);
-            CSFparser::ReadBody(&csfFile);
+		if (csfFile.is_open())
+		{
+			CSFparser::ReadHeader(&csfFile);
+			CSFparser::ReadBody(&csfFile);
 
-            Logger::Instance->Log() << "File \"" << Path << "\" has been parsed; strings count : " << Table.size() << endl;
-        }
-        else
-        {
-            Logger::Instance->Log() << "Could not open file \"" << Path << "\" to read" << endl;
-        }
+			Logger::Instance->Log() << "File \"" << Path << "\" has been parsed; strings count : " << Table.size() << endl;
+		}
+		else
+		{
+			Logger::Instance->Log() << "Could not open file \"" << Path << "\" to read" << endl;
+		}
 
-        csfFile.close();
-    }
+		csfFile.close();
+	}
 
 	void CSFparser::ReadHeader(ifstream* csfFile)
-    {
-        csfFile->read(reinterpret_cast<char*>(&Header), sizeof(Header));
+	{
+		csfFile->read(reinterpret_cast<char*>(&Header), sizeof(Header));
 
-        Logger::Instance->Log() << "File header data:" << endl;
+		Logger::Instance->Log() << "File header data:" << endl;
 
-        Logger::Instance->Log() << '\t' << "First 4th bytes of file header are : [" << Header.csfChars[0] 
-                                                                                    << Header.csfChars[1] 
-                                                                                    << Header.csfChars[2] 
-                                                                                    << Header.csfChars[3] << ']' << endl;
-        Logger::Instance->Log() << '\t' << "CSF file format version            : "  << Header.formatVersion      << endl;
-        Logger::Instance->Log() << '\t' << "Number of labels in CSF file       : "  << Header.numberOfLabels     << endl;
-        Logger::Instance->Log() << '\t' << "Number of strings in CSF file      : "  << Header.numberOfStrings    << endl;
-        Logger::Instance->Log() << '\t' << "Useless bytes, i guess?            : "  << Header.uselessBytes       << endl;
-        Logger::Instance->Log() << '\t' << "Language code                      : "  << Header.languageCode       << endl;
-    }
+		Logger::Instance->Log() << '\t' << "First 4th bytes of file header are : [" << Header.csfChars[0] 
+																					<< Header.csfChars[1] 
+																					<< Header.csfChars[2] 
+																					<< Header.csfChars[3] << ']' << endl;
+		Logger::Instance->Log() << '\t' << "CSF file format version			   : "  << Header.formatVersion	  << endl;
+		Logger::Instance->Log() << '\t' << "Number of labels in CSF file	   : "  << Header.numberOfLabels	 << endl;
+		Logger::Instance->Log() << '\t' << "Number of strings in CSF file	   : "  << Header.numberOfStrings	<< endl;
+		Logger::Instance->Log() << '\t' << "Useless bytes, i guess?			   : "  << Header.uselessBytes	   << endl;
+		Logger::Instance->Log() << '\t' << "Language code					   : "  << Header.languageCode	   << endl;
+	}
 
 	void CSFparser::ReadBody(ifstream* csfFile)
-    {
-        uint8_t lbl[4];
-        uint8_t rts[4];
-        uint8_t wrts[4];
+	{
+		uint8_t lbl[4];
+		uint8_t rts[4];
+		uint8_t wrts[4];
 
-        for (uint32_t i = 0; i < Header.numberOfLabels; i++)
-        {
-            bool breakFlag = false;
+		for (uint32_t i = 0; i < Header.numberOfLabels; i++)
+		{
+			bool breakFlag = false;
 
-            // Reading ' LBL' characters
-            csfFile->read(reinterpret_cast<char*>(&lbl), sizeof(lbl));
+			// Reading ' LBL' characters
+			csfFile->read(reinterpret_cast<char*>(&lbl), sizeof(lbl));
 
-            // Comparing read characters with reference string
-            for (uint8_t tmp = 0; tmp < 4; tmp++)
-            {
-                if (lbl[tmp] != LBL[tmp])
-                {
-                    if (i > 0) i--;
-                    breakFlag = true;
-                    break;
-                }
-            }
-            
-            // Works only if 4 chars are not equal ' LBL'
-            if (breakFlag) continue;
-            
-            uint32_t countOfStrings;
-            csfFile->read(reinterpret_cast<char*>(&countOfStrings), sizeof(countOfStrings));
+			// Comparing read characters with reference string
+			for (uint8_t tmp = 0; tmp < 4; tmp++)
+			{
+				if (lbl[tmp] != LBL[tmp])
+				{
+					if (i > 0) i--;
+					breakFlag = true;
+					break;
+				}
+			}
+			
+			// Works only if 4 chars are not equal ' LBL'
+			if (breakFlag) continue;
+			
+			uint32_t countOfStrings;
+			csfFile->read(reinterpret_cast<char*>(&countOfStrings), sizeof(countOfStrings));
 
-            uint32_t labelNameLength;
-            csfFile->read(reinterpret_cast<char*>(&labelNameLength), sizeof(labelNameLength));
+			uint32_t labelNameLength;
+			csfFile->read(reinterpret_cast<char*>(&labelNameLength), sizeof(labelNameLength));
 
-            uint8_t labelName[labelNameLength];
-            csfFile->read(reinterpret_cast<char*>(&labelName), sizeof(labelName));
+			uint8_t labelName[labelNameLength];
+			csfFile->read(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
 			string  stringName(reinterpret_cast<char*>(labelName));
-            wstring stringValue = EMPTY_WSTRING;
-            string  extraStringValue = EMPTY_STRING;
+			wstring stringValue = EMPTY_WSTRING;
+			string  extraStringValue = EMPTY_STRING;
 
-            // There possible situation where exists empty strings
-            if(countOfStrings != 0)
-            {
-                // Read string type
-                uint8_t  rtsOrWrts[4];
-                csfFile->read(reinterpret_cast<char*>(&rtsOrWrts), sizeof(rtsOrWrts));
+			// There possible situation where exists empty strings
+			if(countOfStrings != 0)
+			{
+				// Read string type
+				uint8_t  rtsOrWrts[4];
+				csfFile->read(reinterpret_cast<char*>(&rtsOrWrts), sizeof(rtsOrWrts));
 
-                // Read string lenght
-                uint32_t valueLenght;
-                csfFile->read(reinterpret_cast<char*>(&valueLenght), sizeof(valueLenght));
+				// Read string lenght
+				uint32_t valueLenght;
+				csfFile->read(reinterpret_cast<char*>(&valueLenght), sizeof(valueLenght));
 
-                // Read byte-like compiled string
-                wchar_t wchBufferValue[valueLenght];
-                csfFile->read(reinterpret_cast<char*>(&wchBufferValue), sizeof(wchBufferValue));
+				// Read byte-like compiled string
+				wchar_t wchBufferValue[valueLenght];
+				csfFile->read(reinterpret_cast<char*>(&wchBufferValue), sizeof(wchBufferValue));
 
-                // Reverse read string
-                for (int tmp = 0; tmp < valueLenght; tmp++)
-                    wchBufferValue[tmp] = ~wchBufferValue[tmp];
+				// Reverse read string
+				for (int tmp = 0; tmp < valueLenght; tmp++)
+					wchBufferValue[tmp] = ~wchBufferValue[tmp];
 
 				stringValue = wstring(wchBufferValue);
 
-                // Read extra value and do not write bcs it's useless
-                if((char)rtsOrWrts[0] == 'W')
-                {
-                    uint32_t extraValueLength;
-                    csfFile->read(reinterpret_cast<char*>(&extraValueLength), sizeof(extraValueLength));
+				// Read extra value and do not write bcs it's useless
+				if((char)rtsOrWrts[0] == 'W')
+				{
+					uint32_t extraValueLength;
+					csfFile->read(reinterpret_cast<char*>(&extraValueLength), sizeof(extraValueLength));
 
-                    uint8_t extraValue[extraValueLength];
-                    csfFile->read(reinterpret_cast<char*>(&extraValue), sizeof(extraValue));
+					uint8_t extraValue[extraValueLength];
+					csfFile->read(reinterpret_cast<char*>(&extraValue), sizeof(extraValue));
 
 					extraStringValue = string(reinterpret_cast<char*>(extraValue));
-                }
-                    
+				}
+					
 				Table.push_back({stringName, stringValue});
-            }
-        }
-    }
+			}
+		}
+	}
 
-    void CSFparser::Save()
-    {
-        ofstream csfFile{Path, ios::binary | ios::out};
+	void CSFparser::Save()
+	{
+		ofstream csfFile{Path, ios::binary | ios::out};
 
-        if(csfFile.is_open())
-        {
-            Logger::Instance->Log() << "Attempt to write binary file \"" << Path << "\"" << endl;
+		if(csfFile.is_open())
+		{
+			Logger::Instance->Log() << "Attempt to write binary file \"" << Path << "\"" << endl;
 
-            CSFparser::WriteHeader(&csfFile);
-            CSFparser::WriteBody(&csfFile);
+			CSFparser::WriteHeader(&csfFile);
+			CSFparser::WriteBody(&csfFile);
 
-            Logger::Instance->Log() << "File saved as \"" << Path << "\"" << endl;
-        }
-        else
-        {
-            Logger::Instance->Log() << "Could not open file \"" << Path << "\" to save" << endl;
-        }
+			Logger::Instance->Log() << "File saved as \"" << Path << "\"" << endl;
+		}
+		else
+		{
+			Logger::Instance->Log() << "Could not open file \"" << Path << "\" to save" << endl;
+		}
 
-        csfFile.close();
-    }
+		csfFile.close();
+	}
 
-    void CSFparser::Save(string strFileName)
-    {
-        string tmp = Path;
-        Path = strFileName;
-        CSFparser::Save();
-        Path = tmp;
-    }
+	void CSFparser::Save(string strFileName)
+	{
+		string tmp = Path;
+		Path = strFileName;
+		CSFparser::Save();
+		Path = tmp;
+	}
 
 	void CSFparser::WriteHeader(ofstream* csfFile)
-    {
-        // Struct Header has the same length as the original file
-        csfFile->write(reinterpret_cast<char*>(&Header), sizeof(Header));
-    }
+	{
+		// Struct Header has the same length as the original file
+		csfFile->write(reinterpret_cast<char*>(&Header), sizeof(Header));
+	}
 
 	void CSFparser::WriteBody(ofstream* csfFile)
-    {
-        const uint32_t ONE_STRING = 1;
+	{
+		const uint32_t ONE_STRING = 1;
 
-        // Write normal strings
+		// Write normal strings
 		for(const auto& elem : Table)
-        {
-            uint32_t labelLength  = elem.Name.size();
-            uint32_t valueLength  = elem.Value.size();
-            char     labelName      [labelLength];
-            wchar_t  valueInversed  [valueLength];
-            
-            for(uint32_t i = 0; i < labelLength; i++)
-                labelName[i] = elem.Name[i];
+		{
+			uint32_t labelLength  = elem.Name.size();
+			uint32_t valueLength  = elem.Value.size();
+			char	 labelName	    [labelLength];
+			wchar_t  valueInversed  [valueLength];
+			
+			for(uint32_t i = 0; i < labelLength; i++)
+				labelName[i] = elem.Name[i];
 
-            for(uint32_t i = 0; i < valueLength; i++)
-                valueInversed[i] = ~elem.Value[i];
+			for(uint32_t i = 0; i < valueLength; i++)
+				valueInversed[i] = ~elem.Value[i];
 
-            csfFile->write(reinterpret_cast<const char*>(LBL), sizeof(LBL));
-            csfFile->write(reinterpret_cast<const char*>(&ONE_STRING), sizeof(ONE_STRING));
-            csfFile->write(reinterpret_cast<char*>(&labelLength), sizeof(labelLength));
-            csfFile->write(reinterpret_cast<char*>(&labelName), sizeof(labelName));
+			csfFile->write(reinterpret_cast<const char*>(LBL), sizeof(LBL));
+			csfFile->write(reinterpret_cast<const char*>(&ONE_STRING), sizeof(ONE_STRING));
+			csfFile->write(reinterpret_cast<char*>(&labelLength), sizeof(labelLength));
+			csfFile->write(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
-            csfFile->write(reinterpret_cast<const char*>(RTS), sizeof(RTS));
-            csfFile->write(reinterpret_cast<char*>(&valueLength), sizeof(valueLength));
-            csfFile->write(reinterpret_cast<char*>(&valueInversed), sizeof(valueInversed));
-        }
-    }
+			csfFile->write(reinterpret_cast<const char*>(RTS), sizeof(RTS));
+			csfFile->write(reinterpret_cast<char*>(&valueLength), sizeof(valueLength));
+			csfFile->write(reinterpret_cast<char*>(&valueInversed), sizeof(valueInversed));
+		}
+	}
 #pragma endregion
 
 #pragma region Getters
-    wstring CSFparser::GetStringValue(string strName)
-    {
+	wstring CSFparser::GetStringValue(string strName)
+	{
 		for (const auto& elem : Table)
-            if (elem.Name == strName)
-                return elem.Value;
+			if (elem.Name == strName)
+				return elem.Value;
 
-        return EMPTY_WSTRING;
-    }
+		return EMPTY_WSTRING;
+	}
 
-    list<string> CSFparser::GetStringNames()
-    {
-        list<string> returnList;
-        
+	list<string> CSFparser::GetStringNames()
+	{
+		list<string> returnList;
+		
 		for (const auto& elem : Table)
-            returnList.push_back(elem.Name);
+			returnList.push_back(elem.Name);
 
-        returnList.sort();
+		returnList.sort();
 
-        return returnList;
-    }
+		return returnList;
+	}
 
-    list<string> CSFparser::GetCategories()
-    {
-        list<string>returnList;
-
-		for (const auto& elem : Table)
-            returnList.push_back(elem.Name.substr(0, elem.Name.find_first_of(':', 0) ));
-
-        returnList.sort();
-        returnList.unique();
-
-        return returnList;
-    }
-
-    list<string> CSFparser::GetCategoryStrings(string strCategoryName)
-    {
-        list<string>returnList;
+	list<string> CSFparser::GetCategories()
+	{
+		list<string>returnList;
 
 		for (const auto& elem : Table)
-            if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
-                returnList.push_back(elem.Name.substr(elem.Name.find_first_of(':', 0) + 1, elem.Name.size() - 1));
+			returnList.push_back(elem.Name.substr(0, elem.Name.find_first_of(':', 0) ));
 
-        returnList.sort();
-        return returnList;
-    }
+		returnList.sort();
+		returnList.unique();
 
-    list<string> CSFparser::GetCategoryStringsWithFullNames(string strCategoryName)
-    {
-        list<string>returnList;
+		return returnList;
+	}
 
-		for (const auto& elem : Table)
-            if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
-                returnList.push_back(elem.Name);
-
-        returnList.sort();
-        return returnList;
-    }
-    
-    list<string> CSFparser::GetStringsContainsSymbol(wchar_t wch)
-    {
-        list<string>returnList;
-        
-		for (const auto& elem : Table)
-            if (elem.Value.find(wch) <= elem.Value.size())
-                returnList.push_back(elem.Name);
-
-        returnList.sort();
-
-        return returnList;
-    }
-
-    list<string> CSFparser::GetStringsContainsSymbol(wchar_t wch, string strCategoryName)
-    {
-        list<string>returnList;
+	list<string> CSFparser::GetCategoryStrings(string strCategoryName)
+	{
+		list<string>returnList;
 
 		for (const auto& elem : Table)
-            if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
-                if (elem.Value.find_first_of(wch) <= elem.Value.size())
-                    returnList.push_back(elem.Name);
+			if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
+				returnList.push_back(elem.Name.substr(elem.Name.find_first_of(':', 0) + 1, elem.Name.size() - 1));
 
-        returnList.sort();
+		returnList.sort();
+		return returnList;
+	}
 
-        return returnList;
-    }
+	list<string> CSFparser::GetCategoryStringsWithFullNames(string strCategoryName)
+	{
+		list<string>returnList;
+
+		for (const auto& elem : Table)
+			if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
+				returnList.push_back(elem.Name);
+
+		returnList.sort();
+		return returnList;
+	}
+	
+	list<string> CSFparser::GetStringsContainsSymbol(wchar_t wch)
+	{
+		list<string>returnList;
+		
+		for (const auto& elem : Table)
+			if (elem.Value.find(wch) <= elem.Value.size())
+				returnList.push_back(elem.Name);
+
+		returnList.sort();
+
+		return returnList;
+	}
+
+	list<string> CSFparser::GetStringsContainsSymbol(wchar_t wch, string strCategoryName)
+	{
+		list<string>returnList;
+
+		for (const auto& elem : Table)
+			if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
+				if (elem.Value.find_first_of(wch) <= elem.Value.size())
+					returnList.push_back(elem.Name);
+
+		returnList.sort();
+
+		return returnList;
+	}
 #pragma endregion
 
 #pragma region Setters
 	void CSFparser::SetStringValue(const string& strName, const wstring& wstrValue)
-    {
+	{
 		for (auto& elem : Table)
-            if (elem.Name == strName)
-                elem.Value = wstrValue;
-    }
+			if (elem.Name == strName)
+				elem.Value = wstrValue;
+	}
 
 	void CSFparser::SetStringValue(const CompiledString& stString)
-    {
+	{
 		for (auto& elem : Table)
-            if (elem.Name == stString.Name)
-                elem.Value = stString.Value;
-    }
+			if (elem.Name == stString.Name)
+				elem.Value = stString.Value;
+	}
 
 	void CSFparser::SetStringsValue(const list<CompiledString>& pListOfChanges)
-    {
+	{
 		for (const auto& elem : pListOfChanges)
-            CSFparser::SetStringValue(elem);
-    }
+			CSFparser::SetStringValue(elem);
+	}
 #pragma endregion

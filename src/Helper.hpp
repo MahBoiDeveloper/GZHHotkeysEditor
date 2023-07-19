@@ -38,7 +38,7 @@ public:
 
 	static inline const map<GAMES,map<WINDOWS_BIT,string>> pathsToGamesMap =
 	{
-		{GAMES::GENERALS,           {{WINDOWS_BIT::WIN_32, "SOFTWARE\\Electronic Arts\\EA Games\\Generals"},
+		{GAMES::GENERALS,		    {{WINDOWS_BIT::WIN_32, "SOFTWARE\\Electronic Arts\\EA Games\\Generals"},
 									 {WINDOWS_BIT::WIN_64, "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Generals"}}},
 		{GAMES::GENERALS_ZERO_HOUR,	{{WINDOWS_BIT::WIN_32, "SOFTWARE\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour"},
 									 {WINDOWS_BIT::WIN_64, "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour"}}},
@@ -58,10 +58,10 @@ public:
 	string GetWindowsBitString() const;
 	static WINDOWS_BIT winBit();
 	string GetWindowsVersion() const;
-    // Uses in CSFparser
+	// Uses in CSFparser
 	string  GetUUID();
-	bool    IsWindow64bit();
-    bool    IsWindow32bit();
+	bool IsWindow64bit() const;
+	bool IsWindow32bit() const;
 private:
 	static string GetRegTextValue(const char* pPathToFolder, const char* pKeyName);
 };

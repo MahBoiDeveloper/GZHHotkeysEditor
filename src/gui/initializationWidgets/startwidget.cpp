@@ -11,15 +11,15 @@
 PushButton* StartWidget::initButton(const QString& name) const
 {
 	PushButton* button = new PushButton(name);
-    button->setMaximumHeight(250);
+	button->setMaximumHeight(250);
 	button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	// changing the button size relative to the window size
 	connect(this, &StartWidget::resized, button,
 		[button](int height){
 			button->setFixedHeight(button->getBaseHeight() + height/10);
-        }
+		}
 	);
-    return button;
+	return button;
 }
 
 // when resized emit height
@@ -32,16 +32,16 @@ void StartWidget::resizeEvent(QResizeEvent *event)
 StartWidget::StartWidget(Config::Languages language, QWidget *parent)
 	: QWidget(parent)
 {
-    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	bg = new QButtonGroup;
 	bg->addButton(initButton(tr("New project")));
 	bg->addButton(initButton(tr("Load project")));
-    connect(bg, QOverload<int>::of(&QButtonGroup::idClicked), this,
-        [=](int id){
+	connect(bg, QOverload<int>::of(&QButtonGroup::idClicked), this,
+		[=](int id){
 			int index = (-1)*id - 2; // QButtonGroup assign index -2 to first button
 			emit StartWidget::pressed(index);
-        }
-    );
+		}
+	);
 
 	// languages config
 	QComboBox* langBox = new QComboBox;
@@ -56,14 +56,14 @@ StartWidget::StartWidget(Config::Languages language, QWidget *parent)
 	languageL->addWidget(langBox);
 	languageL->setAlignment(Qt::AlignRight);
 
-    QVBoxLayout* vl = new QVBoxLayout;
+	QVBoxLayout* vl = new QVBoxLayout;
 	vl->addStretch(5);
 	vl->addWidget(bg->buttons().at(0));
 	vl->addStretch(2);
 	vl->addWidget(bg->buttons().at(1));
 	vl->addStretch(5);
-    vl->setContentsMargins(70, 10, 70, 30);
-    vl->setAlignment(Qt::AlignCenter);
+	vl->setContentsMargins(70, 10, 70, 30);
+	vl->setAlignment(Qt::AlignCenter);
 	vl->addLayout(languageL);
 	setLayout(vl);
 }

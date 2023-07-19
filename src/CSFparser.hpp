@@ -12,19 +12,19 @@ using namespace std;
 struct CompiledString
 {
 public:
-    string  Name;
-    wstring Value;
+	string  Name;
+	wstring Value;
 };
 
 struct CSFHeader
 {
 public:
-    uint8_t  csfChars[4];
-    uint32_t formatVersion;
-    uint32_t numberOfLabels;
-    uint32_t numberOfStrings;
-    uint32_t uselessBytes;
-    uint32_t languageCode;
+	uint8_t  csfChars[4];
+	uint32_t formatVersion;
+	uint32_t numberOfLabels;
+	uint32_t numberOfStrings;
+	uint32_t uselessBytes;
+	uint32_t languageCode;
 };
 
 class CSFparser
@@ -33,38 +33,38 @@ public: // Data
 	static inline unique_ptr<CSFparser> Instance;
 
 private:
-    const uint8_t FSC[4]  {' ', 'F', 'S', 'C'}; // Begining of any CSF file header
-    const uint8_t LBL[4]  {' ', 'L', 'B', 'L'}; // Begining of any string name aka "label"
-    const uint8_t RTS[4]  {' ', 'R', 'T', 'S'}; // Begining of any string value aka "string"
-    const uint8_t WRTS[4] {'W', 'R', 'T', 'S'}; // Begining of any string with extra value
-    const uint32_t CNC_CSF_VERSION = 3;         // Standart file format. Legacy by WW
+	const uint8_t FSC[4]  {' ', 'F', 'S', 'C'}; // Begining of any CSF file header
+	const uint8_t LBL[4]  {' ', 'L', 'B', 'L'}; // Begining of any string name aka "label"
+	const uint8_t RTS[4]  {' ', 'R', 'T', 'S'}; // Begining of any string value aka "string"
+	const uint8_t WRTS[4] {'W', 'R', 'T', 'S'}; // Begining of any string with extra value
+	const uint32_t CNC_CSF_VERSION = 3;		    // Standart file format. Legacy by WW
 
-    string Path;
-    CSFHeader Header;
+	string Path;
+	CSFHeader Header;
 
 	list<CompiledString> Table;
 
 private: // Methods
-    void Parse();
-    void ReadHeader(ifstream* csfFile);
-    void ReadBody(ifstream* csfFile);
+	void Parse();
+	void ReadHeader(ifstream* csfFile);
+	void ReadBody(ifstream* csfFile);
 
-    void WriteHeader(ofstream* csfFile);
-    void WriteBody(ofstream* csfFile);
+	void WriteHeader(ofstream* csfFile);
+	void WriteBody(ofstream* csfFile);
 
 public:
 	CSFparser(const string& strFilePath);
 
-    void Save();
-    void Save(string strFileName);
+	void Save();
+	void Save(string strFileName);
 
-    list<string> GetStringNames();
-    wstring      GetStringValue(string strName);
-    list<string> GetCategories();
-    list<string> GetCategoryStrings(string strCategoryName);
-    list<string> GetCategoryStringsWithFullNames(string strCategoryName);
-    list<string> GetStringsContainsSymbol(wchar_t wch);
-    list<string> GetStringsContainsSymbol(wchar_t wch, string strCategoryName);
+	list<string> GetStringNames();
+	wstring		 GetStringValue(string strName);
+	list<string> GetCategories();
+	list<string> GetCategoryStrings(string strCategoryName);
+	list<string> GetCategoryStringsWithFullNames(string strCategoryName);
+	list<string> GetStringsContainsSymbol(wchar_t wch);
+	list<string> GetStringsContainsSymbol(wchar_t wch, string strCategoryName);
 
 	void SetStringValue(const string& strName, const wstring& wstrValue);
 	void SetStringValue(const CompiledString& stString);
