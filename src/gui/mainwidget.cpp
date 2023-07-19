@@ -17,7 +17,7 @@ StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
             // create new translator
             if (lang != Config::Languages::English) {
                 translator = new QTranslator;
-                translator->load(Config::langEnumToString(lang), "translations");
+                translator->load(Config::langEnumToString(lang), "Resources/Translations");
                 QCoreApplication::installTranslator(translator);
             }
             // recreate StartWidget

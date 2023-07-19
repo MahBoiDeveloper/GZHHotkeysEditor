@@ -3,8 +3,8 @@ get_property(PROJECT_DESTINATION_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_FOLD
 get_property(PROJECT_DESTINATION_BIN_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_BIN_FOLDER) # bin folder
 
 # target names
-set(MAIN_TARGET_NAME ${PROJECT_NAME})
-set(LINK_MAIN_TARGET_NAME "Link${MAIN_TARGET_NAME}")
+set(MAIN_TARGET_NAME "LoadEditor")
+set(LINK_MAIN_TARGET_NAME "HotkeyEditor")
 
 # target link source files
 file(GLOB_RECURSE TARGET_LINK_SOURCES "mainLink.cpp")
@@ -34,8 +34,9 @@ set_target_properties(${LINK_MAIN_TARGET_NAME}
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_FOLDER}
 )
+# the path to the program relative to the main one
 target_compile_definitions(${LINK_MAIN_TARGET_NAME} PRIVATE
-    -DPROJECT_EXE_PATH="$<TARGET_FILE:${MAIN_TARGET_NAME}>"
+    -DPROJECT_EXE_RELATIVE_PATH="$<PATH:RELATIVE_PATH,$<TARGET_FILE:${MAIN_TARGET_NAME}>,${PROJECT_DESTINATION_FOLDER}>"
 )
 
 # main target
@@ -56,14 +57,23 @@ target_link_libraries(${MAIN_TARGET_NAME}
     PRIVATE Gui
 )
 
+# copy additional resources
+file(
+    COPY_FILE
+    "${CMAKE_CURRENT_SOURCE_DIR}/TechTree.json"
+    "${PROJECT_DESTINATION_RESOURCES_FOLDER}/TechTree.json"
+    ONLY_IF_DIFFERENT
+)
+
 # flags
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 # look https://cmake.org/pipermail/cmake/2018-August/068011.html
 set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ -lwsock32 -lws2_32 ${CMAKE_CSS_STANDARD_LIBRARIES}")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive")
 
-#---------------Qt libs deploy-----------------
-# set(QT_PLUGIN_PATH "${CMAKE_PREFIX_PATH}/plugins/platforms")
+#---------------------------------------------------------------------------------
+#-------------------------------Qt libs deploy------------------------------------
+#---------------------------------------------------------------------------------
 if(WIN32)
     target_link_libraries(${MAIN_TARGET_NAME}
         PRIVATE rpcrt4
@@ -84,4 +94,4 @@ if(WIN32)
         )
     endif()
 endif()
-#----------------------------------------------
+#---------------------------------------------------------------------------------

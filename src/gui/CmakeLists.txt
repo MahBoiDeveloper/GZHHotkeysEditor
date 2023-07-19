@@ -1,7 +1,7 @@
 project(GZHHotkeysEditor)
 # get global vars
 get_property(PROJECT_DESTINATION_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_FOLDER) # exe folder
-get_property(PROJECT_DESTINATION_SOURCES_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_SOURCES_FOLDER) # sources folder
+get_property(PROJECT_DESTINATION_RESOURCES_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_SOURCES_FOLDER) # resources folder
 # current main target
 set(TARGET_NAME Gui)
 
@@ -31,7 +31,7 @@ set(LANGUAGES
 # special target for translation sources (use from src: cmake --build ../build --target translationSources)
 add_custom_target(translationSources)
 
-set(TRANSLATION_DESTINATION_FOLDER ${PROJECT_DESTINATION_FOLDER}/translations)
+set(TRANSLATION_DESTINATION_FOLDER ${PROJECT_DESTINATION_RESOURCES_FOLDER}/Translations)
 file(MAKE_DIRECTORY ${TRANSLATION_DESTINATION_FOLDER}) # create if doesn't exist
 # generate source translations files
 find_program(LUPDATE_EXECUTABLE lupdate)
@@ -148,7 +148,7 @@ target_include_directories(${TARGET_NAME} PRIVATE
 )
 
 #------------------------copying icons to the build folder------------------------
-set(ICONS_WEBP_DIR icons)
+set(ICONS_WEBP_DIR Icons)
 file(
     GLOB_RECURSE ICONS_WEBP_FILES
     LIST_DIRECTORIES TRUE
@@ -157,7 +157,7 @@ file(
 
 file(
     COPY ${CMAKE_CURRENT_SOURCE_DIR}/${ICONS_WEBP_DIR}
-    DESTINATION ${PROJECT_DESTINATION_SOURCES_FOLDER}
+    DESTINATION ${PROJECT_DESTINATION_RESOURCES_FOLDER}
     FILES_MATCHING PATTERN "*"
 )
 #---------------------------------------------------------------------------------
