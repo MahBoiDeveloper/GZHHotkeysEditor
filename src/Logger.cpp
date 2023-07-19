@@ -1,4 +1,4 @@
-﻿#include "Logger.hpp"
+#include "Logger.hpp"
 #include "Helper.hpp"
 #include "info.hpp"
 #include <ctime>
@@ -22,14 +22,15 @@
 #pragma endregion
 
 #pragma region Log methods
-	void Logger::LogSystemInformation()
-	{
-		Logger::Log() << "Hardware information" << endl;
-		Logger::Log() << "OS version : "
-					  << Helper::Instance->GetWindowsVersion()   << ' '
-					  << Helper::Instance->GetWindowsBitString() << endl;
-		Logger::Log() << "Processor  : " << Helper::Instance->GetProcessorInfo() << endl;
-		Logger::Log() << "Memory	 : " << Helper::Instance->GetMemoryInfo() << endl << endl;
+    /// @brief Write system information from Windows registry to .log file
+    void Logger::LogSystemInformation()
+    {
+        Logger::Log() << "Hardware information" << endl;
+        Logger::Log() << "OS version : "
+                      << Helper::Instance->GetWindowsVersion()   << ' '
+                      << Helper::Instance->GetWindowsBitString() << endl;
+        Logger::Log() << "Processor  : " << Helper::Instance->GetProcessorInfo() << endl;
+        Logger::Log() << "Memory     : " << Helper::Instance->GetMemoryInfo() << endl << endl;
 
 		Logger::Log() << "Software information" << endl;
 

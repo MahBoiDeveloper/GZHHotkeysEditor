@@ -28,21 +28,16 @@ int main(int argc, char *argv[])
 		CSFparser::Instance = make_unique<CSFparser>("..\\..\\src\\csfSamples\\generalsRU.csf");
 		CSFparser::Instance->Save("LTMP.csf");
 
-		QApplication HotkeyEditor(argc, argv);
-		MainWidget HotkeyEditor_Window;
-		HotkeyEditor_Window.show();
-		HotkeyEditor.exec();
-	}
-	catch(const exception& e)
-	{
-		Logger::Instance->Log() << "I'VE GOT A PRESENT FOR YA" << endl;
-		Logger::Instance->Log(string(e.what()));
-	}
-	catch(...)
-	{
-		Logger::Instance->Log() << "I'VE GOT A PRESENT FOR YA" << endl;
-		Logger::Instance->Log() << current_exception().__cxa_exception_type()->name() << endl;
-	}
+        QApplication HotkeyEditor(argc, argv);
+        MainWidget HotkeyEditor_Window;
+        HotkeyEditor_Window.show();
+        HotkeyEditor.exec();
+    }
+    catch(const exception& e)
+    {
+        Logger::Instance->Log() << "I'VE GOT A PRESENT FOR YA" << endl;
+        Logger::Instance->Log(string(e.what()));
+    }
 
 	return 0;
 }
