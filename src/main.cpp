@@ -10,26 +10,26 @@
 #include "gui/mainwidget.hpp"
 #include "Logger.hpp"
 #include "Helper.hpp"
-#include "CSFparser.hpp"
+#include "CSFParser.hpp"
 
 int main(int argc, char *argv[])
 {
-	// All out text MUST be showed via wcout and all chars should be converted as (wchar_t)
-	_setmode(_fileno(stdout), _O_U16TEXT);
+    // All out text MUST be showed via wcout and all chars should be converted as (wchar_t)
+    _setmode(_fileno(stdout), _O_U16TEXT);
 
-	// Walk around class with collection of useful methods
-	Helper::Instance = make_unique<Helper>();
+    // Walk around class with collection of useful methods
+    Helper::Instance = make_unique<Helper>();
 
-	// Define logger as the global variable
-	Logger::Instance = make_unique<Logger>("Log.log");
+    // Define logger as the global variable
+    Logger::Instance = make_unique<Logger>("Log.log");
 
-	try
-	{
-		CSFparser::Instance = make_unique<CSFparser>("..\\..\\src\\csfSamples\\generalsRU.csf");
-		CSFparser::Instance->Save("LTMP.csf");
+    try
+    {
+        CSFParser::Instance = make_unique<CSFParser>("..\\..\\src\\csfSamples\\generalsRU.csf");
+        CSFParser::Instance->Save("LTMP.csf");
 
         string strTmp("CONTROLBAR:LaserMissileAttack");
-        wcout << CSFparser::Instance->GetHotkey(strTmp) << endl;
+        wcout << CSFParser::Instance->GetHotkey(strTmp) << endl;
 
         QApplication HotkeyEditor(argc, argv);
         MainWidget HotkeyEditor_Window;
@@ -42,5 +42,5 @@ int main(int argc, char *argv[])
         Logger::Instance->Log(string(e.what()));
     }
 
-	return 0;
+    return 0;
 }
