@@ -28,6 +28,9 @@ int main(int argc, char *argv[])
 		CSFparser::Instance = make_unique<CSFparser>("..\\..\\src\\csfSamples\\generalsRU.csf");
 		CSFparser::Instance->Save("LTMP.csf");
 
+        string strTmp("CONTROLBAR:LaserMissileAttack");
+        wcout << CSFparser::Instance->GetHotkey(strTmp) << endl;
+
         QApplication HotkeyEditor(argc, argv);
         MainWidget HotkeyEditor_Window;
         HotkeyEditor_Window.show();

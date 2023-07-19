@@ -263,7 +263,7 @@
 
 	list<string> CSFparser::GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName)
 	{
-		list<string>returnList;
+		list<string> returnList;
 
 		for (const auto& elem : Table)
 			if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
@@ -284,6 +284,37 @@
 				if (elem.Name == strName)
 				{
 					returnList.push_back(elem);
+					break;
+				}
+
+		return returnList;
+	}
+
+	wchar_t CSFparser::GetHotkey(const string& strName)
+	{
+		wchar_t hk = L'\0';
+		size_t index = 0;
+
+		for (const auto& elem : Table)
+			if (elem.Name == strName)
+				if ((index = elem.Value.find_first_of(L'&')) <= elem.Value.size())
+				{
+					hk = elem.Value.at(index + 1);
+					break;
+				}
+
+		return hk;
+	}
+
+	list<HotkeyAssociation> CSFparser::GetHotkeys(const list<string>& lstStringNames)
+	{
+		list<HotkeyAssociation> returnList;
+
+		for (const auto& strName : lstStringNames)
+			for (const auto& elem : Table)
+				if (strName == elem.Name)
+				{
+					returnList.push_back({strName, CSFparser::GetHotkey(strName)});
 					break;
 				}
 

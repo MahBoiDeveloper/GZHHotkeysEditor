@@ -16,6 +16,13 @@ public:
 	wstring Value;
 };
 
+struct HotkeyAssociation
+{
+public:
+	string StringName;
+	wchar_t HotkeyLetter;
+};
+
 struct CSFHeader
 {
 public:
@@ -59,13 +66,15 @@ public:
 	void Save(string strFileName);
 
 	list<string> GetStringNames();
-	wstring	  GetStringValue(const string& strName);
+	wstring      GetStringValue(const string& strName);
 	list<string> GetCategories();
 	list<string> GetCategoryStrings(const string& strCategoryName);
 	list<string> GetCategoryStringsWithFullNames(const string& strCategoryName);
 	list<string> GetStringsContainsSymbol(const wchar_t& wch);
 	list<string> GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName);
 	list<CompiledString> GetStringsByNameList(const list<string>& lstNames);
+	wchar_t GetHotkey(const string& strName);
+	list<HotkeyAssociation> GetHotkeys(const list<string>& lstStringNames);
 
 	void SetStringValue(const string& strName, const wstring& wstrValue);
 	void SetStringValue(const CompiledString& stString);
