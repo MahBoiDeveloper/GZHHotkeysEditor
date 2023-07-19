@@ -1,5 +1,13 @@
 project(GZHHotkeysEditor)
 get_property(PROJECT_DESTINATION_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_FOLDER) # exe folder
+get_property(PROJECT_DESTINATION_BIN_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_BIN_FOLDER) # bin folder
+
+# target names
+set(MAIN_TARGET_NAME ${PROJECT_NAME})
+set(LINK_MAIN_TARGET_NAME "Link${MAIN_TARGET_NAME}")
+
+# target link source files
+file(GLOB_RECURSE TARGET_LINK_SOURCES "mainLink.cpp")
 
 # project sources
 file(
@@ -8,6 +16,8 @@ file(
     RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
 )
+list(REMOVE_ITEM SOURCES ${TARGET_LINK_SOURCES})
+
 # project headers
 file(
     GLOB HEADERS
@@ -16,42 +26,61 @@ file(
     ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
 )
 
+# link (to main) target
+add_executable(${LINK_MAIN_TARGET_NAME}
+    ${TARGET_LINK_SOURCES}
+)
+set_target_properties(${LINK_MAIN_TARGET_NAME}
+    PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_FOLDER}
+)
+target_compile_definitions(${LINK_MAIN_TARGET_NAME} PRIVATE
+    -DPROJECT_EXE_PATH="$<TARGET_FILE:${MAIN_TARGET_NAME}>"
+)
+
 # main target
-add_executable(GZHHotkeysEditor
+add_executable(${MAIN_TARGET_NAME}
     ${SOURCES}
     ${HEADERS}
 )
-set_target_properties(GZHHotkeysEditor
+set_target_properties(${MAIN_TARGET_NAME}
     PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
-    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_FOLDER}
+    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_BIN_FOLDER}
 )
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
+
 # link gui subproject
 subdirs(gui)
-target_link_libraries(GZHHotkeysEditor
+target_link_libraries(${MAIN_TARGET_NAME}
     PRIVATE Gui
 )
+
+# flags
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
+# look https://cmake.org/pipermail/cmake/2018-August/068011.html
+set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ -lwsock32 -lws2_32 ${CMAKE_CSS_STANDARD_LIBRARIES}")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive")
 
 #---------------Qt libs deploy-----------------
 # set(QT_PLUGIN_PATH "${CMAKE_PREFIX_PATH}/plugins/platforms")
 if(WIN32)
-    target_link_libraries(GZHHotkeysEditor
+    target_link_libraries(${MAIN_TARGET_NAME}
         PRIVATE rpcrt4
     )
     set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
     if(CMAKE_BUILD_TYPE STREQUAL "Release")
+        # relese qt dll-s
         add_custom_command(
-            TARGET GZHHotkeysEditor POST_BUILD
+            TARGET ${MAIN_TARGET_NAME} POST_BUILD
             COMMAND "${CMAKE_PREFIX_PATH}/bin/windeployqt.exe"
                 # --release
                 # --no-compiler-runtime
                 --compiler-runtime
                 --force
-                --dir "${PROJECT_DESTINATION_FOLDER}"
+                --dir $<TARGET_PROPERTY:${MAIN_TARGET_NAME},RUNTIME_OUTPUT_DIRECTORY>
                 # --dir "${CMAKE_CURRENT_BINARY_DIR}/deploy"
-                $<TARGET_FILE:GZHHotkeysEditor>
+                $<TARGET_FILE:${MAIN_TARGET_NAME}>
         )
     endif()
 endif()

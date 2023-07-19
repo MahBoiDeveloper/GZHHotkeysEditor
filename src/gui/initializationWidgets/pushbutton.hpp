@@ -1,6 +1,7 @@
 #pragma once
 #include <QPushButton>
 
+// outdated resized widget (currently not in use)
 class PushButton : public QPushButton
 {
     Q_OBJECT

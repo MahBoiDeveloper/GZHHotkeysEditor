@@ -13,13 +13,7 @@ StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
         [=](int index){
             Config::Languages lang = static_cast<Config::Languages>(index);
             // delete old translator
-            if (translator != nullptr)
-            {
-                QCoreApplication::removeTranslator(translator);
-                // there was bug
-//                delete translator;
-//                translator->deleteLater();
-            }
+            if (translator != nullptr) QCoreApplication::removeTranslator(translator);
             // create new translator
             if (lang != Config::Languages::English) {
                 translator = new QTranslator;
@@ -78,13 +72,13 @@ MainWidget::MainWidget(QWidget *parent)
 {
     // Application settings
     QFont mainFont(QApplication::font());
-    mainFont.setPointSize(12);
+    mainFont.setPointSize(14);
     mainFont.setFamily("Consolas");
     QApplication::setFont(mainFont);
     qApp->setStyleSheet("QPushButton { padding: 10px; }"); // spacing between border and text
 
     // MainWidget settings
-    resize(700,500);
+    setFixedSize(1000, 800);
     addWidget(initRespawnStartWidget());
 }
 
