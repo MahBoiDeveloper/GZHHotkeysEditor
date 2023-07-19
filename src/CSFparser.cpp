@@ -84,8 +84,8 @@
 			uint8_t labelName[labelNameLength];
 			csfFile->read(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
-			string  stringName(reinterpret_cast<char*>(labelName));
-			wstring stringValue = EMPTY_WSTRING;
+			string  stringName       = Helper::Instance->CharArrayToString(sizeof(labelName), reinterpret_cast<const char*>(labelName));
+			wstring stringValue      = EMPTY_WSTRING;
 			string  extraStringValue = EMPTY_STRING;
 
 			// There possible situation where exists empty strings
@@ -107,7 +107,7 @@
 				for (int tmp = 0; tmp < valueLenght; tmp++)
 					wchBufferValue[tmp] = ~wchBufferValue[tmp];
 
-				stringValue = Helper::Instance->WharArrayToWstring(valueLenght, wchBufferValue);
+				stringValue = Helper::Instance->WharArrayToWstring(valueLenght, reinterpret_cast<const wchar_t*>(wchBufferValue));
 
 				// Read extra value and do not write bcs it's useless
 				if((char)rtsOrWrts[0] == 'W')
@@ -117,8 +117,6 @@
 
 					uint8_t extraValue[extraValueLength];
 					csfFile->read(reinterpret_cast<char*>(&extraValue), sizeof(extraValue));
-
-					extraStringValue = string(reinterpret_cast<char*>(extraValue));
 				}
 					
 				Table.push_back({stringName, stringValue});
