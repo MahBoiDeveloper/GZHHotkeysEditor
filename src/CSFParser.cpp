@@ -319,6 +319,35 @@
 #pragma endregion
 
 #pragma region Setters
+    void CSFParser::SetHotkey(const string& strName, const wchar_t& wchLetter)
+    {
+        for (auto& elem : Table)
+            if (elem.Name == strName)
+            {
+                size_t index = 0, size = elem.Value.size();
+                wstringstream wss;
+
+                index = elem.Value.find_first_of(L'&');
+
+                if(index <= elem.Value.size())
+                {
+                    // If we could find something like [&F], then we just replace the letter
+                    if(elem.Value[index - 1] == L'[' && elem.Value[index + 2] == L']')
+                    {
+                        elem.Value[index + 1] = wchLetter;
+                    }
+                    // If no, then we add [&wch] to begin of the value and delete & in text
+                    else
+                    {
+                        wss << L"[&" << wchLetter << L"] " << elem.Value.substr(0, index) << elem.Value.substr(index + 1, size - index + 1);
+                        elem.Value = wss.str();
+                    }
+                }
+
+                break;                
+            }
+    }
+
     void CSFParser::SetStringValue(const string& strName, const wstring& wstrValue)
     {
         for (auto& elem : Table)

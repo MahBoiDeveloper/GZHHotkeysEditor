@@ -77,6 +77,7 @@ public:
     wchar_t GetHotkey(const string& strName)                                                 const;
     list<HotkeyAssociation> GetHotkeys(const list<string>& lstStringNames)                   const;
 
+    void SetHotkey(const string& strName, const wchar_t& wchLetter);
     void SetStringValue(const string& strName, const wstring& wstrValue);
     void SetStringValue(const CompiledString& stString);
     void SetStringsValue(const list<CompiledString>& lstChanges);
