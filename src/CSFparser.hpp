@@ -30,7 +30,7 @@ public:
 class CSFparser
 {
 public: // Data
-	static inline unique_ptr<CSFparser> Instance;
+    static inline unique_ptr<CSFparser> Instance;
 
 private:
 	const uint8_t FSC[4]  {' ', 'F', 'S', 'C'}; // Begining of any CSF file header
@@ -42,7 +42,7 @@ private:
 	string Path;
 	CSFHeader Header;
 
-	list<CompiledString> Table;
+    list<CompiledString> Table;
 
 private: // Methods
 	void Parse();
@@ -53,20 +53,21 @@ private: // Methods
 	void WriteBody(ofstream* csfFile);
 
 public:
-	CSFparser(const string& strFilePath);
+    CSFparser(const string& strFilePath);
 
 	void Save();
 	void Save(string strFileName);
 
-	list<string> GetStringNames();
-	wstring		 GetStringValue(string strName);
-	list<string> GetCategories();
-	list<string> GetCategoryStrings(string strCategoryName);
-	list<string> GetCategoryStringsWithFullNames(string strCategoryName);
-	list<string> GetStringsContainsSymbol(wchar_t wch);
-	list<string> GetStringsContainsSymbol(wchar_t wch, string strCategoryName);
+    list<string> GetStringNames();
+    wstring      GetStringValue(const string& strName);
+    list<string> GetCategories();
+    list<string> GetCategoryStrings(const string& strCategoryName);
+    list<string> GetCategoryStringsWithFullNames(const string& strCategoryName);
+    list<string> GetStringsContainsSymbol(const wchar_t& wch);
+    list<string> GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName);
+    list<CompiledString> GetStringsByNameList(const list<string>& lstNames);
 
-	void SetStringValue(const string& strName, const wstring& wstrValue);
-	void SetStringValue(const CompiledString& stString);
-	void SetStringsValue(const list<CompiledString>& pListOfChanges);
+    void SetStringValue(const string& strName, const wstring& wstrValue);
+    void SetStringValue(const CompiledString& stString);
+    void SetStringsValue(const list<CompiledString>& lstChanges);
 };

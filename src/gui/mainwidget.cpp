@@ -42,7 +42,7 @@ StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
 				setCurrentWidget(creatorWidget); // next window (creator)
 				// if accepted -> create redactor with configs and delete other widgets
 				connect(creatorWidget, &CreatorWidget::acceptedConfiguration, this,
-					[=](Helper::GAMES game, bool saveToGame){
+					[=](Helper::Games game, bool saveToGame){
 						for(int i = 0; i < count(); i++) // delete other widgets
 							widget(i)->deleteLater();
 						addWidget(new Editor(game, saveToGame));
@@ -60,7 +60,7 @@ StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
 						qDebug() << filePath;
 						for(int i = 0; i < count(); i++) // delete other widgets
 							widget(i)->deleteLater();
-						addWidget(new Editor(Helper::GAMES::GENERALS, false));
+						addWidget(new Editor(Helper::Games::Generals, false));
 					}
 				);
 				break;

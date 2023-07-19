@@ -16,7 +16,7 @@ private:
 
 private:
 	void LogSystemInformation();
-	string GetCurrTime() const;
+	string GetCurrentTime() const;
 
 public:
 	Logger(const string& logFilePath);

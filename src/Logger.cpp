@@ -34,37 +34,37 @@
 		Logger::Log() << "Software information" << endl;
 
 		// log all games paths
-		for (const auto & game : {Helper::GAMES::GENERALS, Helper::GAMES::GENERALS_ZERO_HOUR})
+		for (const auto & game : {Helper::Games::Generals, Helper::Games::GeneralsZeroHour})
 		{
-			if (Helper::pathToGame(game).empty())
-				Logger::Log() << "C&C: " << Helper::gameEnumToString(game) << " not installed" << endl;
+			if (Helper::PathToGame(game).empty())
+				Logger::Log() << "C&C: " << Helper::GameEnumToString(game) << " not installed" << endl;
 			else
-				Logger::Log() << "C&C: " << Helper::gameEnumToString(game) << " installed at ["
-							  << Helper::pathToGame(game) << ']' << endl;
+				Logger::Log() << "C&C: " << Helper::GameEnumToString(game) << " installed at ["
+							  << Helper::PathToGame(game) << ']' << endl;
 		}
 		LogFile << endl;
 	}
 
-	// get current log time
-	string Logger::GetCurrTime() const
-	{
-		time_t timeStomp = time(nullptr);
-		tm timeNow;
-		localtime_s(&timeNow, &timeStomp);
+    /// @brief Get current time in yyyy-MM-dd format
+    string Logger::GetCurrentTime() const
+    {
+        time_t timeStomp = time(nullptr);
+        tm timeNow;
+        localtime_s(&timeNow, &timeStomp);
 
-		char currentTime[128];
-		strftime(currentTime, sizeof(currentTime), "%Y-%m-%d %X", &timeNow);
+        char currentTime[128];
+        strftime(currentTime, sizeof(currentTime), "%Y-%m-%d %X", &timeNow);
 
-		stringstream ss;
-		ss << currentTime;
+        stringstream ss;
+        ss << currentTime;
 
-		return ss.str();
-	}
+        return ss.str();
+    }
 
 	// log methods
 	ofstream& Logger::Log()
 	{
-		LogFile << "[" << Logger::GetCurrTime().c_str() << "]\t";
+		LogFile << "[" << Logger::GetCurrentTime().c_str() << "]\t";
 		return LogFile;
 	}
 	void Logger::Log(const stringstream& msg)

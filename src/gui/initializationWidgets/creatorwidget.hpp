@@ -14,5 +14,5 @@ class CreatorWidget : public QDialog
 public:
 	CreatorWidget(QWidget *parent = nullptr);
 signals:
-	void acceptedConfiguration(Helper::GAMES game, bool saveToGame);
+	void acceptedConfiguration(Helper::Games game, bool saveToGame);
 };

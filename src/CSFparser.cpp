@@ -1,6 +1,6 @@
 #include "CSFparser.hpp"
 #include "Logger.hpp"
-#include "info.hpp"
+#include "Helper.hpp"
 
 #pragma region ctor and dtor
 	CSFparser::CSFparser(const string& filePath) : Path(filePath)
@@ -107,7 +107,7 @@
 				for (int tmp = 0; tmp < valueLenght; tmp++)
 					wchBufferValue[tmp] = ~wchBufferValue[tmp];
 
-				stringValue = wstring(wchBufferValue);
+                stringValue = Helper::Instance->WharArrayToWstring(valueLenght, wchBufferValue);
 
 				// Read extra value and do not write bcs it's useless
 				if((char)rtsOrWrts[0] == 'W')
@@ -192,7 +192,7 @@
 #pragma endregion
 
 #pragma region Getters
-	wstring CSFparser::GetStringValue(string strName)
+	wstring CSFparser::GetStringValue(const string& strName)
 	{
 		for (const auto& elem : Table)
 			if (elem.Name == strName)
@@ -226,7 +226,7 @@
 		return returnList;
 	}
 
-	list<string> CSFparser::GetCategoryStrings(string strCategoryName)
+	list<string> CSFparser::GetCategoryStrings(const string& strCategoryName)
 	{
 		list<string>returnList;
 
@@ -238,7 +238,7 @@
 		return returnList;
 	}
 
-	list<string> CSFparser::GetCategoryStringsWithFullNames(string strCategoryName)
+	list<string> CSFparser::GetCategoryStringsWithFullNames(const string& strCategoryName)
 	{
 		list<string>returnList;
 
@@ -250,7 +250,7 @@
 		return returnList;
 	}
 	
-	list<string> CSFparser::GetStringsContainsSymbol(wchar_t wch)
+	list<string> CSFparser::GetStringsContainsSymbol(const wchar_t& wch)
 	{
 		list<string>returnList;
 		
@@ -263,7 +263,7 @@
 		return returnList;
 	}
 
-	list<string> CSFparser::GetStringsContainsSymbol(wchar_t wch, string strCategoryName)
+	list<string> CSFparser::GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName)
 	{
 		list<string>returnList;
 
@@ -274,8 +274,23 @@
 
 		returnList.sort();
 
-		return returnList;
-	}
+        return returnList;
+    }
+
+    list<CompiledString> CSFparser::GetStringsByNameList(const list<string>& lstNames)
+    {
+        list<CompiledString> returnList;
+
+        for (const auto& strName : lstNames)
+            for (const auto& elem : Table)
+                if (elem.Name == strName)
+                {
+                    returnList.push_back(elem);
+                    break;
+                }
+
+        return returnList;
+    }
 #pragma endregion
 
 #pragma region Setters

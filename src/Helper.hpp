@@ -5,6 +5,10 @@
 #include <list>
 #include <string>
 #include <memory>
+#include <iostream>
+
+#define EMPTY_WSTRING to_wstring('\0')
+#define EMPTY_STRING  to_string ('\0')
 
 using namespace std;
 
@@ -12,56 +16,66 @@ using namespace std;
 class Helper
 {
 public:
-	enum class WINDOWS_BIT {
-		WIN_32 = 0,
-		WIN_64 = 1
-	};
+    enum class WindowsBit
+    {
+        Win32 = 0,
+        Win64 = 1
+    };
 
-	enum class GAMES {
-		GENERALS = 0,
-		GENERALS_ZERO_HOUR = 1
-	};
-	static inline string gameEnumToString(GAMES game)
-	{
-		switch (game) {
-		case GAMES::GENERALS:
-			return "Generals";
-			break;
-		case GAMES::GENERALS_ZERO_HOUR:
-			return "Generals Zero Hour";
-			break;
-		default:
-			return gameEnumToString(GAMES::GENERALS);
-			break;
-		}
-	}
+    enum class Games
+    {
+        Generals         = 0,
+        GeneralsZeroHour = 1
+    };
 
-	static inline const map<GAMES,map<WINDOWS_BIT,string>> pathsToGamesMap =
-	{
-		{GAMES::GENERALS,		    {{WINDOWS_BIT::WIN_32, "SOFTWARE\\Electronic Arts\\EA Games\\Generals"},
-									 {WINDOWS_BIT::WIN_64, "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Generals"}}},
-		{GAMES::GENERALS_ZERO_HOUR,	{{WINDOWS_BIT::WIN_32, "SOFTWARE\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour"},
-									 {WINDOWS_BIT::WIN_64, "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour"}}},
-	};
-	static string pathToGame(GAMES game);
+    inline static const map<Games,map<WindowsBit,string>> pathsToGamesMap =
+    {
+        {Games::Generals,         {{WindowsBit::Win32, "SOFTWARE\\Electronic Arts\\EA Games\\Generals"},
+                                   {WindowsBit::Win64, "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Generals"}}},
+        {Games::GeneralsZeroHour, {{WindowsBit::Win32, "SOFTWARE\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour"},
+                                   {WindowsBit::Win64, "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour"}}},
+    };
 
-	inline static unique_ptr<Helper> Instance;
+    inline static unique_ptr<Helper> Instance;
 
 private:
-	static WINDOWS_BIT GetWindowsBit();
-	inline static WINDOWS_BIT WinBit = {GetWindowsBit()};
+    static WindowsBit GetWindowsBit();
+    inline static WindowsBit WinBit = {GetWindowsBit()};
 
 public:
-	// Uses in Logger
-	string GetProcessorInfo() const;
-	string GetMemoryInfo() const;
-	string GetWindowsBitString() const;
-	static WINDOWS_BIT winBit();
-	string GetWindowsVersion() const;
-	// Uses in CSFparser
-	string  GetUUID();
-	bool IsWindow64bit() const;
-	bool IsWindow32bit() const;
+    // Uses in Logger
+    string GetProcessorInfo();
+    string GetMemoryInfo();
+    string GetWindowsBitString();
+    static WindowsBit GetWinBit();
+    string GetWindowsVersion();
+    static string PathToGame(Games game);
+
+    inline static string GameEnumToString(Games game)
+    {
+        string returnValue = EMPTY_STRING;
+
+        switch (game)
+        {
+            case Games::Generals:
+                returnValue = "Generals";
+                break;
+            case Games::GeneralsZeroHour:
+                returnValue = "Generals Zero Hour";
+                break;
+        }
+
+        return returnValue;
+    }
+
+    // Uses in CSFparser
+    string  GetUUID();
+    string  CharArrayToString(const int& arrayLength, const char* pArray);
+    wstring WharArrayToWstring(const int& arrayLength, const wchar_t* pArray);
+
+    // Functions for general use
+    bool    IsWindow64bit();
+    bool    IsWindow32bit();
 private:
-	static string GetRegTextValue(const char* pPathToFolder, const char* pKeyName);
+    static string GetRegTextValue(const char* pPathToFolder, const char* pKeyName);
 };
