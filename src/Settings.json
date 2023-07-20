@@ -1,0 +1,37 @@
+{
+	"Language"   : "ru",
+	"Theme"      : "Default",
+	"DiscordRPC" : "false",
+
+	"TechnoTypes" : 
+	[
+		"Unit",
+		"Building",
+		"Upgrade"
+	],
+
+	"ForbiddenHotkeys" :
+	[
+		{
+			"TechnoType" : "Unit",
+			"Hotkeys"    :
+			[
+				"Q",
+				"W",
+				"E",
+				"A",
+				"G"
+			]
+		},
+
+		{
+			"TechnoType" : "Building",
+			"Hotkeys"    :
+			[
+				"Q",
+				"W",
+				"E"
+			]
+		}
+	]
+}
