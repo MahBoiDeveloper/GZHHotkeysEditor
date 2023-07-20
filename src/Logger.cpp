@@ -26,17 +26,22 @@
     /// @brief Write system information from Windows registry to .log file
     void Logger::LogSystemInformation()
     {
-        // Write all necessary information about MS Windows
-        Logger::Log() << "Hardware information" << endl;
-        Logger::Log() << "OS version : "
+        // Write to log all necessary information about MS Windows
+        Logger::Log() << "Operation System Information" << endl;
+        Logger::Log() << "Version   : "
                       << Helper::Instance->GetWindowsVersion()   << ' '
                       << Helper::Instance->GetWindowsBitString() << endl;
-        Logger::Log() << "Processor  : " << Helper::Instance->GetProcessorInfo() << endl;
-        Logger::Log() << "Memory     : " << Helper::Instance->GetMemoryInfo() << endl << endl;
+        Logger::Log() << "Language  : " << Helper::Instance->GetCurrentUserLanguage() << endl;
+        LogFile << endl;
 
-        Logger::Log() << "Software information" << endl;
+        // Write to log all information about processor type and memory size
+        Logger::Log() << "Hardware Information" << endl;
+        Logger::Log() << "Processor : " << Helper::Instance->GetProcessorInfo() << endl;
+        Logger::Log() << "Memory    : " << Helper::Instance->GetMemoryInfo() << endl << endl;
 
         // Write to log all games paths
+        Logger::Log() << "Software Information" << endl;
+
         for (const auto& game : {Helper::Games::Generals, Helper::Games::GeneralsZeroHour})
         {
             if (Helper::PathToGame(game).empty())
@@ -46,7 +51,6 @@
                               << Helper::PathToGame(game) << ']' << endl;
         }
 
-        // We need a 1 empty line to separate data
         LogFile << endl;
     }
 

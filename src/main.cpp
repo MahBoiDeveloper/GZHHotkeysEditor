@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
     {
         QApplication HotkeyEditor(argc, argv);
         MainWidget HotkeyEditor_Window;
+        HotkeyEditor_Window.setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
         HotkeyEditor_Window.show();
         HotkeyEditor.exec();
     }

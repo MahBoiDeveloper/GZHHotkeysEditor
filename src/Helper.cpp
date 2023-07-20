@@ -39,6 +39,25 @@
         return returnValue;
     }
     
+    /// @brief Returns current user language from HKCU\\Control Panel\\International\\Geo\\Name.
+    string Helper::GetCurrentUserLanguage() const
+    {
+        HKEY rKey;
+        DWORD Size = 256;
+        TCHAR Reget[Size] = { 0 };
+        char Path[] = "Control Panel\\International\\Geo";
+        char Key[]  = "Name";
+        
+        RegOpenKeyExA(HKEY_CURRENT_USER, &Path[0], 0, KEY_READ, &rKey);
+        RegQueryValueExA(rKey, &Key[0], NULL, NULL, (LPBYTE)&Reget, &Size);
+        RegCloseKey(rKey);
+        
+        string returnValue(Reget);
+        returnValue.shrink_to_fit();
+         
+        return returnValue;
+    }
+
     /// @brief Returns Windows version from HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProductName.
     string Helper::GetWindowsVersion() const
     {

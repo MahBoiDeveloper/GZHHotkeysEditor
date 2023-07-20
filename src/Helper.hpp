@@ -61,10 +61,11 @@ public:
 
         return returnValue;
     }
-    string GetProcessorInfo()    const;
-    string GetMemoryInfo()       const;
-    string GetWindowsBitString() const;
-    string GetWindowsVersion()   const;
+    string GetProcessorInfo()       const;
+    string GetMemoryInfo()          const;
+    string GetWindowsBitString()    const;
+    string GetWindowsVersion()      const;
+    string GetCurrentUserLanguage() const;
 
     // Uses in CSFparser
     string  GetUUID()                                                         const;
