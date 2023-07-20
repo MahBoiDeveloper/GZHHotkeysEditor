@@ -12,8 +12,7 @@
 
 using namespace std;
 
-// @brief Uses for collecting all unsorted methods and functions.
-class Helper
+class Helper final
 {
 public:
     enum class WindowsBit
@@ -62,10 +61,11 @@ public:
 
         return returnValue;
     }
-    string GetProcessorInfo()    const;
-    string GetMemoryInfo()       const;
-    string GetWindowsBitString() const;
-    string GetWindowsVersion()   const;
+    string GetProcessorInfo()       const;
+    string GetMemoryInfo()          const;
+    string GetWindowsBitString()    const;
+    string GetWindowsVersion()      const;
+    string GetCurrentUserLanguage() const;
 
     // Uses in CSFparser
     string  GetUUID()                                                         const;

@@ -3,6 +3,7 @@
 #include <QDialog>
 #include <QButtonGroup>
 #include <QCheckBox>
+
 #include "config.hpp"
 #include "../../Helper.hpp"
 

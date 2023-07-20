@@ -1,10 +1,11 @@
-#include "editor.hpp"
-#include "hotkeyelement.h"
 #include <QDebug>
 #include <QMenuBar>
 #include <QApplication>
 #include <QTranslator>
 #include <QScrollArea>
+
+#include "editor.hpp"
+#include "hotkeyelement.hpp"
 
 Editor::Editor(Helper::Games game, bool saveToGame, QWidget *parent)
     : QMainWindow(parent)

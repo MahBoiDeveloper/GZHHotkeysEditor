@@ -3,14 +3,14 @@
 
 // Internal cute logic
 #include <QApplication>
-// #include <QFile>
-// #include <QDebug>
+#include <QMessageBox>
 
 // Project files
 #include "gui/mainwidget.hpp"
-#include "Logger.hpp"
 #include "Helper.hpp"
+#include "Logger.hpp"
 #include "CSFParser.hpp"
+#include "JSONFile.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -21,22 +21,17 @@ int main(int argc, char *argv[])
     Helper::Instance = make_unique<Helper>();
 
     // Define logger as the global variable
-    Logger::Instance = make_unique<Logger>("Log.log");
+    Logger::Instance = make_unique<Logger>();
+
+    QApplication HotkeyEditor(argc, argv);
 
     try
     {
-        CSFParser::Instance = make_unique<CSFParser>("..\\..\\src\\csfSamples\\generalsRU.csf");
+        JSONFile jsonTest("Resources\\Settings.json");
+        Logger::Instance->Log(jsonTest.GetKeyValue("Language"));
 
-        string strTmp("CONTROLBAR:LaserMissileAttack");//GUI:BuddyAddReq
-        wcout << L"Found hotkey for [" << strTmp.c_str() << "] is a [" << CSFParser::Instance->GetHotkey(strTmp) << L']' << endl;
-        
-        CSFParser::Instance->SetHotkey(strTmp, L'T');
-        wcout << L'{' << CSFParser::Instance->GetStringValue(strTmp) << L'}' << endl;
-
-        CSFParser::Instance->Save("LTMP.csf");
-
-        QApplication HotkeyEditor(argc, argv);
         MainWidget HotkeyEditor_Window;
+        HotkeyEditor_Window.setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
         HotkeyEditor_Window.show();
         HotkeyEditor.exec();
     }
@@ -44,6 +39,8 @@ int main(int argc, char *argv[])
     {
         Logger::Instance->Log() << "I'VE GOT A PRESENT FOR YA" << endl;
         Logger::Instance->Log(string(e.what()));
+
+        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", e.what());
     }
 
     return 0;
