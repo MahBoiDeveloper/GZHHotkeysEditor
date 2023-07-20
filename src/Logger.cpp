@@ -86,7 +86,7 @@
         return ss.str();
     }
 
-    // @brief Writes [DATE-TIME] and return stream to write other data. Needs to be ended with `endl`
+    /// @brief Writes [DATE-TIME] and return stream to write other data. Needs to be ended with `endl`
     ofstream& Logger::Log()
     {
         LogFile << "[" << Logger::GetCurrentTime().c_str() << "]\t";

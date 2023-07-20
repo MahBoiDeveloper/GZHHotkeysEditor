@@ -3,14 +3,14 @@
 
 // Internal cute logic
 #include <QApplication>
-// #include <QFile>
-// #include <QDebug>
+#include <QMessageBox>
 
 // Project files
 #include "gui/mainwidget.hpp"
-#include "Logger.hpp"
 #include "Helper.hpp"
+#include "Logger.hpp"
 #include "CSFParser.hpp"
+#include "JSONFile.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -23,9 +23,13 @@ int main(int argc, char *argv[])
     // Define logger as the global variable
     Logger::Instance = make_unique<Logger>();
 
+    QApplication HotkeyEditor(argc, argv);
+
     try
     {
-        QApplication HotkeyEditor(argc, argv);
+        JSONFile jsonTest("Resources\\Settings.json");
+        Logger::Instance->Log(jsonTest.GetKeyValue("Language"));
+
         MainWidget HotkeyEditor_Window;
         HotkeyEditor_Window.setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
         HotkeyEditor_Window.show();
@@ -35,6 +39,8 @@ int main(int argc, char *argv[])
     {
         Logger::Instance->Log() << "I'VE GOT A PRESENT FOR YA" << endl;
         Logger::Instance->Log(string(e.what()));
+
+        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", e.what());
     }
 
     return 0;
