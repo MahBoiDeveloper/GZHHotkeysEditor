@@ -6,7 +6,7 @@
 class JSONFile final
 {
 public: // Data
-    const std::string SETTING = "Resources\\Settings.json";
+    inline const static std::string SETTING = "Resources\\Settings.json";
 private:
     std::string FileName;
     QJsonObject ParsedData;
