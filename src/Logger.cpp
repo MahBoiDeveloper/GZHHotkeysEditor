@@ -1,7 +1,8 @@
+#include <ctime>
+
 #include "Logger.hpp"
 #include "Helper.hpp"
 #include "Info.hpp"
-#include <ctime>
 
 #pragma region ctor and dtor
     Logger::Logger(const string& fileName)

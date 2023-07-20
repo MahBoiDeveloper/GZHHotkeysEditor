@@ -12,7 +12,6 @@
 
 using namespace std;
 
-// @brief Uses for collecting all unsorted methods and functions.
 class Helper final
 {
 public:

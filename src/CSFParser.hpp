@@ -37,7 +37,7 @@ public:
 class CSFParser final
 {
 public: // Data
-    static inline unique_ptr<CSFParser> Instance;
+    inline static unique_ptr<CSFParser> Instance;
 
 private:
     const uint8_t  FSC[4]  {' ', 'F', 'S', 'C'}; // Begining of any CSF file header
