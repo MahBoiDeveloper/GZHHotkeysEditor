@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     Helper::Instance = make_unique<Helper>();
 
     // Define logger as the global variable
-    Logger::Instance = make_unique<Logger>("Log.log");
+    Logger::Instance = make_unique<Logger>();
 
     try
     {

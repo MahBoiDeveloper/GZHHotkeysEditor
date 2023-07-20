@@ -16,10 +16,11 @@ private:
 
 private:
     void LogSystemInformation();
+    string GetLogFileName() const;
     string GetCurrentTime() const;
 
 public:
-    Logger(const string& logFilePath);
+    Logger();
     ~Logger();
 
     ofstream& Log();

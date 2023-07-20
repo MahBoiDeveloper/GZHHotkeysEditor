@@ -5,9 +5,9 @@
 #include "Info.hpp"
 
 #pragma region ctor and dtor
-    Logger::Logger(const string& fileName)
+    Logger::Logger()
     {
-        LogFile.open(fileName);
+        LogFile.open(GetLogFileName());
         
         Logger::Log() << "C&C Generals and Generals Zero Hour hotkey editor" << endl; 
         Logger::Log() << "Version: " << VERSION << endl;
@@ -50,7 +50,7 @@
         LogFile << endl;
     }
 
-    /// @brief Get current time in yyyy-MM-dd format
+    /// @brief Get current time in yyyy-MM-dd hh:mm:ss format
     string Logger::GetCurrentTime() const
     {
         time_t timeStomp = time(nullptr);
@@ -62,6 +62,22 @@
 
         stringstream ss;
         ss << currentTime;
+
+        return ss.str();
+    }
+
+    /// @brief Get file name like "Logs\\Log YYYY-mm-dd hh-MM-ss.log"
+    string Logger::GetLogFileName() const
+    {
+        time_t timeStomp = time(nullptr);
+        tm timeNow;
+        localtime_s(&timeNow, &timeStomp);
+
+        char currentTime[128];
+        strftime(currentTime, sizeof(currentTime), "%Y-%m-%d %H-%M-%S", &timeNow);
+
+        stringstream ss;
+        ss << "Logs\\Log " << currentTime << ".log";
 
         return ss.str();
     }
