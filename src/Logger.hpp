@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class Logger
+class Logger final
 {
 public:
     static inline unique_ptr<Logger> Instance;

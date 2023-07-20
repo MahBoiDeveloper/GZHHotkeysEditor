@@ -34,7 +34,7 @@ public:
     uint32_t languageCode;
 };
 
-class CSFParser
+class CSFParser final
 {
 public: // Data
     static inline unique_ptr<CSFParser> Instance;
@@ -57,7 +57,7 @@ private: // Methods
     void ReadBody(ifstream* csfFile);
 
     void WriteHeader(ofstream* csfFile);
-    void WriteBody(ofstream* csfFile) const;
+    void WriteBody(ofstream* csfFile);
 
 public:
     CSFParser(const string& strFilePath);

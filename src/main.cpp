@@ -27,7 +27,8 @@ int main(int argc, char *argv[])
     {
         CSFParser::Instance = make_unique<CSFParser>("..\\..\\src\\csfSamples\\generalsRU.csf");
 
-        string strTmp("CONTROLBAR:LaserMissileAttack");//GUI:BuddyAddReq
+        string strTmp("CONTROLBAR:LaserMissileAttack");
+        // string strTmp("GUI:BuddyAddReq");
         wcout << L"Found hotkey for [" << strTmp.c_str() << "] is a [" << CSFParser::Instance->GetHotkey(strTmp) << L']' << endl;
         
         CSFParser::Instance->SetHotkey(strTmp, L'T');

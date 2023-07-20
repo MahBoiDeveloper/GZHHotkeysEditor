@@ -10,6 +10,7 @@
 #pragma endregion
 
 #pragma region Parsing
+    /// @brief Internal of CSF file format.
     void CSFParser::Parse()
     {
         ifstream csfFile(Path, ios::binary | ios::in);
@@ -75,17 +76,20 @@
             // Works only if 4 chars are not equal ' LBL'
             if (breakFlag) continue;
          
+            // Read count of strings linked to one string label (name)
             uint32_t countOfStrings;
             csfFile->read(reinterpret_cast<char*>(&countOfStrings), sizeof(countOfStrings));
 
+            // Read string name without \0 sign
             uint32_t labelNameLength;
             csfFile->read(reinterpret_cast<char*>(&labelNameLength), sizeof(labelNameLength));
 
+            // Read ASCI-like string name without \0 sign
             uint8_t labelName[labelNameLength];
             csfFile->read(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
-            string  stringName       = Helper::Instance->CharArrayToString(sizeof(labelName),
-                                                                           reinterpret_cast<const char*>(labelName));
+            // Write string name with a special method due to string name doesn't have \0 sign
+            string  stringName       = Helper::Instance->CharArrayToString(sizeof(labelName), reinterpret_cast<const char*>(labelName));
             wstring stringValue      = EMPTY_WSTRING;
             string  extraStringValue = EMPTY_STRING;
 
@@ -108,6 +112,7 @@
                 for (int tmp = 0; tmp < valueLenght; tmp++)
                     wchBufferValue[tmp] = ~wchBufferValue[tmp];
 
+                // Write string name with a special method due to string name doesn't have \0 sign
                 stringValue = Helper::Instance->WharArrayToWstring(valueLenght, reinterpret_cast<const wchar_t*>(wchBufferValue));
 
                 // Read extra value and do not write bcs it's useless
@@ -119,12 +124,14 @@
                     uint8_t extraValue[extraValueLength];
                     csfFile->read(reinterpret_cast<char*>(&extraValue), sizeof(extraValue));
                 }
-              
-            Table.push_back({stringName, stringValue});
+
+                // Add CompiledString{string Name, wstring Value} to list
+                Table.push_back({stringName, stringValue});
             }
         }
     }
 
+    /// @brief Save compiled string table data to the specific file
     void CSFParser::Save(string strFileName)
     {
         ofstream csfFile{strFileName, ios::binary | ios::out};
@@ -146,6 +153,7 @@
         csfFile.close();
     }
 
+    /// @brief Save compiled sting table data to the parsed file before
     void CSFParser::Save()
     {
         Save(Path);
@@ -157,7 +165,7 @@
         csfFile->write(reinterpret_cast<char*>(&Header), sizeof(Header));
     }
 
-    void CSFParser::WriteBody(ofstream* csfFile) const
+    void CSFParser::WriteBody(ofstream* csfFile)
     {
         const uint32_t ONE_STRING = 1;
 
@@ -188,6 +196,7 @@
 #pragma endregion
 
 #pragma region Getters
+    /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
     wstring CSFParser::GetStringValue(const string& strName) const
     {
         for (const auto& elem : Table)
@@ -197,6 +206,7 @@
         return EMPTY_WSTRING;
     }
 
+    /// @brief Returns all string names in compiled sting table.
     list<string> CSFParser::GetStringNames() const
     {
         list<string> returnList;
@@ -204,27 +214,26 @@
         for (const auto& elem : Table)
             returnList.push_back(elem.Name);
 
-        returnList.sort();
-
         return returnList;
     }
 
+    /// @brief Returns list of categories (substrings before ':').
     list<string> CSFParser::GetCategories() const
     {
-        list<string>returnList;
+        list<string> returnList;
 
         for (const auto& elem : Table)
             returnList.push_back(elem.Name.substr(0, elem.Name.find_first_of(':', 0) ));
 
         returnList.sort();
         returnList.unique();
-
         return returnList;
     }
 
+    /// @brief Returns list of all strings in category with short name (substrings after ':').
     list<string> CSFParser::GetCategoryStrings(const string& strCategoryName) const
     {
-        list<string>returnList;
+        list<string> returnList;
 
         for (const auto& elem : Table)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
@@ -234,9 +243,10 @@
         return returnList;
     }
 
+    /// @brief Returns list of all strings in category.
     list<string> CSFParser::GetCategoryStringsWithFullNames(const string& strCategoryName) const
     {
-        list<string>returnList;
+        list<string> returnList;
 
         for (const auto& elem : Table)
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
@@ -246,9 +256,10 @@
         return returnList;
     }
     
+    /// @brief Returns list of all strings that values contains wide character.
     list<string> CSFParser::GetStringsContainsSymbol(const wchar_t& wch) const
     {
-        list<string>returnList;
+        list<string> returnList;
        
         for (const auto& elem : Table)
             if (elem.Value.find(wch) <= elem.Value.size())
@@ -258,6 +269,7 @@
         return returnList;
     }
 
+    /// @brief Returns list of all strings that values contains wide character in specific category.
     list<string> CSFParser::GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName) const
     {
         list<string> returnList;
@@ -271,6 +283,7 @@
         return returnList;
     }
 
+    /// @brief Returns list of full strings data.
     list<CompiledString> CSFParser::GetStringsByNameList(const list<string>& lstNames) const
     {
         list<CompiledString> returnList;
@@ -286,6 +299,7 @@
         return returnList;
     }
 
+    /// @brief Returns wide character (letter after & sign) assinged to keyboard key. 
     wchar_t CSFParser::GetHotkey(const string& strName) const
     {
         wchar_t hk = L'\0';
@@ -302,6 +316,7 @@
         return hk;
     }
 
+    /// @brief Returns list of data structs with string names and its keyboard key assignment.
     list<HotkeyAssociation> CSFParser::GetHotkeys(const list<string>& lstStringNames) const
     {
         list<HotkeyAssociation> returnList;
@@ -319,12 +334,13 @@
 #pragma endregion
 
 #pragma region Setters
+    /// @brief Searchs any match for string name and rewriting hotkey assignment for it.
     void CSFParser::SetHotkey(const string& strName, const wchar_t& wchLetter)
     {
         for (auto& elem : Table)
             if (elem.Name == strName)
             {
-                size_t index = 0, size = elem.Value.size();
+                size_t index = 0;
                 wstringstream wss;
 
                 index = elem.Value.find_first_of(L'&');
@@ -339,15 +355,14 @@
                     // If no, then we add [&wch] to begin of the value and delete & in text
                     else
                     {
-                        wss << L"[&" << wchLetter << L"] " << elem.Value.substr(0, index) << elem.Value.substr(index + 1, size - index + 1);
+                        wss << L"[&" << wchLetter << L"] " << elem.Value.substr(0, index) << elem.Value.substr(index + 1);
                         elem.Value = wss.str();
                     }
                 }
-
-                break;                
             }
     }
 
+    /// @brief Searchs any match for string name and rewriting its value.
     void CSFParser::SetStringValue(const string& strName, const wstring& wstrValue)
     {
         for (auto& elem : Table)
@@ -355,6 +370,7 @@
                 elem.Value = wstrValue;
     }
 
+    /// @brief Searchs any match for string name and rewriting its value.
     void CSFParser::SetStringValue(const CompiledString& stString)
     {
         for (auto& elem : Table)
@@ -362,9 +378,10 @@
                 elem.Value = stString.Value;
     }
 
+    /// @brief Searchs any match for string names and rewriting its values.
     void CSFParser::SetStringsValue(const list<CompiledString>& lstChanges)
     {
         for (const auto& elem : lstChanges)
-            CSFParser::SetStringValue(elem);
+            SetStringValue(elem);
     }
 #pragma endregion

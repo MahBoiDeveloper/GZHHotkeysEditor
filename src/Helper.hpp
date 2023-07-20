@@ -13,7 +13,7 @@
 using namespace std;
 
 // @brief Uses for collecting all unsorted methods and functions.
-class Helper
+class Helper final
 {
 public:
     enum class WindowsBit
