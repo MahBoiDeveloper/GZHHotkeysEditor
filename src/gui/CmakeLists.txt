@@ -36,10 +36,10 @@ file(MAKE_DIRECTORY ${TRANSLATION_DESTINATION_FOLDER}) # create if doesn't exist
 # generate source translations files
 find_program(LUPDATE_EXECUTABLE lupdate)
 foreach(LANGUAGE ${LANGUAGES})
-    set(TS_FILE ${CMAKE_CURRENT_SOURCE_DIR}/translations/${TARGET_NAME}_${LANGUAGE}.ts) # source language file
-    set (QM ${TRANSLATION_DESTINATION_FOLDER}/${TARGET_NAME}_${LANGUAGE}.qm) # bin translation file
+    set(TS_FILE ${CMAKE_CURRENT_SOURCE_DIR}/translations/${LANGUAGE}.ts) # source language file
+    # set (QM ${TRANSLATION_DESTINATION_FOLDER}/${TARGET_NAME}_${LANGUAGE}.qm) # bin translation file
     set (TRANSLATIONS ${TRANSLATIONS} ${TS_FILE}) # all source translation files
-    set (TRANSLATIONS_BINARY ${TRANSLATIONS_BINARY} ${QM})
+    # set (TRANSLATIONS_BINARY ${TRANSLATIONS_BINARY} ${QM})
     add_custom_command(
         TARGET translationSources
         POST_BUILD

@@ -2,7 +2,7 @@
 
 QString Config::LangEnumToString(const Languages& lang)
 {
-    QString fileBaseName = "Gui_";
+    QString fileBaseName = "";
     
     switch (lang)
     {
