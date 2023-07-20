@@ -1,8 +1,9 @@
-#include "pushbutton.hpp"
 #include <QDebug>
 #include <QEvent>
 #include <QApplication>
 #include <QResizeEvent>
+
+#include "pushbutton.hpp"
 
 int PushButton::getBaseHeight() const
 {

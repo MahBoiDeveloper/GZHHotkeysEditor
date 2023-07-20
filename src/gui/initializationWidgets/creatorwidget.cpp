@@ -1,8 +1,9 @@
-#include "creatorwidget.hpp"
 #include <QDialogButtonBox>
 #include <QRadioButton>
 #include <QPushButton>
 #include <QVBoxLayout>
+
+#include "creatorwidget.hpp"
 
 CreatorWidget::CreatorWidget(QWidget *parent)
     : QDialog(parent)

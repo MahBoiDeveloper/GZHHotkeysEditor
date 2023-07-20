@@ -25,17 +25,6 @@ int main(int argc, char *argv[])
 
     try
     {
-        CSFParser::Instance = make_unique<CSFParser>("..\\..\\src\\csfSamples\\generalsRU.csf");
-
-        string strTmp("CONTROLBAR:LaserMissileAttack");
-        // string strTmp("GUI:BuddyAddReq");
-        wcout << L"Found hotkey for [" << strTmp.c_str() << "] is a [" << CSFParser::Instance->GetHotkey(strTmp) << L']' << endl;
-        
-        CSFParser::Instance->SetHotkey(strTmp, L'T');
-        wcout << L'{' << CSFParser::Instance->GetStringValue(strTmp) << L'}' << endl;
-
-        CSFParser::Instance->Save("LTMP.csf");
-
         QApplication HotkeyEditor(argc, argv);
         MainWidget HotkeyEditor_Window;
         HotkeyEditor_Window.show();

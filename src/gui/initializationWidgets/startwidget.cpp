@@ -1,4 +1,3 @@
-#include "startwidget.hpp"
 #include <QButtonGroup>
 #include <QLayout>
 #include <QResizeEvent>
@@ -7,6 +6,8 @@
 #include <QApplication>
 #include <QComboBox>
 #include <QLabel>
+
+#include "startwidget.hpp"
 
 QPushButton* StartWidget::initButton(const QString& name) const
 {

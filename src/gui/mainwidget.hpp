@@ -1,6 +1,8 @@
 #pragma once
+
 #include <QStackedWidget>
 #include <QTranslator>
+
 #include "initializationWidgets/startwidget.hpp"
 
 class MainWidget : public QStackedWidget

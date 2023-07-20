@@ -1,9 +1,10 @@
 #include <QApplication>
+#include <QDebug>
+
 #include "mainwidget.hpp"
 #include "editor/editor.hpp"
 #include "initializationWidgets/creatorwidget.hpp"
 #include "initializationWidgets/loaderwidget.hpp"
-#include <QDebug>
 
 // method for recreating the start widget
 StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)

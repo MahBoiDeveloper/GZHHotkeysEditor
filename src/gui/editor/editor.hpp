@@ -1,7 +1,9 @@
 #pragma once
+
 #include <QMainWindow>
 #include <QHBoxLayout>
 #include <QLabel>
+
 #include "../../Helper.hpp"
 
 class Editor : public QMainWindow
