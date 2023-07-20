@@ -34,10 +34,10 @@ public:
     uint32_t languageCode;
 };
 
-class CSFParser
+class CSFParser final
 {
 public: // Data
-    static inline unique_ptr<CSFParser> Instance;
+    inline static unique_ptr<CSFParser> Instance;
 
 private:
     const uint8_t  FSC[4]  {' ', 'F', 'S', 'C'}; // Begining of any CSF file header
@@ -57,7 +57,7 @@ private: // Methods
     void ReadBody(ifstream* csfFile);
 
     void WriteHeader(ofstream* csfFile);
-    void WriteBody(ofstream* csfFile) const;
+    void WriteBody(ofstream* csfFile);
 
 public:
     CSFParser(const string& strFilePath);

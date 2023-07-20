@@ -1,10 +1,10 @@
-#include "hotkeyelement.h"
 #include <QHBoxLayout>
 #include <QKeyEvent>
 #include <QFile>
-#include "webp/decode.h"
-
 #include <QDebug>
+
+#include "webp/decode.h"
+#include "hotkeyelement.hpp"
 
 void HotkeyElement::keyPressEvent(QKeyEvent* event)
 {

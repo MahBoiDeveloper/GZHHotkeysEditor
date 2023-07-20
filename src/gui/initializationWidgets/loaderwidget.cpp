@@ -1,4 +1,3 @@
-#include "loaderwidget.hpp"
 #include <QDialogButtonBox>
 #include <QRadioButton>
 #include <QVBoxLayout>
@@ -7,6 +6,8 @@
 #include <QLineEdit>
 #include <QFontMetrics>
 #include <QDebug>
+
+#include "loaderwidget.hpp"
 
 LoaderWidget::LoaderWidget(QWidget *parent)
     : QDialog(parent)

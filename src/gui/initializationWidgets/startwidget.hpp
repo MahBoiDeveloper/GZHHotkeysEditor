@@ -1,9 +1,11 @@
 #pragma once
+
 #include <QWidget>
-//#include "pushbutton.hpp" // outdated
-#include "../config.hpp"
 #include <QPushButton>
 #include <QButtonGroup>
+
+#include "../config.hpp"
+//#include "pushbutton.hpp" // outdated
 
 class StartWidget : public QWidget
 {
