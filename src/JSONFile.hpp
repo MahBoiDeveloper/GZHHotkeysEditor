@@ -1,14 +1,14 @@
 #pragma once
 
 #include <string>
-
 #include <QJsonObject>
 
 class JSONFile final
 {
 public: // Data
-    std::string FileName;
+    const std::string SETTING = "Resources\\Settings.json";
 private:
+    std::string FileName;
     QJsonObject ParsedData;
 
 public: // Methods
