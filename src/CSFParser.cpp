@@ -341,7 +341,6 @@
             if (elem.Name == strName)
             {
                 size_t index = 0;
-                wstringstream wss;
 
                 index = elem.Value.find_first_of(L'&');
 
@@ -349,15 +348,11 @@
                 {
                     // If we could find something like [&F], then we just replace the letter
                     if(elem.Value[index - 1] == L'[' && elem.Value[index + 2] == L']')
-                    {
                         elem.Value[index + 1] = wchLetter;
-                    }
+
                     // If no, then we add [&wch] to begin of the value and delete & in text
                     else
-                    {
-                        wss << L"[&" << wchLetter << L"] " << elem.Value.substr(0, index) << elem.Value.substr(index + 1);
-                        elem.Value = wss.str();
-                    }
+                        elem.Value = elem.Value.erase(index, 1);
                 }
             }
     }
