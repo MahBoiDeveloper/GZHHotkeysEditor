@@ -78,6 +78,32 @@ set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ -lwsock32 -lw
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive")
 
 #---------------------------------------------------------------------------------
+#-----------------------------------jsoncons--------------------------------------
+#---------------------------------------------------------------------------------
+# set(CMAKE_LIBS_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/install)
+
+# if(POLICY CMP0135)
+#     cmake_policy(SET CMP0135 NEW)
+# endif()
+
+# include(ExternalProject)
+# ExternalProject_Add(jsoncons
+#     URL "https://github.com/danielaparker/jsoncons/archive/refs/tags/v0.171.0.zip"
+#     CMAKE_ARGS
+#         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+#         -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+#         -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_LIBS_INSTALL_PREFIX}
+#         -DJSONCONS_BUILD_TESTS=OFF
+# )
+
+# find_package(jsoncons PATHS ${CMAKE_LIBS_INSTALL_PREFIX})
+# target_include_directories(${JSON_LIB_TARGET_NAME} PRIVATE
+#     AFTER
+#     ${CMAKE_LIBS_INSTALL_PREFIX}/include
+# )
+#---------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------
 #-------------------------------Qt libs deploy------------------------------------
 #---------------------------------------------------------------------------------
 if(WIN32)
