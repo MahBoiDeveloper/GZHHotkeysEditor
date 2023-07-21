@@ -1,20 +1,18 @@
 #pragma once
 
 #include <string>
-#include <QJsonObject>
 
 class JSONFile final
 {
 public: // Data
-    inline const static std::string SETTING = "Resources\\Settings.json";
+    inline const static std::string SETTINGS  = "Resources\\Settings.json";
+    inline const statuc std::string TECH_TREE = "Resources\\TechTree.json";
 private:
     std::string FileName;
-    QJsonObject ParsedData;
 
 public: // Methods
     JSONFile() = delete;
     JSONFile(const std::string& filePath);
 
-    std::string GetKeyValue(const std::string& keyName) const;
-    QJsonObject GetObject(const std::string& keyName) const;
+    std::string GetValue(const std::string& strJsonPath) const;
 };
