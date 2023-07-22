@@ -27,9 +27,6 @@ int main(int argc, char *argv[])
 
     try
     {
-        JSONFile jsonTest("Resources\\Settings.json");
-        Logger::Instance->Log(jsonTest.GetKeyValue("Language"));
-
         MainWidget HotkeyEditor_Window;
         HotkeyEditor_Window.setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
         HotkeyEditor_Window.show();
@@ -37,9 +34,11 @@ int main(int argc, char *argv[])
     }
     catch(const exception& e)
     {
+        // Log exception message
         Logger::Instance->Log() << "I'VE GOT A PRESENT FOR YA" << endl;
         Logger::Instance->Log(string(e.what()));
 
+        // And show it to user
         QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", e.what());
     }
 
