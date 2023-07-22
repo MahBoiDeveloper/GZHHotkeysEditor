@@ -1,5 +1,7 @@
 #include <ctime>
 
+#include <QMessageBox>
+
 #include "Logger.hpp"
 #include "Helper.hpp"
 #include "Info.hpp"
@@ -9,6 +11,8 @@
     {
         LogFile.open(GetLogFileName());
         
+        if (!LogFile.is_open()) QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", "Unable to create log file; make sure \"Logs\" folder are exists.");
+
         Logger::Log() << "C&C Generals and Generals Zero Hour hotkey editor" << endl; 
         Logger::Log() << "Version: " << VERSION << endl;
         Logger::Log() << "Authors: " << AUTHORS << endl << endl;

@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     // Walk around class with collection of useful methods
     Helper::Instance = make_unique<Helper>();
 
-    // Define logger as the global variable
+    // Define logger as a singleton class, that could be used anywhere in project
     Logger::Instance = make_unique<Logger>();
 
     QApplication HotkeyEditor(argc, argv);

@@ -1,5 +1,6 @@
 #include "CSFParser.hpp"
 #include "Logger.hpp"
+#include "ExceptionMessage.hpp"
 #include "Helper.hpp"
 
 #pragma region ctor and dtor
@@ -15,7 +16,7 @@
     {
         ifstream csfFile(Path, ios::binary | ios::in);
 
-        Logger::Instance->Log() << "Attempt to read binary file \"" << Path << "\"" << endl;
+        Logger::Instance->Log() << "Attempt to read binary file \"" << Path << "\"..." << endl;
 
         if (csfFile.is_open())
         {
@@ -26,7 +27,7 @@
         }
         else
         {
-            Logger::Instance->Log() << "Could not open file \"" << Path << "\" to read" << endl;
+            throw ExceptionMessage(string("Bad file name; unable to open file \"" + Path + "\""));
         }
 
         csfFile.close();
@@ -337,6 +338,8 @@
     /// @brief Searchs any match for string name and rewriting hotkey assignment for it.
     void CSFParser::SetHotkey(const string& strName, const wchar_t& wchLetter)
     {
+        Logger::Instance->Log() << "Changing for string \"" << strName << "\" hotkey assingment to letter \"" << (const char)wchLetter << "\"" << endl;
+
         for (auto& elem : Table)
             if (elem.Name == strName)
             {
@@ -360,6 +363,8 @@
     /// @brief Searchs any match for string name and rewriting its value.
     void CSFParser::SetStringValue(const string& strName, const wstring& wstrValue)
     {
+        Logger::Instance->Log() << "Changing value for string \"" << strName << "\"" << endl;
+
         for (auto& elem : Table)
             if (elem.Name == strName)
                 elem.Value = wstrValue;
@@ -368,6 +373,8 @@
     /// @brief Searchs any match for string name and rewriting its value.
     void CSFParser::SetStringValue(const CompiledString& stString)
     {
+        Logger::Instance->Log() << "Changing value for string \"" << stString.Name << "\"" << endl;
+
         for (auto& elem : Table)
             if (elem.Name == stString.Name)
                 elem.Value = stString.Value;
