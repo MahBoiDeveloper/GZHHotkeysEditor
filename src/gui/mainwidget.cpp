@@ -10,6 +10,8 @@
 StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
 {
     StartWidget* startWidget = new StartWidget(language);
+
+    // Language set
     connect(startWidget, &StartWidget::languageChanged, this,
         [=](int index)
         {
@@ -42,6 +44,7 @@ StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
                 CreatorWidget* creatorWidget = new CreatorWidget;
                 addWidget(creatorWidget);
                 setCurrentWidget(creatorWidget); // next window (creator)
+
                 // if accepted -> create redactor with configs and delete other widgets
                 connect(creatorWidget, &CreatorWidget::acceptedConfiguration, this,
                     [=](Helper::Games game, bool saveToGame)
@@ -51,12 +54,14 @@ StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
                         addWidget(new Editor(game, saveToGame));
                     }
                 );
+
                 break;
             }
             case 1: {
                 LoaderWidget* loaderWidget = new LoaderWidget;
                 addWidget(loaderWidget);
                 setCurrentWidget(loaderWidget); // next window (creator)
+
                 // if accepted -> create redactor with configs and delete other widgets
                 connect(loaderWidget, &LoaderWidget::acceptedConfiguration, this,
                     [=](const QString& filePath)
@@ -67,6 +72,7 @@ StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
                         addWidget(new Editor(Helper::Games::Generals, false));
                     }
                 );
+
                 break;
             }
             default:

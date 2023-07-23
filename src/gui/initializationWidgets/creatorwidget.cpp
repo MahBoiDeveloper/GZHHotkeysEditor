@@ -5,16 +5,18 @@
 
 #include "creatorwidget.hpp"
 
-CreatorWidget::CreatorWidget(QWidget *parent)
-    : QDialog(parent)
+CreatorWidget::CreatorWidget(QWidget *parent) : QDialog(parent)
 {
     // configure game buttons
     QRadioButton* generalsButton = new QRadioButton(
                 QString::fromStdString(Helper::GameEnumToString(Helper::Games::Generals)));
+    generalsButton->setDisabled(true);
+
     QRadioButton* zeroHourButton = new QRadioButton(
                 QString::fromStdString(Helper::GameEnumToString(Helper::Games::GeneralsZeroHour)));
+
     groupB.setExclusive(true);
-    generalsButton->setChecked(true);
+    zeroHourButton->setChecked(true);
     groupB.addButton(generalsButton);
     groupB.addButton(zeroHourButton);
     QVBoxLayout* choiseL = new QVBoxLayout;
@@ -22,15 +24,17 @@ CreatorWidget::CreatorWidget(QWidget *parent)
     choiseL->addWidget(zeroHourButton);
 
     // configure save option
-    saveToGameBox.setText(tr("Save hotkeys dirrectly to the game"));
+    saveToGameBox.setText(tr("Save hotkeys dirrectly to the game."));
 
     // configure dialog buttons
     QDialogButtonBox* dialogBB = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
     dialogBB->button(QDialogButtonBox::Ok)->setText(tr("Configure"));
     dialogBB->button(QDialogButtonBox::Cancel)->setText(tr("Back"));
+    
     // emit accepted configurations
     connect(dialogBB, &QDialogButtonBox::accepted, this,
-        [=](){
+        [=]()
+        {
             emit acceptedConfiguration(static_cast<Helper::Games>(groupB.checkedId()),
                                                                   saveToGameBox.isChecked());
         ;}

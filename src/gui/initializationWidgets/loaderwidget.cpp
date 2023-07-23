@@ -9,8 +9,7 @@
 
 #include "loaderwidget.hpp"
 
-LoaderWidget::LoaderWidget(QWidget *parent)
-    : QDialog(parent)
+LoaderWidget::LoaderWidget(QWidget *parent) : QDialog(parent)
 {
     // configure file path selection
     QLineEdit* pathToFileLineEdit = new QLineEdit;
