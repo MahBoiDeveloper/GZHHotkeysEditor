@@ -5,29 +5,32 @@
 #include <fstream>
 #include <memory>
 
-using namespace std;
-
 class Logger final
 {
 public:
-    static inline unique_ptr<Logger> Instance;
+    static inline std::unique_ptr<Logger> Instance;
 private:
-    ofstream LogFile;
+    std::ofstream LogFile;
 
 private:
     void LogSystemInformation();
-    string GetLogFileName() const;
-    string GetCurrentTime() const;
+    std::string GetLogFileName() const;
+    std::string GetCurrentTime() const;
 
 public:
     Logger();
     ~Logger();
 
-    ofstream& Log();
+    std::ofstream& Log();
 
-    void Log(const stringstream& msg);
-    void Log(const string& msg);
+    void Log(const std::stringstream& msg);
+    void Log(const std::string& msg);
 
-    void Log(const wstringstream& msg);
-    void Log(const wstring& msg);
+    void Log(const std::wstringstream& msg);
+    void Log(const std::wstring& msg);
+private:
+    std::string GetCurrentUserLanguage() const;
+    std::string GetWindowsVersion()      const;
+    std::string GetProcessorInfo()       const;
+    std::string GetWindowsBit()          const;
 };

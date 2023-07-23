@@ -7,8 +7,7 @@
 #include "editor.hpp"
 #include "hotkeyelement.hpp"
 
-Editor::Editor(Helper::Games game, bool saveToGame, QWidget *parent)
-    : QMainWindow(parent)
+Editor::Editor(Registry::Games game, bool saveToGame, QWidget *parent) : QMainWindow(parent)
 {
     // configuring menu
     QMenu* fm = new QMenu(tr("File"));

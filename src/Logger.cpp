@@ -1,10 +1,12 @@
 #include <ctime>
-
 #include <QMessageBox>
 
 #include "Logger.hpp"
+#include "Registry.hpp"
 #include "Helper.hpp"
 #include "Info.hpp"
+
+using namespace std;
 
 #pragma region ctor and dtor
     Logger::Logger()
@@ -31,28 +33,27 @@
     void Logger::LogSystemInformation()
     {
         // Write to log all necessary information about MS Windows
-        Logger::Log() << "Operation System Information" << endl;
+        Logger::Log() << "Operation System Information"                      << endl;
         Logger::Log() << "Version   : "
-                      << Helper::Instance->GetWindowsVersion()   << ' '
-                      << Helper::Instance->GetWindowsBitString() << endl;
-        Logger::Log() << "Language  : " << Helper::Instance->GetCurrentUserLanguage() << endl;
-        LogFile << endl;
+                      << GetWindowsVersion()                                 << ' '
+                      << GetWindowsBit()                                     << endl;
+        Logger::Log() << "Language  : " << GetCurrentUserLanguage()          << endl << endl;
 
         // Write to log all information about processor type and memory size
-        Logger::Log() << "Hardware Information" << endl;
-        Logger::Log() << "Processor : " << Helper::Instance->GetProcessorInfo() << endl;
+        Logger::Log() << "Hardware Information"                              << endl;
+        Logger::Log() << "Processor : " << GetProcessorInfo()                << endl;
         Logger::Log() << "Memory    : " << Helper::Instance->GetMemoryInfo() << endl << endl;
 
         // Write to log all games paths
         Logger::Log() << "Software Information" << endl;
 
-        for (const auto& game : {Helper::Games::Generals, Helper::Games::GeneralsZeroHour})
+        for (const auto& game : {Registry::Games::Generals, Registry::Games::GeneralsZeroHour})
         {
-            if (Helper::PathToGame(game).empty())
-                Logger::Log() << "C&C: " << Helper::GameEnumToString(game) << " not installed" << endl;
+            if (Registry::Instance->GetPathToGame(game).empty())
+                Logger::Log() << "C&C: " << Registry::GameEnumToString(game) << " not installed" << endl;
             else
-                Logger::Log() << "C&C: " << Helper::GameEnumToString(game) << " installed at ["
-                              << Helper::PathToGame(game) << ']' << endl;
+                Logger::Log() << "C&C: " << Registry::GameEnumToString(game) << " installed at ["
+                              << Registry::Instance->GetPathToGame(game) << ']' << endl;
         }
 
         LogFile << endl;
@@ -115,5 +116,40 @@
     void Logger::Log(wstring const& msg)
     {
         Logger::Log() << msg.c_str() << endl;
+    }
+#pragma endregion
+
+#pragma region Support methods
+    /// @brief Returns current user language from HKCU\\Control Panel\\International\\Geo\\Name.
+    string Logger::GetCurrentUserLanguage() const
+    {
+        const char Path[] = {"Control Panel\\International\\Geo"};
+        const char Key[]  = {"Name"};
+        return Registry::Instance->GetTextFromKeyInHKCU(&Path[0], &Key[0]);
+    }
+
+    /// @brief Returns Windows version from HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProductName.
+    string Logger::GetWindowsVersion() const
+    {
+        const char Path[]  = {"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"};
+        const char Key[] = {"ProductName"};
+        return Registry::Instance->GetTextFromKeyInHKLM(&Path[0], &Key[0]);
+    }
+
+    /// @brief Returns processor vendor infomation from HKLM\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString.
+    string Logger::GetProcessorInfo() const
+    {
+        const char Path[]  = {"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"};
+        const char Value[] = {"ProcessorNameString"};
+        return Registry::Instance->GetTextFromKeyInHKLM(&Path[0], &Value[0]);
+    }
+
+    /// @brief Returns Windows bit as a string.
+    string Logger::GetWindowsBit() const
+    {
+        if (Registry::Instance->GetWindowsBit() == Registry::WindowsBit::Win32)
+            return "32-bit";
+        else
+            return "64-bit";
     }
 #pragma endregion

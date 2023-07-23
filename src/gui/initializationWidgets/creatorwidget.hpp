@@ -5,7 +5,7 @@
 #include <QCheckBox>
 
 #include "config.hpp"
-#include "../../Helper.hpp"
+#include "../../Registry.hpp"
 
 class CreatorWidget : public QDialog
 {
@@ -15,5 +15,5 @@ class CreatorWidget : public QDialog
 public:
     CreatorWidget(QWidget *parent = nullptr);
 signals:
-    void acceptedConfiguration(Helper::Games game, bool saveToGame);
+    void acceptedConfiguration(Registry::Games game, bool saveToGame);
 };

@@ -4,12 +4,12 @@
 #include <QHBoxLayout>
 #include <QLabel>
 
-#include "../../Helper.hpp"
+#include "../../Registry.hpp"
 
 class Editor : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    Editor(Helper::Games game, bool saveToGame, QWidget *parent = nullptr);
+    Editor(Registry::Games game, bool saveToGame, QWidget *parent = nullptr);
 };

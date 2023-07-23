@@ -9,6 +9,7 @@
 #include "gui/mainwidget.hpp"
 #include "Helper.hpp"
 #include "Logger.hpp"
+#include "Registry.hpp"
 #include "CSFParser.hpp"
 #include "JSONFile.hpp"
 
@@ -17,8 +18,9 @@ int main(int argc, char *argv[])
     // All out text MUST be showed via wcout and all chars should be converted as (wchar_t)
     _setmode(_fileno(stdout), _O_U16TEXT);
 
-    // Walk around class with collection of useful methods
-    Helper::Instance = make_unique<Helper>();
+    // Help around classes
+    Helper::Instance   = make_unique<Helper>();
+    Registry::Instance = make_unique<Registry>();
 
     // Define logger as a singleton class, that could be used anywhere in project
     Logger::Instance = make_unique<Logger>();
