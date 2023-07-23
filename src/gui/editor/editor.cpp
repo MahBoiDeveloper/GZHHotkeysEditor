@@ -17,19 +17,25 @@ Editor::Editor(Registry::Games game, bool saveToGame, QWidget *parent) : QMainWi
     QMenu* settingsM = new QMenu(tr("Settings"));
     menuBar()->addMenu(settingsM);
 
-//    QWidget* hotkeysWidget = new QWidget;
     QVBoxLayout* mainL = new QVBoxLayout;
 //    for(int i = 0; i < 7; i++)
 //        mainL->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
 //                                           QString("hotkey_%1").arg(i+1),
 //                                           QString("sources/icons/Gen1_Hacker_Icons.webp")));
 //    hotkeysWidget->setLayout(mainL);
+    QVBoxLayout* USA_L = new QVBoxLayout;
+    USA_L->addWidget(new QPushButton("USA"));
+    QHBoxLayout* USA_fractionsL = new QHBoxLayout;
+    USA_L->addWidget(new QPushButton("AIR"));
+    USA_L->addWidget(new QPushButton("LASER"));
+    USA_L->addWidget(new QPushButton("USA"));
 
-//    QScrollArea* scrollArea = new QScrollArea;
-//    scrollArea->setWidget(hotkeysWidget);
+//    fractionsL->addWidget(new QPushButton("CHINA"));
+//    fractionsL->addWidget(new QPushButton("GLA"));
 
-//    setCentralWidget(scrollArea);
+    QHBoxLayout* fractionsL = new QHBoxLayout;
 
+    // main widget
     QWidget* centralWidget = new QWidget;
     centralWidget->setLayout(mainL);
     setCentralWidget(centralWidget);

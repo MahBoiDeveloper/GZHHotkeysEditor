@@ -7,31 +7,20 @@
 
 using namespace std;
 
-Registry::Registry()
-{
-    ThisWindowsBit = SetWindowsBit();
-}
-
-/// @brief Uses for set Windows bit information.
-Registry::WindowsBit Registry::SetWindowsBit()
-{
-    HKEY rKey;
-    WindowsBit wbFoundBit;
-
-    if (RegOpenKeyExA(HKEY_LOCAL_MACHINE, _T("SOFTWARE\\WOW6432Node"), 0, KEY_QUERY_VALUE, &rKey) == ERROR_SUCCESS)
-        wbFoundBit = WindowsBit::Win64;
-    else
-        wbFoundBit = WindowsBit::Win32;
-
-    RegCloseKey(rKey);
-
-    return wbFoundBit;
-}
-
 /// @brief Returns actual Windows bit like a enum value.
 Registry::WindowsBit Registry::GetWindowsBit()
 {
-    return ThisWindowsBit;
+    HKEY rKey;
+    WindowsBit windowsBit;
+
+    if (RegOpenKeyExA(HKEY_LOCAL_MACHINE, _T("SOFTWARE\\WOW6432Node"), 0, KEY_QUERY_VALUE, &rKey) == ERROR_SUCCESS)
+        windowsBit = WindowsBit::Win64;
+    else
+        windowsBit = WindowsBit::Win32;
+
+    RegCloseKey(rKey);
+
+    return windowsBit;
 }
     
 /// @brief Returns REG_SZ string value from HKEY_LOCAL_MACHINE.
@@ -104,3 +93,29 @@ bool Registry::IsWindow32bit()
 {
     return GetWindowsBit() == WindowsBit::Win32;
 }
+
+#pragma region Support methods
+    /// @brief Returns current user language from HKCU\\Control Panel\\International\\Geo\\Name.
+    string Registry::GetCurrentUserLanguage()
+    {
+        const char Path[] = {"Control Panel\\International\\Geo"};
+        const char Key[]  = {"Name"};
+        return GetTextFromKeyInHKCU(&Path[0], &Key[0]);
+    }
+
+    /// @brief Returns Windows version from HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProductName.
+    string Registry::GetWindowsVersion()
+    {
+        const char Path[] = {"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"};
+        const char Key[]  = {"ProductName"};
+        return GetTextFromKeyInHKLM(&Path[0], &Key[0]);
+    }
+
+    /// @brief Returns processor vendor infomation from HKLM\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString.
+    string Registry::GetProcessorInfo()
+    {
+        const char Path[]  = {"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"};
+        const char Value[] = {"ProcessorNameString"};
+        return GetTextFromKeyInHKLM(&Path[0], &Value[0]);
+    }
+#pragma endregion

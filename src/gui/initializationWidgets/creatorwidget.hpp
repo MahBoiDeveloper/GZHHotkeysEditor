@@ -4,7 +4,6 @@
 #include <QButtonGroup>
 #include <QCheckBox>
 
-#include "config.hpp"
 #include "../../Registry.hpp"
 
 class CreatorWidget : public QDialog

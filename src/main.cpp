@@ -20,8 +20,6 @@ int main(int argc, char *argv[])
     // All out text MUST be showed via wcout and all chars should be converted as (wchar_t)
     _setmode(_fileno(stdout), _O_U16TEXT);
 
-    Registry::Instance = make_unique<Registry>();
-
     // Define logger as a singleton class, that could be used anywhere in project
     Logger::Instance   = make_unique<Logger>();
 
@@ -29,7 +27,10 @@ int main(int argc, char *argv[])
 
     try
     {
-        MainWidget HotkeyEditor_Window;
+        // create main window with user system language
+        MainWidget HotkeyEditor_Window(Config::GetLangEnumByLocale(
+            QString::fromStdString(Registry::GetCurrentUserLanguage()).toLower())
+        );
         HotkeyEditor_Window.setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
         HotkeyEditor_Window.show();
         HotkeyEditor.exec();

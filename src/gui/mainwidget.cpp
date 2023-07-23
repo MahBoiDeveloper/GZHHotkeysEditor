@@ -9,33 +9,29 @@
 // method for recreating the start widget
 StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
 {
+    // Set translator
+    onLanguageChanged(language);
+    // New StartWidget
     StartWidget* startWidget = new StartWidget(language);
 
-    // Language set
+    // Setting language
     connect(startWidget, &StartWidget::languageChanged, this,
         [=](int index)
         {
-            Config::Languages lang = static_cast<Config::Languages>(index);
+            Config::Languages language = static_cast<Config::Languages>(index);
 
-            // Delete old translator
-            if (translator != nullptr) QCoreApplication::removeTranslator(translator);
-
-            // Create new translator
-            if (lang != Config::Languages::English)
-            {
-                translator = new QTranslator;
-                translator->load(Config::LangEnumToString(lang), "Resources/Translations");
-                QCoreApplication::installTranslator(translator);
-            }
+            // Change translator
+            onLanguageChanged(language);
 
             // Recreate StartWidget
             startWidget->deleteLater();
-            addWidget(initRespawnStartWidget(lang));
+            addWidget(initRespawnStartWidget(language));
         }
     );
 
     // Buttons effects
     connect(startWidget, &StartWidget::pressed, this,
+        // openning create/loader widget
         [=](int index){
             switch (index)
             {
@@ -84,7 +80,7 @@ StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
     return startWidget;
 }
 
-MainWidget::MainWidget(QWidget *parent) : QStackedWidget(parent)
+MainWidget::MainWidget(Config::Languages language, QWidget *parent) : QStackedWidget(parent)
 {
     // Application settings
     QFont mainFont(QApplication::font());
@@ -95,9 +91,19 @@ MainWidget::MainWidget(QWidget *parent) : QStackedWidget(parent)
 
     // MainWidget settings
     setFixedSize(640, 480);
-    addWidget(initRespawnStartWidget());
+    addWidget(initRespawnStartWidget(language));
 }
 
-MainWidget::~MainWidget()
+void MainWidget::onLanguageChanged(Config::Languages language)
 {
+    // Delete old translator
+    if (translator != nullptr) QCoreApplication::removeTranslator(translator);
+
+    // Create new translator
+    if (language != Config::Languages::English)
+    {
+        translator = new QTranslator;
+        translator->load(Config::GetLocaleFromLangEnum(language), "Resources/Translations");
+        QCoreApplication::installTranslator(translator);
+    }
 }

@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <string>
 
+// main for link application
 int main(int argc, char *argv[])
 {
     std::string projectExecCommand(PROJECT_EXE_RELATIVE_PATH);

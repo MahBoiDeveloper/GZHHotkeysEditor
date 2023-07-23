@@ -14,6 +14,8 @@ private:
     StartWidget* initRespawnStartWidget(Config::Languages language = Config::Languages::English);
 
 public:
-    MainWidget(QWidget *parent = nullptr);
-    ~MainWidget();
+    MainWidget(Config::Languages language, QWidget *parent = nullptr);
+
+public slots:
+    void onLanguageChanged(Config::Languages language);
 };

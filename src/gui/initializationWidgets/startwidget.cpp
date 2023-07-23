@@ -41,8 +41,10 @@ StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(
 
     // Languages config
     QComboBox* langBox = new QComboBox;
-    langBox->addItem("English");
-    langBox->addItem("Русский");
+    for (int i = 0; i < static_cast<int>(Config::Languages::Count); ++i)
+    {
+        langBox->addItem(Config::GetStringFromLangEnum(static_cast<Config::Languages>(i)));
+    }
     langBox->setCurrentIndex(static_cast<int>(language));
 
     connect(langBox, QOverload<int>::of(&QComboBox::activated), this, &StartWidget::languageChanged);
@@ -65,8 +67,4 @@ StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(
     vl->setAlignment(Qt::AlignCenter);
     vl->addLayout(languageL);
     setLayout(vl);
-}
-
-StartWidget::~StartWidget()
-{
 }

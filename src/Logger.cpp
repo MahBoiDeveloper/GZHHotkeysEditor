@@ -35,25 +35,25 @@ using namespace std;
         // Write to log all necessary information about MS Windows
         Logger::Log() << "Operation System Information"             << endl;
         Logger::Log() << "Version   : "
-                      << GetWindowsVersion()                        << ' '
+                      << Registry::GetWindowsVersion()              << ' '
                       << GetWindowsBit()                            << endl;
-        Logger::Log() << "Language  : " << GetCurrentUserLanguage() << endl << endl;
+        Logger::Log() << "Language  : " << Registry::GetCurrentUserLanguage() << endl << endl;
 
         // Write to log all information about processor type and memory size
-        Logger::Log() << "Hardware Information"                     << endl;
-        Logger::Log() << "Processor : " << GetProcessorInfo()       << endl;
-        Logger::Log() << "Memory    : " << Helper::GetMemoryInfo()  << endl << endl;
+        Logger::Log() << "Hardware Information"                         << endl;
+        Logger::Log() << "Processor : " << Registry::GetProcessorInfo() << endl;
+        Logger::Log() << "Memory    : " << Helper::GetMemoryInfo()      << endl << endl;
 
         // Write to log all games paths
         Logger::Log() << "Software Information" << endl;
 
         for (const auto& game : {Registry::Games::Generals, Registry::Games::GeneralsZeroHour})
         {
-            if (Registry::Instance->GetPathToGame(game).empty())
+            if (Registry::GetPathToGame(game).empty())
                 Logger::Log() << "C&C: " << Registry::GameEnumToString(game) << " not installed" << endl;
             else
                 Logger::Log() << "C&C: " << Registry::GameEnumToString(game) << " installed at ["
-                              << Registry::Instance->GetPathToGame(game) << ']' << endl;
+                              << Registry::GetPathToGame(game) << ']' << endl;
         }
 
         LogFile << endl;
@@ -119,37 +119,11 @@ using namespace std;
     }
 #pragma endregion
 
-#pragma region Support methods
-    /// @brief Returns current user language from HKCU\\Control Panel\\International\\Geo\\Name.
-    string Logger::GetCurrentUserLanguage() const
-    {
-        const char Path[] = {"Control Panel\\International\\Geo"};
-        const char Key[]  = {"Name"};
-        return Registry::Instance->GetTextFromKeyInHKCU(&Path[0], &Key[0]);
-    }
-
-    /// @brief Returns Windows version from HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProductName.
-    string Logger::GetWindowsVersion() const
-    {
-        const char Path[]  = {"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"};
-        const char Key[] = {"ProductName"};
-        return Registry::Instance->GetTextFromKeyInHKLM(&Path[0], &Key[0]);
-    }
-
-    /// @brief Returns processor vendor infomation from HKLM\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString.
-    string Logger::GetProcessorInfo() const
-    {
-        const char Path[]  = {"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"};
-        const char Value[] = {"ProcessorNameString"};
-        return Registry::Instance->GetTextFromKeyInHKLM(&Path[0], &Value[0]);
-    }
-
-    /// @brief Returns Windows bit as a string.
-    string Logger::GetWindowsBit() const
-    {
-        if (Registry::Instance->GetWindowsBit() == Registry::WindowsBit::Win32)
-            return "32-bit";
-        else
-            return "64-bit";
-    }
-#pragma endregion
+/// @brief Returns Windows bit as a string.
+string Logger::GetWindowsBit() const
+{
+    if (Registry::GetWindowsBit() == Registry::WindowsBit::Win32)
+        return "32-bit";
+    else
+        return "64-bit";
+}

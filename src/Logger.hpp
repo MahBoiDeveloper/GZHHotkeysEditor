@@ -16,6 +16,7 @@ private:
     void LogSystemInformation();
     std::string GetLogFileName() const;
     std::string GetCurrentTime() const;
+    std::string GetWindowsBit() const;
 
 public:
     Logger();
@@ -28,9 +29,4 @@ public:
 
     void Log(const std::wstringstream& msg);
     void Log(const std::wstring& msg);
-private:
-    std::string GetCurrentUserLanguage() const;
-    std::string GetWindowsVersion()      const;
-    std::string GetProcessorInfo()       const;
-    std::string GetWindowsBit()          const;
 };

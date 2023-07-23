@@ -14,7 +14,7 @@ using namespace std;
     JSONFile::JSONFile(const string& filePath) : FileName{filePath}
     {
         QFile openedFile(FileName.c_str());
-        
+        // reading json file
         if (openedFile.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             string tmpString = openedFile.readAll().toStdString();

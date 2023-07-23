@@ -26,22 +26,20 @@ public: // Data
                                    {WindowsBit::Win64, "SOFTWARE\\WOW6432Node\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour"}}},
     };
 
-    WindowsBit ThisWindowsBit;
-    inline static std::unique_ptr<Registry> Instance;
-
 public: // Methods
-    Registry();
+    Registry() = delete;
 
     static std::string GameEnumToString(Games game);
-    WindowsBit         GetWindowsBit();
+    static WindowsBit  GetWindowsBit();
     
-    std::string GetTextFromKeyInHKLM(const char* pPathToFolder, const char* pKeyName);
-    std::string GetTextFromKeyInHKCU(const char* pPathToFolder, const char* pKeyName);
+    static std::string GetTextFromKeyInHKLM(const char* pPathToFolder, const char* pKeyName);
+    static std::string GetTextFromKeyInHKCU(const char* pPathToFolder, const char* pKeyName);
 
-    bool IsWindow64bit();
-    bool IsWindow32bit();
+    static bool IsWindow64bit();
+    static bool IsWindow32bit();
 
-    std::string GetPathToGame(Games game);
-private:
-    WindowsBit SetWindowsBit();
+    static std::string GetPathToGame(Games game);
+    static std::string GetCurrentUserLanguage();
+    static std::string GetWindowsVersion();
+    static std::string GetProcessorInfo();
 };
