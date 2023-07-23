@@ -14,8 +14,8 @@ public: // Data
 
     enum class Games
     {
-        Generals         = 0,
-        GeneralsZeroHour = 1
+        Generals = 0,
+        GeneralsZeroHour
     };
 
     inline static const std::map<Games, std::map<WindowsBit, std::string>> PATHS_TO_GAMES =

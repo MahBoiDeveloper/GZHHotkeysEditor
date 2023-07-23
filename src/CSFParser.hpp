@@ -2,24 +2,21 @@
 
 #include <string>
 #include <sstream>
-#include <cstring>
 #include <fstream>
 #include <list>
 #include <memory>
 
-using namespace std;
-
 struct CompiledString
 {
 public:
-    string  Name;
-    wstring Value;
+    std::string  Name;
+    std::wstring Value;
 };
 
 struct HotkeyAssociation
 {
 public:
-    string StringName;
+    std::string StringName;
     wchar_t HotkeyLetter;
 };
 
@@ -37,7 +34,7 @@ public:
 class CSFParser final
 {
 public: // Data
-    inline static unique_ptr<CSFParser> Instance;
+    inline static std::unique_ptr<CSFParser> Instance;
 
 private:
     const uint8_t  FSC[4]  {' ', 'F', 'S', 'C'}; // Begining of any CSF file header
@@ -46,39 +43,42 @@ private:
     const uint8_t  WRTS[4] {'W', 'R', 'T', 'S'}; // Begining of any string with extra value
     const uint32_t CNC_CSF_VERSION = 3;          // Standart file format. Legacy by WW
 
-    string Path;
+    std::string Path;
     CSFHeader Header;
 
-    list<CompiledString> Table;
+    std::list<CompiledString> Table;
 
 private: // Methods
     void Parse();
-    void ReadHeader(ifstream* csfFile);
-    void ReadBody(ifstream* csfFile);
+    void ReadHeader(std::ifstream* csfFile);
+    void ReadBody(std::ifstream* csfFile);
 
-    void WriteHeader(ofstream* csfFile);
-    void WriteBody(ofstream* csfFile);
+    void WriteHeader(std::ofstream* csfFile);
+    void WriteBody(std::ofstream* csfFile);
 
 public:
-    CSFParser(const string& strFilePath);
+    CSFParser(const std::string& strFilePath);
 
     void Save();
-    void Save(string strFileName);
+    void Save(std::string strFileName);
 
-    wstring      GetStringValue(const string& strName)                                       const;
-    list<string> GetStringNames()                                                            const;
-    list<string> GetCategories()                                                             const;
-    list<string> GetCategoryStrings(const string& strCategoryName)                           const;
-    list<string> GetCategoryStringsWithFullNames(const string& strCategoryName)              const;
-    list<string> GetStringsContainsSymbol(const wchar_t& wch)                                const;
-    list<string> GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName) const;
-    list<CompiledString> GetStringsByNameList(const list<string>& lstNames)                  const;
+    std::wstring              GetStringValue(const std::string& strName)                                       const;
+    std::list<std::string>    GetStringNames()                                                                 const;
+    std::list<std::string>    GetCategories()                                                                  const;
+    std::list<std::string>    GetCategoryStrings(const std::string& strCategoryName)                           const;
+    std::list<std::string>    GetCategoryStringsWithFullNames(const std::string& strCategoryName)              const;
+    std::list<std::string>    GetStringsContainsSymbol(const wchar_t& wch)                                     const;
+    std::list<std::string>    GetStringsContainsSymbol(const wchar_t& wch, const std::string& strCategoryName) const;
+    std::list<CompiledString> GetStringsByNameList(const std::list<std::string>& lstNames)                     const;
 
-    wchar_t GetHotkey(const string& strName)                                                 const;
-    list<HotkeyAssociation> GetHotkeys(const list<string>& lstStringNames)                   const;
+    wchar_t GetHotkey(const std::string& strName)                                                              const;
+    std::list<HotkeyAssociation> GetHotkeys(const std::list<std::string>& lstStringNames)                      const;
 
-    void SetHotkey(const string& strName, const wchar_t& wchLetter);
-    void SetStringValue(const string& strName, const wstring& wstrValue);
+    void SetHotkey(const std::string& strName, const wchar_t& wchLetter);
+    void SetStringValue(const std::string& strName, const std::wstring& wstrValue);
     void SetStringValue(const CompiledString& stString);
-    void SetStringsValue(const list<CompiledString>& lstChanges);
+    void SetStringsValue(const std::list<CompiledString>& lstChanges);
+private:
+    std::string  CharArrayToString(const int& arrayLength, const char* pArray)     const;
+    std::wstring WharArrayToWstring(const int& arrayLength, const wchar_t* pArray) const;
 };

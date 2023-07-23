@@ -1,3 +1,4 @@
+#pragma comment(lib, "rpcrt4.lib")
 #include <sstream>
 #include <windows.h>
 #include <tchar.h>

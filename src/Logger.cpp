@@ -33,16 +33,16 @@ using namespace std;
     void Logger::LogSystemInformation()
     {
         // Write to log all necessary information about MS Windows
-        Logger::Log() << "Operation System Information"                      << endl;
+        Logger::Log() << "Operation System Information"             << endl;
         Logger::Log() << "Version   : "
-                      << GetWindowsVersion()                                 << ' '
-                      << GetWindowsBit()                                     << endl;
-        Logger::Log() << "Language  : " << GetCurrentUserLanguage()          << endl << endl;
+                      << GetWindowsVersion()                        << ' '
+                      << GetWindowsBit()                            << endl;
+        Logger::Log() << "Language  : " << GetCurrentUserLanguage() << endl << endl;
 
         // Write to log all information about processor type and memory size
-        Logger::Log() << "Hardware Information"                              << endl;
-        Logger::Log() << "Processor : " << GetProcessorInfo()                << endl;
-        Logger::Log() << "Memory    : " << Helper::Instance->GetMemoryInfo() << endl << endl;
+        Logger::Log() << "Hardware Information"                     << endl;
+        Logger::Log() << "Processor : " << GetProcessorInfo()       << endl;
+        Logger::Log() << "Memory    : " << Helper::GetMemoryInfo()  << endl << endl;
 
         // Write to log all games paths
         Logger::Log() << "Software Information" << endl;

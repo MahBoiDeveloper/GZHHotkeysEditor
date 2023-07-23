@@ -3,6 +3,8 @@
 #include "Exception.hpp"
 #include "Helper.hpp"
 
+using namespace std;
+
 #pragma region ctor and dtor
     CSFParser::CSFParser(const string& filePath) : Path(filePath)
     {
@@ -90,7 +92,7 @@
             csfFile->read(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
             // Write string name with a special method due to string name doesn't have \0 sign
-            string  stringName       = Helper::Instance->CharArrayToString(sizeof(labelName), reinterpret_cast<const char*>(labelName));
+            string  stringName       = CharArrayToString(sizeof(labelName), reinterpret_cast<const char*>(labelName));
             wstring stringValue      = EMPTY_WSTRING;
             string  extraStringValue = EMPTY_STRING;
 
@@ -114,7 +116,7 @@
                     wchBufferValue[tmp] = ~wchBufferValue[tmp];
 
                 // Write string name with a special method due to string name doesn't have \0 sign
-                stringValue = Helper::Instance->WharArrayToWstring(valueLenght, reinterpret_cast<const wchar_t*>(wchBufferValue));
+                stringValue = WharArrayToWstring(valueLenght, reinterpret_cast<const wchar_t*>(wchBufferValue));
 
                 // Read extra value and do not write bcs it's useless
                 if((char)rtsOrWrts[0] == 'W')
@@ -385,5 +387,29 @@
     {
         for (const auto& elem : lstChanges)
             SetStringValue(elem);
+    }
+#pragma endregion
+
+#pragma region Support methods
+    /// @brief Pure function-convertor from char array to std::string.
+    string CSFParser::CharArrayToString(const int& arrayLength, const char* pArray) const
+    {
+        stringstream ss;
+       
+        for(int i = 0 ; i < arrayLength; i++)
+            ss << pArray[i];
+    
+        return ss.str();
+    }
+    
+    /// @brief Pure function-convertor from wchar_t array to std::wstring.
+    wstring CSFParser::WharArrayToWstring(const int& arrayLength, const wchar_t* pArray) const
+    {
+        wstringstream wss;
+       
+        for(int i = 0 ; i < arrayLength; i++)
+            wss << pArray[i];
+    
+        return wss.str();
     }
 #pragma endregion

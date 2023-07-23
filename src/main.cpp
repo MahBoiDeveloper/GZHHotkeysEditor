@@ -13,17 +13,17 @@
 #include "CSFParser.hpp"
 #include "JSONFile.hpp"
 
+using namespace std;
+
 int main(int argc, char *argv[])
 {
     // All out text MUST be showed via wcout and all chars should be converted as (wchar_t)
     _setmode(_fileno(stdout), _O_U16TEXT);
 
-    // Help around classes
-    Helper::Instance   = make_unique<Helper>();
     Registry::Instance = make_unique<Registry>();
 
     // Define logger as a singleton class, that could be used anywhere in project
-    Logger::Instance = make_unique<Logger>();
+    Logger::Instance   = make_unique<Logger>();
 
     QApplication HotkeyEditor(argc, argv);
 
