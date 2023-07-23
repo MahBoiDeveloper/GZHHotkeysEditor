@@ -7,7 +7,6 @@
 
 // Project files
 #include "gui/mainwidget.hpp"
-#include "Helper.hpp"
 #include "Logger.hpp"
 #include "Registry.hpp"
 #include "CSFParser.hpp"

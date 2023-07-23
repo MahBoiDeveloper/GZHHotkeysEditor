@@ -1,7 +1,6 @@
 #include "CSFParser.hpp"
 #include "Logger.hpp"
 #include "Exception.hpp"
-#include "Helper.hpp"
 
 using namespace std;
 
@@ -92,9 +91,9 @@ using namespace std;
             csfFile->read(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
             // Write string name with a special method due to string name doesn't have \0 sign
-            string  stringName       = CharArrayToString(sizeof(labelName), reinterpret_cast<const char*>(labelName));
-            wstring stringValue      = EMPTY_WSTRING;
-            string  extraStringValue = EMPTY_STRING;
+            string  stringName = CharArrayToString(sizeof(labelName), reinterpret_cast<const char*>(labelName));
+            wstring stringValue;
+            string  extraStringValue;
 
             // There possible situation where exists empty strings
             if(countOfStrings != 0)
@@ -202,11 +201,16 @@ using namespace std;
     /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
     wstring CSFParser::GetStringValue(const string& strName) const
     {
+        wstring returnValue;
+
         for (const auto& elem : Table)
             if (elem.Name == strName)
-                return elem.Value;
+            {
+                returnValue = elem.Value;
+                break;
+            }
 
-        return EMPTY_WSTRING;
+        return returnValue;
     }
 
     /// @brief Returns all string names in compiled sting table.

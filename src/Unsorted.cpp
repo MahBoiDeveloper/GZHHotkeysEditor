@@ -2,12 +2,12 @@
 #include <sstream>
 #include <windows.h>
 
-#include "Helper.hpp"
+#include "Unsorted.hpp"
 
 using namespace std;
 
 /// @brief Returns universal unique identifier as a string. 
-string Helper::GetUUID()
+string Unsorted::GetUUID()
 {
     // Magic code by stackoverflow: https://stackoverflow.com/questions/24365331/how-can-i-generate-uuid-in-c-without-using-boost-library
     stringstream ss;
@@ -23,7 +23,7 @@ string Helper::GetUUID()
 }
 
 /// @brief Returns current all memory size information in Mebibytes.
-string Helper::GetMemoryInfo()
+string Unsorted::GetMemoryInfo()
 {
     stringstream ss;
     MEMORYSTATUSEX MemStat;

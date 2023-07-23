@@ -4,7 +4,7 @@
 #define EMPTY_WSTRING std::wstring()
 #define EMPTY_STRING  std::string()
 
-class Helper final
+class Unsorted final
 {
 public:
     static std::string GetUUID();
