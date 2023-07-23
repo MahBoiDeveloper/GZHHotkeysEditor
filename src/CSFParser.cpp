@@ -1,6 +1,6 @@
 #include "CSFParser.hpp"
 #include "Logger.hpp"
-#include "ExceptionMessage.hpp"
+#include "Exception.hpp"
 #include "Helper.hpp"
 
 #pragma region ctor and dtor
@@ -27,7 +27,7 @@
         }
         else
         {
-            throw ExceptionMessage(string("Bad file name; unable to open file \"" + Path + "\""));
+            throw Exception(string("Bad file name; unable to open file \"" + Path + "\""));
         }
 
         csfFile.close();

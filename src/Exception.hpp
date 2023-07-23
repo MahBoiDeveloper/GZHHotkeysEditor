@@ -3,12 +3,12 @@
 #include <string>
 #include <exception>
 
-class ExceptionMessage : public std::exception
+class Exception : public std::exception
 {
 private:
     std::string message;
 public:
-    ExceptionMessage(const std::string& msg) : message{msg}
+    Exception(const std::string& msg) : message{msg}
     {
     }
 

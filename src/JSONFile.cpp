@@ -6,7 +6,7 @@
 #include <QJsonArray>
 
 #include "JSONFile.hpp"
-#include "ExceptionMessage.hpp"
+#include "Exception.hpp"
 
 using namespace std;
 
@@ -23,7 +23,7 @@ using namespace std;
         }
         else
         {
-            throw ExceptionMessage(string("Bad file name; unable to open file \"" + FileName + "\""));
+            throw Exception(string("Bad file name; unable to open file \"" + FileName + "\""));
         }
     }
 #pragma endregion
