@@ -244,15 +244,48 @@
 					"TechoType" : "Unit",
 					"IconName"  : "%PARENT_NAME%",
 					"CSFString" : "OBJECT:Pathfinder",
-					"Icons"     : 
+					"Icons"     : []
+				},
+
+				"USASupplyCenter" :
+				{
+					"TechoType"  : "Building",
+					"IconName"   : "%PARENT_NAME%",
+					"CSFString"  : "OBJECT:SupplyCenter",
+					"Icons"      : 
 					[
+						{
+							"IconName"  : "USAChinook",
+							"CSFString" : "CONTROLBAR:ConstructAmericaVehicleChinook"
+						},
+
+						{
+							"IconName"  : "SellBuilding",
+							"CSFString" : "CONTROLBAR:Sell"
+						}
 					]
 				},
 
-				"USAFlashbangs" :
+				"USAChinook" :
 				{
-					"TechoType"  : "Upgrade"
+					"TechoType"  : "Unit",
+					"IconName"   : "%PARENT_NAME%",
+					"CSFString"  : "OBJECT:Chinook",
+					"Icons"      :
+					[
+						{
+							"IconName"  : "USAEvacuate",
+							"CSFString" : "CONTROLBAR:Evacuate"
+						},
+
+						{
+							"IconName"  : "USACombatDrop",
+							"CSFString" : "CONTROLBAR:CombatDrop"
+						}
+					]
 				}
+
+
 			}
 		},
 
