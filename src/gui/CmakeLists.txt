@@ -28,7 +28,7 @@ set(LANGUAGES
     ru
 )
 
-# special target for translation sources (use from src: cmake --build ../build --target translationSources)
+# special target for translation sources (use from build: cmake --build . --target translationSources)
 add_custom_target(translationSources)
 
 set(TRANSLATION_DESTINATION_FOLDER ${PROJECT_DESTINATION_RESOURCES_FOLDER}/Translations)

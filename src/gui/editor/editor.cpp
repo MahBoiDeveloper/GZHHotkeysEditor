@@ -5,6 +5,7 @@
 #include <QScrollArea>
 #include <QDialog>
 #include <QFile>
+#include <QDialogButtonBox>
 
 #include "editor.hpp"
 #include "../Info.hpp"
@@ -83,6 +84,10 @@ void Editor::onAbout() const
     mainL->setSizeConstraint(QLayout::SetFixedSize);
 
     QDialog aboutDialog;
+    QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Orientation::Horizontal, &aboutDialog);
+    connect(buttons, &QDialogButtonBox::accepted, &aboutDialog, &QDialog::accept);
+    mainL->addWidget(buttons, 2, 1);
+    aboutDialog.setWindowFlags(aboutDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
     aboutDialog.setWindowTitle(tr("About"));
     aboutDialog.setLayout(mainL);
     aboutDialog.exec();
