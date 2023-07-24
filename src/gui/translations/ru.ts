@@ -18,7 +18,7 @@
     <message>
         <location filename="../initializationWidgets/creatorwidget.cpp" line="27"/>
         <source>Save hotkeys dirrectly to the game.</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранять горячие клавиши в игре</translation>
     </message>
     <message>
         <location filename="../initializationWidgets/creatorwidget.cpp" line="31"/>
@@ -55,18 +55,19 @@
     </message>
     <message>
         <location filename="../editor/editor.cpp" line="24"/>
+        <location filename="../editor/editor.cpp" line="86"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>О программе</translation>
     </message>
     <message>
         <location filename="../editor/editor.cpp" line="75"/>
-        <source>Autors: </source>
-        <translation type="unfinished"></translation>
+        <source>Authors: </source>
+        <translation>Авторы: </translation>
     </message>
     <message>
         <location filename="../editor/editor.cpp" line="82"/>
-        <source>Some other text</source>
-        <translation type="unfinished"></translation>
+        <source>Program licensed by GNU GPL v3</source>
+        <translation>Программа лицензированапод лицензией GNU GPL v3</translation>
     </message>
 </context>
 <context>

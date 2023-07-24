@@ -71,18 +71,19 @@ QImage Editor::decodeWebpIcon(const QString &iconName)
 
 void Editor::onAbout() const
 {
-    QVBoxLayout* autorsL = new QVBoxLayout;
-    autorsL->addWidget(new QLabel(tr("Autors: ") + AUTHORS));
+    QVBoxLayout* authorsL = new QVBoxLayout;
+    authorsL->addWidget(new QLabel(tr("Authors: ") + AUTHORS));
 
     QGridLayout* mainL = new QGridLayout;
-    mainL->addLayout(autorsL, 0, 0);
+    mainL->addLayout(authorsL, 0, 0);
     QLabel* pixmap = new QLabel;
     pixmap->setPixmap(QPixmap::fromImage(decodeWebpIcon("default")));
     mainL->addWidget(pixmap, 0, 1);
-    mainL->addWidget(new QLabel(tr("Some other text")), 1, 0);
+    mainL->addWidget(new QLabel(tr("Program licensed by GNU GPL v3")), 1, 0);
     mainL->setSizeConstraint(QLayout::SetFixedSize);
 
     QDialog aboutDialog;
+    aboutDialog.setWindowTitle(tr("About"));
     aboutDialog.setLayout(mainL);
     aboutDialog.exec();
 }
