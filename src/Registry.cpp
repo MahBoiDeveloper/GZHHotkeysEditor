@@ -65,7 +65,7 @@ string Registry::GetPathToGame(Games game)
     return GetTextFromKeyInHKLM(Path.c_str(), Key.c_str());
 }
 
-string Registry::GameEnumToString(Games game)
+string Registry::ToString(Games game)
 {
     string returnValue;
 
@@ -94,7 +94,7 @@ bool Registry::IsWindow32bit()
     return GetWindowsBit() == WindowsBit::Win32;
 }
 
-#pragma region Support methods
+#pragma region Logger methods
     /// @brief Returns current user language from HKCU\\Control Panel\\International\\Geo\\Name.
     string Registry::GetCurrentUserLanguage()
     {

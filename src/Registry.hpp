@@ -29,7 +29,7 @@ public: // Data
 public: // Methods
     Registry() = delete;
 
-    static std::string GameEnumToString(Games game);
+    static std::string ToString(Games game);
     static WindowsBit  GetWindowsBit();
     
     static std::string GetTextFromKeyInHKLM(const char* pPathToFolder, const char* pKeyName);

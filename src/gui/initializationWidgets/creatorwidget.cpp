@@ -9,11 +9,11 @@ CreatorWidget::CreatorWidget(QWidget *parent) : QDialog(parent)
 {
     // configure game buttons
     QRadioButton* generalsButton = new QRadioButton(
-                QString::fromStdString(Registry::GameEnumToString(Registry::Games::Generals)));
+                QString::fromStdString(Registry::ToString(Registry::Games::Generals)));
     generalsButton->setDisabled(true);
 
     QRadioButton* zeroHourButton = new QRadioButton(
-                QString::fromStdString(Registry::GameEnumToString(Registry::Games::GeneralsZeroHour)));
+                QString::fromStdString(Registry::ToString(Registry::Games::GeneralsZeroHour)));
 
     groupB.setExclusive(true);
     zeroHourButton->setChecked(true);

@@ -33,26 +33,26 @@ using namespace std;
     void Logger::LogSystemInformation()
     {
         // Write to log all necessary information about MS Windows
-        Logger::Log() << "Operation System Information"               << endl;
-        Logger::Log() << "Version   : "
+        Log() << "Operation System Information"               << endl;
+        Log() << "Version   : "
                       << Registry::GetWindowsVersion()              << ' '
                       << GetWindowsBit()                            << endl;
-        Logger::Log() << "Language  : " << Registry::GetCurrentUserLanguage() << endl << endl;
+        Log() << "Language  : " << Registry::GetCurrentUserLanguage() << endl << endl;
 
         // Write to log all information about processor type and memory size
-        Logger::Log() << "Hardware Information"                         << endl;
-        Logger::Log() << "Processor : " << Registry::GetProcessorInfo() << endl;
-        Logger::Log() << "Memory    : " << Unsorted::GetMemoryInfo()      << endl << endl;
+        Log() << "Hardware Information"                         << endl;
+        Log() << "Processor : " << Registry::GetProcessorInfo() << endl;
+        Log() << "Memory    : " << Unsorted::GetMemoryInfo()      << endl << endl;
 
         // Write to log all games paths
-        Logger::Log() << "Software Information" << endl;
+        Log() << "Software Information" << endl;
 
         for (const auto& game : {Registry::Games::Generals, Registry::Games::GeneralsZeroHour})
         {
             if (Registry::GetPathToGame(game).empty())
-                Logger::Log() << "C&C: " << Registry::GameEnumToString(game) << " not installed" << endl;
+                Log() << "C&C: " << Registry::ToString(game)  << " not installed" << endl;
             else
-                Logger::Log() << "C&C: " << Registry::GameEnumToString(game) << " installed at ["
+                Log() << "C&C: " << Registry::ToString(game)  << " installed at ["
                               << Registry::GetPathToGame(game) << ']' << endl;
         }
 
@@ -119,11 +119,13 @@ using namespace std;
     }
 #pragma endregion
 
-/// @brief Returns Windows bit as a string.
-string Logger::GetWindowsBit() const
-{
-    if (Registry::GetWindowsBit() == Registry::WindowsBit::Win32)
-        return "32-bit";
-    else
-        return "64-bit";
-}
+#pragma region Support methods
+    /// @brief Returns Windows bit as a string.
+    string Logger::GetWindowsBit() const
+    {
+        if (Registry::GetWindowsBit() == Registry::WindowsBit::Win32)
+            return "32-bit";
+        else
+            return "64-bit";
+    }
+#pragma endregion
