@@ -3,9 +3,14 @@
 #include <QApplication>
 #include <QTranslator>
 #include <QScrollArea>
+#include <QDialog>
+#include <QFile>
 
 #include "editor.hpp"
+#include "../Info.hpp"
 #include "hotkeyelement.hpp"
+
+#include "webp/decode.h"
 
 Editor::Editor(Registry::Games game, bool saveToGame, QWidget *parent) : QMainWindow(parent)
 {
@@ -16,6 +21,9 @@ Editor::Editor(Registry::Games game, bool saveToGame, QWidget *parent) : QMainWi
     menuBar()->addAction(tr("View"));
     QMenu* settingsM = new QMenu(tr("Settings"));
     menuBar()->addMenu(settingsM);
+    QAction* aboutA = new QAction(tr("About"));
+    connect(aboutA, &QAction::triggered, this, &Editor::onAbout);
+    menuBar()->addAction(aboutA);
 
     QVBoxLayout* mainL = new QVBoxLayout;
 //    for(int i = 0; i < 7; i++)
@@ -39,4 +47,42 @@ Editor::Editor(Registry::Games game, bool saveToGame, QWidget *parent) : QMainWi
     QWidget* centralWidget = new QWidget;
     centralWidget->setLayout(mainL);
     setCentralWidget(centralWidget);
+}
+
+QImage Editor::decodeWebpIcon(const QString &iconName)
+{
+    const QString iconsBasePath = "Resources/Icons/";
+    const QString iconPostfix   = ".webp";
+    QFile iconFile(iconsBasePath + iconName + iconPostfix);
+    if(iconFile.open(QIODevice::ReadOnly))
+    {
+        QByteArray imageData = iconFile.readAll();
+        iconFile.close();
+        int width, height;
+        uint8_t* decodedImage = WebPDecodeRGBA((const uint8_t*)imageData.constData(), imageData.size(), &width, &height);
+        return QImage(decodedImage, width, height, QImage::Format_RGBA8888);
+    }
+    else
+    {
+        qDebug() << "File not opened!";
+        return QImage();
+    }
+}
+
+void Editor::onAbout() const
+{
+    QVBoxLayout* autorsL = new QVBoxLayout;
+    autorsL->addWidget(new QLabel(tr("Autors: ") + AUTHORS));
+
+    QGridLayout* mainL = new QGridLayout;
+    mainL->addLayout(autorsL, 0, 0);
+    QLabel* pixmap = new QLabel;
+    pixmap->setPixmap(QPixmap::fromImage(decodeWebpIcon("default")));
+    mainL->addWidget(pixmap, 0, 1);
+    mainL->addWidget(new QLabel(tr("Some other text")), 1, 0);
+    mainL->setSizeConstraint(QLayout::SetFixedSize);
+
+    QDialog aboutDialog;
+    aboutDialog.setLayout(mainL);
+    aboutDialog.exec();
 }
