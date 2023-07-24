@@ -12,17 +12,21 @@
         <translation type="vanished">Начать настройку</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/creatorwidget.cpp" line="22"/>
         <source>Save hotkeys dirrectly to the game</source>
-        <translation>Сохранять горячие клавиши в игре</translation>
+        <translation type="vanished">Сохранять горячие клавиши в игре</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/creatorwidget.cpp" line="26"/>
+        <location filename="../initializationWidgets/creatorwidget.cpp" line="27"/>
+        <source>Save hotkeys dirrectly to the game.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../initializationWidgets/creatorwidget.cpp" line="31"/>
         <source>Configure</source>
         <translation>Настройка</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/creatorwidget.cpp" line="27"/>
+        <location filename="../initializationWidgets/creatorwidget.cpp" line="32"/>
         <source>Back</source>
         <translation>Назад</translation>
     </message>
@@ -30,24 +34,39 @@
 <context>
     <name>Editor</name>
     <message>
-        <location filename="../editor/editor.cpp" line="11"/>
+        <location filename="../editor/editor.cpp" line="18"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="12"/>
+        <location filename="../editor/editor.cpp" line="19"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="14"/>
+        <location filename="../editor/editor.cpp" line="21"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="15"/>
+        <location filename="../editor/editor.cpp" line="22"/>
         <source>Settings</source>
         <translation>Настройки</translation>
+    </message>
+    <message>
+        <location filename="../editor/editor.cpp" line="24"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../editor/editor.cpp" line="75"/>
+        <source>Autors: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../editor/editor.cpp" line="82"/>
+        <source>Some other text</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -57,7 +76,7 @@
         <translation type="vanished">Нажмите любую клавишу...</translation>
     </message>
     <message>
-        <location filename="../editor/hotkeyelement.cpp" line="36"/>
+        <location filename="../editor/hotkeyelement.cpp" line="59"/>
         <source>Press any key...</source>
         <translation>Нажмите любую клавишу...</translation>
     </message>
@@ -119,12 +138,12 @@
         <translation type="vanished">Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/startwidget.cpp" line="37"/>
+        <location filename="../initializationWidgets/startwidget.cpp" line="26"/>
         <source>New project</source>
         <translation>Новый проект</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/startwidget.cpp" line="38"/>
+        <location filename="../initializationWidgets/startwidget.cpp" line="29"/>
         <source>Load project</source>
         <translation>Загрузить проект</translation>
     </message>
