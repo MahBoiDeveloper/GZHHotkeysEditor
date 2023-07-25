@@ -34,38 +34,38 @@
 <context>
     <name>Editor</name>
     <message>
-        <location filename="../editor/editor.cpp" line="18"/>
+        <location filename="../editor/editor.cpp" line="19"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="19"/>
+        <location filename="../editor/editor.cpp" line="20"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="21"/>
+        <location filename="../editor/editor.cpp" line="22"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="22"/>
+        <location filename="../editor/editor.cpp" line="23"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="24"/>
-        <location filename="../editor/editor.cpp" line="86"/>
+        <location filename="../editor/editor.cpp" line="25"/>
+        <location filename="../editor/editor.cpp" line="91"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="75"/>
+        <location filename="../editor/editor.cpp" line="76"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="82"/>
+        <location filename="../editor/editor.cpp" line="83"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензированапод лицензией GNU GPL v3</translation>
     </message>
