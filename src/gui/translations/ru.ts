@@ -149,9 +149,14 @@
         <translation>Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/startwidget.cpp" line="52"/>
+        <location filename="../initializationWidgets/startwidget.cpp" line="56"/>
         <source>Language</source>
         <translation>Язык</translation>
+    </message>
+    <message>
+        <location filename="../initializationWidgets/startwidget.cpp" line="65"/>
+        <source>Greetings, my friend.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

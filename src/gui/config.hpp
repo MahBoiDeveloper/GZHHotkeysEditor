@@ -5,6 +5,7 @@
 class Config
 {
 public:
+    Config() = delete;
     enum class Languages
     {
         English = 0,
@@ -36,5 +37,6 @@ public:
         return LANGUAGES_STRINGS.find(language)->second;
     };
 
-    Config() = delete;
+//    inline static const int startButtonsMinWidth = QPushButton("Long button text").sizeHint().width();
+    inline static const int startButtonsMinWidth = 190;
 };

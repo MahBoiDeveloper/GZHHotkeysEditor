@@ -10,13 +10,14 @@ class StartWidget : public QWidget
 {
     Q_OBJECT
 private:
-    QButtonGroup* bg;
+    QButtonGroup* mainButtons;
 
 private:
     QPushButton* CreateButton(const QString& qstrButtonName) const;
 
 public:
     StartWidget(Config::Languages language = Config::Languages::English, QWidget *parent = nullptr);
+    ~StartWidget();
 
 signals:
     void pressed(int index);
