@@ -291,7 +291,7 @@ using namespace std;
     }
 
     /// @brief Returns list of full strings data.
-    list<CompiledString> CSFParser::GetStringsByNameList(const list<string>& lstNames) const
+    list<CSFParser::CompiledString> CSFParser::GetStringsByNameList(const list<string>& lstNames) const
     {
         list<CompiledString> returnList;
 
@@ -324,7 +324,7 @@ using namespace std;
     }
 
     /// @brief Returns list of data structs with string names and its keyboard key assignment.
-    list<HotkeyAssociation> CSFParser::GetHotkeys(const list<string>& lstStringNames) const
+    list<CSFParser::HotkeyAssociation> CSFParser::GetHotkeys(const list<string>& lstStringNames) const
     {
         list<HotkeyAssociation> returnList;
 

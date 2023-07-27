@@ -6,33 +6,33 @@
 #include <list>
 #include <memory>
 
-struct CompiledString
-{
-public:
-    std::string  Name;
-    std::wstring Value;
-};
-
-struct HotkeyAssociation
-{
-public:
-    std::string StringName;
-    wchar_t HotkeyLetter;
-};
-
-struct CSFHeader
-{
-public:
-    uint8_t  csfChars[4];
-    uint32_t formatVersion;
-    uint32_t numberOfLabels;
-    uint32_t numberOfStrings;
-    uint32_t uselessBytes;
-    uint32_t languageCode;
-};
-
 class CSFParser final
 {
+public: // Data types declarations
+    struct CompiledString
+    {
+    public:
+        std::string  Name;
+        std::wstring Value;
+    };
+
+    struct HotkeyAssociation
+    {
+    public:
+        std::string StringName;
+        wchar_t HotkeyLetter;
+    };
+
+    struct CSFHeader
+    {
+    public:
+        uint8_t  csfChars[4];
+        uint32_t formatVersion;
+        uint32_t numberOfLabels;
+        uint32_t numberOfStrings;
+        uint32_t uselessBytes;
+        uint32_t languageCode;
+    };
 public: // Data
     inline static std::unique_ptr<CSFParser> Instance;
 
