@@ -4,8 +4,9 @@
 #include <QVBoxLayout>
 
 #include "creatorwidget.hpp"
+#include "../../Registry.hpp"
 
-CreatorWidget::CreatorWidget(QWidget *parent) : QDialog(parent)
+CreatorWidget::CreatorWidget(QWidget *parent) : BaseConfigurationWidget(parent)
 {
     // configure game buttons
     QRadioButton* generalsButton = new QRadioButton(
@@ -26,21 +27,6 @@ CreatorWidget::CreatorWidget(QWidget *parent) : QDialog(parent)
     // configure save option
     saveToGameBox.setText(tr("Save hotkeys dirrectly to the game."));
 
-    // configure dialog buttons
-    QDialogButtonBox* dialogBB = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
-    dialogBB->button(QDialogButtonBox::Ok)->setText(tr("Configure"));
-    dialogBB->button(QDialogButtonBox::Cancel)->setText(tr("Back"));
-    
-    // emit accepted configurations
-    connect(dialogBB, &QDialogButtonBox::accepted, this,
-        [=]()
-        {
-            emit acceptedConfiguration(static_cast<Registry::Games>(groupB.checkedId()),
-                                                                  saveToGameBox.isChecked());
-        ;}
-    );
-    connect(dialogBB, &QDialogButtonBox::rejected, this, &QDialog::deleteLater);
-
     // configure dialog view
     QVBoxLayout* mainL = new QVBoxLayout;
     mainL->setAlignment(Qt::Alignment::enum_type::AlignCenter);
@@ -49,9 +35,12 @@ CreatorWidget::CreatorWidget(QWidget *parent) : QDialog(parent)
     mainL->addStretch(2);
     mainL->addWidget(&saveToGameBox);
     mainL->addStretch(5);
-    mainL->addWidget(dialogBB, 0, Qt::AlignCenter);
+    mainL->addWidget(&dialogButtons, 0, Qt::AlignCenter);
     mainL->addStretch(1);
-    for(auto & button : dialogBB->buttons())
-        button->setStyleSheet("QPushButton { padding-left: 30px; padding-right: 30px; }");
     setLayout(mainL);
+}
+
+QVariant CreatorWidget::createConfigurationData()
+{
+    return QVariant("Creator widget data.");
 }

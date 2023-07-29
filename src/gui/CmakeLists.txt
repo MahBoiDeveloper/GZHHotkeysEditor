@@ -38,6 +38,7 @@ foreach(LANGUAGE ${LANGUAGES})
     set(TRANSLATION_SOURCES ${TRANSLATION_SOURCES} ${TS_FILE})              # all source translation files
     add_custom_command(
         TARGET TranslationSources
+        # OUTPUT ${TS_FILE}
         PRE_BUILD
         # generate translation source file
         COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -recursive -ts ${TS_FILE} # -no-obsolete
@@ -82,6 +83,7 @@ add_library(${TARGET_NAME}
     ${HEADERS}
     ${TRANSLATION_SOURCES}
 )
+# add_dependencies(${TARGET_NAME} TranslationSources)
 set_target_properties(${TARGET_NAME}
     PROPERTIES
     CXX_STANDARD 17

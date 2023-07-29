@@ -10,16 +10,21 @@ class StartWidget : public QWidget
 {
     Q_OBJECT
 private:
-    QButtonGroup* mainButtons;
+    QButtonGroup mainButtons;
+
+public:
+    enum class Buttons {
+        NewProject = 0,
+        LoadProject
+    };
 
 private:
     QPushButton* CreateButton(const QString& qstrButtonName) const;
 
 public:
     StartWidget(Config::Languages language = Config::Languages::English, QWidget *parent = nullptr);
-    ~StartWidget();
 
 signals:
-    void pressed(int index);
+    void pressed(StartWidget::Buttons button);
     void languageChanged(int index);
 };

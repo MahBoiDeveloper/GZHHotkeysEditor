@@ -1,9 +1,8 @@
 #pragma once
 
-#include <QButtonGroup>
-#include <QDialog>
+#include "baseconfigurationwidget.hpp"
 
-class LoaderWidget : public QDialog
+class LoaderWidget : public BaseConfigurationWidget
 {
     Q_OBJECT
 private:
@@ -11,7 +10,5 @@ private:
 
 public:
     explicit LoaderWidget(QWidget *parent = nullptr);
-signals:
-    void acceptedConfiguration(const QString& selectedFileName);
-
+    QVariant createConfigurationData() override;
 };

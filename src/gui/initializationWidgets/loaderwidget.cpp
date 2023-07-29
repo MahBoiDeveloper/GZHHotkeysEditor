@@ -9,7 +9,7 @@
 
 #include "loaderwidget.hpp"
 
-LoaderWidget::LoaderWidget(QWidget *parent) : QDialog(parent)
+LoaderWidget::LoaderWidget(QWidget *parent) : BaseConfigurationWidget(parent)
 {
     // configure file path selection
     QLineEdit* pathToFileLineEdit = new QLineEdit;
@@ -51,18 +51,6 @@ LoaderWidget::LoaderWidget(QWidget *parent) : QDialog(parent)
                                 QFontMetrics(loadFromFileButton->font()).horizontalAdvance(loadFromFileButton->text()),
                                 0,0,0);
 
-    // configure dialog buttons
-    QDialogButtonBox* dialogBB = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
-    dialogBB->button(QDialogButtonBox::Ok)->setText(tr("Configure"));
-    dialogBB->button(QDialogButtonBox::Cancel)->setText(tr("Back"));
-    // emit accepted configurations
-    connect(dialogBB, &QDialogButtonBox::accepted, this,
-        [=](){
-            emit acceptedConfiguration(pathToFileLineEdit->text());
-        ;}
-    );
-    connect(dialogBB, &QDialogButtonBox::rejected, this, &QDialog::deleteLater);
-
     // configure dialog view
     QVBoxLayout* mainL = new QVBoxLayout;
     mainL->setContentsMargins(80,0,80,0);
@@ -74,9 +62,12 @@ LoaderWidget::LoaderWidget(QWidget *parent) : QDialog(parent)
     mainL->addStretch(2);
     mainL->addWidget(loadFromGameButton);
     mainL->addStretch(5);
-    mainL->addWidget(dialogBB, 0, Qt::AlignCenter);
+    mainL->addWidget(&dialogButtons, 0, Qt::AlignCenter);
     mainL->addStretch(1);
-    for(auto & button : dialogBB->buttons())
-        button->setStyleSheet("QPushButton { padding-left: 30px; padding-right: 30px; }");
     setLayout(mainL);
+}
+
+QVariant LoaderWidget::createConfigurationData()
+{
+    return QVariant("Loader widget data.");
 }

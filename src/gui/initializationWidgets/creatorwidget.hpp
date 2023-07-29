@@ -1,18 +1,14 @@
 #pragma once
 
-#include <QDialog>
-#include <QButtonGroup>
 #include <QCheckBox>
 
-#include "../../Registry.hpp"
+#include "baseconfigurationwidget.hpp"
 
-class CreatorWidget : public QDialog
+class CreatorWidget : public BaseConfigurationWidget
 {
     Q_OBJECT
-    QButtonGroup groupB;
     QCheckBox saveToGameBox;
 public:
     CreatorWidget(QWidget *parent = nullptr);
-signals:
-    void acceptedConfiguration(Registry::Games game, bool saveToGame);
+    QVariant createConfigurationData() override;
 };

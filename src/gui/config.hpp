@@ -1,17 +1,25 @@
 #pragma once
 #include <QString>
 #include <QMap>
+#include <QSize>
 
 class Config
 {
 public:
-    Config() = delete;
     enum class Languages
     {
         English = 0,
         Russian,
         Count
     };
+
+    inline static const QString translationsPath = "Resources/Translations";
+    inline static const QString iconsPath        = "Resources/Icons";
+
+    inline static const QSize startButtonsSize = QSize(230, 110);
+
+public:
+    Config() = delete;
 
     inline static const QMap<Languages, QPair<QString, QString>> LANGUAGES_STRINGS =
     {
@@ -36,7 +44,4 @@ public:
     {
         return LANGUAGES_STRINGS.find(language)->second;
     };
-
-//    inline static const int startButtonsMinWidth = QPushButton("Long button text").sizeHint().width();
-    inline static const int startButtonsMinWidth = 190;
 };

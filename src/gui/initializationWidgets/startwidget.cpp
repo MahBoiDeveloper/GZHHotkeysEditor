@@ -19,29 +19,24 @@ QPushButton* StartWidget::CreateButton(const QString& qstrButtonName) const
 
 StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(parent)
 {
-    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
-    mainButtons = new QButtonGroup;
+    setFixedSize(700, 500);
 
     auto btnNewProject  = CreateButton(tr("New project"));
-    mainButtons->addButton(btnNewProject);
+    mainButtons.addButton(btnNewProject);
 
     auto btnLoadProject = CreateButton(tr("Load project"));
-    btnLoadProject->setDisabled(true);
-    mainButtons->addButton(btnLoadProject);
+    btnLoadProject->setDisabled(true);  // temporary
+    mainButtons.addButton(btnLoadProject);
 
-    for(auto & button : mainButtons->buttons())
-    {
-        button->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        button->setFixedSize(QSize(Config::startButtonsMinWidth, button->sizeHint().height()));
-    }
+    for(auto & button : mainButtons.buttons())
+        button->setFixedSize(Config::startButtonsSize);
 
     // Event OnClick()
-    connect(mainButtons, QOverload<int>::of(&QButtonGroup::idClicked), this,
+    connect(&mainButtons, QOverload<int>::of(&QButtonGroup::idClicked), this,
         [=](int id)
         {
             int index = (-1)*id - 2; // QButtonGroup assign index -2 to first button
-            emit StartWidget::pressed(index);
+            emit StartWidget::pressed(static_cast<Buttons>(index));
         }
     );
 
@@ -55,29 +50,26 @@ StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(
     connect(langBox, QOverload<int>::of(&QComboBox::activated), this, &StartWidget::languageChanged);
     QLabel*      languageName = new QLabel(tr("Language"));
     QHBoxLayout* languageL    = new QHBoxLayout;
+    languageL->addStretch(1);
+    languageL->setSpacing(10);
     languageL->addWidget(languageName);
-//    languageL->addItem(new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::Fixed));
-    languageL->addSpacing(5);
+//    languageL->addSpacing(5);
     languageL->addWidget(langBox);
-    languageL->setAlignment(Qt::AlignRight);
+//    languageL->setAlignment(Qt::AlignRight);
 
     // Description config
-    QLabel* greeting = new QLabel(tr("Greetings, my friend."));
+    QLabel* greeting = new QLabel(tr("Greetings, my friend. There is an amazing super cool program "
+                                     "for editing hotkeys."));
     greeting->setWordWrap(true);
 
     // Main layout config
     QGridLayout* mainL = new QGridLayout;
     mainL->setSpacing(50);
-    mainL->setContentsMargins(50, 10, 50, 10);
-    mainL->setAlignment(Qt::AlignCenter);
-    mainL->addWidget(mainButtons->buttons().at(0), 0, 0, Qt::AlignLeft);
-    mainL->addWidget(mainButtons->buttons().at(1), 1, 0, Qt::AlignLeft);
-    mainL->addWidget(greeting, 0, 1);
-    mainL->addLayout(languageL, 3, 1, Qt::AlignRight);
+    mainL->setContentsMargins(30, 20, 50, 20);
+//    mainL->setAlignment(Qt::AlignCenter);
+    mainL->addWidget(mainButtons.buttons().at(0), 0, 0, Qt::AlignLeft);
+    mainL->addWidget(mainButtons.buttons().at(1), 1, 0, Qt::AlignLeft);
+    mainL->addWidget(greeting, 0, 1, Qt::AlignTop);
+    mainL->addLayout(languageL, 3, 1);
     setLayout(mainL);
-}
-
-StartWidget::~StartWidget()
-{
-    delete mainButtons;
 }

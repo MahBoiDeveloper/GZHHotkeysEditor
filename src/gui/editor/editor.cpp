@@ -9,6 +9,7 @@
 
 #include "editor.hpp"
 #include "../Info.hpp"
+#include "../config.hpp"
 #include "hotkeyelement.hpp"
 
 #include "webp/decode.h"
@@ -39,9 +40,6 @@ Editor::Editor(Registry::Games game, bool saveToGame, QWidget *parent) : QMainWi
     USA_L->addWidget(new QPushButton("LASER"));
     USA_L->addWidget(new QPushButton("USA"));
 
-//    fractionsL->addWidget(new QPushButton("CHINA"));
-//    fractionsL->addWidget(new QPushButton("GLA"));
-
     QHBoxLayout* fractionsL = new QHBoxLayout;
 
     // main widget
@@ -52,9 +50,8 @@ Editor::Editor(Registry::Games game, bool saveToGame, QWidget *parent) : QMainWi
 
 QImage Editor::decodeWebpIcon(const QString &iconName)
 {
-    const QString iconsBasePath = "Resources/Icons/";
     const QString iconPostfix   = ".webp";
-    QFile iconFile(iconsBasePath + iconName + iconPostfix);
+    QFile iconFile(Config::iconsPath + "/" + iconName + iconPostfix);
     if(iconFile.open(QIODevice::ReadOnly))
     {
         QByteArray imageData = iconFile.readAll();
@@ -80,7 +77,9 @@ void Editor::onAbout() const
     QLabel* pixmap = new QLabel;
     pixmap->setPixmap(QPixmap::fromImage(decodeWebpIcon("default")));
     mainL->addWidget(pixmap, 0, 1);
-    mainL->addWidget(new QLabel(tr("Program licensed by GNU GPL v3")), 1, 0);
+    QLabel* textL = new QLabel(tr("Program licensed by GNU GPL v3"));
+    textL->setWordWrap(true);
+    mainL->addWidget(textL, 1, 0);
     mainL->setSizeConstraint(QLayout::SetFixedSize);
 
     QDialog aboutDialog;

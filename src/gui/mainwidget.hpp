@@ -11,11 +11,14 @@ class MainWidget : public QStackedWidget
 private:
     QTranslator* translator = nullptr;
 
-    StartWidget* initRespawnStartWidget(Config::Languages language = Config::Languages::English);
+private:
+    StartWidget* createResurgentStartWidget(Config::Languages language = Config::Languages::English);
+    void clear();
 
 public:
     MainWidget(Config::Languages language, QWidget *parent = nullptr);
 
 public slots:
     void onLanguageChanged(Config::Languages language);
+    void onStartButtonClicked(StartWidget::Buttons button);
 };

@@ -6,8 +6,22 @@
 #include "initializationWidgets/creatorwidget.hpp"
 #include "initializationWidgets/loaderwidget.hpp"
 
+MainWidget::MainWidget(Config::Languages language, QWidget *parent) : QStackedWidget(parent)
+{
+    // Application settings
+    QFont mainFont(QApplication::font());
+    mainFont.setPointSize(11);
+    mainFont.setFamily("Consolas");
+    QApplication::setFont(mainFont);
+    qApp->setStyleSheet("QPushButton { padding: 10px; }"); // spacing between border and text
+
+    // MainWidget settings
+    setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    addWidget(createResurgentStartWidget(language));
+}
+
 // method for recreating the start widget
-StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
+StartWidget* MainWidget::createResurgentStartWidget(Config::Languages language)
 {
     // Set translator
     onLanguageChanged(language);
@@ -25,75 +39,27 @@ StartWidget* MainWidget::initRespawnStartWidget(Config::Languages language)
 
             // Recreate StartWidget
             startWidget->deleteLater();
-            addWidget(initRespawnStartWidget(language));
+            addWidget(createResurgentStartWidget(language));
         }
     );
-
     // Buttons effects
-    connect(startWidget, &StartWidget::pressed, this,
-        // openning create/loader widget
-        [=](int index){
-            switch (index)
-            {
-                case 0:
-                {
-                CreatorWidget* creatorWidget = new CreatorWidget;
-                addWidget(creatorWidget);
-                setCurrentWidget(creatorWidget); // next window (creator)
-
-                // if accepted -> create redactor with configs and delete other widgets
-                connect(creatorWidget, &CreatorWidget::acceptedConfiguration, this,
-                    [=](Registry::Games game, bool saveToGame)
-                    {
-                        for(int i = 0; i < count(); i++) // delete other widgets
-                            widget(i)->deleteLater();
-                        addWidget(new Editor(game, saveToGame));
-                    }
-                );
-
-                break;
-            }
-            case 1: {
-                LoaderWidget* loaderWidget = new LoaderWidget;
-                addWidget(loaderWidget);
-                setCurrentWidget(loaderWidget); // next window (creator)
-
-                // if accepted -> create redactor with configs and delete other widgets
-                connect(loaderWidget, &LoaderWidget::acceptedConfiguration, this,
-                    [=](const QString& filePath)
-                    {
-                        qDebug() << filePath;
-                        for(int i = 0; i < count(); i++) // delete other widgets
-                            widget(i)->deleteLater();
-                        addWidget(new Editor(Registry::Games::Generals, false));
-                    }
-                );
-
-                break;
-            }
-            default:
-                break;
-            }
-        }
-    );
+    connect(startWidget, &StartWidget::pressed, this, &MainWidget::onStartButtonClicked);
 
     return startWidget;
 }
 
-MainWidget::MainWidget(Config::Languages language, QWidget *parent) : QStackedWidget(parent)
+// delete all widgets
+void MainWidget::clear()
 {
-    // Application settings
-    QFont mainFont(QApplication::font());
-    mainFont.setPointSize(11);
-    mainFont.setFamily("Consolas");
-    QApplication::setFont(mainFont);
-    qApp->setStyleSheet("QPushButton { padding: 10px; }"); // spacing between border and text
-
-    // MainWidget settings
-    setFixedSize(640, 480);
-    addWidget(initRespawnStartWidget(language));
+    while (count() > 0)
+    {
+        QWidget* widgetToBeDeleted = currentWidget();
+        removeWidget(widgetToBeDeleted);
+        widgetToBeDeleted->deleteLater();
+    }
 }
 
+// Switch to selected language
 void MainWidget::onLanguageChanged(Config::Languages language)
 {
     // Delete old translator
@@ -103,7 +69,34 @@ void MainWidget::onLanguageChanged(Config::Languages language)
     if (language != Config::Languages::English)
     {
         translator = new QTranslator;
-        translator->load(Config::GetLocaleFromLangEnum(language), "Resources/Translations");
+        translator->load(Config::GetLocaleFromLangEnum(language), Config::translationsPath);
         QCoreApplication::installTranslator(translator);
     }
+}
+
+// Open create/loader widget
+void MainWidget::onStartButtonClicked(StartWidget::Buttons button)
+{
+    BaseConfigurationWidget* configurationWidget;
+    switch (button)
+    {
+    case StartWidget::Buttons::NewProject:
+        configurationWidget = new CreatorWidget;
+        break;
+    case StartWidget::Buttons::LoadProject:
+        configurationWidget = new LoaderWidget;
+        break;
+    }
+    addWidget(configurationWidget);
+    setCurrentWidget(configurationWidget); // next window (creator)
+
+    // if accepted -> create redactor with configs and delete other widgets
+    connect(configurationWidget, &CreatorWidget::acceptedConfiguration, this,
+            [=](QVariant configuration)
+    {
+        clear();
+        addWidget(new Editor(Registry::Games::Generals, true));
+        qDebug() << configuration.toString();
+    }
+    );
 }
