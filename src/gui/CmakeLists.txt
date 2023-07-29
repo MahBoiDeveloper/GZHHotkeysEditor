@@ -28,17 +28,16 @@ set(LANGUAGES
     ru
 )
 
-set(TRANSLATION_DESTINATION_FOLDER ${PROJECT_DESTINATION_RESOURCES_FOLDER}/Translations)
-file(MAKE_DIRECTORY ${TRANSLATION_DESTINATION_FOLDER}) # create if doesn't exist
+# required to save translation sources (when activated cmake clean)
+add_custom_target(TranslationSources)
+
 # generate source translations files
 find_program(LUPDATE_EXECUTABLE lupdate)
 foreach(LANGUAGE ${LANGUAGES})
-    set(TS_FILE ${CMAKE_CURRENT_SOURCE_DIR}/translations/${LANGUAGE}.ts) # source language file
-    # set (QM ${TRANSLATION_DESTINATION_FOLDER}/${TARGET_NAME}_${LANGUAGE}.qm) # bin translation file
-    set(TRANSLATIONS ${TRANSLATIONS} ${TS_FILE}) # all source translation files
-    # set (TRANSLATIONS_BINARY ${TRANSLATIONS_BINARY} ${QM})
+    set(TS_FILE ${CMAKE_CURRENT_SOURCE_DIR}/translations/${LANGUAGE}.ts)    # source translation file
+    set(TRANSLATION_SOURCES ${TRANSLATION_SOURCES} ${TS_FILE})              # all source translation files
     add_custom_command(
-        OUTPUT ${TS_FILE}
+        TARGET TranslationSources
         PRE_BUILD
         # generate translation source file
         COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -recursive -ts ${TS_FILE} # -no-obsolete
@@ -48,15 +47,17 @@ foreach(LANGUAGE ${LANGUAGES})
     )
 endforeach()
 
-# generate bin translations files
+# create translation binaries folder
+set(TRANSLATION_DESTINATION_FOLDER ${PROJECT_DESTINATION_RESOURCES_FOLDER}/Translations)
+file(MAKE_DIRECTORY ${TRANSLATION_DESTINATION_FOLDER})
+# generate binary translation files
 find_program(LRELEASE_EXECUTABLE lrelease)
-file(GLOB_RECURSE TS_FILES "${CMAKE_CURRENT_SOURCE_DIR}/translations/*.ts") # find source language files
-foreach(TS_FILE ${TRANSLATIONS})
-    get_filename_component(TS_FILE_NAME ${TS_FILE} NAME_WE) # simple name without extension
-    set (QM ${TRANSLATION_DESTINATION_FOLDER}/${TS_FILE_NAME}.qm) # bin translation file
+foreach(TS_FILE ${TRANSLATION_SOURCES})
+    get_filename_component(TS_CLEAN_FILE_NAME ${TS_FILE} NAME_WE)               # simple name without extension
+    set (QM_FILE ${TRANSLATION_DESTINATION_FOLDER}/${TS_CLEAN_FILE_NAME}.qm)    # binary translation file name
     add_custom_command (
-        OUTPUT ${QM}
-        COMMAND ${LRELEASE_EXECUTABLE} ${TS_FILE} -qm ${QM} # generate bin translation file
+        OUTPUT ${QM_FILE}
+        COMMAND ${LRELEASE_EXECUTABLE} ${TS_FILE} -qm ${QM_FILE}    # generation
         DEPENDS ${TS_FILE}
         MAIN_DEPENDENCY ${TS_FILE}
     )
@@ -79,7 +80,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets)
 add_library(${TARGET_NAME}
     ${SOURCES}
     ${HEADERS}
-    ${TRANSLATIONS}
+    ${TRANSLATION_SOURCES}
 )
 set_target_properties(${TARGET_NAME}
     PROPERTIES
@@ -94,8 +95,8 @@ target_link_libraries(${TARGET_NAME} PUBLIC
 #---------------------------------------------------------------------------------
 #-----------------------------------Lbwebp----------------------------------------
 #---------------------------------------------------------------------------------
-set(LIB_WEBP_DIR libwebp)            # lib folder name
-set(LIB_WEBP_NAME webpdecoder)        # lib target
+set(LIB_WEBP_DIR libwebp)           # lib folder name
+set(LIB_WEBP_NAME webpdecoder)      # lib target
 
 # find all lib sources
 file(
