@@ -11,8 +11,7 @@ class Editor : public QMainWindow
     Q_OBJECT
 
 public:
-    Editor(Registry::Games game, bool saveToGame, QWidget *parent = nullptr);
-    static QImage decodeWebpIcon(const QString& iconName);
+    Editor(QVariant configuration, QWidget *parent = nullptr);
 
 public slots:
     void onAbout() const;

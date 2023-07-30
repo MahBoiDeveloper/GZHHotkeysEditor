@@ -4,12 +4,12 @@
 <context>
     <name>BaseConfigurationWidget</name>
     <message>
-        <location filename="../initializationWidgets/baseconfigurationwidget.cpp" line="9"/>
+        <location filename="../launchWidgets/configurationWidgets/baseconfigurationwidget.cpp" line="9"/>
         <source>Configure</source>
         <translation>Настройка</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/baseconfigurationwidget.cpp" line="10"/>
+        <location filename="../launchWidgets/configurationWidgets/baseconfigurationwidget.cpp" line="10"/>
         <source>Back</source>
         <translation>Назад</translation>
     </message>
@@ -17,7 +17,7 @@
 <context>
     <name>CreatorWidget</name>
     <message>
-        <location filename="../initializationWidgets/creatorwidget.cpp" line="28"/>
+        <location filename="../launchWidgets/configurationWidgets/creatorwidget.cpp" line="28"/>
         <source>Save hotkeys dirrectly to the game.</source>
         <translation>Сохранять горячие клавиши в игре.</translation>
     </message>
@@ -25,40 +25,40 @@
 <context>
     <name>Editor</name>
     <message>
-        <location filename="../editor/editor.cpp" line="20"/>
+        <location filename="../editor/editor.cpp" line="16"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="21"/>
+        <location filename="../editor/editor.cpp" line="17"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="23"/>
+        <location filename="../editor/editor.cpp" line="19"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="24"/>
+        <location filename="../editor/editor.cpp" line="20"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="26"/>
-        <location filename="../editor/editor.cpp" line="90"/>
+        <location filename="../editor/editor.cpp" line="22"/>
+        <location filename="../editor/editor.cpp" line="63"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="73"/>
+        <location filename="../editor/editor.cpp" line="50"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="80"/>
+        <location filename="../editor/editor.cpp" line="57"/>
         <source>Program licensed by GNU GPL v3</source>
-        <translation>Программа лицензированапод лицензией GNU GPL v3</translation>
+        <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>
 </context>
 <context>
@@ -72,27 +72,27 @@
 <context>
     <name>LoaderWidget</name>
     <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="23"/>
+        <location filename="../launchWidgets/configurationWidgets/loaderwidget.cpp" line="23"/>
         <source>Text files</source>
         <translation>Текстовые файлы</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="24"/>
+        <location filename="../launchWidgets/configurationWidgets/loaderwidget.cpp" line="24"/>
         <source>Any files</source>
         <translation>Все файлы</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="27"/>
+        <location filename="../launchWidgets/configurationWidgets/loaderwidget.cpp" line="27"/>
         <source>Review</source>
         <translation>Обзор</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="33"/>
+        <location filename="../launchWidgets/configurationWidgets/loaderwidget.cpp" line="33"/>
         <source>Load project</source>
         <translation>Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/loaderwidget.cpp" line="40"/>
+        <location filename="../launchWidgets/configurationWidgets/loaderwidget.cpp" line="40"/>
         <source>Load installed game hotkey map</source>
         <translation>Загрузить горячие клавиши из игры</translation>
     </message>
@@ -100,22 +100,22 @@
 <context>
     <name>StartWidget</name>
     <message>
-        <location filename="../initializationWidgets/startwidget.cpp" line="24"/>
+        <location filename="../launchWidgets/startwidget.cpp" line="25"/>
         <source>New project</source>
         <translation>Новый проект</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/startwidget.cpp" line="27"/>
+        <location filename="../launchWidgets/startwidget.cpp" line="28"/>
         <source>Load project</source>
         <translation>Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/startwidget.cpp" line="51"/>
+        <location filename="../launchWidgets/startwidget.cpp" line="52"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../initializationWidgets/startwidget.cpp" line="61"/>
+        <location filename="../launchWidgets/startwidget.cpp" line="62"/>
         <source>Greetings, my friend. There is an amazing super cool program for editing hotkeys.</source>
         <translation>Приветствую тебя, мой друг. Это потрясающая, супер крутая программа для редактирования горячих клавиш.</translation>
     </message>

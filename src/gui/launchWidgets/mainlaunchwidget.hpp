@@ -3,9 +3,9 @@
 #include <QStackedWidget>
 #include <QTranslator>
 
-#include "initializationWidgets/startwidget.hpp"
+#include "startwidget.hpp"
 
-class MainWidget : public QStackedWidget
+class MainLaunchWidget : public QStackedWidget
 {
     Q_OBJECT
 private:
@@ -16,9 +16,10 @@ private:
     void clear();
 
 public:
-    MainWidget(Config::Languages language, QWidget *parent = nullptr);
+    MainLaunchWidget(Config::Languages language, QWidget *parent = nullptr);
 
-public slots:
+private slots:
     void onLanguageChanged(Config::Languages language);
     void onStartButtonClicked(StartWidget::Buttons button);
+    void onConfigurationAccepted(QVariant configuration);
 };

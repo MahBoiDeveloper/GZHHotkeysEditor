@@ -2,6 +2,11 @@
 #include <QString>
 #include <QMap>
 #include <QSize>
+#include <QFile>
+#include <QDebug>
+#include <QImage>
+
+#include "webp/decode.h"
 
 class Config
 {
@@ -44,4 +49,26 @@ public:
     {
         return LANGUAGES_STRINGS.find(language)->second;
     };
+
+    inline static QImage decodeWebpIcon(const QString& iconName)
+    {
+        const QString iconPostfix   = ".webp";
+        QFile iconFile(iconsPath + "/" + iconName + iconPostfix);
+        if(iconFile.open(QIODevice::ReadOnly))
+        {
+            QByteArray imageData = iconFile.readAll();
+            iconFile.close();
+            int width, height;
+            uint8_t* decodedImage = WebPDecodeRGBA((const uint8_t*)imageData.constData(),
+                                                   imageData.size(),
+                                                   &width,
+                                                   &height);
+            return QImage(decodedImage, width, height, QImage::Format_RGBA8888);
+        }
+        else
+        {
+            qDebug() << "File not opened!";
+            return QImage();
+        }
+    }
 };

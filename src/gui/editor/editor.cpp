@@ -1,21 +1,17 @@
 #include <QDebug>
 #include <QMenuBar>
-#include <QApplication>
-#include <QTranslator>
-#include <QScrollArea>
 #include <QDialog>
-#include <QFile>
 #include <QDialogButtonBox>
 
 #include "editor.hpp"
-#include "../Info.hpp"
+#include "../../Info.hpp"
 #include "../config.hpp"
 #include "hotkeyelement.hpp"
 
-#include "webp/decode.h"
-
-Editor::Editor(Registry::Games game, bool saveToGame, QWidget *parent) : QMainWindow(parent)
+Editor::Editor(QVariant configuration, QWidget *parent) : QMainWindow(parent)
 {
+    resize(1200, 800);
+
     // configuring menu
     QMenu* fm = new QMenu(tr("File"));
     fm->addAction(tr("Special"));
@@ -48,46 +44,42 @@ Editor::Editor(Registry::Games game, bool saveToGame, QWidget *parent) : QMainWi
     setCentralWidget(centralWidget);
 }
 
-QImage Editor::decodeWebpIcon(const QString &iconName)
-{
-    const QString iconPostfix   = ".webp";
-    QFile iconFile(Config::iconsPath + "/" + iconName + iconPostfix);
-    if(iconFile.open(QIODevice::ReadOnly))
-    {
-        QByteArray imageData = iconFile.readAll();
-        iconFile.close();
-        int width, height;
-        uint8_t* decodedImage = WebPDecodeRGBA((const uint8_t*)imageData.constData(), imageData.size(), &width, &height);
-        return QImage(decodedImage, width, height, QImage::Format_RGBA8888);
-    }
-    else
-    {
-        qDebug() << "File not opened!";
-        return QImage();
-    }
-}
-
 void Editor::onAbout() const
 {
     QVBoxLayout* authorsL = new QVBoxLayout;
     authorsL->addWidget(new QLabel(tr("Authors: ") + AUTHORS));
 
-    QGridLayout* mainL = new QGridLayout;
-    mainL->addLayout(authorsL, 0, 0);
+    QGridLayout* contentL = new QGridLayout;
+    contentL->addLayout(authorsL, 0, 0);
     QLabel* pixmap = new QLabel;
-    pixmap->setPixmap(QPixmap::fromImage(decodeWebpIcon("default")));
-    mainL->addWidget(pixmap, 0, 1);
+    pixmap->setPixmap(QPixmap::fromImage(Config::decodeWebpIcon("default")));
+    contentL->addWidget(pixmap, 0, 1);
     QLabel* textL = new QLabel(tr("Program licensed by GNU GPL v3"));
     textL->setWordWrap(true);
-    mainL->addWidget(textL, 1, 0);
-    mainL->setSizeConstraint(QLayout::SetFixedSize);
+    contentL->addWidget(textL, 1, 0);
+    contentL->setSizeConstraint(QLayout::SetFixedSize);
 
     QDialog aboutDialog;
+    aboutDialog.setWindowTitle(tr("About"));
+    aboutDialog.setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    aboutDialog.setWindowFlags(aboutDialog.windowFlags() &
+                               ~Qt::WindowContextHelpButtonHint |
+                                Qt::MSWindowsFixedSizeDialogHint);
+
     QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Orientation::Horizontal, &aboutDialog);
     connect(buttons, &QDialogButtonBox::accepted, &aboutDialog, &QDialog::accept);
-    mainL->addWidget(buttons, 2, 1);
-    aboutDialog.setWindowFlags(aboutDialog.windowFlags() & ~Qt::WindowContextHelpButtonHint);
-    aboutDialog.setWindowTitle(tr("About"));
+    QHBoxLayout* buttonsL = new QHBoxLayout;
+    buttonsL->addStretch();
+    buttons->button(QDialogButtonBox::Ok)->setFixedWidth(100);
+    buttonsL->addWidget(buttons->button(QDialogButtonBox::Ok));
+    buttonsL->addStretch();
+    buttonsL->setAlignment(Qt::AlignCenter);
+
+    QVBoxLayout* mainL = new QVBoxLayout;
+    mainL->addLayout(contentL);
+    mainL->addLayout(buttonsL);
     aboutDialog.setLayout(mainL);
     aboutDialog.exec();
+    aboutDialog.raise();
+    aboutDialog.activateWindow();
 }

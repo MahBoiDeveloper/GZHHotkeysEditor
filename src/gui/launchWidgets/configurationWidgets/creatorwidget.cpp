@@ -4,7 +4,7 @@
 #include <QVBoxLayout>
 
 #include "creatorwidget.hpp"
-#include "../../Registry.hpp"
+#include "../../../Registry.hpp"
 
 CreatorWidget::CreatorWidget(QWidget *parent) : BaseConfigurationWidget(parent)
 {

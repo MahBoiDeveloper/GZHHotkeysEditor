@@ -19,7 +19,8 @@ QPushButton* StartWidget::CreateButton(const QString& qstrButtonName) const
 
 StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(parent)
 {
-    setFixedSize(700, 500);
+//    setFixedSize(700, 500);
+    setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
     auto btnNewProject  = CreateButton(tr("New project"));
     mainButtons.addButton(btnNewProject);
@@ -67,9 +68,13 @@ StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(
     mainL->setSpacing(50);
     mainL->setContentsMargins(30, 20, 50, 20);
 //    mainL->setAlignment(Qt::AlignCenter);
-    mainL->addWidget(mainButtons.buttons().at(0), 0, 0, Qt::AlignLeft);
-    mainL->addWidget(mainButtons.buttons().at(1), 1, 0, Qt::AlignLeft);
-    mainL->addWidget(greeting, 0, 1, Qt::AlignTop);
-    mainL->addLayout(languageL, 3, 1);
+    QPushButton* closeButton = new QPushButton("X");
+    connect(closeButton, &QPushButton::clicked, this, &StartWidget::closeCall);
+    mainL->addWidget(closeButton, 0, 1, Qt::AlignRight);
+    mainL->addWidget(mainButtons.buttons().at(0), 1, 0, Qt::AlignLeft);
+    mainL->addWidget(mainButtons.buttons().at(1), 2, 0, Qt::AlignLeft);
+    mainL->addWidget(greeting, 1, 1, Qt::AlignTop);
+    mainL->addItem(new QSpacerItem(0, 100, QSizePolicy::Fixed, QSizePolicy::Fixed), 3, 0);
+    mainL->addLayout(languageL, 4, 1);
     setLayout(mainL);
 }
