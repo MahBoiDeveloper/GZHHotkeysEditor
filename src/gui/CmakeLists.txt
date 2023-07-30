@@ -28,39 +28,27 @@ set(LANGUAGES
     ru
 )
 
-# required to save translation sources (when activated cmake clean)
-add_custom_target(TranslationSources)
-
-# generate source translations files
-find_program(LUPDATE_EXECUTABLE lupdate)
-foreach(LANGUAGE ${LANGUAGES})
-    set(TS_FILE ${CMAKE_CURRENT_SOURCE_DIR}/translations/${LANGUAGE}.ts)    # source translation file
-    set(TRANSLATION_SOURCES ${TRANSLATION_SOURCES} ${TS_FILE})              # all source translation files
-    add_custom_command(
-        TARGET TranslationSources
-        # OUTPUT ${TS_FILE}
-        PRE_BUILD
-        # generate translation source file
-        COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -recursive -ts ${TS_FILE} # -no-obsolete
-        MAIN_DEPENDENCY ${SOURCES} ${HEADERS}
-        DEPENDS ${SOURCES} ${HEADERS}
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    )
-endforeach()
-
+# find translations programs
+find_program(LUPDATE_EXECUTABLE  lupdate)
+find_program(LRELEASE_EXECUTABLE lrelease)
 # create translation binaries folder
 set(TRANSLATION_DESTINATION_FOLDER ${PROJECT_DESTINATION_RESOURCES_FOLDER}/Translations)
 file(MAKE_DIRECTORY ${TRANSLATION_DESTINATION_FOLDER})
-# generate binary translation files
-find_program(LRELEASE_EXECUTABLE lrelease)
-foreach(TS_FILE ${TRANSLATION_SOURCES})
-    get_filename_component(TS_CLEAN_FILE_NAME ${TS_FILE} NAME_WE)               # simple name without extension
-    set (QM_FILE ${TRANSLATION_DESTINATION_FOLDER}/${TS_CLEAN_FILE_NAME}.qm)    # binary translation file name
-    add_custom_command (
+# generate translations files
+foreach(LANGUAGE ${LANGUAGES})
+    set(TS_FILE ${CMAKE_CURRENT_SOURCE_DIR}/translations/${LANGUAGE}.ts)    # source translation file
+    set(TRANSLATION_SOURCES ${TRANSLATION_SOURCES} ${TS_FILE})              # all source translation files
+    set(QM_FILE ${TRANSLATION_DESTINATION_FOLDER}/${LANGUAGE}.qm)           # binary translation file
+    add_custom_command(
+        PRE_BUILD
         OUTPUT ${QM_FILE}
-        COMMAND ${LRELEASE_EXECUTABLE} ${TS_FILE} -qm ${QM_FILE}    # generation
-        DEPENDS ${TS_FILE}
-        MAIN_DEPENDENCY ${TS_FILE}
+        # generate translation source file
+        COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -recursive -ts ${TS_FILE} -no-obsolete
+        # generate translation binary file
+        COMMAND ${LRELEASE_EXECUTABLE} ${TS_FILE} -qm ${QM_FILE}
+        MAIN_DEPENDENCY ${SOURCES} ${HEADERS}
+        DEPENDS ${SOURCES} ${HEADERS}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     )
 endforeach()
 #---------------------------------------------------------------------------------
