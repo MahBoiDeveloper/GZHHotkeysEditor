@@ -28,8 +28,6 @@ public: // Methods
     GINIParser() = delete;
     GINIParser(std::string strFileSample);
 
-    void Parse();
-
     void Save();
     void Save(std::string strFileSample);
 
@@ -37,7 +35,7 @@ public: // Methods
     std::list<std::string> GetSectionKeys(const std::string& strSectionName) const;
     std::string            GetSectionValue(const std::string& strSectionName, const std::string& strSectionKey) const;
 
-    void SetSectionValue(const string& strName, const string& strKey, const string& strValue);
+    void SetSectionValue(const std::string& strName, const std::string& strKey, const std::string& strValue);
 private:
     void Parse();
 };

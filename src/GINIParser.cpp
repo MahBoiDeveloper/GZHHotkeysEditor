@@ -18,11 +18,11 @@ enum class LineStatus
 #pragma region Parsing
     void GINIParser::Parse()
     {
-        ifstream file(Path, ios::in)
+        ifstream file(Path, ios::in);
 
         Logger::Instance->Log() << "Attempt to read file \"" << Path << "\"..." << endl;
 
-        if (csfFile.is_open())
+        if (file.is_open())
         {
             string buff, buffName, buffKeyName, buffKeyValue;
             LineStatus st;
@@ -34,7 +34,7 @@ enum class LineStatus
                 file >> buff;
 
                 // Erase comments
-                buff.erase(buff.find(';'), buff.end);
+                buff.erase(buff.find(';'), buff.length());
                 buff.shrink_to_fit();
                 
                 switch (st)
@@ -80,7 +80,7 @@ enum class LineStatus
             throw Exception(string("Bad file name; unable to open file \"" + Path + "\""));
         }
 
-        csfFile.close();
+        file.close();
     }
 
     void GINIParser::Save()
@@ -138,7 +138,9 @@ enum class LineStatus
         for (const auto& elem : Sections)
             if (elem.Name == strSectionName)
             {
-                tmp = elem.Keys;
+                for (const auto& key : elem.Keys)
+                    tmp.push_back(key.Name);
+
                 break;
             }
         
