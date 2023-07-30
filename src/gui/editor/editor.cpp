@@ -44,8 +44,15 @@ Editor::Editor(QVariant configuration, QWidget *parent) : QMainWindow(parent)
     setCentralWidget(centralWidget);
 }
 
-void Editor::onAbout() const
+void Editor::onAbout()
 {
+    // not
+    if (aboutDialog != nullptr)
+    {
+        aboutDialog->activateWindow();
+        return;
+    }
+
     QVBoxLayout* authorsL = new QVBoxLayout;
     authorsL->addWidget(new QLabel(tr("Authors: ") + AUTHORS));
 
@@ -56,18 +63,23 @@ void Editor::onAbout() const
     contentL->addWidget(pixmap, 0, 1);
     QLabel* textL = new QLabel(tr("Program licensed by GNU GPL v3"));
     textL->setWordWrap(true);
+    textL->setAlignment(Qt::AlignJustify);
     contentL->addWidget(textL, 1, 0);
     contentL->setSizeConstraint(QLayout::SetFixedSize);
 
-    QDialog aboutDialog;
-    aboutDialog.setWindowTitle(tr("About"));
-    aboutDialog.setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    aboutDialog.setWindowFlags(aboutDialog.windowFlags() &
+    aboutDialog = new QDialog(this);
+    aboutDialog->setWindowTitle(tr("About"));
+    aboutDialog->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    aboutDialog->setWindowFlags(aboutDialog->windowFlags() &
                                ~Qt::WindowContextHelpButtonHint |
                                 Qt::MSWindowsFixedSizeDialogHint);
+    connect(aboutDialog, &QDialog::finished, this, [this](){aboutDialog->deleteLater(); aboutDialog = nullptr;});
 
-    QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Orientation::Horizontal, &aboutDialog);
-    connect(buttons, &QDialogButtonBox::accepted, &aboutDialog, &QDialog::accept);
+    QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok,
+                                                     Qt::Orientation::Horizontal,
+                                                     aboutDialog);
+    connect(buttons, &QDialogButtonBox::accepted, aboutDialog, &QDialog::accept);
+
     QHBoxLayout* buttonsL = new QHBoxLayout;
     buttonsL->addStretch();
     buttons->button(QDialogButtonBox::Ok)->setFixedWidth(100);
@@ -78,8 +90,9 @@ void Editor::onAbout() const
     QVBoxLayout* mainL = new QVBoxLayout;
     mainL->addLayout(contentL);
     mainL->addLayout(buttonsL);
-    aboutDialog.setLayout(mainL);
-    aboutDialog.exec();
-    aboutDialog.raise();
-    aboutDialog.activateWindow();
+
+    aboutDialog->setLayout(mainL);
+    aboutDialog->show();
+    aboutDialog->raise();
+    aboutDialog->activateWindow();
 }

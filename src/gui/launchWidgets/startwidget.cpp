@@ -62,6 +62,7 @@ StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(
     QLabel* greeting = new QLabel(tr("Greetings, my friend. There is an amazing super cool program "
                                      "for editing hotkeys."));
     greeting->setWordWrap(true);
+    greeting->setAlignment(Qt::AlignJustify);
 
     // Main layout config
     QGridLayout* mainL = new QGridLayout;

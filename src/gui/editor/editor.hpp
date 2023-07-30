@@ -10,9 +10,12 @@ class Editor : public QMainWindow
 {
     Q_OBJECT
 
+private:
+    QDialog* aboutDialog = nullptr;
+
 public:
     Editor(QVariant configuration, QWidget *parent = nullptr);
 
 public slots:
-    void onAbout() const;
+    void onAbout();
 };
