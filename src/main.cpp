@@ -20,16 +20,17 @@ int main(int argc, char *argv[])
     _setmode(_fileno(stdout), _O_U16TEXT);
 
     // Define logger as a singleton class, that could be used anywhere in project
-    Logger::Instance   = make_unique<Logger>();
+    Logger::Instance = make_unique<Logger>();
 
+    // Initialize main cute application
     QApplication HotkeyEditor(argc, argv);
 
     try
     {
         // create main window with user system language
-        MainLaunchWidget HotkeyEditor_Window(Config::GetLangEnumByLocale(
-            QString::fromStdString(Registry::GetCurrentUserLanguage()).toLower())
-        );
+        MainWidget HotkeyEditor_Window(Config::GetLangEnumByLocale(
+            QString::fromStdString(Registry::GetCurrentUserLanguage()).toLower()));
+
         HotkeyEditor_Window.setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
         HotkeyEditor_Window.show();
         HotkeyEditor.exec();
