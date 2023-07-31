@@ -6,6 +6,7 @@
 #include <QApplication>
 #include <QComboBox>
 #include <QLabel>
+#include <QDesktopWidget>
 
 #include "startwidget.hpp"
 
@@ -19,7 +20,7 @@ QPushButton* StartWidget::CreateButton(const QString& qstrButtonName) const
 
 StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(parent)
 {
-//    setFixedSize(700, 500);
+//    qDebug() << QApplication::desktop()->screenGeometry(this).size() * Config::recomendedStartWidgetSizeRatio;
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
     auto btnNewProject  = CreateButton(tr("New project"));
@@ -54,28 +55,24 @@ StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(
     languageL->addStretch(1);
     languageL->setSpacing(10);
     languageL->addWidget(languageName);
-//    languageL->addSpacing(5);
     languageL->addWidget(langBox);
-//    languageL->setAlignment(Qt::AlignRight);
 
     // Description config
     QLabel* greeting = new QLabel(tr("Greetings, my friend. There is an amazing super cool program "
                                      "for editing hotkeys."));
     greeting->setWordWrap(true);
+    int averageSize = (int)((greeting->sizeHint().height() + greeting->sizeHint().width()) / 2.);
+    greeting->setFixedWidth(averageSize);
     greeting->setAlignment(Qt::AlignJustify);
 
     // Main layout config
     QGridLayout* mainL = new QGridLayout;
     mainL->setSpacing(50);
-    mainL->setContentsMargins(30, 20, 50, 20);
-//    mainL->setAlignment(Qt::AlignCenter);
-    QPushButton* closeButton = new QPushButton("X");
-    connect(closeButton, &QPushButton::clicked, this, &StartWidget::closeCall);
-    mainL->addWidget(closeButton, 0, 1, Qt::AlignRight);
-    mainL->addWidget(mainButtons.buttons().at(0), 1, 0, Qt::AlignLeft);
-    mainL->addWidget(mainButtons.buttons().at(1), 2, 0, Qt::AlignLeft);
-    mainL->addWidget(greeting, 1, 1, Qt::AlignTop);
-    mainL->addItem(new QSpacerItem(0, 100, QSizePolicy::Fixed, QSizePolicy::Fixed), 3, 0);
-    mainL->addLayout(languageL, 4, 1);
+    mainL->setContentsMargins(30, 50, 50, 20);
+    mainL->addWidget(mainButtons.buttons().at(0), 0, 0, Qt::AlignLeft | Qt::AlignTop);
+    mainL->addWidget(mainButtons.buttons().at(1), 1, 0, Qt::AlignLeft | Qt::AlignTop);
+    mainL->addWidget(greeting, 0, 1, Qt::AlignTop);
+    mainL->addItem(new QSpacerItem(0, 100, QSizePolicy::Fixed, QSizePolicy::Fixed), 2, 0);
+    mainL->addLayout(languageL, 3, 1);
     setLayout(mainL);
 }

@@ -27,5 +27,4 @@ public:
 signals:
     void pressed(StartWidget::Buttons button);
     void languageChanged(int index);
-    void closeCall();   // temporary
 };

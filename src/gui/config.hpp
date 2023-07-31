@@ -22,6 +22,7 @@ public:
     inline static const QString iconsPath        = "Resources/Icons";
 
     inline static const QSize startButtonsSize = QSize(230, 110);
+    inline static const double recomendedStartWidgetSizeRatio = 3./7.;
 
 public:
     Config() = delete;

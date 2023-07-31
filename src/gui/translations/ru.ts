@@ -100,22 +100,22 @@
 <context>
     <name>StartWidget</name>
     <message>
-        <location filename="../launchWidgets/startwidget.cpp" line="25"/>
+        <location filename="../launchWidgets/startwidget.cpp" line="26"/>
         <source>New project</source>
         <translation>Новый проект</translation>
     </message>
     <message>
-        <location filename="../launchWidgets/startwidget.cpp" line="28"/>
+        <location filename="../launchWidgets/startwidget.cpp" line="29"/>
         <source>Load project</source>
         <translation>Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../launchWidgets/startwidget.cpp" line="52"/>
+        <location filename="../launchWidgets/startwidget.cpp" line="53"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../launchWidgets/startwidget.cpp" line="62"/>
+        <location filename="../launchWidgets/startwidget.cpp" line="61"/>
         <source>Greetings, my friend. There is an amazing super cool program for editing hotkeys.</source>
         <translation variants="yes">
             <lengthvariant>Приветствую тебя, %username%. Ты запустил программу редактирования горячих клавиш для игры Command &amp; Conquer: Generals и Command &amp; Conquer: Generals — Zero Hour. На текущий момент программа поддерживает в тестовом режиме только создание карт горячих клавиш на основе заранее подготовленных горячих клавиш. Надеемся, что программа тебе понравится.</lengthvariant>

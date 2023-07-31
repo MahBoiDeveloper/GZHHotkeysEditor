@@ -20,8 +20,7 @@ MainLaunchWidget::MainLaunchWidget(Config::Languages language, QWidget *parent) 
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     setWindowFlags(windowFlags() |  Qt::MSWindowsFixedSizeDialogHint);
     setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint &
-                                   ~Qt::WindowMinimizeButtonHint &
-                                   ~Qt::WindowCloseButtonHint);
+                                   ~Qt::WindowMinimizeButtonHint);
     addWidget(createResurgentStartWidget(language));
 }
 
@@ -32,8 +31,6 @@ StartWidget* MainLaunchWidget::createResurgentStartWidget(Config::Languages lang
     onLanguageChanged(language);
     // New StartWidget
     StartWidget* startWidget = new StartWidget(language);
-
-    connect(startWidget, &StartWidget::closeCall, this, &MainLaunchWidget::close);  // temporary
 
     // Setting language
     connect(startWidget, &StartWidget::languageChanged, this,
