@@ -117,7 +117,10 @@
     <message>
         <location filename="../launchWidgets/startwidget.cpp" line="62"/>
         <source>Greetings, my friend. There is an amazing super cool program for editing hotkeys.</source>
-        <translation>Приветствую тебя, мой друг. Это потрясающая, супер крутая программа для редактирования горячих клавиш.</translation>
+        <translation variants="yes">
+            <lengthvariant>Приветствую тебя, %username%. Ты запустил программу редактирования горячих клавиш для игры Command &amp; Conquer: Generals и Command &amp; Conquer: Generals — Zero Hour. На текущий момент программа поддерживает в тестовом режиме только создание карт горячих клавиш на основе заранее подготовленных горячих клавиш. Надеемся, что программа тебе понравится.</lengthvariant>
+            <lengthvariant></lengthvariant>
+        </translation>
     </message>
 </context>
 </TS>
