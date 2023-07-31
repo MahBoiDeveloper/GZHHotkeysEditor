@@ -1,5 +1,6 @@
 #include <regex>
 #include <QString>
+#include <QStringList>
 
 #include "GINIParser.hpp"
 #include "Exception.hpp"
@@ -24,53 +25,76 @@ enum class LineStatus
 
         if (file.is_open())
         {
-            string buff, buffName, buffKeyName, buffKeyValue;
+            string buff, buffSectionName, buffKeyName, buffKeyValue;
+            QString qstr;
+
             LineStatus st;
-            list<GINIKey> lstKeysBuffer;
+            list<GINIKey> buffKeys;
+
+            uint32_t fileLineIndex = 0;
 
             while(file.good())
             {
-
+                fileLineIndex++;
                 file >> buff;
-
-                // Erase comments
-                buff.erase(buff.find(';'), buff.length());
-                buff.shrink_to_fit();
                 
-                switch (st)
+                // QString have much more useful features instead of std::shit
+                qstr.fromStdString(buff);
+
+                // Removing all comments and also spaces and tabs
+                int commentIndex = qstr.indexOf(';');
+                if (commentIndex < qstr.size())
+                    qstr = qstr.remove(commentIndex, qstr.size());
+
+                qstr = qstr.trimmed();
+
+                // If string after trimming is empty, then skip this string.
+                if (qstr.isEmpty()) continue;
+
+                int equalSignIndex = qstr.indexOf('=');
+                
+                switch (equalSignIndex)
                 {
-                case LineStatus::SectionName   :
-                    if (regex_match(buff.c_str(), regex("[A-Za-z0-9].* [A-Za-z0-9].*")));
+                case -1: // Read line may be a begin or end of section
 
-                    break;
-                
-                case LineStatus::SectionKey    :
-                    // regex for name (?<=  ).*(?= =)
-                    // regex for value (?<== ).*
-                    break;
+                    // If line equals END and section name doesn't set, then throw exception
+                    if ((qstr.toUpper() == "END") && (buffSectionName == ""))
+                        throw Exception(string("Unexpected \"END\" of section in [") + buff + string("] at line ") + QString::number(fileLineIndex).toStdString());
 
-                case LineStatus::SectionFooter :
-                    if (QString::fromStdString(buff).toUpper() == "END")
+                    // If line doesn't equal END, then it is a section name
+                    if (!(qstr.toUpper() == "END"))
                     {
-                        lstKeysBuffer.push_back({buffKeyName, buffKeyValue});
-                        st = LineStatus::SectionName;
+                        buffSectionName = qstr.toStdString();
+                        continue;
                     }
+
+                    // If line equals END and section name has been set, then write data into class and clear buffers
+                    if ((qstr.toUpper() == "END") && !(buffSectionName == ""))
+                    {
+                        // Write data to class
+                        Sections.push_back({buffSectionName, buffKeys});
+
+                        // Clear buffer variables
+                        buffSectionName = buffKeyName = buffKeyValue = "";
+                        buffKeys.erase(buffKeys.cbegin(), buffKeys.cend());
+                        
+                        continue;
+                    }
+
+                    break;
+
+                case  0: // Error due to only equal sign in line
+                    throw Exception(string("Unexpected \"=\" sign in [") + buff + string("] at line ") + QString::number(fileLineIndex).toStdString());
+                    break;
+                
+                default: // Read line is a value
+                    auto tmp = qstr.split('=');
+                    buffKeyName  = tmp[0].toStdString();
+                    buffKeyValue = tmp[1].toStdString();
+                    buffKeys.push_back({buffKeyName, buffKeyValue});
+
                     break;
                 }
-
-                /*
-
-                if (QString::fromStdString(buff).toUpper() == "END")
-                {
-
-                }
-                if (buff.find('=') < buff.size())
-                {
-                    // GetKeyName
-                    // GetKeyValue
-                }
-
-                */
             }
 
             Logger::Instance->Log() << "File \"" << Path << "\" has been parsed" << endl;
