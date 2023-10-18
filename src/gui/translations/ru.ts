@@ -116,11 +116,8 @@
     </message>
     <message>
         <location filename="../launchWidgets/startwidget.cpp" line="61"/>
-        <source>Greetings, my friend. There is an amazing super cool program for editing hotkeys.</source>
-        <translation variants="yes">
-            <lengthvariant>Приветствую тебя, %username%. Ты запустил программу редактирования горячих клавиш для игры Command &amp; Conquer: Generals и Command &amp; Conquer: Generals — Zero Hour. На текущий момент программа поддерживает в тестовом режиме только создание карт горячих клавиш на основе заранее подготовленных горячих клавиш. Надеемся, что программа тебе понравится.</lengthvariant>
-            <lengthvariant></lengthvariant>
-        </translation>
+        <source>Greetings, %username%. You have launched the hotkey editing program for the game Command and Conquer: Generals and Command and Conquer: Generals — Zero Hour. At the moment, the program supports in test mode only the creation of hotkey maps based on pre-prepared hotkeys. We hope that you will like the program.</source>
+        <translation>Приветствую тебя, %username%. Ты запустил программу редактирования горячих клавиш для игры Command and Conquer: Generals и Command and  Conquer: Generals — Zero Hour. На текущий момент программа поддерживает в тестовом режиме только создание карт горячих клавиш на основе заранее подготовленных горячих клавиш. Надеемся, что программа тебе понравится.</translation>
     </message>
 </context>
 </TS>

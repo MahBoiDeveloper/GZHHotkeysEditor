@@ -1,5 +1,5 @@
 #include <QButtonGroup>
-#include <QLayout>
+#include <QHBoxLayout>
 #include <QResizeEvent>
 #include <QDebug>
 #include <QTranslator>
@@ -58,21 +58,38 @@ StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(
     languageL->addWidget(langBox);
 
     // Description config
-    QLabel* greeting = new QLabel(tr("Greetings, my friend. There is an amazing super cool program "
-                                     "for editing hotkeys."));
+    QLabel* greeting = new QLabel(tr("Greetings, %username%. "
+                                     "You have launched the hotkey editing program "
+                                     "for the game Command and Conquer: Generals "
+                                     "and Command and Conquer: Generals — Zero Hour. "
+                                     "At the moment, the program supports in test mode "
+                                     "only the creation of hotkey maps based on pre-prepared hotkeys. "
+                                     "We hope that you will like the program."));
     greeting->setWordWrap(true);
-    int averageSize = (int)((greeting->sizeHint().height() + greeting->sizeHint().width()) / 2.);
-    greeting->setFixedWidth(averageSize);
-    greeting->setAlignment(Qt::AlignJustify);
+    greeting->setAlignment(Qt::AlignmentFlag::AlignJustify);
+
+    // label for size counting
+    QLabel labelForSize(greeting->text());
+    labelForSize.setWordWrap(true);
+
+    int averageSize = (int)((labelForSize.sizeHint().height() + labelForSize.sizeHint().width()) / 2.);
+    greeting->setFixedWidth(averageSize + 50);
 
     // Main layout config
-    QGridLayout* mainL = new QGridLayout;
+    QVBoxLayout* buttonsL = new QVBoxLayout;
+    buttonsL->setSpacing(50);
+    buttonsL->setAlignment(Qt::AlignLeft);
+    buttonsL->addWidget(mainButtons.buttons().at(0));
+    buttonsL->addWidget(mainButtons.buttons().at(1));
+    QHBoxLayout* contentL = new QHBoxLayout;
+    contentL->setAlignment(Qt::AlignLeft);
+    contentL->addLayout(buttonsL);
+    contentL->addWidget(greeting);
+    contentL->setAlignment(greeting, Qt::AlignTop);
+    QVBoxLayout* mainL = new QVBoxLayout;
     mainL->setSpacing(50);
-    mainL->setContentsMargins(30, 50, 50, 20);
-    mainL->addWidget(mainButtons.buttons().at(0), 0, 0, Qt::AlignLeft | Qt::AlignTop);
-    mainL->addWidget(mainButtons.buttons().at(1), 1, 0, Qt::AlignLeft | Qt::AlignTop);
-    mainL->addWidget(greeting, 0, 1, Qt::AlignTop);
-    mainL->addItem(new QSpacerItem(0, 100, QSizePolicy::Fixed, QSizePolicy::Fixed), 2, 0);
-    mainL->addLayout(languageL, 3, 1);
+    mainL->setContentsMargins(50, 50, 50, 30);
+    mainL->addLayout(contentL);
+    mainL->addLayout(languageL);
     setLayout(mainL);
 }

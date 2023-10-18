@@ -12,10 +12,15 @@
 #include "CSFParser.hpp"
 #include "JSONFile.hpp"
 
+// #include <windows.h>
+
 using namespace std;
 
 int main(int argc, char *argv[])
 {
+    // hide console
+    // ShowWindow(GetConsoleWindow(), SW_HIDE);
+    
     // All out text MUST be showed via wcout and all chars should be converted as (wchar_t)
     _setmode(_fileno(stdout), _O_U16TEXT);
 

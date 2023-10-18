@@ -16,7 +16,7 @@ file(
     RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
 )
-list(REMOVE_ITEM SOURCES ${TARGET_LINK_SOURCES})
+list(REMOVE_ITEM SOURCES ${TARGET_LINK_SOURCES}) # remove link target files from main target
 
 # project headers
 file(
@@ -34,7 +34,7 @@ set_target_properties(${LINK_MAIN_TARGET_NAME}
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_FOLDER}
 )
-# the path to the program relative to the main one
+# the path to the link program relative to the main one
 target_compile_definitions(${LINK_MAIN_TARGET_NAME} PRIVATE
     -DPROJECT_EXE_RELATIVE_PATH="$<PATH:RELATIVE_PATH,$<TARGET_FILE:${MAIN_TARGET_NAME}>,${PROJECT_DESTINATION_FOLDER}>"
 )
