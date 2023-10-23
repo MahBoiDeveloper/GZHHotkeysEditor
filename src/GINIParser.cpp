@@ -21,7 +21,7 @@ enum class LineStatus
     {
         ifstream file(Path, ios::in);
 
-        Logger::Instance->Log() << "Attempt to read file \"" << Path << "\"..." << endl;
+        LOGGER() << "Attempt to read file \"" << Path << "\"..." << endl;
 
         if (file.is_open())
         {
@@ -97,7 +97,7 @@ enum class LineStatus
                 }
             }
 
-            Logger::Instance->Log() << "File \"" << Path << "\" has been parsed" << endl;
+            LOGGER() << "File \"" << Path << "\" has been parsed" << endl;
         }
         else
         {
@@ -111,7 +111,7 @@ enum class LineStatus
     {
         ofstream file(Path, ios::out);
 
-        Logger::Instance->Log() << "Attempt to write file \"" << Path << "\"..." << endl;
+        LOGGER() << "Attempt to write file \"" << Path << "\"..." << endl;
 
         if (file.is_open())
         {
@@ -127,7 +127,7 @@ enum class LineStatus
                 file << "End" << endl;
             }
 
-            Logger::Instance->Log() << "File \"" << Path << "\" has been saved." << endl;
+            LOGGER() << "File \"" << Path << "\" has been saved." << endl;
         }
         else
         {

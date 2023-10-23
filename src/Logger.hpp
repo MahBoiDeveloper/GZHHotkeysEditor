@@ -5,6 +5,9 @@
 #include <fstream>
 #include <memory>
 
+#define LOGGER()        Logger::Instance->Log()
+#define LOGGER_MSG(msg) Logger::Instance->Log(msg)
+
 class Logger final
 {
 public:

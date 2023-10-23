@@ -15,11 +15,11 @@ using namespace std;
         
         if (!LogFile.is_open()) QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", "Unable to create log file; make sure \"Logs\" folder are exists.");
 
-        Logger::Log() << "C&C Generals and Generals Zero Hour hotkey editor" << endl; 
-        Logger::Log() << "Version: " << VERSION << endl;
-        Logger::Log() << "Authors: " << AUTHORS << endl << endl;
+        Log() << "C&C Generals and Generals Zero Hour hotkey editor" << endl; 
+        Log() << "Version: " << VERSION << endl;
+        Log() << "Authors: " << AUTHORS << endl << endl;
 
-        Logger::LogSystemInformation();
+        LogSystemInformation();
     }
 
     Logger::~Logger()
@@ -35,8 +35,8 @@ using namespace std;
         // Write to log all necessary information about MS Windows
         Log() << "Operation System Information"               << endl;
         Log() << "Version   : "
-                      << Registry::GetWindowsVersion()              << ' '
-                      << GetWindowsBit()                            << endl;
+                                << Registry::GetWindowsVersion()              << ' '
+                                << GetWindowsBit()                            << endl;
         Log() << "Language  : " << Registry::GetCurrentUserLanguage() << endl << endl;
 
         // Write to log all information about processor type and memory size
@@ -53,7 +53,7 @@ using namespace std;
                 Log() << "C&C: " << Registry::ToString(game)  << " not installed" << endl;
             else
                 Log() << "C&C: " << Registry::ToString(game)  << " installed at ["
-                              << Registry::GetPathToGame(game) << ']' << endl;
+                                 << Registry::GetPathToGame(game) << ']' << endl;
         }
 
         LogFile << endl;
@@ -100,22 +100,22 @@ using namespace std;
 
     void Logger::Log(const stringstream& msg)
     {
-        Logger::Log() << msg.str() << endl;
+        Log() << msg.str() << endl;
     }
 
     void Logger::Log(string const& msg)
     {
-        Logger::Log() << msg << endl;
+        Log() << msg << endl;
     }
 
     void Logger::Log(wstringstream const& msg)
     {
-        Logger::Log() << msg.str().c_str() << endl;
+        Log() << msg.str().c_str() << endl;
     }
 
     void Logger::Log(wstring const& msg)
     {
-        Logger::Log() << msg.c_str() << endl;
+        Log() << msg.c_str() << endl;
     }
 #pragma endregion
 

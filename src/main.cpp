@@ -43,8 +43,8 @@ int main(int argc, char *argv[])
     catch(const exception& e)
     {
         // Log exception message
-        Logger::Instance->Log() << "I'VE GOT A PRESENT FOR YA" << endl;
-        Logger::Instance->Log(string(e.what()));
+        LOGGER() << "I'VE GOT A PRESENT FOR YA" << endl;
+        LOGGER_MSG(string(e.what()));
 
         // And show it to user
         QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", e.what());
