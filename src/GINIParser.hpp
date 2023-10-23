@@ -17,6 +17,15 @@ public: // Data types declaration
         std::string        Name;
         std::list<GINIKey> Keys;
     };
+private:
+    enum class LineStatus
+    {
+        EmptyOrWrong = 0,
+        SectionName,
+        SectionKey,
+        SectionFooter
+    };
+
 
 public: // Data
     inline static std::unique_ptr<GINIParser> Instance;
@@ -26,7 +35,7 @@ private:
 
 public: // Methods
     GINIParser() = delete;
-    GINIParser(std::string strFileSample);
+    GINIParser(const std::string& strFileSample);
 
     void Save();
     void Save(std::string strFileSample);

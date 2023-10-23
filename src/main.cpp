@@ -1,5 +1,6 @@
 #include <fcntl.h>   // Allows to use UTF-16 encoding as the default encoding
 #include <exception> // Allows to use standart cpp exceptions
+#include <iostream>
 
 // Internal cute logic
 #include <QApplication>
@@ -11,10 +12,12 @@
 #include "Registry.hpp"
 #include "CSFParser.hpp"
 #include "JSONFile.hpp"
+#include "GINIParser.hpp"
 
 // #include <windows.h>
 
 using namespace std;
+void Test();
 
 int main(int argc, char *argv[])
 {
@@ -32,7 +35,9 @@ int main(int argc, char *argv[])
 
     try
     {
-        // create main window with user system language
+        Test();
+
+        // Create main window with user system language
         MainLaunchWidget HotkeyEditor_Window(Config::GetLangEnumByLocale(
             QString::fromStdString(Registry::GetCurrentUserLanguage()).toLower()));
 
@@ -51,4 +56,16 @@ int main(int argc, char *argv[])
     }
 
     return 0;
+}
+
+void Test()
+{
+    string iniFileName("CommandMap.ini");
+    GINIParser::Instance = make_unique<GINIParser>(iniFileName);
+    
+    for (const auto& elem : GINIParser::Instance->GetSectionsName())
+        wcout << elem.c_str() << L"; ";
+    wcout << endl;
+    
+    return;
 }

@@ -8,13 +8,12 @@
 
 using namespace std;
 
-enum class LineStatus
-{
-    EmptyOrWrong = 0,
-    SectionName,
-    SectionKey,
-    SectionFooter
-};
+#pragma region CTORs and DTORs
+    GINIParser::GINIParser(const string& filePath) : Path(filePath)
+    {
+        Parse();
+    }
+#pragma endregion
 
 #pragma region Parsing
     void GINIParser::Parse()
@@ -83,7 +82,7 @@ enum class LineStatus
 
                     break;
 
-                case  0: // Error due to only equal sign in line
+                case 0: // Error due to only equal sign in line
                     throw Exception(string("Unexpected \"=\" sign in [") + buff + string("] at line ") + QString::number(fileLineIndex).toStdString());
                     break;
                 
