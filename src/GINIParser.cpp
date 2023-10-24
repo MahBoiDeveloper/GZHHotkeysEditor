@@ -32,21 +32,19 @@ using namespace std;
 
             uint32_t fileLineIndex = 0;
 
-            while(file.good())
+            while(getline(file, buff))
             {
                 fileLineIndex++;
-                file >> buff;
                 
-                // QString have much more useful features instead of std::shit
-                qstr.fromStdString(buff);
+                // QString has much more useful features instead of std::string shit
+                qstr = QString::fromStdString(buff);
 
                 // Removing all comments and also spaces and tabs
                 int commentIndex = qstr.indexOf(';');
-                if (commentIndex < qstr.size())
+                if (commentIndex != -1)
                     qstr = qstr.remove(commentIndex, qstr.size());
 
                 qstr = qstr.trimmed();
-
                 // If string after trimming is empty, then skip this string.
                 if (qstr.isEmpty()) continue;
 
@@ -88,10 +86,8 @@ using namespace std;
                 
                 default: // Read line is a value
                     auto tmp = qstr.split('=');
-                    buffKeyName  = tmp[0].toStdString();
-                    buffKeyValue = tmp[1].toStdString();
-                    buffKeys.push_back({buffKeyName, buffKeyValue});
-
+                    buffKeyName  = tmp[0].trimmed().toStdString();
+                    buffKeyValue = tmp[1].trimmed().toStdString();
                     break;
                 }
             }

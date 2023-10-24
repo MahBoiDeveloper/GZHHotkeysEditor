@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     catch(const exception& e)
     {
         // Log exception message
-        LOGGER() << "I'VE GOT A PRESENT FOR YA" << endl;
+        LOGGER() << endl << endl << "\t\t\t\tI'VE GOT A PRESENT FOR YA" << endl;
         LOGGER_MSG(string(e.what()));
 
         // And show it to user
@@ -62,10 +62,13 @@ void Test()
 {
     string iniFileName("CommandMap.ini");
     GINIParser::Instance = make_unique<GINIParser>(iniFileName);
+
+    // for (const auto& elem : GINIParser::Instance->GetSectionsName())
+    //     LOGGER() << elem << endl;
     
-    for (const auto& elem : GINIParser::Instance->GetSectionsName())
-        wcout << elem.c_str() << L"; ";
-    wcout << endl;
-    
+    string strTmp("CommandMap DEMO_INSTANT_QUIT");
+    for (const auto& elem : GINIParser::Instance->GetSectionKeys(strTmp))
+        LOGGER() << elem << endl;
+
     return;
 }
