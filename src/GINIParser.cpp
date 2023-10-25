@@ -20,7 +20,7 @@ using namespace std;
     {
         ifstream file(Path, ios::in);
 
-        LOGGER() << "Attempt to read file \"" << Path << "\"..." << endl;
+        LOGSTM() << "Attempt to read file \"" << Path << "\"..." << endl;
 
         if (file.is_open())
         {
@@ -92,7 +92,7 @@ using namespace std;
                 }
             }
 
-            LOGGER() << "File \"" << Path << "\" has been parsed" << endl;
+            LOGSTM() << "File \"" << Path << "\" has been parsed" << endl;
         }
         else
         {
@@ -106,7 +106,7 @@ using namespace std;
     {
         ofstream file(Path, ios::out);
 
-        LOGGER() << "Attempt to write file \"" << Path << "\"..." << endl;
+        LOGSTM() << "Attempt to write file \"" << Path << "\"..." << endl;
 
         if (file.is_open())
         {
@@ -122,7 +122,7 @@ using namespace std;
                 file << "End" << endl;
             }
 
-            LOGGER() << "File \"" << Path << "\" has been saved." << endl;
+            LOGSTM() << "File \"" << Path << "\" has been saved." << endl;
         }
         else
         {

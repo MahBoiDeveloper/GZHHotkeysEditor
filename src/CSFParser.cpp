@@ -17,14 +17,14 @@ using namespace std;
     {
         ifstream csfFile(Path, ios::binary | ios::in);
 
-        LOGGER() << "Attempt to read binary file \"" << Path << "\"..." << endl;
+        LOGSTM() << "Attempt to read binary file \"" << Path << "\"..." << endl;
 
         if (csfFile.is_open())
         {
             CSFParser::ReadHeader(&csfFile);
             CSFParser::ReadBody(&csfFile);
 
-            LOGGER() << "File \"" << Path << "\" has been parsed; strings count : " << Table.size() << endl;
+            LOGSTM() << "File \"" << Path << "\" has been parsed; strings count : " << Table.size() << endl;
         }
         else
         {
@@ -38,17 +38,17 @@ using namespace std;
     {
         csfFile->read(reinterpret_cast<char*>(&Header), sizeof(Header));
 
-        LOGGER() << "File header data:" << endl;
+        LOGSTM() << "File header data:" << endl;
 
-        LOGGER() << '\t' << "First 4th bytes of file header are : [" << Header.csfChars[0] 
+        LOGSTM() << '\t' << "First 4th bytes of file header are : [" << Header.csfChars[0] 
                                                                                     << Header.csfChars[1] 
                                                                                     << Header.csfChars[2] 
                                                                                     << Header.csfChars[3] << ']' << endl;
-        LOGGER() << '\t' << "CSF file format version             : " << Header.formatVersion      << endl;
-        LOGGER() << '\t' << "Number of labels in CSF file        : " << Header.numberOfLabels     << endl;
-        LOGGER() << '\t' << "Number of strings in CSF file       : " << Header.numberOfStrings    << endl;
-        LOGGER() << '\t' << "Useless bytes, i guess?             : " << Header.uselessBytes       << endl;
-        LOGGER() << '\t' << "Language code                       : " << Header.languageCode       << endl;
+        LOGSTM() << '\t' << "CSF file format version             : " << Header.formatVersion      << endl;
+        LOGSTM() << '\t' << "Number of labels in CSF file        : " << Header.numberOfLabels     << endl;
+        LOGSTM() << '\t' << "Number of strings in CSF file       : " << Header.numberOfStrings    << endl;
+        LOGSTM() << '\t' << "Useless bytes, i guess?             : " << Header.uselessBytes       << endl;
+        LOGSTM() << '\t' << "Language code                       : " << Header.languageCode       << endl;
     }
 
     void CSFParser::ReadBody(ifstream* csfFile)
@@ -140,16 +140,16 @@ using namespace std;
 
         if(csfFile.is_open())
         {
-            LOGGER() << "Attempt to write binary file \"" << strFileName << "\"" << endl;
+            LOGSTM() << "Attempt to write binary file \"" << strFileName << "\"" << endl;
 
             CSFParser::WriteHeader(&csfFile);
             CSFParser::WriteBody(&csfFile);
 
-            LOGGER() << "File saved as \"" << strFileName << "\"" << endl;
+            LOGSTM() << "File saved as \"" << strFileName << "\"" << endl;
         }
         else
         {
-            LOGGER() << "Could not open file \"" << strFileName << "\" to save" << endl;
+            LOGSTM() << "Could not open file \"" << strFileName << "\" to save" << endl;
         }
 
         csfFile.close();
@@ -344,7 +344,7 @@ using namespace std;
     /// @brief Searchs any match for string name and rewriting hotkey assignment for it.
     void CSFParser::SetHotkey(const string& strName, const wchar_t& wchLetter)
     {
-        LOGGER() << "Changing for string \"" << strName << "\" hotkey assingment to letter \"" << (const char)wchLetter << "\"" << endl;
+        LOGSTM() << "Changing for string \"" << strName << "\" hotkey assingment to letter \"" << (const char)wchLetter << "\"" << endl;
 
         for (auto& elem : Table)
             if (elem.Name == strName)
@@ -369,7 +369,7 @@ using namespace std;
     /// @brief Searchs any match for string name and rewriting its value.
     void CSFParser::SetStringValue(const string& strName, const wstring& wstrValue)
     {
-        LOGGER() << "Changing value for string \"" << strName << "\"" << endl;
+        LOGSTM() << "Changing value for string \"" << strName << "\"" << endl;
 
         for (auto& elem : Table)
             if (elem.Name == strName)
@@ -379,7 +379,7 @@ using namespace std;
     /// @brief Searchs any match for string name and rewriting its value.
     void CSFParser::SetStringValue(const CompiledString& stString)
     {
-        LOGGER() << "Changing value for string \"" << stString.Name << "\"" << endl;
+        LOGSTM() << "Changing value for string \"" << stString.Name << "\"" << endl;
 
         for (auto& elem : Table)
             if (elem.Name == stString.Name)

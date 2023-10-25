@@ -5,8 +5,8 @@
 #include <fstream>
 #include <memory>
 
-#define LOGGER()        Logger::Instance->Log()
-#define LOGGER_MSG(msg) Logger::Instance->Log(msg)
+#define LOGSTM()    Logger::Instance->Log()
+#define LOGMSG(msg) Logger::Instance->Log(msg)
 
 class Logger final
 {

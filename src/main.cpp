@@ -48,8 +48,8 @@ int main(int argc, char *argv[])
     catch(const exception& e)
     {
         // Log exception message
-        LOGGER() << endl << endl << "\t\t\t\tI'VE GOT A PRESENT FOR YA" << endl;
-        LOGGER_MSG(string(e.what()));
+        LOGSTM() << endl << endl << "\t\t\t\tI'VE GOT A PRESENT FOR YA" << endl;
+        LOGMSG(string(e.what()));
 
         // And show it to user
         QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", e.what());
@@ -64,11 +64,11 @@ void Test()
     GINIParser::Instance = make_unique<GINIParser>(iniFileName);
 
     // for (const auto& elem : GINIParser::Instance->GetSectionsName())
-    //     LOGGER() << elem << endl;
+    //     LOGSTM() << elem << endl;
     
     string strTmp("CommandMap DEMO_INSTANT_QUIT");
     for (const auto& elem : GINIParser::Instance->GetSectionKeys(strTmp))
-        LOGGER() << elem << endl;
+        LOGSTM() << elem << endl;
 
     return;
 }
