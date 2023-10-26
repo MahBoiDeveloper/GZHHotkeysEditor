@@ -1,4 +1,3 @@
-#include <regex>
 #include <QString>
 #include <QStringList>
 
@@ -26,10 +25,7 @@ using namespace std;
         {
             string buff, buffSectionName, buffKeyName, buffKeyValue;
             QString qstr;
-
-            LineStatus st;
-            list<GINIKey> buffKeys;
-
+            vector<GINIKey> buffKeys;
             uint32_t fileLineIndex = 0;
 
             while(getline(file, buff))
@@ -45,6 +41,7 @@ using namespace std;
                     qstr = qstr.remove(commentIndex, qstr.size());
 
                 qstr = qstr.trimmed();
+
                 // If string after trimming is empty, then skip this string.
                 if (qstr.isEmpty()) continue;
 
@@ -52,43 +49,46 @@ using namespace std;
                 
                 switch (equalSignIndex)
                 {
-                case -1: // Read line may be a begin or end of section
+                    case -1: // Read line may be a begin or end of section
 
-                    // If line equals END and section name doesn't set, then throw exception
-                    if ((qstr.toUpper() == "END") && (buffSectionName == ""))
-                        throw Exception(string("Unexpected \"END\" of section in [") + buff + string("] at line ") + QString::number(fileLineIndex).toStdString());
+                        // If line equals END and section name doesn't set, then throw exception
+                        if ((qstr.toUpper() == "END") && (buffSectionName == ""))
+                            throw Exception(string("Unexpected \"END\" of section in [") + buff + 
+                                            string("] at line ") + 
+                                            QString::number(fileLineIndex).toStdString());
 
-                    // If line doesn't equal END, then it is a section name
-                    if (!(qstr.toUpper() == "END"))
-                    {
-                        buffSectionName = qstr.toStdString();
-                        continue;
-                    }
+                        // If line doesn't equal END, then it is a section name
+                        if (qstr.toUpper() != "END")
+                        {
+                            buffSectionName = qstr.toStdString();
+                            continue;
+                        }
 
-                    // If line equals END and section name has been set, then write data into class and clear buffers
-                    if ((qstr.toUpper() == "END") && !(buffSectionName == ""))
-                    {
-                        // Write data to class
-                        Sections.push_back({buffSectionName, buffKeys});
+                        // If line equals END and section name has been set, then write data into class and clear buffers
+                        if ((qstr.toUpper() == "END") && (buffSectionName != ""))
+                        {
+                            // Write data to class
+                            Sections.push_back({buffSectionName, buffKeys});
 
-                        // Clear buffer variables
-                        buffSectionName = buffKeyName = buffKeyValue = "";
-                        buffKeys.erase(buffKeys.cbegin(), buffKeys.cend());
-                        
-                        continue;
-                    }
+                            // Clear buffer variables
+                            buffSectionName = buffKeyName = buffKeyValue = "";
+                            buffKeys.erase(buffKeys.cbegin(), buffKeys.cend());
 
-                    break;
+                            continue;
+                        }
 
-                case 0: // Error due to only equal sign in line
-                    throw Exception(string("Unexpected \"=\" sign in [") + buff + string("] at line ") + QString::number(fileLineIndex).toStdString());
-                    break;
+                        break;
+
+                    case 0: // Error due to only equal sign in line
+                        throw Exception(string("Unexpected \"=\" sign in [") + buff + string("] at line ") + QString::number(fileLineIndex).toStdString());
+                        break;
                 
-                default: // Read line is a value
-                    auto tmp = qstr.split('=');
-                    buffKeyName  = tmp[0].trimmed().toStdString();
-                    buffKeyValue = tmp[1].trimmed().toStdString();
-                    break;
+                    default: // Read line is a value
+                        auto tmp = qstr.split('=');
+                        buffKeyName  = tmp[0].trimmed().toStdString();
+                        buffKeyValue = tmp[1].trimmed().toStdString();
+                        buffKeys.push_back({buffKeyName, buffKeyValue});
+                        break;
                 }
             }
 
@@ -140,9 +140,9 @@ using namespace std;
 #pragma endregion
 
 #pragma region Getters and setter
-    list<string> GINIParser::GetSectionsName() const
+    vector<string> GINIParser::GetSectionsName() const
     {
-        list<string> tmp;
+        vector<string> tmp;
 
         for (const auto& elem : Sections)
             tmp.push_back(elem.Name);
@@ -150,9 +150,9 @@ using namespace std;
         return tmp;
     }
 
-    list<string> GINIParser::GetSectionKeys(const string& strSectionName) const
+    vector<string> GINIParser::GetSectionKeys(const string& strSectionName) const
     {
-        list<string> tmp;
+        vector<string> tmp;
 
         for (const auto& elem : Sections)
             if (elem.Name == strSectionName)

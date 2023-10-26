@@ -60,15 +60,5 @@ int main(int argc, char *argv[])
 
 void Test()
 {
-    string iniFileName("CommandMap.ini");
-    GINIParser::Instance = make_unique<GINIParser>(iniFileName);
-
-    // for (const auto& elem : GINIParser::Instance->GetSectionsName())
-    //     LOGSTM() << elem << endl;
-    
-    string strTmp("CommandMap DEMO_INSTANT_QUIT");
-    for (const auto& elem : GINIParser::Instance->GetSectionKeys(strTmp))
-        LOGSTM() << elem << endl;
-
     return;
 }
