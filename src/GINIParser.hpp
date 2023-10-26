@@ -13,7 +13,7 @@ public: // Data types declaration
 
     struct GINISection final
     {
-        std::string        Name;
+        std::string          Name;
         std::vector<GINIKey> Keys;
     };
 
