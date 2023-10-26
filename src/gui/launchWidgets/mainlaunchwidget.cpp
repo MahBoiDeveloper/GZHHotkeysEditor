@@ -84,12 +84,12 @@ void MainLaunchWidget::onStartButtonClicked(StartWidget::Buttons button)
     BaseConfigurationWidget* configurationWidget;
     switch (button)
     {
-    case StartWidget::Buttons::NewProject:
-        configurationWidget = new CreatorWidget;
-        break;
-    case StartWidget::Buttons::LoadProject:
-        configurationWidget = new LoaderWidget;
-        break;
+        case StartWidget::Buttons::NewProject:
+            configurationWidget = new CreatorWidget;
+            break;
+        case StartWidget::Buttons::LoadProject:
+            configurationWidget = new LoaderWidget;
+            break;
     }
     addWidget(configurationWidget);
     setCurrentWidget(configurationWidget); // next window (creator)

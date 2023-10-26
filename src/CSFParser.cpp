@@ -41,9 +41,9 @@ using namespace std;
         LOGSTM() << "File header data:" << endl;
 
         LOGSTM() << '\t' << "First 4th bytes of file header are : [" << Header.csfChars[0] 
-                                                                                    << Header.csfChars[1] 
-                                                                                    << Header.csfChars[2] 
-                                                                                    << Header.csfChars[3] << ']' << endl;
+                                                                     << Header.csfChars[1] 
+                                                                     << Header.csfChars[2] 
+                                                                     << Header.csfChars[3] << ']' << endl;
         LOGSTM() << '\t' << "CSF file format version             : " << Header.formatVersion      << endl;
         LOGSTM() << '\t' << "Number of labels in CSF file        : " << Header.numberOfLabels     << endl;
         LOGSTM() << '\t' << "Number of strings in CSF file       : " << Header.numberOfStrings    << endl;

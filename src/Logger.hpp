@@ -32,4 +32,6 @@ public:
 
     void Log(const std::wstringstream& msg);
     void Log(const std::wstring& msg);
+
+    void LogException();
 };

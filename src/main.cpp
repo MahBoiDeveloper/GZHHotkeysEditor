@@ -1,5 +1,4 @@
 #include <fcntl.h>   // Allows to use UTF-16 encoding as the default encoding
-#include <exception> // Allows to use standart cpp exceptions
 #include <iostream>
 
 // Internal cute logic
@@ -8,6 +7,7 @@
 
 // Project files
 #include "gui/launchWidgets/mainlaunchwidget.hpp"
+#include "Exception.hpp"
 #include "Logger.hpp"
 #include "Registry.hpp"
 #include "CSFParser.hpp"
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     catch(const exception& e)
     {
         // Log exception message
-        LOGSTM() << endl << endl << "\t\t\t\tI'VE GOT A PRESENT FOR YA" << endl;
+        Logger::Instance->LogException();
         LOGMSG(string(e.what()));
 
         // And show it to user

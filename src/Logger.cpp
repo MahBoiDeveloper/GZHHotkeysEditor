@@ -117,6 +117,12 @@ using namespace std;
     {
         Log() << msg.c_str() << endl;
     }
+
+    void Logger::LogException()
+    {
+        LogFile << endl << endl;
+        Log() << "\t\t\t\tI'VE GOT A PRESENT FOR YA" << endl;
+    }
 #pragma endregion
 
 #pragma region Support methods
