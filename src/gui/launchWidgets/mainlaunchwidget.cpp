@@ -99,7 +99,7 @@ void MainLaunchWidget::onStartButtonClicked(StartWidget::Buttons button)
 }
 
 // close and create new editor
-void MainLaunchWidget::onConfigurationAccepted(QVariant configuration)
+void MainLaunchWidget::onConfigurationAccepted(const QVariant& configuration)
 {
     clear();
     qDebug() << configuration.toString();

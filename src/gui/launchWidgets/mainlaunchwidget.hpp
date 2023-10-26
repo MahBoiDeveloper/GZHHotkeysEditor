@@ -21,5 +21,5 @@ public:
 private slots:
     void onLanguageChanged(Config::Languages language);
     void onStartButtonClicked(StartWidget::Buttons button);
-    void onConfigurationAccepted(QVariant configuration);
+    void onConfigurationAccepted(const QVariant &configuration);
 };

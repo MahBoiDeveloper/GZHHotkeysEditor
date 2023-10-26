@@ -2,6 +2,9 @@
 #include <QMenuBar>
 #include <QDialog>
 #include <QDialogButtonBox>
+#include <QListView>
+#include <QStringListModel>
+#include <QScrollArea>
 
 #include "editor.hpp"
 #include "../../Info.hpp"
@@ -23,20 +26,85 @@ Editor::Editor(QVariant configuration, QWidget *parent) : QMainWindow(parent)
     connect(aboutA, &QAction::triggered, this, &Editor::onAbout);
     menuBar()->addAction(aboutA);
 
-    QVBoxLayout* mainL = new QVBoxLayout;
-//    for(int i = 0; i < 7; i++)
-//        mainL->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
-//                                           QString("hotkey_%1").arg(i+1),
-//                                           QString("sources/icons/Gen1_Hacker_Icons.webp")));
-//    hotkeysWidget->setLayout(mainL);
+    // configuring fractions layouts
     QVBoxLayout* USA_L = new QVBoxLayout;
     USA_L->addWidget(new QPushButton("USA"));
-    QHBoxLayout* USA_fractionsL = new QHBoxLayout;
-    USA_L->addWidget(new QPushButton("AIR"));
-    USA_L->addWidget(new QPushButton("LASER"));
-    USA_L->addWidget(new QPushButton("USA"));
+    QHBoxLayout* USA_powersL = new QHBoxLayout;
+    USA_powersL->addWidget(new QPushButton("AIR"));
+    USA_powersL->addWidget(new QPushButton("LASER"));
+    USA_powersL->addWidget(new QPushButton("USA"));
+    USA_L->addLayout(USA_powersL);
+
+    QVBoxLayout* CHINA_L = new QVBoxLayout;
+    CHINA_L->addWidget(new QPushButton("CHINA"));
+    QHBoxLayout* CHINA_powersL = new QHBoxLayout;
+    CHINA_powersL->addWidget(new QPushButton("NUKE"));
+    CHINA_powersL->addWidget(new QPushButton("INF"));
+    CHINA_powersL->addWidget(new QPushButton("TANK"));
+    CHINA_L->addLayout(CHINA_powersL);
+
+    QVBoxLayout* GLA_L = new QVBoxLayout;
+    GLA_L->addWidget(new QPushButton("GLA"));
+    QHBoxLayout* GLA_powersL = new QHBoxLayout;
+    GLA_powersL->addWidget(new QPushButton("TOX"));
+    GLA_powersL->addWidget(new QPushButton("STELTH"));
+    GLA_powersL->addWidget(new QPushButton("DEMO"));
+    GLA_L->addLayout(GLA_powersL);
 
     QHBoxLayout* fractionsL = new QHBoxLayout;
+    fractionsL->addLayout(USA_L);
+    fractionsL->addLayout(CHINA_L);
+    fractionsL->addLayout(GLA_L);
+
+    // buildings view list
+    QStringListModel* buildingsModel = new QStringListModel;
+    QStringList list;
+    for (int i = 0; i < 10; ++i)
+    {
+        list << QString("Building %1").arg(i+1);
+    }
+    buildingsModel->setStringList(list);
+
+    QListView* buildings = new QListView;
+    buildings->setModel(buildingsModel);
+
+    QVBoxLayout* hotkeysL1 = new QVBoxLayout;
+    QVBoxLayout* hotkeysL2 = new QVBoxLayout;
+    QVBoxLayout* hotkeysL3 = new QVBoxLayout;
+    for(int i = 0; i < 7; ++i)
+    {
+        hotkeysL1->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
+                                              QString("hotkey_%1").arg(i+1),
+                                              QString("sources/icons/Gen1_Hacker_Icons.webp")));
+        hotkeysL2->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
+                                              QString("hotkey_%1").arg(i+1),
+                                              QString("sources/icons/Gen1_Hacker_Icons.webp")));
+        hotkeysL3->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
+                                              QString("hotkey_%1").arg(i+1),
+                                              QString("sources/icons/Gen1_Hacker_Icons.webp")));
+    }
+    QScrollArea* arr1 = new QScrollArea;
+    QScrollArea* arr2 = new QScrollArea;
+    QScrollArea* arr3 = new QScrollArea;
+//    arr1->setLayout(hotkeysL1);
+//    arr2->setLayout(hotkeysL2);
+//    arr3->setLayout(hotkeysL3);
+    arr1->setWidgetResizable(true);
+    arr2->setWidgetResizable(true);
+    arr3->setWidgetResizable(true);
+
+    QVBoxLayout* buildingConfigurationL = new QVBoxLayout;
+    buildingConfigurationL->addWidget(arr1);
+    buildingConfigurationL->addWidget(arr2);
+    buildingConfigurationL->addWidget(arr3);
+
+    QHBoxLayout* contentL = new QHBoxLayout;
+    contentL->addWidget(buildings);
+    contentL->addLayout(buildingConfigurationL);
+
+    QVBoxLayout* mainL = new QVBoxLayout;
+    mainL->addLayout(fractionsL);
+    mainL->addLayout(contentL);
 
     // main widget
     QWidget* centralWidget = new QWidget;
