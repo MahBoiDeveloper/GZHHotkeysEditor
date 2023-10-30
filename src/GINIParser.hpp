@@ -30,9 +30,9 @@ public: // Methods
     void Save();
     void Save(std::string strFileSample);
 
-    std::vector<std::string> GetSectionsName() const;
-    std::vector<std::string> GetSectionKeys(const std::string& strSectionName) const;
-    std::string              GetSectionValue(const std::string& strSectionName, const std::string& strSectionKey) const;
+    std::vector<std::string> GetSectionsNames() const;
+    std::vector<std::string> GetSectionKeys  (const std::string& strSectionName) const;
+    std::string              GetSectionValue (const std::string& strSectionName, const std::string& strSectionKey) const;
 
     void SetSectionValue(const std::string& strName, const std::string& strKey, const std::string& strValue);
 private:

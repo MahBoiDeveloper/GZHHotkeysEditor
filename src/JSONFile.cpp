@@ -10,15 +10,16 @@
 
 using namespace std;
 
-#pragma region ctor and dtor
+#pragma region CTORs and DTORs
     JSONFile::JSONFile(const string& filePath) : FileName{filePath}
     {
         QFile openedFile(FileName.c_str());
-        // reading json file
+
+        // Reading json file
         if (openedFile.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             string tmpString = openedFile.readAll().toStdString();
-            JsonMainObject = QJsonDocument::fromJson(QByteArray::fromStdString(tmpString)).object();
+            JsonMainObject   = QJsonDocument::fromJson(QByteArray::fromStdString(tmpString)).object();
             openedFile.close();
         }
         else
@@ -34,8 +35,19 @@ using namespace std;
         return JsonMainObject.value(QString::fromStdString(strThisLayoutParameter)).toString().toStdString();
     }
 
-    QJsonValue JSONFile::GetObject(const std::string& strThisLayoutParameter) const
+    QJsonValue JSONFile::GetObject(const string& strThisLayoutParameter) const
     {
         return JsonMainObject.value(QString::fromStdString(strThisLayoutParameter));
+    }
+
+    QJsonObject JSONFile::Query(const string& strQuery) const
+    {
+        QString qstrQuery = QString::fromStdString(strQuery);
+        return JsonMainObject.value(qstrQuery).toObject();
+    }
+
+    bool JSONFile::EvaluateQuery(const string& strQuerySample) const
+    {
+        return false;
     }
 #pragma endregion

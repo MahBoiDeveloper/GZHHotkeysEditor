@@ -18,6 +18,6 @@ public: // Methods
 
     std::string GetValue(const std::string& strThisLayoutParameter) const;
     QJsonValue GetObject(const std::string& strThisLayoutParameter) const;
-    // bool EvaluateQuery(const std::string& strQuerySample) const;
-    // std::vector<std::string> Query(const std::string& strQuery) const;
+    QJsonObject Query(const std::string& strQuery)                  const;
+    bool EvaluateQuery(const std::string& strQuerySample)           const;
 };

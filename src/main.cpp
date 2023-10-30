@@ -14,14 +14,12 @@
 #include "JSONFile.hpp"
 #include "GINIParser.hpp"
 
-// #include <windows.h>
-
 using namespace std;
 void Test();
 
 int main(int argc, char *argv[])
 {
-    // hide console
+    // Hide console
     // ShowWindow(GetConsoleWindow(), SW_HIDE);
     
     // All out text MUST be showed via wcout and all chars should be converted as (wchar_t)
