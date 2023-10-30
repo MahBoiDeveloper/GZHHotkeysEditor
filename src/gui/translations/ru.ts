@@ -46,17 +46,17 @@
     </message>
     <message>
         <location filename="../editor/editor.cpp" line="25"/>
-        <location filename="../editor/editor.cpp" line="139"/>
+        <location filename="../editor/editor.cpp" line="142"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="125"/>
+        <location filename="../editor/editor.cpp" line="128"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../editor/editor.cpp" line="132"/>
+        <location filename="../editor/editor.cpp" line="135"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

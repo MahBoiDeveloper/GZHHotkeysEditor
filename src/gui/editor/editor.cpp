@@ -24,7 +24,7 @@ Editor::Editor(QVariant configuration, QWidget *parent) : QMainWindow(parent)
     menuBar()->addMenu(settingsM);
     QAction* aboutA = new QAction(tr("About"));
     connect(aboutA, &QAction::triggered, this, &Editor::onAbout);
-    menuBar()->addAction(aboutA);
+    settingsM->addAction(aboutA);
 
     // configuring fractions layouts
     QVBoxLayout* USA_L = new QVBoxLayout;
@@ -101,6 +101,9 @@ Editor::Editor(QVariant configuration, QWidget *parent) : QMainWindow(parent)
     QHBoxLayout* contentL = new QHBoxLayout;
     contentL->addWidget(buildings);
     contentL->addLayout(buildingConfigurationL);
+    // building list an configuration stretch power
+    contentL->setStretch(0,1);
+    contentL->setStretch(1,3);
 
     QVBoxLayout* mainL = new QVBoxLayout;
     mainL->addLayout(fractionsL);
