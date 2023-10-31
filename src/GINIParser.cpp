@@ -20,7 +20,7 @@ using namespace std;
     {
         ifstream file(Path, ios::in);
 
-        LOGSTM() << "Attempt to read file \"" << Path << "\"..." << endl;
+        LOGSTM << "Attempt to read file \"" << Path << "\"..." << endl;
 
         if (file.is_open())
         {
@@ -93,7 +93,7 @@ using namespace std;
                 }
             }
 
-            LOGSTM() << "File \"" << Path << "\" has been parsed; Sections count: " << GINIParser::Instance->Sections.size() << endl;
+            LOGSTM << "File \"" << Path << "\" has been parsed; Sections count: " << GINIParser::Instance->Sections.size() << endl;
         }
         else
         {
@@ -108,7 +108,7 @@ using namespace std;
     {
         ofstream file(Path, ios::out);
 
-        LOGSTM() << "Attempt to write file \"" << Path << "\"..." << endl;
+        LOGSTM << "Attempt to write file \"" << Path << "\"..." << endl;
 
         if (file.is_open())
         {
@@ -124,7 +124,7 @@ using namespace std;
                 file << "End" << endl;
             }
 
-            LOGSTM() << "File \"" << Path << "\" has been saved." << endl;
+            LOGSTM << "File \"" << Path << "\" has been saved." << endl;
         }
         else
         {

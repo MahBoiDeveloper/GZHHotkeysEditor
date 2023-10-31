@@ -40,14 +40,34 @@ using namespace std;
         return JsonMainObject.value(QString::fromStdString(strThisLayoutParameter));
     }
 
-    QJsonObject JSONFile::Query(const string& strQuery) const
-    {
-        QString qstrQuery = QString::fromStdString(strQuery);
-        return JsonMainObject.value(qstrQuery).toObject();
-    }
+    // QJsonObject JSONFile::Query(const string& strQuery) const
+    // {
+    //     QString     qstrQuery = QString::fromStdString(strQuery);
+    //     QStringList splitList = qstrQuery.split('.');
+        
+    //     if (splitList.at(0) != '@') throw Exception(string("JSON path doesn't begin with \'@\'"));
 
-    bool JSONFile::EvaluateQuery(const string& strQuerySample) const
-    {
-        return false;
-    }
+    //     QJsonObject currObj = JsonMainObject;
+
+    //     for (int i = 2; i++; i < splitList.size())
+    //     {
+    //         QString currSplit = splitList.at(i);
+
+    //         if (currSplit.contains('[') && currSplit.contains(']'))
+    //         {
+    //             currObj.to
+    //         }
+    //         else
+    //         {
+    //             currObj = currObj[splitList.at(i)];
+    //         }
+    //     }
+
+    //     return JsonMainObject.value(qstrQuery).toObject();
+    // }
+
+    // bool JSONFile::EvaluateQuery(const string& strQuerySample) const
+    // {
+    //     return false;
+    // }
 #pragma endregion

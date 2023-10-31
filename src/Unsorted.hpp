@@ -9,4 +9,5 @@ class Unsorted final
 public:
     static std::string GetUUID();
     static std::string GetMemoryInfo();
+    // static std::map<std::string, std::string> GetBuildingsList
 };
