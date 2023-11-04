@@ -1,12 +1,13 @@
 #include <exception>
-#include <fstream>
 
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonArray>
+#include <QRegularExpression>
 
 #include "JSONFile.hpp"
 #include "Exception.hpp"
+#include "Logger.hpp"
 
 using namespace std;
 
@@ -15,11 +16,10 @@ using namespace std;
     {
         QFile openedFile(FileName.c_str());
 
-        // Reading json file
+        // Read data from *.json file
         if (openedFile.open(QIODevice::ReadOnly | QIODevice::Text))
         {
-            string tmpString = openedFile.readAll().toStdString();
-            JsonMainObject   = QJsonDocument::fromJson(QByteArray::fromStdString(tmpString)).object();
+            JsonMainObject = QJsonDocument::fromJson(QByteArray::fromStdString(openedFile.readAll().toStdString())).object();
             openedFile.close();
         }
         else
@@ -40,34 +40,57 @@ using namespace std;
         return JsonMainObject.value(QString::fromStdString(strThisLayoutParameter));
     }
 
-    // QJsonObject JSONFile::Query(const string& strQuery) const
-    // {
-    //     QString     qstrQuery = QString::fromStdString(strQuery);
-    //     QStringList splitList = qstrQuery.split('.');
-        
-    //     if (splitList.at(0) != '@') throw Exception(string("JSON path doesn't begin with \'@\'"));
+    QJsonValue JSONFile::Query(const string& strQuery) const
+    {
+        // Find dollar sign in place of the first character
+        if (strQuery.at(0) != '$') throw Exception(string("JSON path doesn't begin with \'$\'"));
 
-    //     QJsonObject currObj = JsonMainObject;
+        QString     qstrQuery = QString::fromStdString(strQuery);
+        QStringList splitList = qstrQuery.split('.');
+        splitList.removeFirst();
 
-    //     for (int i = 2; i++; i < splitList.size())
-    //     {
-    //         QString currSplit = splitList.at(i);
+        QJsonObject currObj   = JsonMainObject;
+        QJsonValue  currVal;
 
-    //         if (currSplit.contains('[') && currSplit.contains(']'))
-    //         {
-    //             currObj.to
-    //         }
-    //         else
-    //         {
-    //             currObj = currObj[splitList.at(i)];
-    //         }
-    //     }
+        foreach(QString currSplit, splitList)
+        {
+            // QString currSplit  = splitList.at(i);
+            LOGSTM << "currSplit : [" << currSplit.toStdString() << ']' << endl;
 
-    //     return JsonMainObject.value(qstrQuery).toObject();
-    // }
+            // Current value actually is array
+            if (currSplit.contains('[') && currSplit.contains(']'))
+            {
+                LOGSTM << "This is array : [" << currSplit.toStdString() << ']' << endl;
+                QRegularExpression regexp("\\[\\d+\\]");
 
-    // bool JSONFile::EvaluateQuery(const string& strQuerySample) const
-    // {
-    //     return false;
-    // }
+                // Find [xxxx] number of index in array and clear string from [] bracket
+                int arrayIndex = regexp.match(currSplit).captured(0).remove('[').remove(']').toInt();
+                
+                // Try to find QJsonValue in array
+                currVal = currObj.value(
+                                        currSplit.remove(currSplit.indexOf('['), 
+                                                         currSplit.length() - currSplit.indexOf('[')))
+                                                         .toArray()
+                                                         .at(arrayIndex);
+            }
+            // Current value may be an object
+            else
+            {
+                LOGSTM << "This is object : [" << currSplit.toStdString() << ']' << endl;
+                currVal = currObj.value(currSplit);
+            }
+
+            // If not last - then object/array
+            if (currSplit != splitList.last())
+            {
+                currObj = currVal.toObject();
+            }
+            else
+            {
+                LOGSTM << "This is the end of query : [" << currSplit.toStdString() << ']' << endl;
+            }
+        }
+
+        return currVal;
+    }
 #pragma endregion

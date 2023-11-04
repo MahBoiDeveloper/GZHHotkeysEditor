@@ -2,6 +2,7 @@
 
 #include <string>
 #include <QJsonObject>
+#include <QJsonArray>
 
 class JSONFile final
 {
@@ -16,8 +17,7 @@ public: // Methods
     JSONFile() = delete;
     JSONFile(const std::string& filePath);
 
-    std::string GetValue(const std::string& strThisLayoutParameter) const;
-    QJsonValue GetObject(const std::string& strThisLayoutParameter) const;
-    // QJsonObject Query(const std::string& strQuery)                  const;
-    // bool EvaluateQuery(const std::string& strQuerySample)           const;
+    std::string GetValue(const std::string& strThisLayoutParameter)  const;
+    QJsonValue  GetObject(const std::string& strThisLayoutParameter) const;
+    QJsonValue  Query(const std::string& strQuery)                   const;
 };

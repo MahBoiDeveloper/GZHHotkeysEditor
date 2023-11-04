@@ -19,7 +19,7 @@ private:
     void LogSystemInformation();
     std::string GetLogFileName() const;
     std::string GetCurrentTime() const;
-    std::string GetWindowsBit() const;
+    std::string GetWindowsBit()  const;
 
 public:
     Logger();
