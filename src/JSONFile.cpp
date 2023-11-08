@@ -30,16 +30,19 @@ using namespace std;
 #pragma endregion
 
 #pragma region Getters
+    /// @brief Returns string value from key in main .json file structure.
     string JSONFile::GetValue(const string& strThisLayoutParameter) const
     {
         return JsonMainObject.value(QString::fromStdString(strThisLayoutParameter)).toString().toStdString();
     }
 
+    /// @brief Returns Qt JSON object from key in main .json file structure.
     QJsonValue JSONFile::GetObject(const string& strThisLayoutParameter) const
     {
         return JsonMainObject.value(QString::fromStdString(strThisLayoutParameter));
     }
 
+    /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
     QJsonValue JSONFile::Query(const string& strQuery) const
     {
         // Find dollar sign in place of the first character
@@ -52,9 +55,9 @@ using namespace std;
         QJsonObject currObj   = JsonMainObject;
         QJsonValue  currVal;
 
-        foreach(QString currSplit, splitList)
+        for (int iter = 0; iter < splitList.length(); iter++)
         {
-            // QString currSplit  = splitList.at(i);
+            QString currSplit  = splitList.at(iter);
             LOGSTM << "currSplit : [" << currSplit.toStdString() << ']' << endl;
 
             // Current value actually is array
@@ -81,7 +84,7 @@ using namespace std;
             }
 
             // If not last - then object/array
-            if (currSplit != splitList.last())
+            if (iter != splitList.length() - 1)
             {
                 currObj = currVal.toObject();
             }
