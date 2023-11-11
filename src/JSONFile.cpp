@@ -15,35 +15,40 @@ using namespace std;
     JSONFile::JSONFile(const string& filePath) : FileName{filePath}
     {
         QFile openedFile(FileName.c_str());
+        QJsonParseError err;
 
         // Read data from *.json file
         if (openedFile.open(QIODevice::ReadOnly | QIODevice::Text))
         {
-            JsonMainObject = QJsonDocument::fromJson(QByteArray::fromStdString(openedFile.readAll().toStdString())).object();
+            LOGSTM << "Parsing \"" << filePath << "\"..." << endl;
+            JsonMainObject = QJsonDocument::fromJson(openedFile.readAll(), &err).object();
             openedFile.close();
+            LOGSTM << "Errors while parsing: " << err.errorString().toStdString();
+            LOGSTM << "JSON file has been parsed" << endl;
         }
         else
         {
+            LOGSTM << "Errors while parsing: " << err.errorString().toStdString();
             throw Exception(string("Bad file name; unable to open file \"" + FileName + "\""));
         }
     }
 #pragma endregion
 
 #pragma region Getters
-    /// @brief Returns string value from key in main .json file structure.
-    string JSONFile::GetValue(const string& strThisLayoutParameter) const
+    /// @brief Returns main object of parsed JSON file
+    QJsonObject JSONFile::GetMainObject()
     {
-        return JsonMainObject.value(QString::fromStdString(strThisLayoutParameter)).toString().toStdString();
-    }
-
-    /// @brief Returns Qt JSON object from key in main .json file structure.
-    QJsonValue JSONFile::GetObject(const string& strThisLayoutParameter) const
-    {
-        return JsonMainObject.value(QString::fromStdString(strThisLayoutParameter));
+        return JsonMainObject;
     }
 
     /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
     QJsonValue JSONFile::Query(const string& strQuery) const
+    {
+        return Query(JsonMainObject, strQuery);
+    }
+
+    /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
+    QJsonValue JSONFile::Query(const QJsonObject& jsonObject, const std::string& strQuery)
     {
         // Find dollar sign in place of the first character
         if (strQuery.at(0) != '$') throw Exception(string("JSON path doesn't begin with \'$\'"));
@@ -51,19 +56,19 @@ using namespace std;
         QString     qstrQuery = QString::fromStdString(strQuery);
         QStringList splitList = qstrQuery.split('.');
         splitList.removeFirst();
+        LOGSTM << "Splited and updated query has length : " << splitList.length() << endl;
 
-        QJsonObject currObj   = JsonMainObject;
+        QJsonObject currObj   = jsonObject;
         QJsonValue  currVal;
 
         for (int iter = 0; iter < splitList.length(); iter++)
         {
-            QString currSplit  = splitList.at(iter);
-            LOGSTM << "currSplit : [" << currSplit.toStdString() << ']' << endl;
+            QString currSplit = splitList.at(iter);
+            LOGSTM << "Current search value : [" << currSplit.toStdString() << ']' << endl;
 
             // Current value actually is array
             if (currSplit.contains('[') && currSplit.contains(']'))
             {
-                LOGSTM << "This is array : [" << currSplit.toStdString() << ']' << endl;
                 QRegularExpression regexp("\\[\\d+\\]");
 
                 // Find [xxxx] number of index in array and clear string from [] bracket
@@ -79,7 +84,6 @@ using namespace std;
             // Current value may be an object
             else
             {
-                LOGSTM << "This is object : [" << currSplit.toStdString() << ']' << endl;
                 currVal = currObj.value(currSplit);
             }
 
@@ -88,11 +92,17 @@ using namespace std;
             {
                 currObj = currVal.toObject();
             }
-            else
-            {
-                LOGSTM << "This is the end of query : [" << currSplit.toStdString() << ']' << endl;
-            }
         }
+
+        LOGSTM << "Information about return value:" << endl;
+        LOGSTM << "\tValue is Array?     - "        << currVal.isArray() << endl;
+        LOGSTM << "\tValue is Bool?      - "        << currVal.isBool() << endl;
+        LOGSTM << "\tValue is Double?    - "        << currVal.isDouble() << endl;
+        LOGSTM << "\tValue is Null?      - "        << currVal.isNull() << endl;
+        LOGSTM << "\tValue is Object?    - "        << currVal.isObject() << endl;
+        LOGSTM << "\tValue is String?    - "        << currVal.isString() << endl;
+        LOGSTM << "\tValue is Undefined? - "        << currVal.isUndefined() << endl;
+        LOGSTM << "\tLength of array is : "         << currVal.toArray().size() << endl;
 
         return currVal;
     }

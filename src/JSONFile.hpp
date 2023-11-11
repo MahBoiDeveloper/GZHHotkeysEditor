@@ -17,7 +17,7 @@ public: // Methods
     JSONFile() = delete;
     JSONFile(const std::string& filePath);
 
-    std::string GetValue(const std::string& strThisLayoutParameter)  const;
-    QJsonValue  GetObject(const std::string& strThisLayoutParameter) const;
-    QJsonValue  Query(const std::string& strQuery)                   const;
+    QJsonObject       GetMainObject();
+    QJsonValue        Query(const std::string& strQuery)                    const;
+    static QJsonValue Query(const QJsonObject&, const std::string& strQuery);
 };

@@ -7,6 +7,7 @@
 
 // Project files
 #include "gui/launchWidgets/mainlaunchwidget.hpp"
+#include "Unsorted.hpp"
 #include "Exception.hpp"
 #include "Logger.hpp"
 #include "Registry.hpp"
@@ -58,5 +59,12 @@ int main(int argc, char *argv[])
 
 void Test()
 {
+    vector<string> test = Unsorted::GetFactions();
+    
+    for (auto elem : test)
+    {
+        qDebug() << elem.c_str();
+    }
+
     return;
 }
