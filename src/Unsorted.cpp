@@ -38,13 +38,18 @@ string Unsorted::GetMemoryInfo()
 }
 
 /// @brief  
-vector<string> Unsorted::GetFactions()
+vector<Unsorted::FactionInfo> Unsorted::GetFactionsInfo()
 {
-    vector<string> tmp;
+    vector<FactionInfo> tmp;
     JSONFile file(string("Resources\\TechTree.json"));
 
-    for (auto elem : file.Query(string("$.TechTree")).toArray())
-        tmp.push_back(elem.toObject().value("Faction").toString().trimmed().toStdString());
+    for (const auto& elem : file.Query(string("$.TechTree")).toArray())
+    {
+        string ShortName               = elem.toObject().value("ShortName").toString().trimmed().toStdString();
+        string DisplayName             = elem.toObject().value("DisplayName").toString().trimmed().toStdString();
+        string DisplayNameDesctiontion = elem.toObject().value("DisplayNameDesctiontion").toString().trimmed().toStdString();
+        tmp.push_back({ShortName, DisplayName, DisplayNameDesctiontion});
+    }
 
     return tmp;
 }

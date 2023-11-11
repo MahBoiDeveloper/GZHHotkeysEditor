@@ -59,12 +59,8 @@ int main(int argc, char *argv[])
 
 void Test()
 {
-    vector<string> test = Unsorted::GetFactions();
-    
-    for (auto elem : test)
-    {
-        qDebug() << elem.c_str();
-    }
+    for (const auto& elem : Unsorted::GetFactionsInfo())
+        qDebug() << "Code: " << elem.ShortName.c_str() << "; Name: " << elem.DisplayName.c_str() << "Description: " << elem.DisplayNameDesctiontion.c_str();
 
     return;
 }
