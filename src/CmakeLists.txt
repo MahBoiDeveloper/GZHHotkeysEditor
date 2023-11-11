@@ -58,18 +58,15 @@ target_link_libraries(${MAIN_TARGET_NAME}
 )
 
 # copy additional resources
-file(
-    COPY_FILE
-    "${CMAKE_CURRENT_SOURCE_DIR}/TechTree.json"
-    "${PROJECT_DESTINATION_RESOURCES_FOLDER}/TechTree.json"
-    ONLY_IF_DIFFERENT
-)
-file(
-    COPY_FILE
-    "${CMAKE_CURRENT_SOURCE_DIR}/Settings.json"
-    "${PROJECT_DESTINATION_RESOURCES_FOLDER}/Settings.json"
-    ONLY_IF_DIFFERENT
-)
+set(ALL_RESOURCE_FILES  "TechTree.json"
+                        "Settings.json")
+foreach(RESOURCE_FILE ${ALL_RESOURCE_FILES})
+    add_custom_target(
+        "${RESOURCE_FILE}Target" ALL
+        COMMAND ${CMAKE_COMMAND} -E copy ${RESOURCE_FILE} ${PROJECT_DESTINATION_RESOURCES_FOLDER}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+endforeach()
 
 # flags
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
