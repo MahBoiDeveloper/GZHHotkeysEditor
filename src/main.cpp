@@ -59,8 +59,5 @@ int main(int argc, char *argv[])
 
 void Test()
 {
-    for (const auto& elem : Unsorted::GetFactionsInfo())
-        qDebug() << "Code: " << elem.ShortName.c_str() << "; Name: " << elem.DisplayName.c_str() << "Description: " << elem.DisplayNameDesctiontion.c_str();
-
     return;
 }

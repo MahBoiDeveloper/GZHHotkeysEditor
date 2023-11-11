@@ -6,14 +6,17 @@
 #include <QStringListModel>
 #include <QScrollArea>
 
-#include "editor.hpp"
+#include "../../Unsorted.hpp"
 #include "../../Info.hpp"
+
 #include "../config.hpp"
+#include "editor.hpp"
 #include "hotkeyelement.hpp"
 
 Editor::Editor(QVariant configuration, QWidget *parent) : QMainWindow(parent)
 {
     resize(1200, 800);
+    auto infoVector = Unsorted::GetFactionsInfo();
 
     // configuring menu
     QMenu* fm = new QMenu(tr("File"));
@@ -27,34 +30,43 @@ Editor::Editor(QVariant configuration, QWidget *parent) : QMainWindow(parent)
     settingsM->addAction(aboutA);
 
     // configuring fractions layouts
-    QVBoxLayout* USA_L = new QVBoxLayout;
-    USA_L->addWidget(new QPushButton("USA"));
-    QHBoxLayout* USA_powersL = new QHBoxLayout;
-    USA_powersL->addWidget(new QPushButton("AIR"));
-    USA_powersL->addWidget(new QPushButton("LASER"));
-    USA_powersL->addWidget(new QPushButton("USA"));
-    USA_L->addLayout(USA_powersL);
-
-    QVBoxLayout* CHINA_L = new QVBoxLayout;
-    CHINA_L->addWidget(new QPushButton("CHINA"));
-    QHBoxLayout* CHINA_powersL = new QHBoxLayout;
-    CHINA_powersL->addWidget(new QPushButton("NUKE"));
-    CHINA_powersL->addWidget(new QPushButton("INF"));
-    CHINA_powersL->addWidget(new QPushButton("TANK"));
-    CHINA_L->addLayout(CHINA_powersL);
-
-    QVBoxLayout* GLA_L = new QVBoxLayout;
-    GLA_L->addWidget(new QPushButton("GLA"));
-    QHBoxLayout* GLA_powersL = new QHBoxLayout;
-    GLA_powersL->addWidget(new QPushButton("TOX"));
-    GLA_powersL->addWidget(new QPushButton("STELTH"));
-    GLA_powersL->addWidget(new QPushButton("DEMO"));
-    GLA_L->addLayout(GLA_powersL);
-
     QHBoxLayout* fractionsL = new QHBoxLayout;
-    fractionsL->addLayout(USA_L);
-    fractionsL->addLayout(CHINA_L);
-    fractionsL->addLayout(GLA_L);
+    switch (infoVector.size())
+    {
+        case 12 : // There is 12 faction, what means about 4 subfactions in one big faction
+            QVBoxLayout* USA_L = new QVBoxLayout;
+            USA_L->addWidget(new QPushButton(QString::fromStdString(infoVector.at(0).DisplayName)));
+
+            QHBoxLayout* USA_powersL = new QHBoxLayout;
+            USA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(1).DisplayName)));
+            USA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(2).DisplayName)));
+            USA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(3).DisplayName)));
+            USA_L->addLayout(USA_powersL);
+
+            QVBoxLayout* CHINA_L = new QVBoxLayout;
+            CHINA_L->addWidget(new QPushButton(QString::fromStdString(infoVector.at(4).DisplayName)));
+
+            QHBoxLayout* CHINA_powersL = new QHBoxLayout;
+            CHINA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(5).DisplayName)));
+            CHINA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(6).DisplayName)));
+            CHINA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(7).DisplayName)));
+            CHINA_L->addLayout(CHINA_powersL);
+
+            QVBoxLayout* GLA_L = new QVBoxLayout;
+            GLA_L->addWidget(new QPushButton(QString::fromStdString(infoVector.at(8).DisplayName)));
+
+            QHBoxLayout* GLA_powersL = new QHBoxLayout;
+            GLA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(9).DisplayName)));
+            GLA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(10).DisplayName)));
+            GLA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(11).DisplayName)));
+            GLA_L->addLayout(GLA_powersL);
+            
+            // Write information to the header layout
+            fractionsL->addLayout(USA_L);
+            fractionsL->addLayout(CHINA_L);
+            fractionsL->addLayout(GLA_L);
+        break;
+    }
 
     // buildings view list
     QStringListModel* buildingsModel = new QStringListModel;

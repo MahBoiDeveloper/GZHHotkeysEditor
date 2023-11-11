@@ -2,8 +2,6 @@
 #include <sstream>
 #include <windows.h>
 
-#include <QDebug>
-
 #include "Unsorted.hpp"
 #include "JSONFile.hpp"
 
