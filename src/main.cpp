@@ -7,6 +7,7 @@
 
 // Project files
 #include "gui/launchWidgets/mainlaunchwidget.hpp"
+#include "Unsorted.hpp"
 #include "Exception.hpp"
 #include "Logger.hpp"
 #include "Registry.hpp"
@@ -58,5 +59,8 @@ int main(int argc, char *argv[])
 
 void Test()
 {
+    for (const auto& elem : Unsorted::GetFactionsInfo())
+        qDebug() << "Code: " << elem.ShortName.c_str() << "; Name: " << elem.DisplayName.c_str() << "Description: " << elem.DisplayNameDesctiontion.c_str();
+
     return;
 }

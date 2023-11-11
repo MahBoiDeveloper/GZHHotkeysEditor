@@ -2,9 +2,10 @@
 	"TechTree" :
 	[
 		{
-			"Faction"      : "SWG",
-			"LongName"     : "Superweapons General",
-			"Relationship" :
+			"ShortName"               : "SWG",
+			"DisplayName"             : "SUPERWEAPON",
+			"DisplayNameDesctiontion" : "Superweapons General",
+			"Relationships"           :
 			{
 				"USACommandCenter" : 
 				{
@@ -449,69 +450,80 @@
 		},
 
 		{
-			"Faction"      : "AIR",
-			"LongName"     : "Airforce General",
-			"Relationship" : {}
+			"ShortName"               : "AIR",
+			"DisplayName"             : "AIR",
+			"DisplayNameDesctiontion" : "Airforce General",
+			"Relationships"           : {}
 		},
 
 		{
-			"Faction"      : "LSR",
-			"LongName"     : "Laser Weapons Generals",
-			"Relationship" : {}
+			"ShortName"               : "LSR",
+			"DisplayName"             : "LASER",
+			"DisplayNameDesctiontion" : "Laser Weapons Generals",
+			"Relationships"           : {}
 		},
 
 		{
-			"Faction"      : "USA",
-			"LongName"     : "United Stated Of America",
-			"Relationship" : {}
+			"ShortName"               : "USA",
+			"DisplayName"             : "USA",
+			"DisplayNameDesctiontion" : "United Stated Of America",
+			"Relationships"           : {}
 		},
 
 		{
-			"Faction"      : "INF",
-			"LongName"     : "Infantry General",
-			"Relationship" : {}
+			"ShortName"               : "INF",
+			"DisplayName"             : "INFANTRY",
+			"DisplayNameDesctiontion" : "Infantry General",
+			"Relationships"           : {}
 		},
 
 		{
-			"Faction"      : "TNK",
-			"LongName"     : "Tank General",
-			"Relationship" : {}
+			"ShortName"               : "TNK",
+			"DisplayName"             : "TANK",
+			"DisplayNameDesctiontion" : "Tank General",
+			"Relationships"           : {}
 		},
 
 		{
-			"Faction"      : "NUK",
-			"LongName"     : "Nuke General",
-			"Relationship" : {}
+			"ShortName"               : "NUK",
+			"DisplayName"             : "NUKE",
+			"DisplayNameDesctiontion" : "Nuke General",
+			"Relationships"           : {}
 		},
 
 		{
-			"Faction"      : "PRC",
-			"LongName"     : "China",
-			"Relationship" : {}
+			"ShortName"               : "PRC",
+			"DisplayName"             : "CHINA",
+			"DisplayNameDesctiontion" : "China",
+			"Relationships"           : {}
 		},
 		
 		{
-			"Faction"      : "TOX",
-			"LongName"     : "Toxic Weapons General",
-			"Relationship" : {}
+			"ShortName"               : "TOX",
+			"DisplayName"             : "TOXIC",
+			"DisplayNameDesctiontion" : "Toxic Weapons General",
+			"Relationships"           : {}
 		},
 		
 		{
-			"Faction"      : "STL",
-			"LongName"     : "Stealth General",
-			"Relationship" : {}
+			"ShortName"               : "STL",
+			"DisplayName"             : "STEALTH",
+			"DisplayNameDesctiontion" : "Stealth General",
+			"Relationships"           : {}
 		},
 		
 		{
-			"Faction"      : "DML",
-			"LongName"     : "Demolition General",
-			"Relationship" : {}
+			"ShortName"               : "DML",
+			"DisplayName"             : "DEMO",
+			"DisplayNameDesctiontion" : "Demolition General",
+			"Relationships"           : {}
 		},
 		
 		{
-			"Faction"      : "GLA",
-			"LongName"     : "Global Liberation Army",
-			"Relationship" : {}
+			"ShortName"               : "GLA",
+			"DisplayName"             : "GLA",
+			"DisplayNameDesctiontion" : "Global Liberation Army",
+			"Relationships"           : {}
 		}
 	]
 }

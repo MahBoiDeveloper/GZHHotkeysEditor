@@ -2,7 +2,10 @@
 #include <sstream>
 #include <windows.h>
 
+#include <QDebug>
+
 #include "Unsorted.hpp"
+#include "JSONFile.hpp"
 
 using namespace std;
 
@@ -32,4 +35,21 @@ string Unsorted::GetMemoryInfo()
         
     ss << (MemStat.ullTotalPhys/1024)/1024 << "MiB";
     return ss.str();
+}
+
+/// @brief  
+vector<Unsorted::FactionInfo> Unsorted::GetFactionsInfo()
+{
+    vector<FactionInfo> tmp;
+    JSONFile file(string("Resources\\TechTree.json"));
+
+    for (const auto& elem : file.Query(string("$.TechTree")).toArray())
+    {
+        string ShortName               = elem.toObject().value("ShortName").toString().trimmed().toStdString();
+        string DisplayName             = elem.toObject().value("DisplayName").toString().trimmed().toStdString();
+        string DisplayNameDesctiontion = elem.toObject().value("DisplayNameDesctiontion").toString().trimmed().toStdString();
+        tmp.push_back({ShortName, DisplayName, DisplayNameDesctiontion});
+    }
+
+    return tmp;
 }
