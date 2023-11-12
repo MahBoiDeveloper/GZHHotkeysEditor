@@ -1,6 +1,14 @@
 {
 	"TechTree" :
 	[
+
+		{
+			"ShortName"               : "USA",
+			"DisplayName"             : "USA",
+			"DisplayNameDesctiontion" : "United Stated Of America",
+			"Relationships"           : {}
+		},
+
 		{
 			"ShortName"               : "SWG",
 			"DisplayName"             : "SUPERWEAPON",
@@ -464,9 +472,9 @@
 		},
 
 		{
-			"ShortName"               : "USA",
-			"DisplayName"             : "USA",
-			"DisplayNameDesctiontion" : "United Stated Of America",
+			"ShortName"               : "PRC",
+			"DisplayName"             : "CHINA",
+			"DisplayNameDesctiontion" : "China",
 			"Relationships"           : {}
 		},
 
@@ -478,13 +486,6 @@
 		},
 
 		{
-			"ShortName"               : "TNK",
-			"DisplayName"             : "TANK",
-			"DisplayNameDesctiontion" : "Tank General",
-			"Relationships"           : {}
-		},
-
-		{
 			"ShortName"               : "NUK",
 			"DisplayName"             : "NUKE",
 			"DisplayNameDesctiontion" : "Nuke General",
@@ -492,12 +493,20 @@
 		},
 
 		{
-			"ShortName"               : "PRC",
-			"DisplayName"             : "CHINA",
-			"DisplayNameDesctiontion" : "China",
+			"ShortName"               : "TNK",
+			"DisplayName"             : "TANK",
+			"DisplayNameDesctiontion" : "Tank General",
 			"Relationships"           : {}
 		},
-		
+
+
+		{
+			"ShortName"               : "GLA",
+			"DisplayName"             : "GLA",
+			"DisplayNameDesctiontion" : "Global Liberation Army",
+			"Relationships"           : {}
+		},
+
 		{
 			"ShortName"               : "TOX",
 			"DisplayName"             : "TOXIC",
@@ -516,13 +525,6 @@
 			"ShortName"               : "DML",
 			"DisplayName"             : "DEMO",
 			"DisplayNameDesctiontion" : "Demolition General",
-			"Relationships"           : {}
-		},
-		
-		{
-			"ShortName"               : "GLA",
-			"DisplayName"             : "GLA",
-			"DisplayNameDesctiontion" : "Global Liberation Army",
 			"Relationships"           : {}
 		}
 	]

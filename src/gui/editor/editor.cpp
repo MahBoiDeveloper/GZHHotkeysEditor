@@ -34,6 +34,20 @@ Editor::Editor(QVariant configuration, QWidget *parent) : QMainWindow(parent)
     switch (infoVector.size())
     {
         case 12 : // There is 12 faction, what means about 4 subfactions in one big faction
+            // for (int iter = 0; iter < infoVector.size(); iter += 4)
+            // {
+            //     QVBoxLayout* factionGroupLayout = new QVBoxLayout;
+            //     factionGroupLayout->addWidget(new QPushButton(QString::fromStdString(infoVector.at(iter + 0).DisplayName)));
+
+            //     QVBoxLayout* subfaction = new QVBoxLayout;
+            //     subfaction->addWidget(new QPushButton(QString::fromStdString(infoVector.at(iter + 1).DisplayName)));
+            //     subfaction->addWidget(new QPushButton(QString::fromStdString(infoVector.at(iter + 2).DisplayName)));
+            //     subfaction->addWidget(new QPushButton(QString::fromStdString(infoVector.at(iter + 3).DisplayName)));
+
+            //     factionGroupLayout->addLayout(subfaction);
+            //     fractionsL->addLayout(factionGroupLayout);
+            // }
+            
             QVBoxLayout* USA_L = new QVBoxLayout;
             USA_L->addWidget(new QPushButton(QString::fromStdString(infoVector.at(0).DisplayName)));
 
@@ -86,14 +100,14 @@ Editor::Editor(QVariant configuration, QWidget *parent) : QMainWindow(parent)
     for(int i = 0; i < 7; ++i)
     {
         hotkeysL1->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
-                                              QString("hotkey_%1").arg(i+1),
-                                              QString("sources/icons/Gen1_Hacker_Icons.webp")));
+                                               QString("hotkey_%1").arg(i+1),
+                                               QString("sources/icons/Gen1_Hacker_Icons.webp")));
         hotkeysL2->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
-                                              QString("hotkey_%1").arg(i+1),
-                                              QString("sources/icons/Gen1_Hacker_Icons.webp")));
+                                               QString("hotkey_%1").arg(i+1),
+                                               QString("sources/icons/Gen1_Hacker_Icons.webp")));
         hotkeysL3->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
-                                              QString("hotkey_%1").arg(i+1),
-                                              QString("sources/icons/Gen1_Hacker_Icons.webp")));
+                                               QString("hotkey_%1").arg(i+1),
+                                               QString("sources/icons/Gen1_Hacker_Icons.webp")));
     }
     QScrollArea* arr1 = new QScrollArea;
     QScrollArea* arr2 = new QScrollArea;
