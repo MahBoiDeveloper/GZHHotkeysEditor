@@ -1,2 +1,2 @@
-#define VERSION "alpha 0.2"
+#define VERSION "alpha 0.3"
 #define AUTHORS "mah_boi, nikitvs"
