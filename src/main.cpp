@@ -6,7 +6,7 @@
 #include <QMessageBox>
 
 // Project files
-#include "gui/launchWidgets/mainlaunchwidget.hpp"
+#include "gui/launchWidgets/stacked_launch_widget.hpp"
 #include "Unsorted.hpp"
 #include "Exception.hpp"
 #include "Logger.hpp"
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
         Test();
 
         // Create main window with user system language
-        MainLaunchWidget HotkeyEditor_Window(Config::GetLangEnumByLocale(
+        StackedLaunchWidget HotkeyEditor_Window(Config::GetLangEnumByLocale(
             QString::fromStdString(Registry::GetCurrentUserLanguage()).toLower()));
 
         HotkeyEditor_Window.setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");

@@ -43,7 +43,7 @@ foreach(LANGUAGE ${LANGUAGES})
         PRE_BUILD
         OUTPUT ${QM_FILE}
         # generate translation source file
-        COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -recursive -ts ${TS_FILE} -no-obsolete
+        COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -recursive -ts ${TS_FILE} # -no-obsolete
         # generate translation binary file
         COMMAND ${LRELEASE_EXECUTABLE} ${TS_FILE} -qm ${QM_FILE}
         MAIN_DEPENDENCY ${SOURCES} ${HEADERS}

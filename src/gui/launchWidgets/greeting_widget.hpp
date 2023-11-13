@@ -6,7 +6,7 @@
 
 #include "../config.hpp"
 
-class StartWidget : public QWidget
+class GreetingWidget : public QWidget
 {
     Q_OBJECT
 private:
@@ -22,9 +22,9 @@ private:
     QPushButton* CreateButton(const QString& qstrButtonName) const;
 
 public:
-    StartWidget(Config::Languages language = Config::Languages::English, QWidget *parent = nullptr);
+    GreetingWidget(Config::Languages language = Config::Languages::English, QWidget *parent = nullptr);
 
 signals:
-    void pressed(StartWidget::Buttons button);
+    void pressed(GreetingWidget::Buttons button);
     void languageChanged(int index);
 };

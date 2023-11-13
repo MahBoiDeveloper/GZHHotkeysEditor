@@ -7,9 +7,9 @@
 #include <QFontMetrics>
 #include <QDebug>
 
-#include "loaderwidget.hpp"
+#include "load_dialog.hpp"
 
-LoaderWidget::LoaderWidget(QWidget *parent) : BaseConfigurationWidget(parent)
+LoadDialog::LoadDialog(QWidget *parent) : BaseConfigurationDialog(parent)
 {
     // configure file path selection
     QLineEdit* pathToFileLineEdit = new QLineEdit;
@@ -67,7 +67,7 @@ LoaderWidget::LoaderWidget(QWidget *parent) : BaseConfigurationWidget(parent)
     setLayout(mainL);
 }
 
-QVariant LoaderWidget::createConfigurationData()
+QVariant LoadDialog::createConfigurationData()
 {
     return QVariant("Loader widget data.");
 }

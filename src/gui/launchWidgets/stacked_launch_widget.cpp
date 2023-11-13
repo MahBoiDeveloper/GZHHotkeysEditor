@@ -1,12 +1,12 @@
 #include <QApplication>
 #include <QDebug>
 
-#include "mainlaunchwidget.hpp"
-#include "editor/editor.hpp"
-#include "configurationWidgets/creatorwidget.hpp"
-#include "configurationWidgets/loaderwidget.hpp"
+#include "stacked_launch_widget.hpp"
+#include "mainWidgets/hotkeys_main_window.hpp"
+#include "configurationDialogs/creation_dialog.hpp"
+#include "configurationDialogs/load_dialog.hpp"
 
-MainLaunchWidget::MainLaunchWidget(Config::Languages language, QWidget *parent) : QStackedWidget(parent)
+StackedLaunchWidget::StackedLaunchWidget(Config::Languages language, QWidget *parent) : QStackedWidget(parent)
 {
     // Application settings
     QFont mainFont(QApplication::font());
@@ -25,15 +25,15 @@ MainLaunchWidget::MainLaunchWidget(Config::Languages language, QWidget *parent) 
 }
 
 // method for recreating the start widget
-StartWidget* MainLaunchWidget::createResurgentStartWidget(Config::Languages language)
+GreetingWidget* StackedLaunchWidget::createResurgentStartWidget(Config::Languages language)
 {
     // Set translator
     onLanguageChanged(language);
     // New StartWidget
-    StartWidget* startWidget = new StartWidget(language);
+    GreetingWidget* startWidget = new GreetingWidget(language);
 
     // Setting language
-    connect(startWidget, &StartWidget::languageChanged, this,
+    connect(startWidget, &GreetingWidget::languageChanged, this,
         [=](int index)
         {
             Config::Languages language = static_cast<Config::Languages>(index);
@@ -47,13 +47,13 @@ StartWidget* MainLaunchWidget::createResurgentStartWidget(Config::Languages lang
         }
     );
     // Buttons effects
-    connect(startWidget, &StartWidget::pressed, this, &MainLaunchWidget::onStartButtonClicked);
+    connect(startWidget, &GreetingWidget::pressed, this, &StackedLaunchWidget::onStartButtonClicked);
 
     return startWidget;
 }
 
 // delete all widgets
-void MainLaunchWidget::clear()
+void StackedLaunchWidget::clear()
 {
     while (count() > 0)
     {
@@ -64,7 +64,7 @@ void MainLaunchWidget::clear()
 }
 
 // Switch to selected language
-void MainLaunchWidget::onLanguageChanged(Config::Languages language)
+void StackedLaunchWidget::onLanguageChanged(Config::Languages language)
 {
     // Delete old translator
     if (translator != nullptr) QCoreApplication::removeTranslator(translator);
@@ -79,30 +79,30 @@ void MainLaunchWidget::onLanguageChanged(Config::Languages language)
 }
 
 // Open create/loader widget
-void MainLaunchWidget::onStartButtonClicked(StartWidget::Buttons button)
+void StackedLaunchWidget::onStartButtonClicked(GreetingWidget::Buttons button)
 {
-    BaseConfigurationWidget* configurationWidget;
+    BaseConfigurationDialog* configurationWidget;
     switch (button)
     {
-        case StartWidget::Buttons::NewProject:
-            configurationWidget = new CreatorWidget;
+        case GreetingWidget::Buttons::NewProject:
+            configurationWidget = new CreationDialog;
             break;
-        case StartWidget::Buttons::LoadProject:
-            configurationWidget = new LoaderWidget;
+        case GreetingWidget::Buttons::LoadProject:
+            configurationWidget = new LoadDialog;
             break;
     }
     addWidget(configurationWidget);
     setCurrentWidget(configurationWidget); // next window (creator)
 
     // if accepted -> create redactor with configs and delete other widgets
-    connect(configurationWidget, &CreatorWidget::acceptedConfiguration, this, &MainLaunchWidget::onConfigurationAccepted);
+    connect(configurationWidget, &CreationDialog::acceptedConfiguration, this, &StackedLaunchWidget::onConfigurationAccepted);
 }
 
 // close and create new editor
-void MainLaunchWidget::onConfigurationAccepted(const QVariant& configuration)
+void StackedLaunchWidget::onConfigurationAccepted(const QVariant& configuration)
 {
     clear();
     qDebug() << configuration.toString();
-    (new Editor(configuration))->show();
+    (new HotkeysMainWindow(configuration))->show();
     close();
 }

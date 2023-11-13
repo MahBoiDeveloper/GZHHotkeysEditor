@@ -3,10 +3,10 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-#include "creatorwidget.hpp"
+#include "creation_dialog.hpp"
 #include "../../../Registry.hpp"
 
-CreatorWidget::CreatorWidget(QWidget *parent) : BaseConfigurationWidget(parent)
+CreationDialog::CreationDialog(QWidget *parent) : BaseConfigurationDialog(parent)
 {
     // configure game buttons
     QRadioButton* generalsButton = new QRadioButton(
@@ -40,7 +40,7 @@ CreatorWidget::CreatorWidget(QWidget *parent) : BaseConfigurationWidget(parent)
     setLayout(mainL);
 }
 
-QVariant CreatorWidget::createConfigurationData()
+QVariant CreationDialog::createConfigurationData()
 {
     return QVariant("Creator widget data.");
 }

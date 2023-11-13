@@ -1,8 +1,8 @@
-#include "baseconfigurationwidget.hpp"
+#include "base_configuration_dialog.hpp"
 
 #include <QPushButton>
 
-BaseConfigurationWidget::BaseConfigurationWidget(QWidget *parent) : QDialog(parent)
+BaseConfigurationDialog::BaseConfigurationDialog(QWidget *parent) : QDialog(parent)
 {
     // configure dialog buttons
     dialogButtons.setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);

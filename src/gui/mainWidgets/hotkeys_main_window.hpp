@@ -6,7 +6,7 @@
 
 #include "../../Registry.hpp"
 
-class Editor : public QMainWindow
+class HotkeysMainWindow : public QMainWindow
 {
     Q_OBJECT
 
@@ -14,7 +14,7 @@ private:
     QDialog* aboutDialog = nullptr;
 
 public:
-    Editor(QVariant configuration, QWidget *parent = nullptr);
+    HotkeysMainWindow(QVariant configuration, QWidget *parent = nullptr);
 
 public slots:
     void onAbout();

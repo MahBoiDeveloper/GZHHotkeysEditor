@@ -5,7 +5,7 @@
 #include <QDialogButtonBox>
 #include <QVariant>
 
-class BaseConfigurationWidget : public QDialog
+class BaseConfigurationDialog : public QDialog
 {
     Q_OBJECT
 protected:
@@ -14,7 +14,7 @@ protected:
     // Create configuration data for editor creation
     virtual QVariant createConfigurationData() = 0;
 public:
-    BaseConfigurationWidget(QWidget *parent = nullptr);
+    BaseConfigurationDialog(QWidget *parent = nullptr);
 
 signals:
     void acceptedConfiguration(QVariant configuration);

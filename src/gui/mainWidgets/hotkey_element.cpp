@@ -4,7 +4,7 @@
 #include <QDebug>
 
 #include "webp/decode.h"
-#include "hotkeyelement.hpp"
+#include "hotkey_element.hpp"
 
 void HotkeyElement::keyPressEvent(QKeyEvent* event)
 {

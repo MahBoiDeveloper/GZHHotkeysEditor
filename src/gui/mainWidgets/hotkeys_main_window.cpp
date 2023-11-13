@@ -10,10 +10,10 @@
 #include "../../Info.hpp"
 
 #include "../config.hpp"
-#include "editor.hpp"
-#include "hotkeyelement.hpp"
+#include "hotkeys_main_window.hpp"
+#include "hotkey_element.hpp"
 
-Editor::Editor(QVariant configuration, QWidget *parent) : QMainWindow(parent)
+HotkeysMainWindow::HotkeysMainWindow(QVariant configuration, QWidget *parent) : QMainWindow(parent)
 {
     resize(1200, 800);
     auto infoVector = Unsorted::GetFactionsInfo();
@@ -26,7 +26,7 @@ Editor::Editor(QVariant configuration, QWidget *parent) : QMainWindow(parent)
     QMenu* settingsM = new QMenu(tr("Settings"));
     menuBar()->addMenu(settingsM);
     QAction* aboutA = new QAction(tr("About"));
-    connect(aboutA, &QAction::triggered, this, &Editor::onAbout);
+    connect(aboutA, &QAction::triggered, this, &HotkeysMainWindow::onAbout);
     settingsM->addAction(aboutA);
 
     // configuring fractions layouts
@@ -141,7 +141,7 @@ Editor::Editor(QVariant configuration, QWidget *parent) : QMainWindow(parent)
     setCentralWidget(centralWidget);
 }
 
-void Editor::onAbout()
+void HotkeysMainWindow::onAbout()
 {
     // not
     if (aboutDialog != nullptr)

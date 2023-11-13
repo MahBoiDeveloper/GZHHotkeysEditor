@@ -8,9 +8,9 @@
 #include <QLabel>
 #include <QDesktopWidget>
 
-#include "startwidget.hpp"
+#include "greeting_widget.hpp"
 
-QPushButton* StartWidget::CreateButton(const QString& qstrButtonName) const
+QPushButton* GreetingWidget::CreateButton(const QString& qstrButtonName) const
 {
     QPushButton* btnSample = new QPushButton(qstrButtonName);
     btnSample->setMinimumSize(100, 15);
@@ -18,7 +18,7 @@ QPushButton* StartWidget::CreateButton(const QString& qstrButtonName) const
     return btnSample;
 }
 
-StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(parent)
+GreetingWidget::GreetingWidget(Config::Languages language, QWidget *parent) : QWidget(parent)
 {
 //    qDebug() << QApplication::desktop()->screenGeometry(this).size() * Config::recomendedStartWidgetSizeRatio;
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -38,7 +38,7 @@ StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(
         [=](int id)
         {
             int index = (-1)*id - 2; // QButtonGroup assign index -2 to first button
-            emit StartWidget::pressed(static_cast<Buttons>(index));
+            emit GreetingWidget::pressed(static_cast<Buttons>(index));
         }
     );
 
@@ -49,7 +49,7 @@ StartWidget::StartWidget(Config::Languages language, QWidget *parent) : QWidget(
         langBox->addItem(Config::GetStringFromLangEnum(static_cast<Config::Languages>(i)));
     }
     langBox->setCurrentIndex(static_cast<int>(language));
-    connect(langBox, QOverload<int>::of(&QComboBox::activated), this, &StartWidget::languageChanged);
+    connect(langBox, QOverload<int>::of(&QComboBox::activated), this, &GreetingWidget::languageChanged);
     QLabel*      languageName = new QLabel(tr("Language"));
     QHBoxLayout* languageL    = new QHBoxLayout;
     languageL->addStretch(1);

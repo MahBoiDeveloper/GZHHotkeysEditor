@@ -1,6 +1,7 @@
 project(GZHHotkeysEditor)
 get_property(PROJECT_DESTINATION_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_FOLDER) # exe folder
 get_property(PROJECT_DESTINATION_BIN_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_BIN_FOLDER) # bin folder
+get_property(GLOBAL_PATH_TO_QT GLOBAL PROPERTY GLOBAL_PATH_TO_QT) # Qt path
 
 # target names
 set(MAIN_TARGET_NAME "LoadEditor")
@@ -107,7 +108,7 @@ if(WIN32)
     target_link_libraries(${MAIN_TARGET_NAME}
         PRIVATE rpcrt4
     )
-    set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
+    set(CMAKE_PREFIX_PATH ${GLOBAL_PATH_TO_QT})
     if(CMAKE_BUILD_TYPE STREQUAL "Release")
         # relese qt dll-s
         add_custom_command(
