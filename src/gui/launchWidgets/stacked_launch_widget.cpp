@@ -32,11 +32,10 @@ GreetingWidget* StackedLaunchWidget::createResurgentStartWidget(Config::Language
     // New StartWidget
     GreetingWidget* startWidget = new GreetingWidget(language);
 
-    // Setting language
-    connect(startWidget, &GreetingWidget::languageChanged, this,
-        [=](int index)
+    // Language changing
+    connect(startWidget, &GreetingWidget::languageChanged, this, [=](int languageIndex)
         {
-            Config::Languages language = static_cast<Config::Languages>(index);
+            Config::Languages language = static_cast<Config::Languages>(languageIndex);
 
             // Change translator
             onLanguageChanged(language);
@@ -53,7 +52,7 @@ GreetingWidget* StackedLaunchWidget::createResurgentStartWidget(Config::Language
 }
 
 // delete all widgets
-void StackedLaunchWidget::clear()
+void StackedLaunchWidget::clearStack()
 {
     while (count() > 0)
     {
@@ -79,29 +78,34 @@ void StackedLaunchWidget::onLanguageChanged(Config::Languages language)
 }
 
 // Open create/loader widget
-void StackedLaunchWidget::onStartButtonClicked(GreetingWidget::Buttons button)
+void StackedLaunchWidget::onStartButtonClicked(GreetingWidget::StandartButtons standartButton)
 {
     BaseConfigurationDialog* configurationWidget;
-    switch (button)
+
+    switch (standartButton)
     {
-        case GreetingWidget::Buttons::NewProject:
-            configurationWidget = new CreationDialog;
-            break;
-        case GreetingWidget::Buttons::LoadProject:
-            configurationWidget = new LoadDialog;
-            break;
+    case GreetingWidget::StandartButtons::NewProject:
+        configurationWidget = new CreationDialog;
+        break;
+    case GreetingWidget::StandartButtons::LoadProject:
+        configurationWidget = new LoadDialog;
+        break;
+    default:
+        configurationWidget = new CreationDialog;
+        break;
     }
     addWidget(configurationWidget);
     setCurrentWidget(configurationWidget); // next window (creator)
 
     // if accepted -> create redactor with configs and delete other widgets
-    connect(configurationWidget, &CreationDialog::acceptedConfiguration, this, &StackedLaunchWidget::onConfigurationAccepted);
+    connect(configurationWidget, &CreationDialog::acceptedConfiguration,
+            this, &StackedLaunchWidget::onConfigurationAccepted);
 }
 
 // close and create new editor
 void StackedLaunchWidget::onConfigurationAccepted(const QVariant& configuration)
 {
-    clear();
+    clearStack();
     qDebug() << configuration.toString();
     (new HotkeysMainWindow(configuration))->show();
     close();

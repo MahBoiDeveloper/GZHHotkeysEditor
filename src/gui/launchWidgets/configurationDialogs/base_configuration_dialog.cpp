@@ -10,14 +10,15 @@ BaseConfigurationDialog::BaseConfigurationDialog(QWidget *parent) : QDialog(pare
     dialogButtons.button(QDialogButtonBox::Cancel)->setText(tr("Back"));
 
     // emit accepted configurations
-    connect(&dialogButtons, &QDialogButtonBox::accepted, this,
-        [=]()
+    connect(&dialogButtons, &QDialogButtonBox::accepted, this, [=]()
         {
             emit acceptedConfiguration(createConfigurationData());
         ;}
     );
     connect(&dialogButtons, &QDialogButtonBox::rejected, this, &QDialog::deleteLater);
 
-    for(auto & button : dialogButtons.buttons())
+    for (auto & button : dialogButtons.buttons())
+    {
         button->setStyleSheet("QPushButton { padding-left: 30px; padding-right: 30px; }");
+    }
 }

@@ -1,61 +1,16 @@
-#include <QButtonGroup>
-#include <QHBoxLayout>
-#include <QResizeEvent>
-#include <QDebug>
-#include <QTranslator>
-#include <QApplication>
 #include <QComboBox>
 #include <QLabel>
-#include <QDesktopWidget>
 
 #include "greeting_widget.hpp"
 
-QPushButton* GreetingWidget::CreateButton(const QString& qstrButtonName) const
-{
-    QPushButton* btnSample = new QPushButton(qstrButtonName);
-    btnSample->setMinimumSize(100, 15);
-
-    return btnSample;
-}
-
 GreetingWidget::GreetingWidget(Config::Languages language, QWidget *parent) : QWidget(parent)
 {
-//    qDebug() << QApplication::desktop()->screenGeometry(this).size() * Config::recomendedStartWidgetSizeRatio;
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
-    auto btnNewProject  = CreateButton(tr("New project"));
-    mainButtons.addButton(btnNewProject);
-
-    auto btnLoadProject = CreateButton(tr("Load project"));
-    btnLoadProject->setDisabled(true);  // temporary
-    mainButtons.addButton(btnLoadProject);
-
-    for(auto & button : mainButtons.buttons())
-        button->setFixedSize(Config::startButtonsSize);
-
-    // Event OnClick()
-    connect(&mainButtons, QOverload<int>::of(&QButtonGroup::idClicked), this,
-        [=](int id)
-        {
-            int index = (-1)*id - 2; // QButtonGroup assign index -2 to first button
-            emit GreetingWidget::pressed(static_cast<Buttons>(index));
-        }
-    );
-
-    // Languages config
-    QComboBox* langBox = new QComboBox;
-    for (int i = 0; i < static_cast<int>(Config::Languages::Count); ++i)
-    {
-        langBox->addItem(Config::GetStringFromLangEnum(static_cast<Config::Languages>(i)));
-    }
-    langBox->setCurrentIndex(static_cast<int>(language));
-    connect(langBox, QOverload<int>::of(&QComboBox::activated), this, &GreetingWidget::languageChanged);
-    QLabel*      languageName = new QLabel(tr("Language"));
-    QHBoxLayout* languageL    = new QHBoxLayout;
-    languageL->addStretch(1);
-    languageL->setSpacing(10);
-    languageL->addWidget(languageName);
-    languageL->addWidget(langBox);
+    // add standart buttons to main buttons group
+    addStandartButton(GreetingWidget::StandartButtons::NewProject, tr("New project"));
+    addStandartButton(GreetingWidget::StandartButtons::LoadProject, tr("Load project"));
+    mainButtons.button(-3)->setDisabled(true);  // TODO: temporary;
 
     // Description config
     QLabel* greeting = new QLabel(tr("Greetings, %username%. "
@@ -67,29 +22,75 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget *parent) : QW
                                      "We hope that you will like the program."));
     greeting->setWordWrap(true);
     greeting->setAlignment(Qt::AlignmentFlag::AlignJustify);
+    greeting->setFixedWidth(getGreetingAverageSize(greeting->text()) + 50);
 
-    // label for size counting
-    QLabel labelForSize(greeting->text());
-    labelForSize.setWordWrap(true);
-
-    int averageSize = (int)((labelForSize.sizeHint().height() + labelForSize.sizeHint().width()) / 2.);
-    greeting->setFixedWidth(averageSize + 50);
-
-    // Main layout config
     QVBoxLayout* buttonsL = new QVBoxLayout;
     buttonsL->setSpacing(50);
-    buttonsL->setAlignment(Qt::AlignLeft);
-    buttonsL->addWidget(mainButtons.buttons().at(0));
-    buttonsL->addWidget(mainButtons.buttons().at(1));
+    buttonsL->setAlignment(Qt::AlignTop);
+    for (const auto& button : mainButtons.buttons())
+    {
+        buttonsL->addWidget(button);
+    }
+
     QHBoxLayout* contentL = new QHBoxLayout;
     contentL->setAlignment(Qt::AlignLeft);
     contentL->addLayout(buttonsL);
     contentL->addWidget(greeting);
     contentL->setAlignment(greeting, Qt::AlignTop);
+
+    // Main layout
     QVBoxLayout* mainL = new QVBoxLayout;
     mainL->setSpacing(50);
     mainL->setContentsMargins(50, 50, 50, 30);
     mainL->addLayout(contentL);
-    mainL->addLayout(languageL);
+    mainL->addSpacing(80);
+    // Languages choosing box
+    mainL->addLayout(createLanguageLayout(language, tr("Language")));
     setLayout(mainL);
+}
+
+void GreetingWidget::addStandartButton(GreetingWidget::StandartButtons standartButton, const QString& buttonName)
+{
+    // creating standart button
+    QPushButton* button = new QPushButton(buttonName);
+//    button->setMinimumSize(100, 15);
+    button->setFixedSize(Config::startButtonsSize);
+    mainButtons.addButton(button);
+
+    // Event OnClick()
+    connect(button, &QPushButton::clicked, this, [=](bool)
+        {
+            emit pressed(standartButton);
+        }
+    );
+}
+
+QHBoxLayout *GreetingWidget::createLanguageLayout(Config::Languages language, const QString &labelText) const
+{
+    QComboBox* langBox = new QComboBox;
+    // add languages labels
+    for (int i = 0; i < static_cast<int>(Config::Languages::Count); ++i)
+    {
+        langBox->addItem(Config::GetStringFromLangEnum(static_cast<Config::Languages>(i)));
+    }
+    // set current language
+    langBox->setCurrentIndex(static_cast<int>(language));
+    connect(langBox, QOverload<int>::of(&QComboBox::activated), this, &GreetingWidget::languageChanged);
+    // create layout
+    QLabel* languageName = new QLabel(labelText);
+    QHBoxLayout* languageL = new QHBoxLayout;
+    languageL->addStretch(1);
+    languageL->setSpacing(10);
+    languageL->addWidget(languageName);
+    languageL->addWidget(langBox);
+    return languageL;
+}
+
+int GreetingWidget::getGreetingAverageSize(const QString &text) const
+{
+    // label for size calculation
+    QLabel labelForSizeCounting(text);
+    labelForSizeCounting.setWordWrap(true);
+    // calculate size
+    return (int)((labelForSizeCounting.sizeHint().height() + labelForSizeCounting.sizeHint().width()) / 2.);
 }

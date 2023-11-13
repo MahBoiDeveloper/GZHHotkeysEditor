@@ -16,10 +16,10 @@ CreationDialog::CreationDialog(QWidget *parent) : BaseConfigurationDialog(parent
     QRadioButton* zeroHourButton = new QRadioButton(
                 QString::fromStdString(Registry::ToString(Registry::Games::GeneralsZeroHour)));
 
-    groupB.setExclusive(true);
+    buttonsGroup.setExclusive(true);
     zeroHourButton->setChecked(true);
-    groupB.addButton(generalsButton);
-    groupB.addButton(zeroHourButton);
+    buttonsGroup.addButton(generalsButton);
+    buttonsGroup.addButton(zeroHourButton);
     QVBoxLayout* choiseL = new QVBoxLayout;
     choiseL->addWidget(generalsButton);
     choiseL->addWidget(zeroHourButton);

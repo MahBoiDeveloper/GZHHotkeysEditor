@@ -7,16 +7,10 @@
 
 // Project files
 #include "gui/launchWidgets/stacked_launch_widget.hpp"
-#include "Unsorted.hpp"
-#include "Exception.hpp"
 #include "Logger.hpp"
 #include "Registry.hpp"
-#include "CSFParser.hpp"
-#include "JSONFile.hpp"
-#include "GINIParser.hpp"
 
 using namespace std;
-void Test();
 
 int main(int argc, char *argv[])
 {
@@ -34,8 +28,6 @@ int main(int argc, char *argv[])
 
     try
     {
-        Test();
-
         // Create main window with user system language
         StackedLaunchWidget HotkeyEditor_Window(Config::GetLangEnumByLocale(
             QString::fromStdString(Registry::GetCurrentUserLanguage()).toLower()));
@@ -44,20 +36,15 @@ int main(int argc, char *argv[])
         HotkeyEditor_Window.show();
         HotkeyEditor.exec();
     }
-    catch(const exception& e)
+    catch (const exception& exception)
     {
         // Log exception message
         Logger::Instance->LogException();
-        LOGMSG(string(e.what()));
+        LOGMSG(string(exception.what()));
 
         // And show it to user
-        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", e.what());
+        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", exception.what());
     }
 
     return 0;
-}
-
-void Test()
-{
-    return;
 }
