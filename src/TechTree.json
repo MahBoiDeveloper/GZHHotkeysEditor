@@ -1,4 +1,9 @@
 {
+	"Commons"  :
+	[
+		
+	],
+
 	"TechTree" :
 	[
 
@@ -13,13 +18,13 @@
 			"ShortName"               : "SWG",
 			"DisplayName"             : "SUPERWEAPON",
 			"DisplayNameDesctiontion" : "Superweapons General",
+			"Inheritance"             : "USA",
 			"Relationships"           :
 			{
 				"USACommandCenter" : 
 				{
 					"TechoType"  : "Building",
 					"IngameName" : "OBJECT:CommandCenter",
-					"IconName"   : "%OBJECT_NAME%",
 					"Icons"      :
 					[
 						{
@@ -47,7 +52,6 @@
 				"USADozer" :
 				{
 					"TechoType"  : "Unit",
-					"IconName"   : "%OBJECT_NAME%",
 					"IngameName" : "OBJECT:Dozer",
 					"Icons"      : 
 					[
@@ -116,7 +120,6 @@
 				"USAColdFusionReactor" : 
 				{
 					"TechoType"  : "Building",
-					"IconName"   : "%OBJECT_NAME%",
 					"IngameName" : "OBJECT:SpyDrone",
 					"Icons"      : 
 					[
@@ -135,7 +138,6 @@
 				"USABarracks" : 
 				{
 					"TechoType"  : "Building",
-					"IconName"   : "%OBJECT_NAME%",
 					"IngameName" : "OBJECT:Barracks",
 					"Icons"      : 
 					[
@@ -179,7 +181,6 @@
 				"USARanger" : 
 				{
 					"TechoType"  : "Unit",
-					"IconName"   : "%OBJECT_NAME",
 					"IngameName" : "OBJECT:Ranger",
 					"Icons"      : 
 					[
@@ -203,7 +204,6 @@
 				"USAMissileDefender" :
 				{
 					"TechoType" : "Unit",
-					"IconName"  : "%OBJECT_NAME%",
 					"CSFString" : "OBJECT:MissileTeam",
 					"Icons"     : 
 					[
@@ -217,7 +217,6 @@
 				"USABurton" :
 				{
 					"TechoType" : "Unit",
-					"IconName"  : "%OBJECT_NAME%",
 					"CSFString" : "OBJECT:ColonelBurton",
 					"Icons"     : 
 					[
@@ -246,7 +245,6 @@
 				"USAPathfinder" :
 				{
 					"TechoType" : "Unit",
-					"IconName"  : "%OBJECT_NAME%",
 					"CSFString" : "OBJECT:Pathfinder",
 					"Icons"     : []
 				},
@@ -254,7 +252,6 @@
 				"USASupplyCenter" :
 				{
 					"TechoType"  : "Building",
-					"IconName"   : "%OBJECT_NAME%",
 					"CSFString"  : "OBJECT:SupplyCenter",
 					"Icons"      : 
 					[
@@ -273,7 +270,6 @@
 				"USAChinook" :
 				{
 					"TechoType"  : "Unit",
-					"IconName"   : "%OBJECT_NAME%",
 					"CSFString"  : "OBJECT:Chinook",
 					"Icons"      :
 					[
@@ -292,7 +288,6 @@
 				"USAWarFactory" :
 				{
 					"TechoType"  : "Building",
-					"IconName"   : "%OBJECT_NAME%",
 					"CSFString"  : "OBJECT:WarFactory",
 					"Icons"      :
 					[
@@ -341,7 +336,6 @@
 				"USAAirfield" :
 				{
 					"TechoType"  : "Building",
-					"IconName"   : "%OBJECT_NAME%",
 					"CSFString"  : "OBJECT:Airfield",
 					"Icons"      :
 					[
@@ -390,7 +384,6 @@
 				"USAStrategyCenter" :
 				{
 					"TechoType"  : "Building",
-					"IconName"   : "%OBJECT_NAME%",
 					"CSFString"  : "OBJECT:StrategyCenter",
 					"Icons"      :
 					[
@@ -444,7 +437,6 @@
 				"USAParticleCannon" :
 				{
 					"TechoType"  : "Building",
-					"IconName"   : "%OBJECT_NAME%",
 					"CSFString"  : "OBJECT:ParticleCannon",
 					"Icons"      :
 					[
