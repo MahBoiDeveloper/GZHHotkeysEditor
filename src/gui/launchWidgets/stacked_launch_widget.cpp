@@ -14,7 +14,7 @@ StackedLaunchWidget::StackedLaunchWidget(Config::Languages language, QWidget *pa
     mainFont.setFamily("Consolas");
     QApplication::setFont(mainFont);
     qApp->setStyleSheet("QPushButton { padding: 10px; }"); // spacing between border and text
-    qApp->setWindowIcon(QIcon(QPixmap::fromImage(Config::decodeWebpIcon("default"))));
+    qApp->setWindowIcon(QIcon(QPixmap::fromImage(Config::decodeWebpIcon("NoImageSmall"))));
 
     // MainLaunchWidget settings
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);

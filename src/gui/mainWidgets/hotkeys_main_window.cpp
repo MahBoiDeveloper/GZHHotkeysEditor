@@ -16,7 +16,7 @@
 HotkeysMainWindow::HotkeysMainWindow(QVariant configuration, QWidget *parent) : QMainWindow(parent)
 {
     resize(1200, 800);
-    auto infoVector = Unsorted::GetFactionsInfo();
+    auto factionsVector = Unsorted::GetFactionsInfo();
 
     // configuring menu
     QMenu* fm = new QMenu(tr("File"));
@@ -31,48 +31,48 @@ HotkeysMainWindow::HotkeysMainWindow(QVariant configuration, QWidget *parent) : 
 
     // configuring fractions layouts
     QHBoxLayout* fractionsL = new QHBoxLayout;
-    switch (infoVector.size())
+    switch (factionsVector.size())
     {
         case 12 : // There is 12 faction, what means about 4 subfactions in one big faction
-            // for (int iter = 0; iter < infoVector.size(); iter += 4)
+            // for (int iter = 0; iter < factionsVector.size(); iter += 4)
             // {
             //     QVBoxLayout* factionGroupLayout = new QVBoxLayout;
-            //     factionGroupLayout->addWidget(new QPushButton(QString::fromStdString(infoVector.at(iter + 0).DisplayName)));
+            //     factionGroupLayout->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(iter + 0).DisplayName)));
 
             //     QVBoxLayout* subfaction = new QVBoxLayout;
-            //     subfaction->addWidget(new QPushButton(QString::fromStdString(infoVector.at(iter + 1).DisplayName)));
-            //     subfaction->addWidget(new QPushButton(QString::fromStdString(infoVector.at(iter + 2).DisplayName)));
-            //     subfaction->addWidget(new QPushButton(QString::fromStdString(infoVector.at(iter + 3).DisplayName)));
+            //     subfaction->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(iter + 1).DisplayName)));
+            //     subfaction->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(iter + 2).DisplayName)));
+            //     subfaction->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(iter + 3).DisplayName)));
 
             //     factionGroupLayout->addLayout(subfaction);
             //     fractionsL->addLayout(factionGroupLayout);
             // }
             
             QVBoxLayout* USA_L = new QVBoxLayout;
-            USA_L->addWidget(new QPushButton(QString::fromStdString(infoVector.at(0).DisplayName)));
+            USA_L->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(0).DisplayName)));
 
             QHBoxLayout* USA_powersL = new QHBoxLayout;
-            USA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(1).DisplayName)));
-            USA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(2).DisplayName)));
-            USA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(3).DisplayName)));
+            USA_powersL->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(1).DisplayName)));
+            USA_powersL->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(2).DisplayName)));
+            USA_powersL->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(3).DisplayName)));
             USA_L->addLayout(USA_powersL);
 
             QVBoxLayout* CHINA_L = new QVBoxLayout;
-            CHINA_L->addWidget(new QPushButton(QString::fromStdString(infoVector.at(4).DisplayName)));
+            CHINA_L->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(4).DisplayName)));
 
             QHBoxLayout* CHINA_powersL = new QHBoxLayout;
-            CHINA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(5).DisplayName)));
-            CHINA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(6).DisplayName)));
-            CHINA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(7).DisplayName)));
+            CHINA_powersL->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(5).DisplayName)));
+            CHINA_powersL->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(6).DisplayName)));
+            CHINA_powersL->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(7).DisplayName)));
             CHINA_L->addLayout(CHINA_powersL);
 
             QVBoxLayout* GLA_L = new QVBoxLayout;
-            GLA_L->addWidget(new QPushButton(QString::fromStdString(infoVector.at(8).DisplayName)));
+            GLA_L->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(8).DisplayName)));
 
             QHBoxLayout* GLA_powersL = new QHBoxLayout;
-            GLA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(9).DisplayName)));
-            GLA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(10).DisplayName)));
-            GLA_powersL->addWidget(new QPushButton(QString::fromStdString(infoVector.at(11).DisplayName)));
+            GLA_powersL->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(9).DisplayName)));
+            GLA_powersL->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(10).DisplayName)));
+            GLA_powersL->addWidget(new QPushButton(QString::fromStdString(factionsVector.at(11).DisplayName)));
             GLA_L->addLayout(GLA_powersL);
             
             // Write information to the header layout
@@ -156,7 +156,7 @@ void HotkeysMainWindow::onAbout()
     QGridLayout* contentL = new QGridLayout;
     contentL->addLayout(authorsL, 0, 0);
     QLabel* pixmap = new QLabel;
-    pixmap->setPixmap(QPixmap::fromImage(Config::decodeWebpIcon("default")));
+    pixmap->setPixmap(QPixmap::fromImage(Config::decodeWebpIcon("NoImageSmall")));
     contentL->addWidget(pixmap, 0, 1);
     QLabel* textL = new QLabel(tr("Program licensed by GNU GPL v3"));
     textL->setWordWrap(true);
