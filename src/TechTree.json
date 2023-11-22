@@ -1,8 +1,106 @@
 {
 	"Commons"  :
-	[
-		
-	],
+	{
+		"USACommon" : 
+		{
+			"USABarracks" : 
+			{
+				"TechoType"  : "Building",
+				"IngameName" : "OBJECT:Barracks",
+				"Icons"      : 
+				[
+					{
+						"IconName"    : "USARanger",
+						"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryRanger"
+					},
+
+					{
+						"IconName"    : "USAMissileDefender",
+						"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryMissileDefender"
+					},
+
+					{
+						"IconName"    : "USABurton",
+						"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryColonelBurton"
+					},
+
+					{
+						"IconName"    : "USAPathfinder",
+						"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryPathfinder"
+					},
+
+					{
+						"IconName"    : "USAFlashbangs",
+						"CSFString"   : "CONTROLBAR:UpgradeAmericaFlashBangGrenade"
+					},
+
+					{
+						"IconName"    : "CommonCaptureBuilding",
+						"CSFString"   : "CONTROLBAR:UpgradeAmericaRangerCaptureBuilding"
+					},
+
+					{
+						"IconName"    : "SellBuilding",
+						"CSFString"   : "CONTROLBAR:Sell"
+					}
+				]
+			},
+
+
+			"USAMissileDefender" :
+			{
+				"TechoType" : "Unit",
+				"CSFString" : "OBJECT:MissileTeam",
+				"Icons"     : 
+				[
+					{
+						"IconName"  : "USALaserLock",
+						"CSFString" : "CONTROLBAR:LaserMissileAttack"
+					}
+				]
+			},
+
+
+			"USABurton" :
+			{
+				"TechoType" : "Unit",
+				"CSFString" : "OBJECT:ColonelBurton",
+				"Icons"     : 
+				[
+					{
+						"IconName"   : "USAKnifeAttack",
+						"CSFString"  : "CONTROLBAR:KnifeAttack"
+					},
+					
+					{
+						"IconName"   : "USATimedDemoCharge",
+						"CSFString"  : "CONTROLBAR:TimedDemoCharge"
+					},
+					
+					{
+						"IconName"   : "USARemoteDemoCharge",
+						"CSFString"  : "CONTROLBAR:RemoteDemoCharge"
+					},
+
+					{
+						"IconName"   : "USADetonateCharges",
+						"CSFString"  : "CONTROLBAR:DetonateCharges"
+					}
+				]
+			},
+
+			"USAPathfinder" :
+			{
+				"TechoType" : "Unit",
+				"CSFString" : "OBJECT:Pathfinder",
+				"Icons"     : []
+			}
+		},
+
+		"PRCCommon" : {},
+
+		"GLACommon" : {}
+	},
 
 	"TechTree" :
 	[
@@ -11,6 +109,7 @@
 			"ShortName"               : "USA",
 			"DisplayName"             : "USA",
 			"DisplayNameDesctiontion" : "United Stated Of America",
+			"Inheritance"             : "USACommon",
 			"Relationships"           : {}
 		},
 
@@ -18,7 +117,7 @@
 			"ShortName"               : "SWG",
 			"DisplayName"             : "SUPERWEAPON",
 			"DisplayNameDesctiontion" : "Superweapons General",
-			"Inheritance"             : "USA",
+			"Inheritance"             : "USACommon",
 			"Relationships"           :
 			{
 				"USACommandCenter" : 
@@ -120,55 +219,12 @@
 				"USAColdFusionReactor" : 
 				{
 					"TechoType"  : "Building",
-					"IngameName" : "OBJECT:SpyDrone",
+					"IngameName" : "OBJECT:ColdFusionReactor",
 					"Icons"      : 
 					[
 						{
 							"IconName"    : "SWGAdvancedControlRods",
 							"CSFString"   : "CONTROLBAR:SupW_UpgradeAmericaAdvancedControlRods"
-						},
-
-						{
-							"IconName"    : "SellBuilding",
-							"CSFString"   : "CONTROLBAR:Sell"
-						}
-					]
-				},
-
-				"USABarracks" : 
-				{
-					"TechoType"  : "Building",
-					"IngameName" : "OBJECT:Barracks",
-					"Icons"      : 
-					[
-						{
-							"IconName"    : "USARanger",
-							"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryRanger"
-						},
-
-						{
-							"IconName"    : "USAMissileDefender",
-							"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryMissileDefender"
-						},
-
-						{
-							"IconName"    : "USABurton",
-							"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryColonelBurton"
-						},
-
-						{
-							"IconName"    : "USAPathfinder",
-							"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryPathfinder"
-						},
-
-						{
-							"IconName"    : "USAFlashbangs",
-							"CSFString"   : "CONTROLBAR:UpgradeAmericaFlashBangGrenade"
-						},
-
-						{
-							"IconName"    : "CommonCaptureBuilding",
-							"CSFString"   : "CONTROLBAR:UpgradeAmericaRangerCaptureBuilding"
 						},
 
 						{
@@ -199,54 +255,6 @@
 							"CSFString"   : "CONTROLBAR:FlashBangGrenadeMode"
 						}
 					]
-				},
-
-				"USAMissileDefender" :
-				{
-					"TechoType" : "Unit",
-					"CSFString" : "OBJECT:MissileTeam",
-					"Icons"     : 
-					[
-						{
-							"IconName"  : "USALaserLock",
-							"CSFString" : "CONTROLBAR:LaserMissileAttack"
-						}
-					]
-				},
-
-				"USABurton" :
-				{
-					"TechoType" : "Unit",
-					"CSFString" : "OBJECT:ColonelBurton",
-					"Icons"     : 
-					[
-						{
-							"IconName"   : "USAKnifeAttack",
-							"CSFString"  : "CONTROLBAR:KnifeAttack"
-						},
-						
-						{
-							"IconName"   : "USATimedDemoCharge",
-							"CSFString"  : "CONTROLBAR:TimedDemoCharge"
-						},
-						
-						{
-							"IconName"   : "USARemoteDemoCharge",
-							"CSFString"  : "CONTROLBAR:RemoteDemoCharge"
-						},
-
-						{
-							"IconName"   : "USADetonateCharges",
-							"CSFString"  : "CONTROLBAR:DetonateCharges"
-						}
-					]
-				},
-
-				"USAPathfinder" :
-				{
-					"TechoType" : "Unit",
-					"CSFString" : "OBJECT:Pathfinder",
-					"Icons"     : []
 				},
 
 				"USASupplyCenter" :
@@ -453,6 +461,7 @@
 			"ShortName"               : "AIR",
 			"DisplayName"             : "AIR",
 			"DisplayNameDesctiontion" : "Airforce General",
+			"Inheritance"             : "USACommon",
 			"Relationships"           : {}
 		},
 
@@ -460,6 +469,7 @@
 			"ShortName"               : "LSR",
 			"DisplayName"             : "LASER",
 			"DisplayNameDesctiontion" : "Laser Weapons Generals",
+			"Inheritance"             : "USACommon",
 			"Relationships"           : {}
 		},
 
