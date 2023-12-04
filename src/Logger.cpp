@@ -42,7 +42,7 @@ using namespace std;
         // Write to log all information about processor type and memory size
         Log() << "Hardware Information"                         << endl;
         Log() << "Processor : " << Registry::GetProcessorInfo() << endl;
-        Log() << "Memory    : " << Unsorted::GetMemoryInfo()      << endl << endl;
+        Log() << "Memory    : " << Registry::GetMemoryInfo()      << endl << endl;
 
         // Write to log all games paths
         Log() << "Software Information" << endl;

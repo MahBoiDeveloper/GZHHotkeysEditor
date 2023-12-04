@@ -37,13 +37,16 @@ public: // Methods
     static std::string ToString(Games game);
     static WindowsBit  GetWindowsBit();
     
-    static std::string GetTextFromKey(const RootFolder Folder, const char* pPathToFolder, const char* pKeyName);
+    static std::string GetTextFromKey(RootFolder Folder, const char* pPathToFolder, const char* pKeyName);
 
     static bool IsWindow64bit();
     static bool IsWindow32bit();
 
-    static std::string GetPathToGame(const Games game);
+    static std::string GetPathToGame(Games game);
     static std::string GetCurrentUserLanguage();
     static std::string GetWindowsVersion();
     static std::string GetProcessorInfo();
+
+    static std::string GetMemoryInfo();
+    static std::string GetUUID();
 };

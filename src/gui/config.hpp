@@ -20,6 +20,7 @@ public:
 
     inline static const QString translationsPath = "Resources/Translations";
     inline static const QString iconsPath        = "Resources/Icons";
+    static inline const QString defaultIconFile  = QString("%1/NoImageSmall.webp").arg(iconsPath);
 
     inline static const QSize startButtonsSize = QSize(230, 110);
     inline static const double recomendedStartWidgetSizeRatio = 3./7.;
@@ -36,8 +37,9 @@ public:
     static QString GetLocaleFromLangEnum(Languages language)
     {
         return LANGUAGES_STRINGS.find(language)->first;
-    };
-    static Languages GetLangEnumByLocale(QString locale)
+    }
+
+    static Languages GetLangEnumByLocale(const QString& locale)
     {
         for(auto it = LANGUAGES_STRINGS.constBegin(); it != LANGUAGES_STRINGS.constEnd(); ++it)
         {
@@ -45,31 +47,36 @@ public:
                 return it.key();
         }
         return Languages::English;
-    };
+    }
+
     static QString GetStringFromLangEnum(Languages language)
     {
         return LANGUAGES_STRINGS.find(language)->second;
-    };
+    }
 
     inline static QImage decodeWebpIcon(const QString& iconName)
     {
-        const QString iconPostfix   = ".webp";
-        QFile iconFile(iconsPath + "/" + iconName + iconPostfix);
-        if(iconFile.open(QIODevice::ReadOnly))
+        QFile iconFile(iconsPath + "/" + iconName + ".webp");
+
+        if(!iconFile.open(QIODevice::ReadOnly))
         {
-            QByteArray imageData = iconFile.readAll();
-            iconFile.close();
-            int width, height;
-            uint8_t* decodedImage = WebPDecodeRGBA((const uint8_t*)imageData.constData(),
-                                                   imageData.size(),
-                                                   &width,
-                                                   &height);
-            return QImage(decodedImage, width, height, QImage::Format_RGBA8888);
+            qDebug() << "No icon file.";
+            iconFile.setFileName(Config::defaultIconFile);
+            if (!iconFile.open(QIODevice::ReadOnly))
+            {
+                qDebug() << "No default icon file." << Config::defaultIconFile;
+                return QImage{};
+            }
         }
-        else
-        {
-            qDebug() << "File not opened!";
-            return QImage();
-        }
+
+        QByteArray imageData = iconFile.readAll();
+        iconFile.close();
+
+        int width, height;
+        uint8_t* decodedImage = WebPDecodeRGBA((const uint8_t*)imageData.constData(),
+                                               imageData.size(),
+                                               &width,
+                                               &height);
+        return QImage(decodedImage, width, height, QImage::Format_RGBA8888);
     }
 };
