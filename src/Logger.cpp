@@ -4,7 +4,6 @@
 #include "Logger.hpp"
 #include "Registry.hpp"
 #include "Info.hpp"
-#include "Unsorted.hpp"
 
 using namespace std;
 

@@ -7,7 +7,7 @@
 #include <QScrollArea>
 
 #include "../../Info.hpp"
-#include "../../TechTreeJsonParser.hpp"
+#include "../../parsers/TechTreeJsonParser.hpp"
 
 #include "../config.hpp"
 #include "hotkeys_main_window.hpp"

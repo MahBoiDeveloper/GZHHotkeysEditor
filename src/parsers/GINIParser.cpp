@@ -2,8 +2,8 @@
 #include <QStringList>
 
 #include "GINIParser.hpp"
-#include "Exception.hpp"
-#include "Logger.hpp"
+#include "../Exception.hpp"
+#include "../Logger.hpp"
 
 using namespace std;
 

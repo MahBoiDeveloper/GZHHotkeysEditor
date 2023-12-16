@@ -7,25 +7,10 @@ get_property(GLOBAL_PATH_TO_QT GLOBAL PROPERTY GLOBAL_PATH_TO_QT) # Qt path
 set(MAIN_TARGET_NAME "LoadEditor")
 set(LINK_MAIN_TARGET_NAME "HotkeyEditor")
 
+# =========================== target link ======================================
+
 # target link source files
 file(GLOB_RECURSE TARGET_LINK_SOURCES "mainLink.cpp")
-
-# project sources
-file(
-    GLOB SOURCES
-    LIST_DIRECTORIES false
-    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
-)
-list(REMOVE_ITEM SOURCES ${TARGET_LINK_SOURCES}) # remove link target files from main target
-
-# project headers
-file(
-    GLOB HEADERS
-    LIST_DIRECTORIES false
-    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
-)
 
 # link (to main) target
 add_executable(${LINK_MAIN_TARGET_NAME}
@@ -40,10 +25,30 @@ target_compile_definitions(${LINK_MAIN_TARGET_NAME} PRIVATE
     -DPROJECT_EXE_RELATIVE_PATH="$<PATH:RELATIVE_PATH,$<TARGET_FILE:${MAIN_TARGET_NAME}>,${PROJECT_DESTINATION_FOLDER}>"
 )
 
+# =========================== main target ======================================
+
+# project sources
+file(
+    GLOB_RECURSE SOURCES
+    LIST_DIRECTORIES true
+    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.[ch]pp
+)
+
+# gui sources
+file(
+    GLOB_RECURSE EXCLUDE_SOURCES
+    LIST_DIRECTORIES true
+    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/gui/*.[ch]pp
+)
+
+# remove unnecessary files from main target
+list(REMOVE_ITEM SOURCES ${TARGET_LINK_SOURCES} ${EXCLUDE_SOURCES})
+
 # main target
 add_executable(${MAIN_TARGET_NAME}
     ${SOURCES}
-    ${HEADERS}
 )
 set_target_properties(${MAIN_TARGET_NAME}
     PROPERTIES
@@ -54,6 +59,7 @@ set_target_properties(${MAIN_TARGET_NAME}
 
 # link gui subproject
 subdirs(gui)
+# target_sources(${MAIN_TARGET_NAME} PRIVATE $<TARGET_OBJECTS:Gui>)
 target_link_libraries(${MAIN_TARGET_NAME}
     PRIVATE Gui
 )

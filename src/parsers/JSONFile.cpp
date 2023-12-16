@@ -6,8 +6,8 @@
 #include <QRegularExpression>
 
 #include "JSONFile.hpp"
-#include "Exception.hpp"
-#include "Logger.hpp"
+#include "../Exception.hpp"
+#include "../Logger.hpp"
 
 using namespace std;
 
