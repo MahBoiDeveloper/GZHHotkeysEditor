@@ -2,6 +2,8 @@
 
 #include "JSONFile.hpp"
 
+#include "../config.hpp"
+
 TechTreeJsonParser::TechTreeJsonParser()
 {
 
@@ -11,7 +13,7 @@ TechTreeJsonParser::TechTreeJsonParser()
 std::vector<TechTreeJsonParser::FactionInfo> TechTreeJsonParser::GetFactionsInfo()
 {
     std::vector<FactionInfo> tmp;
-    JSONFile file(std::string("Resources\\TechTree.json"));
+    JSONFile file(std::string(Config::resourcesFolder.toStdString() + "/TechTree.json"));
 
     for (const auto& elem : file.Query(std::string("$.TechTree")).toArray())
     {

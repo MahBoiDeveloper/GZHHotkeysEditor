@@ -5,7 +5,7 @@
 #include <QHBoxLayout>
 #include <QButtonGroup>
 
-#include "../config.hpp"
+#include "../../config.hpp"
 
 class GreetingWidget : public QWidget
 {

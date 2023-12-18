@@ -48,7 +48,7 @@
 <context>
     <name>HotkeyElement</name>
     <message>
-        <location filename="../mainWidgets/hotkey_element.cpp" line="50"/>
+        <location filename="../mainWidgets/hotkey_element.cpp" line="49"/>
         <source>Press any key...</source>
         <translation>Нажмите любую клавишу...</translation>
     </message>
@@ -56,38 +56,38 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="21"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="24"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="22"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="25"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="24"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="27"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="25"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="28"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="27"/>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="180"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="30"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="188"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="166"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="174"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="173"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="181"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

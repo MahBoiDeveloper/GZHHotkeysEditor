@@ -18,6 +18,7 @@ public:
         Count
     };
 
+    inline static const QString resourcesFolder  = "Resources";
     inline static const QString translationsPath = "Resources/Translations";
     inline static const QString iconsPath        = "Resources/Icons";
     static inline const QString defaultIconFile  = QString("%1/NoImageSmall.webp").arg(iconsPath);

@@ -13,6 +13,9 @@
 #include "hotkeys_main_window.hpp"
 #include "hotkey_element.hpp"
 
+#include "buildingList/list_widget_building_item.hpp"
+#include "buildingList/list_widget_building.hpp"
+
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent) : QMainWindow(parent)
 {
     resize(1200, 800);
@@ -94,17 +97,22 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
         factionsL->addLayout(secondL);
     }
 
-    // buildings view list
-    QStringListModel* buildingsModel = new QStringListModel;
-    QStringList list;
+//================== buildings view list =================================================
+
+    QVector<Building> buildings;
     for (int i = 0; i < 10; ++i)
     {
-        list << QString("Building %1").arg(i+1);
+        buildings.append(Building{"PRC/PRCBunker", ""});
     }
-    buildingsModel->setStringList(list);
 
-    QListView* buildings = new QListView;
-    buildings->setModel(buildingsModel);
+    ListWidgetBuilding* buildingsWidget = new ListWidgetBuilding;
+    for (const auto & building : buildings)
+    {
+        buildingsWidget->addItem(new ListWidgetBuildingItem{building});
+        buildingsWidget->item(buildingsWidget->count() - 1)->setText(QString{"Building %1"}.arg(buildingsWidget->count()));
+    }
+
+//========================================================================================
 
     QVBoxLayout* hotkeysL1 = new QVBoxLayout;
     QVBoxLayout* hotkeysL2 = new QVBoxLayout;
@@ -137,7 +145,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     buildingConfigurationL->addWidget(arr3);
 
     QHBoxLayout* contentL = new QHBoxLayout;
-    contentL->addWidget(buildings);
+    contentL->addWidget(buildingsWidget);
     contentL->addLayout(buildingConfigurationL);
     // building list an configuration stretch power
     contentL->setStretch(0,1);

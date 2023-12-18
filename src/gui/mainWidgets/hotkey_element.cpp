@@ -3,9 +3,8 @@
 #include <QFile>
 #include <QDebug>
 
-#include "webp/decode.h"
 #include "hotkey_element.hpp"
-#include <config.hpp>
+#include <../config.hpp>
 
 void HotkeyElement::keyPressEvent(QKeyEvent* event)
 {
