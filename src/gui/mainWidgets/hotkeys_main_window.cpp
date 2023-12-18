@@ -13,8 +13,8 @@
 #include "hotkeys_main_window.hpp"
 #include "hotkey_element.hpp"
 
-#include "buildingList/list_widget_building_item.hpp"
-#include "buildingList/list_widget_building.hpp"
+#include "listWidget/list_widget_building_item.hpp"
+#include "listWidget/list_widget_building.hpp"
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent) : QMainWindow(parent)
 {
