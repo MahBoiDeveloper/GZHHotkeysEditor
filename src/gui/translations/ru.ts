@@ -77,17 +77,17 @@
     </message>
     <message>
         <location filename="../mainWidgets/hotkeys_main_window.cpp" line="30"/>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="188"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="175"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="174"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="161"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="181"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="168"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

@@ -102,7 +102,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     QVector<Building> buildings;
     for (int i = 0; i < 10; ++i)
     {
-        buildings.append(Building{"PRC/PRCBunker", ""});
+        buildings.append(Building{"PRCBunker", ""});
     }
 
     ListWidgetBuilding* buildingsWidget = new ListWidgetBuilding;
@@ -114,40 +114,27 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 
 //========================================================================================
 
-    QVBoxLayout* hotkeysL1 = new QVBoxLayout;
-    QVBoxLayout* hotkeysL2 = new QVBoxLayout;
-    QVBoxLayout* hotkeysL3 = new QVBoxLayout;
+    QVBoxLayout* hotkeysL = new QVBoxLayout;
     for(int i = 0; i < 3; ++i)
     {
-        hotkeysL1->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
-                                               QString("hotkey_%1").arg(i+1),
-                                               QString("sources/icons/Gen1_Hacker_Icons.webp")));
-        hotkeysL2->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
-                                               QString("hotkey_%1").arg(i+1),
-                                               QString("sources/icons/Gen1_Hacker_Icons.webp")));
-        hotkeysL3->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
-                                               QString("hotkey_%1").arg(i+1),
-                                               QString("sources/icons/Gen1_Hacker_Icons.webp")));
+        hotkeysL->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
+                                              QString("hotkey_%1").arg(i+1),
+                                              QString("GLAScudStormLaunch")));
     }
-    QScrollArea* arr1 = new QScrollArea;
-    QScrollArea* arr2 = new QScrollArea;
-    QScrollArea* arr3 = new QScrollArea;
-    arr1->setLayout(hotkeysL1);
-//    arr2->setLayout(hotkeysL2);
-//    arr3->setLayout(hotkeysL3);
-    arr1->setWidgetResizable(true);
-    arr2->setWidgetResizable(true);
-    arr3->setWidgetResizable(true);
+    QScrollArea* hotkeysArea = new QScrollArea;
+    hotkeysArea->setLayout(hotkeysL);
+    hotkeysArea->setWidgetResizable(true);
 
     QVBoxLayout* buildingConfigurationL = new QVBoxLayout;
-    buildingConfigurationL->addWidget(arr1);
-    buildingConfigurationL->addWidget(arr2);
-    buildingConfigurationL->addWidget(arr3);
+    buildingConfigurationL->addWidget(hotkeysArea);
+    buildingConfigurationL->addWidget(new QScrollArea);
+    buildingConfigurationL->addWidget(new QScrollArea);
 
     QHBoxLayout* contentL = new QHBoxLayout;
     contentL->addWidget(buildingsWidget);
     contentL->addLayout(buildingConfigurationL);
-    // building list an configuration stretch power
+
+    // building list's configuration stretch power
     contentL->setStretch(0,1);
     contentL->setStretch(1,3);
 

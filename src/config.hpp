@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QDebug>
 #include <QImage>
+#include <QDir>
 
 #include "webp/decode.h"
 
@@ -57,7 +58,14 @@ public:
 
     inline static QImage decodeWebpIcon(const QString& iconName)
     {
-        QFile iconFile(iconsPath + "/" + iconName + ".webp");
+        QString iconPath;
+        QStringList allMatchIconFiles = findAllMatchingFiles(iconsPath, iconName);
+        if (!allMatchIconFiles.isEmpty())
+        {
+            iconPath = allMatchIconFiles.first();
+        }
+
+        QFile iconFile(iconPath);
 
         if(!iconFile.open(QIODevice::ReadOnly))
         {
@@ -79,5 +87,35 @@ public:
                                                &width,
                                                &height);
         return QImage(decodedImage, width, height, QImage::Format_RGBA8888);
+    }
+
+private:
+    inline static QStringList findAllMatchingFiles(const QString& pathToDir, const QString& nameFilter)
+    {
+        QStringList files;
+
+        // find all files and dirs in current directory
+        QFileInfoList fileInfoList = QDir{pathToDir}.entryInfoList(QDir::Filter::Files |
+                                                                   QDir::Filter::Dirs |
+                                                                   QDir::Filter::NoDotAndDotDot);
+
+        // if dir -> recursive find, file -> remember path
+        for (const auto & fileInfo : fileInfoList)
+        {
+            if (fileInfo.isDir())
+            {
+                files.append(findAllMatchingFiles(fileInfo.absoluteFilePath(), nameFilter));
+            }
+            else
+            {
+                if (fileInfo.fileName().contains(nameFilter))
+                {
+                    qDebug() << "USA file name " << fileInfo.fileName();
+                    files.append(fileInfo.absoluteFilePath());
+                }
+            }
+        }
+
+        return files;
     }
 };
