@@ -56,38 +56,38 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="24"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="20"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="25"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="21"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="27"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="23"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="28"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="24"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="30"/>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="175"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="26"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="180"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="161"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="166"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="168"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="173"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

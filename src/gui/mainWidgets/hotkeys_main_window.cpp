@@ -1,20 +1,16 @@
-#include <QDebug>
 #include <QMenuBar>
 #include <QDialog>
 #include <QDialogButtonBox>
-#include <QListView>
-#include <QStringListModel>
 #include <QScrollArea>
+#include <QDebug>
 
 #include "../../Info.hpp"
 #include "../../parsers/TechTreeJsonParser.hpp"
-
 #include "../config.hpp"
+
 #include "hotkeys_main_window.hpp"
 #include "hotkey_element.hpp"
-
 #include "listWidget/list_widget_building_item.hpp"
-#include "listWidget/list_widget_building.hpp"
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent) : QMainWindow(parent)
 {
@@ -105,7 +101,16 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
         buildings.append(Building{"PRCBunker", ""});
     }
 
-    ListWidgetBuilding* buildingsWidget = new ListWidgetBuilding;
+    QListWidget* buildingsWidget = new QListWidget;
+
+    int buildingIconMinimumHeight = 80;
+
+    // smooth scrolling
+    buildingsWidget->setVerticalScrollMode(QListWidget::ScrollMode::ScrollPerPixel);
+    // icon size
+    buildingsWidget->setIconSize(QSize{buildingIconMinimumHeight, buildingIconMinimumHeight});
+    buildingsWidget->setSpacing(buildingIconMinimumHeight * 0.1);
+
     for (const auto & building : buildings)
     {
         buildingsWidget->addItem(new ListWidgetBuildingItem{building});
