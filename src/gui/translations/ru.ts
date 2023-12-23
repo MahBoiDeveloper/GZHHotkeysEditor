@@ -48,7 +48,7 @@
 <context>
     <name>HotkeyElement</name>
     <message>
-        <location filename="../mainWidgets/hotkey_element.cpp" line="49"/>
+        <location filename="../mainWidgets/hotkey_element.cpp" line="79"/>
         <source>Press any key...</source>
         <translation>Нажмите любую клавишу...</translation>
     </message>
