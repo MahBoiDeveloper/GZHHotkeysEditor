@@ -10,14 +10,7 @@ file(
     GLOB_RECURSE SOURCES
     LIST_DIRECTORIES false
     # RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
-)
-# project headers
-file(
-    GLOB_RECURSE HEADERS
-    LIST_DIRECTORIES false
-    # RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.[ch]pp
 )
 
 #---------------------------------------------------------------------------------
@@ -46,8 +39,8 @@ foreach(LANGUAGE ${LANGUAGES})
         COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -recursive -ts ${TS_FILE} # -no-obsolete
         # generate translation binary file
         COMMAND ${LRELEASE_EXECUTABLE} ${TS_FILE} -qm ${QM_FILE}
-        MAIN_DEPENDENCY ${SOURCES} ${HEADERS}
-        DEPENDS ${SOURCES} ${HEADERS}
+        MAIN_DEPENDENCY ${SOURCES}
+        DEPENDS ${SOURCES}
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     )
 endforeach()
@@ -61,26 +54,35 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-find_package(QT NAMES Qt5 REQUIRED COMPONENTS Core Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets)
+
+set(_QT_LIBS Core Widgets)
+
+find_package(QT NAMES Qt5 Qt6 REQUIRED)
+
+foreach(_QT_LIB ${_QT_LIBS})
+    find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${_QT_LIB})
+endforeach()
+
+qt5_add_resources(QT_RESOURCES styles.qrc)
 #---------------------------------------------------------------------------------
 
 # main target
 add_library(${TARGET_NAME} OBJECT
     ${SOURCES}
-    ${HEADERS}
+    ${QT_RESOURCES}
     ${TRANSLATION_SOURCES}
 )
+
 # add_dependencies(${TARGET_NAME} TranslationSources)
 set_target_properties(${TARGET_NAME}
     PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
-target_link_libraries(${TARGET_NAME} PUBLIC
-    Qt5::Core
-    Qt5::Widgets
-)
+
+foreach(_QT_LIB ${_QT_LIBS})
+    target_link_libraries(${TARGET_NAME} PUBLIC Qt${QT_VERSION_MAJOR}::${_QT_LIB})
+endforeach()
 
 #---------------------------------------------------------------------------------
 #-----------------------------------Lbwebp----------------------------------------

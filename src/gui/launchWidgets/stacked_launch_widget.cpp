@@ -8,13 +8,21 @@
 
 StackedLaunchWidget::StackedLaunchWidget(Config::Languages language, QWidget *parent) : QStackedWidget(parent)
 {
-    // Application settings
-    QFont mainFont(QApplication::font());
-    mainFont.setPointSize(11);
-    mainFont.setFamily("Consolas");
-    QApplication::setFont(mainFont);
-    qApp->setStyleSheet("QPushButton { padding: 10px; }"); // spacing between border and text
-    qApp->setWindowIcon(QIcon(QPixmap::fromImage(Config::decodeWebpIcon("NoImageSmall"))));
+    // Application style settings
+    QFile styleSheetsFile{":/my/css/mainStyleSheet.css"};
+
+    if (styleSheetsFile.open(QIODevice::ReadOnly))
+    {
+        qApp->setStyleSheet(styleSheetsFile.readAll());
+        styleSheetsFile.close();
+    }
+    else
+    {
+        qDebug() << "There is no way to read the style file";
+    }
+
+
+    qApp->setWindowIcon(QIcon(QPixmap::fromImage(Config::decodeWebpIconPath(":/my/icon/NoImageSmall.webp"))));
 
     // MainLaunchWidget settings
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);

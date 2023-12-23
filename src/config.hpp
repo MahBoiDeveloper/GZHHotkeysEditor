@@ -56,15 +56,8 @@ public:
         return LANGUAGES_STRINGS.find(language)->second;
     }
 
-    inline static QImage decodeWebpIcon(const QString& iconName)
+    inline static QImage decodeWebpIconPath(const QString& iconPath)
     {
-        QString iconPath;
-        QStringList allMatchIconFiles = findAllMatchingFiles(iconsPath, iconName);
-        if (!allMatchIconFiles.isEmpty())
-        {
-            iconPath = allMatchIconFiles.first();
-        }
-
         QFile iconFile(iconPath);
 
         if(!iconFile.open(QIODevice::ReadOnly))
@@ -87,6 +80,18 @@ public:
                                                &width,
                                                &height);
         return QImage(decodedImage, width, height, QImage::Format_RGBA8888);
+    }
+
+    inline static QImage decodeWebpIcon(const QString& iconName)
+    {
+        QString iconPath;
+        QStringList allMatchIconFiles = findAllMatchingFiles(iconsPath, iconName);
+        if (!allMatchIconFiles.isEmpty())
+        {
+            iconPath = allMatchIconFiles.first();
+        }
+
+        return decodeWebpIconPath(iconPath);
     }
 
 private:

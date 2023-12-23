@@ -1,0 +1,23 @@
+*
+{
+    font-family: "Consolas";
+    font-size: 11pt;
+}
+
+QPushButton
+{
+    padding: 10px;
+}
+
+BaseConfigurationDialog QPushButton
+{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/*HotkeyElement QLabel
+{
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: gray
+}*/
