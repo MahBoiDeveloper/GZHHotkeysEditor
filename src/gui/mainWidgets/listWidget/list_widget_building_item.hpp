@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QListWidgetItem>
-#include "../../../data/building.h"
+#include <building.hpp>
 
 class ListWidgetBuildingItem : public QListWidgetItem
 {

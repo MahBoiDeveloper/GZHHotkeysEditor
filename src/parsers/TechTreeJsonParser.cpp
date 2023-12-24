@@ -13,7 +13,7 @@ TechTreeJsonParser::TechTreeJsonParser()
 std::vector<TechTreeJsonParser::FactionInfo> TechTreeJsonParser::GetFactionsInfo()
 {
     std::vector<FactionInfo> tmp;
-    JSONFile file(std::string(Config::resourcesFolder.toStdString() + "/TechTree.json"));
+    JSONFile file(std::string(Config::resourcesFolder + "/TechTree.json"));
 
     for (const auto& elem : file.Query(std::string("$.TechTree")).toArray())
     {

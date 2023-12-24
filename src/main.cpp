@@ -29,8 +29,7 @@ int main(int argc, char *argv[])
     try
     {
         // Create main window with user system language
-        StackedLaunchWidget HotkeyEditor_Window(Config::GetLangEnumByLocale(
-            QString::fromStdString(Registry::GetCurrentUserLanguage()).toLower()));
+        StackedLaunchWidget HotkeyEditor_Window(Config::GetLangEnumByLocale(Registry::GetCurrentUserLanguage()));
 
         HotkeyEditor_Window.setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
         HotkeyEditor_Window.show();

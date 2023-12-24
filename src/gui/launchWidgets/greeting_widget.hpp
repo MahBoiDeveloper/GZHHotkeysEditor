@@ -1,11 +1,10 @@
 #pragma once
 
-#include <QWidget>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QButtonGroup>
+#include <config.hpp>
 
-#include "../../config.hpp"
+#include <QPushButton>
+#include <QButtonGroup>
+#include <QVBoxLayout>
 
 class GreetingWidget : public QWidget
 {

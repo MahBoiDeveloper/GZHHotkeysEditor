@@ -1,4 +1,4 @@
-#include "building.h"
+#include "building.hpp"
 
 Building::Building(const std::string& iconName, const std::string& csfString)
     : iconName{iconName}

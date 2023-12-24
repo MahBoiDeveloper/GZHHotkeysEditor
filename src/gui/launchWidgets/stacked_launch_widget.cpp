@@ -1,10 +1,13 @@
-#include <QApplication>
-#include <QDebug>
-
 #include "stacked_launch_widget.hpp"
-#include "mainWidgets/hotkeys_main_window.hpp"
+
+#include <mainWidgets/hotkeys_main_window.hpp>
+#include <gui_config.hpp>
 #include "configurationDialogs/creation_dialog.hpp"
 #include "configurationDialogs/load_dialog.hpp"
+
+#include <QApplication>
+#include <QFile>
+#include <QDebug>
 
 StackedLaunchWidget::StackedLaunchWidget(Config::Languages language, QWidget *parent) : QStackedWidget(parent)
 {
@@ -22,7 +25,7 @@ StackedLaunchWidget::StackedLaunchWidget(Config::Languages language, QWidget *pa
     }
 
 
-    qApp->setWindowIcon(QIcon(QPixmap::fromImage(Config::decodeWebpIconPath(":/my/icon/NoImageSmall.webp"))));
+    qApp->setWindowIcon(QIcon(QPixmap::fromImage(GuiConfig::decodeWebpIconPath(":/my/icon/NoImageSmall.webp"))));
 
     // MainLaunchWidget settings
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -80,7 +83,8 @@ void StackedLaunchWidget::onLanguageChanged(Config::Languages language)
     if (language != Config::Languages::English)
     {
         translator = new QTranslator;
-        translator->load(Config::GetLocaleFromLangEnum(language), Config::translationsPath);
+        translator->load(QString::fromStdString(Config::GetLocaleFromLangEnum(language)),
+                         QString::fromStdString(Config::translationsPath));
         QCoreApplication::installTranslator(translator);
     }
 }

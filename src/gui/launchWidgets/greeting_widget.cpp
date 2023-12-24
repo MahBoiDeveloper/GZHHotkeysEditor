@@ -1,7 +1,9 @@
+#include "greeting_widget.hpp"
+
+#include <gui_config.hpp>
+
 #include <QComboBox>
 #include <QLabel>
-
-#include "greeting_widget.hpp"
 
 GreetingWidget::GreetingWidget(Config::Languages language, QWidget *parent) : QWidget(parent)
 {
@@ -54,7 +56,7 @@ void GreetingWidget::addStandartButton(GreetingWidget::StandartButtons standartB
     // creating standart button
     QPushButton* button = new QPushButton(buttonName);
 //    button->setMinimumSize(100, 15);
-    button->setFixedSize(Config::startButtonsSize);
+    button->setFixedSize(GuiConfig::startButtonsSize);
     mainButtons.addButton(button);
 
     // Event OnClick()
@@ -71,7 +73,7 @@ QHBoxLayout *GreetingWidget::createLanguageLayout(Config::Languages language, co
     // add languages labels
     for (int i = 0; i < static_cast<int>(Config::Languages::Count); ++i)
     {
-        langBox->addItem(Config::GetStringFromLangEnum(static_cast<Config::Languages>(i)));
+        langBox->addItem(QString::fromStdString(Config::GetStringFromLangEnum(static_cast<Config::Languages>(i))));
     }
     // set current language
     langBox->setCurrentIndex(static_cast<int>(language));

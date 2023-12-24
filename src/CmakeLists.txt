@@ -7,7 +7,7 @@ get_property(GLOBAL_PATH_TO_QT GLOBAL PROPERTY GLOBAL_PATH_TO_QT) # Qt path
 set(MAIN_TARGET_NAME "LoadEditor")
 set(LINK_MAIN_TARGET_NAME "HotkeyEditor")
 
-# =========================== target link ======================================
+# =========================== link target ======================================
 
 # target link source files
 file(GLOB_RECURSE TARGET_LINK_SOURCES "mainLink.cpp")
@@ -50,6 +50,26 @@ list(REMOVE_ITEM SOURCES ${TARGET_LINK_SOURCES} ${EXCLUDE_SOURCES})
 add_executable(${MAIN_TARGET_NAME}
     ${SOURCES}
 )
+
+set(_HEADER_FILES
+    "config.hpp"
+    "Info.hpp"
+    "parsers/TechTreeJsonParser.hpp"
+    "data/building.hpp"
+)
+
+# declare headers folder for gui
+set(_HEADERS_INCLUDE_DIRECTORY ${CMAKE_BINARY_DIR}/include CACHE STRING "Include headers directory")
+
+# create headers folder
+file(REMOVE_RECURSE  ${_HEADERS_INCLUDE_DIRECTORY})
+file(MAKE_DIRECTORY ${_HEADERS_INCLUDE_DIRECTORY})
+
+# copy headers to folder
+foreach(_HEADER ${_HEADER_FILES})
+    configure_file(${_HEADER} ${_HEADERS_INCLUDE_DIRECTORY} COPYONLY)
+endforeach()
+
 set_target_properties(${MAIN_TARGET_NAME}
     PROPERTIES
     CXX_STANDARD 17

@@ -1,16 +1,16 @@
+#include "hotkeys_main_window.hpp"
+#include "hotkey_element.hpp"
+#include "listWidget/list_widget_building_item.hpp"
+
+#include <Info.hpp>
+#include <TechTreeJsonParser.hpp>
+#include <gui_config.hpp>
+
 #include <QMenuBar>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QScrollArea>
 #include <QDebug>
-
-#include "../../Info.hpp"
-#include "../../parsers/TechTreeJsonParser.hpp"
-#include "../config.hpp"
-
-#include "hotkeys_main_window.hpp"
-#include "hotkey_element.hpp"
-#include "listWidget/list_widget_building_item.hpp"
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent) : QMainWindow(parent)
 {
@@ -168,7 +168,7 @@ void HotkeysMainWindow::onAbout()
     QGridLayout* contentL = new QGridLayout;
     contentL->addLayout(authorsL, 0, 0);
     QLabel* pixmap = new QLabel;
-    pixmap->setPixmap(QPixmap::fromImage(Config::decodeWebpIcon("NoImageSmall")));
+    pixmap->setPixmap(QPixmap::fromImage(GuiConfig::decodeWebpIcon("NoImageSmall")));
     contentL->addWidget(pixmap, 0, 1);
     QLabel* textL = new QLabel(tr("Program licensed by GNU GPL v3"));
     textL->setWordWrap(true);

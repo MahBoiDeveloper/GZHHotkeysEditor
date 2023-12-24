@@ -1,10 +1,9 @@
-#include <QHBoxLayout>
-#include <QKeyEvent>
-#include <QFile>
-#include <QDebug>
-
 #include "hotkey_element.hpp"
-#include <../config.hpp>
+#include <launchWidgets/greeting_widget.hpp>
+#include <gui_config.hpp>
+
+#include <QKeyEvent>
+#include <QDebug>
 
 HotkeyElement::HotkeyElement(const QString& actionName,
                              const QString& hotkeyStr,
@@ -19,7 +18,7 @@ HotkeyElement::HotkeyElement(const QString& actionName,
     connect(&newHotkeyButton, &QPushButton::pressed, this, &HotkeyElement::onNewHotkeyPressed);
 
     QLabel* imageLb = new QLabel;
-    imageLb->setPixmap(QPixmap::fromImage(Config::decodeWebpIcon(iconName)));
+    imageLb->setPixmap(QPixmap::fromImage(GuiConfig::decodeWebpIcon(iconName)));
 
     // hotkey
     hotkeyLabel.setAlignment(Qt::AlignCenter);
