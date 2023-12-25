@@ -17,13 +17,21 @@ HotkeyElement::HotkeyElement(const QString& actionName,
 {
     connect(&newHotkeyButton, &QPushButton::pressed, this, &HotkeyElement::onNewHotkeyPressed);
 
+    // Signal timer settings
+    signalTimer.setSingleShot(true);
+    connect(&signalTimer, &QTimer::timeout, this, &HotkeyElement::signalRepeatNewHotkey);
+
     QLabel* imageLb = new QLabel;
     imageLb->setPixmap(QPixmap::fromImage(GuiConfig::decodeWebpIcon(iconName)));
 
-    // hotkey
+    // Hotkey label
     hotkeyLabel.setAlignment(Qt::AlignCenter);
-    hotkeyLabel.setStyleSheet("padding-left: 30px; padding-right: 30px; background-color: gray");
-    // square button size
+    hotkeyLabel.setStyleSheet("padding-left: 30px;"
+                              "padding-right: 30px;"
+                              "background-color: #ABABAB");
+    // TODO: doesn't work
+    hotkeyLabel.setWindowOpacity(0.7);
+    // Square button size
     newHotkeyButton.setFixedSize(newHotkeyButton.sizeHint().height(), newHotkeyButton.sizeHint().height());
 
     QHBoxLayout* mainL = new QHBoxLayout(this);
@@ -51,36 +59,60 @@ void HotkeyElement::keyPressEvent(QKeyEvent* event)
     int key = event->key();
     if (key >= availableKeys.first && key <= availableKeys.second)
     {
+        // Set new text
         hotkey = QKeySequence(key).toString();
-        // return focus to button
-        newHotkeyButton.setFocus();
+
+        // If the key is correct -> disconnect the input error reset signal
+        disconnect(this, &HotkeyElement::signalRepeatNewHotkey, this, &HotkeyElement::onNewHotkeyPressed);
+
+        // Return focus to parent
+        parentWidget()->setFocus();
     }
     else
     {
         qDebug() << "This key is not allowed";
+
+        hotkeyLabel.setText(tr("It isn't latin key..."));
+        QPalette palette;
+        palette.setColor(QPalette::WindowText, Qt::GlobalColor::red);
+        hotkeyLabel.setPalette(palette);
+
+        // Start the signal timer with a delay of n seconds
+        if (signalTimer.isActive())
+        {
+            signalTimer.stop();
+        }
+        signalTimer.start(timerMseconds);
     }
     QWidget::keyPressEvent(event);
 }
 
 void HotkeyElement::focusOutEvent(QFocusEvent* event)
 {
-    // unset decoration
+    // Unset decoration
     hotkeyLabel.setFont(QFont());
     hotkeyLabel.setPalette(QPalette());
 
     hotkeyLabel.setText(hotkey);
+
     QWidget::focusOutEvent(event);
 }
 
 void HotkeyElement::onNewHotkeyPressed()
 {
+    // Reconnect the input error reset signal
+    disconnect(this, &HotkeyElement::signalRepeatNewHotkey, this, &HotkeyElement::onNewHotkeyPressed);
+    connect(this, &HotkeyElement::signalRepeatNewHotkey, this, &HotkeyElement::onNewHotkeyPressed);
+
     // decoration
-    hotkeyLabel.setText(tr("Press any key..."));
+    hotkeyLabel.setText(tr("Press latin key..."));
     QFont f(hotkeyLabel.font());
     f.setItalic(true);
     hotkeyLabel.setFont(f);
-    QPalette p;
-    p.setColor(QPalette::WindowText, Qt::GlobalColor::cyan);
-    hotkeyLabel.setPalette(p);
-    setFocus(); // set focus to current action
+    QPalette palette;
+    palette.setColor(QPalette::WindowText, Qt::GlobalColor::blue);
+    hotkeyLabel.setPalette(palette);
+
+    // set focus to hotkey element
+    setFocus();
 }

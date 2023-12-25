@@ -13,7 +13,7 @@ class GreetingWidget : public QWidget
 public:
     enum class StandartButtons
     {
-        NewProject = 0,
+        NewProject,
         LoadProject
     };
 

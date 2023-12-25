@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QLabel>
+#include <QTimer>
 #include <QPushButton>
 
 class HotkeyElement : public QWidget
@@ -15,6 +16,9 @@ public:
 	QString getActionName() const;
 	QString getHotkey() const;
 
+signals:
+    void signalRepeatNewHotkey();
+
 protected:
     void keyPressEvent(QKeyEvent* event) override;
     void focusOutEvent(QFocusEvent* event) override;
@@ -24,11 +28,13 @@ private slots:
 
 private:
     QString hotkey;
-
     QLabel actionNameLabel;
     QLabel hotkeyLabel;
     QLabel image;
     QPushButton newHotkeyButton;
+    QTimer signalTimer;
 
+private:
     QPair<int, int> availableKeys = {Qt::Key_A, Qt::Key_Z};
+    int timerMseconds = 1700;
 };

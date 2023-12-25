@@ -67,7 +67,6 @@ QStringList GuiConfig::findAllMatchingFiles(const QString& pathToDir, const QStr
         {
             if (fileInfo.fileName().contains(nameFilter))
             {
-                qDebug() << "USA file name " << fileInfo.fileName();
                 files.append(fileInfo.absoluteFilePath());
             }
         }

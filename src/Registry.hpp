@@ -7,19 +7,19 @@ class Registry final
 public: // Data types declarations
     enum class WindowsBit
     {
-        Win32 = 0,
+        Win32,
         Win64
     };
 
     enum class Games
     {
-        Generals = 0,
+        Generals,
         GeneralsZeroHour
     };
 
     enum class RootFolder
     {
-        HKLM = 0,
+        HKLM,
         HKCU
     };
 public: // Data

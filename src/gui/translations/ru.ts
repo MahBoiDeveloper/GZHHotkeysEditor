@@ -48,9 +48,18 @@
 <context>
     <name>HotkeyElement</name>
     <message>
-        <location filename="../mainWidgets/hotkey_element.cpp" line="78"/>
         <source>Press any key...</source>
-        <translation>Нажмите любую клавишу...</translation>
+        <translation type="vanished">Нажмите любую клавишу...</translation>
+    </message>
+    <message>
+        <location filename="../mainWidgets/hotkey_element.cpp" line="75"/>
+        <source>It isn&apos;t latin key...</source>
+        <translation>Это не латинская клавиша...</translation>
+    </message>
+    <message>
+        <location filename="../mainWidgets/hotkey_element.cpp" line="108"/>
+        <source>Press latin key...</source>
+        <translation>Нажмите латинскую клавишу...</translation>
     </message>
 </context>
 <context>

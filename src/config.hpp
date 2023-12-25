@@ -13,7 +13,7 @@ public:
 
     enum class Languages
     {
-        English = 0,
+        English,
         Russian,
         Count
     };
