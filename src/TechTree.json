@@ -46,7 +46,6 @@
 				]
 			},
 
-
 			"USAMissileDefender" :
 			{
 				"TechoType" : "Unit",
@@ -59,7 +58,6 @@
 					}
 				]
 			},
-
 
 			"USABurton" :
 			{
