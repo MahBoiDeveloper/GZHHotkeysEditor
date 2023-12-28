@@ -5,8 +5,6 @@
 
 class TechTreeJsonParser
 {
-public:
-    TechTreeJsonParser();
 
 public:// Types
     struct FactionInfo

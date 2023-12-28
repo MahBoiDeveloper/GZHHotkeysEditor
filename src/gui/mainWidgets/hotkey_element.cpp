@@ -104,7 +104,7 @@ void HotkeyElement::onNewHotkeyPressed()
     disconnect(this, &HotkeyElement::signalRepeatNewHotkey, this, &HotkeyElement::onNewHotkeyPressed);
     connect(this, &HotkeyElement::signalRepeatNewHotkey, this, &HotkeyElement::onNewHotkeyPressed);
 
-    // decoration
+    // decorate
     hotkeyLabel.setText(tr("Press latin key..."));
     QFont f(hotkeyLabel.font());
     f.setItalic(true);
@@ -113,6 +113,6 @@ void HotkeyElement::onNewHotkeyPressed()
     palette.setColor(QPalette::WindowText, Qt::GlobalColor::blue);
     hotkeyLabel.setPalette(palette);
 
-    // set focus to hotkey element
+    // set focus on hotkey element
     setFocus();
 }

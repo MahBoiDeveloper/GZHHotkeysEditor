@@ -1,19 +1,29 @@
 #pragma once
 
+#include <QButtonGroup>
+#include <QListWidget>
 #include <QMainWindow>
-#include <QHBoxLayout>
-#include <QLabel>
 
 class HotkeysMainWindow : public QMainWindow
 {
     Q_OBJECT
 
-private:
-    QDialog* aboutDialog = nullptr;
-
 public:
     HotkeysMainWindow(const QVariant& configuration, QWidget* parent = nullptr);
 
-public slots:
+private:
+    void _configureMenu();
+    QLayout* _createFactionsButtonsLayout() const;
+    QListWidget* _createBuildingsList(const QString& factionName) const;
+    QLayout* _createHotkeysLayout() const;
+    QLayout* _createTabContent(const QString& factionName) const;
+
+private slots:
+    void setCurrentTab(int negativeId);
     void onAbout();
+
+private:
+    QButtonGroup* factionsButtonsGroup;
+    QTabWidget* factionsTabs;
+    QDialog* aboutDialog = nullptr;
 };

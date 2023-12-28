@@ -7,6 +7,7 @@ class GuiConfig
 
 public:
     inline static const QSize startButtonsSize = QSize(230, 110);
+    inline static const QString standartSmallImageName = "NoImageSmall";
 
 public:
     GuiConfig() = delete;

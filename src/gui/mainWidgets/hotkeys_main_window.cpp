@@ -7,16 +7,38 @@
 #include <gui_config.hpp>
 
 #include <QMenuBar>
+#include <QHBoxLayout>
+#include <QLabel>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QScrollArea>
 #include <QDebug>
 
-HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent) : QMainWindow(parent)
+HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
+    : QMainWindow(parent)
+    , factionsButtonsGroup{new QButtonGroup}
+    , factionsTabs{new QTabWidget}
 {
     resize(1200, 800);
 
-    // configuring menu
+    _configureMenu();
+
+    connect(factionsButtonsGroup, &QButtonGroup::idClicked, this, &HotkeysMainWindow::setCurrentTab);
+
+    factionsTabs->tabBar()->hide();
+
+    QVBoxLayout* mainL = new QVBoxLayout;
+    mainL->addLayout(_createFactionsButtonsLayout());
+    mainL->addWidget(factionsTabs);
+
+    // main widget
+    QWidget* centralWidget = new QWidget;
+    centralWidget->setLayout(mainL);
+    setCentralWidget(centralWidget);
+}
+
+void HotkeysMainWindow::_configureMenu()
+{
     QMenu* fm = new QMenu(tr("File"));
     fm->addAction(tr("Special"));
     menuBar()->addMenu(fm);
@@ -26,131 +48,162 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     QAction* aboutA = new QAction(tr("About"));
     connect(aboutA, &QAction::triggered, this, &HotkeysMainWindow::onAbout);
     settingsM->addAction(aboutA);
+}
 
-    // configuring fractions layouts
-    auto factions = TechTreeJsonParser::GetFactionsInfo();
+QLayout* HotkeysMainWindow::_createFactionsButtonsLayout() const
+{
+    std::vector<TechTreeJsonParser::FactionInfo> factions = TechTreeJsonParser::GetFactionsInfo();
+
     QBoxLayout* factionsL = nullptr;
-    const int standartFactionsCount = 12;
     int factonsCount = factions.size();
 
+    const int standartFactionsCount = 12;
     if (factonsCount == standartFactionsCount)
     {
         factionsL = new QHBoxLayout;
 
-        QVBoxLayout* USA_L = new QVBoxLayout;
-        USA_L->addWidget(new QPushButton(QString::fromStdString(factions.at(0).DisplayName)));
+        // only 3 sections with factions and subfactions, 4 in each
+        for (int sectionIndex = 0; sectionIndex < standartFactionsCount; sectionIndex += 4)
+        {
+            QVBoxLayout* currentFactionL = new QVBoxLayout;
+            QHBoxLayout* currenSubfactionsL = new QHBoxLayout;
 
-        QHBoxLayout* USA_powersL = new QHBoxLayout;
-        USA_powersL->addWidget(new QPushButton(QString::fromStdString(factions.at(1).DisplayName)));
-        USA_powersL->addWidget(new QPushButton(QString::fromStdString(factions.at(2).DisplayName)));
-        USA_powersL->addWidget(new QPushButton(QString::fromStdString(factions.at(3).DisplayName)));
-        USA_L->addLayout(USA_powersL);
+            for (int i = 0; i < 4; ++i)
+            {
+                QWidget* newTab = new QWidget;
+                newTab->setLayout(_createTabContent(QString::fromStdString(factions[sectionIndex + i].ShortName)));
+                factionsTabs->addTab(newTab, "");
 
-        QVBoxLayout* CHINA_L = new QVBoxLayout;
-        CHINA_L->addWidget(new QPushButton(QString::fromStdString(factions.at(4).DisplayName)));
+                QPushButton* factionButton = new QPushButton(QString::fromStdString(factions.at(sectionIndex + i).DisplayName));
+                factionsButtonsGroup->addButton(factionButton);
 
-        QHBoxLayout* CHINA_powersL = new QHBoxLayout;
-        CHINA_powersL->addWidget(new QPushButton(QString::fromStdString(factions.at(5).DisplayName)));
-        CHINA_powersL->addWidget(new QPushButton(QString::fromStdString(factions.at(6).DisplayName)));
-        CHINA_powersL->addWidget(new QPushButton(QString::fromStdString(factions.at(7).DisplayName)));
-        CHINA_L->addLayout(CHINA_powersL);
+                // main faction
+                if (i == 0)
+                {
+                    currentFactionL->addWidget(factionButton);
+                }
+                // subfactions
+                else
+                {
+                    currenSubfactionsL->addWidget(factionButton);
+                }
+            }
 
-        QVBoxLayout* GLA_L = new QVBoxLayout;
-        GLA_L->addWidget(new QPushButton(QString::fromStdString(factions.at(8).DisplayName)));
-
-        QHBoxLayout* GLA_powersL = new QHBoxLayout;
-        GLA_powersL->addWidget(new QPushButton(QString::fromStdString(factions.at(9).DisplayName)));
-        GLA_powersL->addWidget(new QPushButton(QString::fromStdString(factions.at(10).DisplayName)));
-        GLA_powersL->addWidget(new QPushButton(QString::fromStdString(factions.at(11).DisplayName)));
-        GLA_L->addLayout(GLA_powersL);
-
-        // Write information to the header layout
-        factionsL->addLayout(USA_L);
-        factionsL->addLayout(CHINA_L);
-        factionsL->addLayout(GLA_L);
+            currentFactionL->addLayout(currenSubfactionsL);
+            factionsL->addLayout(currentFactionL);
+        }
     }
     else
     {
-        QHBoxLayout* firstL = new QHBoxLayout;
-        QHBoxLayout* secondL = new QHBoxLayout;
+        // TODO: not relevant
+//        QHBoxLayout* firstL = new QHBoxLayout;
+//        QHBoxLayout* secondL = new QHBoxLayout;
 
-        int i = 0;
-        for (const auto & faction : factions)
-        {
-            if (i < factonsCount / 2)
-            {
-                firstL->addWidget(new QPushButton(QString::fromStdString(factions.at(i).DisplayName)));
-            }
-            else
-            {
-                secondL->addWidget(new QPushButton(QString::fromStdString(factions.at(i).DisplayName)));
-            }
-            ++i;
-        }
+//        int i = 0;
+//        for (const auto & faction : factions)
+//        {
+//            QPushButton* factionButton = new QPushButton(QString::fromStdString(factions.at(i).DisplayName));
 
-        factionsL = new QVBoxLayout;
-        factionsL->addLayout(firstL);
-        factionsL->addLayout(secondL);
+//            if (i < factonsCount / 2)
+//            {
+//                firstL->addWidget(factionButton);
+//            }
+//            else
+//            {
+//                secondL->addWidget(factionButton);
+//            }
+//            ++i;
+//        }
+
+//        factionsL = new QVBoxLayout;
+//        factionsL->addLayout(firstL);
+//        factionsL->addLayout(secondL);
     }
 
-//================== buildings view list =================================================
+    return factionsL;
+}
 
+QListWidget* HotkeysMainWindow::_createBuildingsList(const QString& factionName) const
+{
     QVector<Building> buildings;
     for (int i = 0; i < 10; ++i)
     {
         buildings.append(Building{"PRCBunker", ""});
     }
 
-    QListWidget* buildingsWidget = new QListWidget;
+    QListWidget* buildingsList = new QListWidget;
 
     int buildingIconMinimumHeight = 80;
 
     // smooth scrolling
-    buildingsWidget->setVerticalScrollMode(QListWidget::ScrollMode::ScrollPerPixel);
+    buildingsList->setVerticalScrollMode(QListWidget::ScrollMode::ScrollPerPixel);
     // icon size
-    buildingsWidget->setIconSize(QSize{buildingIconMinimumHeight, buildingIconMinimumHeight});
-    buildingsWidget->setSpacing(buildingIconMinimumHeight * 0.1);
+    buildingsList->setIconSize(QSize{buildingIconMinimumHeight, buildingIconMinimumHeight});
+    buildingsList->setSpacing(buildingIconMinimumHeight * 0.1);
 
     for (const auto & building : buildings)
     {
-        buildingsWidget->addItem(new ListWidgetBuildingItem{building});
-        buildingsWidget->item(buildingsWidget->count() - 1)->setText(QString{"Building %1"}.arg(buildingsWidget->count()));
+        buildingsList->addItem(new ListWidgetBuildingItem{building});
+        buildingsList->item(buildingsList->count() - 1)->setText(QString{"%1 building %2"}.
+                                                                 arg(factionName).
+                                                                 arg(buildingsList->count()));
     }
 
-//========================================================================================
+    return buildingsList;
+}
 
+QLayout* HotkeysMainWindow::_createHotkeysLayout() const
+{
     QVBoxLayout* hotkeysL = new QVBoxLayout;
-    for(int i = 0; i < 3; ++i)
+    for(int i = 0; i < 5; ++i)
     {
-        hotkeysL->addWidget(new HotkeyElement(QString("action_%1").arg(i+1),
-                                              QString("hotkey_%1").arg(i+1),
-                                              QString("GLAScudStormLaunch")));
+        Qt::Key key = (Qt::Key)(Qt::Key::Key_A + i);
+
+        QString hotkey = QKeySequence{key}.toString();
+
+        HotkeyElement* hotkeyElement = new HotkeyElement(QString("action_%1").arg(i+1),
+                                                         hotkey,
+                                                         QString("GLAScudStormLaunch"));
+        hotkeysL->addWidget(hotkeyElement);
     }
+
+    return hotkeysL;
+}
+
+QLayout* HotkeysMainWindow::_createTabContent(const QString& factionName) const
+{
+    QWidget* scrollWidget = new QWidget;
+    scrollWidget->setLayout(_createHotkeysLayout());
+    // Get rid of element compression
+    scrollWidget->setMinimumSize(scrollWidget->sizeHint());
+
     QScrollArea* hotkeysArea = new QScrollArea;
-    hotkeysArea->setLayout(hotkeysL);
+    hotkeysArea->setWidget(scrollWidget);
+
+    // Fill all available space
     hotkeysArea->setWidgetResizable(true);
 
     QVBoxLayout* buildingConfigurationL = new QVBoxLayout;
     buildingConfigurationL->addWidget(hotkeysArea);
     buildingConfigurationL->addWidget(new QScrollArea);
-    buildingConfigurationL->addWidget(new QScrollArea);
 
     QHBoxLayout* contentL = new QHBoxLayout;
-    contentL->addWidget(buildingsWidget);
+    contentL->addWidget(_createBuildingsList(factionName));
     contentL->addLayout(buildingConfigurationL);
 
     // building list's configuration stretch power
     contentL->setStretch(0,1);
     contentL->setStretch(1,3);
 
-    QVBoxLayout* mainL = new QVBoxLayout;
-    mainL->addLayout(factionsL);
-    mainL->addLayout(contentL);
+    return contentL;
+}
 
-    // main widget
-    QWidget* centralWidget = new QWidget;
-    centralWidget->setLayout(mainL);
-    setCentralWidget(centralWidget);
+void HotkeysMainWindow::setCurrentTab(int negativeId)
+{
+    // invert index
+    int normalIndex = (negativeId + 2) * (-1);
+
+    factionsTabs->setCurrentIndex(normalIndex);
 }
 
 void HotkeysMainWindow::onAbout()
@@ -168,7 +221,7 @@ void HotkeysMainWindow::onAbout()
     QGridLayout* contentL = new QGridLayout;
     contentL->addLayout(authorsL, 0, 0);
     QLabel* pixmap = new QLabel;
-    pixmap->setPixmap(QPixmap::fromImage(GuiConfig::decodeWebpIcon("NoImageSmall")));
+    pixmap->setPixmap(QPixmap::fromImage(GuiConfig::decodeWebpIcon(GuiConfig::standartSmallImageName)));
     contentL->addWidget(pixmap, 0, 1);
     QLabel* textL = new QLabel(tr("Program licensed by GNU GPL v3"));
     textL->setWordWrap(true);

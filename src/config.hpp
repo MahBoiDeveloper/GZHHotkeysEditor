@@ -6,9 +6,10 @@ class Config
 {
 public:
     inline static const std::string resourcesFolder  = "Resources";
-    inline static const std::string translationsPath = "Resources/Translations";
-    inline static const std::string iconsPath        = "Resources/Icons";
+    inline static const std::string translationsPath = resourcesFolder + "/Translations";
+    inline static const std::string iconsPath        = resourcesFolder + "/Icons";
     inline static const std::string defaultIconFile  = iconsPath + "/NoImageSmall.webp";
+    inline static const std::string techTreeFile     = resourcesFolder + "/TechTree.json";
     inline static const double recomendedStartWidgetSizeRatio = 3./7.;
 
     enum class Languages

@@ -69,7 +69,7 @@ using namespace std;
             // Current value actually is array
             if (currSplit.contains('[') && currSplit.contains(']'))
             {
-                QRegularExpression regexp("\\[\\d+\\]");
+                static QRegularExpression regexp{"\\[\\d+\\]"};
 
                 // Find [xxxx] number of index in array and clear string from [] bracket
                 int arrayIndex = regexp.match(currSplit).captured(0).remove('[').remove(']').toInt();
