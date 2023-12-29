@@ -1,114 +1,92 @@
 {
 	"Commons"  :
-	{
-		"USACommon" : 
-		{
-			"USABarracks" : 
-			{
-				"TechoType"  : "Building",
-				"IngameName" : "OBJECT:Barracks",
-				"Icons"      : 
-				[
-					{
-						"IconName"    : "USARanger",
-						"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryRanger"
-					},
+	[
+        {
+            "Name"       : "USACommon",
+            "Buildings"  :
+            [
+                {
+                    "Name"       : "USABarracks",
+                    "IngameName" : "OBJECT:Barracks",
+                    "Actions"    : 
+                    [
+                        {
+                            "Name"        : "USARanger",
+                            "CSFString"   : "CONTROLBAR:ConstructAmericaInfantryRanger"
+                        },
 
-					{
-						"IconName"    : "USAMissileDefender",
-						"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryMissileDefender"
-					},
+                        {
+                            "Name"        : "USAMissileDefender",
+                            "CSFString"   : "CONTROLBAR:ConstructAmericaInfantryMissileDefender"
+                        }
+                    ]
+                }
+            ],
 
-					{
-						"IconName"    : "USABurton",
-						"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryColonelBurton"
-					},
+            "Infantry"  :
+            [
+                {
+                    "Name"      : "USAMissileDefender",
+                    "CSFString" : "OBJECT:MissileTeam",
+                    "Actions"   : 
+                    [
+                        {
+                            "Name"      : "USALaserLock",
+                            "CSFString" : "CONTROLBAR:LaserMissileAttack"
+                        }
+                    ]
+                },
 
-					{
-						"IconName"    : "USAPathfinder",
-						"CSFString"   : "CONTROLBAR:ConstructAmericaInfantryPathfinder"
-					},
+                {
+                    "Name"      : "USABurton",
+                    "CSFString" : "OBJECT:ColonelBurton",
+                    "Actions"   : 
+                    [
+                        {
+                            "Name"       : "USAKnifeAttack",
+                            "CSFString"  : "CONTROLBAR:KnifeAttack"
+                        },
+                        
+                        {
+                            "Name"       : "USATimedDemoCharge",
+                            "CSFString"  : "CONTROLBAR:TimedDemoCharge"
+                        }
+                    ]
+                }
+            ],
+            
+            "Vehicles"  : [],
+            "Aircraft"  : []
+        },
 
-					{
-						"IconName"    : "USAFlashbangs",
-						"CSFString"   : "CONTROLBAR:UpgradeAmericaFlashBangGrenade"
-					},
+        {
+            "Name"      : "PRCCommon",
+            "Buildings" : [],
+            "Infantry"  : [],
+            "Vehicles"  : [],
+            "Aircraft"  : []
+        },
 
-					{
-						"IconName"    : "CommonCaptureBuilding",
-						"CSFString"   : "CONTROLBAR:UpgradeAmericaRangerCaptureBuilding"
-					},
-
-					{
-						"IconName"    : "SellBuilding",
-						"CSFString"   : "CONTROLBAR:Sell"
-					}
-				]
-			},
-
-			"USAMissileDefender" :
-			{
-				"TechoType" : "Unit",
-				"CSFString" : "OBJECT:MissileTeam",
-				"Icons"     : 
-				[
-					{
-						"IconName"  : "USALaserLock",
-						"CSFString" : "CONTROLBAR:LaserMissileAttack"
-					}
-				]
-			},
-
-			"USABurton" :
-			{
-				"TechoType" : "Unit",
-				"CSFString" : "OBJECT:ColonelBurton",
-				"Icons"     : 
-				[
-					{
-						"IconName"   : "USAKnifeAttack",
-						"CSFString"  : "CONTROLBAR:KnifeAttack"
-					},
-					
-					{
-						"IconName"   : "USATimedDemoCharge",
-						"CSFString"  : "CONTROLBAR:TimedDemoCharge"
-					},
-					
-					{
-						"IconName"   : "USARemoteDemoCharge",
-						"CSFString"  : "CONTROLBAR:RemoteDemoCharge"
-					},
-
-					{
-						"IconName"   : "USADetonateCharges",
-						"CSFString"  : "CONTROLBAR:DetonateCharges"
-					}
-				]
-			},
-
-			"USAPathfinder" :
-			{
-				"TechoType" : "Unit",
-				"CSFString" : "OBJECT:Pathfinder",
-				"Icons"     : []
-			}
-		},
-
-		"PRCCommon" : {},
-
-		"GLACommon" : {}
-	},
+        {
+            "Name"      : "GLACommon",
+            "Buildings" : [],
+            "Infantry"  : [],
+            "Vehicles"  : [],
+            "Aircraft"  : []
+        }
+    ],
 
 	"TechTree" :
 	[
-
 		{
 			"ShortName"               : "USA",
 			"DisplayName"             : "USA",
 			"DisplayNameDesctiontion" : "United Stated Of America",
 			"Inheritance"             : "USACommon",
-			"Relationships"           : {}
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
 		},
 
 		{
@@ -116,343 +94,182 @@
 			"DisplayName"             : "SUPERWEAPON",
 			"DisplayNameDesctiontion" : "Superweapons General",
 			"Inheritance"             : "USACommon",
-			"Relationships"           :
-			{
-				"USACommandCenter" : 
+            "Buildings"               :
+			[
 				{
-					"TechoType"  : "Building",
+                    "Name"       : "USACommandCenter",
 					"IngameName" : "OBJECT:CommandCenter",
-					"Icons"      :
+					"Actions"    :
 					[
 						{
-							"IconName"    : "USADozer",
+							"Name"        : "USADozer",
 							"CSFString"   : "CONTROLBAR:ConstructAmericaDozer"
 						},
 
 						{
-							"IconName"    : "USASpySat",
+							"Name"        : "USASpySat",
 							"CSFString"   : "CONTROLBAR:SpySatellite"
-						},
-
-						{
-							"IconName"    : "USADrone",
-							"CSFString"   : "CONTROLBAR:SpyDrone"
-						},
-
-						{
-							"IconName"    : "SellBuilding",
-							"CSFString"   : "CONTROLBAR:Sell"
 						}
 					]
 				},
 
-				"USADozer" :
 				{
-					"TechoType"  : "Unit",
-					"IngameName" : "OBJECT:Dozer",
-					"Icons"      : 
-					[
-						{
-							"IconName"  : "USAColdFusionReactor",
-							"CSFString" : "CONTROLBAR:ConstructAmericaPowerPlant"
-						},
-
-						{
-							"IconName"  : "USABarracks",
-							"CSFString" : "CONTROLBAR:ConstructAmericaBarracks"
-						},
-
-						{
-							"IconName"  : "USACommandCenter",
-							"CSFString" : "CONTROLBAR:ConstructAmericaCommandCenter"
-						},
-
-						{
-							"IconName"  : "USAParticleCannon",
-							"CSFString" : "CONTROLBAR:ConstructAmericaParticleCannonUplink"
-						},
-
-						{
-							"IconName"  : "USADropZone",
-							"CSFString" : "CONTROLBAR:ConstructAmericaSupplyDropZone"
-						},
-
-						{
-							"IconName"  : "USAStrategyCenter",
-							"CSFString" : "CONTROLBAR:ConstructAmericaStrategyCenter"
-						},
-
-						{
-							"IconName"  : "USAAirfield",
-							"CSFString" : "CONTROLBAR:ConstructAmericaAirfield"
-						},
-
-						{
-							"IconName"  : "USAWarFactory",
-							"CSFString" : "CONTROLBAR:ConstructAmericaWarFactory"
-						},
-
-						{
-							"IconName"  : "USAFireBase",
-							"CSFString" : "CONTROLBAR:ConstructAmericaFireBase"
-						},
-
-						{
-							"IconName"  : "SWGPatriot",
-							"CSFString" : "CONTROLBAR:SupW_ConstructAmericaPatriotBattery"
-						},
-
-						{
-							"IconName"  : "USASupplyCenter",
-							"CSFString" : "CONTROLBAR:ConstructAmericaSupplyCenter"
-						},
-
-						{
-							"IconName"  : "CommonUnmine",
-							"CSFString" : "CONTROLBAR:DisarmMinesAtPosition"
-						}
-					]
-				},
-
-				"USAColdFusionReactor" : 
-				{
-					"TechoType"  : "Building",
+                    "Name"       : "USAColdFusionReactor",
 					"IngameName" : "OBJECT:ColdFusionReactor",
-					"Icons"      : 
+					"Actions"    : 
 					[
 						{
-							"IconName"    : "SWGAdvancedControlRods",
+							"Name"        : "SWGAdvancedControlRods",
 							"CSFString"   : "CONTROLBAR:SupW_UpgradeAmericaAdvancedControlRods"
 						},
 
 						{
-							"IconName"    : "SellBuilding",
+							"Name"        : "SellBuilding",
 							"CSFString"   : "CONTROLBAR:Sell"
 						}
 					]
 				},
 
-				"USARanger" : 
-				{
-					"TechoType"  : "Unit",
-					"IngameName" : "OBJECT:Ranger",
-					"Icons"      : 
-					[
-						{
-							"IconName"    : "CommonCaptureBuilding",
-							"CSFString"   : "CONTROLBAR:CaptureBuilding"
-						},
-
-						{
-							"IconName"    : "USARangerMachineGun",
-							"CSFString"   : "CONTROLBAR:RangerMachineGun"
-						},
-
-						{
-							"IconName"    : "USAFlashbangs",
-							"CSFString"   : "CONTROLBAR:FlashBangGrenadeMode"
-						}
-					]
-				},
-
-				"USASupplyCenter" :
-				{
-					"TechoType"  : "Building",
+                {
+                    "Name"       : "USASupplyCenter",
 					"CSFString"  : "OBJECT:SupplyCenter",
-					"Icons"      : 
+					"Actions"    : 
 					[
 						{
-							"IconName"  : "USAChinook",
+							"Name"      : "USAChinook",
 							"CSFString" : "CONTROLBAR:ConstructAmericaVehicleChinook"
 						},
 
 						{
-							"IconName"  : "SellBuilding",
+							"Name"      : "SellBuilding",
 							"CSFString" : "CONTROLBAR:Sell"
 						}
 					]
 				},
 
-				"USAChinook" :
-				{
-					"TechoType"  : "Unit",
-					"CSFString"  : "OBJECT:Chinook",
-					"Icons"      :
-					[
-						{
-							"IconName"  : "USAEvacuate",
-							"CSFString" : "CONTROLBAR:Evacuate"
-						},
-
-						{
-							"IconName"  : "USACombatDrop",
-							"CSFString" : "CONTROLBAR:CombatDrop"
-						}
-					]
-				},
-
-				"USAWarFactory" :
-				{
-					"TechoType"  : "Building",
+                {
+                    "Name"       : "USAWarFactory",
 					"CSFString"  : "OBJECT:WarFactory",
-					"Icons"      :
+					"Actions"    :
 					[
 						{
-							"IconName"  : "USATomahawkLauncher",
+							"Name"      : "USATomahawkLauncher",
 							"CSFString" : "CONTROLBAR:ConstructAmericaWarFactory"
 						},
 
 						{
-							"IconName"  : "USAAmbulance",
+							"Name"      : "USAAmbulance",
 							"CSFString" : "CONTROLBAR:ConstructAmericaVehicleMedic"
-						},
-
-						{
-							"IconName"  : "USASentryDrone",
-							"CSFString" : "CONTROLBAR:ConstructAmericaVehicleSentryDrone"
-						},
-
-						{
-							"IconName"  : "USAWarlock",
-							"CSFString" : "CONTROLBAR:ConstructAmericaTankMicrowave"
-						},
-
-						{
-							"IconName"  : "USAAvenger",
-							"CSFString" : "CONTROLBAR:ConstructAmericaTankAvenger"
-						},
-
-						{
-							"IconName"  : "USAHumvee",
-							"CSFString" : "CONTROLBAR:ConstructAmericaVehicleHumvee"
-						},
-
-						{
-							"IconName"  : "USASentryDroneGun",
-							"CSFString" : "CONTROLBAR:UpgradeAmericaSentryDroneGun"
-						},
-
-						{
-							"IconName"  : "USATOWMissile",
-							"CSFString" : "CONTROLBAR:UpgradeAmericaTOWMissile"
 						}
 					]
 				},
 
-				"USAAirfield" :
 				{
-					"TechoType"  : "Building",
+                    "Name"       : "USAAirfield",
 					"CSFString"  : "OBJECT:Airfield",
-					"Icons"      :
+					"Actions"    :
 					[
 						{
-							"IconName"  : "USARaptor",
+							"Name"      : "USARaptor",
 							"CSFString" : "CONTROLBAR:ConstructAmericaJetRaptor"
 						},
 
 						{
-							"IconName"  : "SWGAuroraAlpha",
+							"Name"      : "SWGAuroraAlpha",
 							"CSFString" : "CONTROLBAR:ConstructAmericaJetFuelAirAurora"
-						},
-
-						{
-							"IconName"  : "USAComanche",
-							"CSFString" : "CONTROLBAR:ConstructAmericaVehicleComanche"
-						},
-
-						{
-							"IconName"  : "USAStealthFighter",
-							"CSFString" : "CONTROLBAR:ConstructAmericaJetStealthFighter"
-						},
-
-						{
-							"IconName"  : "USALaserGuidedMissiles",
-							"CSFString" : "CONTROLBAR:UpgradeAmericaLaserMissiles"
-						},
-
-						{
-							"IconName"  : "USARocketPods",
-							"CSFString" : "CONTROLBAR:UpgradeComancheRocketPods"
-						},
-
-						{
-							"IconName"  : "USACountermeasures",
-							"CSFString" : "CONTROLBAR:UpgradeAmericaCountermeasures"
-						},
-
-						{
-							"IconName"  : "USABunkerBusters",
-							"CSFString" : "CONTROLBAR:UpgradeAmericaBunkerBusters"
 						}
 					]
 				},
 
-				"USAStrategyCenter" :
 				{
-					"TechoType"  : "Building",
+                    "Name"       : "USAStrategyCenter",
 					"CSFString"  : "OBJECT:StrategyCenter",
-					"Icons"      :
+					"Actions"    :
 					[
 						{
-							"IconName"  : "USABombardment",
+							"Name"      : "USABombardment",
 							"CSFString" : "CONTROLBAR:InitiateBattlePlanBombardment"
 						},
 
 						{
-							"IconName"  : "USAIntelligence",
+							"Name"      : "USAIntelligence",
 							"CSFString" : "CONTROLBAR:CIAIntelligence"
-						},
-
-						{
-							"IconName"  : "USAHoldTheLine",
-							"CSFString" : "CONTROLBAR:InitiateBattlePlanHoldTheLine"
-						},
-
-						{
-							"IconName"  : "USASearchAndDestroy",
-							"CSFString" : "CONTROLBAR:InitiateBattlePlanSearchAndDestroy"
-						},
-
-						{
-							"IconName"  : "USAMOAB",
-							"CSFString" : "CONTROLBAR:MOAB"
-						},
-
-						{
-							"IconName"  : "USAChemicalSuits",
-							"CSFString" : "CONTROLBAR:UpgradeAmericaChemicalSuits"
-						},
-
-						{
-							"IconName"  : "USAAdvancedTraining",
-							"CSFString" : "CONTROLBAR:UpgradeAmericaAdvancedTraining"
-						},
-
-						{
-							"IconName"  : "USADroneArmor",
-							"CSFString" : "CONTROLBAR:UpgradeAmericaDroneArmor"
-						},
-
-						{
-							"IconName"  : "USASupplyLines",
-							"CSFString" : "CONTROLBAR:UpgradeAmericaSupplyLines"
 						}
 					]
 				},
 
-				"USAParticleCannon" :
 				{
-					"TechoType"  : "Building",
+                    "Name"       : "USAParticleCannon",
 					"CSFString"  : "OBJECT:ParticleCannon",
-					"Icons"      :
+					"Actions"    :
 					[
 						{
-							"IconName"  : "USAParticleCannonFire",
+							"Name"      : "USAParticleCannonFire",
 							"CSFString" : "CONTROLBAR:FireParticleUplinkCannon"
 						}
 					]
 				}
-			}
+            ],
+
+            "Infantry" : 
+            [
+                {
+                    "Name"       : "USARanger",
+					"IngameName" : "OBJECT:Ranger",
+					"Actions"    : 
+					[
+						{
+							"Name"        : "CommonCaptureBuilding",
+							"CSFString"   : "CONTROLBAR:CaptureBuilding"
+						},
+
+						{
+							"Name"        : "USARangerMachineGun",
+							"CSFString"   : "CONTROLBAR:RangerMachineGun"
+						}
+					]
+				}
+            ],
+
+            "Vehicles" : 
+            [
+				{
+                    "Name"       : "USADozer",
+					"IngameName" : "OBJECT:Dozer",
+					"Actions"    : 
+					[
+						{
+							"Name"      : "USAColdFusionReactor",
+							"CSFString" : "CONTROLBAR:ConstructAmericaPowerPlant"
+						},
+
+						{
+							"Name"      : "USABarracks",
+							"CSFString" : "CONTROLBAR:ConstructAmericaBarracks"
+						}
+					]
+				}
+            ],
+
+            "Aircraft" :
+            [
+				{
+                    "Name"       : "USAChinook",
+					"CSFString"  : "OBJECT:Chinook",
+					"Actions"    :
+					[
+						{
+							"Name"      : "USAEvacuate",
+							"CSFString" : "CONTROLBAR:Evacuate"
+						},
+
+						{
+							"Name"      : "USACombatDrop",
+							"CSFString" : "CONTROLBAR:CombatDrop"
+						}
+					]
+				}
+            ]
 		},
 
 		{
@@ -460,7 +277,10 @@
 			"DisplayName"             : "AIR",
 			"DisplayNameDesctiontion" : "Airforce General",
 			"Inheritance"             : "USACommon",
-			"Relationships"           : {}
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
 		},
 
 		{
@@ -468,64 +288,90 @@
 			"DisplayName"             : "LASER",
 			"DisplayNameDesctiontion" : "Laser Weapons Generals",
 			"Inheritance"             : "USACommon",
-			"Relationships"           : {}
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
 		},
 
 		{
 			"ShortName"               : "PRC",
 			"DisplayName"             : "CHINA",
 			"DisplayNameDesctiontion" : "China",
-			"Relationships"           : {}
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
 		},
 
 		{
 			"ShortName"               : "INF",
 			"DisplayName"             : "INFANTRY",
 			"DisplayNameDesctiontion" : "Infantry General",
-			"Relationships"           : {}
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
 		},
 
 		{
 			"ShortName"               : "NUK",
 			"DisplayName"             : "NUKE",
 			"DisplayNameDesctiontion" : "Nuke General",
-			"Relationships"           : {}
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
 		},
 
 		{
 			"ShortName"               : "TNK",
 			"DisplayName"             : "TANK",
 			"DisplayNameDesctiontion" : "Tank General",
-			"Relationships"           : {}
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
 		},
-
 
 		{
 			"ShortName"               : "GLA",
 			"DisplayName"             : "GLA",
 			"DisplayNameDesctiontion" : "Global Liberation Army",
-			"Relationships"           : {}
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
 		},
 
 		{
 			"ShortName"               : "TOX",
 			"DisplayName"             : "TOXIC",
 			"DisplayNameDesctiontion" : "Toxic Weapons General",
-			"Relationships"           : {}
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
 		},
 		
 		{
 			"ShortName"               : "STL",
 			"DisplayName"             : "STEALTH",
 			"DisplayNameDesctiontion" : "Stealth General",
-			"Relationships"           : {}
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
 		},
 		
 		{
 			"ShortName"               : "DML",
 			"DisplayName"             : "DEMO",
 			"DisplayNameDesctiontion" : "Demolition General",
-			"Relationships"           : {}
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
 		}
 	]
 }

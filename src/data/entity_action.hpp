@@ -3,14 +3,14 @@
 #include <string>
 
 /// @brief class for storing building data
-class Building
+class EntityAction
 {
 public:
-    Building(const std::string& iconName, const std::string& csfString);
-    const std::string& getIconName() const;
+    EntityAction(const std::string& name, const std::string& csfString);
+    const std::string& getName() const;
     const std::string& getCsfString() const;
 
 private:
-    std::string iconName;
+    std::string name;
     std::string csfString;
 };

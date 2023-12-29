@@ -86,17 +86,17 @@
     </message>
     <message>
         <location filename="../mainWidgets/hotkeys_main_window.cpp" line="48"/>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="233"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="224"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="219"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="210"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="226"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="217"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

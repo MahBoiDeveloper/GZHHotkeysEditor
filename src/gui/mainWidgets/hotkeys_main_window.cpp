@@ -1,6 +1,6 @@
 #include "hotkeys_main_window.hpp"
 #include "hotkey_element.hpp"
-#include "listWidget/list_widget_building_item.hpp"
+#include "listWidget/list_widget_entity_item.hpp"
 
 #include <Info.hpp>
 #include <TechTreeJsonParser.hpp>
@@ -125,12 +125,6 @@ QLayout* HotkeysMainWindow::_createFactionsButtonsLayout() const
 
 QListWidget* HotkeysMainWindow::_createBuildingsList(const QString& factionName) const
 {
-    QVector<Building> buildings;
-    for (int i = 0; i < 10; ++i)
-    {
-        buildings.append(Building{"PRCBunker", ""});
-    }
-
     QListWidget* buildingsList = new QListWidget;
 
     int buildingIconMinimumHeight = 80;
@@ -141,12 +135,9 @@ QListWidget* HotkeysMainWindow::_createBuildingsList(const QString& factionName)
     buildingsList->setIconSize(QSize{buildingIconMinimumHeight, buildingIconMinimumHeight});
     buildingsList->setSpacing(buildingIconMinimumHeight * 0.1);
 
-    for (const auto & building : buildings)
+    for (const auto & building : TechTreeJsonParser::getFactionBuildings(factionName.toStdString()))
     {
-        buildingsList->addItem(new ListWidgetBuildingItem{building});
-        buildingsList->item(buildingsList->count() - 1)->setText(QString{"%1 building %2"}.
-                                                                 arg(factionName).
-                                                                 arg(buildingsList->count()));
+        buildingsList->addItem(new ListWidgetEntityItem{QString::fromStdString(building.getName())});
     }
 
     return buildingsList;
