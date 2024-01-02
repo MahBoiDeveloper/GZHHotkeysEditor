@@ -1,6 +1,6 @@
 {
-	"Commons"  :
-	[
+    "Commons"  :
+    [
         {
             "Name"       : "USACommon",
             "Buildings"  :
@@ -76,302 +76,818 @@
         }
     ],
 
-	"TechTree" :
-	[
-		{
-			"ShortName"               : "USA",
-			"DisplayName"             : "USA",
-			"DisplayNameDesctiontion" : "United Stated Of America",
-			"Inheritance"             : "USACommon",
+    "TechTree" :
+    [
+        {
+            "ShortName"               : "USA",
+            "DisplayName"             : "USA",
+            "DisplayNameDesctiontion" : "United Stated Of America",
+            "Inheritance"             : "USACommon",
+
             "Buildings"               : [],
-            "Infantry"                : [],
+            "Infantry" : 
+            [
+                {
+                    "Name"       : "USARanger",
+                    "IngameName" : "OBJECT:Ranger",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "CommonCaptureBuilding",
+                            "HotkeyString" : "CONTROLBAR:CaptureBuilding"
+                        },
+
+                        {
+                            "IconName"     : "USARangerMachineGun",
+                            "HotkeyString" : "CONTROLBAR:RangerMachineGun"
+                        },
+
+                        {
+                            "IconName"     : "USAFlashbangs",
+                            "HotkeyString" : "CONTROLBAR:FlashBangGrenadeMode"
+                        },
+
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAMissileDefender",
+                    "IngameName" : "OBJECT:MissileTeam",
+                    "Actions"    :
+                    [
+                        {
+                            "IconName"     : "USALaserLock",
+                            "HotkeyString" : "CONTROLBAR:LaserMissileAttack"
+                        },
+
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAPathfinder",
+                    "IngameName" : "",
+                    "Actions"    : 
+                    [
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USABurton",
+                    "IngameName" : "OBJECT:ColonelBurton",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAKnifeAttack",
+                            "HotkeyString" : "CONTROLBAR:KnifeAttack"
+                        },
+
+                        {
+                            "IconName"     : "USATimedDemoCharge",
+                            "HotkeyString" : "CONTROLBAR:TimedDemoCharge"
+                        },
+
+                        {
+                            "IconName"     : "USARemoteDemoCharge",
+                            "HotkeyString" : "CONTROLBAR:RemoteDemoCharge"
+                        },
+
+                        {
+                            "IconName"     : "USADetonateCharges",
+                            "HotkeyString" : "CONTROLBAR:DetonateCharges"
+                        },
+
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                }
+            ],
             "Vehicles"                : [],
             "Aircraft"                : []
-		},
+        },
 
-		{
-			"ShortName"               : "SWG",
-			"DisplayName"             : "SUPERWEAPON",
-			"DisplayNameDesctiontion" : "Superweapons General",
-			"Inheritance"             : "USACommon",
+        {
+            "ShortName"               : "SWG",
+            "DisplayName"             : "SUPERWEAPON",
+            "DisplayNameDesctiontion" : "Superweapons General",
+            "Inheritance"             : "USACommon",
             "Buildings"               :
-			[
-				{
+            [
+                {
                     "Name"       : "USACommandCenter",
-					"IngameName" : "OBJECT:CommandCenter",
-					"Actions"    :
-					[
-						{
-							"Name"        : "USADozer",
-							"CSFString"   : "CONTROLBAR:ConstructAmericaDozer"
-						},
+                    "IngameName" : "OBJECT:CommandCenter",
+                    "Actions"    :
+                    [
+                        {
+                            "Name"        : "USADozer",
+                            "CSFString"   : "CONTROLBAR:ConstructAmericaDozer"
+                        },
 
-						{
-							"Name"        : "USASpySat",
-							"CSFString"   : "CONTROLBAR:SpySatellite"
-						}
-					]
-				},
+                        {
+                            "Name"        : "USASpySat",
+                            "CSFString"   : "CONTROLBAR:SpySatellite"
+                        }
+                    ]
+                },
 
-				{
+                {
                     "Name"       : "USAColdFusionReactor",
-					"IngameName" : "OBJECT:ColdFusionReactor",
-					"Actions"    : 
-					[
-						{
-							"Name"        : "SWGAdvancedControlRods",
-							"CSFString"   : "CONTROLBAR:SupW_UpgradeAmericaAdvancedControlRods"
-						},
+                    "IngameName" : "OBJECT:ColdFusionReactor",
+                    "Actions"    : 
+                    [
+                        {
+                            "Name"        : "SWGAdvancedControlRods",
+                            "CSFString"   : "CONTROLBAR:SupW_UpgradeAmericaAdvancedControlRods"
+                        },
 
-						{
-							"Name"        : "SellBuilding",
-							"CSFString"   : "CONTROLBAR:Sell"
-						}
-					]
-				},
+                        {
+                            "Name"        : "SellBuilding",
+                            "CSFString"   : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
 
                 {
                     "Name"       : "USASupplyCenter",
-					"CSFString"  : "OBJECT:SupplyCenter",
-					"Actions"    : 
-					[
-						{
-							"Name"      : "USAChinook",
-							"CSFString" : "CONTROLBAR:ConstructAmericaVehicleChinook"
-						},
+                    "CSFString"  : "OBJECT:SupplyCenter",
+                    "Actions"    : 
+                    [
+                        {
+                            "Name"      : "USAChinook",
+                            "CSFString" : "CONTROLBAR:ConstructAmericaVehicleChinook"
+                        },
 
-						{
-							"Name"      : "SellBuilding",
-							"CSFString" : "CONTROLBAR:Sell"
-						}
-					]
-				},
+                        {
+                            "Name"      : "SellBuilding",
+                            "CSFString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
 
                 {
                     "Name"       : "USAWarFactory",
-					"CSFString"  : "OBJECT:WarFactory",
-					"Actions"    :
-					[
-						{
-							"Name"      : "USATomahawkLauncher",
-							"CSFString" : "CONTROLBAR:ConstructAmericaWarFactory"
-						},
+                    "CSFString"  : "OBJECT:WarFactory",
+                    "Actions"    :
+                    [
+                        {
+                            "Name"      : "USATomahawkLauncher",
+                            "CSFString" : "CONTROLBAR:ConstructAmericaWarFactory"
+                        },
 
-						{
-							"Name"      : "USAAmbulance",
-							"CSFString" : "CONTROLBAR:ConstructAmericaVehicleMedic"
-						}
-					]
-				},
+                        {
+                            "Name"      : "USAAmbulance",
+                            "CSFString" : "CONTROLBAR:ConstructAmericaVehicleMedic"
+                        }
+                    ]
+                },
 
-				{
+                {
                     "Name"       : "USAAirfield",
-					"CSFString"  : "OBJECT:Airfield",
-					"Actions"    :
-					[
-						{
-							"Name"      : "USARaptor",
-							"CSFString" : "CONTROLBAR:ConstructAmericaJetRaptor"
-						},
+                    "CSFString"  : "OBJECT:Airfield",
+                    "Actions"    :
+                    [
+                        {
+                            "Name"      : "USARaptor",
+                            "CSFString" : "CONTROLBAR:ConstructAmericaJetRaptor"
+                        },
 
-						{
-							"Name"      : "SWGAuroraAlpha",
-							"CSFString" : "CONTROLBAR:ConstructAmericaJetFuelAirAurora"
-						}
-					]
-				},
+                        {
+                            "Name"      : "SWGAuroraAlpha",
+                            "CSFString" : "CONTROLBAR:ConstructAmericaJetFuelAirAurora"
+                        }
+                    ]
+                },
 
-				{
+                {
                     "Name"       : "USAStrategyCenter",
-					"CSFString"  : "OBJECT:StrategyCenter",
-					"Actions"    :
-					[
-						{
-							"Name"      : "USABombardment",
-							"CSFString" : "CONTROLBAR:InitiateBattlePlanBombardment"
-						},
+                    "CSFString"  : "OBJECT:StrategyCenter",
+                    "Actions"    :
+                    [
+                        {
+                            "Name"      : "USABombardment",
+                            "CSFString" : "CONTROLBAR:InitiateBattlePlanBombardment"
+                        },
 
-						{
-							"Name"      : "USAIntelligence",
-							"CSFString" : "CONTROLBAR:CIAIntelligence"
-						}
-					]
-				},
+                        {
+                            "Name"      : "USAIntelligence",
+                            "CSFString" : "CONTROLBAR:CIAIntelligence"
+                        }
+                    ]
+                },
 
-				{
+                {
                     "Name"       : "USAParticleCannon",
-					"CSFString"  : "OBJECT:ParticleCannon",
-					"Actions"    :
-					[
-						{
-							"Name"      : "USAParticleCannonFire",
-							"CSFString" : "CONTROLBAR:FireParticleUplinkCannon"
-						}
-					]
-				}
+                    "CSFString"  : "OBJECT:ParticleCannon",
+                    "Actions"    :
+                    [
+                        {
+                            "Name"      : "USAParticleCannonFire",
+                            "CSFString" : "CONTROLBAR:FireParticleUplinkCannon"
+                        }
+                    ]
+                }
             ],
 
             "Infantry" : 
             [
                 {
                     "Name"       : "USARanger",
-					"IngameName" : "OBJECT:Ranger",
-					"Actions"    : 
-					[
-						{
-							"Name"        : "CommonCaptureBuilding",
-							"CSFString"   : "CONTROLBAR:CaptureBuilding"
-						},
+                    "IngameName" : "OBJECT:Ranger",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "CommonCaptureBuilding",
+                            "HotkeyString" : "CONTROLBAR:CaptureBuilding"
+                        },
 
-						{
-							"Name"        : "USARangerMachineGun",
-							"CSFString"   : "CONTROLBAR:RangerMachineGun"
-						}
-					]
-				}
+                        {
+                            "IconName"     : "USARangerMachineGun",
+                            "HotkeyString" : "CONTROLBAR:RangerMachineGun"
+                        },
+
+                        {
+                            "IconName"     : "USAFlashbangs",
+                            "HotkeyString" : "CONTROLBAR:FlashBangGrenadeMode"
+                        },
+
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAMissileDefender",
+                    "IngameName" : "OBJECT:MissileTeam",
+                    "Actions"    :
+                    [
+                        {
+                            "IconName"     : "USALaserLock",
+                            "HotkeyString" : "CONTROLBAR:LaserMissileAttack"
+                        },
+
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAPathfinder",
+                    "IngameName" : "",
+                    "Actions"    : 
+                    [
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USABurton",
+                    "IngameName" : "OBJECT:ColonelBurton",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAKnifeAttack",
+                            "HotkeyString" : "CONTROLBAR:KnifeAttack"
+                        },
+
+                        {
+                            "IconName"     : "USATimedDemoCharge",
+                            "HotkeyString" : "CONTROLBAR:TimedDemoCharge"
+                        },
+
+                        {
+                            "IconName"     : "USARemoteDemoCharge",
+                            "HotkeyString" : "CONTROLBAR:RemoteDemoCharge"
+                        },
+
+                        {
+                            "IconName"     : "USADetonateCharges",
+                            "HotkeyString" : "CONTROLBAR:DetonateCharges"
+                        },
+
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                }
             ],
 
             "Vehicles" : 
             [
-				{
+                {
                     "Name"       : "USADozer",
-					"IngameName" : "OBJECT:Dozer",
-					"Actions"    : 
-					[
-						{
-							"Name"      : "USAColdFusionReactor",
-							"CSFString" : "CONTROLBAR:ConstructAmericaPowerPlant"
-						},
+                    "IngameName" : "OBJECT:Dozer",
+                    "Actions"    : 
+                    [
+                        {
+                            "Name"      : "USAColdFusionReactor",
+                            "CSFString" : "CONTROLBAR:ConstructAmericaPowerPlant"
+                        },
 
-						{
-							"Name"      : "USABarracks",
-							"CSFString" : "CONTROLBAR:ConstructAmericaBarracks"
-						}
-					]
-				}
+                        {
+                            "Name"      : "USABarracks",
+                            "CSFString" : "CONTROLBAR:ConstructAmericaBarracks"
+                        }
+                    ]
+                }
             ],
 
             "Aircraft" :
             [
-				{
+                {
                     "Name"       : "USAChinook",
-					"CSFString"  : "OBJECT:Chinook",
-					"Actions"    :
-					[
-						{
-							"Name"      : "USAEvacuate",
-							"CSFString" : "CONTROLBAR:Evacuate"
-						},
+                    "CSFString"  : "OBJECT:Chinook",
+                    "Actions"    :
+                    [
+                        {
+                            "Name"      : "USAEvacuate",
+                            "CSFString" : "CONTROLBAR:Evacuate"
+                        },
 
-						{
-							"Name"      : "USACombatDrop",
-							"CSFString" : "CONTROLBAR:CombatDrop"
-						}
-					]
-				}
+                        {
+                            "Name"      : "USACombatDrop",
+                            "CSFString" : "CONTROLBAR:CombatDrop"
+                        }
+                    ]
+                }
             ]
-		},
+        },
 
-		{
-			"ShortName"               : "AIR",
-			"DisplayName"             : "AIR",
-			"DisplayNameDesctiontion" : "Airforce General",
-			"Inheritance"             : "USACommon",
+        {
+            "ShortName"               : "AIR",
+            "DisplayName"             : "AIR",
+            "DisplayNameDesctiontion" : "Airforce General",
+            "Inheritance"             : "USACommon",
+            
             "Buildings"               : [],
-            "Infantry"                : [],
-            "Vehicles"                : [],
-            "Aircraft"                : []
-		},
+            "Infantry" : 
+            [
+                {
+                    "Name"       : "USARanger",
+                    "IngameName" : "OBJECT:Ranger",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "CommonCaptureBuilding",
+                            "HotkeyString" : "CONTROLBAR:CaptureBuilding"
+                        },
 
-		{
-			"ShortName"               : "LSR",
-			"DisplayName"             : "LASER",
-			"DisplayNameDesctiontion" : "Laser Weapons Generals",
-			"Inheritance"             : "USACommon",
-            "Buildings"               : [],
-            "Infantry"                : [],
-            "Vehicles"                : [],
-            "Aircraft"                : []
-		},
+                        {
+                            "IconName"     : "USARangerMachineGun",
+                            "HotkeyString" : "CONTROLBAR:RangerMachineGun"
+                        },
 
-		{
-			"ShortName"               : "PRC",
-			"DisplayName"             : "CHINA",
-			"DisplayNameDesctiontion" : "China",
-            "Buildings"               : [],
-            "Infantry"                : [],
-            "Vehicles"                : [],
-            "Aircraft"                : []
-		},
+                        {
+                            "IconName"     : "USAFlashbangs",
+                            "HotkeyString" : "CONTROLBAR:FlashBangGrenadeMode"
+                        },
 
-		{
-			"ShortName"               : "INF",
-			"DisplayName"             : "INFANTRY",
-			"DisplayNameDesctiontion" : "Infantry General",
-            "Buildings"               : [],
-            "Infantry"                : [],
-            "Vehicles"                : [],
-            "Aircraft"                : []
-		},
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
 
-		{
-			"ShortName"               : "NUK",
-			"DisplayName"             : "NUKE",
-			"DisplayNameDesctiontion" : "Nuke General",
-            "Buildings"               : [],
-            "Infantry"                : [],
-            "Vehicles"                : [],
-            "Aircraft"                : []
-		},
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
 
-		{
-			"ShortName"               : "TNK",
-			"DisplayName"             : "TANK",
-			"DisplayNameDesctiontion" : "Tank General",
-            "Buildings"               : [],
-            "Infantry"                : [],
-            "Vehicles"                : [],
-            "Aircraft"                : []
-		},
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
 
-		{
-			"ShortName"               : "GLA",
-			"DisplayName"             : "GLA",
-			"DisplayNameDesctiontion" : "Global Liberation Army",
-            "Buildings"               : [],
-            "Infantry"                : [],
-            "Vehicles"                : [],
-            "Aircraft"                : []
-		},
+                {
+                    "Name"       : "USAMissileDefender",
+                    "IngameName" : "OBJECT:MissileTeam",
+                    "Actions"    :
+                    [
+                        {
+                            "IconName"     : "USALaserLock",
+                            "HotkeyString" : "CONTROLBAR:LaserMissileAttack"
+                        },
 
-		{
-			"ShortName"               : "TOX",
-			"DisplayName"             : "TOXIC",
-			"DisplayNameDesctiontion" : "Toxic Weapons General",
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAPathfinder",
+                    "IngameName" : "",
+                    "Actions"    : 
+                    [
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USABurton",
+                    "IngameName" : "OBJECT:ColonelBurton",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAKnifeAttack",
+                            "HotkeyString" : "CONTROLBAR:KnifeAttack"
+                        },
+
+                        {
+                            "IconName"     : "USATimedDemoCharge",
+                            "HotkeyString" : "CONTROLBAR:TimedDemoCharge"
+                        },
+
+                        {
+                            "IconName"     : "USARemoteDemoCharge",
+                            "HotkeyString" : "CONTROLBAR:RemoteDemoCharge"
+                        },
+
+                        {
+                            "IconName"     : "USADetonateCharges",
+                            "HotkeyString" : "CONTROLBAR:DetonateCharges"
+                        },
+
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                }
+            ],
+            "Vehicles"                : [],
+            "Aircraft"                : []
+        },
+
+        {
+            "ShortName"               : "LSR",
+            "DisplayName"             : "LASER",
+            "DisplayNameDesctiontion" : "Laser Weapons Generals",
+            "Inheritance"             : "USACommon",
+            "Buildings"               : [],
+            "Infantry" : 
+            [
+                {
+                    "Name"       : "USARanger",
+                    "IngameName" : "OBJECT:Ranger",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "CommonCaptureBuilding",
+                            "HotkeyString" : "CONTROLBAR:CaptureBuilding"
+                        },
+
+                        {
+                            "IconName"     : "USARangerMachineGun",
+                            "HotkeyString" : "CONTROLBAR:RangerMachineGun"
+                        },
+
+                        {
+                            "IconName"     : "USAFlashbangs",
+                            "HotkeyString" : "CONTROLBAR:FlashBangGrenadeMode"
+                        },
+
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAMissileDefender",
+                    "IngameName" : "OBJECT:MissileTeam",
+                    "Actions"    :
+                    [
+                        {
+                            "IconName"     : "USALaserLock",
+                            "HotkeyString" : "CONTROLBAR:LaserMissileAttack"
+                        },
+
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAPathfinder",
+                    "IngameName" : "",
+                    "Actions"    : 
+                    [
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USABurton",
+                    "IngameName" : "OBJECT:ColonelBurton",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAKnifeAttack",
+                            "HotkeyString" : "CONTROLBAR:KnifeAttack"
+                        },
+
+                        {
+                            "IconName"     : "USATimedDemoCharge",
+                            "HotkeyString" : "CONTROLBAR:TimedDemoCharge"
+                        },
+
+                        {
+                            "IconName"     : "USARemoteDemoCharge",
+                            "HotkeyString" : "CONTROLBAR:RemoteDemoCharge"
+                        },
+
+                        {
+                            "IconName"     : "USADetonateCharges",
+                            "HotkeyString" : "CONTROLBAR:DetonateCharges"
+                        },
+
+                        // Right Upper Corner
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                }
+            ],
+            "Vehicles"                : [],
+            "Aircraft"                : []
+        },
+
+        {
+            "ShortName"               : "PRC",
+            "DisplayName"             : "CHINA",
+            "DisplayNameDesctiontion" : "China",
             "Buildings"               : [],
             "Infantry"                : [],
             "Vehicles"                : [],
             "Aircraft"                : []
-		},
-		
-		{
-			"ShortName"               : "STL",
-			"DisplayName"             : "STEALTH",
-			"DisplayNameDesctiontion" : "Stealth General",
+        },
+
+        {
+            "ShortName"               : "INF",
+            "DisplayName"             : "INFANTRY",
+            "DisplayNameDesctiontion" : "Infantry General",
             "Buildings"               : [],
             "Infantry"                : [],
             "Vehicles"                : [],
             "Aircraft"                : []
-		},
-		
-		{
-			"ShortName"               : "DML",
-			"DisplayName"             : "DEMO",
-			"DisplayNameDesctiontion" : "Demolition General",
+        },
+
+        {
+            "ShortName"               : "NUK",
+            "DisplayName"             : "NUKE",
+            "DisplayNameDesctiontion" : "Nuke General",
             "Buildings"               : [],
             "Infantry"                : [],
             "Vehicles"                : [],
             "Aircraft"                : []
-		}
-	]
+        },
+
+        {
+            "ShortName"               : "TNK",
+            "DisplayName"             : "TANK",
+            "DisplayNameDesctiontion" : "Tank General",
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
+        },
+
+        {
+            "ShortName"               : "GLA",
+            "DisplayName"             : "GLA",
+            "DisplayNameDesctiontion" : "Global Liberation Army",
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
+        },
+
+        {
+            "ShortName"               : "TOX",
+            "DisplayName"             : "TOXIC",
+            "DisplayNameDesctiontion" : "Toxic Weapons General",
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
+        },
+        
+        {
+            "ShortName"               : "STL",
+            "DisplayName"             : "STEALTH",
+            "DisplayNameDesctiontion" : "Stealth General",
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
+        },
+        
+        {
+            "ShortName"               : "DML",
+            "DisplayName"             : "DEMO",
+            "DisplayNameDesctiontion" : "Demolition General",
+            "Buildings"               : [],
+            "Infantry"                : [],
+            "Vehicles"                : [],
+            "Aircraft"                : []
+        }
+    ]
 }
