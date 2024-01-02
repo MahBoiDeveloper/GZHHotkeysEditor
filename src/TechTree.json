@@ -82,7 +82,6 @@
             "ShortName"               : "USA",
             "DisplayName"             : "USA",
             "DisplayNameDesctiontion" : "United Stated Of America",
-            "Inheritance"             : "USACommon",
 
             "Buildings"               : [],
             "Infantry" : 
@@ -93,7 +92,7 @@
                     "Actions"    : 
                     [
                         {
-                            "IconName"     : "CommonCaptureBuilding",
+                            "IconName"     : "CaptureBuilding",
                             "HotkeyString" : "CONTROLBAR:CaptureBuilding"
                         },
 
@@ -109,17 +108,17 @@
 
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -137,17 +136,17 @@
 
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -160,17 +159,17 @@
                     [
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -203,17 +202,17 @@
 
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -227,7 +226,7 @@
             "ShortName"               : "SWG",
             "DisplayName"             : "SUPERWEAPON",
             "DisplayNameDesctiontion" : "Superweapons General",
-            "Inheritance"             : "USACommon",
+
             "Buildings"               :
             [
                 {
@@ -353,7 +352,7 @@
                     "Actions"    : 
                     [
                         {
-                            "IconName"     : "CommonCaptureBuilding",
+                            "IconName"     : "CaptureBuilding",
                             "HotkeyString" : "CONTROLBAR:CaptureBuilding"
                         },
 
@@ -369,17 +368,17 @@
 
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -397,17 +396,17 @@
 
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -420,17 +419,17 @@
                     [
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -463,17 +462,17 @@
 
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -525,8 +524,7 @@
             "ShortName"               : "AIR",
             "DisplayName"             : "AIR",
             "DisplayNameDesctiontion" : "Airforce General",
-            "Inheritance"             : "USACommon",
-            
+
             "Buildings"               : [],
             "Infantry" : 
             [
@@ -536,7 +534,7 @@
                     "Actions"    : 
                     [
                         {
-                            "IconName"     : "CommonCaptureBuilding",
+                            "IconName"     : "CaptureBuilding",
                             "HotkeyString" : "CONTROLBAR:CaptureBuilding"
                         },
 
@@ -552,17 +550,17 @@
 
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -580,17 +578,17 @@
 
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -603,17 +601,17 @@
                     [
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -646,17 +644,17 @@
 
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -670,7 +668,7 @@
             "ShortName"               : "LSR",
             "DisplayName"             : "LASER",
             "DisplayNameDesctiontion" : "Laser Weapons Generals",
-            "Inheritance"             : "USACommon",
+
             "Buildings"               : [],
             "Infantry" : 
             [
@@ -680,7 +678,7 @@
                     "Actions"    : 
                     [
                         {
-                            "IconName"     : "CommonCaptureBuilding",
+                            "IconName"     : "CaptureBuilding",
                             "HotkeyString" : "CONTROLBAR:CaptureBuilding"
                         },
 
@@ -696,17 +694,17 @@
 
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -724,17 +722,17 @@
 
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -747,17 +745,17 @@
                     [
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -790,17 +788,17 @@
 
                         // Right Upper Corner
                         {
-                            "IconName"     : "",
+                            "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
                         },
 
                         {
-                            "IconName"     : "",
+                            "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
@@ -814,6 +812,7 @@
             "ShortName"               : "PRC",
             "DisplayName"             : "CHINA",
             "DisplayNameDesctiontion" : "China",
+            
             "Buildings"               : [],
             "Infantry"                : [],
             "Vehicles"                : [],
@@ -824,6 +823,7 @@
             "ShortName"               : "INF",
             "DisplayName"             : "INFANTRY",
             "DisplayNameDesctiontion" : "Infantry General",
+
             "Buildings"               : [],
             "Infantry"                : [],
             "Vehicles"                : [],
@@ -834,6 +834,7 @@
             "ShortName"               : "NUK",
             "DisplayName"             : "NUKE",
             "DisplayNameDesctiontion" : "Nuke General",
+
             "Buildings"               : [],
             "Infantry"                : [],
             "Vehicles"                : [],
@@ -844,6 +845,7 @@
             "ShortName"               : "TNK",
             "DisplayName"             : "TANK",
             "DisplayNameDesctiontion" : "Tank General",
+
             "Buildings"               : [],
             "Infantry"                : [],
             "Vehicles"                : [],
@@ -854,6 +856,7 @@
             "ShortName"               : "GLA",
             "DisplayName"             : "GLA",
             "DisplayNameDesctiontion" : "Global Liberation Army",
+
             "Buildings"               : [],
             "Infantry"                : [],
             "Vehicles"                : [],
@@ -864,6 +867,7 @@
             "ShortName"               : "TOX",
             "DisplayName"             : "TOXIC",
             "DisplayNameDesctiontion" : "Toxic Weapons General",
+
             "Buildings"               : [],
             "Infantry"                : [],
             "Vehicles"                : [],
@@ -874,6 +878,7 @@
             "ShortName"               : "STL",
             "DisplayName"             : "STEALTH",
             "DisplayNameDesctiontion" : "Stealth General",
+
             "Buildings"               : [],
             "Infantry"                : [],
             "Vehicles"                : [],
@@ -884,6 +889,7 @@
             "ShortName"               : "DML",
             "DisplayName"             : "DEMO",
             "DisplayNameDesctiontion" : "Demolition General",
+
             "Buildings"               : [],
             "Infantry"                : [],
             "Vehicles"                : [],
