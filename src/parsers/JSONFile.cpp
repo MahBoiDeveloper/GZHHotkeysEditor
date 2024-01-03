@@ -23,7 +23,7 @@ using namespace std;
             LOGSTM << "Parsing \"" << filePath << "\"..." << endl;
             JsonMainObject = QJsonDocument::fromJson(openedFile.readAll(), &err).object();
             openedFile.close();
-            LOGSTM << "Errors while parsing: " << err.errorString().toStdString();
+            LOGSTM << "Errors while parsing: " << err.errorString().toStdString() << endl;
             LOGSTM << "JSON file has been parsed" << endl;
         }
         else
