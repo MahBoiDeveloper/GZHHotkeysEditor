@@ -140,7 +140,6 @@
                             "HotkeyString" : "CONTROLBAR:SpySatellite"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "Sell",
                             "HotkeyString" : "CONTROLBAR:Sell"
@@ -158,7 +157,6 @@
                             "HotkeyString" : "CONTROLBAR:UpgradeAmericaAdvancedControlRods"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "Sell",
                             "HotkeyString" : "CONTROLBAR:Sell"
@@ -201,7 +199,6 @@
                             "HotkeyString" : "CONTROLBAR:UpgradeAmericaRangerCaptureBuilding"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "Sell",
                             "HotkeyString" : "CONTROLBAR:Sell"
@@ -219,7 +216,6 @@
                             "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleChinook"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "Sell",
                             "HotkeyString" : "CONTROLBAR:Sell"
@@ -232,7 +228,6 @@
                     "IngameName" : "OBJECT:PatriotBattery",
                     "Actions"    : 
                     [
-                        // Right Upper Corner
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
@@ -250,7 +245,6 @@
                     "IngameName" : "OBJECT:FireBase",
                     "Actions"    : 
                     [
-                        // Right Upper Corner
                         {
                             "IconName"     : "Evacuate",
                             "HotkeyString" : "CONTROLBAR:Evacuate"
@@ -323,7 +317,6 @@
                             "HotkeyString" : "CONTROLBAR:UpgradeAmericaTOWMissile"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "Sell",
                             "HotkeyString" : "CONTROLBAR:Sell"
@@ -376,7 +369,6 @@
                             "HotkeyString" : "CONTROLBAR:UpgradeAmericaBunkerBusters"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "Sell",
                             "HotkeyString" : "CONTROLBAR:Sell"
@@ -439,7 +431,6 @@
                             "HotkeyString" : "CONTROLBAR:UpgradeAmericaDroneArmor"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
@@ -457,7 +448,6 @@
                     "IngameName" : "OBJECT:AmericaSupplyDropZone",
                     "Actions"    : 
                     [
-                        // Right Upper Corner
                         {
                             "IconName"     : "Sell",
                             "HotkeyString" : "CONTROLBAR:Sell"
@@ -475,7 +465,6 @@
                             "HotkeyString" : "CONTROLBAR:FireParticleUplinkCannon"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "Sell",
                             "HotkeyString" : "CONTROLBAR:Sell"
@@ -505,7 +494,6 @@
                             "HotkeyString" : "CONTROLBAR:FlashBangGrenadeMode"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -533,7 +521,6 @@
                             "HotkeyString" : "CONTROLBAR:LaserMissileAttack"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -556,7 +543,6 @@
                     "IngameName" : "",
                     "Actions"    : 
                     [
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -599,7 +585,6 @@
                             "HotkeyString" : "CONTROLBAR:DetonateCharges"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -679,7 +664,6 @@
                             "HotkeyString" : "CONTROLBAR:ConstructAmericaCommandCenter"
                         },
 
-                        // Not a buildings
                         {
                             "IconName"     : "DisarmMinesAtPosition",
                             "HotkeyString" : "CONTROLBAR:DisarmMinesAtPosition"
@@ -707,7 +691,6 @@
                             "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -745,7 +728,6 @@
                             "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -783,7 +765,6 @@
                             "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -821,7 +802,6 @@
                             "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -859,7 +839,6 @@
                             "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -882,7 +861,6 @@
                     "IngameName" : "OBJECT:SentryDrone",
                     "Actions"    : 
                     [
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -925,7 +903,6 @@
                             "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -973,7 +950,6 @@
                             "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1008,7 +984,6 @@
                             "HotkeyString" : "CONTROLBAR:CombatDrop"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
@@ -1026,7 +1001,6 @@
                             "HotkeyString" : "CONTROLBAR:FireRocketPods"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1049,7 +1023,6 @@
                     "IngameName" : "OBJECT:StealthFighter",
                     "Actions"    : 
                     [
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1072,7 +1045,6 @@
                     "IngameName" : "OBJECT:Raptor",
                     "Actions"    : 
                     [
-                        // Right Upper Corner
                         {
                             "IconName"     : "AirGuard",
                             "HotkeyString" : "CONTROLBAR:GuardFlyingUnitsOnly"
@@ -1100,7 +1072,6 @@
                     "IngameName" : "OBJECT:Aurora",
                     "Actions"    : 
                     [
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1264,7 +1235,6 @@
                             "HotkeyString" : "CONTROLBAR:FlashBangGrenadeMode"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1292,7 +1262,6 @@
                             "HotkeyString" : "CONTROLBAR:LaserMissileAttack"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1315,7 +1284,6 @@
                     "IngameName" : "",
                     "Actions"    : 
                     [
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1358,7 +1326,6 @@
                             "HotkeyString" : "CONTROLBAR:DetonateCharges"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1446,7 +1413,6 @@
                             "HotkeyString" : "CONTROLBAR:FlashBangGrenadeMode"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1474,7 +1440,6 @@
                             "HotkeyString" : "CONTROLBAR:LaserMissileAttack"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1497,7 +1462,6 @@
                     "IngameName" : "",
                     "Actions"    : 
                     [
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1540,7 +1504,6 @@
                             "HotkeyString" : "CONTROLBAR:DetonateCharges"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1590,7 +1553,6 @@
                             "HotkeyString" : "CONTROLBAR:FlashBangGrenadeMode"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1618,7 +1580,6 @@
                             "HotkeyString" : "CONTROLBAR:LaserMissileAttack"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1641,7 +1602,6 @@
                     "IngameName" : "",
                     "Actions"    : 
                     [
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
@@ -1684,7 +1644,6 @@
                             "HotkeyString" : "CONTROLBAR:DetonateCharges"
                         },
 
-                        // Right Upper Corner
                         {
                             "IconName"     : "AttackMove",
                             "HotkeyString" : "CONTROLBAR:AttackMove"
