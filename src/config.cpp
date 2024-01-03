@@ -1,6 +1,5 @@
-#include "config.hpp"
-
 #include <algorithm>
+#include "config.hpp"
 
 const std::string Config::GetLocaleFromLangEnum(Languages language)
 {
