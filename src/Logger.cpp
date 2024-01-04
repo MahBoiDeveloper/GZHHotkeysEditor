@@ -97,24 +97,39 @@ using namespace std;
         return LogFile;
     }
 
+    void Logger::Log(const QString& msg)
+    {
+        Log() << msg.toStdString() << endl;
+    }
+
     void Logger::Log(const stringstream& msg)
     {
         Log() << msg.str() << endl;
     }
 
-    void Logger::Log(string const& msg)
+    void Logger::Log(const string& msg)
     {
         Log() << msg << endl;
     }
 
-    void Logger::Log(wstringstream const& msg)
+    void Logger::Log(const char* msg)
+    {
+        Log() << msg << endl;
+    }
+
+    void Logger::Log(const wstringstream& msg)
     {
         Log() << msg.str().c_str() << endl;
     }
 
-    void Logger::Log(wstring const& msg)
+    void Logger::Log(const wstring& msg)
     {
         Log() << msg.c_str() << endl;
+    }
+
+    void Logger::Log(const wchar_t* msg)
+    {
+        Log() << msg << endl;
     }
 
     void Logger::LogException()

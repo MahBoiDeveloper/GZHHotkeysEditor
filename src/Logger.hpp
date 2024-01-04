@@ -4,6 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include <memory>
+#include <QString>
 
 #define LOGSTM      Logger::Instance->Log()
 #define LOGMSG(msg) Logger::Instance->Log(msg)
@@ -19,11 +20,15 @@ public:
 
     std::ofstream& Log();
 
+    void Log(const QString& msg);
+
     void Log(const std::stringstream& msg);
     void Log(const std::string& msg);
+    void Log(const char* msg);
 
     void Log(const std::wstringstream& msg);
     void Log(const std::wstring& msg);
+    void Log(const wchar_t* msg);
 
     void LogException();
 
