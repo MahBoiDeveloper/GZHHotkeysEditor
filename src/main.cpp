@@ -9,6 +9,7 @@
 #include "gui/launchWidgets/stacked_launch_widget.hpp"
 #include "Logger.hpp"
 #include "Registry.hpp"
+#include "Exception.hpp"
 
 using namespace std;
 
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
     {
         // Log exception message
         Logger::Instance->LogException();
-        LOGMSG(string(exception.what()));
+        LOGMSG(exception.what());
 
         // And show it to user
         QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", exception.what());
