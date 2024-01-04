@@ -1096,123 +1096,380 @@
             "DisplayName"             : "SUPERWEAPON",
             "DisplayNameDesctiontion" : "Superweapons General",
 
-            "Buildings"               :
+            "Buildings" : 
             [
                 {
                     "Name"       : "USACommandCenter",
                     "IngameName" : "OBJECT:CommandCenter",
-                    "Actions"    :
+                    "Actions"    : 
                     [
                         {
-                            "Name"        : "USADozer",
-                            "CSFString"   : "CONTROLBAR:ConstructAmericaDozer"
+                            "IconName"     : "USADozer",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaDozer"
                         },
 
                         {
-                            "Name"        : "USASpySat",
-                            "CSFString"   : "CONTROLBAR:SpySatellite"
+                            "IconName"     : "USASpectreGunship",
+                            "HotkeyString" : "CONTROLBAR:SpectreGunship"
+                        },
+
+                        {
+                            "IconName"     : "USALeafletDrop",
+                            "HotkeyString" : "CONTROLBAR:LeafletDrop"
+                        },
+
+                        {
+                            "IconName"     : "USAA10ThunderboltMissileStrike",
+                            "HotkeyString" : "CONTROLBAR:A10ThunderboltMissileStrike"
+                        },
+
+                        {
+                            "IconName"     : "USAParadrop",
+                            "HotkeyString" : "CONTROLBAR:Paradrop"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:SpyDrone"
+                        },
+
+                        {
+                            "IconName"     : "EmergencyRepair",
+                            "HotkeyString" : "CONTROLBAR:EmergencyRepair"
+                        },
+
+                        {
+                            "IconName"     : "USADaisyCutter",
+                            "HotkeyString" : "CONTROLBAR:DaisyCutter"
+                        },
+
+                        {
+                            "IconName"     : "USAMOAB",
+                            "HotkeyString" : "CONTROLBAR:MOAB"
+                        },
+
+                        {
+                            "IconName"     : "USASpySattelite",
+                            "HotkeyString" : "CONTROLBAR:SpySatellite"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
                         }
                     ]
                 },
 
                 {
-                    "Name"       : "USAColdFusionReactor",
+                    "Name"       : "SWGColdFusionReactor",
                     "IngameName" : "OBJECT:ColdFusionReactor",
                     "Actions"    : 
                     [
                         {
-                            "Name"        : "SWGAdvancedControlRods",
-                            "CSFString"   : "CONTROLBAR:SupW_UpgradeAmericaAdvancedControlRods"
+                            "IconName"     : "SWGAdvancedControlRods",
+                            "HotkeyString" : "CONTROLBAR:SupW_UpgradeAmericaAdvancedControlRods"
                         },
 
                         {
-                            "Name"        : "SellBuilding",
-                            "CSFString"   : "CONTROLBAR:Sell"
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USABarracks",
+                    "IngameName" : "OBJECT:Barracks",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USARanger",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryRanger"
+                        },
+
+                        {
+                            "IconName"     : "USAMissileDefender",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryMissileDefender"
+                        },
+
+                        {
+                            "IconName"     : "USABurton",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryColonelBurton"
+                        },
+
+                        {
+                            "IconName"     : "USAPathfinder",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryPathfinder"
+                        },
+
+                        {
+                            "IconName"     : "USAFlashbangs",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaFlashBangGrenade"
+                        },
+
+                        {
+                            "IconName"     : "CaptureBuilding",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaRangerCaptureBuilding"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
                         }
                     ]
                 },
 
                 {
                     "Name"       : "USASupplyCenter",
-                    "CSFString"  : "OBJECT:SupplyCenter",
+                    "IngameName" : "OBJECT:SupplyCenter",
                     "Actions"    : 
                     [
                         {
-                            "Name"      : "USAChinook",
-                            "CSFString" : "CONTROLBAR:ConstructAmericaVehicleChinook"
+                            "IconName"     : "USAChinook",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleChinook"
                         },
 
                         {
-                            "Name"      : "SellBuilding",
-                            "CSFString" : "CONTROLBAR:Sell"
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAPatriot",
+                    "IngameName" : "OBJECT:PatriotBattery",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+                        
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAFireBase",
+                    "IngameName" : "OBJECT:FireBase",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "Evacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
                         }
                     ]
                 },
 
                 {
                     "Name"       : "USAWarFactory",
-                    "CSFString"  : "OBJECT:WarFactory",
-                    "Actions"    :
+                    "IngameName" : "OBJECT:WarFactory",
+                    "Actions"    : 
                     [
                         {
-                            "Name"      : "USATomahawkLauncher",
-                            "CSFString" : "CONTROLBAR:ConstructAmericaWarFactory"
+                            "IconName"     : "USAHumvee",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHumvee"
+                        },
+                        
+                        {
+                            "IconName"     : "USAAvenger",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaTankAvenger"
                         },
 
                         {
-                            "Name"      : "USAAmbulance",
-                            "CSFString" : "CONTROLBAR:ConstructAmericaVehicleMedic"
+                            "IconName"     : "USATomahawkLauncher",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleTomahawk"
+                        },
+                        
+                        {
+                            "IconName"     : "USAAmbulance",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleMedic"
+                        },
+
+                        {
+                            "IconName"     : "USASentryDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleSentryDrone"
+                        },
+                        
+                        {
+                            "IconName"     : "USAMicrowave",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaTankMicrowave"
+                        },
+
+                        {
+                            "IconName"     : "USASentryDroneGun",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaSentryDroneGun"
+                        },
+                        
+                        {
+                            "IconName"     : "USATOWMissile",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaTOWMissile"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
                         }
                     ]
                 },
 
                 {
                     "Name"       : "USAAirfield",
-                    "CSFString"  : "OBJECT:Airfield",
-                    "Actions"    :
+                    "IngameName" : "OBJECT:Airfield",
+                    "Actions"    : 
                     [
                         {
-                            "Name"      : "USARaptor",
-                            "CSFString" : "CONTROLBAR:ConstructAmericaJetRaptor"
+                            "IconName"     : "USARaptor",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaJetRaptor"
+                        },
+                        
+                        {
+                            "IconName"     : "SWGAuroraAlpha",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaJetFuelAirAurora"
                         },
 
                         {
-                            "Name"      : "SWGAuroraAlpha",
-                            "CSFString" : "CONTROLBAR:ConstructAmericaJetFuelAirAurora"
+                            "IconName"     : "USAComanche",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleComanche"
+                        },
+                        
+                        {
+                            "IconName"     : "USAStealthFighter",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaJetStealthFighter"
+                        },
+
+                        {
+                            "IconName"     : "USARocketPods",
+                            "HotkeyString" : "CONTROLBAR:UpgradeComancheRocketPods"
+                        },
+                        
+                        {
+                            "IconName"     : "USACountermeasures",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaCountermeasures"
+                        },
+
+                        {
+                            "IconName"     : "USALaserGuidedMissiles",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaLaserMissiles"
+                        },
+                        
+                        {
+                            "IconName"     : "USABunkerBusters",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaBunkerBusters"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
                         }
                     ]
                 },
 
                 {
                     "Name"       : "USAStrategyCenter",
-                    "CSFString"  : "OBJECT:StrategyCenter",
-                    "Actions"    :
+                    "IngameName" : "OBJECT:StrategyCenter",
+                    "Actions"    : 
                     [
                         {
-                            "Name"      : "USABombardment",
-                            "CSFString" : "CONTROLBAR:InitiateBattlePlanBombardment"
+                            "IconName"     : "USABombardment",
+                            "HotkeyString" : "CONTROLBAR:InitiateBattlePlanBombardment"
+                        },
+                        
+                        {
+                            "IconName"     : "USAHoldTheLine",
+                            "HotkeyString" : "CONTROLBAR:InitiateBattlePlanHoldTheLine"
                         },
 
                         {
-                            "Name"      : "USAIntelligence",
-                            "CSFString" : "CONTROLBAR:CIAIntelligence"
+                            "IconName"     : "USASearchAndDestroy",
+                            "HotkeyString" : "CONTROLBAR:InitiateBattlePlanSearchAndDestroy"
+                        },
+                        
+                        {
+                            "IconName"     : "USAMOAB",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaMOAB"
+                        },
+
+                        {
+                            "IconName"     : "USAAdvancedTraining",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaAdvancedTraining"
+                        },
+                        
+                        {
+                            "IconName"     : "USASupplyLines",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaSupplyLines"
+                        },
+
+                        {
+                            "IconName"     : "USAIntelligence",
+                            "HotkeyString" : "CONTROLBAR:CIAIntelligence"
+                        },
+                        
+                        {
+                            "IconName"     : "USAChemicalSuits",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaChemicalSuits"
+                        },
+                        
+                        {
+                            "IconName"     : "USADroneArmor",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaDroneArmor"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USADropZone",
+                    "IngameName" : "OBJECT:AmericaSupplyDropZone",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
                         }
                     ]
                 },
 
                 {
                     "Name"       : "USAParticleCannon",
-                    "CSFString"  : "OBJECT:ParticleCannon",
-                    "Actions"    :
+                    "IngameName" : "OBJECT:ParticleCannon",
+                    "Actions"    : 
                     [
                         {
-                            "Name"      : "USAParticleCannonFire",
-                            "CSFString" : "CONTROLBAR:FireParticleUplinkCannon"
+                            "IconName"     : "USAParticleCannonFire",
+                            "HotkeyString" : "CONTROLBAR:FireParticleUplinkCannon"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
                         }
                     ]
                 }
             ],
-
             "Infantry" : 
             [
                 {
@@ -1343,7 +1600,6 @@
                     ]
                 }
             ],
-
             "Vehicles" : 
             [
                 {
@@ -1352,33 +1608,407 @@
                     "Actions"    : 
                     [
                         {
-                            "Name"      : "USAColdFusionReactor",
-                            "CSFString" : "CONTROLBAR:ConstructAmericaPowerPlant"
+                            "IconName"     : "SWGColdFusionReactor",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaPowerPlant"
                         },
 
                         {
-                            "Name"      : "USABarracks",
-                            "CSFString" : "CONTROLBAR:ConstructAmericaBarracks"
+                            "IconName"     : "USABarracks",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaBarracks"
+                        },
+
+                        {
+                            "IconName"     : "USASupplyCenter",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaSupplyCenter"
+                        },
+
+                        {
+                            "IconName"     : "SWGPatriot",
+                            "HotkeyString" : "CONTROLBAR:SupW_ConstructAmericaPatriotBattery"
+                        },
+
+                        {
+                            "IconName"     : "USAFireBase",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaFireBase"
+                        },
+
+                        {
+                            "IconName"     : "USAWarFactory",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaWarFactory"
+                        },
+
+                        {
+                            "IconName"     : "USAAirfield",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaAirfield"
+                        },
+
+                        {
+                            "IconName"     : "USAStrategyCenter",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaStrategyCenter"
+                        },
+
+                        {
+                            "IconName"     : "USASupplyDropZone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaSupplyDropZone"
+                        },
+
+                        {
+                            "IconName"     : "USAParticleCannon",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaParticleCannonUplink"
+                        },
+
+                        {
+                            "IconName"     : "USACommandCenter",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaCommandCenter"
+                        },
+
+                        {
+                            "IconName"     : "DisarmMinesAtPosition",
+                            "HotkeyString" : "CONTROLBAR:DisarmMinesAtPosition"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAAvenger",
+                    "IngameName" : "OBJECT:Avenger",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USATomahawkLauncher",
+                    "IngameName" : "OBJECT:Tomahawk",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAMicrowave",
+                    "IngameName" : "OBJECT:Microwave",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USASentryDrone",
+                    "IngameName" : "OBJECT:SentryDrone",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAHumvee",
+                    "IngameName" : "OBJECT:Humvee",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAEvacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAAmbulance",
+                    "IngameName" : "OBJECT:Ambulance",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAEvacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "USAAmbulanceCleanupArea",
+                            "HotkeyString" : "CONTROLBAR:AmbulanceCleanupArea"
+                        },
+
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
                 }
             ],
-
-            "Aircraft" :
+            "Aircraft" : 
             [
                 {
                     "Name"       : "USAChinook",
-                    "CSFString"  : "OBJECT:Chinook",
-                    "Actions"    :
+                    "IngameName" : "OBJECT:Chinook",
+                    "Actions"    : 
                     [
                         {
-                            "Name"      : "USAEvacuate",
-                            "CSFString" : "CONTROLBAR:Evacuate"
+                            "IconName"     : "USAEvacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
                         },
 
                         {
-                            "Name"      : "USACombatDrop",
-                            "CSFString" : "CONTROLBAR:CombatDrop"
+                            "IconName"     : "USACombatDrop",
+                            "HotkeyString" : "CONTROLBAR:CombatDrop"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAComanche",
+                    "IngameName" : "OBJECT:Comanche",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAFireRocketPods",
+                            "HotkeyString" : "CONTROLBAR:FireRocketPods"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAStealthFighter",
+                    "IngameName" : "OBJECT:StealthFighter",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USARaptor",
+                    "IngameName" : "OBJECT:Raptor",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AirGuard",
+                            "HotkeyString" : "CONTROLBAR:GuardFlyingUnitsOnly"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "SWGAuroraAlpha",
+                    "IngameName" : "OBJECT:SupW_Aurora",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
                         }
                     ]
                 }
@@ -1390,7 +2020,400 @@
             "DisplayName"             : "AIR",
             "DisplayNameDesctiontion" : "Airforce General",
 
-            "Buildings"               : [],
+            "Buildings" : 
+            [
+                {
+                    "Name"       : "USACommandCenter",
+                    "IngameName" : "OBJECT:CommandCenter",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USADozer",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaDozer"
+                        },
+
+                        {
+                            "IconName"     : "USASpectreGunship",
+                            "HotkeyString" : "CONTROLBAR:SpectreGunship"
+                        },
+
+                        {
+                            "IconName"     : "USALeafletDrop",
+                            "HotkeyString" : "CONTROLBAR:LeafletDrop"
+                        },
+
+                        {
+                            "IconName"     : "USAA10ThunderboltMissileStrike",
+                            "HotkeyString" : "CONTROLBAR:A10ThunderboltMissileStrike"
+                        },
+
+                        {
+                            "IconName"     : "USAParadrop",
+                            "HotkeyString" : "CONTROLBAR:Paradrop"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:SpyDrone"
+                        },
+
+                        {
+                            "IconName"     : "EmergencyRepair",
+                            "HotkeyString" : "CONTROLBAR:EmergencyRepair"
+                        },
+
+                        {
+                            "IconName"     : "USADaisyCutter",
+                            "HotkeyString" : "CONTROLBAR:DaisyCutter"
+                        },
+
+                        {
+                            "IconName"     : "USAMOAB",
+                            "HotkeyString" : "CONTROLBAR:MOAB"
+                        },
+
+                        {
+                            "IconName"     : "USASpySattelite",
+                            "HotkeyString" : "CONTROLBAR:SpySatellite"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAColdFusionReactor",
+                    "IngameName" : "OBJECT:ColdFusionReactor",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAControlRods",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaAdvancedControlRods"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USABarracks",
+                    "IngameName" : "OBJECT:Barracks",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USARanger",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryRanger"
+                        },
+
+                        {
+                            "IconName"     : "USAMissileDefender",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryMissileDefender"
+                        },
+
+                        {
+                            "IconName"     : "USABurton",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryColonelBurton"
+                        },
+
+                        {
+                            "IconName"     : "USAPathfinder",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryPathfinder"
+                        },
+
+                        {
+                            "IconName"     : "USAFlashbangs",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaFlashBangGrenade"
+                        },
+
+                        {
+                            "IconName"     : "CaptureBuilding",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaRangerCaptureBuilding"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USASupplyCenter",
+                    "IngameName" : "OBJECT:SupplyCenter",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAChinook",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleChinook"
+                        },
+
+                        {
+                            "IconName"     : "AIRCombatChinook",
+                            "HotkeyString" : "CONTROLBAR:AirF_ConstructAmericaVehicleChinook"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAPatriot",
+                    "IngameName" : "OBJECT:PatriotBattery",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+                        
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAFireBase",
+                    "IngameName" : "OBJECT:FireBase",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "Evacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAWarFactory",
+                    "IngameName" : "OBJECT:WarFactory",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAHumvee",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHumvee"
+                        },
+                        
+                        {
+                            "IconName"     : "USAAvenger",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaTankAvenger"
+                        },
+
+                        {
+                            "IconName"     : "USATomahawkLauncher",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleTomahawk"
+                        },
+                        
+                        {
+                            "IconName"     : "USAAmbulance",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleMedic"
+                        },
+
+                        {
+                            "IconName"     : "USASentryDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleSentryDrone"
+                        },
+                        
+                        {
+                            "IconName"     : "USAMicrowave",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaTankMicrowave"
+                        },
+
+                        {
+                            "IconName"     : "USASentryDroneGun",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaSentryDroneGun"
+                        },
+                        
+                        {
+                            "IconName"     : "USATOWMissile",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaTOWMissile"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAAirfield",
+                    "IngameName" : "OBJECT:Airfield",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USARaptor",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaJetRaptor"
+                        },
+                        
+                        {
+                            "IconName"     : "USAAurora",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaJetAurora"
+                        },
+
+                        {
+                            "IconName"     : "USAComanche",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleComanche"
+                        },
+                        
+                        {
+                            "IconName"     : "USAStealthFighter",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaJetStealthFighter"
+                        },
+
+                        {
+                            "IconName"     : "USARocketPods",
+                            "HotkeyString" : "CONTROLBAR:UpgradeComancheRocketPods"
+                        },
+                        
+                        {
+                            "IconName"     : "USACountermeasures",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaCountermeasures"
+                        },
+
+                        {
+                            "IconName"     : "USALaserGuidedMissiles",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaLaserMissiles"
+                        },
+                        
+                        {
+                            "IconName"     : "USABunkerBusters",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaBunkerBusters"
+                        },
+
+                        {
+                            "IconName"     : "AIRStealthComancheUpgrade",
+                            "HotkeyString" : "CONTROLBAR:UpgradeStealthComanche"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAStrategyCenter",
+                    "IngameName" : "OBJECT:StrategyCenter",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USABombardment",
+                            "HotkeyString" : "CONTROLBAR:InitiateBattlePlanBombardment"
+                        },
+                        
+                        {
+                            "IconName"     : "USAHoldTheLine",
+                            "HotkeyString" : "CONTROLBAR:InitiateBattlePlanHoldTheLine"
+                        },
+
+                        {
+                            "IconName"     : "USASearchAndDestroy",
+                            "HotkeyString" : "CONTROLBAR:InitiateBattlePlanSearchAndDestroy"
+                        },
+                        
+                        {
+                            "IconName"     : "USAMOAB",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaMOAB"
+                        },
+
+                        {
+                            "IconName"     : "USAAdvancedTraining",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaAdvancedTraining"
+                        },
+                        
+                        {
+                            "IconName"     : "USASupplyLines",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaSupplyLines"
+                        },
+
+                        {
+                            "IconName"     : "USAIntelligence",
+                            "HotkeyString" : "CONTROLBAR:CIAIntelligence"
+                        },
+                        
+                        {
+                            "IconName"     : "USAChemicalSuits",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaChemicalSuits"
+                        },
+
+                        {
+                            "IconName"     : "USACompositeArmour",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaCompositeArmor"
+                        },
+                        
+                        {
+                            "IconName"     : "USADroneArmor",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaDroneArmor"
+                        },
+
+                        {
+                            "IconName"     : "AIRCarpetBomb",
+                            "HotkeyString" : "CONTROLBAR:CarpetBomb"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USADropZone",
+                    "IngameName" : "OBJECT:AmericaSupplyDropZone",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAParticleCannon",
+                    "IngameName" : "OBJECT:ParticleCannon",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAParticleCannonFire",
+                            "HotkeyString" : "CONTROLBAR:FireParticleUplinkCannon"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                }
+            ],
             "Infantry" : 
             [
                 {
@@ -1521,8 +2544,441 @@
                     ]
                 }
             ],
-            "Vehicles"                : [],
-            "Aircraft"                : []
+            "Vehicles" : 
+            [
+                {
+                    "Name"       : "USADozer",
+                    "IngameName" : "OBJECT:Dozer",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAColdFusionReactor",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaPowerPlant"
+                        },
+
+                        {
+                            "IconName"     : "USABarracks",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaBarracks"
+                        },
+
+                        {
+                            "IconName"     : "USASupplyCenter",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaSupplyCenter"
+                        },
+
+                        {
+                            "IconName"     : "USAPatriot",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaPatriotBattery"
+                        },
+
+                        {
+                            "IconName"     : "USAFireBase",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaFireBase"
+                        },
+
+                        {
+                            "IconName"     : "USAWarFactory",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaWarFactory"
+                        },
+
+                        {
+                            "IconName"     : "USAAirfield",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaAirfield"
+                        },
+
+                        {
+                            "IconName"     : "USAStrategyCenter",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaStrategyCenter"
+                        },
+
+                        {
+                            "IconName"     : "USASupplyDropZone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaSupplyDropZone"
+                        },
+
+                        {
+                            "IconName"     : "USAParticleCannon",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaParticleCannonUplink"
+                        },
+
+                        {
+                            "IconName"     : "USACommandCenter",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaCommandCenter"
+                        },
+
+                        {
+                            "IconName"     : "DisarmMinesAtPosition",
+                            "HotkeyString" : "CONTROLBAR:DisarmMinesAtPosition"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAAvenger",
+                    "IngameName" : "OBJECT:Avenger",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USATomahawkLauncher",
+                    "IngameName" : "OBJECT:Tomahawk",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAMicrowave",
+                    "IngameName" : "OBJECT:Microwave",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USASentryDrone",
+                    "IngameName" : "OBJECT:SentryDrone",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAHumvee",
+                    "IngameName" : "OBJECT:Humvee",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAEvacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAAmbulance",
+                    "IngameName" : "OBJECT:Ambulance",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAEvacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "USAAmbulanceCleanupArea",
+                            "HotkeyString" : "CONTROLBAR:AmbulanceCleanupArea"
+                        },
+
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                }
+            ],
+            "Aircraft" : 
+            [
+                {
+                    "Name"       : "USAChinook",
+                    "IngameName" : "OBJECT:Chinook",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAEvacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "USACombatDrop",
+                            "HotkeyString" : "CONTROLBAR:CombatDrop"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "AIRCombatChinook",
+                    "IngameName" : "OBJECT:AirF_Chinook",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAEvacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "USACombatDrop",
+                            "HotkeyString" : "CONTROLBAR:CombatDrop"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAComanche",
+                    "IngameName" : "OBJECT:Comanche",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAFireRocketPods",
+                            "HotkeyString" : "CONTROLBAR:FireRocketPods"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAStealthFighter",
+                    "IngameName" : "OBJECT:StealthFighter",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "AIRKingRaptor",
+                    "IngameName" : "OBJECT:KingRaptor",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AirGuard",
+                            "HotkeyString" : "CONTROLBAR:GuardFlyingUnitsOnly"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAAurora",
+                    "IngameName" : "OBJECT:Aurora",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                }
+            ]
         },
 
         {
@@ -1530,7 +2986,390 @@
             "DisplayName"             : "LASER",
             "DisplayNameDesctiontion" : "Laser Weapons Generals",
 
-            "Buildings"               : [],
+            "Buildings" : 
+            [
+                {
+                    "Name"       : "USACommandCenter",
+                    "IngameName" : "OBJECT:CommandCenter",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USADozer",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaDozer"
+                        },
+
+                        {
+                            "IconName"     : "USASpectreGunship",
+                            "HotkeyString" : "CONTROLBAR:SpectreGunship"
+                        },
+
+                        {
+                            "IconName"     : "USALeafletDrop",
+                            "HotkeyString" : "CONTROLBAR:LeafletDrop"
+                        },
+
+                        {
+                            "IconName"     : "USAA10ThunderboltMissileStrike",
+                            "HotkeyString" : "CONTROLBAR:A10ThunderboltMissileStrike"
+                        },
+
+                        {
+                            "IconName"     : "USAParadrop",
+                            "HotkeyString" : "CONTROLBAR:Paradrop"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:SpyDrone"
+                        },
+
+                        {
+                            "IconName"     : "EmergencyRepair",
+                            "HotkeyString" : "CONTROLBAR:EmergencyRepair"
+                        },
+
+                        {
+                            "IconName"     : "USADaisyCutter",
+                            "HotkeyString" : "CONTROLBAR:DaisyCutter"
+                        },
+
+                        {
+                            "IconName"     : "USAMOAB",
+                            "HotkeyString" : "CONTROLBAR:MOAB"
+                        },
+
+                        {
+                            "IconName"     : "USASpySattelite",
+                            "HotkeyString" : "CONTROLBAR:SpySatellite"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAColdFusionReactor",
+                    "IngameName" : "OBJECT:ColdFusionReactor",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAControlRods",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaAdvancedControlRods"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USABarracks",
+                    "IngameName" : "OBJECT:Barracks",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USARanger",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryRanger"
+                        },
+
+                        {
+                            "IconName"     : "USAMissileDefender",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryMissileDefender"
+                        },
+
+                        {
+                            "IconName"     : "USABurton",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryColonelBurton"
+                        },
+
+                        {
+                            "IconName"     : "USAPathfinder",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryPathfinder"
+                        },
+
+                        {
+                            "IconName"     : "USAFlashbangs",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaFlashBangGrenade"
+                        },
+
+                        {
+                            "IconName"     : "CaptureBuilding",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaRangerCaptureBuilding"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USASupplyCenter",
+                    "IngameName" : "OBJECT:SupplyCenter",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAChinook",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleChinook"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "LSRPatriot",
+                    "IngameName" : "OBJECT:LaserCannon",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+                        
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAFireBase",
+                    "IngameName" : "OBJECT:FireBase",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "Evacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAWarFactory",
+                    "IngameName" : "OBJECT:WarFactory",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "LSRLaserTank",
+                            "HotkeyString" : "CONTROLBAR:Lazr_ConstructAmericaTankCrusader"
+                        },
+                        
+                        {
+                            "IconName"     : "USAHumvee",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHumvee"
+                        },
+                        
+                        {
+                            "IconName"     : "USAAvenger",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaTankAvenger"
+                        },
+
+                        {
+                            "IconName"     : "USATomahawkLauncher",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleTomahawk"
+                        },
+                        
+                        {
+                            "IconName"     : "USAAmbulance",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleMedic"
+                        },
+
+                        {
+                            "IconName"     : "USASentryDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleSentryDrone"
+                        },
+                        
+                        {
+                            "IconName"     : "USAMicrowave",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaTankMicrowave"
+                        },
+
+                        {
+                            "IconName"     : "USASentryDroneGun",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaSentryDroneGun"
+                        },
+                        
+                        {
+                            "IconName"     : "USATOWMissile",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaTOWMissile"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAAirfield",
+                    "IngameName" : "OBJECT:Airfield",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USARaptor",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaJetRaptor"
+                        },
+                        
+                        {
+                            "IconName"     : "USAAurora",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaJetAurora"
+                        },
+
+                        {
+                            "IconName"     : "USAComanche",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleComanche"
+                        },
+                        
+                        {
+                            "IconName"     : "USAStealthFighter",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaJetStealthFighter"
+                        },
+
+                        {
+                            "IconName"     : "USARocketPods",
+                            "HotkeyString" : "CONTROLBAR:UpgradeComancheRocketPods"
+                        },
+                        
+                        {
+                            "IconName"     : "USACountermeasures",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaCountermeasures"
+                        },
+
+                        {
+                            "IconName"     : "USALaserGuidedMissiles",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaLaserMissiles"
+                        },
+                        
+                        {
+                            "IconName"     : "USABunkerBusters",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaBunkerBusters"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAStrategyCenter",
+                    "IngameName" : "OBJECT:StrategyCenter",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USABombardment",
+                            "HotkeyString" : "CONTROLBAR:InitiateBattlePlanBombardment"
+                        },
+                        
+                        {
+                            "IconName"     : "USAHoldTheLine",
+                            "HotkeyString" : "CONTROLBAR:InitiateBattlePlanHoldTheLine"
+                        },
+
+                        {
+                            "IconName"     : "USASearchAndDestroy",
+                            "HotkeyString" : "CONTROLBAR:InitiateBattlePlanSearchAndDestroy"
+                        },
+                        
+                        {
+                            "IconName"     : "USAMOAB",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaMOAB"
+                        },
+
+                        {
+                            "IconName"     : "USAAdvancedTraining",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaAdvancedTraining"
+                        },
+                        
+                        {
+                            "IconName"     : "USASupplyLines",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaSupplyLines"
+                        },
+
+                        {
+                            "IconName"     : "USAIntelligence",
+                            "HotkeyString" : "CONTROLBAR:CIAIntelligence"
+                        },
+                        
+                        {
+                            "IconName"     : "USAChemicalSuits",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaChemicalSuits"
+                        },
+
+                        {
+                            "IconName"     : "USACompositeArmour",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaCompositeArmor"
+                        },
+                        
+                        {
+                            "IconName"     : "USADroneArmor",
+                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaDroneArmor"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USADropZone",
+                    "IngameName" : "OBJECT:AmericaSupplyDropZone",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAParticleCannon",
+                    "IngameName" : "OBJECT:ParticleCannon",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAParticleCannonFire",
+                            "HotkeyString" : "CONTROLBAR:FireParticleUplinkCannon"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                }
+            ],
             "Infantry" : 
             [
                 {
@@ -1661,8 +3500,456 @@
                     ]
                 }
             ],
-            "Vehicles"                : [],
-            "Aircraft"                : []
+            "Vehicles" : 
+            [
+                {
+                    "Name"       : "USADozer",
+                    "IngameName" : "OBJECT:Dozer",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAColdFusionReactor",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaPowerPlant"
+                        },
+
+                        {
+                            "IconName"     : "USABarracks",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaBarracks"
+                        },
+
+                        {
+                            "IconName"     : "USASupplyCenter",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaSupplyCenter"
+                        },
+
+                        {
+                            "IconName"     : "LSRPatriot",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaPatriotBattery"
+                        },
+
+                        {
+                            "IconName"     : "USAFireBase",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaFireBase"
+                        },
+
+                        {
+                            "IconName"     : "USAWarFactory",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaWarFactory"
+                        },
+
+                        {
+                            "IconName"     : "USAAirfield",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaAirfield"
+                        },
+
+                        {
+                            "IconName"     : "USAStrategyCenter",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaStrategyCenter"
+                        },
+
+                        {
+                            "IconName"     : "USASupplyDropZone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaSupplyDropZone"
+                        },
+
+                        {
+                            "IconName"     : "USAParticleCannon",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaParticleCannonUplink"
+                        },
+
+                        {
+                            "IconName"     : "USACommandCenter",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaCommandCenter"
+                        },
+
+                        {
+                            "IconName"     : "DisarmMinesAtPosition",
+                            "HotkeyString" : "CONTROLBAR:DisarmMinesAtPosition"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "LSRLaserTank",
+                    "IngameName" : "OBJECT:Lazr_Tank",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAAvenger",
+                    "IngameName" : "OBJECT:Avenger",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USATomahawkLauncher",
+                    "IngameName" : "OBJECT:Tomahawk",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAMicrowave",
+                    "IngameName" : "OBJECT:Microwave",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USASentryDrone",
+                    "IngameName" : "OBJECT:SentryDrone",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAHumvee",
+                    "IngameName" : "OBJECT:Humvee",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAEvacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAAmbulance",
+                    "IngameName" : "OBJECT:Ambulance",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAEvacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "USAAmbulanceCleanupArea",
+                            "HotkeyString" : "CONTROLBAR:AmbulanceCleanupArea"
+                        },
+
+                        {
+                            "IconName"     : "USABattleDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleBattleDrone"
+                        },
+
+                        {
+                            "IconName"     : "USAHellfireDrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHellfireDrone"
+                        },
+
+                        {
+                            "IconName"     : "USADrone",
+                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleScoutDrone"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                }
+            ],
+            "Aircraft" : 
+            [
+                {
+                    "Name"       : "USAChinook",
+                    "IngameName" : "OBJECT:Chinook",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAEvacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "USACombatDrop",
+                            "HotkeyString" : "CONTROLBAR:CombatDrop"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAComanche",
+                    "IngameName" : "OBJECT:Comanche",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "USAFireRocketPods",
+                            "HotkeyString" : "CONTROLBAR:FireRocketPods"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAStealthFighter",
+                    "IngameName" : "OBJECT:StealthFighter",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USARaptor",
+                    "IngameName" : "OBJECT:Raptor",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AirGuard",
+                            "HotkeyString" : "CONTROLBAR:GuardFlyingUnitsOnly"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "USAAurora",
+                    "IngameName" : "OBJECT:Aurora",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                }
+            ]
         },
 
         {
