@@ -1,10 +1,11 @@
 #pragma once
 
+#include <list>
+#include <memory>
 #include <string>
 #include <sstream>
 #include <fstream>
-#include <list>
-#include <memory>
+#include <QStringList>
 
 class CSFParser final
 {
@@ -57,11 +58,18 @@ private: // Methods
     void WriteBody(std::ofstream* csfFile);
 
 public:
+    CSFParser(const char* strFilePath);
     CSFParser(const std::string& strFilePath);
+    CSFParser(const QString& strFilePath);
 
     void Save();
-    void Save(std::string strFileName);
+    void Save(const char* strFileName);
+    void Save(const std::string& strFileName);
+    void Save(const QString& strFileName);
 
+    QString                   GetStringValue(const QString& strName)                                           const;
+    QStringList               GetCategoryStrings(const QString& strCategoryName)                               const;
+    QStringList               GetCategoryStringsWithFullNames(const QString& strCategoryName)                  const;
     std::wstring              GetStringValue(const std::string& strName)                                       const;
     std::list<std::string>    GetStringNames()                                                                 const;
     std::list<std::string>    GetCategories()                                                                  const;
@@ -71,14 +79,18 @@ public:
     std::list<std::string>    GetStringsContainsSymbol(const wchar_t& wch, const std::string& strCategoryName) const;
     std::list<CompiledString> GetStringsByNameList(const std::list<std::string>& lstNames)                     const;
 
+    wchar_t GetHotkey(const char* strName)                                                                     const;
+    wchar_t GetHotkey(const QString& strName)                                                                  const;
     wchar_t GetHotkey(const std::string& strName)                                                              const;
     std::list<HotkeyAssociation> GetHotkeys(const std::list<std::string>& lstStringNames)                      const;
 
+    void SetHotkey(const char* strName, const wchar_t& wchLetter);
+    void SetHotkey(const QString& strName, const wchar_t& wchLetter);
     void SetHotkey(const std::string& strName, const wchar_t& wchLetter);
     void SetStringValue(const std::string& strName, const std::wstring& wstrValue);
     void SetStringValue(const CompiledString& stString);
     void SetStringsValue(const std::list<CompiledString>& lstChanges);
 private:
-    std::string  CharArrayToString(const int& arrayLength, const char* pArray)     const;
-    std::wstring WharArrayToWstring(const int& arrayLength, const wchar_t* pArray) const;
+    std::string  CharArrayToString(const size_t& arrayLength, const char* pArray)     const;
+    std::wstring WharArrayToWstring(const size_t& arrayLength, const wchar_t* pArray) const;
 };
