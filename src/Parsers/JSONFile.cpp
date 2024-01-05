@@ -32,6 +32,16 @@ using namespace std;
             throw Exception(string("Bad file name; unable to open file \"" + FileName + "\""));
         }
     }
+
+    JSONFile::JSONFile(const char* filePath)
+    {
+        JSONFile(string(filePath));
+    }
+
+    JSONFile::JSONFile(const QString& filePath)
+    {
+        JSONFile(filePath.toStdString());
+    }
 #pragma endregion
 
 #pragma region Getters
@@ -45,6 +55,18 @@ using namespace std;
     QJsonValue JSONFile::Query(const string& strQuery) const
     {
         return Query(JsonMainObject, strQuery);
+    }
+
+    /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
+    QJsonValue JSONFile::Query(const char* strQuery) const
+    {
+        return Query(JsonMainObject, string(strQuery));
+    }
+
+    /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
+    QJsonValue JSONFile::Query(const QString& strQuery) const
+    {
+        return Query(JsonMainObject, strQuery.toStdString());
     }
 
     /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
@@ -105,5 +127,15 @@ using namespace std;
         LOGSTM << "\tLength of array is : "         << currVal.toArray().size() << endl;
 
         return currVal;
+    }
+
+    QJsonValue JSONFile::Query(const QJsonObject& jsonObject, const char* strQuery)
+    {
+        return Query(jsonObject, string(strQuery));
+    }
+
+    QJsonValue JSONFile::Query(const QJsonObject& jsonObject, const QString& strQuery)
+    {
+        return Query(jsonObject, strQuery.toStdString());
     }
 #pragma endregion
