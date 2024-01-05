@@ -11,14 +11,14 @@ using namespace std;
         Parse();
     }
 
-    CSFParser::CSFParser(const char* filePath) : Path(string(filePath))
+    CSFParser::CSFParser(const char* filePath)
     {
-        Parse();
+        CSFParser(string(filePath));
     }
 
-    CSFParser::CSFParser(const QString& filePath) : Path(filePath.toStdString())
+    CSFParser::CSFParser(const QString& filePath)
     {
-        Parse();
+        CSFParser(filePath.toStdString());
     }
 #pragma endregion
 
