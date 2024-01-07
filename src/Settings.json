@@ -1,36 +1,34 @@
 {
-	"Theme"      : "Default",
-	"DiscordRPC" : "false",
+    "Theme"      : "Default",
+    "DiscordRPC" : "false",
 
-	"TechnoTypes" : 
-	[
-		"Unit",
-		"Building",
-		"Upgrade"
-	],
+    "ForbiddenHotkeys" :
+    [
+        {
+            "TechnoType" : "Unit",
+            "Hotkeys"    :
+            [
+                "Q",
+                "W",
+                "E",
+                "A",
+                "G"
+            ]
+        },
 
-	"ForbiddenHotkeys" :
-	[
-		{
-			"TechnoType" : "Unit",
-			"Hotkeys"    :
-			[
-				"Q",
-				"W",
-				"E",
-				"A",
-				"G"
-			]
-		},
+        {
+            "TechnoType" : "Building",
+            "Hotkeys"    :
+            [
+                "Q",
+                "W",
+                "E"
+            ]
+        }
+    ],
 
-		{
-			"TechnoType" : "Building",
-			"Hotkeys"    :
-			[
-				"Q",
-				"W",
-				"E"
-			]
-		}
-	]
+    "IgnoreCSFKeysPairCollision" : 
+    [
+        {"1" : "CONTROLBAR:UpgradeChinaMines", "2" : "CONTROLBAR:UpgradeEMPMines"}
+    ]
 }

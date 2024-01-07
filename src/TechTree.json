@@ -7578,9 +7578,1030 @@
             "DisplayName"             : "GLA",
             "DisplayNameDesctiontion" : "Global Liberation Army",
 
-            "Buildings"               : [],
-            "Infantry"                : [],
-            "Vehicles"                : [],
+            "Buildings"               : 
+            [
+                {
+                    "Name"       : "GLASupplyStash",
+                    "IngameName" : "OBJECT:SupplyStash",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLAWorker",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLABarracks",
+                    "IngameName" : "OBJECT:Barracks",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLARebel",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRebel"
+                        },
+
+                        {
+                            "IconName"     : "GLATerrorist",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryTerrorist"
+                        },
+
+                        {
+                            "IconName"     : "GLAHijacker",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryHijacker"
+                        },
+
+                        {
+                            "IconName"     : "GLASaboteur",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAInfantrySaboteur"
+                        },
+
+                        {
+                            "IconName"     : "GLARPGTrooper",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRPGTrooper"
+                        },
+
+                        {
+                            "IconName"     : "GLAAngryMob",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryAngryMob"
+                        },
+
+                        {
+                            "IconName"     : "GLAJarmenKell",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryJarmenKell"
+                        },
+
+                        {
+                            "IconName"     : "GLABoobyTraps",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLABoobyTrap"
+                        },
+
+                        {
+                            "IconName"     : "CaptureBuilding",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLARebelCaptureBuilding"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAStingerSite",
+                    "IngameName" : "OBJECT:StingerSite",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLACamoNetting",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLATunnelNetwork",
+                    "IngameName" : "OBJECT:TunnelNetwork",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLACamoNetting",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"
+                        },
+
+                        {
+                            "IconName"     : "Evacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAArmsDealer",
+                    "IngameName" : "OBJECT:ArmsDealer",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLAScorpionTank",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLATankScorpion"
+                        },
+
+                        {
+                            "IconName"     : "GLARadarVan",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleRadarVan"
+                        },
+
+                        {
+                            "IconName"     : "GLAToxinTractor",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleToxinTruck"
+                        },
+
+                        {
+                            "IconName"     : "GLAMarauderTank",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLATankMarauder"
+                        },
+
+                        {
+                            "IconName"     : "GLAScudLauncher",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleScudLauncher"
+                        },
+
+                        {
+                            "IconName"     : "GLACombatBike",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleCombatBike"
+                        },
+
+                        {
+                            "IconName"     : "GLATechnical",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleTechnical"
+                        },
+
+                        {
+                            "IconName"     : "GLAQuadCannon",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleQuadCannon"
+                        },
+
+                        {
+                            "IconName"     : "GLARocketBuggy",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleRocketBuggy"
+                        },
+
+                        {
+                            "IconName"     : "GLABombTruck",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleBombTruck"
+                        },
+
+                        {
+                            "IconName"     : "GLABattleBus",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleBattleBus"
+                        },
+
+                        {
+                            "IconName"     : "GLAScorpionRocket",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLAScorpionRocket"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLADemoTrap",
+                    "IngameName" : "OBJECT:DemoTrap",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLAProximityFuse",
+                            "HotkeyString" : "CONTROLBAR:ProximityFuse"
+                        },
+
+                        {
+                            "IconName"     : "GLAManualControl",
+                            "HotkeyString" : "CONTROLBAR:ManualControl"
+                        },
+
+                        {
+                            "IconName"     : "GLADetonate",
+                            "HotkeyString" : "CONTROLBAR:Detonate"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAPalace",
+                    "IngameName" : "OBJECT:Palace",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLAFortifiedStructure",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLAFortifiedStructure"
+                        },
+
+                        {
+                            "IconName"     : "GLACamouflage",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLACamouflage"
+                        },
+
+                        {
+                            "IconName"     : "GLAAnthraxBeta",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLAAnthraxBeta"
+                        },
+
+                        {
+                            "IconName"     : "GLAAnthraxShells",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLAToxinShells"
+                        },
+
+                        {
+                            "IconName"     : "GLAArmTheMob",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLAArmTheMob"
+                        },
+
+                        {
+                            "IconName"     : "Evacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLABlackMarket",
+                    "IngameName" : "OBJECT:BlackMarket",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLAAPBullets",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLAAPBullets"
+                        },
+
+                        {
+                            "IconName"     : "GLAJunkRepair",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLAJunkRepair"
+                        },
+
+                        {
+                            "IconName"     : "GLARadarVanScan",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLARadarVanScan"
+                        },
+
+                        {
+                            "IconName"     : "GLAAPRockets",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLAAPRockets"
+                        },
+
+                        {
+                            "IconName"     : "GLARocketBuggyAmmo",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLABuggyAmmo"
+                        },
+
+                        {
+                            "IconName"     : "GLAWorkerShoes",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerShoes"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAScudStorm",
+                    "IngameName" : "OBJECT:ScudStorm",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLAScudStormLaunch",
+                            "HotkeyString" : "CONTROLBAR:ScudStorm"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAFakeCommandCenter",
+                    "IngameName" : "OBJECT:CommandCenter",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLABecomeReal",
+                            "HotkeyString" : "CONTROLBAR:BecomeRealGLACommandCenter"
+                        },
+
+                        {
+                            "IconName"     : "GLACarBomb",
+                            "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAFakeBarracks",
+                    "IngameName" : "OBJECT:Barracks",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLABecomeReal",
+                            "HotkeyString" : "CONTROLBAR:BecomeRealGLABarracks"
+                        },
+
+                        {
+                            "IconName"     : "GLACarBomb",
+                            "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAFakeSupplyStash",
+                    "IngameName" : "OBJECT:SupplyStash",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLABecomeReal",
+                            "HotkeyString" : "CONTROLBAR:BecomeRealGLASupplyStash"
+                        },
+
+                        {
+                            "IconName"     : "GLACarBomb",
+                            "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAFakeArmsDealer",
+                    "IngameName" : "OBJECT:ArmsDealer",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLABecomeReal",
+                            "HotkeyString" : "CONTROLBAR:BecomeRealGLAArmsDealer"
+                        },
+
+                        {
+                            "IconName"     : "GLACarBomb",
+                            "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAFakeBlackMarket",
+                    "IngameName" : "OBJECT:BlackMarket",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLABecomeReal",
+                            "HotkeyString" : "CONTROLBAR:BecomeRealGLABlackMarket"
+                        },
+
+                        {
+                            "IconName"     : "GLACarBomb",
+                            "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLACommandCenter",
+                    "IngameName" : "OBJECT:CommandCenter",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLAWorker",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"
+                        },
+
+                        {
+                            "IconName"     : "GLAGPSScrambler",
+                            "HotkeyString" : "CONTROLBAR:GPSScrambler"
+                        },
+
+                        {
+                            "IconName"     : "GLARebelAmbush",
+                            "HotkeyString" : "CONTROLBAR:Ambush"
+                        },
+
+                        {
+                            "IconName"     : "GLAAnthraxBomb",
+                            "HotkeyString" : "CONTROLBAR:AnthraxBomb"
+                        },
+
+                        {
+                            "IconName"     : "GLASneakAttack",
+                            "HotkeyString" : "CONTROLBAR:SneakAttack"
+                        },
+
+                        {
+                            "IconName"     : "EmergencyRepair",
+                            "HotkeyString" : "CONTROLBAR:EmergencyRepair"
+                        },
+
+                        {
+                            "IconName"     : "Sell",
+                            "HotkeyString" : "CONTROLBAR:Sell"
+                        }
+                    ]
+                }
+            ],
+            "Infantry"                : 
+            [
+                {
+                    "Name"       : "GLARebel",
+                    "IngameName" : "OBJECT:Rebel",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLABoobyTraps",
+                            "HotkeyString" : "CONTROLBAR:BoobyTrapAttack"
+                        },
+
+                        {
+                            "IconName"     : "CaptureBuilding",
+                            "HotkeyString" : "CONTROLBAR:CaptureBuilding"
+                        },
+                        
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        }
+                        
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+                    ]
+                },
+
+                {
+                    "Name"       : "GLARPGTrooper",
+                    "IngameName" : "OBJECT:TunnelDefender",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+                        
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        }
+                        
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+                    ]
+                },
+
+                {
+                    "Name"       : "GLATerrorist",
+                    "IngameName" : "OBJECT:Terrorist",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLACarBomb",
+                            "HotkeyString" : "CONTROLBAR:CarBomb"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+                        
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAJarmenKell",
+                    "IngameName" : "OBJECT:JarmenKell",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLAPilotKill",
+                            "HotkeyString" : "CONTROLBAR:SniperAttack"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+                        
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        }
+                        
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        },
+                    ]
+                },
+
+                {
+                    "Name"       : "GLASaboteur",
+                    "IngameName" : "OBJECT:Saboteur",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLASaboteur",
+                            "HotkeyString" : "CONTROLBAR:SabotageBuilding"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAAngryMob",
+                    "IngameName" : "OBJECT:AngryMob",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAHijacker",
+                    "IngameName" : "OBJECT:Hijacker",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLAHijack",
+                            "HotkeyString" : "CONTROLBAR:Hijack"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAWorker",
+                    "IngameName" : "OBJECT:Worker",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLASupplyStash",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLASupplyStash"
+                        },
+
+                        {
+                            "IconName"     : "GLABarracks",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLABarracks"
+                        },
+
+                        {
+                            "IconName"     : "GLAStingerSite",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAStingerSite"
+                        },
+
+                        {
+                            "IconName"     : "GLATunnelNetwork",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLATunnelNetwork"
+                        },
+
+                        {
+                            "IconName"     : "GLAArmsDealer",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAArmsDealer"
+                        },
+
+                        {
+                            "IconName"     : "GLADemoTrap",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLADemoTrap"
+                        },
+
+                        {
+                            "IconName"     : "GLAPalace",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAPalace"
+                        },
+
+                        {
+                            "IconName"     : "GLABlackMarket",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLABlackMarket"
+                        },
+
+                        {
+                            "IconName"     : "GLAScudStorm",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLAScudStorm"
+                        },
+
+                        {
+                            "IconName"     : "GLACommandCenter",
+                            "HotkeyString" : "CONTROLBAR:ConstructGLACommandCenter"
+                        },
+
+                        {
+                            "IconName"     : "GLAFakeCommandSet",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerFakeCommandSet"
+                        },
+
+                        {
+                            "IconName"     : "GLAFakeCommandCenter",
+                            "HotkeyString" : "CONTROLBAR:ConstructFakeGLACommandCenter"
+                        },
+
+                        {
+                            "IconName"     : "GLAFakeSupplyStash",
+                            "HotkeyString" : "CONTROLBAR:ConstructFakeGLASupplyStash"
+                        },
+
+                        {
+                            "IconName"     : "GLAFakeBlackMarket",
+                            "HotkeyString" : "CONTROLBAR:ConstructFakeGLABlackMarket"
+                        },
+
+                        {
+                            "IconName"     : "GLAFakeBarracks",
+                            "HotkeyString" : "CONTROLBAR:ConstructFakeGLABarracks"
+                        },
+
+                        {
+                            "IconName"     : "GLAFakeArmsDealer",
+                            "HotkeyString" : "CONTROLBAR:ConstructFakeGLAArmsDealer"
+                        },
+
+                        {
+                            "IconName"     : "GLAFakeCommandSet",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerRealCommandSet"
+                        },
+
+                        {
+                            "IconName"     : "DisarmMinesAtPosition",
+                            "HotkeyString" : "CONTROLBAR:DisarmMinesAtPosition"
+                        }
+                    ]
+                }
+            ],
+            "Vehicles"                : 
+            [
+                {
+                    "Name"       : "GLAScorpionTank",
+                    "IngameName" : "OBJECT:Scorpion",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLATechnical",
+                    "IngameName" : "OBJECT:Technical",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "Evacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAQuadCannon",
+                    "IngameName" : "OBJECT:QuadCannon",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLARocketBuggy",
+                    "IngameName" : "OBJECT:RocketBuggy",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAMarauderTank",
+                    "IngameName" : "OBJECT:Marauder",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLACombatBike",
+                    "IngameName" : "OBJECT:CombatBike",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "Evacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLABattleBus",
+                    "IngameName" : "OBJECT:BattleBus",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "Evacuate",
+                            "HotkeyString" : "CONTROLBAR:Evacuate"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAToxinTractor",
+                    "IngameName" : "OBJECT:ToxinTruck",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLAContaminate",
+                            "HotkeyString" : "CONTROLBAR:Contaminate"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLAScudLauncher",
+                    "IngameName" : "OBJECT:ScudLauncher",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLAExplosiveWarhead",
+                            "HotkeyString" : "CONTROLBAR:ExplosiveWarhead"
+                        },
+
+                        {
+                            "IconName"     : "GLAAnthraxWarhead",
+                            "HotkeyString" : "CONTROLBAR:AnthraxWarhead"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLABombTruck",
+                    "IngameName" : "OBJECT:BombTruck",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLADisguise",
+                            "HotkeyString" : "CONTROLBAR:DisguiseAsVehicle"
+                        },
+
+                        {
+                            "IconName"     : "GLACarBomb",
+                            "HotkeyString" : "CONTROLBAR:DetonateBombTruck"
+                        },
+
+                        {
+                            "IconName"     : "GLABioBomb",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLABombTruckBioBomb"
+                        },
+
+                        {
+                            "IconName"     : "GLAHighExplosiveBomb",
+                            "HotkeyString" : "CONTROLBAR:UpgradeGLABombTruckHighExplosiveBomb"
+                        },
+
+                        {
+                            "IconName"     : "AttackMove",
+                            "HotkeyString" : "CONTROLBAR:AttackMove"
+                        },
+
+                        {
+                            "IconName"     : "Guard",
+                            "HotkeyString" : "CONTROLBAR:Guard"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                },
+
+                {
+                    "Name"       : "GLARadarVan",
+                    "IngameName" : "OBJECT:RadarVan",
+                    "Actions"    : 
+                    [
+                        {
+                            "IconName"     : "GLARadarVanScan",
+                            "HotkeyString" : "CONTROLBAR:RadarVanScan"
+                        },
+
+                        {
+                            "IconName"     : "Stop",
+                            "HotkeyString" : "CONTROLBAR:Stop"
+                        }
+                    ]
+                }
+            ],
             "Aircraft"                : []
         },
 
