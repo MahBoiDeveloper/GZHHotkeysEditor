@@ -4,5 +4,8 @@
 #include <list>
 #include <QStringList>
 
-QStringList            STDStringListToQStringList(const std::list<std::string>& srcList);
-std::list<std::string> QStringListToSTDStringList(const QStringList&            srcList);
+namespace Unsorted
+{
+    QStringList            STDStringListToQStringList(const std::list<std::string>& srcList);
+    std::list<std::string> QStringListToSTDStringList(const QStringList&            srcList);
+}

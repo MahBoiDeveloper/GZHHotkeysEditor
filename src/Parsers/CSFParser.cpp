@@ -283,7 +283,7 @@ using namespace std;
     QStringList CSFParser::GetCategoryStrings(const QString& strCategoryName) const
     {
         list<string> tmp = GetCategoryStrings(strCategoryName.toStdString());
-        return STDStringListToQStringList(tmp);
+        return Unsorted::STDStringListToQStringList(tmp);
     }
 
     /// @brief Returns list of all strings in category.
@@ -303,7 +303,7 @@ using namespace std;
     QStringList CSFParser::GetCategoryStringsWithFullNames(const QString& strCategoryName) const
     {
         list<string> tmp = GetCategoryStringsWithFullNames(strCategoryName.toStdString());
-        return STDStringListToQStringList(tmp);
+        return Unsorted::STDStringListToQStringList(tmp);
     }
     
     /// @brief Returns list of all strings that values contains wide character.

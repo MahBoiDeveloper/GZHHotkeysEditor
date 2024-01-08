@@ -18,60 +18,17 @@
                     "IngameName" : "OBJECT:CommandCenter",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "USADozer",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaDozer"
-                        },
-
-                        {
-                            "IconName"     : "USASpectreGunship",
-                            "HotkeyString" : "CONTROLBAR:SpectreGunship"
-                        },
-
-                        {
-                            "IconName"     : "USALeafletDrop",
-                            "HotkeyString" : "CONTROLBAR:LeafletDrop"
-                        },
-
-                        {
-                            "IconName"     : "USAA10ThunderboltMissileStrike",
-                            "HotkeyString" : "CONTROLBAR:A10ThunderboltMissileStrike"
-                        },
-
-                        {
-                            "IconName"     : "Paradrop",
-                            "HotkeyString" : "CONTROLBAR:Paradrop"
-                        },
-
-                        {
-                            "IconName"     : "USADrone",
-                            "HotkeyString" : "CONTROLBAR:SpyDrone"
-                        },
-
-                        {
-                            "IconName"     : "EmergencyRepair",
-                            "HotkeyString" : "CONTROLBAR:EmergencyRepair"
-                        },
-
-                        {
-                            "IconName"     : "USADaisyCutter",
-                            "HotkeyString" : "CONTROLBAR:DaisyCutter"
-                        },
-
-                        {
-                            "IconName"     : "USAMOAB",
-                            "HotkeyString" : "CONTROLBAR:MOAB"
-                        },
-
-                        {
-                            "IconName"     : "USASpySattelite",
-                            "HotkeyString" : "CONTROLBAR:SpySatellite"
-                        },
-
-                        {
-                            "IconName"     : "Sell",
-                            "HotkeyString" : "CONTROLBAR:Sell"
-                        }
+                        {"IconName" : "USADozer",                       "HotkeyString" : "CONTROLBAR:ConstructAmericaDozer"},
+                        {"IconName" : "USASpectreGunship",              "HotkeyString" : "CONTROLBAR:SpectreGunship"},
+                        {"IconName" : "USALeafletDrop",                 "HotkeyString" : "CONTROLBAR:LeafletDrop"},
+                        {"IconName" : "USAA10ThunderboltMissileStrike", "HotkeyString" : "CONTROLBAR:A10ThunderboltMissileStrike"},
+                        {"IconName" : "Paradrop",                       "HotkeyString" : "CONTROLBAR:Paradrop"},
+                        {"IconName" : "USADrone",                       "HotkeyString" : "CONTROLBAR:SpyDrone"},
+                        {"IconName" : "EmergencyRepair",                "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
+                        {"IconName" : "USADaisyCutter",                 "HotkeyString" : "CONTROLBAR:DaisyCutter"},
+                        {"IconName" : "USAMOAB",                        "HotkeyString" : "CONTROLBAR:MOAB"},
+                        {"IconName" : "USASpySattelite",                "HotkeyString" : "CONTROLBAR:SpySatellite"},
+                        {"IconName" : "Sell",                           "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -80,15 +37,8 @@
                     "IngameName" : "OBJECT:ColdFusionReactor",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "USAControlRods",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaAdvancedControlRods"
-                        },
-
-                        {
-                            "IconName"     : "Sell",
-                            "HotkeyString" : "CONTROLBAR:Sell"
-                        }
+                        {"IconName" : "USAControlRods", "HotkeyString" : "CONTROLBAR:UpgradeAmericaAdvancedControlRods"},
+                        {"IconName" : "Sell",           "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -97,40 +47,13 @@
                     "IngameName" : "OBJECT:Barracks",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "USARanger",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryRanger"
-                        },
-
-                        {
-                            "IconName"     : "USAMissileDefender",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryMissileDefender"
-                        },
-
-                        {
-                            "IconName"     : "USABurton",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryColonelBurton"
-                        },
-
-                        {
-                            "IconName"     : "USAPathfinder",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryPathfinder"
-                        },
-
-                        {
-                            "IconName"     : "USAFlashbangs",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaFlashBangGrenade"
-                        },
-
-                        {
-                            "IconName"     : "CaptureBuilding",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaRangerCaptureBuilding"
-                        },
-
-                        {
-                            "IconName"     : "Sell",
-                            "HotkeyString" : "CONTROLBAR:Sell"
-                        }
+                        {"IconName" : "USARanger",          "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryRanger"},
+                        {"IconName" : "USAMissileDefender", "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryMissileDefender"},
+                        {"IconName" : "USABurton",          "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryColonelBurton"},
+                        {"IconName" : "USAPathfinder",      "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryPathfinder"},
+                        {"IconName" : "USAFlashbangs",      "HotkeyString" : "CONTROLBAR:UpgradeAmericaFlashBangGrenade"},
+                        {"IconName" : "CaptureBuilding",    "HotkeyString" : "CONTROLBAR:UpgradeAmericaRangerCaptureBuilding"},
+                        {"IconName" : "Sell",               "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -139,15 +62,8 @@
                     "IngameName" : "OBJECT:SupplyCenter",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "USAChinook",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleChinook"
-                        },
-
-                        {
-                            "IconName"     : "Sell",
-                            "HotkeyString" : "CONTROLBAR:Sell"
-                        }
+                        {"IconName" : "USAChinook", "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleChinook"},
+                        {"IconName" : "Sell",       "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -156,15 +72,8 @@
                     "IngameName" : "OBJECT:PatriotBattery",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "Stop",
-                            "HotkeyString" : "CONTROLBAR:Stop"
-                        },
-                        
-                        {
-                            "IconName"     : "Sell",
-                            "HotkeyString" : "CONTROLBAR:Sell"
-                        }
+                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -173,20 +82,9 @@
                     "IngameName" : "OBJECT:FireBase",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "Evacuate",
-                            "HotkeyString" : "CONTROLBAR:Evacuate"
-                        },
-
-                        {
-                            "IconName"     : "Stop",
-                            "HotkeyString" : "CONTROLBAR:Stop"
-                        },
-
-                        {
-                            "IconName"     : "Sell",
-                            "HotkeyString" : "CONTROLBAR:Sell"
-                        }
+                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Stop",     "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",     "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -195,60 +93,17 @@
                     "IngameName" : "OBJECT:WarFactory",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "USACrusaderTank",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaTankCrusader"
-                        },
-                        
-                        {
-                            "IconName"     : "USAHumvee",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHumvee"
-                        },
-
-                        {
-                            "IconName"     : "USAPaladinTank",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaTankPaladin"
-                        },
-                        
-                        {
-                            "IconName"     : "USAAvenger",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaTankAvenger"
-                        },
-
-                        {
-                            "IconName"     : "USATomahawkLauncher",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleTomahawk"
-                        },
-                        
-                        {
-                            "IconName"     : "USAAmbulance",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleMedic"
-                        },
-
-                        {
-                            "IconName"     : "USASentryDrone",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleSentryDrone"
-                        },
-                        
-                        {
-                            "IconName"     : "USAMicrowave",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaTankMicrowave"
-                        },
-
-                        {
-                            "IconName"     : "USASentryDroneGun",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaSentryDroneGun"
-                        },
-                        
-                        {
-                            "IconName"     : "USATOWMissile",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaTOWMissile"
-                        },
-
-                        {
-                            "IconName"     : "Sell",
-                            "HotkeyString" : "CONTROLBAR:Sell"
-                        }
+                        {"IconName" : "USACrusaderTank",     "HotkeyString" : "CONTROLBAR:ConstructAmericaTankCrusader"},
+                        {"IconName" : "USAHumvee",           "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleHumvee"},
+                        {"IconName" : "USAPaladinTank",      "HotkeyString" : "CONTROLBAR:ConstructAmericaTankPaladin"},
+                        {"IconName" : "USAAvenger",          "HotkeyString" : "CONTROLBAR:ConstructAmericaTankAvenger"},
+                        {"IconName" : "USATomahawkLauncher", "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleTomahawk"},
+                        {"IconName" : "USAAmbulance",        "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleMedic"},
+                        {"IconName" : "USASentryDrone",      "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleSentryDrone"},
+                        {"IconName" : "USAMicrowave",        "HotkeyString" : "CONTROLBAR:ConstructAmericaTankMicrowave"},
+                        {"IconName" : "USASentryDroneGun",   "HotkeyString" : "CONTROLBAR:UpgradeAmericaSentryDroneGun"},
+                        {"IconName" : "USATOWMissile",       "HotkeyString" : "CONTROLBAR:UpgradeAmericaTOWMissile"},
+                        {"IconName" : "Sell",                "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -257,50 +112,15 @@
                     "IngameName" : "OBJECT:Airfield",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "USARaptor",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaJetRaptor"
-                        },
-                        
-                        {
-                            "IconName"     : "USAAurora",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaJetAurora"
-                        },
-
-                        {
-                            "IconName"     : "USAComanche",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleComanche"
-                        },
-                        
-                        {
-                            "IconName"     : "USAStealthFighter",
-                            "HotkeyString" : "CONTROLBAR:ConstructAmericaJetStealthFighter"
-                        },
-
-                        {
-                            "IconName"     : "USARocketPods",
-                            "HotkeyString" : "CONTROLBAR:UpgradeComancheRocketPods"
-                        },
-                        
-                        {
-                            "IconName"     : "USACountermeasures",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaCountermeasures"
-                        },
-
-                        {
-                            "IconName"     : "USALaserGuidedMissiles",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaLaserMissiles"
-                        },
-                        
-                        {
-                            "IconName"     : "USABunkerBusters",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaBunkerBusters"
-                        },
-
-                        {
-                            "IconName"     : "Sell",
-                            "HotkeyString" : "CONTROLBAR:Sell"
-                        }
+                        {"IconName" : "USARaptor",              "HotkeyString" : "CONTROLBAR:ConstructAmericaJetRaptor"},
+                        {"IconName" : "USAAurora",              "HotkeyString" : "CONTROLBAR:ConstructAmericaJetAurora"},
+                        {"IconName" : "USAComanche",            "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleComanche"},
+                        {"IconName" : "USAStealthFighter",      "HotkeyString" : "CONTROLBAR:ConstructAmericaJetStealthFighter"},
+                        {"IconName" : "USARocketPods",          "HotkeyString" : "CONTROLBAR:UpgradeComancheRocketPods"},
+                        {"IconName" : "USACountermeasures",     "HotkeyString" : "CONTROLBAR:UpgradeAmericaCountermeasures"},
+                        {"IconName" : "USALaserGuidedMissiles", "HotkeyString" : "CONTROLBAR:UpgradeAmericaLaserMissiles"},
+                        {"IconName" : "USABunkerBusters",       "HotkeyString" : "CONTROLBAR:UpgradeAmericaBunkerBusters"},
+                        {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -309,65 +129,18 @@
                     "IngameName" : "OBJECT:StrategyCenter",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "USABombardment",
-                            "HotkeyString" : "CONTROLBAR:InitiateBattlePlanBombardment"
-                        },
-                        
-                        {
-                            "IconName"     : "USAHoldTheLine",
-                            "HotkeyString" : "CONTROLBAR:InitiateBattlePlanHoldTheLine"
-                        },
-
-                        {
-                            "IconName"     : "USASearchAndDestroy",
-                            "HotkeyString" : "CONTROLBAR:InitiateBattlePlanSearchAndDestroy"
-                        },
-                        
-                        {
-                            "IconName"     : "USAMOAB",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaMOAB"
-                        },
-
-                        {
-                            "IconName"     : "USAAdvancedTraining",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaAdvancedTraining"
-                        },
-                        
-                        {
-                            "IconName"     : "USASupplyLines",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaSupplyLines"
-                        },
-
-                        {
-                            "IconName"     : "USAIntelligence",
-                            "HotkeyString" : "CONTROLBAR:CIAIntelligence"
-                        },
-                        
-                        {
-                            "IconName"     : "USAChemicalSuits",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaChemicalSuits"
-                        },
-
-                        {
-                            "IconName"     : "USACompositeArmour",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaCompositeArmor"
-                        },
-                        
-                        {
-                            "IconName"     : "USADroneArmor",
-                            "HotkeyString" : "CONTROLBAR:UpgradeAmericaDroneArmor"
-                        },
-
-                        {
-                            "IconName"     : "Stop",
-                            "HotkeyString" : "CONTROLBAR:Stop"
-                        },
-
-                        {
-                            "IconName"     : "Sell",
-                            "HotkeyString" : "CONTROLBAR:Sell"
-                        }
+                        {"IconName" : "USABombardment",      "HotkeyString" : "CONTROLBAR:InitiateBattlePlanBombardment"},
+                        {"IconName" : "USAHoldTheLine",      "HotkeyString" : "CONTROLBAR:InitiateBattlePlanHoldTheLine"},
+                        {"IconName" : "USASearchAndDestroy", "HotkeyString" : "CONTROLBAR:InitiateBattlePlanSearchAndDestroy"},
+                        {"IconName" : "USAMOAB",             "HotkeyString" : "CONTROLBAR:UpgradeAmericaMOAB"},
+                        {"IconName" : "USAAdvancedTraining", "HotkeyString" : "CONTROLBAR:UpgradeAmericaAdvancedTraining"},
+                        {"IconName" : "USASupplyLines",      "HotkeyString" : "CONTROLBAR:UpgradeAmericaSupplyLines"},
+                        {"IconName" : "USAIntelligence",     "HotkeyString" : "CONTROLBAR:CIAIntelligence"},
+                        {"IconName" : "USAChemicalSuits",    "HotkeyString" : "CONTROLBAR:UpgradeAmericaChemicalSuits"},
+                        {"IconName" : "USACompositeArmour",  "HotkeyString" : "CONTROLBAR:UpgradeAmericaCompositeArmor"},
+                        {"IconName" : "USADroneArmor",       "HotkeyString" : "CONTROLBAR:UpgradeAmericaDroneArmor"},
+                        {"IconName" : "Stop",                "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",                "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -376,10 +149,7 @@
                     "IngameName" : "OBJECT:AmericaSupplyDropZone",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "Sell",
-                            "HotkeyString" : "CONTROLBAR:Sell"
-                        }
+                        {"IconName"     : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -388,15 +158,8 @@
                     "IngameName" : "OBJECT:ParticleCannon",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "USAParticleCannonFire",
-                            "HotkeyString" : "CONTROLBAR:FireParticleUplinkCannon"
-                        },
-
-                        {
-                            "IconName"     : "Sell",
-                            "HotkeyString" : "CONTROLBAR:Sell"
-                        }
+                        {"IconName" : "USAParticleCannonFire", "HotkeyString" : "CONTROLBAR:FireParticleUplinkCannon"},
+                        {"IconName" : "Sell",                  "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ],
@@ -407,35 +170,12 @@
                     "IngameName" : "OBJECT:Ranger",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "CaptureBuilding",
-                            "HotkeyString" : "CONTROLBAR:CaptureBuilding"
-                        },
-
-                        {
-                            "IconName"     : "USARangerMachineGun",
-                            "HotkeyString" : "CONTROLBAR:RangerMachineGun"
-                        },
-
-                        {
-                            "IconName"     : "USAFlashbangs",
-                            "HotkeyString" : "CONTROLBAR:FlashBangGrenadeMode"
-                        },
-
-                        {
-                            "IconName"     : "AttackMove",
-                            "HotkeyString" : "CONTROLBAR:AttackMove"
-                        },
-
-                        {
-                            "IconName"     : "Guard",
-                            "HotkeyString" : "CONTROLBAR:Guard"
-                        },
-
-                        {
-                            "IconName"     : "Stop",
-                            "HotkeyString" : "CONTROLBAR:Stop"
-                        }
+                        {    "IconName"     : "CaptureBuilding",    "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
+                        {    "IconName"     : "USARangerMachineGun",    "HotkeyString" : "CONTROLBAR:RangerMachineGun"},
+                        {    "IconName"     : "USAFlashbangs",    "HotkeyString" : "CONTROLBAR:FlashBangGrenadeMode"},
+                        {    "IconName"     : "AttackMove",    "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {    "IconName"     : "Guard",    "HotkeyString" : "CONTROLBAR:Guard"},
+                        {    "IconName"     : "Stop",    "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -8075,12 +7815,12 @@
                         {
                             "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
-                        }
+                        },
                         
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
-                        },
+                        }
                     ]
                 },
 
@@ -8097,12 +7837,12 @@
                         {
                             "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
-                        }
+                        },
                         
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
-                        },
+                        }
                     ]
                 },
 
@@ -8146,12 +7886,12 @@
                         {
                             "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
-                        }
+                        },
                         
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
-                        },
+                        }
                     ]
                 },
 
@@ -9062,12 +8802,12 @@
                         {
                             "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
-                        }
+                        },
                         
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
-                        },
+                        }
                     ]
                 },
 
@@ -9084,12 +8824,12 @@
                         {
                             "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
-                        }
+                        },
                         
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
-                        },
+                        }
                     ]
                 },
 
@@ -9133,12 +8873,12 @@
                         {
                             "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
-                        }
+                        },
                         
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
-                        },
+                        }
                     ]
                 },
 
@@ -10025,12 +9765,12 @@
                         {
                             "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
-                        }
+                        },
                         
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
-                        },
+                        }
                     ]
                 },
 
@@ -10047,12 +9787,12 @@
                         {
                             "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
-                        }
+                        },
                         
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
-                        },
+                        }
                     ]
                 },
 
@@ -10096,12 +9836,12 @@
                         {
                             "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
-                        }
+                        },
                         
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
-                        },
+                        }
                     ]
                 },
 
@@ -10956,12 +10696,12 @@
                         {
                             "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
-                        }
+                        },
                         
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
-                        },
+                        }
                     ]
                 },
 
@@ -10983,12 +10723,12 @@
                         {
                             "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
-                        }
+                        },
                         
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
-                        },
+                        }
                     ]
                 },
 
@@ -11052,12 +10792,12 @@
                         {
                             "IconName"     : "Guard",
                             "HotkeyString" : "CONTROLBAR:Guard"
-                        }
+                        },
                         
                         {
                             "IconName"     : "Stop",
                             "HotkeyString" : "CONTROLBAR:Stop"
-                        },
+                        }
                     ]
                 },
 
@@ -11088,100 +10828,25 @@
                     "IngameName" : "OBJECT:Worker",
                     "Actions"    : 
                     [
-                        {
-                            "IconName"     : "DMLSuicide",
-                            "HotkeyString" : "CONTROLBAR:SuicideAttack"
-                        },
-
-                        {
-                            "IconName"     : "GLASupplyStash",
-                            "HotkeyString" : "CONTROLBAR:ConstructGLASupplyStash"
-                        },
-
-                        {
-                            "IconName"     : "GLABarracks",
-                            "HotkeyString" : "CONTROLBAR:ConstructGLABarracks"
-                        },
-
-                        {
-                            "IconName"     : "GLAStingerSite",
-                            "HotkeyString" : "CONTROLBAR:ConstructGLAStingerSite"
-                        },
-
-                        {
-                            "IconName"     : "GLATunnelNetwork",
-                            "HotkeyString" : "CONTROLBAR:ConstructGLATunnelNetwork"
-                        },
-
-                        {
-                            "IconName"     : "GLAArmsDealer",
-                            "HotkeyString" : "CONTROLBAR:ConstructGLAArmsDealer"
-                        },
-
-                        {
-                            "IconName"     : "DMLAdvancedDemoTrap",
-                            "HotkeyString" : "CONTROLBAR:Demo_ConstructGLADemoTrap"
-                        },
-
-                        {
-                            "IconName"     : "GLAPalace",
-                            "HotkeyString" : "CONTROLBAR:ConstructGLAPalace"
-                        },
-
-                        {
-                            "IconName"     : "GLABlackMarket",
-                            "HotkeyString" : "CONTROLBAR:ConstructGLABlackMarket"
-                        },
-
-                        {
-                            "IconName"     : "GLAScudStorm",
-                            "HotkeyString" : "CONTROLBAR:ConstructGLAScudStorm"
-                        },
-
-                        {
-                            "IconName"     : "GLACommandCenter",
-                            "HotkeyString" : "CONTROLBAR:ConstructGLACommandCenter"
-                        },
-
-                        {
-                            "IconName"     : "GLAFakeCommandSet",
-                            "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerFakeCommandSet"
-                        },
-
-                        {
-                            "IconName"     : "GLAFakeCommandCenter",
-                            "HotkeyString" : "CONTROLBAR:ConstructFakeGLACommandCenter"
-                        },
-
-                        {
-                            "IconName"     : "GLAFakeSupplyStash",
-                            "HotkeyString" : "CONTROLBAR:ConstructFakeGLASupplyStash"
-                        },
-
-                        {
-                            "IconName"     : "GLAFakeBlackMarket",
-                            "HotkeyString" : "CONTROLBAR:ConstructFakeGLABlackMarket"
-                        },
-
-                        {
-                            "IconName"     : "GLAFakeBarracks",
-                            "HotkeyString" : "CONTROLBAR:ConstructFakeGLABarracks"
-                        },
-
-                        {
-                            "IconName"     : "GLAFakeArmsDealer",
-                            "HotkeyString" : "CONTROLBAR:ConstructFakeGLAArmsDealer"
-                        },
-
-                        {
-                            "IconName"     : "GLAFakeCommandSet",
-                            "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerRealCommandSet"
-                        },
-
-                        {
-                            "IconName"     : "DisarmMinesAtPosition",
-                            "HotkeyString" : "CONTROLBAR:DisarmMinesAtPosition"
-                        }
+                        {"IconName" : "DMLSuicide",            "HotkeyString" : "CONTROLBAR:SuicideAttack"},
+                        {"IconName" : "GLASupplyStash",        "HotkeyString" : "CONTROLBAR:ConstructGLASupplyStash"},
+                        {"IconName" : "GLABarracks",           "HotkeyString" : "CONTROLBAR:ConstructGLABarracks"},
+                        {"IconName" : "GLAStingerSite",        "HotkeyString" : "CONTROLBAR:ConstructGLAStingerSite"},
+                        {"IconName" : "GLATunnelNetwork",      "HotkeyString" : "CONTROLBAR:ConstructGLATunnelNetwork"},
+                        {"IconName" : "GLAArmsDealer",         "HotkeyString" : "CONTROLBAR:ConstructGLAArmsDealer"},
+                        {"IconName" : "DMLAdvancedDemoTrap",   "HotkeyString" : "CONTROLBAR:Demo_ConstructGLADemoTrap"},
+                        {"IconName" : "GLAPalace",             "HotkeyString" : "CONTROLBAR:ConstructGLAPalace"},
+                        {"IconName" : "GLABlackMarket",        "HotkeyString" : "CONTROLBAR:ConstructGLABlackMarket"},
+                        {"IconName" : "GLAScudStorm",          "HotkeyString" : "CONTROLBAR:ConstructGLAScudStorm"},
+                        {"IconName" : "GLACommandCenter",      "HotkeyString" : "CONTROLBAR:ConstructGLACommandCenter"},
+                        {"IconName" : "GLAFakeCommandSet",     "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerFakeCommandSet"},
+                        {"IconName" : "GLAFakeCommandCenter",  "HotkeyString" : "CONTROLBAR:ConstructFakeGLACommandCenter"},
+                        {"IconName" : "GLAFakeSupplyStash",    "HotkeyString" : "CONTROLBAR:ConstructFakeGLASupplyStash"},
+                        {"IconName" : "GLAFakeBlackMarket",    "HotkeyString" : "CONTROLBAR:ConstructFakeGLABlackMarket"},
+                        {"IconName" : "GLAFakeBarracks",       "HotkeyString" : "CONTROLBAR:ConstructFakeGLABarracks"},
+                        {"IconName" : "GLAFakeArmsDealer",     "HotkeyString" : "CONTROLBAR:ConstructFakeGLAArmsDealer"},
+                        {"IconName" : "GLAFakeCommandSet",     "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerRealCommandSet"},
+                        {"IconName" : "DisarmMinesAtPosition", "HotkeyString" : "CONTROLBAR:DisarmMinesAtPosition"}
                     ]
                 }
             ],

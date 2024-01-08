@@ -1,13 +1,13 @@
-#include "stacked_launch_widget.hpp"
-
-#include <mainWidgets/hotkeys_main_window.hpp>
-#include <gui_config.hpp>
-#include "configurationDialogs/creation_dialog.hpp"
-#include "configurationDialogs/load_dialog.hpp"
-
 #include <QApplication>
 #include <QFile>
 #include <QDebug>
+
+#include "../gui_config.hpp"
+#include "stacked_launch_widget.hpp"
+#include "mainWidgets/hotkeys_main_window.hpp"
+#include "configurationDialogs/creation_dialog.hpp"
+#include "configurationDialogs/load_dialog.hpp"
+
 
 StackedLaunchWidget::StackedLaunchWidget(Config::Languages language, QWidget *parent) : QStackedWidget(parent)
 {
