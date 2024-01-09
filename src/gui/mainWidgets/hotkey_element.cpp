@@ -9,10 +9,10 @@ HotkeyElement::HotkeyElement(const QString& actionName,
                              const QString& hotkeyStr,
                              const QString& iconName,
                              QWidget* parent)
-    : QWidget(parent)
+    : QWidget{parent}
     , hotkey{hotkeyStr}
-    , actionNameLabel(actionName)
-    , hotkeyLabel(hotkey)
+    , actionNameLabel{actionName}
+    , hotkeyLabel{hotkey}
     , newHotkeyButton{"+"}
 {
     connect(&newHotkeyButton, &QPushButton::pressed, this, &HotkeyElement::onNewHotkeyPressed);

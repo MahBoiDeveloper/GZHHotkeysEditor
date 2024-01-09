@@ -1,17 +1,28 @@
 #include "entity_action.hpp"
 
-EntityAction::EntityAction(const std::string& name, const std::string& csfString)
+EntityAction::EntityAction(const QString& name, const QString& csfString)
     : name{name}
     , csfString{csfString}
+    , hotkey{/*TODO: read from csf file*/ Qt::Key::Key_0}
 {
 }
 
-const std::string& EntityAction::getName() const
+const QString& EntityAction::getName() const
 {
     return name;
 }
 
-const std::string& EntityAction::getCsfString() const
+const QString& EntityAction::getCsfString() const
 {
     return csfString;
+}
+
+Qt::Key EntityAction::getHotkey() const
+{
+    return hotkey;
+}
+
+void EntityAction::setHotkey(Qt::Key newHotkey)
+{
+    hotkey = newHotkey;
 }

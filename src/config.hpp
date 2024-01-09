@@ -1,15 +1,32 @@
 #pragma once
-#include <map>
+
+#include <QMap>
 
 class Config
 {
 public:
-    inline static const std::string resourcesFolder  = "Resources";
-    inline static const std::string translationsPath = resourcesFolder + "/Translations";
-    inline static const std::string iconsPath        = resourcesFolder + "/Icons";
-    inline static const std::string defaultIconFile  = iconsPath + "/NoImageSmall.webp";
-    inline static const std::string techTreeFile     = resourcesFolder + "/TechTree.json";
+    inline static const QString resourcesFolder  = "Resources";
+    inline static const QString translationsPath = resourcesFolder + "/Translations";
+    inline static const QString iconsPath        = resourcesFolder + "/Icons";
+    inline static const QString defaultIconFile  = iconsPath + "/NoImageSmall.webp";
+    inline static const QString techTreeFile     = resourcesFolder + "/TechTree.json";
     inline static const double recomendedStartWidgetSizeRatio = 3./7.;
+
+    enum class Entities
+    {
+        Buildings,
+        Infantry,
+        Vehicles,
+        Aircraft
+    };
+
+    inline static const QMap<Entities, QString> ENTITIES_STRINGS =
+    {
+        {Entities::Buildings, "Buildings"},
+        {Entities::Infantry, "Infantry"},
+        {Entities::Vehicles, "Vehicles"},
+        {Entities::Aircraft, "Aircraft"}
+    };
 
     enum class Languages
     {
@@ -18,7 +35,7 @@ public:
         Count
     };
 
-    inline static const std::map<Languages, std::pair<std::string, std::string>> LANGUAGES_STRINGS =
+    inline static const QMap<Languages, QPair<QString, QString>> LANGUAGES_STRINGS =
     {
         {Languages::English, {"en", "English"}},
         {Languages::Russian, {"ru", "Русский"}}
@@ -27,7 +44,8 @@ public:
 public:
     Config() = delete;
 
-    static const std::string GetLocaleFromLangEnum(Languages language);
+    static const QString GetLocaleFromLangEnum(Languages language);
+    static Languages GetLangEnumByLocale(const QString& locale);
     static Languages GetLangEnumByLocale(const std::string& locale);
-    static const std::string GetStringFromLangEnum(Languages language);
+    static const QString GetStringFromLangEnum(Languages language);
 };

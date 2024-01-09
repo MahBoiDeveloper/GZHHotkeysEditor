@@ -1,26 +1,19 @@
 #pragma once
 
-#include <entity.hpp>
+#include <faction.hpp>
 
 #include <QJsonArray>
 
+#include <config.hpp>
+
 class TechTreeJsonParser
 {
-
-public:// Types
-    struct FactionInfo
-    {
-        std::string ShortName;
-        std::string DisplayName;
-        std::string DisplayNameDesctiontion;
-    };
-
 public: // Methods
-    static std::vector<FactionInfo> GetFactionsInfo();
-    static std::vector<Entity> getFactionBuildings(const std::string& factionShortName);
+    static QVector<Faction> GetFactions();
+    static QVector<Entity> getFactionEntities(Config::Entities entity, const QString& factionShortName);
 
 private:
-    static std::vector<Entity> _entitiesFromJsonArray(const QJsonArray& array);
-    static std::vector<EntityAction> _actionsFromJsonArray(const QJsonArray& array);
-    static std::vector<EntityAction> _getEntityActions(const std::string& entityName);
+    static QVector<Entity> _entitiesFromJsonArray(const QJsonArray& array);
+    static QVector<EntityAction> _actionsFromJsonArray(const QJsonArray& array);
+    static QVector<EntityAction> _getEntityActions(const QString& entityName);
 };

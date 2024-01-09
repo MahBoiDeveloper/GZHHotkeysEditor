@@ -1,28 +1,31 @@
 #include <algorithm>
 #include "config.hpp"
 
-const std::string Config::GetLocaleFromLangEnum(Languages language)
+const QString Config::GetLocaleFromLangEnum(Languages language)
 {
-    return LANGUAGES_STRINGS.find(language)->second.first;
+    return LANGUAGES_STRINGS.value(language).first;
 }
 
-Config::Languages Config::GetLangEnumByLocale(const std::string& locale)
+Config::Languages Config::GetLangEnumByLocale(const QString& locale)
 {
-    std::string lowerLocale = locale;
-    // Make lowercase locale
-    std::transform(lowerLocale.begin(), lowerLocale.end(), lowerLocale.begin(), ::tolower);
+    QString lowerLocale = locale.toLower();
 
     for(auto it = LANGUAGES_STRINGS.cbegin(); it != LANGUAGES_STRINGS.cend(); ++it)
     {
-        if (GetLocaleFromLangEnum(it->first) == lowerLocale)
+        if (GetLocaleFromLangEnum(it.key()) == lowerLocale)
         {
-            return it->first;
+            return it.key();
         }
     }
     return Languages::English;
 }
 
-const std::string Config::GetStringFromLangEnum(Languages language)
+Config::Languages Config::GetLangEnumByLocale(const std::string& locale)
 {
-    return LANGUAGES_STRINGS.find(language)->second.second;
+    return GetLangEnumByLocale(QString::fromStdString(locale));
+}
+
+const QString Config::GetStringFromLangEnum(Languages language)
+{
+    return LANGUAGES_STRINGS.value(language).second;
 }

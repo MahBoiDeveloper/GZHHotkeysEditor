@@ -1,8 +1,14 @@
 #pragma once
 
 #include <QButtonGroup>
+#include <QVBoxLayout>
 #include <QListWidget>
 #include <QMainWindow>
+#include <QTreeWidgetItem>
+#include <config.hpp>
+
+#include <QScrollArea>
+#include <faction.hpp>
 
 class HotkeysMainWindow : public QMainWindow
 {
@@ -11,19 +17,24 @@ class HotkeysMainWindow : public QMainWindow
 public:
     HotkeysMainWindow(const QVariant& configuration, QWidget* parent = nullptr);
 
-private:
-    void _configureMenu();
-    QLayout* _createFactionsButtonsLayout() const;
-    QListWidget* _createBuildingsList(const QString& factionName) const;
-    QLayout* _createHotkeysLayout() const;
-    QLayout* _createTabContent(const QString& factionName) const;
-
 private slots:
-    void setCurrentTab(int negativeId);
     void onAbout();
 
 private:
-    QButtonGroup* factionsButtonsGroup;
-    QTabWidget* factionsTabs;
-    QDialog* aboutDialog = nullptr;
+    void configureMenu();
+    void setBuildingsList(const QString& factionShortName);
+    void setHotkeysLayout(const QString& factionShortName);
+
+private:
+    QVector<Faction> factions;
+
+    QButtonGroup factionsButtonsGroup;
+
+//    QTreeWidget entitiesTreeWidget;
+    QListWidget entitiesTreeWidget;
+
+    QScrollArea hotkeysArea;
+    std::unique_ptr<QWidget> hotkeysScrollWidgetPtr;
+
+    std::unique_ptr<QDialog> aboutDialogPtr;
 };

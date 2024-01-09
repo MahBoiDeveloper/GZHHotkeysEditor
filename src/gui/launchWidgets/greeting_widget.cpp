@@ -73,7 +73,7 @@ QHBoxLayout *GreetingWidget::createLanguageLayout(Config::Languages language, co
     // add languages labels
     for (int i = 0; i < static_cast<int>(Config::Languages::Count); ++i)
     {
-        langBox->addItem(QString::fromStdString(Config::GetStringFromLangEnum(static_cast<Config::Languages>(i))));
+        langBox->addItem(Config::GetStringFromLangEnum(static_cast<Config::Languages>(i)));
     }
     // set current language
     langBox->setCurrentIndex(static_cast<int>(language));

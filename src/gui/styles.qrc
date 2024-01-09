@@ -3,6 +3,6 @@
         <file>mainStyleSheet.css</file>
     </qresource>
     <qresource prefix="/my/icons">
-        <file>icons/NoImageSmall.webp</file>
+        <file>NoImageSmall.webp</file>
     </qresource>
 </RCC>

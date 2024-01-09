@@ -25,7 +25,7 @@ StackedLaunchWidget::StackedLaunchWidget(Config::Languages language, QWidget *pa
     }
 
 
-    qApp->setWindowIcon(QIcon(QPixmap::fromImage(GuiConfig::decodeWebpIconPath(":/my/icon/NoImageSmall.webp"))));
+    qApp->setWindowIcon(QIcon(QPixmap::fromImage(GuiConfig::decodeWebpIconPath(":/my/icons/NoImageSmall.webp"))));
 
     // MainLaunchWidget settings
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -83,8 +83,8 @@ void StackedLaunchWidget::onLanguageChanged(Config::Languages language)
     if (language != Config::Languages::English)
     {
         translator = new QTranslator;
-        translator->load(QString::fromStdString(Config::GetLocaleFromLangEnum(language)),
-                         QString::fromStdString(Config::translationsPath));
+        translator->load(Config::GetLocaleFromLangEnum(language),
+                         Config::translationsPath);
         QCoreApplication::installTranslator(translator);
     }
 }
@@ -118,7 +118,6 @@ void StackedLaunchWidget::onStartButtonClicked(GreetingWidget::StandartButtons s
 void StackedLaunchWidget::onConfigurationAccepted(const QVariant& configuration)
 {
     clearStack();
-    qDebug() << configuration.toString();
     (new HotkeysMainWindow(configuration))->show();
     close();
 }

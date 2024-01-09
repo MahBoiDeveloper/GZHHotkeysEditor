@@ -3,7 +3,6 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonArray>
-#include <QRegularExpression>
 
 #include "JSONFile.hpp"
 #include "../Exception.hpp"
@@ -12,15 +11,15 @@
 using namespace std;
 
 #pragma region CTORs and DTORs
-    JSONFile::JSONFile(const string& filePath) : FileName{filePath}
+    JSONFile::JSONFile(const QString& filePath) : FileName{filePath}
     {
-        QFile openedFile(FileName.c_str());
+        QFile openedFile(FileName);
         QJsonParseError err;
 
         // Read data from *.json file
         if (openedFile.open(QIODevice::ReadOnly | QIODevice::Text))
         {
-            LOGSTM << "Parsing \"" << filePath << "\"..." << endl;
+            LOGSTM << "Parsing \"" << filePath.toStdString() << "\"..." << endl;
             JsonMainObject = QJsonDocument::fromJson(openedFile.readAll(), &err).object();
             openedFile.close();
             LOGSTM << "Errors while parsing: " << err.errorString().toStdString() << endl;
@@ -29,18 +28,8 @@ using namespace std;
         else
         {
             LOGSTM << "Errors while parsing: " << err.errorString().toStdString();
-            throw Exception(string("Bad file name; unable to open file \"" + FileName + "\""));
+            throw Exception(QString("Bad file name; unable to open file \"" + FileName + "\"").toStdString());
         }
-    }
-
-    JSONFile::JSONFile(const char* filePath)
-    {
-        JSONFile(string(filePath));
-    }
-
-    JSONFile::JSONFile(const QString& filePath)
-    {
-        JSONFile(filePath.toStdString());
     }
 #pragma endregion
 
@@ -52,7 +41,7 @@ using namespace std;
     }
 
     /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
-    QJsonValue JSONFile::Query(const string& strQuery) const
+    QJsonValue JSONFile::Query(const QString& strQuery) const
     {
         return Query(JsonMainObject, strQuery);
     }
@@ -60,23 +49,22 @@ using namespace std;
     /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
     QJsonValue JSONFile::Query(const char* strQuery) const
     {
-        return Query(JsonMainObject, string(strQuery));
+        return Query(JsonMainObject, QString{strQuery});
     }
 
     /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
-    QJsonValue JSONFile::Query(const QString& strQuery) const
+    QJsonValue JSONFile::Query(const std::string& strQuery) const
     {
-        return Query(JsonMainObject, strQuery.toStdString());
+        return Query(JsonMainObject, QString::fromStdString(strQuery));
     }
 
     /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
-    QJsonValue JSONFile::Query(const QJsonObject& jsonObject, const std::string& strQuery)
+    QJsonValue JSONFile::Query(const QJsonObject& jsonObject, const QString& strQuery)
     {
         // Find dollar sign in place of the first character
         if (strQuery.at(0) != '$') throw Exception(string("JSON path doesn't begin with \'$\'"));
 
-        QString     qstrQuery = QString::fromStdString(strQuery);
-        QStringList splitList = qstrQuery.split('.');
+        QStringList splitList = strQuery.split('.');
         splitList.removeFirst();
         LOGSTM << "Splited and updated query has length : " << splitList.length() << endl;
 
@@ -131,11 +119,6 @@ using namespace std;
 
     QJsonValue JSONFile::Query(const QJsonObject& jsonObject, const char* strQuery)
     {
-        return Query(jsonObject, string(strQuery));
-    }
-
-    QJsonValue JSONFile::Query(const QJsonObject& jsonObject, const QString& strQuery)
-    {
-        return Query(jsonObject, strQuery.toStdString());
+        return Query(jsonObject, strQuery);
     }
 #pragma endregion

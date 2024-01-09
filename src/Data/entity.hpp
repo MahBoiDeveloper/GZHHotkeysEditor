@@ -2,21 +2,21 @@
 
 #include <entity_action.hpp>
 
-#include <vector>
+#include <QVector>
 
 class Entity
 {
 public:
-    Entity(const std::string& name, const std::string& ingameName, const std::vector<EntityAction>& actions);
+    Entity(const QString& name, const QString& ingameName, const QVector<EntityAction>& actions);
 
-    const std::string& getName() const;
+    const QString& getName() const;
 
-    const std::string& getIngameName() const;
+    const QString& getIngameName() const;
 
-    const std::vector<EntityAction>& getActions() const;
+    const QVector<EntityAction>& getActions() const;
 
 private:
-    std::string name;
-    std::string ingameName;
-    std::vector<EntityAction> actions;
+    QString name;
+    QString ingameName;
+    QVector<EntityAction> actions;
 };

@@ -1,25 +1,26 @@
 #include "gui_config.hpp"
-#include <config.hpp>
 
 #include <QFile>
 #include <QDir>
 #include <QDebug>
 
+#include <config.hpp>
 #include <webp/decode.h>
+#include "../Logger.hpp"
 
 QImage GuiConfig::decodeWebpIconPath(const QString& iconPath)
 {
     QFile iconFile(iconPath);
 
-    if(!iconFile.open(QIODevice::ReadOnly))
+    if(iconPath.isEmpty() || !iconFile.open(QIODevice::ReadOnly))
     {
-        QString defaultIconFile = QString::fromStdString(Config::defaultIconFile);
+        QString defaultIconFile = Config::defaultIconFile;
 
-        qDebug() << "No icon file.";
+        LOGSTM << "No icon file " << iconFile.fileName().toStdString() << " was found";
         iconFile.setFileName(defaultIconFile);
         if (!iconFile.open(QIODevice::ReadOnly))
         {
-            qDebug() << "No default icon file." << defaultIconFile;
+            LOGSTM << "No default icon file " << defaultIconFile.toStdString() << " was found";
             return QImage{};
         }
     }
@@ -28,16 +29,16 @@ QImage GuiConfig::decodeWebpIconPath(const QString& iconPath)
     iconFile.close();
 
     int width, height;
-    uint8_t* decodedImage = WebPDecodeRGBA((const uint8_t*)imageData.constData(),
+    uint8_t* decodedImage = WebPDecodeRGBA(reinterpret_cast<const uint8_t*>(imageData.constData()), // amogus
                                            imageData.size(),
                                            &width,
                                            &height);
-    return QImage(decodedImage, width, height, QImage::Format_RGBA8888);
+    return QImage{decodedImage, width, height, QImage::Format_RGBA8888};
 }
 
 QImage GuiConfig::decodeWebpIcon(const QString& iconName)
 {
-    QStringList allMatchIconFiles = findAllMatchingFiles(QString::fromStdString(Config::iconsPath), iconName);
+    QStringList allMatchIconFiles = findAllMatchingFiles(Config::iconsPath, iconName);
     QString iconPath;
     if (!allMatchIconFiles.isEmpty())
     {
@@ -56,7 +57,7 @@ QStringList GuiConfig::findAllMatchingFiles(const QString& pathToDir, const QStr
                                                                QDir::Filter::Dirs |
                                                                QDir::Filter::NoDotAndDotDot);
 
-    // if dir -> recursive find, file -> remember path
+    // if dir -> recursive find, if file -> remember path
     for (const auto & fileInfo : fileInfoList)
     {
         if (fileInfo.isDir())

@@ -1,23 +1,23 @@
 #include "entity.hpp"
 
-Entity::Entity(const std::string& name, const std::string& ingameName, const std::vector<EntityAction>& actions)
+Entity::Entity(const QString& name, const QString& ingameName, const QVector<EntityAction>& actions)
     : name{name}
     , ingameName{ingameName}
     , actions{actions}
 {
 }
 
-const std::string& Entity::getName() const
+const QString& Entity::getName() const
 {
     return name;
 }
 
-const std::string& Entity::getIngameName() const
+const QString& Entity::getIngameName() const
 {
     return ingameName;
 }
 
-const std::vector<EntityAction>& Entity::getActions() const
+const QVector<EntityAction>& Entity::getActions() const
 {
     return actions;
 }

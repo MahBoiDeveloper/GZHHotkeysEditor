@@ -3,7 +3,6 @@
 #include <string>
 #include <QString>
 #include <QJsonObject>
-#include <QJsonArray>
 
 class JSONFile final
 {
@@ -17,10 +16,9 @@ public: // Methods
     QJsonValue        Query(const std::string& strQuery) const;
     QJsonValue        Query(const QString& strQuery) const;
     static QJsonValue Query(const QJsonObject&, const char* strQuery);
-    static QJsonValue Query(const QJsonObject&, const std::string& strQuery);
     static QJsonValue Query(const QJsonObject&, const QString& strQuery);
 
 private:
-    std::string FileName;
+    QString FileName;
     QJsonObject JsonMainObject;
 };

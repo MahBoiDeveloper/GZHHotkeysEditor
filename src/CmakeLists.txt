@@ -57,6 +57,7 @@ set(_HEADER_FILES
     "parsers/TechTreeJsonParser.hpp"
     "data/entity.hpp"
     "data/entity_action.hpp"
+    "data/faction.hpp"
 )
 
 # declare headers folder for gui
