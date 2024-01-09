@@ -3077,7 +3077,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAWorker", "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",      "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3086,16 +3086,16 @@
                     "IngameName" : "OBJECT:Barracks",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLARebel", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRebel"},
-                        {"IconName" : "GLATerrorist", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryTerrorist"},
-                        {"IconName" : "GLAHijacker", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryHijacker"},
-                        {"IconName" : "GLASaboteur", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantrySaboteur"},
-                        {"IconName" : "GLARPGTrooper", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRPGTrooper"},
-                        {"IconName" : "GLAAngryMob", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryAngryMob"},
-                        {"IconName" : "GLAJarmenKell", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryJarmenKell"},
-                        {"IconName" : "GLABoobyTraps", "HotkeyString" : "CONTROLBAR:UpgradeGLABoobyTrap"},
+                        {"IconName" : "GLARebel",        "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRebel"},
+                        {"IconName" : "GLATerrorist",    "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryTerrorist"},
+                        {"IconName" : "GLAHijacker",     "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryHijacker"},
+                        {"IconName" : "GLASaboteur",     "HotkeyString" : "CONTROLBAR:ConstructGLAInfantrySaboteur"},
+                        {"IconName" : "GLARPGTrooper",   "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRPGTrooper"},
+                        {"IconName" : "GLAAngryMob",     "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryAngryMob"},
+                        {"IconName" : "GLAJarmenKell",   "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryJarmenKell"},
+                        {"IconName" : "GLABoobyTraps",   "HotkeyString" : "CONTROLBAR:UpgradeGLABoobyTrap"},
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:UpgradeGLARebelCaptureBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3105,8 +3105,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLACamoNetting", "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Stop",           "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",           "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3116,8 +3116,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLACamoNetting", "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Evacuate",       "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Sell",           "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3126,19 +3126,19 @@
                     "IngameName" : "OBJECT:ArmsDealer",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLAScorpionTank", "HotkeyString" : "CONTROLBAR:ConstructGLATankScorpion"},
-                        {"IconName" : "GLARadarVan", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleRadarVan"},
-                        {"IconName" : "GLAToxinTractor", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleToxinTruck"},
-                        {"IconName" : "GLAMarauderTank", "HotkeyString" : "CONTROLBAR:ConstructGLATankMarauder"},
-                        {"IconName" : "GLAScudLauncher", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleScudLauncher"},
-                        {"IconName" : "GLACombatBike", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleCombatBike"},
-                        {"IconName" : "GLATechnical", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleTechnical"},
-                        {"IconName" : "GLAQuadCannon", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleQuadCannon"},
-                        {"IconName" : "GLARocketBuggy", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleRocketBuggy"},
-                        {"IconName" : "GLABombTruck", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleBombTruck"},
-                        {"IconName" : "GLABattleBus", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleBattleBus"},
+                        {"IconName" : "GLAScorpionTank",   "HotkeyString" : "CONTROLBAR:ConstructGLATankScorpion"},
+                        {"IconName" : "GLARadarVan",       "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleRadarVan"},
+                        {"IconName" : "GLAToxinTractor",   "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleToxinTruck"},
+                        {"IconName" : "GLAMarauderTank",   "HotkeyString" : "CONTROLBAR:ConstructGLATankMarauder"},
+                        {"IconName" : "GLAScudLauncher",   "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleScudLauncher"},
+                        {"IconName" : "GLACombatBike",     "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleCombatBike"},
+                        {"IconName" : "GLATechnical",      "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleTechnical"},
+                        {"IconName" : "GLAQuadCannon",     "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleQuadCannon"},
+                        {"IconName" : "GLARocketBuggy",    "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleRocketBuggy"},
+                        {"IconName" : "GLABombTruck",      "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleBombTruck"},
+                        {"IconName" : "GLABattleBus",      "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleBattleBus"},
                         {"IconName" : "GLAScorpionRocket", "HotkeyString" : "CONTROLBAR:UpgradeGLAScorpionRocket"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",              "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3149,8 +3149,8 @@
                     [
                         {"IconName" : "GLAProximityFuse", "HotkeyString" : "CONTROLBAR:ProximityFuse"},
                         {"IconName" : "GLAManualControl", "HotkeyString" : "CONTROLBAR:ManualControl"},
-                        {"IconName" : "GLADetonate", "HotkeyString" : "CONTROLBAR:Detonate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLADetonate",      "HotkeyString" : "CONTROLBAR:Detonate"},
+                        {"IconName" : "Sell",             "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3160,12 +3160,12 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAFortifiedStructure", "HotkeyString" : "CONTROLBAR:UpgradeGLAFortifiedStructure"},
-                        {"IconName" : "GLACamouflage", "HotkeyString" : "CONTROLBAR:UpgradeGLACamouflage"},
-                        {"IconName" : "GLAAnthraxBeta", "HotkeyString" : "CONTROLBAR:UpgradeGLAAnthraxBeta"},
-                        {"IconName" : "GLAAnthraxShells", "HotkeyString" : "CONTROLBAR:UpgradeGLAToxinShells"},
-                        {"IconName" : "GLAArmTheMob", "HotkeyString" : "CONTROLBAR:UpgradeGLAArmTheMob"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACamouflage",         "HotkeyString" : "CONTROLBAR:UpgradeGLACamouflage"},
+                        {"IconName" : "GLAAnthraxBeta",        "HotkeyString" : "CONTROLBAR:UpgradeGLAAnthraxBeta"},
+                        {"IconName" : "GLAAnthraxShells",      "HotkeyString" : "CONTROLBAR:UpgradeGLAToxinShells"},
+                        {"IconName" : "GLAArmTheMob",          "HotkeyString" : "CONTROLBAR:UpgradeGLAArmTheMob"},
+                        {"IconName" : "Evacuate",              "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Sell",                  "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3174,13 +3174,13 @@
                     "IngameName" : "OBJECT:BlackMarket",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLAAPBullets", "HotkeyString" : "CONTROLBAR:UpgradeGLAAPBullets"},
-                        {"IconName" : "GLAJunkRepair", "HotkeyString" : "CONTROLBAR:UpgradeGLAJunkRepair"},
-                        {"IconName" : "GLARadarVanScan", "HotkeyString" : "CONTROLBAR:UpgradeGLARadarVanScan"},
-                        {"IconName" : "GLAAPRockets", "HotkeyString" : "CONTROLBAR:UpgradeGLAAPRockets"},
+                        {"IconName" : "GLAAPBullets",       "HotkeyString" : "CONTROLBAR:UpgradeGLAAPBullets"},
+                        {"IconName" : "GLAJunkRepair",      "HotkeyString" : "CONTROLBAR:UpgradeGLAJunkRepair"},
+                        {"IconName" : "GLARadarVanScan",    "HotkeyString" : "CONTROLBAR:UpgradeGLARadarVanScan"},
+                        {"IconName" : "GLAAPRockets",       "HotkeyString" : "CONTROLBAR:UpgradeGLAAPRockets"},
                         {"IconName" : "GLARocketBuggyAmmo", "HotkeyString" : "CONTROLBAR:UpgradeGLABuggyAmmo"},
-                        {"IconName" : "GLAWorkerShoes", "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerShoes"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLAWorkerShoes",     "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerShoes"},
+                        {"IconName" : "Sell",               "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3190,7 +3190,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAScudStormLaunch", "HotkeyString" : "CONTROLBAR:ScudStorm"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",               "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3200,8 +3200,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLACommandCenter"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3211,8 +3211,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLABarracks"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3222,8 +3222,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLASupplyStash"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3233,8 +3233,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLAArmsDealer"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3244,8 +3244,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLABlackMarket"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3254,13 +3254,13 @@
                     "IngameName" : "OBJECT:CommandCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLAWorker", "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
+                        {"IconName" : "GLAWorker",       "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
                         {"IconName" : "GLAGPSScrambler", "HotkeyString" : "CONTROLBAR:GPSScrambler"},
-                        {"IconName" : "GLARebelAmbush", "HotkeyString" : "CONTROLBAR:Ambush"},
-                        {"IconName" : "GLAAnthraxBomb", "HotkeyString" : "CONTROLBAR:AnthraxBomb"},
-                        {"IconName" : "GLASneakAttack", "HotkeyString" : "CONTROLBAR:SneakAttack"},
+                        {"IconName" : "GLARebelAmbush",  "HotkeyString" : "CONTROLBAR:Ambush"},
+                        {"IconName" : "GLAAnthraxBomb",  "HotkeyString" : "CONTROLBAR:AnthraxBomb"},
+                        {"IconName" : "GLASneakAttack",  "HotkeyString" : "CONTROLBAR:SneakAttack"},
                         {"IconName" : "EmergencyRepair", "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ],
@@ -3271,11 +3271,11 @@
                     "IngameName" : "OBJECT:Rebel",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLABoobyTraps", "HotkeyString" : "CONTROLBAR:BoobyTrapAttack"},
+                        {"IconName" : "GLABoobyTraps",   "HotkeyString" : "CONTROLBAR:BoobyTrapAttack"},
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",      "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",           "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3285,8 +3285,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3296,8 +3296,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:CarBomb"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3307,9 +3307,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAPilotKill", "HotkeyString" : "CONTROLBAR:SniperAttack"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",   "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",        "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",         "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3319,7 +3319,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLASaboteur", "HotkeyString" : "CONTROLBAR:SabotageBuilding"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Stop",        "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3329,8 +3329,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3340,8 +3340,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAHijack", "HotkeyString" : "CONTROLBAR:Hijack"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",     "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",      "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3379,8 +3379,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3389,10 +3389,10 @@
                     "IngameName" : "OBJECT:Technical",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3402,8 +3402,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3413,8 +3413,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3424,8 +3424,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3434,10 +3434,10 @@
                     "IngameName" : "OBJECT:CombatBike",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3446,10 +3446,10 @@
                     "IngameName" : "OBJECT:BattleBus",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3459,9 +3459,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAContaminate", "HotkeyString" : "CONTROLBAR:Contaminate"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",     "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",          "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",           "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3471,10 +3471,10 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAExplosiveWarhead", "HotkeyString" : "CONTROLBAR:ExplosiveWarhead"},
-                        {"IconName" : "GLAAnthraxWarhead", "HotkeyString" : "CONTROLBAR:AnthraxWarhead"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "GLAAnthraxWarhead",   "HotkeyString" : "CONTROLBAR:AnthraxWarhead"},
+                        {"IconName" : "AttackMove",          "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",               "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",                "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3483,13 +3483,13 @@
                     "IngameName" : "OBJECT:BombTruck",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLADisguise", "HotkeyString" : "CONTROLBAR:DisguiseAsVehicle"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateBombTruck"},
-                        {"IconName" : "GLABioBomb", "HotkeyString" : "CONTROLBAR:UpgradeGLABombTruckBioBomb"},
+                        {"IconName" : "GLADisguise",          "HotkeyString" : "CONTROLBAR:DisguiseAsVehicle"},
+                        {"IconName" : "GLACarBomb",           "HotkeyString" : "CONTROLBAR:DetonateBombTruck"},
+                        {"IconName" : "GLABioBomb",           "HotkeyString" : "CONTROLBAR:UpgradeGLABombTruckBioBomb"},
                         {"IconName" : "GLAHighExplosiveBomb", "HotkeyString" : "CONTROLBAR:UpgradeGLABombTruckHighExplosiveBomb"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",           "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",                "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",                 "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3499,7 +3499,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLARadarVanScan", "HotkeyString" : "CONTROLBAR:RadarVanScan"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 }
             ],
@@ -3519,7 +3519,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAWorker", "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",      "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3528,13 +3528,13 @@
                     "IngameName" : "OBJECT:Barracks",
                     "Actions"    : 
                     [
-                        {"IconName" : "TOXRebel", "HotkeyString" : "CONTROLBAR:Chem_ConstructGLAInfantryRebel"},
-                        {"IconName" : "GLATerrorist", "HotkeyString" : "CONTROLBAR:Chem_ConstructGLAInfantryTerrorist"},
-                        {"IconName" : "GLARPGTrooper", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRPGTrooper"},
-                        {"IconName" : "GLAAngryMob", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryAngryMob"},
-                        {"IconName" : "GLAJarmenKell", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryJarmenKell"},
+                        {"IconName" : "TOXRebel",        "HotkeyString" : "CONTROLBAR:Chem_ConstructGLAInfantryRebel"},
+                        {"IconName" : "GLATerrorist",    "HotkeyString" : "CONTROLBAR:Chem_ConstructGLAInfantryTerrorist"},
+                        {"IconName" : "GLARPGTrooper",   "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRPGTrooper"},
+                        {"IconName" : "GLAAngryMob",     "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryAngryMob"},
+                        {"IconName" : "GLAJarmenKell",   "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryJarmenKell"},
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:UpgradeGLARebelCaptureBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3554,7 +3554,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",     "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3586,8 +3586,8 @@
                     [
                         {"IconName" : "GLAProximityFuse", "HotkeyString" : "CONTROLBAR:ProximityFuse"},
                         {"IconName" : "GLAManualControl", "HotkeyString" : "CONTROLBAR:ManualControl"},
-                        {"IconName" : "GLADetonate", "HotkeyString" : "CONTROLBAR:Detonate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLADetonate",      "HotkeyString" : "CONTROLBAR:Detonate"},
+                        {"IconName" : "Sell",             "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3597,10 +3597,10 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAFortifiedStructure", "HotkeyString" : "CONTROLBAR:UpgradeGLAFortifiedStructure"},
-                        {"IconName" : "TOXAnthraxGamma", "HotkeyString" : "CONTROLBAR:UpgradeGLAAnthraxGamma"},
-                        {"IconName" : "GLAArmTheMob", "HotkeyString" : "CONTROLBAR:UpgradeGLAArmTheMob"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "TOXAnthraxGamma",       "HotkeyString" : "CONTROLBAR:UpgradeGLAAnthraxGamma"},
+                        {"IconName" : "GLAArmTheMob",          "HotkeyString" : "CONTROLBAR:UpgradeGLAArmTheMob"},
+                        {"IconName" : "Evacuate",              "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Sell",                  "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3609,13 +3609,13 @@
                     "IngameName" : "OBJECT:BlackMarket",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLAAPBullets", "HotkeyString" : "CONTROLBAR:UpgradeGLAAPBullets"},
-                        {"IconName" : "GLAJunkRepair", "HotkeyString" : "CONTROLBAR:UpgradeGLAJunkRepair"},
-                        {"IconName" : "GLARadarVanScan", "HotkeyString" : "CONTROLBAR:UpgradeGLARadarVanScan"},
-                        {"IconName" : "GLAAPRockets", "HotkeyString" : "CONTROLBAR:UpgradeGLAAPRockets"},
+                        {"IconName" : "GLAAPBullets",       "HotkeyString" : "CONTROLBAR:UpgradeGLAAPBullets"},
+                        {"IconName" : "GLAJunkRepair",      "HotkeyString" : "CONTROLBAR:UpgradeGLAJunkRepair"},
+                        {"IconName" : "GLARadarVanScan",    "HotkeyString" : "CONTROLBAR:UpgradeGLARadarVanScan"},
+                        {"IconName" : "GLAAPRockets",       "HotkeyString" : "CONTROLBAR:UpgradeGLAAPRockets"},
                         {"IconName" : "GLARocketBuggyAmmo", "HotkeyString" : "CONTROLBAR:UpgradeGLABuggyAmmo"},
-                        {"IconName" : "GLAWorkerShoes", "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerShoes"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLAWorkerShoes",     "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerShoes"},
+                        {"IconName" : "Sell",               "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3625,7 +3625,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAScudStormLaunch", "HotkeyString" : "CONTROLBAR:ScudStorm"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",               "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3635,8 +3635,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLACommandCenter"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3646,8 +3646,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLABarracks"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3657,8 +3657,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLASupplyStash"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3668,8 +3668,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLAArmsDealer"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3679,8 +3679,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLABlackMarket"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3689,12 +3689,12 @@
                     "IngameName" : "OBJECT:CommandCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLAWorker", "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
-                        {"IconName" : "GLARebelAmbush", "HotkeyString" : "CONTROLBAR:Ambush"},
-                        {"IconName" : "GLAAnthraxBomb", "HotkeyString" : "CONTROLBAR:AnthraxBomb"},
-                        {"IconName" : "GLASneakAttack", "HotkeyString" : "CONTROLBAR:SneakAttack"},
+                        {"IconName" : "GLAWorker",       "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
+                        {"IconName" : "GLARebelAmbush",  "HotkeyString" : "CONTROLBAR:Ambush"},
+                        {"IconName" : "GLAAnthraxBomb",  "HotkeyString" : "CONTROLBAR:AnthraxBomb"},
+                        {"IconName" : "GLASneakAttack",  "HotkeyString" : "CONTROLBAR:SneakAttack"},
                         {"IconName" : "EmergencyRepair", "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ],
@@ -3706,9 +3706,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",      "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",           "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3718,8 +3718,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3729,8 +3729,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:CarBomb"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3740,9 +3740,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAPilotKill", "HotkeyString" : "CONTROLBAR:SniperAttack"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",   "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",        "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",         "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3752,8 +3752,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3791,8 +3791,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3801,10 +3801,10 @@
                     "IngameName" : "OBJECT:Technical",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3814,8 +3814,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3825,8 +3825,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3836,8 +3836,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3846,10 +3846,10 @@
                     "IngameName" : "OBJECT:CombatBike",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3858,10 +3858,10 @@
                     "IngameName" : "OBJECT:BattleBus",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3871,9 +3871,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAContaminate", "HotkeyString" : "CONTROLBAR:Contaminate"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",     "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",          "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",           "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3883,8 +3883,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3894,11 +3894,11 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLADisguise", "HotkeyString" : "CONTROLBAR:DisguiseAsVehicle"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateBombTruck"},
-                        {"IconName" : "GLABioBomb", "HotkeyString" : "CONTROLBAR:UpgradeGLABombTruckBioBomb"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "GLACarBomb",  "HotkeyString" : "CONTROLBAR:DetonateBombTruck"},
+                        {"IconName" : "GLABioBomb",  "HotkeyString" : "CONTROLBAR:UpgradeGLABombTruckBioBomb"},
+                        {"IconName" : "AttackMove",  "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",       "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",        "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3908,7 +3908,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLARadarVanScan", "HotkeyString" : "CONTROLBAR:RadarVanScan"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 }
             ],
@@ -3927,9 +3927,9 @@
                     "IngameName" : "OBJECT:SupplyStash",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLAWorker", "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
+                        {"IconName" : "GLAWorker",      "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
                         {"IconName" : "GLACamoNetting", "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",           "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3938,16 +3938,16 @@
                     "IngameName" : "OBJECT:Barracks",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLARebel", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRebel"},
-                        {"IconName" : "GLATerrorist", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryTerrorist"},
-                        {"IconName" : "GLAHijacker", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryHijacker"},
-                        {"IconName" : "GLASaboteur", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantrySaboteur"},
-                        {"IconName" : "GLARPGTrooper", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRPGTrooper"},
-                        {"IconName" : "GLAAngryMob", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryAngryMob"},
-                        {"IconName" : "GLAJarmenKell", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryJarmenKell"},
+                        {"IconName" : "GLARebel",        "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRebel"},
+                        {"IconName" : "GLATerrorist",    "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryTerrorist"},
+                        {"IconName" : "GLAHijacker",     "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryHijacker"},
+                        {"IconName" : "GLASaboteur",     "HotkeyString" : "CONTROLBAR:ConstructGLAInfantrySaboteur"},
+                        {"IconName" : "GLARPGTrooper",   "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRPGTrooper"},
+                        {"IconName" : "GLAAngryMob",     "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryAngryMob"},
+                        {"IconName" : "GLAJarmenKell",   "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryJarmenKell"},
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:UpgradeGLARebelCaptureBuilding"},
-                        {"IconName" : "GLACamoNetting", "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACamoNetting",  "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3967,8 +3967,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Stop",     "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",     "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3977,16 +3977,16 @@
                     "IngameName" : "OBJECT:ArmsDealer",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLARadarVan", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleRadarVan"},
+                        {"IconName" : "GLARadarVan",     "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleRadarVan"},
                         {"IconName" : "GLAToxinTractor", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleToxinTruck"},
-                        {"IconName" : "GLACombatBike", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleCombatBike"},
-                        {"IconName" : "GLATechnical", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleTechnical"},
-                        {"IconName" : "GLAQuadCannon", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleQuadCannon"},
-                        {"IconName" : "GLARocketBuggy", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleRocketBuggy"},
-                        {"IconName" : "GLABombTruck", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleBombTruck"},
-                        {"IconName" : "GLABattleBus", "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleBattleBus"},
-                        {"IconName" : "GLACamoNetting", "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACombatBike",   "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleCombatBike"},
+                        {"IconName" : "GLATechnical",    "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleTechnical"},
+                        {"IconName" : "GLAQuadCannon",   "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleQuadCannon"},
+                        {"IconName" : "GLARocketBuggy",  "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleRocketBuggy"},
+                        {"IconName" : "GLABombTruck",    "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleBombTruck"},
+                        {"IconName" : "GLABattleBus",    "HotkeyString" : "CONTROLBAR:ConstructGLAVehicleBattleBus"},
+                        {"IconName" : "GLACamoNetting",  "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -3997,8 +3997,8 @@
                     [
                         {"IconName" : "GLAProximityFuse", "HotkeyString" : "CONTROLBAR:ProximityFuse"},
                         {"IconName" : "GLAManualControl", "HotkeyString" : "CONTROLBAR:ManualControl"},
-                        {"IconName" : "GLADetonate", "HotkeyString" : "CONTROLBAR:Detonate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLADetonate",      "HotkeyString" : "CONTROLBAR:Detonate"},
+                        {"IconName" : "Sell",             "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4008,11 +4008,11 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAFortifiedStructure", "HotkeyString" : "CONTROLBAR:UpgradeGLAFortifiedStructure"},
-                        {"IconName" : "GLAAnthraxBeta", "HotkeyString" : "CONTROLBAR:UpgradeGLAAnthraxBeta"},
-                        {"IconName" : "GLAArmTheMob", "HotkeyString" : "CONTROLBAR:UpgradeGLAArmTheMob"},
-                        {"IconName" : "GLACamoNetting", "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLAAnthraxBeta",        "HotkeyString" : "CONTROLBAR:UpgradeGLAAnthraxBeta"},
+                        {"IconName" : "GLAArmTheMob",          "HotkeyString" : "CONTROLBAR:UpgradeGLAArmTheMob"},
+                        {"IconName" : "GLACamoNetting",        "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
+                        {"IconName" : "Evacuate",              "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Sell",                  "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4021,14 +4021,14 @@
                     "IngameName" : "OBJECT:BlackMarket",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLAAPBullets", "HotkeyString" : "CONTROLBAR:UpgradeGLAAPBullets"},
-                        {"IconName" : "GLAJunkRepair", "HotkeyString" : "CONTROLBAR:UpgradeGLAJunkRepair"},
-                        {"IconName" : "GLARadarVanScan", "HotkeyString" : "CONTROLBAR:UpgradeGLARadarVanScan"},
-                        {"IconName" : "GLAAPRockets", "HotkeyString" : "CONTROLBAR:UpgradeGLAAPRockets"},
+                        {"IconName" : "GLAAPBullets",       "HotkeyString" : "CONTROLBAR:UpgradeGLAAPBullets"},
+                        {"IconName" : "GLAJunkRepair",      "HotkeyString" : "CONTROLBAR:UpgradeGLAJunkRepair"},
+                        {"IconName" : "GLARadarVanScan",    "HotkeyString" : "CONTROLBAR:UpgradeGLARadarVanScan"},
+                        {"IconName" : "GLAAPRockets",       "HotkeyString" : "CONTROLBAR:UpgradeGLAAPRockets"},
                         {"IconName" : "GLARocketBuggyAmmo", "HotkeyString" : "CONTROLBAR:UpgradeGLABuggyAmmo"},
-                        {"IconName" : "GLAWorkerShoes", "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerShoes"},
-                        {"IconName" : "GLACamoNetting", "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLAWorkerShoes",     "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerShoes"},
+                        {"IconName" : "GLACamoNetting",     "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
+                        {"IconName" : "Sell",               "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4038,8 +4038,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAScudStormLaunch", "HotkeyString" : "CONTROLBAR:ScudStorm"},
-                        {"IconName" : "GLACamoNetting", "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACamoNetting",     "HotkeyString" : "CONTROLBAR:UpgradeGLACamoNetting"},
+                        {"IconName" : "Sell",               "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4049,8 +4049,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLACommandCenter"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4060,8 +4060,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLABarracks"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4071,8 +4071,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLASupplyStash"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4082,8 +4082,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLAArmsDealer"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4093,8 +4093,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLABlackMarket"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4103,13 +4103,13 @@
                     "IngameName" : "OBJECT:CommandCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLAWorker", "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
+                        {"IconName" : "GLAWorker",       "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
                         {"IconName" : "GLAGPSScrambler", "HotkeyString" : "CONTROLBAR:GPSScrambler"},
-                        {"IconName" : "GLARebelAmbush", "HotkeyString" : "CONTROLBAR:Ambush"},
-                        {"IconName" : "GLAAnthraxBomb", "HotkeyString" : "CONTROLBAR:AnthraxBomb"},
-                        {"IconName" : "GLASneakAttack", "HotkeyString" : "CONTROLBAR:SneakAttack"},
+                        {"IconName" : "GLARebelAmbush",  "HotkeyString" : "CONTROLBAR:Ambush"},
+                        {"IconName" : "GLAAnthraxBomb",  "HotkeyString" : "CONTROLBAR:AnthraxBomb"},
+                        {"IconName" : "GLASneakAttack",  "HotkeyString" : "CONTROLBAR:SneakAttack"},
                         {"IconName" : "EmergencyRepair", "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ],
@@ -4121,9 +4121,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",      "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",           "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4133,8 +4133,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4144,8 +4144,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:CarBomb"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4155,9 +4155,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAPilotKill", "HotkeyString" : "CONTROLBAR:SniperAttack"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",   "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",        "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",         "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4167,7 +4167,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLASaboteur", "HotkeyString" : "CONTROLBAR:SabotageBuilding"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Stop",        "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4177,8 +4177,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4188,8 +4188,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAHijack", "HotkeyString" : "CONTROLBAR:Hijack"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",     "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",      "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4226,10 +4226,10 @@
                     "IngameName" : "OBJECT:Technical",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4239,8 +4239,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4250,8 +4250,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4260,10 +4260,10 @@
                     "IngameName" : "OBJECT:CombatBike",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4272,10 +4272,10 @@
                     "IngameName" : "OBJECT:BattleBus",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4285,9 +4285,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAContaminate", "HotkeyString" : "CONTROLBAR:Contaminate"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",     "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",          "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",           "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4296,13 +4296,13 @@
                     "IngameName" : "OBJECT:BombTruck",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLADisguise", "HotkeyString" : "CONTROLBAR:DisguiseAsVehicle"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateBombTruck"},
-                        {"IconName" : "GLABioBomb", "HotkeyString" : "CONTROLBAR:UpgradeGLABombTruckBioBomb"},
+                        {"IconName" : "GLADisguise",          "HotkeyString" : "CONTROLBAR:DisguiseAsVehicle"},
+                        {"IconName" : "GLACarBomb",           "HotkeyString" : "CONTROLBAR:DetonateBombTruck"},
+                        {"IconName" : "GLABioBomb",           "HotkeyString" : "CONTROLBAR:UpgradeGLABombTruckBioBomb"},
                         {"IconName" : "GLAHighExplosiveBomb", "HotkeyString" : "CONTROLBAR:UpgradeGLABombTruckHighExplosiveBomb"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",           "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",                "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",                 "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4312,7 +4312,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLARadarVanScan", "HotkeyString" : "CONTROLBAR:RadarVanScan"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 }
             ],
@@ -4332,7 +4332,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAWorker", "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",      "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4341,13 +4341,13 @@
                     "IngameName" : "OBJECT:Barracks",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLARebel", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRebel"},
-                        {"IconName" : "GLATerrorist", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryTerrorist"},
-                        {"IconName" : "GLARPGTrooper", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRPGTrooper"},
-                        {"IconName" : "GLAAngryMob", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryAngryMob"},
-                        {"IconName" : "GLAJarmenKell", "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryJarmenKell"},
+                        {"IconName" : "GLARebel",        "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRebel"},
+                        {"IconName" : "GLATerrorist",    "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryTerrorist"},
+                        {"IconName" : "GLARPGTrooper",   "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryRPGTrooper"},
+                        {"IconName" : "GLAAngryMob",     "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryAngryMob"},
+                        {"IconName" : "GLAJarmenKell",   "HotkeyString" : "CONTROLBAR:ConstructGLAInfantryJarmenKell"},
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:UpgradeGLARebelCaptureBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4357,8 +4357,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",       "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4368,8 +4368,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Sell",       "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4401,8 +4401,8 @@
                     [
                         {"IconName" : "GLAProximityFuse", "HotkeyString" : "CONTROLBAR:ProximityFuse"},
                         {"IconName" : "GLAManualControl", "HotkeyString" : "CONTROLBAR:ManualControl"},
-                        {"IconName" : "GLADetonate", "HotkeyString" : "CONTROLBAR:Detonate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLADetonate",      "HotkeyString" : "CONTROLBAR:Detonate"},
+                        {"IconName" : "Sell",             "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4412,10 +4412,10 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAFortifiedStructure", "HotkeyString" : "CONTROLBAR:UpgradeGLAFortifiedStructure"},
-                        {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:UpgradeSuicideBomb"},
-                        {"IconName" : "GLAArmTheMob", "HotkeyString" : "CONTROLBAR:UpgradeGLAArmTheMob"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "DMLSuicide",            "HotkeyString" : "CONTROLBAR:UpgradeSuicideBomb"},
+                        {"IconName" : "GLAArmTheMob",          "HotkeyString" : "CONTROLBAR:UpgradeGLAArmTheMob"},
+                        {"IconName" : "Evacuate",              "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Sell",                  "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4424,13 +4424,13 @@
                     "IngameName" : "OBJECT:BlackMarket",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLAAPBullets", "HotkeyString" : "CONTROLBAR:UpgradeGLAAPBullets"},
-                        {"IconName" : "GLAJunkRepair", "HotkeyString" : "CONTROLBAR:UpgradeGLAJunkRepair"},
-                        {"IconName" : "GLARadarVanScan", "HotkeyString" : "CONTROLBAR:UpgradeGLARadarVanScan"},
-                        {"IconName" : "GLAAPRockets", "HotkeyString" : "CONTROLBAR:UpgradeGLAAPRockets"},
+                        {"IconName" : "GLAAPBullets",       "HotkeyString" : "CONTROLBAR:UpgradeGLAAPBullets"},
+                        {"IconName" : "GLAJunkRepair",      "HotkeyString" : "CONTROLBAR:UpgradeGLAJunkRepair"},
+                        {"IconName" : "GLARadarVanScan",    "HotkeyString" : "CONTROLBAR:UpgradeGLARadarVanScan"},
+                        {"IconName" : "GLAAPRockets",       "HotkeyString" : "CONTROLBAR:UpgradeGLAAPRockets"},
                         {"IconName" : "GLARocketBuggyAmmo", "HotkeyString" : "CONTROLBAR:UpgradeGLABuggyAmmo"},
-                        {"IconName" : "GLAWorkerShoes", "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerShoes"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLAWorkerShoes",     "HotkeyString" : "CONTROLBAR:UpgradeGLAWorkerShoes"},
+                        {"IconName" : "Sell",               "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4440,7 +4440,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLAScudStormLaunch", "HotkeyString" : "CONTROLBAR:ScudStorm"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",               "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4450,8 +4450,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLACommandCenter"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4461,8 +4461,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLABarracks"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4472,8 +4472,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLASupplyStash"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4483,8 +4483,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLAArmsDealer"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4494,8 +4494,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLABecomeReal", "HotkeyString" : "CONTROLBAR:BecomeRealGLABlackMarket"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "GLACarBomb",    "HotkeyString" : "CONTROLBAR:DetonateFakeBuilding"},
+                        {"IconName" : "Sell",          "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -4504,12 +4504,12 @@
                     "IngameName" : "OBJECT:CommandCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLAWorker", "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
-                        {"IconName" : "GLARebelAmbush", "HotkeyString" : "CONTROLBAR:Ambush"},
-                        {"IconName" : "GLAAnthraxBomb", "HotkeyString" : "CONTROLBAR:AnthraxBomb"},
-                        {"IconName" : "GLASneakAttack", "HotkeyString" : "CONTROLBAR:SneakAttack"},
+                        {"IconName" : "GLAWorker",       "HotkeyString" : "CONTROLBAR:ConstructGLAWorker"},
+                        {"IconName" : "GLARebelAmbush",  "HotkeyString" : "CONTROLBAR:Ambush"},
+                        {"IconName" : "GLAAnthraxBomb",  "HotkeyString" : "CONTROLBAR:AnthraxBomb"},
+                        {"IconName" : "GLASneakAttack",  "HotkeyString" : "CONTROLBAR:SneakAttack"},
                         {"IconName" : "EmergencyRepair", "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ],
@@ -4520,12 +4520,12 @@
                     "IngameName" : "OBJECT:Rebel",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLABoobyTraps", "HotkeyString" : "CONTROLBAR:BoobyTrapAttack"},
-                        {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
+                        {"IconName" : "GLABoobyTraps",   "HotkeyString" : "CONTROLBAR:BoobyTrapAttack"},
+                        {"IconName" : "DMLSuicide",      "HotkeyString" : "CONTROLBAR:SuicideAttack"},
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",      "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",           "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4536,8 +4536,8 @@
                     [
                         {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4547,8 +4547,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:CarBomb"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4557,14 +4557,14 @@
                     "IngameName" : "OBJECT:JarmenKell",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLAPilotKill", "HotkeyString" : "CONTROLBAR:SniperAttack"},
+                        {"IconName" : "GLAPilotKill",        "HotkeyString" : "CONTROLBAR:SniperAttack"},
                         {"IconName" : "DMLRemoteDemoCharge", "HotkeyString" : "CONTROLBAR:RemoteDemoCharge"},
-                        {"IconName" : "DMLTimedDemoCharge", "HotkeyString" : "CONTROLBAR:TimedDemoCharge"},
-                        {"IconName" : "DMLDetonateCharges", "HotkeyString" : "CONTROLBAR:DetonateCharges"},
-                        {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "DMLTimedDemoCharge",  "HotkeyString" : "CONTROLBAR:TimedDemoCharge"},
+                        {"IconName" : "DMLDetonateCharges",  "HotkeyString" : "CONTROLBAR:DetonateCharges"},
+                        {"IconName" : "DMLSuicide",          "HotkeyString" : "CONTROLBAR:SuicideAttack"},
+                        {"IconName" : "AttackMove",          "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",               "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",                "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4574,8 +4574,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4615,8 +4615,8 @@
                     [
                         {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4626,10 +4626,10 @@
                     "Actions"    : 
                     [
                         {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4640,8 +4640,8 @@
                     [
                         {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4652,8 +4652,8 @@
                     [
                         {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4664,8 +4664,8 @@
                     [
                         {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4674,10 +4674,10 @@
                     "IngameName" : "OBJECT:CombatBike",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4687,10 +4687,10 @@
                     "Actions"    : 
                     [
                         {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4699,11 +4699,11 @@
                     "IngameName" : "OBJECT:ToxinTruck",
                     "Actions"    : 
                     [
-                        {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
+                        {"IconName" : "DMLSuicide",     "HotkeyString" : "CONTROLBAR:SuicideAttack"},
                         {"IconName" : "GLAContaminate", "HotkeyString" : "CONTROLBAR:Contaminate"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",     "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",          "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",           "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4714,8 +4714,8 @@
                     [
                         {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4724,12 +4724,12 @@
                     "IngameName" : "OBJECT:BombTruck",
                     "Actions"    : 
                     [
-                        {"IconName" : "GLADisguise", "HotkeyString" : "CONTROLBAR:DisguiseAsVehicle"},
-                        {"IconName" : "GLACarBomb", "HotkeyString" : "CONTROLBAR:DetonateBombTruck"},
+                        {"IconName" : "GLADisguise",          "HotkeyString" : "CONTROLBAR:DisguiseAsVehicle"},
+                        {"IconName" : "GLACarBomb",           "HotkeyString" : "CONTROLBAR:DetonateBombTruck"},
                         {"IconName" : "GLAHighExplosiveBomb", "HotkeyString" : "CONTROLBAR:UpgradeGLABombTruckHighExplosiveBomb"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",           "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",                "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",                 "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -4738,9 +4738,9 @@
                     "IngameName" : "OBJECT:RadarVan",
                     "Actions"    : 
                     [
-                        {"IconName" : "DMLSuicide", "HotkeyString" : "CONTROLBAR:SuicideAttack"},
+                        {"IconName" : "DMLSuicide",      "HotkeyString" : "CONTROLBAR:SuicideAttack"},
                         {"IconName" : "GLARadarVanScan", "HotkeyString" : "CONTROLBAR:RadarVanScan"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 }
             ],
