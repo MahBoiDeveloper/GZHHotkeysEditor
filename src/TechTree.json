@@ -1608,10 +1608,10 @@
                     "IngameName" : "OBJECT:SupplyCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCSupplyTruck", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleSupplyTruck"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCSupplyTruck",  "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleSupplyTruck"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -1621,11 +1621,11 @@
                     "Actions"    : 
                     [
 
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Evacuate",        "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -1634,10 +1634,10 @@
                     "IngameName" : "OBJECT:GattlingCannon",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -1646,20 +1646,20 @@
                     "IngameName" : "OBJECT:WarFactory",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCBattlemaster", "HotkeyString" : "CONTROLBAR:ConstructGLATankBattleMaster"},
-                        {"IconName" : "PRCTroopCrawler", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleTroopCrawler"},
-                        {"IconName" : "PRCGattlingTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankGattling"},
-                        {"IconName" : "PRCDragonTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankDragon"},
-                        {"IconName" : "PRCInfernoCannon", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleInfernoCannon"},
-                        {"IconName" : "PRCECMTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankECM"},
-                        {"IconName" : "PRCOverlordTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankOverlord"},
+                        {"IconName" : "PRCBattlemaster",     "HotkeyString" : "CONTROLBAR:ConstructGLATankBattleMaster"},
+                        {"IconName" : "PRCTroopCrawler",     "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleTroopCrawler"},
+                        {"IconName" : "PRCGattlingTank",     "HotkeyString" : "CONTROLBAR:ConstructChinaTankGattling"},
+                        {"IconName" : "PRCDragonTank",       "HotkeyString" : "CONTROLBAR:ConstructChinaTankDragon"},
+                        {"IconName" : "PRCInfernoCannon",    "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleInfernoCannon"},
+                        {"IconName" : "PRCECMTank",          "HotkeyString" : "CONTROLBAR:ConstructChinaTankECM"},
+                        {"IconName" : "PRCOverlordTank",     "HotkeyString" : "CONTROLBAR:ConstructChinaTankOverlord"},
                         {"IconName" : "PRCListeningOutpost", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleListeningOutpost"},
-                        {"IconName" : "PRCNukeCannon", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleNukeLauncher"},
-                        {"IconName" : "PRCChainguns", "HotkeyString" : "CONTROLBAR:UpgradeChinaChainGuns"},
-                        {"IconName" : "PRCBlackNapalm", "HotkeyString" : "CONTROLBAR:UpgradeChinaBlackNapalm"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCNukeCannon",       "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleNukeLauncher"},
+                        {"IconName" : "PRCChainguns",        "HotkeyString" : "CONTROLBAR:UpgradeChinaChainGuns"},
+                        {"IconName" : "PRCBlackNapalm",      "HotkeyString" : "CONTROLBAR:UpgradeChinaBlackNapalm"},
+                        {"IconName" : "PRCLandMine",         "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",     "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",                "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -1670,10 +1670,10 @@
                     [
                         {"IconName" : "PRCSatelliteHack1", "HotkeyString" : "CONTROLBAR:UpgradeChinaSatelliteHackOne"},
                         {"IconName" : "PRCSatelliteHack2", "HotkeyString" : "CONTROLBAR:UpgradeChinaSatelliteHackTwo"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCLandMine",       "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",   "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Evacuate",          "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Sell",              "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -1682,12 +1682,12 @@
                     "IngameName" : "OBJECT:Airfield",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCMIG", "HotkeyString" : "CONTROLBAR:ConstructChinaJetMIG"},
-                        {"IconName" : "PRCHelix", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleHelix"},
-                        {"IconName" : "PRCMiGArmour", "HotkeyString" : "CONTROLBAR:UpgradeChinaAircraftArmor"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCMIG",          "HotkeyString" : "CONTROLBAR:ConstructChinaJetMIG"},
+                        {"IconName" : "PRCHelix",        "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleHelix"},
+                        {"IconName" : "PRCMiGArmour",    "HotkeyString" : "CONTROLBAR:UpgradeChinaAircraftArmor"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -1696,11 +1696,11 @@
                     "IngameName" : "OBJECT:PropagandaCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNationalismIcon", "HotkeyString" : "CONTROLBAR:UpgradeChinaFanaticism"},
+                        {"IconName" : "PRCNationalismIcon",     "HotkeyString" : "CONTROLBAR:UpgradeChinaFanaticism"},
                         {"IconName" : "PRCSubliminalMessaging", "HotkeyString" : "CONTROLBAR:UpgradeChinaSubliminalMessaging"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCLandMine",            "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",        "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -1719,12 +1719,12 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCNuclearMissile", "HotkeyString" : "CONTROLBAR:NeutronMissile"},
-                        {"IconName" : "PRCUraniumShells", "HotkeyString" : "CONTROLBAR:UpgradeChinaUraniumShells"},
-                        {"IconName" : "PRCNuclearTanks", "HotkeyString" : "CONTROLBAR:UpgradeChinaNuclearTanks"},
-                        {"IconName" : "PRCNeutronShells", "HotkeyString" : "CONTROLBAR:UpgradeChinaNeutronShells"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCUraniumShells",  "HotkeyString" : "CONTROLBAR:UpgradeChinaUraniumShells"},
+                        {"IconName" : "PRCNuclearTanks",   "HotkeyString" : "CONTROLBAR:UpgradeChinaNuclearTanks"},
+                        {"IconName" : "PRCNeutronShells",  "HotkeyString" : "CONTROLBAR:UpgradeChinaNeutronShells"},
+                        {"IconName" : "PRCLandMine",       "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",   "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",              "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -1733,18 +1733,18 @@
                     "IngameName" : "OBJECT:CommandCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCDozer", "HotkeyString" : "CONTROLBAR:ConstructChinaDozer"},
+                        {"IconName" : "PRCDozer",              "HotkeyString" : "CONTROLBAR:ConstructChinaDozer"},
                         {"IconName" : "PRCBlackLotusCashHack", "HotkeyString" : "CONTROLBAR:StealCashHack"},
-                        {"IconName" : "EmergencyRepair", "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
-                        {"IconName" : "PRCRadarUpgrade", "HotkeyString" : "CONTROLBAR:UpgradeChinaRadar"},
-                        {"IconName" : "PRCCarpetBomb", "HotkeyString" : "CONTROLBAR:CarpetBomb"},
-                        {"IconName" : "PRCClusterMine", "HotkeyString" : "CONTROLBAR:ClusterMines"},
-                        {"IconName" : "PRCArtilleryBarrage", "HotkeyString" : "CONTROLBAR:ArtilleryBarrage"},
-                        {"IconName" : "PRCEMPPulse", "HotkeyString" : "CONTROLBAR:EMPPulse"},
-                        {"IconName" : "PRCFrenzy", "HotkeyString" : "CONTROLBAR:Frenzy"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "EmergencyRepair",       "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
+                        {"IconName" : "PRCRadarUpgrade",       "HotkeyString" : "CONTROLBAR:UpgradeChinaRadar"},
+                        {"IconName" : "PRCCarpetBomb",         "HotkeyString" : "CONTROLBAR:CarpetBomb"},
+                        {"IconName" : "PRCClusterMine",        "HotkeyString" : "CONTROLBAR:ClusterMines"},
+                        {"IconName" : "PRCArtilleryBarrage",   "HotkeyString" : "CONTROLBAR:ArtilleryBarrage"},
+                        {"IconName" : "PRCEMPPulse",           "HotkeyString" : "CONTROLBAR:EMPPulse"},
+                        {"IconName" : "PRCFrenzy",             "HotkeyString" : "CONTROLBAR:Frenzy"},
+                        {"IconName" : "PRCLandMine",           "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",       "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",                  "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ],
@@ -1756,9 +1756,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",      "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",           "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1768,9 +1768,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCTNTAttack", "HotkeyString" : "CONTROLBAR:TNTAttack"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",   "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",        "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",         "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1780,8 +1780,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCDisableBuilding", "HotkeyString" : "CONTROLBAR:DisableBuildingHack"},
-                        {"IconName" : "PRCHackInternet", "HotkeyString" : "CONTROLBAR:InternetHack"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "PRCHackInternet",    "HotkeyString" : "CONTROLBAR:InternetHack"},
+                        {"IconName" : "Stop",               "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1791,9 +1791,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCBlackLotusCaptureBuilding", "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
-                        {"IconName" : "PRCBlackLotusDisableVehicle", "HotkeyString" : "CONTROLBAR:DisableVehicleHack"},
-                        {"IconName" : "PRCBlackLotusCashHack", "HotkeyString" : "CONTROLBAR:CashHack"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "PRCBlackLotusDisableVehicle",  "HotkeyString" : "CONTROLBAR:DisableVehicleHack"},
+                        {"IconName" : "PRCBlackLotusCashHack",        "HotkeyString" : "CONTROLBAR:CashHack"},
+                        {"IconName" : "Stop",                         "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 }
             ],
@@ -1805,8 +1805,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCDisableVehicle", "HotkeyString" : "CONTROLBAR:ECMDisableVehicle"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",             "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",              "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1816,8 +1816,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1827,8 +1827,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1838,8 +1838,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1849,9 +1849,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCFireWall", "HotkeyString" : "CONTROLBAR:FireWall"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",  "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",       "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",        "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1860,9 +1860,9 @@
                     "IngameName" : "OBJECT:TroopCrawler",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1871,10 +1871,10 @@
                     "IngameName" : "OBJECT:ListeningOutpost",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1883,12 +1883,12 @@
                     "IngameName" : "OBJECT:Overlord",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCOverlordBattleBunker", "HotkeyString" : "CONTROLBAR:UpgradeChinaOverlordBattleBunker"},
-                        {"IconName" : "PRCOverlordGatlingCannon", "HotkeyString" : "CONTROLBAR:UpgradeChinaOverlordGattlingCannon"},
+                        {"IconName" : "PRCOverlordBattleBunker",    "HotkeyString" : "CONTROLBAR:UpgradeChinaOverlordBattleBunker"},
+                        {"IconName" : "PRCOverlordGatlingCannon",   "HotkeyString" : "CONTROLBAR:UpgradeChinaOverlordGattlingCannon"},
                         {"IconName" : "PRCOverlordPropagandaTower", "HotkeyString" : "CONTROLBAR:UpgradeChinaOverlordPropagandaTower"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",                 "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",                      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",                       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1899,9 +1899,9 @@
                     [
                         {"IconName" : "PRCNuclearShells", "HotkeyString" : "CONTROLBAR:NukeWarhead"},
                         {"IconName" : "PRCNeutronShells", "HotkeyString" : "CONTROLBAR:NeutronWarhead"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",       "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",            "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",             "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1910,18 +1910,18 @@
                     "IngameName" : "OBJECT:Dozer",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNuclearReactor", "HotkeyString" : "CONTROLBAR:ConstructChinaPowerPlant"},
-                        {"IconName" : "PRCBarracks", "HotkeyString" : "CONTROLBAR:ConstructChinaBarracks"},
-                        {"IconName" : "PRCSupplyCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaSupplyCenter"},
-                        {"IconName" : "PRCBunker", "HotkeyString" : "CONTROLBAR:ConstructChinaBunker"},
-                        {"IconName" : "PRCGattlingCannon", "HotkeyString" : "CONTROLBAR:ConstructChinaGattlingCannon"},
-                        {"IconName" : "PRCWarFactory", "HotkeyString" : "CONTROLBAR:ConstructChinaWarFactory"},
-                        {"IconName" : "PRCInternetCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaInternetCenter"},
-                        {"IconName" : "PRCAirfield", "HotkeyString" : "CONTROLBAR:ConstructChinaAirfield"},
-                        {"IconName" : "PRCPropagandaCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaPropagandaCenter"},
-                        {"IconName" : "PRCSpeakerTower", "HotkeyString" : "CONTROLBAR:ConstructChinaSpeakerTower"},
+                        {"IconName" : "PRCNuclearReactor",     "HotkeyString" : "CONTROLBAR:ConstructChinaPowerPlant"},
+                        {"IconName" : "PRCBarracks",           "HotkeyString" : "CONTROLBAR:ConstructChinaBarracks"},
+                        {"IconName" : "PRCSupplyCenter",       "HotkeyString" : "CONTROLBAR:ConstructChinaSupplyCenter"},
+                        {"IconName" : "PRCBunker",             "HotkeyString" : "CONTROLBAR:ConstructChinaBunker"},
+                        {"IconName" : "PRCGattlingCannon",     "HotkeyString" : "CONTROLBAR:ConstructChinaGattlingCannon"},
+                        {"IconName" : "PRCWarFactory",         "HotkeyString" : "CONTROLBAR:ConstructChinaWarFactory"},
+                        {"IconName" : "PRCInternetCenter",     "HotkeyString" : "CONTROLBAR:ConstructChinaInternetCenter"},
+                        {"IconName" : "PRCAirfield",           "HotkeyString" : "CONTROLBAR:ConstructChinaAirfield"},
+                        {"IconName" : "PRCPropagandaCenter",   "HotkeyString" : "CONTROLBAR:ConstructChinaPropagandaCenter"},
+                        {"IconName" : "PRCSpeakerTower",       "HotkeyString" : "CONTROLBAR:ConstructChinaSpeakerTower"},
                         {"IconName" : "PRCNuclearMissileSilo", "HotkeyString" : "CONTROLBAR:ConstructChinaNuclearMissileLauncher"},
-                        {"IconName" : "PRCCommandCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaCommandCenter"},
+                        {"IconName" : "PRCCommandCenter",      "HotkeyString" : "CONTROLBAR:ConstructChinaCommandCenter"},
                         {"IconName" : "DisarmMinesAtPosition", "HotkeyString" : "CONTROLBAR:DisarmMinesAtPosition"}
                     ]
                 }
@@ -1933,10 +1933,10 @@
                     "IngameName" : "OBJECT:MIG",
                     "Actions"    : 
                     [
-                        {"IconName" : "AirGuard", "HotkeyString" : "CONTROLBAR:GuardFlyingUnitsOnly"},
+                        {"IconName" : "AirGuard",   "HotkeyString" : "CONTROLBAR:GuardFlyingUnitsOnly"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -1945,15 +1945,15 @@
                     "IngameName" : "OBJECT:Helix",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNapalmBomb", "HotkeyString" : "CONTROLBAR:UpgradeHelixNapalmBomb"},
-                        {"IconName" : "PRCDropNapalmBomb", "HotkeyString" : "CONTROLBAR:DropNapalmBomb"},
-                        {"IconName" : "PRCHelixBattleBunker", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixBattleBunker"},
-                        {"IconName" : "PRCHelixSpeakerTower", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixPropagandaTower"},
+                        {"IconName" : "PRCNapalmBomb",          "HotkeyString" : "CONTROLBAR:UpgradeHelixNapalmBomb"},
+                        {"IconName" : "PRCDropNapalmBomb",      "HotkeyString" : "CONTROLBAR:DropNapalmBomb"},
+                        {"IconName" : "PRCHelixBattleBunker",   "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixBattleBunker"},
+                        {"IconName" : "PRCHelixSpeakerTower",   "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixPropagandaTower"},
                         {"IconName" : "PRCHelixGattlingCannon", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixGattlingCannon"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Evacuate",               "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "AttackMove",             "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",                  "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ]
@@ -1971,10 +1971,10 @@
                     "IngameName" : "OBJECT:NuclearReactor",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCOvercharge", "HotkeyString" : "CONTROLBAR:Overcharge"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCOvercharge",   "HotkeyString" : "CONTROLBAR:Overcharge"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -1983,14 +1983,14 @@
                     "IngameName" : "OBJECT:Barracks",
                     "Actions"    : 
                     [
-                        {"IconName" : "INFMiniGunner", "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryMiniGunner"},
-                        {"IconName" : "PRCTankHunter", "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryTankHunter"},
-                        {"IconName" : "PRCHacker", "HotkeyString" : "CONTROLBAR:Infa_ConstructChinaInfantryHacker"},
-                        {"IconName" : "INFSuperLotus", "HotkeyString" : "CONTROLBAR:Infa_ConstructChinaInfantryBlackLotus"},
+                        {"IconName" : "INFMiniGunner",   "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryMiniGunner"},
+                        {"IconName" : "PRCTankHunter",   "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryTankHunter"},
+                        {"IconName" : "PRCHacker",       "HotkeyString" : "CONTROLBAR:Infa_ConstructChinaInfantryHacker"},
+                        {"IconName" : "INFSuperLotus",   "HotkeyString" : "CONTROLBAR:Infa_ConstructChinaInfantryBlackLotus"},
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:UpgradeChinaRedguardCaptureBuilding"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -1999,10 +1999,10 @@
                     "IngameName" : "OBJECT:SupplyCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCSupplyTruck", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleSupplyTruck"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCSupplyTruck",  "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleSupplyTruck"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2012,11 +2012,11 @@
                     "Actions"    : 
                     [
 
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Evacuate",        "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2025,10 +2025,10 @@
                     "IngameName" : "OBJECT:GattlingCannon",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2038,16 +2038,16 @@
                     "Actions"    : 
                     [
                         {"IconName" : "INFAssaultTroopTransport", "HotkeyString" : "CONTROLBAR:Infa_ConstructChinaVehicleTroopCrawler"},
-                        {"IconName" : "PRCDragonTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankDragon"},
-                        {"IconName" : "PRCInfernoCannon", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleInfernoCannon"},
-                        {"IconName" : "PRCECMTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankECM"},
-                        {"IconName" : "PRCListeningOutpost", "HotkeyString" : "CONTROLBAR:Infa_ConstructChinaVehicleListeningOutpost"},
-                        {"IconName" : "PRCNukeCannon", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleNukeLauncher"},
-                        {"IconName" : "PRCChainguns", "HotkeyString" : "CONTROLBAR:UpgradeChinaChainGuns"},
-                        {"IconName" : "PRCBlackNapalm", "HotkeyString" : "CONTROLBAR:UpgradeChinaBlackNapalm"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCDragonTank",            "HotkeyString" : "CONTROLBAR:ConstructChinaTankDragon"},
+                        {"IconName" : "PRCInfernoCannon",         "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleInfernoCannon"},
+                        {"IconName" : "PRCECMTank",               "HotkeyString" : "CONTROLBAR:ConstructChinaTankECM"},
+                        {"IconName" : "PRCListeningOutpost",      "HotkeyString" : "CONTROLBAR:Infa_ConstructChinaVehicleListeningOutpost"},
+                        {"IconName" : "PRCNukeCannon",            "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleNukeLauncher"},
+                        {"IconName" : "PRCChainguns",             "HotkeyString" : "CONTROLBAR:UpgradeChinaChainGuns"},
+                        {"IconName" : "PRCBlackNapalm",           "HotkeyString" : "CONTROLBAR:UpgradeChinaBlackNapalm"},
+                        {"IconName" : "PRCLandMine",              "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",          "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",                     "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2058,10 +2058,10 @@
                     [
                         {"IconName" : "PRCSatelliteHack1", "HotkeyString" : "CONTROLBAR:UpgradeChinaSatelliteHackOne"},
                         {"IconName" : "PRCSatelliteHack2", "HotkeyString" : "CONTROLBAR:UpgradeChinaSatelliteHackTwo"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCLandMine",       "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",   "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Evacuate",          "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Sell",              "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2070,12 +2070,12 @@
                     "IngameName" : "OBJECT:Airfield",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCMIG", "HotkeyString" : "CONTROLBAR:ConstructChinaJetMIG"},
-                        {"IconName" : "PRCHelix", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleHelix"},
-                        {"IconName" : "PRCMiGArmour", "HotkeyString" : "CONTROLBAR:UpgradeChinaAircraftArmor"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCMIG",          "HotkeyString" : "CONTROLBAR:ConstructChinaJetMIG"},
+                        {"IconName" : "PRCHelix",        "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleHelix"},
+                        {"IconName" : "PRCMiGArmour",    "HotkeyString" : "CONTROLBAR:UpgradeChinaAircraftArmor"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2084,11 +2084,11 @@
                     "IngameName" : "OBJECT:PropagandaCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNationalismIcon", "HotkeyString" : "CONTROLBAR:UpgradeChinaFanaticism"},
+                        {"IconName" : "PRCNationalismIcon",     "HotkeyString" : "CONTROLBAR:UpgradeChinaFanaticism"},
                         {"IconName" : "PRCSubliminalMessaging", "HotkeyString" : "CONTROLBAR:UpgradeChinaSubliminalMessaging"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCLandMine",            "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",        "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2107,10 +2107,10 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCNuclearMissile", "HotkeyString" : "CONTROLBAR:NeutronMissile"},
-                        {"IconName" : "PRCNeutronShells", "HotkeyString" : "CONTROLBAR:UpgradeChinaNeutronShells"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCNeutronShells",  "HotkeyString" : "CONTROLBAR:UpgradeChinaNeutronShells"},
+                        {"IconName" : "PRCLandMine",       "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",   "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",              "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2119,18 +2119,18 @@
                     "IngameName" : "OBJECT:CommandCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCDozer", "HotkeyString" : "CONTROLBAR:ConstructChinaDozer"},
-                        {"IconName" : "Paradrop", "HotkeyString" : "CONTROLBAR:Paradrop"},
-                        {"IconName" : "EmergencyRepair", "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
-                        {"IconName" : "PRCRadarUpgrade", "HotkeyString" : "CONTROLBAR:UpgradeChinaRadar"},
-                        {"IconName" : "PRCCarpetBomb", "HotkeyString" : "CONTROLBAR:CarpetBomb"},
-                        {"IconName" : "PRCClusterMine", "HotkeyString" : "CONTROLBAR:ClusterMines"},
+                        {"IconName" : "PRCDozer",            "HotkeyString" : "CONTROLBAR:ConstructChinaDozer"},
+                        {"IconName" : "Paradrop",            "HotkeyString" : "CONTROLBAR:Paradrop"},
+                        {"IconName" : "EmergencyRepair",     "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
+                        {"IconName" : "PRCRadarUpgrade",     "HotkeyString" : "CONTROLBAR:UpgradeChinaRadar"},
+                        {"IconName" : "PRCCarpetBomb",       "HotkeyString" : "CONTROLBAR:CarpetBomb"},
+                        {"IconName" : "PRCClusterMine",      "HotkeyString" : "CONTROLBAR:ClusterMines"},
                         {"IconName" : "PRCArtilleryBarrage", "HotkeyString" : "CONTROLBAR:ArtilleryBarrage"},
-                        {"IconName" : "PRCEMPPulse", "HotkeyString" : "CONTROLBAR:EMPPulse"},
-                        {"IconName" : "PRCFrenzy", "HotkeyString" : "CONTROLBAR:Frenzy"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCEMPPulse",         "HotkeyString" : "CONTROLBAR:EMPPulse"},
+                        {"IconName" : "PRCFrenzy",           "HotkeyString" : "CONTROLBAR:Frenzy"},
+                        {"IconName" : "PRCLandMine",         "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",     "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",                "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ],
@@ -2142,9 +2142,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",      "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",           "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2154,9 +2154,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCTNTAttack", "HotkeyString" : "CONTROLBAR:TNTAttack"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",   "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",        "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",         "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2165,10 +2165,10 @@
                     "IngameName" : "OBJECT:Hacker",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCDisableBuilding", "HotkeyString" : "CONTROLBAR:DisableBuildingHack"},
-                        {"IconName" : "PRCHackInternet", "HotkeyString" : "CONTROLBAR:InternetHack"},
+                        {"IconName" : "PRCDisableBuilding",          "HotkeyString" : "CONTROLBAR:DisableBuildingHack"},
+                        {"IconName" : "PRCHackInternet",             "HotkeyString" : "CONTROLBAR:InternetHack"},
                         {"IconName" : "PRCBlackLotusDisableVehicle", "HotkeyString" : "CONTROLBAR:DisableVehicleHack"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Stop",                        "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2178,9 +2178,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCBlackLotusCaptureBuilding", "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
-                        {"IconName" : "PRCBlackLotusDisableVehicle", "HotkeyString" : "CONTROLBAR:DisableVehicleHack"},
-                        {"IconName" : "PRCBlackLotusCashHack", "HotkeyString" : "CONTROLBAR:CashHack"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "PRCBlackLotusDisableVehicle",  "HotkeyString" : "CONTROLBAR:DisableVehicleHack"},
+                        {"IconName" : "PRCBlackLotusCashHack",        "HotkeyString" : "CONTROLBAR:CashHack"},
+                        {"IconName" : "Stop",                         "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 }
             ],
@@ -2192,8 +2192,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCDisableVehicle", "HotkeyString" : "CONTROLBAR:ECMDisableVehicle"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",             "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",              "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2203,8 +2203,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2214,9 +2214,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCFireWall", "HotkeyString" : "CONTROLBAR:FireWall"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",  "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",       "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",        "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2225,9 +2225,9 @@
                     "IngameName" : "OBJECT:AssaultTroopTransport",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2236,10 +2236,10 @@
                     "IngameName" : "OBJECT:AssaultListeningOutpost",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2250,9 +2250,9 @@
                     [
                         {"IconName" : "PRCNuclearShells", "HotkeyString" : "CONTROLBAR:NukeWarhead"},
                         {"IconName" : "PRCNeutronShells", "HotkeyString" : "CONTROLBAR:NeutronWarhead"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",       "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",            "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",             "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2261,18 +2261,18 @@
                     "IngameName" : "OBJECT:Dozer",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNuclearReactor", "HotkeyString" : "CONTROLBAR:ConstructChinaPowerPlant"},
-                        {"IconName" : "PRCBarracks", "HotkeyString" : "CONTROLBAR:ConstructChinaBarracks"},
-                        {"IconName" : "PRCSupplyCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaSupplyCenter"},
-                        {"IconName" : "INFFortifiedBunker", "HotkeyString" : "CONTROLBAR:Infa_ConstructChinaBunker"},
-                        {"IconName" : "PRCGattlingCannon", "HotkeyString" : "CONTROLBAR:ConstructChinaGattlingCannon"},
-                        {"IconName" : "PRCWarFactory", "HotkeyString" : "CONTROLBAR:ConstructChinaWarFactory"},
-                        {"IconName" : "PRCInternetCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaInternetCenter"},
-                        {"IconName" : "PRCAirfield", "HotkeyString" : "CONTROLBAR:ConstructChinaAirfield"},
-                        {"IconName" : "PRCPropagandaCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaPropagandaCenter"},
-                        {"IconName" : "PRCSpeakerTower", "HotkeyString" : "CONTROLBAR:ConstructChinaSpeakerTower"},
+                        {"IconName" : "PRCNuclearReactor",     "HotkeyString" : "CONTROLBAR:ConstructChinaPowerPlant"},
+                        {"IconName" : "PRCBarracks",           "HotkeyString" : "CONTROLBAR:ConstructChinaBarracks"},
+                        {"IconName" : "PRCSupplyCenter",       "HotkeyString" : "CONTROLBAR:ConstructChinaSupplyCenter"},
+                        {"IconName" : "INFFortifiedBunker",    "HotkeyString" : "CONTROLBAR:Infa_ConstructChinaBunker"},
+                        {"IconName" : "PRCGattlingCannon",     "HotkeyString" : "CONTROLBAR:ConstructChinaGattlingCannon"},
+                        {"IconName" : "PRCWarFactory",         "HotkeyString" : "CONTROLBAR:ConstructChinaWarFactory"},
+                        {"IconName" : "PRCInternetCenter",     "HotkeyString" : "CONTROLBAR:ConstructChinaInternetCenter"},
+                        {"IconName" : "PRCAirfield",           "HotkeyString" : "CONTROLBAR:ConstructChinaAirfield"},
+                        {"IconName" : "PRCPropagandaCenter",   "HotkeyString" : "CONTROLBAR:ConstructChinaPropagandaCenter"},
+                        {"IconName" : "PRCSpeakerTower",       "HotkeyString" : "CONTROLBAR:ConstructChinaSpeakerTower"},
                         {"IconName" : "PRCNuclearMissileSilo", "HotkeyString" : "CONTROLBAR:ConstructChinaNuclearMissileLauncher"},
-                        {"IconName" : "PRCCommandCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaCommandCenter"},
+                        {"IconName" : "PRCCommandCenter",      "HotkeyString" : "CONTROLBAR:ConstructChinaCommandCenter"},
                         {"IconName" : "DisarmMinesAtPosition", "HotkeyString" : "CONTROLBAR:DisarmMinesAtPosition"}
                     ]
                 }
@@ -2284,10 +2284,10 @@
                     "IngameName" : "OBJECT:MIG",
                     "Actions"    : 
                     [
-                        {"IconName" : "AirGuard", "HotkeyString" : "CONTROLBAR:GuardFlyingUnitsOnly"},
+                        {"IconName" : "AirGuard",   "HotkeyString" : "CONTROLBAR:GuardFlyingUnitsOnly"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2296,15 +2296,15 @@
                     "IngameName" : "OBJECT:Helix",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNapalmBomb", "HotkeyString" : "CONTROLBAR:UpgradeHelixNapalmBomb"},
-                        {"IconName" : "PRCDropNapalmBomb", "HotkeyString" : "CONTROLBAR:DropNapalmBomb"},
-                        {"IconName" : "PRCHelixBattleBunker", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixBattleBunker"},
-                        {"IconName" : "PRCHelixSpeakerTower", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixPropagandaTower"},
+                        {"IconName" : "PRCNapalmBomb",          "HotkeyString" : "CONTROLBAR:UpgradeHelixNapalmBomb"},
+                        {"IconName" : "PRCDropNapalmBomb",      "HotkeyString" : "CONTROLBAR:DropNapalmBomb"},
+                        {"IconName" : "PRCHelixBattleBunker",   "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixBattleBunker"},
+                        {"IconName" : "PRCHelixSpeakerTower",   "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixPropagandaTower"},
                         {"IconName" : "PRCHelixGattlingCannon", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixGattlingCannon"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Evacuate",               "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "AttackMove",             "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",                  "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ]
@@ -2322,10 +2322,10 @@
                     "IngameName" : "OBJECT:Nuke_NuclearReactor",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCOvercharge", "HotkeyString" : "CONTROLBAR:Overcharge"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCOvercharge",   "HotkeyString" : "CONTROLBAR:Overcharge"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2334,14 +2334,14 @@
                     "IngameName" : "OBJECT:Barracks",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCRedGuard", "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryRedguard"},
-                        {"IconName" : "PRCTankHunter", "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryTankHunter"},
-                        {"IconName" : "PRCHacker", "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryHacker"},
-                        {"IconName" : "PRCBlackLotus", "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryBlackLotus"},
+                        {"IconName" : "PRCRedGuard",     "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryRedguard"},
+                        {"IconName" : "PRCTankHunter",   "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryTankHunter"},
+                        {"IconName" : "PRCHacker",       "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryHacker"},
+                        {"IconName" : "PRCBlackLotus",   "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryBlackLotus"},
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:UpgradeChinaRedguardCaptureBuilding"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2350,10 +2350,10 @@
                     "IngameName" : "OBJECT:SupplyCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCSupplyTruck", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleSupplyTruck"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCSupplyTruck",  "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleSupplyTruck"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2363,11 +2363,11 @@
                     "Actions"    : 
                     [
 
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Evacuate",        "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2376,10 +2376,10 @@
                     "IngameName" : "OBJECT:GattlingCannon",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2388,20 +2388,20 @@
                     "IngameName" : "OBJECT:WarFactory",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCBattlemaster", "HotkeyString" : "CONTROLBAR:ConstructGLATankBattleMaster"},
-                        {"IconName" : "PRCTroopCrawler", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleTroopCrawler"},
-                        {"IconName" : "PRCGattlingTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankGattling"},
-                        {"IconName" : "PRCDragonTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankDragon"},
-                        {"IconName" : "PRCInfernoCannon", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleInfernoCannon"},
-                        {"IconName" : "PRCECMTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankECM"},
-                        {"IconName" : "PRCOverlordTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankOverlord"},
+                        {"IconName" : "PRCBattlemaster",     "HotkeyString" : "CONTROLBAR:ConstructGLATankBattleMaster"},
+                        {"IconName" : "PRCTroopCrawler",     "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleTroopCrawler"},
+                        {"IconName" : "PRCGattlingTank",     "HotkeyString" : "CONTROLBAR:ConstructChinaTankGattling"},
+                        {"IconName" : "PRCDragonTank",       "HotkeyString" : "CONTROLBAR:ConstructChinaTankDragon"},
+                        {"IconName" : "PRCInfernoCannon",    "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleInfernoCannon"},
+                        {"IconName" : "PRCECMTank",          "HotkeyString" : "CONTROLBAR:ConstructChinaTankECM"},
+                        {"IconName" : "PRCOverlordTank",     "HotkeyString" : "CONTROLBAR:ConstructChinaTankOverlord"},
                         {"IconName" : "PRCListeningOutpost", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleListeningOutpost"},
-                        {"IconName" : "PRCNukeCannon", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleNukeLauncher"},
-                        {"IconName" : "PRCChainguns", "HotkeyString" : "CONTROLBAR:UpgradeChinaChainGuns"},
-                        {"IconName" : "PRCBlackNapalm", "HotkeyString" : "CONTROLBAR:UpgradeChinaBlackNapalm"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCNukeCannon",       "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleNukeLauncher"},
+                        {"IconName" : "PRCChainguns",        "HotkeyString" : "CONTROLBAR:UpgradeChinaChainGuns"},
+                        {"IconName" : "PRCBlackNapalm",      "HotkeyString" : "CONTROLBAR:UpgradeChinaBlackNapalm"},
+                        {"IconName" : "PRCLandMine",         "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",     "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",                "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2412,10 +2412,10 @@
                     [
                         {"IconName" : "PRCSatelliteHack1", "HotkeyString" : "CONTROLBAR:UpgradeChinaSatelliteHackOne"},
                         {"IconName" : "PRCSatelliteHack2", "HotkeyString" : "CONTROLBAR:UpgradeChinaSatelliteHackTwo"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCLandMine",       "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",   "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Evacuate",          "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Sell",              "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2424,12 +2424,12 @@
                     "IngameName" : "OBJECT:Airfield",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCMIG", "HotkeyString" : "CONTROLBAR:ConstructChinaJetMIG"},
-                        {"IconName" : "PRCHelix", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleHelix"},
-                        {"IconName" : "PRCMiGArmour", "HotkeyString" : "CONTROLBAR:UpgradeChinaAircraftArmor"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCMIG",          "HotkeyString" : "CONTROLBAR:ConstructChinaJetMIG"},
+                        {"IconName" : "PRCHelix",        "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleHelix"},
+                        {"IconName" : "PRCMiGArmour",    "HotkeyString" : "CONTROLBAR:UpgradeChinaAircraftArmor"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2438,12 +2438,12 @@
                     "IngameName" : "OBJECT:PropagandaCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNationalismIcon", "HotkeyString" : "CONTROLBAR:UpgradeChinaFanaticism"},
+                        {"IconName" : "PRCNationalismIcon",     "HotkeyString" : "CONTROLBAR:UpgradeChinaFanaticism"},
                         {"IconName" : "PRCSubliminalMessaging", "HotkeyString" : "CONTROLBAR:UpgradeChinaSubliminalMessaging"},
-                        {"IconName" : "NUKIsotopeStability", "HotkeyString" : "UPGRADE:UpgradeChinaIsotopeStability"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "NUKIsotopeStability",    "HotkeyString" : "UPGRADE:UpgradeChinaIsotopeStability"},
+                        {"IconName" : "PRCLandMine",            "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",        "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2461,12 +2461,12 @@
                     "IngameName" : "OBJECT:NeutronMissile",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNuclearMissile", "HotkeyString" : "CONTROLBAR:NeutronMissile"},
+                        {"IconName" : "PRCNuclearMissile",  "HotkeyString" : "CONTROLBAR:NeutronMissile"},
                         {"IconName" : "NUKTacticalNukeMig", "HotkeyString" : "CONTROLBAR:UpgradeChinaTacticalNukeMig"},
-                        {"IconName" : "PRCNeutronShells", "HotkeyString" : "CONTROLBAR:UpgradeChinaNeutronShells"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCNeutronShells",   "HotkeyString" : "CONTROLBAR:UpgradeChinaNeutronShells"},
+                        {"IconName" : "PRCLandMine",        "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",    "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",               "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2475,18 +2475,18 @@
                     "IngameName" : "OBJECT:CommandCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCDozer", "HotkeyString" : "CONTROLBAR:ConstructChinaDozer"},
+                        {"IconName" : "PRCDozer",              "HotkeyString" : "CONTROLBAR:ConstructChinaDozer"},
                         {"IconName" : "PRCBlackLotusCashHack", "HotkeyString" : "CONTROLBAR:StealCashHack"},
-                        {"IconName" : "EmergencyRepair", "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
-                        {"IconName" : "PRCRadarUpgrade", "HotkeyString" : "CONTROLBAR:UpgradeChinaRadar"},
-                        {"IconName" : "NUKCarpetBomb", "HotkeyString" : "CONTROLBAR:Nuke_CarpetBomb"},
-                        {"IconName" : "PRCClusterMine", "HotkeyString" : "CONTROLBAR:ClusterMines"},
-                        {"IconName" : "PRCArtilleryBarrage", "HotkeyString" : "CONTROLBAR:ArtilleryBarrage"},
-                        {"IconName" : "PRCEMPPulse", "HotkeyString" : "CONTROLBAR:EMPPulse"},
-                        {"IconName" : "PRCFrenzy", "HotkeyString" : "CONTROLBAR:Frenzy"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "EmergencyRepair",       "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
+                        {"IconName" : "PRCRadarUpgrade",       "HotkeyString" : "CONTROLBAR:UpgradeChinaRadar"},
+                        {"IconName" : "NUKCarpetBomb",         "HotkeyString" : "CONTROLBAR:Nuke_CarpetBomb"},
+                        {"IconName" : "PRCClusterMine",        "HotkeyString" : "CONTROLBAR:ClusterMines"},
+                        {"IconName" : "PRCArtilleryBarrage",   "HotkeyString" : "CONTROLBAR:ArtilleryBarrage"},
+                        {"IconName" : "PRCEMPPulse",           "HotkeyString" : "CONTROLBAR:EMPPulse"},
+                        {"IconName" : "PRCFrenzy",             "HotkeyString" : "CONTROLBAR:Frenzy"},
+                        {"IconName" : "PRCLandMine",           "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",       "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",                  "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ],
@@ -2498,9 +2498,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",      "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",           "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2510,9 +2510,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCTNTAttack", "HotkeyString" : "CONTROLBAR:TNTAttack"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",   "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",        "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",         "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2522,8 +2522,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCDisableBuilding", "HotkeyString" : "CONTROLBAR:DisableBuildingHack"},
-                        {"IconName" : "PRCHackInternet", "HotkeyString" : "CONTROLBAR:InternetHack"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "PRCHackInternet",    "HotkeyString" : "CONTROLBAR:InternetHack"},
+                        {"IconName" : "Stop",               "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2533,9 +2533,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCBlackLotusCaptureBuilding", "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
-                        {"IconName" : "PRCBlackLotusDisableVehicle", "HotkeyString" : "CONTROLBAR:DisableVehicleHack"},
-                        {"IconName" : "PRCBlackLotusCashHack", "HotkeyString" : "CONTROLBAR:CashHack"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "PRCBlackLotusDisableVehicle",  "HotkeyString" : "CONTROLBAR:DisableVehicleHack"},
+                        {"IconName" : "PRCBlackLotusCashHack",        "HotkeyString" : "CONTROLBAR:CashHack"},
+                        {"IconName" : "Stop",                         "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 }
             ],
@@ -2547,8 +2547,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCDisableVehicle", "HotkeyString" : "CONTROLBAR:ECMDisableVehicle"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",             "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",              "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2558,8 +2558,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2569,8 +2569,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2580,8 +2580,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2591,9 +2591,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCFireWall", "HotkeyString" : "CONTROLBAR:FireWall"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",  "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",       "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",        "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2602,9 +2602,9 @@
                     "IngameName" : "OBJECT:TroopCrawler",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2613,10 +2613,10 @@
                     "IngameName" : "OBJECT:ListeningOutpost",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2625,12 +2625,12 @@
                     "IngameName" : "OBJECT:Overlord",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCOverlordBattleBunker", "HotkeyString" : "CONTROLBAR:UpgradeChinaOverlordBattleBunker"},
-                        {"IconName" : "PRCOverlordGatlingCannon", "HotkeyString" : "CONTROLBAR:UpgradeChinaOverlordGattlingCannon"},
+                        {"IconName" : "PRCOverlordBattleBunker",    "HotkeyString" : "CONTROLBAR:UpgradeChinaOverlordBattleBunker"},
+                        {"IconName" : "PRCOverlordGatlingCannon",   "HotkeyString" : "CONTROLBAR:UpgradeChinaOverlordGattlingCannon"},
                         {"IconName" : "PRCOverlordPropagandaTower", "HotkeyString" : "CONTROLBAR:UpgradeChinaOverlordPropagandaTower"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",                 "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",                      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",                       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2641,9 +2641,9 @@
                     [
                         {"IconName" : "PRCNuclearShells", "HotkeyString" : "CONTROLBAR:NukeWarhead"},
                         {"IconName" : "PRCNeutronShells", "HotkeyString" : "CONTROLBAR:NeutronWarhead"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",       "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",            "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",             "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2652,18 +2652,18 @@
                     "IngameName" : "OBJECT:Dozer",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNuclearReactor", "HotkeyString" : "CONTROLBAR:ConstructChinaPowerPlant"},
-                        {"IconName" : "PRCBarracks", "HotkeyString" : "CONTROLBAR:ConstructChinaBarracks"},
-                        {"IconName" : "PRCSupplyCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaSupplyCenter"},
-                        {"IconName" : "PRCBunker", "HotkeyString" : "CONTROLBAR:ConstructChinaBunker"},
-                        {"IconName" : "PRCGattlingCannon", "HotkeyString" : "CONTROLBAR:ConstructChinaGattlingCannon"},
-                        {"IconName" : "PRCWarFactory", "HotkeyString" : "CONTROLBAR:ConstructChinaWarFactory"},
-                        {"IconName" : "PRCInternetCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaInternetCenter"},
-                        {"IconName" : "PRCAirfield", "HotkeyString" : "CONTROLBAR:ConstructChinaAirfield"},
-                        {"IconName" : "PRCPropagandaCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaPropagandaCenter"},
-                        {"IconName" : "PRCSpeakerTower", "HotkeyString" : "CONTROLBAR:ConstructChinaSpeakerTower"},
+                        {"IconName" : "PRCNuclearReactor",     "HotkeyString" : "CONTROLBAR:ConstructChinaPowerPlant"},
+                        {"IconName" : "PRCBarracks",           "HotkeyString" : "CONTROLBAR:ConstructChinaBarracks"},
+                        {"IconName" : "PRCSupplyCenter",       "HotkeyString" : "CONTROLBAR:ConstructChinaSupplyCenter"},
+                        {"IconName" : "PRCBunker",             "HotkeyString" : "CONTROLBAR:ConstructChinaBunker"},
+                        {"IconName" : "PRCGattlingCannon",     "HotkeyString" : "CONTROLBAR:ConstructChinaGattlingCannon"},
+                        {"IconName" : "PRCWarFactory",         "HotkeyString" : "CONTROLBAR:ConstructChinaWarFactory"},
+                        {"IconName" : "PRCInternetCenter",     "HotkeyString" : "CONTROLBAR:ConstructChinaInternetCenter"},
+                        {"IconName" : "PRCAirfield",           "HotkeyString" : "CONTROLBAR:ConstructChinaAirfield"},
+                        {"IconName" : "PRCPropagandaCenter",   "HotkeyString" : "CONTROLBAR:ConstructChinaPropagandaCenter"},
+                        {"IconName" : "PRCSpeakerTower",       "HotkeyString" : "CONTROLBAR:ConstructChinaSpeakerTower"},
                         {"IconName" : "PRCNuclearMissileSilo", "HotkeyString" : "CONTROLBAR:ConstructChinaNuclearMissileLauncher"},
-                        {"IconName" : "PRCCommandCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaCommandCenter"},
+                        {"IconName" : "PRCCommandCenter",      "HotkeyString" : "CONTROLBAR:ConstructChinaCommandCenter"},
                         {"IconName" : "DisarmMinesAtPosition", "HotkeyString" : "CONTROLBAR:DisarmMinesAtPosition"}
                     ]
                 }
@@ -2675,10 +2675,10 @@
                     "IngameName" : "OBJECT:MIG",
                     "Actions"    : 
                     [
-                        {"IconName" : "AirGuard", "HotkeyString" : "CONTROLBAR:GuardFlyingUnitsOnly"},
+                        {"IconName" : "AirGuard",   "HotkeyString" : "CONTROLBAR:GuardFlyingUnitsOnly"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2687,15 +2687,15 @@
                     "IngameName" : "OBJECT:Helix",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNukeBomb", "HotkeyString" : "CONTROLBAR:UpgradeHelixNukeBomb"},
-                        {"IconName" : "PRCDropNukeBomb", "HotkeyString" : "CONTROLBAR:DropNukeBomb"},
-                        {"IconName" : "PRCHelixBattleBunker", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixBattleBunker"},
-                        {"IconName" : "PRCHelixSpeakerTower", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixPropagandaTower"},
+                        {"IconName" : "PRCNukeBomb",            "HotkeyString" : "CONTROLBAR:UpgradeHelixNukeBomb"},
+                        {"IconName" : "PRCDropNukeBomb",        "HotkeyString" : "CONTROLBAR:DropNukeBomb"},
+                        {"IconName" : "PRCHelixBattleBunker",   "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixBattleBunker"},
+                        {"IconName" : "PRCHelixSpeakerTower",   "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixPropagandaTower"},
                         {"IconName" : "PRCHelixGattlingCannon", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixGattlingCannon"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Evacuate",               "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "AttackMove",             "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",                  "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ]
@@ -2713,10 +2713,10 @@
                     "IngameName" : "OBJECT:NuclearReactor",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCOvercharge", "HotkeyString" : "CONTROLBAR:Overcharge"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCOvercharge",   "HotkeyString" : "CONTROLBAR:Overcharge"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2725,14 +2725,14 @@
                     "IngameName" : "OBJECT:Barracks",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCRedGuard", "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryRedguard"},
-                        {"IconName" : "PRCTankHunter", "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryTankHunter"},
-                        {"IconName" : "PRCHacker", "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryHacker"},
-                        {"IconName" : "PRCBlackLotus", "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryBlackLotus"},
+                        {"IconName" : "PRCRedGuard",     "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryRedguard"},
+                        {"IconName" : "PRCTankHunter",   "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryTankHunter"},
+                        {"IconName" : "PRCHacker",       "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryHacker"},
+                        {"IconName" : "PRCBlackLotus",   "HotkeyString" : "CONTROLBAR:ConstructChinaInfantryBlackLotus"},
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:UpgradeChinaRedguardCaptureBuilding"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2741,10 +2741,10 @@
                     "IngameName" : "OBJECT:SupplyCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCSupplyTruck", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleSupplyTruck"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCSupplyTruck",  "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleSupplyTruck"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2754,11 +2754,11 @@
                     "Actions"    : 
                     [
 
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Evacuate",        "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2767,10 +2767,10 @@
                     "IngameName" : "OBJECT:GattlingCannon",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"},
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2779,18 +2779,18 @@
                     "IngameName" : "OBJECT:WarFactory",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCBattlemaster", "HotkeyString" : "CONTROLBAR:ConstructGLATankBattleMaster"},
-                        {"IconName" : "PRCTroopCrawler", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleTroopCrawler"},
-                        {"IconName" : "PRCGattlingTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankGattling"},
-                        {"IconName" : "PRCDragonTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankDragon"},
-                        {"IconName" : "PRCECMTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankECM"},
+                        {"IconName" : "PRCBattlemaster",        "HotkeyString" : "CONTROLBAR:ConstructGLATankBattleMaster"},
+                        {"IconName" : "PRCTroopCrawler",        "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleTroopCrawler"},
+                        {"IconName" : "PRCGattlingTank",        "HotkeyString" : "CONTROLBAR:ConstructChinaTankGattling"},
+                        {"IconName" : "PRCDragonTank",          "HotkeyString" : "CONTROLBAR:ConstructChinaTankDragon"},
+                        {"IconName" : "PRCECMTank",             "HotkeyString" : "CONTROLBAR:ConstructChinaTankECM"},
                         {"IconName" : "TNKEmperorOverlordTank", "HotkeyString" : "CONTROLBAR:ConstructChinaTankEmperor"},
-                        {"IconName" : "PRCListeningOutpost", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleListeningOutpost"},
-                        {"IconName" : "PRCChainguns", "HotkeyString" : "CONTROLBAR:UpgradeChinaChainGuns"},
-                        {"IconName" : "PRCBlackNapalm", "HotkeyString" : "CONTROLBAR:UpgradeChinaBlackNapalm"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCListeningOutpost",    "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleListeningOutpost"},
+                        {"IconName" : "PRCChainguns",           "HotkeyString" : "CONTROLBAR:UpgradeChinaChainGuns"},
+                        {"IconName" : "PRCBlackNapalm",         "HotkeyString" : "CONTROLBAR:UpgradeChinaBlackNapalm"},
+                        {"IconName" : "PRCLandMine",            "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",        "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2801,10 +2801,10 @@
                     [
                         {"IconName" : "PRCSatelliteHack1", "HotkeyString" : "CONTROLBAR:UpgradeChinaSatelliteHackOne"},
                         {"IconName" : "PRCSatelliteHack2", "HotkeyString" : "CONTROLBAR:UpgradeChinaSatelliteHackTwo"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCLandMine",       "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",   "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Evacuate",          "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Sell",              "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2813,12 +2813,12 @@
                     "IngameName" : "OBJECT:Airfield",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCMIG", "HotkeyString" : "CONTROLBAR:ConstructChinaJetMIG"},
-                        {"IconName" : "PRCHelix", "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleHelix"},
-                        {"IconName" : "PRCMiGArmour", "HotkeyString" : "CONTROLBAR:UpgradeChinaAircraftArmor"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCMIG",          "HotkeyString" : "CONTROLBAR:ConstructChinaJetMIG"},
+                        {"IconName" : "PRCHelix",        "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleHelix"},
+                        {"IconName" : "PRCMiGArmour",    "HotkeyString" : "CONTROLBAR:UpgradeChinaAircraftArmor"},
+                        {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Sell",            "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2827,12 +2827,12 @@
                     "IngameName" : "OBJECT:PropagandaCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNationalismIcon", "HotkeyString" : "CONTROLBAR:UpgradeChinaFanaticism"},
+                        {"IconName" : "PRCNationalismIcon",     "HotkeyString" : "CONTROLBAR:UpgradeChinaFanaticism"},
                         {"IconName" : "PRCSubliminalMessaging", "HotkeyString" : "CONTROLBAR:UpgradeChinaSubliminalMessaging"},
-                        {"IconName" : "TNKAutoloader", "HotkeyString" : "CONTROLBAR:UpgradeChinaTankAutoLoader"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "TNKAutoloader",          "HotkeyString" : "CONTROLBAR:UpgradeChinaTankAutoLoader"},
+                        {"IconName" : "PRCLandMine",            "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",        "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2851,11 +2851,11 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCNuclearMissile", "HotkeyString" : "CONTROLBAR:NeutronMissile"},
-                        {"IconName" : "PRCUraniumShells", "HotkeyString" : "CONTROLBAR:UpgradeChinaUraniumShells"},
-                        {"IconName" : "PRCNuclearTanks", "HotkeyString" : "CONTROLBAR:UpgradeChinaNuclearTanks"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCUraniumShells",  "HotkeyString" : "CONTROLBAR:UpgradeChinaUraniumShells"},
+                        {"IconName" : "PRCNuclearTanks",   "HotkeyString" : "CONTROLBAR:UpgradeChinaNuclearTanks"},
+                        {"IconName" : "PRCLandMine",       "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",   "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",              "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 },
 
@@ -2864,18 +2864,18 @@
                     "IngameName" : "OBJECT:CommandCenter",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCDozer", "HotkeyString" : "CONTROLBAR:ConstructChinaDozer"},
-                        {"IconName" : "TNKTankDrop", "HotkeyString" : "CONTROLBAR:TankParadrop"},
-                        {"IconName" : "EmergencyRepair", "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
-                        {"IconName" : "PRCRadarUpgrade", "HotkeyString" : "CONTROLBAR:UpgradeChinaRadar"},
-                        {"IconName" : "PRCCarpetBomb", "HotkeyString" : "CONTROLBAR:CarpetBomb"},
-                        {"IconName" : "PRCClusterMine", "HotkeyString" : "CONTROLBAR:ClusterMines"},
+                        {"IconName" : "PRCDozer",            "HotkeyString" : "CONTROLBAR:ConstructChinaDozer"},
+                        {"IconName" : "TNKTankDrop",         "HotkeyString" : "CONTROLBAR:TankParadrop"},
+                        {"IconName" : "EmergencyRepair",     "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
+                        {"IconName" : "PRCRadarUpgrade",     "HotkeyString" : "CONTROLBAR:UpgradeChinaRadar"},
+                        {"IconName" : "PRCCarpetBomb",       "HotkeyString" : "CONTROLBAR:CarpetBomb"},
+                        {"IconName" : "PRCClusterMine",      "HotkeyString" : "CONTROLBAR:ClusterMines"},
                         {"IconName" : "PRCArtilleryBarrage", "HotkeyString" : "CONTROLBAR:ArtilleryBarrage"},
-                        {"IconName" : "PRCEMPPulse", "HotkeyString" : "CONTROLBAR:EMPPulse"},
-                        {"IconName" : "PRCFrenzy", "HotkeyString" : "CONTROLBAR:Frenzy"},
-                        {"IconName" : "PRCLandMine", "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
-                        {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "PRCEMPPulse",         "HotkeyString" : "CONTROLBAR:EMPPulse"},
+                        {"IconName" : "PRCFrenzy",           "HotkeyString" : "CONTROLBAR:Frenzy"},
+                        {"IconName" : "PRCLandMine",         "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
+                        {"IconName" : "PRCNeutronMines",     "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
+                        {"IconName" : "Sell",                "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ],
@@ -2887,9 +2887,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "CaptureBuilding", "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",      "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",           "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",            "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2899,9 +2899,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCTNTAttack", "HotkeyString" : "CONTROLBAR:TNTAttack"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",   "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",        "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",         "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2911,8 +2911,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCDisableBuilding", "HotkeyString" : "CONTROLBAR:DisableBuildingHack"},
-                        {"IconName" : "PRCHackInternet", "HotkeyString" : "CONTROLBAR:InternetHack"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "PRCHackInternet",    "HotkeyString" : "CONTROLBAR:InternetHack"},
+                        {"IconName" : "Stop",               "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2922,9 +2922,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCBlackLotusCaptureBuilding", "HotkeyString" : "CONTROLBAR:CaptureBuilding"},
-                        {"IconName" : "PRCBlackLotusDisableVehicle", "HotkeyString" : "CONTROLBAR:DisableVehicleHack"},
-                        {"IconName" : "PRCBlackLotusCashHack", "HotkeyString" : "CONTROLBAR:CashHack"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "PRCBlackLotusDisableVehicle",  "HotkeyString" : "CONTROLBAR:DisableVehicleHack"},
+                        {"IconName" : "PRCBlackLotusCashHack",        "HotkeyString" : "CONTROLBAR:CashHack"},
+                        {"IconName" : "Stop",                         "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 }
             ],
@@ -2936,8 +2936,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCDisableVehicle", "HotkeyString" : "CONTROLBAR:ECMDisableVehicle"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",             "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",              "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2947,8 +2947,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2958,8 +2958,8 @@
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2969,9 +2969,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCFireWall", "HotkeyString" : "CONTROLBAR:FireWall"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",  "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",       "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",        "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2980,9 +2980,9 @@
                     "IngameName" : "OBJECT:TroopCrawler",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -2991,10 +2991,10 @@
                     "IngameName" : "OBJECT:ListeningOutpost",
                     "Actions"    : 
                     [
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "Evacuate",   "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3004,9 +3004,9 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCOverlordGatlingCannon", "HotkeyString" : "CONTROLBAR:UpgradeChinaOverlordGattlingCannon"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "AttackMove",               "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",                    "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",                     "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3015,18 +3015,18 @@
                     "IngameName" : "OBJECT:Dozer",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNuclearReactor", "HotkeyString" : "CONTROLBAR:ConstructChinaPowerPlant"},
-                        {"IconName" : "PRCBarracks", "HotkeyString" : "CONTROLBAR:ConstructChinaBarracks"},
-                        {"IconName" : "PRCSupplyCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaSupplyCenter"},
-                        {"IconName" : "PRCBunker", "HotkeyString" : "CONTROLBAR:ConstructChinaBunker"},
-                        {"IconName" : "PRCGattlingCannon", "HotkeyString" : "CONTROLBAR:ConstructChinaGattlingCannon"},
-                        {"IconName" : "PRCWarFactory", "HotkeyString" : "CONTROLBAR:ConstructChinaWarFactory"},
-                        {"IconName" : "PRCInternetCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaInternetCenter"},
-                        {"IconName" : "PRCAirfield", "HotkeyString" : "CONTROLBAR:ConstructChinaAirfield"},
-                        {"IconName" : "PRCPropagandaCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaPropagandaCenter"},
-                        {"IconName" : "PRCSpeakerTower", "HotkeyString" : "CONTROLBAR:ConstructChinaSpeakerTower"},
+                        {"IconName" : "PRCNuclearReactor",     "HotkeyString" : "CONTROLBAR:ConstructChinaPowerPlant"},
+                        {"IconName" : "PRCBarracks",           "HotkeyString" : "CONTROLBAR:ConstructChinaBarracks"},
+                        {"IconName" : "PRCSupplyCenter",       "HotkeyString" : "CONTROLBAR:ConstructChinaSupplyCenter"},
+                        {"IconName" : "PRCBunker",             "HotkeyString" : "CONTROLBAR:ConstructChinaBunker"},
+                        {"IconName" : "PRCGattlingCannon",     "HotkeyString" : "CONTROLBAR:ConstructChinaGattlingCannon"},
+                        {"IconName" : "PRCWarFactory",         "HotkeyString" : "CONTROLBAR:ConstructChinaWarFactory"},
+                        {"IconName" : "PRCInternetCenter",     "HotkeyString" : "CONTROLBAR:ConstructChinaInternetCenter"},
+                        {"IconName" : "PRCAirfield",           "HotkeyString" : "CONTROLBAR:ConstructChinaAirfield"},
+                        {"IconName" : "PRCPropagandaCenter",   "HotkeyString" : "CONTROLBAR:ConstructChinaPropagandaCenter"},
+                        {"IconName" : "PRCSpeakerTower",       "HotkeyString" : "CONTROLBAR:ConstructChinaSpeakerTower"},
                         {"IconName" : "PRCNuclearMissileSilo", "HotkeyString" : "CONTROLBAR:ConstructChinaNuclearMissileLauncher"},
-                        {"IconName" : "PRCCommandCenter", "HotkeyString" : "CONTROLBAR:ConstructChinaCommandCenter"},
+                        {"IconName" : "PRCCommandCenter",      "HotkeyString" : "CONTROLBAR:ConstructChinaCommandCenter"},
                         {"IconName" : "DisarmMinesAtPosition", "HotkeyString" : "CONTROLBAR:DisarmMinesAtPosition"}
                     ]
                 }
@@ -3038,10 +3038,10 @@
                     "IngameName" : "OBJECT:MIG",
                     "Actions"    : 
                     [
-                        {"IconName" : "AirGuard", "HotkeyString" : "CONTROLBAR:GuardFlyingUnitsOnly"},
+                        {"IconName" : "AirGuard",   "HotkeyString" : "CONTROLBAR:GuardFlyingUnitsOnly"},
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"}
+                        {"IconName" : "Guard",      "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Stop",       "HotkeyString" : "CONTROLBAR:Stop"}
                     ]
                 },
 
@@ -3050,15 +3050,15 @@
                     "IngameName" : "OBJECT:Helix",
                     "Actions"    : 
                     [
-                        {"IconName" : "PRCNapalmBomb", "HotkeyString" : "CONTROLBAR:UpgradeHelixNapalmBomb"},
-                        {"IconName" : "PRCDropNapalmBomb", "HotkeyString" : "CONTROLBAR:DropNapalmBomb"},
-                        {"IconName" : "PRCHelixBattleBunker", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixBattleBunker"},
-                        {"IconName" : "PRCHelixSpeakerTower", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixPropagandaTower"},
+                        {"IconName" : "PRCNapalmBomb",          "HotkeyString" : "CONTROLBAR:UpgradeHelixNapalmBomb"},
+                        {"IconName" : "PRCDropNapalmBomb",      "HotkeyString" : "CONTROLBAR:DropNapalmBomb"},
+                        {"IconName" : "PRCHelixBattleBunker",   "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixBattleBunker"},
+                        {"IconName" : "PRCHelixSpeakerTower",   "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixPropagandaTower"},
                         {"IconName" : "PRCHelixGattlingCannon", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixGattlingCannon"},
-                        {"IconName" : "Evacuate", "HotkeyString" : "CONTROLBAR:Evacuate"},
-                        {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
-                        {"IconName" : "Guard", "HotkeyString" : "CONTROLBAR:Guard"},
-                        {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        {"IconName" : "Evacuate",               "HotkeyString" : "CONTROLBAR:Evacuate"},
+                        {"IconName" : "AttackMove",             "HotkeyString" : "CONTROLBAR:AttackMove"},
+                        {"IconName" : "Guard",                  "HotkeyString" : "CONTROLBAR:Guard"},
+                        {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
                     ]
                 }
             ]
