@@ -29,8 +29,7 @@ private:
 
     QButtonGroup factionsButtonsGroup;
 
-//    QTreeWidget entitiesTreeWidget;
-    QListWidget entitiesTreeWidget;
+    QTreeWidget entitiesTreeWidget;
 
     QScrollArea hotkeysArea;
     std::unique_ptr<QWidget> hotkeysScrollWidgetPtr;

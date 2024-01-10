@@ -3,6 +3,7 @@
 #include <QMenuBar>
 #include <QDialog>
 #include <QDialogButtonBox>
+#include <QHeaderView>
 
 #include "hotkey_element.hpp"
 #include "../gui_config.hpp"
@@ -18,6 +19,15 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     resize(1200, 800);
 
     configureMenu();
+
+    //============================ Entities Tree Widget configure =============================
+
+    entitiesTreeWidget.header()->hide();
+    // smooth scrolling
+    entitiesTreeWidget.setVerticalScrollMode(QListWidget::ScrollMode::ScrollPerPixel);
+    // icon size
+    entitiesTreeWidget.setIconSize(QSize{GuiConfig::entityIconMinimumHeight, GuiConfig::entityIconMinimumHeight});
+//    entitiesTreeWidget.setSpacing(GuiConfig::entityIconMinimumHeight * 0.1);
 
     //============================ Factions button group configure ============================
     QBoxLayout* factionsL = nullptr;
@@ -145,16 +155,23 @@ void HotkeysMainWindow::setEntitiesList(const QString& factionShortName)
 {
     entitiesTreeWidget.clear();
 
-    // smooth scrolling
-    entitiesTreeWidget.setVerticalScrollMode(QListWidget::ScrollMode::ScrollPerPixel);
-    // icon size
-    entitiesTreeWidget.setIconSize(QSize{GuiConfig::entityIconMinimumHeight, GuiConfig::entityIconMinimumHeight});
-    entitiesTreeWidget.setSpacing(GuiConfig::entityIconMinimumHeight * 0.1);
-
-    for (const auto & building : TechTreeJsonParser::getFactionEntities(Config::Entities::Buildings, factionShortName))
+    for (auto it = Config::ENTITIES_STRINGS.cbegin(); it != Config::ENTITIES_STRINGS.cend(); ++it)
     {
-        entitiesTreeWidget.addItem(new QListWidgetItem{QPixmap::fromImage(GuiConfig::decodeWebpIcon(building.getName())), building.getName()});
+        QTreeWidgetItem* newTopEntityItem = new QTreeWidgetItem;
+        newTopEntityItem->setText(0, it.value());
+
+        for (const auto & entity : TechTreeJsonParser::getFactionEntities(it.key(), factionShortName))
+        {
+            QTreeWidgetItem* currentNewEntityItem = new QTreeWidgetItem;
+            currentNewEntityItem->setText(0, entity.getName());
+            currentNewEntityItem->setIcon(0, QPixmap::fromImage(GuiConfig::decodeWebpIcon(entity.getName())));
+            newTopEntityItem->addChild(currentNewEntityItem);
+        }
+
+        entitiesTreeWidget.addTopLevelItem(newTopEntityItem);
     }
+
+    entitiesTreeWidget.expandAll();
 }
 
 void HotkeysMainWindow::setHotkeysLayout(const QString& factionShortName)

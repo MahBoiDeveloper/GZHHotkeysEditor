@@ -65,38 +65,38 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="133"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="143"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="134"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="144"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="136"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="146"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="137"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="147"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="139"/>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="205"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="149"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="222"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="191"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="208"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="198"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="215"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>
