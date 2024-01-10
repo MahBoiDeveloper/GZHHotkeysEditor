@@ -5,10 +5,9 @@
 #include <QListWidget>
 #include <QMainWindow>
 #include <QTreeWidgetItem>
-#include <config.hpp>
 
 #include <QScrollArea>
-#include <faction.hpp>
+#include "../../Data/faction.hpp"
 
 class HotkeysMainWindow : public QMainWindow
 {
@@ -22,7 +21,7 @@ private slots:
 
 private:
     void configureMenu();
-    void setBuildingsList(const QString& factionShortName);
+    void setEntitiesList(const QString& factionShortName);
     void setHotkeysLayout(const QString& factionShortName);
 
 private:

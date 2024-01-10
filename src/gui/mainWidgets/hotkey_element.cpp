@@ -70,8 +70,6 @@ void HotkeyElement::keyPressEvent(QKeyEvent* event)
     }
     else
     {
-        qDebug() << "This key is not allowed";
-
         hotkeyLabel.setText(tr("It isn't latin key..."));
         QPalette palette;
         palette.setColor(QPalette::WindowText, Qt::GlobalColor::red);
@@ -92,8 +90,10 @@ void HotkeyElement::focusOutEvent(QFocusEvent* event)
     // Unset decoration
     hotkeyLabel.setFont(QFont());
     hotkeyLabel.setPalette(QPalette());
-
     hotkeyLabel.setText(hotkey);
+
+    // Stop timer
+    signalTimer.stop();
 
     QWidget::focusOutEvent(event);
 }

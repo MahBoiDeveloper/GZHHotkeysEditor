@@ -9,7 +9,6 @@
 #include "gui/launchWidgets/stacked_launch_widget.hpp"
 #include "Logger.hpp"
 #include "Registry.hpp"
-#include "Exception.hpp"
 
 using namespace std;
 

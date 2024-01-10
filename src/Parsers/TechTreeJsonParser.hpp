@@ -1,10 +1,9 @@
 #pragma once
 
-#include <faction.hpp>
-
 #include <QJsonArray>
 
-#include <config.hpp>
+#include "../Data/faction.hpp"
+#include "../config.hpp"
 
 class TechTreeJsonParser
 {

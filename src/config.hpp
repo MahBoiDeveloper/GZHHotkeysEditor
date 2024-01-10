@@ -7,8 +7,6 @@ class Config
 public:
     inline static const QString resourcesFolder  = "Resources";
     inline static const QString translationsPath = resourcesFolder + "/Translations";
-    inline static const QString iconsPath        = resourcesFolder + "/Icons";
-    inline static const QString defaultIconFile  = iconsPath + "/NoImageSmall.webp";
     inline static const QString techTreeFile     = resourcesFolder + "/TechTree.json";
     inline static const double recomendedStartWidgetSizeRatio = 3./7.;
 

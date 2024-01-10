@@ -51,27 +51,6 @@ add_executable(${MAIN_TARGET_NAME}
     ${SOURCES}
 )
 
-set(_HEADER_FILES
-    "config.hpp"
-    "Info.hpp"
-    "parsers/TechTreeJsonParser.hpp"
-    "data/entity.hpp"
-    "data/entity_action.hpp"
-    "data/faction.hpp"
-)
-
-# declare headers folder for gui
-set(_HEADERS_INCLUDE_DIRECTORY ${CMAKE_BINARY_DIR}/include CACHE STRING "Include headers directory")
-
-# create headers folder
-file(REMOVE_RECURSE  ${_HEADERS_INCLUDE_DIRECTORY})
-file(MAKE_DIRECTORY ${_HEADERS_INCLUDE_DIRECTORY})
-
-# copy headers to folder
-foreach(_HEADER ${_HEADER_FILES})
-    configure_file(${_HEADER} ${_HEADERS_INCLUDE_DIRECTORY} COPYONLY)
-endforeach()
-
 set_target_properties(${MAIN_TARGET_NAME}
     PROPERTIES
     CXX_STANDARD 17

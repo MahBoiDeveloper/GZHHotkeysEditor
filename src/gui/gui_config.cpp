@@ -4,48 +4,27 @@
 #include <QDir>
 #include <QDebug>
 
-#include <config.hpp>
 #include <webp/decode.h>
+
 #include "../Logger.hpp"
-
-QImage GuiConfig::decodeWebpIconPath(const QString& iconPath)
-{
-    QFile iconFile(iconPath);
-
-    if(iconPath.isEmpty() || !iconFile.open(QIODevice::ReadOnly))
-    {
-        QString defaultIconFile = Config::defaultIconFile;
-
-        LOGMSG("No icon file [" + iconFile.fileName() + "] was found");
-        iconFile.setFileName(defaultIconFile);
-        if (!iconFile.open(QIODevice::ReadOnly))
-        {
-            LOGMSG("No default icon file [" + defaultIconFile + "] was found");
-            return QImage{};
-        }
-    }
-
-    QByteArray imageData = iconFile.readAll();
-    iconFile.close();
-
-    int width, height;
-    uint8_t* decodedImage = WebPDecodeRGBA(reinterpret_cast<const uint8_t*>(imageData.constData()), // amogus
-                                           imageData.size(),
-                                           &width,
-                                           &height);
-    return QImage{decodedImage, width, height, QImage::Format_RGBA8888};
-}
 
 QImage GuiConfig::decodeWebpIcon(const QString& iconName)
 {
-    QStringList allMatchIconFiles = findAllMatchingFiles(Config::iconsPath, iconName);
-    QString iconPath;
+    QStringList allMatchIconFiles = findAllMatchingFiles(iconsPath, iconName);
+
     if (!allMatchIconFiles.isEmpty())
     {
-        iconPath = allMatchIconFiles.first();
+        return decodeWebpIconPath(allMatchIconFiles.first());
     }
+    else
+    {
+        return decodeDefaultWebpIcon();
+    }
+}
 
-    return decodeWebpIconPath(iconPath);
+QImage GuiConfig::decodeDefaultWebpIcon()
+{
+    return decodeWebpIconPath(defaultIconFile);
 }
 
 QStringList GuiConfig::findAllMatchingFiles(const QString& pathToDir, const QString& nameFilter)
@@ -54,7 +33,7 @@ QStringList GuiConfig::findAllMatchingFiles(const QString& pathToDir, const QStr
 
     // find all files and dirs in current directory
     QFileInfoList fileInfoList = QDir{pathToDir}.entryInfoList(QDir::Filter::Files |
-                                                               QDir::Filter::Dirs |
+                                                               QDir::Filter::Dirs  |
                                                                QDir::Filter::NoDotAndDotDot);
 
     // if dir -> recursive find, if file -> remember path
@@ -74,4 +53,30 @@ QStringList GuiConfig::findAllMatchingFiles(const QString& pathToDir, const QStr
     }
 
     return files;
+}
+
+QImage GuiConfig::decodeWebpIconPath(const QString& iconPath)
+{
+    QFile iconFile(iconPath);
+
+    if(iconPath.isEmpty() || !iconFile.open(QIODevice::ReadOnly))
+    {
+        if (!iconPath.isEmpty())
+        {
+            LOGMSG("No icon file [" + iconFile.fileName() + "] was found");
+        }
+        return decodeDefaultWebpIcon();
+    }
+
+    return decodeImageFromData(iconFile.readAll());
+}
+
+QImage GuiConfig::decodeImageFromData(const QByteArray& iconData)
+{
+    int width, height;
+    uint8_t* decodedImage = WebPDecodeRGBA(reinterpret_cast<const uint8_t*>(iconData.constData()), // amogus
+                                           iconData.size(),
+                                           &width,
+                                           &height);
+    return QImage{decodedImage, width, height, QImage::Format_RGBA8888};
 }

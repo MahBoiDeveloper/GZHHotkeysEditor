@@ -25,7 +25,7 @@ StackedLaunchWidget::StackedLaunchWidget(Config::Languages language, QWidget *pa
     }
 
 
-    qApp->setWindowIcon(QIcon(QPixmap::fromImage(GuiConfig::decodeWebpIconPath(":/my/icons/NoImageSmall.webp"))));
+    qApp->setWindowIcon(QIcon(QPixmap::fromImage(GuiConfig::decodeDefaultWebpIcon())));
 
     // MainLaunchWidget settings
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);

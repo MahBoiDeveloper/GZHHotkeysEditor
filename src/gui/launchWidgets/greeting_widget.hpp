@@ -1,6 +1,6 @@
 #pragma once
 
-#include <config.hpp>
+#include "../../config.hpp"
 
 #include <QPushButton>
 #include <QButtonGroup>

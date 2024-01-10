@@ -4,12 +4,11 @@
 #include <QDialog>
 #include <QDialogButtonBox>
 
-#include <Info.hpp>
-#include <TechTreeJsonParser.hpp>
-#include <gui_config.hpp>
 #include "hotkey_element.hpp"
-#include "listWidget/list_widget_entity_item.hpp"
+#include "../gui_config.hpp"
 #include "../../Logger.hpp"
+#include "../../Info.hpp"
+#include "../../Parsers/TechTreeJsonParser.hpp"
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
     : QMainWindow(parent)
@@ -43,7 +42,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 
                 connect(factionButton, &QPushButton::pressed, this, [=]()
                 {
-                    setBuildingsList(currentFaction.getShortName());
+                    setEntitiesList(currentFaction.getShortName());
                 });
 
                 factionsButtonsGroup.addButton(factionButton);
@@ -142,21 +141,19 @@ void HotkeysMainWindow::configureMenu()
     settingsM->addAction(aboutA);
 }
 
-void HotkeysMainWindow::setBuildingsList(const QString& factionShortName)
+void HotkeysMainWindow::setEntitiesList(const QString& factionShortName)
 {
-    int buildingIconMinimumHeight = 80;
-
     entitiesTreeWidget.clear();
 
     // smooth scrolling
     entitiesTreeWidget.setVerticalScrollMode(QListWidget::ScrollMode::ScrollPerPixel);
     // icon size
-    entitiesTreeWidget.setIconSize(QSize{buildingIconMinimumHeight, buildingIconMinimumHeight});
-    entitiesTreeWidget.setSpacing(buildingIconMinimumHeight * 0.1);
+    entitiesTreeWidget.setIconSize(QSize{GuiConfig::entityIconMinimumHeight, GuiConfig::entityIconMinimumHeight});
+    entitiesTreeWidget.setSpacing(GuiConfig::entityIconMinimumHeight * 0.1);
 
     for (const auto & building : TechTreeJsonParser::getFactionEntities(Config::Entities::Buildings, factionShortName))
     {
-        entitiesTreeWidget.addItem(new ListWidgetEntityItem{building.getName()});
+        entitiesTreeWidget.addItem(new QListWidgetItem{QPixmap::fromImage(GuiConfig::decodeWebpIcon(building.getName())), building.getName()});
     }
 }
 
@@ -170,9 +167,7 @@ void HotkeysMainWindow::setHotkeysLayout(const QString& factionShortName)
 
         QString hotkey = QKeySequence{key}.toString();
 
-        HotkeyElement* hotkeyElement = new HotkeyElement(QString("action_%1").arg(i+1),
-                                                         hotkey,
-                                                         QString(factionShortName));
+        HotkeyElement* hotkeyElement = new HotkeyElement(QString("action_%1").arg(i+1), hotkey, QString(factionShortName));
         hotkeysLayout->addWidget(hotkeyElement);
     }
 
@@ -198,7 +193,7 @@ void HotkeysMainWindow::onAbout()
     QGridLayout* contentL = new QGridLayout;
     contentL->addLayout(authorsL, 0, 0);
     QLabel* pixmap = new QLabel;
-    pixmap->setPixmap(QPixmap::fromImage(GuiConfig::decodeWebpIcon(GuiConfig::standartSmallImageName)));
+    pixmap->setPixmap(QPixmap::fromImage(GuiConfig::decodeDefaultWebpIcon()));
     contentL->addWidget(pixmap, 0, 1);
     QLabel* textL = new QLabel(tr("Program licensed by GNU GPL v3"));
     textL->setWordWrap(true);

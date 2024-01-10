@@ -52,7 +52,7 @@
         <translation type="vanished">Нажмите любую клавишу...</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkey_element.cpp" line="75"/>
+        <location filename="../mainWidgets/hotkey_element.cpp" line="73"/>
         <source>It isn&apos;t latin key...</source>
         <translation>Это не латинская клавиша...</translation>
     </message>
@@ -65,38 +65,38 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="134"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="133"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="135"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="134"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="137"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="136"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="138"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="137"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="140"/>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="210"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="139"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="205"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="196"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="191"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="203"/>
+        <location filename="../mainWidgets/hotkeys_main_window.cpp" line="198"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>
