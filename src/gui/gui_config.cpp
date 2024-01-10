@@ -16,11 +16,11 @@ QImage GuiConfig::decodeWebpIconPath(const QString& iconPath)
     {
         QString defaultIconFile = Config::defaultIconFile;
 
-        LOGSTM << "No icon file " << iconFile.fileName().toStdString() << " was found";
+        LOGMSG("No icon file [" + iconFile.fileName() + "] was found");
         iconFile.setFileName(defaultIconFile);
         if (!iconFile.open(QIODevice::ReadOnly))
         {
-            LOGSTM << "No default icon file " << defaultIconFile.toStdString() << " was found";
+            LOGMSG("No default icon file [" + defaultIconFile + "] was found");
             return QImage{};
         }
     }
