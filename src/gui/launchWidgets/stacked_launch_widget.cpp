@@ -2,12 +2,12 @@
 #include <QFile>
 #include <QDebug>
 
+#include "../../Logger.hpp"
 #include "../gui_config.hpp"
-#include "stacked_launch_widget.hpp"
 #include "mainWidgets/hotkeys_main_window.hpp"
 #include "configurationDialogs/creation_dialog.hpp"
 #include "configurationDialogs/load_dialog.hpp"
-
+#include "stacked_launch_widget.hpp"
 
 StackedLaunchWidget::StackedLaunchWidget(Config::Languages language, QWidget *parent) : QStackedWidget(parent)
 {
@@ -21,7 +21,7 @@ StackedLaunchWidget::StackedLaunchWidget(Config::Languages language, QWidget *pa
     }
     else
     {
-        qDebug() << "There is no way to read the style file";
+        LOGMSG("Unable to read the style file mainStyleSheet.css.");
     }
 
 

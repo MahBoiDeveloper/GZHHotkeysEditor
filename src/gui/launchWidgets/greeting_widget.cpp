@@ -2,8 +2,8 @@
 #include <QLabel>
 
 #include "../../Logger.hpp"
+#include "../gui_config.hpp"
 #include "greeting_widget.hpp"
-#include <gui_config.hpp>
 
 GreetingWidget::GreetingWidget(Config::Languages language, QWidget *parent) : QWidget(parent)
 {
