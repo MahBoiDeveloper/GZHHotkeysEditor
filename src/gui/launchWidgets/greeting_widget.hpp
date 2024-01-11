@@ -1,35 +1,38 @@
 #pragma once
 
+#include <memory>
+#include <QLabel>
+#include <QComboBox>
 #include <QPushButton>
-#include <QButtonGroup>
 #include <QVBoxLayout>
 
 #include "../../config.hpp"
 
 class GreetingWidget : public QWidget
 {
-    Q_OBJECT
-
-public:
+public: // Data
     enum class StandartButtons
     {
         NewProject,
         LoadProject
     };
+private:
+    Q_OBJECT
+    std::unique_ptr<QLabel>      lblGreeting;
+    std::unique_ptr<QPushButton> btnNewProject;
+    std::unique_ptr<QPushButton> btnLoadProject;
+    std::unique_ptr<QVBoxLayout> ltButtons;
+    std::unique_ptr<QHBoxLayout> ltContent;
+    std::unique_ptr<QLabel>      lblLanguage;
+    std::unique_ptr<QComboBox>   cmbLangList;
+    std::unique_ptr<QHBoxLayout> ltLanguages;
+    std::unique_ptr<QVBoxLayout> ltMain;
 
-    GreetingWidget(Config::Languages language = Config::Languages::English, QWidget *parent = nullptr);
-
+public: // Methods
+    GreetingWidget(Config::Languages language = Config::Languages::English, QWidget* parent = nullptr);
+private:
+    int          GetGreetingAverageSize(const QString& text) const;
 signals:
     void pressed(GreetingWidget::StandartButtons standartButton);
     void languageChanged(int index);
-
-private:
-    void addStandartButton(GreetingWidget::StandartButtons standartButton, const QString& buttonName);
-    QHBoxLayout* createLanguageLayout(Config::Languages language, const QString& labelText) const;
-    int getGreetingAverageSize(const QString& text) const;
-
-    QPushButton* CreateButton(const QString& qstrButtonName) const;
-
-private:
-    QButtonGroup mainButtons;
 };

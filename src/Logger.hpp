@@ -11,10 +11,12 @@
 
 class Logger final
 {
-public:
+public: // Data
     static inline std::unique_ptr<Logger> Instance;
+private:
+    std::ofstream LogFile;
 
-public:
+public: // Methods
     Logger();
     ~Logger();
 
@@ -31,13 +33,9 @@ public:
     void Log(const wchar_t* msg);
 
     void LogException();
-
 private:
     void LogSystemInformation();
     std::string GetLogFileName() const;
     std::string GetCurrentTime() const;
     std::string GetWindowsBit()  const;
-
-private:
-    std::ofstream LogFile;
 };

@@ -1,98 +1,78 @@
-#include <QComboBox>
-#include <QLabel>
-
 #include "../../Logger.hpp"
 #include "../gui_config.hpp"
 #include "greeting_widget.hpp"
 
-GreetingWidget::GreetingWidget(Config::Languages language, QWidget *parent) : QWidget(parent)
+GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QWidget(parent)
 {
+    // Makes greeting window unresizeable
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
-    // add standart buttons to main buttons group
-    addStandartButton(GreetingWidget::StandartButtons::NewProject, tr("New project"));
-    addStandartButton(GreetingWidget::StandartButtons::LoadProject, tr("Load project"));
-    mainButtons.button(-3)->setDisabled(true);  // TODO: temporary;
+    // Program description
+    lblGreeting = std::make_unique<QLabel>(tr("Greetings, %username%. "
+                                              "You have launched the hotkey editing program "
+                                              "for the game Command and Conquer: Generals "
+                                              "and Command and Conquer: Generals — Zero Hour. "
+                                              "At the moment, the program supports in test mode "
+                                              "only the creation of hotkey maps based on pre-prepared hotkeys. "
+                                              "We hope that you will like the program."));
+    lblGreeting->setWordWrap(true);
+    lblGreeting->setAlignment(Qt::AlignmentFlag::AlignJustify);
+    lblGreeting->setFixedWidth(GetGreetingAverageSize(lblGreeting->text()) + 50);
 
-    // Description config
-    QLabel* greeting = new QLabel(tr("Greetings, %username%. "
-                                     "You have launched the hotkey editing program "
-                                     "for the game Command and Conquer: Generals "
-                                     "and Command and Conquer: Generals — Zero Hour. "
-                                     "At the moment, the program supports in test mode "
-                                     "only the creation of hotkey maps based on pre-prepared hotkeys. "
-                                     "We hope that you will like the program."));
-    greeting->setWordWrap(true);
-    greeting->setAlignment(Qt::AlignmentFlag::AlignJustify);
-    greeting->setFixedWidth(getGreetingAverageSize(greeting->text()) + 50);
-
-    QVBoxLayout* buttonsL = new QVBoxLayout;
-    buttonsL->setSpacing(50);
-    buttonsL->setAlignment(Qt::AlignTop);
-    for (const auto& button : mainButtons.buttons())
+    // Add "New Project" and "Load Project" buttons to the window
+    btnNewProject = std::make_unique<QPushButton>(tr("New Project"));
+    btnNewProject->setFixedSize(GuiConfig::startButtonsSize);
+    connect(btnNewProject.get(), &QPushButton::clicked, this, [=](bool)
     {
-        buttonsL->addWidget(button);
-    }
+        emit pressed(GreetingWidget::StandartButtons::NewProject);
+    });
 
-    QHBoxLayout* contentL = new QHBoxLayout;
-    contentL->setAlignment(Qt::AlignLeft);
-    contentL->addLayout(buttonsL);
-    contentL->addWidget(greeting);
-    contentL->setAlignment(greeting, Qt::AlignTop);
+    btnLoadProject = std::make_unique<QPushButton>(tr("Load Project"));
+    btnLoadProject->setFixedSize(GuiConfig::startButtonsSize);
+    connect(btnLoadProject.get(), &QPushButton::clicked, this, [=](bool)
+    {
+        emit pressed(GreetingWidget::StandartButtons::LoadProject);
+    });
 
-    // Main layout
-    QVBoxLayout* mainL = new QVBoxLayout;
-    mainL->setSpacing(50);
-    mainL->setContentsMargins(50, 50, 50, 30);
-    mainL->addLayout(contentL);
-    mainL->addSpacing(80);
-    // Languages choosing box
-    mainL->addLayout(createLanguageLayout(language, tr("Language")));
-    setLayout(mainL);
-}
+    ltButtons = std::make_unique<QVBoxLayout>();
+    ltButtons->setSpacing(50);
+    ltButtons->setAlignment(Qt::AlignTop);
+    ltButtons->addWidget(btnNewProject.get());
+    ltButtons->addWidget(btnLoadProject.get());
 
-void GreetingWidget::addStandartButton(GreetingWidget::StandartButtons standartButton, const QString& buttonName)
-{
-    // creating standart button
-    QPushButton* button = new QPushButton(buttonName);
-//    button->setMinimumSize(100, 15);
-    button->setFixedSize(GuiConfig::startButtonsSize);
-    mainButtons.addButton(button);
+    ltContent = std::make_unique<QHBoxLayout>();
+    ltContent->setAlignment(Qt::AlignLeft);
+    ltContent->addLayout(ltButtons.get());
+    ltContent->addWidget(lblGreeting.get());
+    ltContent->setAlignment(lblGreeting.get(), Qt::AlignTop);
 
-    // Event OnClick()
-    connect(button, &QPushButton::clicked, this, [=](bool)
-        {
-            emit pressed(standartButton);
-        }
-    );
-}
+    lblLanguage = std::make_unique<QLabel>(tr("Language"));
 
-QHBoxLayout *GreetingWidget::createLanguageLayout(Config::Languages language, const QString &labelText) const
-{
-    QComboBox* langBox = new QComboBox;
-    // add languages labels
+    cmbLangList = std::make_unique<QComboBox>();
     for (int i = 0; i < static_cast<int>(Config::Languages::Count); ++i)
-    {
-        langBox->addItem(Config::GetStringFromLangEnum(static_cast<Config::Languages>(i)));
-    }
-    // set current language
-    langBox->setCurrentIndex(static_cast<int>(language));
-    connect(langBox, QOverload<int>::of(&QComboBox::activated), this, &GreetingWidget::languageChanged);
-    // create layout
-    QLabel* languageName = new QLabel(labelText);
-    QHBoxLayout* languageL = new QHBoxLayout;
-    languageL->addStretch(1);
-    languageL->setSpacing(10);
-    languageL->addWidget(languageName);
-    languageL->addWidget(langBox);
-    return languageL;
+        cmbLangList->addItem(Config::GetStringFromLangEnum(static_cast<Config::Languages>(i)));
+    cmbLangList->setCurrentIndex(static_cast<int>(language));
+    connect(cmbLangList.get(), QOverload<int>::of(&QComboBox::activated), this, &GreetingWidget::languageChanged);
+    
+    ltLanguages = std::make_unique<QHBoxLayout>();
+    ltLanguages->addStretch(1);
+    ltLanguages->setSpacing(10);
+    ltLanguages->addWidget(lblLanguage.get());
+    ltLanguages->addWidget(cmbLangList.get());
+
+    ltMain = std::make_unique<QVBoxLayout>();
+    ltMain->setSpacing(50);
+    ltMain->setContentsMargins(50, 50, 50, 30);
+    ltMain->addLayout(ltContent.get());
+    ltMain->addSpacing(80);
+    ltMain->addLayout(ltLanguages.get());
+
+    setLayout(ltMain.get());
 }
 
-int GreetingWidget::getGreetingAverageSize(const QString &text) const
+int GreetingWidget::GetGreetingAverageSize(const QString& text) const
 {
-    // label for size calculation
     QLabel labelForSizeCounting(text);
     labelForSizeCounting.setWordWrap(true);
-    // calculate size
     return (int)((labelForSizeCounting.sizeHint().height() + labelForSizeCounting.sizeHint().width()) / 2.);
 }

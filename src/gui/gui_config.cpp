@@ -4,7 +4,7 @@
 #include <QDir>
 #include <QDebug>
 
-#include <webp/decode.h>
+#include "libwebp\src\webp\decode.h"
 
 #include "../Logger.hpp"
 

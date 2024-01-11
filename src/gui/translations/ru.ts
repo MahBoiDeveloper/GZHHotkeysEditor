@@ -25,22 +25,30 @@
 <context>
     <name>GreetingWidget</name>
     <message>
-        <location filename="../launchWidgets/greeting_widget.cpp" line="13"/>
         <source>New project</source>
-        <translation>Новый проект</translation>
+        <translation type="vanished">Новый проект</translation>
     </message>
     <message>
-        <location filename="../launchWidgets/greeting_widget.cpp" line="14"/>
         <source>Load project</source>
-        <translation>Загрузить проект</translation>
+        <translation type="vanished">Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../launchWidgets/greeting_widget.cpp" line="50"/>
+        <location filename="../launchWidgets/greeting_widget.cpp" line="23"/>
+        <source>New Project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launchWidgets/greeting_widget.cpp" line="30"/>
+        <source>Load Project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launchWidgets/greeting_widget.cpp" line="49"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../launchWidgets/greeting_widget.cpp" line="18"/>
+        <location filename="../launchWidgets/greeting_widget.cpp" line="11"/>
         <source>Greetings, %username%. You have launched the hotkey editing program for the game Command and Conquer: Generals and Command and Conquer: Generals — Zero Hour. At the moment, the program supports in test mode only the creation of hotkey maps based on pre-prepared hotkeys. We hope that you will like the program.</source>
         <translation>Приветствую тебя, %username%. Ты запустил программу редактирования горячих клавиш для игры Command and Conquer: Generals и Command and  Conquer: Generals — Zero Hour. На текущий момент программа поддерживает в тестовом режиме только создание карт горячих клавиш на основе заранее подготовленных горячих клавиш. Надеемся, что программа тебе понравится.</translation>
     </message>
