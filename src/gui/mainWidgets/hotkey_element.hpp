@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QLabel>
+#include <QPushButton>
+#include <QVBoxLayout>
 #include <QTimer>
 #include <QPushButton>
 

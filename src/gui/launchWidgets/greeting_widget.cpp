@@ -1,9 +1,24 @@
+#include <QLabel>
+#include <QComboBox>
+#include <QPushButton>
+#include <QVBoxLayout>
+
 #include "../../Logger.hpp"
 #include "../gui_config.hpp"
 #include "greeting_widget.hpp"
 
 GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QWidget(parent)
 {
+    QLabel*      lblGreeting    = nullptr;
+    QPushButton* btnNewProject  = nullptr;
+    QPushButton* btnLoadProject = nullptr;
+    QVBoxLayout* ltButtons      = nullptr;
+    QHBoxLayout* ltContent      = nullptr;
+    QLabel*      lblLanguage    = nullptr;
+    QComboBox*   cmbLangList    = nullptr;
+    QHBoxLayout* ltLanguages    = nullptr;
+    QVBoxLayout* ltMain         = nullptr;
+
     // Makes greeting window unresizeable
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
@@ -70,6 +85,7 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
     setLayout(ltMain);
 }
 
+/// @brief Calculate size of long description text block.
 int GreetingWidget::GetGreetingTextAverageSize(const QString& text) const
 {
     QLabel lblSizeCounting(text);
