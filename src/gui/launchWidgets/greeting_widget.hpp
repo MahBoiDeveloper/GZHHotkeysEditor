@@ -31,7 +31,7 @@ private:
 public: // Methods
     GreetingWidget(Config::Languages language = Config::Languages::English, QWidget* parent = nullptr);
 private:
-    int          GetGreetingAverageSize(const QString& text) const;
+    int  GetGreetingTextAverageSize(const QString& text) const;
 signals:
     void pressed(GreetingWidget::StandartButtons standartButton);
     void languageChanged(int index);

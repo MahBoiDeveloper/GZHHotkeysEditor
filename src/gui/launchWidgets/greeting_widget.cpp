@@ -17,7 +17,7 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
                                               "We hope that you will like the program."));
     lblGreeting->setWordWrap(true);
     lblGreeting->setAlignment(Qt::AlignmentFlag::AlignJustify);
-    lblGreeting->setFixedWidth(GetGreetingAverageSize(lblGreeting->text()) + 50);
+    lblGreeting->setFixedWidth(GetGreetingTextAverageSize(lblGreeting->text()) + 50);
 
     // Add "New Project" and "Load Project" buttons to the window
     btnNewProject = std::make_unique<QPushButton>(tr("New Project"));
@@ -70,9 +70,9 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
     setLayout(ltMain.get());
 }
 
-int GreetingWidget::GetGreetingAverageSize(const QString& text) const
+int GreetingWidget::GetGreetingTextAverageSize(const QString& text) const
 {
-    QLabel labelForSizeCounting(text);
-    labelForSizeCounting.setWordWrap(true);
-    return (int)((labelForSizeCounting.sizeHint().height() + labelForSizeCounting.sizeHint().width()) / 2.);
+    QLabel lblSizeCounting(text);
+    lblSizeCounting.setWordWrap(true);
+    return (int)((lblSizeCounting.sizeHint().height() + lblSizeCounting.sizeHint().width()) / 2.);
 }
