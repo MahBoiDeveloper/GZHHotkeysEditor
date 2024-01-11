@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include <QLabel>
 #include <QComboBox>
 #include <QPushButton>
@@ -18,15 +17,15 @@ public: // Data
     };
 private:
     Q_OBJECT
-    std::unique_ptr<QLabel>      lblGreeting;
-    std::unique_ptr<QPushButton> btnNewProject;
-    std::unique_ptr<QPushButton> btnLoadProject;
-    std::unique_ptr<QVBoxLayout> ltButtons;
-    std::unique_ptr<QHBoxLayout> ltContent;
-    std::unique_ptr<QLabel>      lblLanguage;
-    std::unique_ptr<QComboBox>   cmbLangList;
-    std::unique_ptr<QHBoxLayout> ltLanguages;
-    std::unique_ptr<QVBoxLayout> ltMain;
+    QLabel*      lblGreeting    = nullptr;
+    QPushButton* btnNewProject  = nullptr;
+    QPushButton* btnLoadProject = nullptr;
+    QVBoxLayout* ltButtons      = nullptr;
+    QHBoxLayout* ltContent      = nullptr;
+    QLabel*      lblLanguage    = nullptr;
+    QComboBox*   cmbLangList    = nullptr;
+    QHBoxLayout* ltLanguages    = nullptr;
+    QVBoxLayout* ltMain         = nullptr;
 
 public: // Methods
     GreetingWidget(Config::Languages language = Config::Languages::English, QWidget* parent = nullptr);
