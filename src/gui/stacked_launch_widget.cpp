@@ -2,10 +2,10 @@
 #include <QFile>
 #include <QDebug>
 
-#include "../../Logger.hpp"
-#include "../gui_config.hpp"
-#include "configurationDialogs/creation_dialog.hpp"
-#include "configurationDialogs/load_dialog.hpp"
+#include "../Logger.hpp"
+#include "gui_config.hpp"
+#include "creation_dialog.hpp"
+#include "load_dialog.hpp"
 #include "stacked_launch_widget.hpp"
 
 StackedLaunchWidget::StackedLaunchWidget(Config::Languages lngType, QWidget *parent) : QStackedWidget(parent)

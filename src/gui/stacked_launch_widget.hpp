@@ -3,7 +3,7 @@
 #include <QTranslator>
 #include <QStackedWidget>
 
-#include "../mainWidgets/hotkeys_main_window.hpp"
+#include "hotkeys_main_window.hpp"
 #include "greeting_widget.hpp"
 
 class StackedLaunchWidget : public QStackedWidget

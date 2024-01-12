@@ -1,5 +1,5 @@
 #pragma once
-#include "../../config.hpp"
+#include "../config.hpp"
 
 class GreetingWidget : public QWidget
 {

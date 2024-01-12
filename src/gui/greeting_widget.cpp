@@ -3,8 +3,8 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-#include "../../Logger.hpp"
-#include "../gui_config.hpp"
+#include "../Logger.hpp"
+#include "gui_config.hpp"
 #include "greeting_widget.hpp"
 
 GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QWidget(parent)

@@ -7,7 +7,7 @@
 #include <QTreeWidgetItem>
 
 #include <QScrollArea>
-#include "../../Data/faction.hpp"
+#include "../Data/faction.hpp"
 
 class HotkeysMainWindow : public QMainWindow
 {

@@ -1,9 +1,9 @@
-#include "hotkey_element.hpp"
-#include <launchWidgets/greeting_widget.hpp>
-#include <gui_config.hpp>
-
 #include <QKeyEvent>
 #include <QDebug>
+
+#include "hotkey_element.hpp"
+#include "greeting_widget.hpp"
+#include "gui_config.hpp"
 
 HotkeyElement::HotkeyElement(const QString& actionName,
                              const QString& hotkeyStr,

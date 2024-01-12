@@ -6,7 +6,7 @@
 #include <QMessageBox>
 
 // Project files
-#include "gui/launchWidgets/stacked_launch_widget.hpp"
+#include "GUI/stacked_launch_widget.hpp"
 #include "Logger.hpp"
 #include "Registry.hpp"
 
