@@ -4,7 +4,7 @@
 
 class Registry final
 {
-public: // Data types declarations
+public: // Data
     enum class WindowsBit
     {
         Win32,
@@ -22,7 +22,7 @@ public: // Data types declarations
         HKLM,
         HKCU
     };
-public: // Data
+
     inline static const std::map<Games, std::map<WindowsBit, std::string>> PATHS_TO_GAMES =
     {
         {Games::Generals,         {{WindowsBit::Win32, "SOFTWARE\\Electronic Arts\\EA Games\\Generals"},

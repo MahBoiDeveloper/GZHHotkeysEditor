@@ -1,7 +1,7 @@
-#include "CSFParser.hpp"
 #include "../Logger.hpp"
 #include "../Unsorted.hpp"
 #include "../Exception.hpp"
+#include "CSFParser.hpp"
 
 using namespace std;
 

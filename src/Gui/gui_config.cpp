@@ -1,12 +1,10 @@
-#include "gui_config.hpp"
-
 #include <QFile>
 #include <QDir>
 #include <QDebug>
 
-#include "libwebp\src\webp\decode.h"
-
 #include "../Logger.hpp"
+#include "libwebp/src/webp/decode.h"
+#include "gui_config.hpp"
 
 QImage GuiConfig::decodeWebpIcon(const QString& iconName)
 {

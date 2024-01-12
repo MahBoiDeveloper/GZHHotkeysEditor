@@ -1,23 +1,22 @@
 #pragma once
-
-#include <QButtonGroup>
 #include <QDialog>
-#include <QDialogButtonBox>
 #include <QVariant>
+#include <QButtonGroup>
+#include <QDialogButtonBox>
 
 class BaseConfigurationDialog : public QDialog
 {
     Q_OBJECT
+protected: // Data
+    QButtonGroup buttonsGroup;
+    QDialogButtonBox dialogButtons;
 
-public:
+public: // Methods
     BaseConfigurationDialog(QWidget *parent = nullptr);
+protected:
+    // Create configuration data for editor creation
+    virtual QVariant createConfigurationData() = 0;
 
 signals:
     void acceptedConfiguration(QVariant configuration);
-
-protected:
-    QButtonGroup buttonsGroup;
-    QDialogButtonBox dialogButtons;
-    // Create configuration data for editor creation
-    virtual QVariant createConfigurationData() = 0;
 };

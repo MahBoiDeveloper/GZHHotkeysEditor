@@ -4,9 +4,9 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 
-#include "JSONFile.hpp"
 #include "../Exception.hpp"
 #include "../Logger.hpp"
+#include "JSONFile.hpp"
 
 using namespace std;
 

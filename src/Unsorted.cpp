@@ -1,5 +1,4 @@
 #include "Unsorted.hpp"
-
 using namespace std;
 
 namespace Unsorted

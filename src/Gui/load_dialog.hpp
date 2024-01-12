@@ -5,10 +5,10 @@
 class LoadDialog : public BaseConfigurationDialog
 {
     Q_OBJECT
-private:
+private: // Data
     QButtonGroup groupB;
 
-public:
+public: // Methods
     explicit LoadDialog(QWidget *parent = nullptr);
     QVariant createConfigurationData() override;
 };

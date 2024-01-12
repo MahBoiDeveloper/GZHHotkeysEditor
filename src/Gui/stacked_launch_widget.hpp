@@ -1,29 +1,24 @@
 #pragma once
-
 #include <QTranslator>
 #include <QStackedWidget>
-
 #include "greeting_widget.hpp"
 
 class StackedLaunchWidget : public QStackedWidget
 {
     Q_OBJECT
+private: // Data
+    QTranslator*       pTranslator    = nullptr;
+    GreetingWidget*    pStartWidget   = nullptr;
 
-public:
-    StackedLaunchWidget(Config::Languages language, QWidget *parent = nullptr);
-
-signals:
-    void acceptedConfiguration(const QVariant &configuration);
-
-private:
+private: // Methods
     void SetTranslator(Config::Languages language);
     void UpdateConnectionsToSignals();
+public:
+    StackedLaunchWidget(Config::Languages language, QWidget *parent = nullptr);
 
 private slots:
     void OnChangeLanguage(int intLngIndex);
     void OnStartButtonClicked(GreetingWidget::StandartButtons standartButton);
-
-private:
-    QTranslator*       pTranslator    = nullptr;
-    GreetingWidget*    pStartWidget   = nullptr;
+signals:
+    void acceptedConfiguration(const QVariant &configuration);
 };

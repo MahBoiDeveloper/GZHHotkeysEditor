@@ -1,15 +1,14 @@
-#include "hotkeys_main_window.hpp"
-
 #include <QMenuBar>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QHeaderView>
 
+#include "../Info.hpp"
+#include "../Logger.hpp"
+#include "../Parsers/TechTreeJsonParser.hpp"
+#include "hotkeys_main_window.hpp"
 #include "hotkey_element.hpp"
 #include "gui_config.hpp"
-#include "../Logger.hpp"
-#include "../Info.hpp"
-#include "../Parsers/TechTreeJsonParser.hpp"
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
     : QMainWindow(parent)

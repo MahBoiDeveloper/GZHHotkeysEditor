@@ -1,6 +1,5 @@
-#include "base_configuration_dialog.hpp"
-
 #include <QPushButton>
+#include "base_configuration_dialog.hpp"
 
 BaseConfigurationDialog::BaseConfigurationDialog(QWidget *parent) : QDialog(parent)
 {

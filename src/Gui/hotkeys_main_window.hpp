@@ -1,11 +1,9 @@
 #pragma once
-
 #include <QButtonGroup>
 #include <QVBoxLayout>
 #include <QListWidget>
 #include <QMainWindow>
 #include <QTreeWidgetItem>
-
 #include <QScrollArea>
 #include "../Data/faction.hpp"
 

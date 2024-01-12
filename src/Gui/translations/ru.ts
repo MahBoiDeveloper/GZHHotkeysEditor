@@ -4,12 +4,12 @@
 <context>
     <name>BaseConfigurationDialog</name>
     <message>
-        <location filename="../base_configuration_dialog.cpp" line="9"/>
+        <location filename="../base_configuration_dialog.cpp" line="8"/>
         <source>Configure</source>
         <translation>Настройка</translation>
     </message>
     <message>
-        <location filename="../base_configuration_dialog.cpp" line="10"/>
+        <location filename="../base_configuration_dialog.cpp" line="9"/>
         <source>Back</source>
         <translation>Назад</translation>
     </message>
@@ -60,12 +60,12 @@
         <translation type="vanished">Нажмите любую клавишу...</translation>
     </message>
     <message>
-        <location filename="../hotkey_element.cpp" line="73"/>
+        <location filename="../hotkey_element.cpp" line="72"/>
         <source>It isn&apos;t latin key...</source>
         <translation>Это не латинская клавиша...</translation>
     </message>
     <message>
-        <location filename="../hotkey_element.cpp" line="108"/>
+        <location filename="../hotkey_element.cpp" line="107"/>
         <source>Press latin key...</source>
         <translation>Нажмите латинскую клавишу...</translation>
     </message>
@@ -73,38 +73,38 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../hotkeys_main_window.cpp" line="142"/>
+        <location filename="../hotkeys_main_window.cpp" line="146"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../hotkeys_main_window.cpp" line="143"/>
+        <location filename="../hotkeys_main_window.cpp" line="147"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../hotkeys_main_window.cpp" line="145"/>
+        <location filename="../hotkeys_main_window.cpp" line="149"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../hotkeys_main_window.cpp" line="146"/>
+        <location filename="../hotkeys_main_window.cpp" line="150"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../hotkeys_main_window.cpp" line="148"/>
-        <location filename="../hotkeys_main_window.cpp" line="222"/>
+        <location filename="../hotkeys_main_window.cpp" line="152"/>
+        <location filename="../hotkeys_main_window.cpp" line="226"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../hotkeys_main_window.cpp" line="208"/>
+        <location filename="../hotkeys_main_window.cpp" line="212"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../hotkeys_main_window.cpp" line="215"/>
+        <location filename="../hotkeys_main_window.cpp" line="219"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

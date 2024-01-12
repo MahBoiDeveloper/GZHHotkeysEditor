@@ -5,7 +5,7 @@
 
 class GINIParser final
 {
-public: // Data types declaration
+public: // Data
     struct GINIKey final
     {
         std::string Name;
@@ -18,7 +18,6 @@ public: // Data types declaration
         std::vector<GINIKey> Keys;
     };
 
-public: // Data
     inline static std::unique_ptr<GINIParser> Instance;
 private:
     std::string Path;

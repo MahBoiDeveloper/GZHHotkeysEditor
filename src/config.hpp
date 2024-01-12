@@ -4,7 +4,7 @@
 
 class Config
 {
-public:
+public: // Data
     inline static const QString resourcesFolder  = "Resources";
     inline static const QString translationsPath = resourcesFolder + "/Translations";
     inline static const QString techTreeFile     = resourcesFolder + "/TechTree.json";
@@ -39,7 +39,7 @@ public:
         {Languages::Russian, {"ru", "Русский"}}
     };
 
-public:
+public: // Methods
     Config() = delete;
 
     static const QString GetLocaleFromLangEnum(Languages language);
