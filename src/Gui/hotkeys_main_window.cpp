@@ -85,7 +85,6 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 //        for (const auto & faction : factions)
 //        {
 //            QPushButton* factionButton = new QPushButton(QString::fromStdString(factions.at(i).DisplayName));
-
 //            if (i < factonsCount / 2)
 //            {
 //                firstL->addWidget(factionButton);

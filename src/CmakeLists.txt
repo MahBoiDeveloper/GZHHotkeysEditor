@@ -35,12 +35,12 @@ file(
     ${CMAKE_CURRENT_SOURCE_DIR}/*.[ch]pp
 )
 
-# gui sources
+# Gui sources
 file(
     GLOB_RECURSE EXCLUDE_SOURCES
     LIST_DIRECTORIES true
     RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/gui/*.[ch]pp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Gui/*.[ch]pp
 )
 
 # remove unnecessary files from main target
@@ -58,8 +58,8 @@ set_target_properties(${MAIN_TARGET_NAME}
     RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_BIN_FOLDER}
 )
 
-# link gui subproject
-subdirs(gui)
+# link Gui subproject
+subdirs(Gui)
 # target_sources(${MAIN_TARGET_NAME} PRIVATE $<TARGET_OBJECTS:Gui>)
 target_link_libraries(${MAIN_TARGET_NAME}
     PRIVATE Gui
