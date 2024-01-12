@@ -3,24 +3,27 @@
 #include <QTranslator>
 #include <QStackedWidget>
 
-#include "hotkeys_main_window.hpp"
 #include "greeting_widget.hpp"
 
 class StackedLaunchWidget : public QStackedWidget
 {
-private: // Data
     Q_OBJECT
-    QTranslator*       pTranslator    = nullptr;
-    GreetingWidget*    pStartWidget   = nullptr;
-    HotkeysMainWindow* pHotkeysEditor = nullptr;
 
-public: // Methods
+public:
     StackedLaunchWidget(Config::Languages language, QWidget *parent = nullptr);
+
+signals:
+    void acceptedConfiguration(const QVariant &configuration);
+
 private:
     void SetTranslator(Config::Languages language);
     void UpdateConnectionsToSignals();
+
 private slots:
     void OnChangeLanguage(int intLngIndex);
     void OnStartButtonClicked(GreetingWidget::StandartButtons standartButton);
-    void OnConfigurationAccepted(const QVariant &configuration);
+
+private:
+    QTranslator*       pTranslator    = nullptr;
+    GreetingWidget*    pStartWidget   = nullptr;
 };

@@ -19,7 +19,9 @@ StackedLaunchWidget::StackedLaunchWidget(Config::Languages lngType, QWidget *par
         styleSheetsFile.close();
     }
     else
+    {
         LOGMSG("Unable to read the style file mainStyleSheet.css.");
+    }
 
     qApp->setWindowIcon(QIcon(QPixmap::fromImage(GuiConfig::decodeDefaultWebpIcon())));
 
@@ -30,7 +32,7 @@ StackedLaunchWidget::StackedLaunchWidget(Config::Languages lngType, QWidget *par
                                    ~Qt::WindowMinimizeButtonHint);
     
     SetTranslator(lngType);
-    pStartWidget = new GreetingWidget(lngType, this);
+    pStartWidget = new GreetingWidget{lngType};
     addWidget(pStartWidget);
     UpdateConnectionsToSignals();
 }
@@ -70,7 +72,7 @@ void StackedLaunchWidget::OnChangeLanguage(int intLngIndex)
 
     // Recreate StartWidget and update connections.
     pStartWidget->deleteLater();
-    pStartWidget = new GreetingWidget(lngType);
+    pStartWidget = new GreetingWidget{lngType};
     addWidget(pStartWidget);
     UpdateConnectionsToSignals();
 }
@@ -95,20 +97,6 @@ void StackedLaunchWidget::OnStartButtonClicked(GreetingWidget::StandartButtons s
     addWidget(configurationWidget);
     setCurrentWidget(configurationWidget); // next window (creator)
 
-    // if accepted -> create redactor with configs and delete other widgets
-    connect(configurationWidget, &CreationDialog::acceptedConfiguration, 
-            this,                &StackedLaunchWidget::OnConfigurationAccepted);
-}
-
-// close and create new editor
-void StackedLaunchWidget::OnConfigurationAccepted(const QVariant& configuration)
-{
-    LOGMSG("Loading hotkey editor window...");
-    pHotkeysEditor = new HotkeysMainWindow(configuration);
-    pHotkeysEditor->setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
-    pHotkeysEditor->show();
-    LOGMSG("Hotkey editor window has been loaded");
-    LOGMSG("Closing and deleting the StartWidget");
-    close();
-    pStartWidget->deleteLater();
+    // if accepted -> send signal with configuration
+    connect(configurationWidget, &CreationDialog::acceptedConfiguration, this, &StackedLaunchWidget::acceptedConfiguration);
 }

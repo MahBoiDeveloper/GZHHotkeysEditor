@@ -6,7 +6,8 @@
 #include <QMessageBox>
 
 // Project files
-#include "GUI/stacked_launch_widget.hpp"
+#include "Gui/stacked_launch_widget.hpp"
+#include "Gui/hotkeys_main_window.hpp"
 #include "Logger.hpp"
 #include "Registry.hpp"
 
@@ -24,15 +25,29 @@ int main(int argc, char *argv[])
     Logger::Instance = make_unique<Logger>();
 
     // Initialize main cute application
-    QApplication HotkeyEditor(argc, argv);
+    QApplication HotkeyEditor{argc, argv};
 
     try
     {
         // Create main window with user system language
-        StackedLaunchWidget HotkeyEditor_Window(Config::GetLangEnumByLocale(Registry::GetCurrentUserLanguage()));
+        StackedLaunchWidget* HotkeyEditor_Window = new StackedLaunchWidget{Config::GetLangEnumByLocale(Registry::GetCurrentUserLanguage())};
+        HotkeyEditor_Window->setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
 
-        HotkeyEditor_Window.setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
-        HotkeyEditor_Window.show();
+        // Create HotkeysEditor with accepted configuration
+        QObject::connect(HotkeyEditor_Window, &StackedLaunchWidget::acceptedConfiguration, HotkeyEditor_Window, [=](const QVariant& configuration)
+        {
+            LOGMSG("Loading hotkey editor window...");
+            HotkeysMainWindow* pHotkeysEditor = new HotkeysMainWindow{configuration};
+            pHotkeysEditor->setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
+            pHotkeysEditor->show();
+            LOGMSG("Hotkey editor window has been loaded");
+
+            LOGMSG("Closing and deleting the StartWidget");
+            HotkeyEditor_Window->deleteLater();
+        });
+
+        HotkeyEditor_Window->show();
+
         HotkeyEditor.exec();
     }
     catch (const exception& exception)
