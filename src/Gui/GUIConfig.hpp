@@ -2,7 +2,7 @@
 #include <QImage>
 #include "../config.hpp"
 
-class GuiConfig
+class GUIConfig
 {
 public: // Data
     inline static const QSize startButtonsSize = QSize(230, 110);
@@ -11,7 +11,7 @@ public: // Data
     inline static const QString iconsPath = Config::resourcesFolder + "/Icons";
 
 public: // Method
-    GuiConfig() = delete;
+    GUIConfig() = delete;
 
     static QImage decodeWebpIcon(const QString& iconName);
     static QImage decodeDefaultWebpIcon();

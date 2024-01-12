@@ -3,7 +3,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-#include "creation_dialog.hpp"
+#include "CreationDialog.hpp"
 #include "../../../Registry.hpp"
 
 CreationDialog::CreationDialog(QWidget *parent) : BaseConfigurationDialog(parent)

@@ -1,4 +1,4 @@
-#include "entity_action.hpp"
+#include "EntityAction.hpp"
 
 EntityAction::EntityAction(const QString& name, const QString& csfString)
     : name{name}

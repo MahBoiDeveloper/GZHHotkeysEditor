@@ -6,9 +6,9 @@
 #include "../Info.hpp"
 #include "../Logger.hpp"
 #include "../Parsers/TechTreeJsonParser.hpp"
-#include "hotkeys_main_window.hpp"
-#include "hotkey_element.hpp"
-#include "gui_config.hpp"
+#include "HotkeysMainWindow.hpp"
+#include "HotkeyElement.hpp"
+#include "GUIConfig.hpp"
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
     : QMainWindow(parent)
@@ -29,8 +29,8 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     // smooth scrolling
     entitiesTreeWidget->setVerticalScrollMode(QListWidget::ScrollMode::ScrollPerPixel);
     // icon size
-    entitiesTreeWidget->setIconSize(QSize{GuiConfig::entityIconMinimumHeight, GuiConfig::entityIconMinimumHeight});
-//    entitiesTreeWidget.setSpacing(GuiConfig::entityIconMinimumHeight * 0.1);
+    entitiesTreeWidget->setIconSize(QSize{GUIConfig::entityIconMinimumHeight, GUIConfig::entityIconMinimumHeight});
+//    entitiesTreeWidget.setSpacing(GUIConfig::entityIconMinimumHeight * 0.1);
 
     //============================ Factions button group configure ============================
     QBoxLayout* factionsL = nullptr;
@@ -166,7 +166,7 @@ void HotkeysMainWindow::setEntitiesList(const QString& factionShortName)
         {
             QTreeWidgetItem* currentNewEntityItem = new QTreeWidgetItem;
             currentNewEntityItem->setText(0, entity.getName());
-            currentNewEntityItem->setIcon(0, QPixmap::fromImage(GuiConfig::decodeWebpIcon(entity.getName())));
+            currentNewEntityItem->setIcon(0, QPixmap::fromImage(GUIConfig::decodeWebpIcon(entity.getName())));
             newTopEntityItem->addChild(currentNewEntityItem);
         }
 
@@ -213,7 +213,7 @@ void HotkeysMainWindow::onAbout()
     QGridLayout* contentL = new QGridLayout;
     contentL->addLayout(authorsL, 0, 0);
     QLabel* pixmap = new QLabel;
-    pixmap->setPixmap(QPixmap::fromImage(GuiConfig::decodeDefaultWebpIcon()));
+    pixmap->setPixmap(QPixmap::fromImage(GUIConfig::decodeDefaultWebpIcon()));
     contentL->addWidget(pixmap, 0, 1);
     QLabel* textL = new QLabel{tr("Program licensed by GNU GPL v3")};
     textL->setWordWrap(true);

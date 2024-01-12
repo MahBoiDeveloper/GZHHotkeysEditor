@@ -7,7 +7,7 @@
 #include <QFontMetrics>
 #include <QDebug>
 
-#include "load_dialog.hpp"
+#include "LoadDialog.hpp"
 
 LoadDialog::LoadDialog(QWidget *parent) : BaseConfigurationDialog(parent)
 {

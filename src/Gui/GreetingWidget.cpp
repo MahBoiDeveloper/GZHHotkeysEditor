@@ -4,8 +4,8 @@
 #include <QVBoxLayout>
 
 #include "../Logger.hpp"
-#include "gui_config.hpp"
-#include "greeting_widget.hpp"
+#include "GUIConfig.hpp"
+#include "GreetingWidget.hpp"
 
 GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QWidget(parent)
 {
@@ -36,14 +36,14 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
 
     // Add "New Project" and "Load Project" buttons to the window
     btnNewProject = new QPushButton(tr("New Project"));
-    btnNewProject->setFixedSize(GuiConfig::startButtonsSize);
+    btnNewProject->setFixedSize(GUIConfig::startButtonsSize);
     connect(btnNewProject, &QPushButton::clicked, this, [=](bool)
     {
         emit pressed(GreetingWidget::StandartButtons::NewProject);
     });
 
     btnLoadProject = new QPushButton(tr("Load Project"));
-    btnLoadProject->setFixedSize(GuiConfig::startButtonsSize);
+    btnLoadProject->setFixedSize(GUIConfig::startButtonsSize);
     connect(btnLoadProject, &QPushButton::clicked, this, [=](bool)
     {
         emit pressed(GreetingWidget::StandartButtons::LoadProject);

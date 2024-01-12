@@ -1,7 +1,7 @@
 #pragma once
 #include <QTranslator>
 #include <QStackedWidget>
-#include "greeting_widget.hpp"
+#include "GreetingWidget.hpp"
 
 class StackedLaunchWidget : public QStackedWidget
 {

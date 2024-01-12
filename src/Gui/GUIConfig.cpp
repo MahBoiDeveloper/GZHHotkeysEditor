@@ -4,9 +4,9 @@
 
 #include "../Logger.hpp"
 #include "libwebp/src/webp/decode.h"
-#include "gui_config.hpp"
+#include "GUIConfig.hpp"
 
-QImage GuiConfig::decodeWebpIcon(const QString& iconName)
+QImage GUIConfig::decodeWebpIcon(const QString& iconName)
 {
     QStringList allMatchIconFiles = findAllMatchingFiles(iconsPath, iconName);
 
@@ -20,12 +20,12 @@ QImage GuiConfig::decodeWebpIcon(const QString& iconName)
     }
 }
 
-QImage GuiConfig::decodeDefaultWebpIcon()
+QImage GUIConfig::decodeDefaultWebpIcon()
 {
     return decodeWebpIconPath(defaultIconFile);
 }
 
-QStringList GuiConfig::findAllMatchingFiles(const QString& pathToDir, const QString& nameFilter)
+QStringList GUIConfig::findAllMatchingFiles(const QString& pathToDir, const QString& nameFilter)
 {
     QStringList files;
 
@@ -53,7 +53,7 @@ QStringList GuiConfig::findAllMatchingFiles(const QString& pathToDir, const QStr
     return files;
 }
 
-QImage GuiConfig::decodeWebpIconPath(const QString& iconPath)
+QImage GUIConfig::decodeWebpIconPath(const QString& iconPath)
 {
     QFile iconFile(iconPath);
 
@@ -69,7 +69,7 @@ QImage GuiConfig::decodeWebpIconPath(const QString& iconPath)
     return decodeImageFromData(iconFile.readAll());
 }
 
-QImage GuiConfig::decodeImageFromData(const QByteArray& iconData)
+QImage GUIConfig::decodeImageFromData(const QByteArray& iconData)
 {
     int width, height;
     uint8_t* decodedImage = WebPDecodeRGBA(reinterpret_cast<const uint8_t*>(iconData.constData()), // amogus

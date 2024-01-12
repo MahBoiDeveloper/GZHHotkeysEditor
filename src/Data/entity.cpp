@@ -1,4 +1,4 @@
-#include "entity.hpp"
+#include "Entity.hpp"
 
 Entity::Entity(const QString& name, const QString& ingameName, const QVector<EntityAction>& actions)
     : name{name}

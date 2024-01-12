@@ -1,4 +1,4 @@
-#include "faction.hpp"
+#include "Faction.hpp"
 
 Faction::Faction(const QString& shortName, const QString& displayName, const QString& displayNameDesctiontion)
     : shortName{shortName}

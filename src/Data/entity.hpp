@@ -1,8 +1,6 @@
 #pragma once
-
-#include "entity_action.hpp"
-
 #include <QVector>
+#include "entity_action.hpp"
 
 class Entity
 {

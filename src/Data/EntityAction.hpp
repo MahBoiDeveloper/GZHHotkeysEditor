@@ -1,5 +1,4 @@
 #pragma once
-
 #include <QString>
 
 /// @brief class for storing building data

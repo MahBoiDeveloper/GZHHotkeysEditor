@@ -1,6 +1,6 @@
 #pragma once
 #include <QCheckBox>
-#include "base_configuration_dialog.hpp"
+#include "BaseConfigurationDialog.hpp"
 
 class CreationDialog : public BaseConfigurationDialog
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "base_configuration_dialog.hpp"
+#include "BaseConfigurationDialog.hpp"
 
 class LoadDialog : public BaseConfigurationDialog
 {

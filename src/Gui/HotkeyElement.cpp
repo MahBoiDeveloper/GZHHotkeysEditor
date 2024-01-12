@@ -1,8 +1,8 @@
 #include <QKeyEvent>
 #include <QDebug>
 
-#include "hotkey_element.hpp"
-#include "gui_config.hpp"
+#include "HotkeyElement.hpp"
+#include "GUIConfig.hpp"
 
 HotkeyElement::HotkeyElement(const QString& actionName,
                              const QString& hotkeyStr,
@@ -21,7 +21,7 @@ HotkeyElement::HotkeyElement(const QString& actionName,
     connect(&signalTimer, &QTimer::timeout, this, &HotkeyElement::signalRepeatNewHotkey);
 
     QLabel* imageLb = new QLabel;
-    imageLb->setPixmap(QPixmap::fromImage(GuiConfig::decodeWebpIcon(iconName)));
+    imageLb->setPixmap(QPixmap::fromImage(GUIConfig::decodeWebpIcon(iconName)));
 
     // Hotkey label
     hotkeyLabel.setAlignment(Qt::AlignCenter);

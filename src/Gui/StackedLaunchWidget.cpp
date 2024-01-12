@@ -3,10 +3,10 @@
 #include <QDebug>
 
 #include "../Logger.hpp"
-#include "gui_config.hpp"
-#include "creation_dialog.hpp"
-#include "load_dialog.hpp"
-#include "stacked_launch_widget.hpp"
+#include "GUIConfig.hpp"
+#include "CreationDialog.hpp"
+#include "LoadDialog.hpp"
+#include "StackedLaunchWidget.hpp"
 
 StackedLaunchWidget::StackedLaunchWidget(Config::Languages lngType, QWidget *parent) : QStackedWidget(parent)
 {
@@ -23,7 +23,7 @@ StackedLaunchWidget::StackedLaunchWidget(Config::Languages lngType, QWidget *par
         LOGMSG("Unable to read the style file mainStyleSheet.css.");
     }
 
-    qApp->setWindowIcon(QIcon(QPixmap::fromImage(GuiConfig::decodeDefaultWebpIcon())));
+    qApp->setWindowIcon(QIcon(QPixmap::fromImage(GUIConfig::decodeDefaultWebpIcon())));
 
     // MainLaunchWidget settings
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
