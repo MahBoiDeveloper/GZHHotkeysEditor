@@ -6,10 +6,13 @@
 #include <QMessageBox>
 
 // Project files
-#include "GUI/StackedLaunchWidget.hpp"
-#include "GUI/HotkeysMainWindow.hpp"
+#include "Gui/StackedLaunchWidget.hpp"
+#include "Gui/HotkeysMainWindow.hpp"
+#include "Parsers/CSFParser.hpp"
 #include "Logger.hpp"
 #include "Registry.hpp"
+
+#include <QDebug>
 
 using namespace std;
 
@@ -23,6 +26,11 @@ int main(int argc, char *argv[])
 
     // Define logger as a singleton class, that could be used anywhere in project
     Logger::Instance = make_unique<Logger>();
+
+    CSFParser::Instance = make_unique<CSFParser>(Config::resourcesFolder + "/generalsRU.csf");
+
+    qDebug() << Config::resourcesFolder + "/generalsRU.csf";
+    qDebug() << CSFParser::Instance->GetStringValue(QString{"OBJECT:CommandCenter"});
 
     // Initialize main cute application
     QApplication HotkeyEditor{argc, argv};
