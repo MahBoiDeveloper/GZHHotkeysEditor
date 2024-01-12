@@ -2,7 +2,6 @@
 #include <QDebug>
 
 #include "hotkey_element.hpp"
-#include "greeting_widget.hpp"
 #include "gui_config.hpp"
 
 HotkeyElement::HotkeyElement(const QString& actionName,

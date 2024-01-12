@@ -94,17 +94,17 @@
     </message>
     <message>
         <location filename="../hotkeys_main_window.cpp" line="148"/>
-        <location filename="../hotkeys_main_window.cpp" line="221"/>
+        <location filename="../hotkeys_main_window.cpp" line="222"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../hotkeys_main_window.cpp" line="207"/>
+        <location filename="../hotkeys_main_window.cpp" line="208"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../hotkeys_main_window.cpp" line="214"/>
+        <location filename="../hotkeys_main_window.cpp" line="215"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

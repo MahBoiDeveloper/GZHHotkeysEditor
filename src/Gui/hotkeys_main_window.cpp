@@ -14,7 +14,11 @@
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
     : QMainWindow(parent)
     , factions{TechTreeJsonParser::GetFactions()}
-    , factionsButtonsGroup{new QButtonGroup{this}}
+    , factionsButtonsGroup{}
+    , entitiesTreeWidget{new QTreeWidget}
+    , hotkeysArea{new QScrollArea}
+    , hotkeysScrollWidget{nullptr}
+    , aboutDialog{nullptr}
 {
     resize(1200, 800);
 
@@ -22,11 +26,11 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 
     //============================ Entities Tree Widget configure =============================
 
-    entitiesTreeWidget.header()->hide();
+    entitiesTreeWidget->header()->hide();
     // smooth scrolling
-    entitiesTreeWidget.setVerticalScrollMode(QListWidget::ScrollMode::ScrollPerPixel);
+    entitiesTreeWidget->setVerticalScrollMode(QListWidget::ScrollMode::ScrollPerPixel);
     // icon size
-    entitiesTreeWidget.setIconSize(QSize{GuiConfig::entityIconMinimumHeight, GuiConfig::entityIconMinimumHeight});
+    entitiesTreeWidget->setIconSize(QSize{GuiConfig::entityIconMinimumHeight, GuiConfig::entityIconMinimumHeight});
 //    entitiesTreeWidget.setSpacing(GuiConfig::entityIconMinimumHeight * 0.1);
 
     //============================ Factions button group configure ============================
@@ -48,7 +52,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
             {
                 const Faction currentFaction = factions.at(sectionIndex + i);
 
-                QPushButton* factionButton = new QPushButton(currentFaction.getDisplayName());
+                QPushButton* factionButton = new QPushButton{currentFaction.getDisplayName()};
 
                 connect(factionButton, &QPushButton::pressed, this, [=]()
                 {
@@ -110,14 +114,14 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     //=========================================================================================
 
     // Fill all available space
-    hotkeysArea.setWidgetResizable(true);
+    hotkeysArea->setWidgetResizable(true);
 
     QVBoxLayout* buildingConfigurationL = new QVBoxLayout;
-    buildingConfigurationL->addWidget(&hotkeysArea);
+    buildingConfigurationL->addWidget(hotkeysArea);
     buildingConfigurationL->addWidget(new QScrollArea);
 
     QHBoxLayout* contentL = new QHBoxLayout;
-    contentL->addWidget(&entitiesTreeWidget);
+    contentL->addWidget(entitiesTreeWidget);
     contentL->addLayout(buildingConfigurationL);
 
     // building list's configuration stretch power
@@ -152,7 +156,7 @@ void HotkeysMainWindow::configureMenu()
 
 void HotkeysMainWindow::setEntitiesList(const QString& factionShortName)
 {
-    entitiesTreeWidget.clear();
+    entitiesTreeWidget->clear();
 
     for (auto it = Config::ENTITIES_STRINGS.cbegin(); it != Config::ENTITIES_STRINGS.cend(); ++it)
     {
@@ -167,10 +171,10 @@ void HotkeysMainWindow::setEntitiesList(const QString& factionShortName)
             newTopEntityItem->addChild(currentNewEntityItem);
         }
 
-        entitiesTreeWidget.addTopLevelItem(newTopEntityItem);
+        entitiesTreeWidget->addTopLevelItem(newTopEntityItem);
     }
 
-    entitiesTreeWidget.expandAll();
+    entitiesTreeWidget->expandAll();
 }
 
 void HotkeysMainWindow::setHotkeysLayout(const QString& factionShortName)
@@ -187,53 +191,55 @@ void HotkeysMainWindow::setHotkeysLayout(const QString& factionShortName)
         hotkeysLayout->addWidget(hotkeyElement);
     }
 
-    hotkeysScrollWidgetPtr.reset(new QWidget);
-    hotkeysScrollWidgetPtr->setLayout(hotkeysLayout);
-    hotkeysScrollWidgetPtr->setMinimumSize(hotkeysScrollWidgetPtr->sizeHint());
+    if (hotkeysScrollWidget != nullptr) hotkeysScrollWidget->deleteLater();
+    hotkeysScrollWidget = new QWidget;
+    hotkeysScrollWidget->setLayout(hotkeysLayout);
+    hotkeysScrollWidget->setMinimumSize(hotkeysScrollWidget->sizeHint());
 
-    hotkeysArea.setWidget(hotkeysScrollWidgetPtr.get());
+    hotkeysArea->setWidget(hotkeysScrollWidget);
 }
 
 void HotkeysMainWindow::onAbout()
 {
     // if dialog already exists
-    if (aboutDialogPtr != nullptr)
+    if (aboutDialog != nullptr)
     {
-        aboutDialogPtr->activateWindow();
+        aboutDialog->activateWindow();
         return;
     }
 
     QVBoxLayout* authorsL = new QVBoxLayout;
-    authorsL->addWidget(new QLabel(tr("Authors: ") + AUTHORS));
+    authorsL->addWidget(new QLabel{tr("Authors: ") + AUTHORS});
 
     QGridLayout* contentL = new QGridLayout;
     contentL->addLayout(authorsL, 0, 0);
     QLabel* pixmap = new QLabel;
     pixmap->setPixmap(QPixmap::fromImage(GuiConfig::decodeDefaultWebpIcon()));
     contentL->addWidget(pixmap, 0, 1);
-    QLabel* textL = new QLabel(tr("Program licensed by GNU GPL v3"));
+    QLabel* textL = new QLabel{tr("Program licensed by GNU GPL v3")};
     textL->setWordWrap(true);
     textL->setAlignment(Qt::AlignJustify);
     contentL->addWidget(textL, 1, 0);
     contentL->setSizeConstraint(QLayout::SetFixedSize);
 
-    aboutDialogPtr.reset(new QDialog(this));
-    aboutDialogPtr->setWindowTitle(tr("About"));
-    aboutDialogPtr->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    aboutDialogPtr->setWindowFlags(aboutDialogPtr->windowFlags() &
+    aboutDialog = new QDialog{this};
+    aboutDialog->setWindowTitle(tr("About"));
+    aboutDialog->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    aboutDialog->setWindowFlags(aboutDialog->windowFlags() &
                                ~Qt::WindowContextHelpButtonHint |
                                 Qt::MSWindowsFixedSizeDialogHint);
 
-    connect(aboutDialogPtr.get(), &QDialog::finished, this, [this]()
+    connect(aboutDialog, &QDialog::finished, this, [this]()
     {
-        aboutDialogPtr.reset(nullptr);
+        aboutDialog->deleteLater();
+        aboutDialog = nullptr;
     });
 
-    QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok,
+    QDialogButtonBox* buttons = new QDialogButtonBox{QDialogButtonBox::Ok,
                                                      Qt::Orientation::Horizontal,
-                                                     aboutDialogPtr.get());
+                                                     aboutDialog};
 
-    connect(buttons, &QDialogButtonBox::accepted, aboutDialogPtr.get(), &QDialog::accept);
+    connect(buttons, &QDialogButtonBox::accepted, aboutDialog, &QDialog::accept);
 
     QHBoxLayout* buttonsL = new QHBoxLayout;
     buttonsL->addStretch();
@@ -246,8 +252,8 @@ void HotkeysMainWindow::onAbout()
     mainL->addLayout(contentL);
     mainL->addLayout(buttonsL);
 
-    aboutDialogPtr->setLayout(mainL);
-    aboutDialogPtr->show();
-    aboutDialogPtr->raise();
-    aboutDialogPtr->activateWindow();
+    aboutDialog->setLayout(mainL);
+    aboutDialog->show();
+    aboutDialog->raise();
+    aboutDialog->activateWindow();
 }

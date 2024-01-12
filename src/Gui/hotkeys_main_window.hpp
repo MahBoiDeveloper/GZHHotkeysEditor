@@ -26,13 +26,13 @@ private:
 
 private:
     QVector<Faction> factions;
-
     QButtonGroup factionsButtonsGroup;
 
-    QTreeWidget entitiesTreeWidget;
+    // Graphic widgets in a single copy
+    QTreeWidget* entitiesTreeWidget = nullptr;
+    QScrollArea* hotkeysArea = nullptr;
 
-    QScrollArea hotkeysArea;
-    std::unique_ptr<QWidget> hotkeysScrollWidgetPtr;
-
-    std::unique_ptr<QDialog> aboutDialogPtr;
+    // Renewable widgets
+    QWidget* hotkeysScrollWidget = nullptr;
+    QDialog* aboutDialog = nullptr;
 };
