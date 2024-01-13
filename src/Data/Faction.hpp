@@ -1,7 +1,7 @@
 #pragma once
 #include <QMap>
-#include "../config.hpp"
-#include "entity.hpp"
+#include "../Config.hpp"
+#include "Entity.hpp"
 
 class Faction
 {
@@ -15,7 +15,7 @@ public:
 
     const QString& getDisplayNameDesctiontion() const;
 
-    const QMap<Config::Entities, QVector<Entity>>& getEntities() const;
+    const QMap<Config::Entities, QVector<Entity>>& getEntitiesMap() const;
 
     QVector<Entity> getEntitiesByType(Config::Entities entityType);
 

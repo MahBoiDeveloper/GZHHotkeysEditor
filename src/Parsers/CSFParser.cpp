@@ -6,41 +6,35 @@
 using namespace std;
 
 #pragma region CTORs and DTORs
-    CSFParser::CSFParser(const string& filePath)  : Path(filePath)
-    {
-        Parse();
-    }
 
-    CSFParser::CSFParser(const char* filePath)    : Path(string(filePath))
+    CSFParser::CSFParser(const string& filePath) : Path{filePath}
     {
-        Parse();
-    }
-
-    CSFParser::CSFParser(const QString& filePath) : Path(filePath.toStdString())
-    {
-        Parse();
-    }
-#pragma endregion
-
-#pragma region Parsing
-    /// @brief Internal of CSF file format.
-    void CSFParser::Parse()
-    {
+        // Parse
         ifstream csfFile(Path, ios::binary | ios::in);
         LOGMSG("Attempt to read binary file \"" + Path + "\"...");
 
         if (csfFile.is_open())
         {
-            CSFParser::ReadHeader(&csfFile);
-            CSFParser::ReadBody(&csfFile);
+            ReadHeader(&csfFile);
+            ReadBody(&csfFile);
 
             LOGSTM << "File \"" << Path << "\" has been parsed; strings count : " << Table.size() << endl;
         }
         else
         {
-            throw Exception(string("Bad file name; unable to open file \"" + Path + "\""));
+            throw Exception("Bad file name; unable to open file \"" + Path + "\"");
         }
     }
+
+    CSFParser::CSFParser(const char* filePath)    : CSFParser{string{filePath}}
+    {}
+
+    CSFParser::CSFParser(const QString& filePath) : CSFParser{filePath.toStdString()}
+    {}
+
+#pragma endregion
+
+#pragma region Parsing
 
     void CSFParser::ReadHeader(ifstream* csfFile)
     {
@@ -142,12 +136,6 @@ using namespace std;
     }
 
     /// @brief Save compiled string table data to the specific file
-    void CSFParser::Save(const char* strFileName)
-    {
-        Save(string(strFileName));
-    }
-
-    /// @brief Save compiled string table data to the specific file
     void CSFParser::Save(const string& strFileName)
     {
         ofstream csfFile{strFileName, ios::binary | ios::out};
@@ -167,6 +155,12 @@ using namespace std;
         }
 
         csfFile.close();
+    }
+
+    /// @brief Save compiled string table data to the specific file
+    void CSFParser::Save(const char* strFileName)
+    {
+        Save(string{strFileName});
     }
 
     /// @brief Save compiled string table data to the specific file
@@ -234,15 +228,15 @@ using namespace std;
     }
 
     /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
-    QString CSFParser::GetStringValue(const char* strName) const
-    {
-        return GetStringValue(QString(strName));
-    }
-
-    /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
     QString CSFParser::GetStringValue(const QString& strName) const
     {
         return QString::fromStdWString(GetStringValue(strName.toStdString()));
+    }
+
+    /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
+    QString CSFParser::GetStringValue(const char* strName) const
+    {
+        return GetStringValue(QString{strName});
     }
 
     /// @brief Returns all string names in compiled sting table.
@@ -251,7 +245,9 @@ using namespace std;
         list<string> returnList;
        
         for (const auto& elem : Table)
+        {
             returnList.push_back(elem.Name);
+        }
 
         return returnList;
     }
@@ -262,7 +258,9 @@ using namespace std;
         list<string> returnList;
 
         for (const auto& elem : Table)
+        {
             returnList.push_back(elem.Name.substr(0, elem.Name.find_first_of(':', 0) ));
+        }
 
         returnList.sort();
         returnList.unique();
@@ -275,8 +273,12 @@ using namespace std;
         list<string> returnList;
 
         for (const auto& elem : Table)
+        {
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
+            {
                 returnList.push_back(elem.Name.substr(elem.Name.find_first_of(':', 0) + 1, elem.Name.size() - 1));
+            }
+        }
 
         returnList.sort();
         return returnList;
@@ -295,8 +297,12 @@ using namespace std;
         list<string> returnList;
 
         for (const auto& elem : Table)
+        {
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
+            {
                 returnList.push_back(elem.Name);
+            }
+        }
 
         returnList.sort();
         return returnList;
@@ -315,8 +321,12 @@ using namespace std;
         list<string> returnList;
        
         for (const auto& elem : Table)
+        {
             if (elem.Value.find(wch) <= elem.Value.size())
+            {
                 returnList.push_back(elem.Name);
+            }
+        }
 
         returnList.sort();
         return returnList;
@@ -328,9 +338,15 @@ using namespace std;
         list<string> returnList;
 
         for (const auto& elem : Table)
+        {
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
+            {
                 if (elem.Value.find_first_of(wch) <= elem.Value.size())
-                        returnList.push_back(elem.Name);
+                {
+                    returnList.push_back(elem.Name);
+                }
+            }
+        }
 
         returnList.sort();
         return returnList;
@@ -342,12 +358,16 @@ using namespace std;
         list<CompiledString> returnList;
 
         for (const auto& strName : lstNames)
+        {
             for (const auto& elem : Table)
+            {
                 if (elem.Name == strName)
                 {
                     returnList.push_back(elem);
                     break;
                 }
+            }
+        }
 
         return returnList;
     }
@@ -359,12 +379,16 @@ using namespace std;
         size_t index = 0;
 
         for (const auto& elem : Table)
+        {
             if (elem.Name == strName)
+            {
                 if ((index = elem.Value.find_first_of(L'&')) <= elem.Value.size())
                 {
                     hk = elem.Value.at(index + 1);
                     break;
                 }
+            }
+        }
 
         return hk;
     }
@@ -387,12 +411,16 @@ using namespace std;
         list<HotkeyAssociation> returnList;
 
         for (const auto& strName : lstStringNames)
+        {
             for (const auto& elem : Table)
+            {
                 if (strName == elem.Name)
                 {
                     returnList.push_back({strName, CSFParser::GetHotkey(strName)});
                     break;
                 }
+            }
+        }
 
         return returnList;
     }
@@ -405,6 +433,7 @@ using namespace std;
         LOGSTM << "Changing for string \"" << strName << "\" hotkey assingment to letter \"" << (const char)wchLetter << "\"" << endl;
 
         for (auto& elem : Table)
+        {
             if (elem.Name == strName)
             {
                 size_t index = 0;
@@ -415,13 +444,17 @@ using namespace std;
                 {
                     // If we could find something like [&F], then we just replace the letter
                     if(elem.Value[index - 1] == L'[' && elem.Value[index + 2] == L']')
+                    {
                         elem.Value[index + 1] = wchLetter;
-
+                    }
                     // If no, then we add [&wch] to begin of the value and delete & in text
                     else
+                    {
                         elem.Value = elem.Value.erase(index, 1);
+                    }
                 }
             }
+        }
     }
 
     /// @brief Searchs any match for string name and rewriting hotkey assignment for it.
@@ -442,8 +475,12 @@ using namespace std;
         LOGSTM << "Changing value for string \"" << strName << "\"" << endl;
 
         for (auto& elem : Table)
+        {
             if (elem.Name == strName)
+            {
                 elem.Value = wstrValue;
+            }
+        }
     }
 
     /// @brief Searchs any match for string name and rewriting its value.
@@ -452,15 +489,21 @@ using namespace std;
         LOGSTM << "Changing value for string \"" << stString.Name << "\"" << endl;
 
         for (auto& elem : Table)
+        {
             if (elem.Name == stString.Name)
+            {
                 elem.Value = stString.Value;
+            }
+        }
     }
 
     /// @brief Searchs any match for string names and rewriting its values.
     void CSFParser::SetStringsValue(const list<CompiledString>& lstChanges)
     {
         for (const auto& elem : lstChanges)
+        {
             SetStringValue(elem);
+        }
     }
 #pragma endregion
 
@@ -471,7 +514,9 @@ using namespace std;
         stringstream ss;
        
         for(size_t i = 0 ; i < arrayLength; i++)
+        {
             ss << pArray[i];
+        }
     
         return ss.str();
     }
@@ -482,7 +527,9 @@ using namespace std;
         wstringstream wss;
        
         for(size_t i = 0 ; i < arrayLength; i++)
+        {
             wss << pArray[i];
+        }
     
         return wss.str();
     }

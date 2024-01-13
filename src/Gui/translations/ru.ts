@@ -2,6 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
+    <name>ActionHotkeyWidget</name>
+    <message>
+        <location filename="../ActionHotkeyWidget.cpp" line="73"/>
+        <source>It isn&apos;t latin key...</source>
+        <translation type="unfinished">Это не латинская клавиша...</translation>
+    </message>
+    <message>
+        <location filename="../ActionHotkeyWidget.cpp" line="108"/>
+        <source>Press latin key...</source>
+        <translation type="unfinished">Нажмите латинскую клавишу...</translation>
+    </message>
+</context>
+<context>
     <name>BaseConfigurationDialog</name>
     <message>
         <location filename="../BaseConfigurationDialog.cpp" line="8"/>
@@ -60,51 +73,49 @@
         <translation type="vanished">Нажмите любую клавишу...</translation>
     </message>
     <message>
-        <location filename="../HotkeyElement.cpp" line="72"/>
         <source>It isn&apos;t latin key...</source>
-        <translation>Это не латинская клавиша...</translation>
+        <translation type="vanished">Это не латинская клавиша...</translation>
     </message>
     <message>
-        <location filename="../HotkeyElement.cpp" line="107"/>
         <source>Press latin key...</source>
-        <translation>Нажмите латинскую клавишу...</translation>
+        <translation type="vanished">Нажмите латинскую клавишу...</translation>
     </message>
 </context>
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="146"/>
+        <location filename="../HotkeysMainWindow.cpp" line="144"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="147"/>
+        <location filename="../HotkeysMainWindow.cpp" line="145"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="149"/>
+        <location filename="../HotkeysMainWindow.cpp" line="147"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="150"/>
+        <location filename="../HotkeysMainWindow.cpp" line="148"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="152"/>
-        <location filename="../HotkeysMainWindow.cpp" line="226"/>
+        <location filename="../HotkeysMainWindow.cpp" line="150"/>
+        <location filename="../HotkeysMainWindow.cpp" line="259"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="212"/>
+        <location filename="../HotkeysMainWindow.cpp" line="245"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="219"/>
+        <location filename="../HotkeysMainWindow.cpp" line="252"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

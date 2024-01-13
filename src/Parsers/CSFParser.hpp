@@ -43,11 +43,11 @@ private: //Data
     std::string               Path;
     CSFHeader                 Header;
     std::list<CompiledString> Table;
+
 public:
     inline static std::unique_ptr<CSFParser> Instance;
 
 private: // Methods
-    void Parse();
     void ReadHeader(std::ifstream* csfFile);
     void ReadBody(std::ifstream* csfFile);
 
@@ -56,19 +56,20 @@ private: // Methods
 
     std::string  CharArrayToString(const size_t& arrayLength, const char* pArray)     const;
     std::wstring WharArrayToWstring(const size_t& arrayLength, const wchar_t* pArray) const;
+
 public:
-    CSFParser(const char* strFilePath);
     CSFParser(const std::string& strFilePath);
+    CSFParser(const char* strFilePath);
     CSFParser(const QString& strFilePath);
 
     void Save();
-    void Save(const char* strFileName);
     void Save(const std::string& strFileName);
+    void Save(const char* strFileName);
     void Save(const QString& strFileName);
 
-    QString                   GetStringValue(const char* strName)                                              const;
-    QString                   GetStringValue(const QString& strName)                                           const;
     std::wstring              GetStringValue(const std::string& strName)                                       const;
+    QString                   GetStringValue(const QString& strName)                                           const;
+    QString                   GetStringValue(const char* strName)                                              const;
     QStringList               GetCategoryStrings(const QString& strCategoryName)                               const;
     QStringList               GetCategoryStringsWithFullNames(const QString& strCategoryName)                  const;
     std::list<std::string>    GetStringNames()                                                                 const;
@@ -79,14 +80,14 @@ public:
     std::list<std::string>    GetStringsContainsSymbol(const wchar_t& wch, const std::string& strCategoryName) const;
     std::list<CompiledString> GetStringsByNameList(const std::list<std::string>& lstNames)                     const;
 
+    wchar_t GetHotkey(const std::string& strName)                                                              const;
     wchar_t GetHotkey(const char* strName)                                                                     const;
     wchar_t GetHotkey(const QString& strName)                                                                  const;
-    wchar_t GetHotkey(const std::string& strName)                                                              const;
     std::list<HotkeyAssociation> GetHotkeys(const std::list<std::string>& lstStringNames)                      const;
 
+    void SetHotkey(const std::string& strName, const wchar_t& wchLetter);
     void SetHotkey(const char* strName, const wchar_t& wchLetter);
     void SetHotkey(const QString& strName, const wchar_t& wchLetter);
-    void SetHotkey(const std::string& strName, const wchar_t& wchLetter);
     void SetStringValue(const std::string& strName, const std::wstring& wstrValue);
     void SetStringValue(const CompiledString& stString);
     void SetStringsValue(const std::list<CompiledString>& lstChanges);

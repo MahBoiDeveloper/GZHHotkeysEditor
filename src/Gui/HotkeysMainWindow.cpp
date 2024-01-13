@@ -8,7 +8,7 @@
 #include "../Parsers/TechTreeJsonParser.hpp"
 #include "../Parsers/CSFParser.hpp"
 #include "HotkeysMainWindow.hpp"
-#include "HotkeyElement.hpp"
+#include "ActionHotkeyWidget.hpp"
 #include "GUIConfig.hpp"
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
@@ -105,11 +105,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 //        factionsL->addLayout(secondL);
     }
 
-    // TODO: temporary
-    connect(&factionsButtonsGroup, &QButtonGroup::idClicked, this, [=](int factionButtonId)
-    {
-        setHotkeysLayout(factionsButtonsGroup.button(factionButtonId)->text());
-    });
+    connect(entitiesTreeWidget, &QTreeWidget::itemClicked, this, &HotkeysMainWindow::setHotkeysLayout);
 
     //=========================================================================================
 
@@ -117,16 +113,12 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     hotkeysArea->setWidgetResizable(true);
 
     QVBoxLayout* buildingConfigurationL = new QVBoxLayout;
-    buildingConfigurationL->addWidget(hotkeysArea);
-    buildingConfigurationL->addWidget(new QScrollArea);
+    buildingConfigurationL->addWidget(hotkeysArea, 2);
+    buildingConfigurationL->addWidget(new QScrollArea, 1);
 
     QHBoxLayout* contentL = new QHBoxLayout;
-    contentL->addWidget(entitiesTreeWidget);
-    contentL->addLayout(buildingConfigurationL);
-
-    // building list's configuration stretch power
-    contentL->setStretch(0,1);
-    contentL->setStretch(1,3);
+    contentL->addWidget(entitiesTreeWidget, 4);
+    contentL->addLayout(buildingConfigurationL, 7);
 
     QVBoxLayout* mainL = new QVBoxLayout;
     mainL->addLayout(factionsL);
@@ -137,7 +129,10 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     centralWidget->setLayout(mainL);
     setCentralWidget(centralWidget);
 
-    // TODO: temporary
+    connect(&factionsButtonsGroup, &QButtonGroup::idClicked, this, [=](int)
+    {
+        // TODO: show firs entity actions
+    });
     factionsButtonsGroup.buttons().first()->click();
 }
 
@@ -160,35 +155,70 @@ void HotkeysMainWindow::setEntitiesList(const QString& factionShortName)
 
     for (auto it = Config::ENTITIES_STRINGS.cbegin(); it != Config::ENTITIES_STRINGS.cend(); ++it)
     {
+        QVector<Entity> currentTypeEntities = TechTreeJsonParser::getFactionEntities(it.key(), factionShortName);
+
+        // Skip if there are no entities of that type
+        if (currentTypeEntities.isEmpty())
+        {
+            continue;
+        }
+
+        // Create new section of tree list
         QTreeWidgetItem* newTopEntityItem = new QTreeWidgetItem;
         newTopEntityItem->setText(0, it.value());
 
-        for (const auto & entity : TechTreeJsonParser::getFactionEntities(it.key(), factionShortName))
+        // Append entities to the section
+        for (const auto & entity : currentTypeEntities)
         {
             QTreeWidgetItem* currentNewEntityItem = new QTreeWidgetItem;
             currentNewEntityItem->setText(0, CSFPARSER->GetStringValue(entity.getIngameName()));
             currentNewEntityItem->setIcon(0, QPixmap::fromImage(GUIConfig::decodeWebpIcon(entity.getName())));
+            currentNewEntityItem->setData(0, Qt::UserRole, QVariant::fromValue(QPair{factionShortName, entity.getName()}));
             newTopEntityItem->addChild(currentNewEntityItem);
         }
 
+        // Add section to the list
         entitiesTreeWidget->addTopLevelItem(newTopEntityItem);
     }
 
     entitiesTreeWidget->expandAll();
 }
 
-void HotkeysMainWindow::setHotkeysLayout(const QString& factionShortName)
+void HotkeysMainWindow::setHotkeysLayout(const QTreeWidgetItem* item, int column)
 {
+    // Skip if it's the section item
+    for (int i = 0; i < entitiesTreeWidget->topLevelItemCount(); ++i)
+    {
+        if (item == entitiesTreeWidget->topLevelItem(i)) return;
+    }
+
+
+    const QPair<QString, QString> specialItemInfo = item->data(0, Qt::UserRole).value<QPair<QString, QString>>();
+
+    const QString& factionShortName = specialItemInfo.first;
+    const QString& entityName = specialItemInfo.second;
+
     QVBoxLayout* hotkeysLayout = new QVBoxLayout;
 
-    for(int i = 0; i < 10; ++i)
+    for (const auto & faction : factions)
     {
-        Qt::Key key = (Qt::Key)(Qt::Key::Key_A + i);
+        if (faction.getShortName() != factionShortName) continue;
 
-        QString hotkey = QKeySequence{key}.toString();
+        for (const auto & currentTypeEntities : faction.getEntitiesMap())
+        {
+            for (const auto & entity : currentTypeEntities)
+            {
+                if (entity.getName() != entityName) continue;
 
-        HotkeyElement* hotkeyElement = new HotkeyElement(QString("action_%1").arg(i+1), hotkey, QString(factionShortName));
-        hotkeysLayout->addWidget(hotkeyElement);
+                for (const auto & action : entity.getActions())
+                {
+                    ActionHotkeyWidget* actionHotkey = new ActionHotkeyWidget(CSFPARSER->GetStringValue(action.getCsfString()),
+                                                                              QChar{static_cast<char16_t>(CSFPARSER->GetHotkey(action.getCsfString()))},
+                                                                              action.getName());
+                    hotkeysLayout->addWidget(actionHotkey);
+                }
+            }
+        }
     }
 
     if (hotkeysScrollWidget != nullptr) hotkeysScrollWidget->deleteLater();

@@ -32,8 +32,8 @@ int main(int argc, char *argv[])
 
     try
     {
-        auto pWindowManager = make_unique<WindowManager>();
-        pWindowManager->Show();
+        WindowManager pWindowManager;
+        pWindowManager.Show();
         HotkeyEditor.exec();
     }
     catch (const exception& exception)

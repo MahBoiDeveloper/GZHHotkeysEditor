@@ -1,24 +1,24 @@
 #include <QKeyEvent>
 #include <QDebug>
 
-#include "HotkeyElement.hpp"
+#include "ActionHotkeyWidget.hpp"
 #include "GUIConfig.hpp"
 
-HotkeyElement::HotkeyElement(const QString& actionName,
-                             const QString& hotkeyStr,
-                             const QString& iconName,
-                             QWidget* parent)
+ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
+                                       const QString& hotkeyStr,
+                                       const QString& iconName,
+                                       QWidget* parent)
     : QWidget{parent}
     , hotkey{hotkeyStr}
     , actionNameLabel{actionName}
     , hotkeyLabel{hotkey}
     , newHotkeyButton{"+"}
 {
-    connect(&newHotkeyButton, &QPushButton::pressed, this, &HotkeyElement::onNewHotkeyPressed);
+    connect(&newHotkeyButton, &QPushButton::pressed, this, &ActionHotkeyWidget::onNewHotkeyPressed);
 
     // Signal timer settings
     signalTimer.setSingleShot(true);
-    connect(&signalTimer, &QTimer::timeout, this, &HotkeyElement::signalRepeatNewHotkey);
+    connect(&signalTimer, &QTimer::timeout, this, &ActionHotkeyWidget::signalRepeatNewHotkey);
 
     QLabel* imageLb = new QLabel;
     imageLb->setPixmap(QPixmap::fromImage(GUIConfig::decodeWebpIcon(iconName)));
@@ -37,23 +37,24 @@ HotkeyElement::HotkeyElement(const QString& actionName,
     mainL->setAlignment(Qt::AlignTop);
     mainL->addWidget(imageLb);
     mainL->addWidget(&actionNameLabel);
-    mainL->setStretch(0, 1);
+    // Move action name label to left
+    mainL->setStretch(1, 1);
     mainL->addWidget(&hotkeyLabel);
     mainL->addWidget(&newHotkeyButton);
     setLayout(mainL);
 }
 
-QString HotkeyElement::getActionName() const
+QString ActionHotkeyWidget::getActionName() const
 {
     return actionNameLabel.text();
 }
 
-QString HotkeyElement::getHotkey() const
+QString ActionHotkeyWidget::getHotkey() const
 {
     return hotkeyLabel.text();
 }
 
-void HotkeyElement::keyPressEvent(QKeyEvent* event)
+void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
 {
     int key = event->key();
     if (key >= availableKeys.first && key <= availableKeys.second)
@@ -62,7 +63,7 @@ void HotkeyElement::keyPressEvent(QKeyEvent* event)
         hotkey = QKeySequence(key).toString();
 
         // If the key is correct -> disconnect the input error reset signal
-        disconnect(this, &HotkeyElement::signalRepeatNewHotkey, this, &HotkeyElement::onNewHotkeyPressed);
+        disconnect(this, &ActionHotkeyWidget::signalRepeatNewHotkey, this, &ActionHotkeyWidget::onNewHotkeyPressed);
 
         // Return focus to parent
         parentWidget()->setFocus();
@@ -84,7 +85,7 @@ void HotkeyElement::keyPressEvent(QKeyEvent* event)
     QWidget::keyPressEvent(event);
 }
 
-void HotkeyElement::focusOutEvent(QFocusEvent* event)
+void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
 {
     // Unset decoration
     hotkeyLabel.setFont(QFont());
@@ -97,13 +98,13 @@ void HotkeyElement::focusOutEvent(QFocusEvent* event)
     QWidget::focusOutEvent(event);
 }
 
-void HotkeyElement::onNewHotkeyPressed()
+void ActionHotkeyWidget::onNewHotkeyPressed()
 {
     // Reconnect the input error reset signal
-    disconnect(this, &HotkeyElement::signalRepeatNewHotkey, this, &HotkeyElement::onNewHotkeyPressed);
-    connect(this, &HotkeyElement::signalRepeatNewHotkey, this, &HotkeyElement::onNewHotkeyPressed);
+    disconnect(this, &ActionHotkeyWidget::signalRepeatNewHotkey, this, &ActionHotkeyWidget::onNewHotkeyPressed);
+    connect(this, &ActionHotkeyWidget::signalRepeatNewHotkey, this, &ActionHotkeyWidget::onNewHotkeyPressed);
 
-    // decorate
+    // Decorate
     hotkeyLabel.setText(tr("Press latin key..."));
     QFont f(hotkeyLabel.font());
     f.setItalic(true);
@@ -112,6 +113,6 @@ void HotkeyElement::onNewHotkeyPressed()
     palette.setColor(QPalette::WindowText, Qt::GlobalColor::blue);
     hotkeyLabel.setPalette(palette);
 
-    // set focus on hotkey element
+    // Set focus on hotkey element
     setFocus();
 }

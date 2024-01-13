@@ -5,7 +5,7 @@
 #include <QTimer>
 #include <QPushButton>
 
-class HotkeyElement : public QWidget
+class ActionHotkeyWidget : public QWidget
 {
     Q_OBJECT
 
@@ -20,12 +20,12 @@ private: // Data
     int timerMseconds = 1700;
 
 public: // Methods
-    HotkeyElement(const QString& actionName,
-                  const QString& hotkeyStr,
-                  const QString& iconName,
-                  QWidget* parent = nullptr);
-	              QString getActionName() const;
-	              QString getHotkey() const;
+    ActionHotkeyWidget(const QString& actionName,
+                       const QString& hotkeyStr,
+                       const QString& iconName,
+                       QWidget* parent = nullptr);
+    QString getActionName() const;
+    QString getHotkey() const;
 protected:
     void keyPressEvent(QKeyEvent* event) override;
     void focusOutEvent(QFocusEvent* event) override;

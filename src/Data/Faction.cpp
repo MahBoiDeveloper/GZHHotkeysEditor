@@ -27,7 +27,7 @@ const QString& Faction::getDisplayNameDesctiontion() const
     return displayNameDesctiontion;
 }
 
-const QMap<Config::Entities, QVector<Entity>>& Faction::getEntities() const
+const QMap<Config::Entities, QVector<Entity>>& Faction::getEntitiesMap() const
 {
     return entities;
 }

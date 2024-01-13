@@ -49,8 +49,8 @@ QVector<Entity> TechTreeJsonParser::_entitiesFromJsonArray(const QJsonArray& arr
     for (const auto & jsonEntity : array)
     {
         entities.append(Entity{jsonEntity.toObject().value("Name").toString(),
-                                  jsonEntity.toObject().value("IngameName").toString(),
-                                  _actionsFromJsonArray(jsonEntity.toObject().value("Actions").toArray())});
+                               jsonEntity.toObject().value("IngameName").toString(),
+                               _actionsFromJsonArray(jsonEntity.toObject().value("Actions").toArray())});
     }
 
     return entities;
@@ -62,8 +62,8 @@ QVector<EntityAction> TechTreeJsonParser::_actionsFromJsonArray(const QJsonArray
 
     for (const auto & jsonAction : array)
     {
-        actions.append(EntityAction{jsonAction.toObject().value("Name").toString(),
-                                    jsonAction.toObject().value("CSFString").toString()});
+        actions.append(EntityAction{jsonAction.toObject().value("IconName").toString(),
+                                    jsonAction.toObject().value("HotkeyString").toString()});
     }
 
     return actions;

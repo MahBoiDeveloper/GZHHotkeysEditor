@@ -20,7 +20,7 @@ private slots:
 private:
     void configureMenu();
     void setEntitiesList(const QString& factionShortName);
-    void setHotkeysLayout(const QString& factionShortName);
+    void setHotkeysLayout(const QTreeWidgetItem* item, int column);
 
 private:
     QVector<Faction> factions;
