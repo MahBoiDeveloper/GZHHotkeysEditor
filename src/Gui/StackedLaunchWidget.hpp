@@ -14,11 +14,11 @@ private: // Methods
     void SetTranslator(Config::Languages language);
     void UpdateConnectionsToSignals();
 public:
-    StackedLaunchWidget(Config::Languages language, QWidget *parent = nullptr);
+    StackedLaunchWidget(Config::Languages language, QWidget* parent = nullptr);
 
 private slots:
     void OnChangeLanguage(int intLngIndex);
     void OnStartButtonClicked(GreetingWidget::StandartButtons standartButton);
 signals:
-    void acceptedConfiguration(const QVariant &configuration);
+    void AcceptedConfiguration(const QVariant& configuration);
 };

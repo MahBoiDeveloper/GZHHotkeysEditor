@@ -10,5 +10,5 @@ private: // Data
 
 public: // Methods
     explicit LoadDialog(QWidget *parent = nullptr);
-    QVariant createConfigurationData() override;
+    QVariant CreateConfigurationData() override;
 };

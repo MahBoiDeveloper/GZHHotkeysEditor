@@ -7,11 +7,11 @@
 #include <QDebug>
 
 // Project files
-#include "Gui/StackedLaunchWidget.hpp"
-#include "Gui/HotkeysMainWindow.hpp"
+#include "GUI/StackedLaunchWidget.hpp"
+#include "GUI/HotkeysMainWindow.hpp"
+#include "GUI/WindowManager.hpp"
 #include "Parsers/CSFParser.hpp"
 #include "Logger.hpp"
-#include "Registry.hpp"
 
 using namespace std;
 
@@ -28,29 +28,12 @@ int main(int argc, char *argv[])
     CSFParser::Instance = make_unique<CSFParser>(Config::resourcesFolder + "/generalsRU.csf");
 
     // Initialize main cute application
-    QApplication HotkeyEditor{argc, argv};
+    QApplication HotkeyEditor(argc, argv);
 
     try
     {
-        // Create main window with user system language
-        StackedLaunchWidget* HotkeyEditor_Window = new StackedLaunchWidget{Config::GetLangEnumByLocale(Registry::GetCurrentUserLanguage())};
-        HotkeyEditor_Window->setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
-
-        // Create HotkeysEditor with accepted configuration
-        QObject::connect(HotkeyEditor_Window, &StackedLaunchWidget::acceptedConfiguration, HotkeyEditor_Window, [=](const QVariant& configuration)
-        {
-            LOGMSG("Loading hotkey editor window...");
-            HotkeysMainWindow* pHotkeysEditor = new HotkeysMainWindow{configuration};
-            pHotkeysEditor->setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
-            pHotkeysEditor->show();
-            LOGMSG("Hotkey editor window has been loaded");
-
-            LOGMSG("Closing and deleting the StartWidget");
-            HotkeyEditor_Window->deleteLater();
-        });
-
-        HotkeyEditor_Window->show();
-
+        auto pWindowManager = make_unique<WindowManager>();
+        pWindowManager->Show();
         HotkeyEditor.exec();
     }
     catch (const exception& exception)

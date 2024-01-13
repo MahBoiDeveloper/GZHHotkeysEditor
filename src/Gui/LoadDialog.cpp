@@ -67,7 +67,7 @@ LoadDialog::LoadDialog(QWidget *parent) : BaseConfigurationDialog(parent)
     setLayout(mainL);
 }
 
-QVariant LoadDialog::createConfigurationData()
+QVariant LoadDialog::CreateConfigurationData()
 {
     return QVariant("Loader widget data.");
 }

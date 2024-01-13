@@ -8,15 +8,15 @@ class BaseConfigurationDialog : public QDialog
 {
     Q_OBJECT
 protected: // Data
-    QButtonGroup buttonsGroup;
+    QButtonGroup     buttonsGroup;
     QDialogButtonBox dialogButtons;
 
 public: // Methods
     BaseConfigurationDialog(QWidget *parent = nullptr);
 protected:
     // Create configuration data for editor creation
-    virtual QVariant createConfigurationData() = 0;
+    virtual QVariant CreateConfigurationData() = 0;
 
 signals:
-    void acceptedConfiguration(QVariant configuration);
+    void AcceptedConfiguration(QVariant configuration);
 };

@@ -85,18 +85,18 @@ void StackedLaunchWidget::OnStartButtonClicked(GreetingWidget::StandartButtons s
     switch (standartButton)
     {
     case GreetingWidget::StandartButtons::NewProject:
-        configurationWidget = new CreationDialog;
+        configurationWidget = new CreationDialog();
         break;
     case GreetingWidget::StandartButtons::LoadProject:
-        configurationWidget = new LoadDialog;
+        configurationWidget = new LoadDialog();
         break;
     default:
-        configurationWidget = new CreationDialog;
+        configurationWidget = new CreationDialog();
         break;
     }
     addWidget(configurationWidget);
     setCurrentWidget(configurationWidget); // next window (creator)
 
     // if accepted -> send signal with configuration
-    connect(configurationWidget, &CreationDialog::acceptedConfiguration, this, &StackedLaunchWidget::acceptedConfiguration);
+    connect(configurationWidget, &CreationDialog::AcceptedConfiguration, this, &StackedLaunchWidget::AcceptedConfiguration);
 }

@@ -3,8 +3,8 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-#include "CreationDialog.hpp"
 #include "../../../Registry.hpp"
+#include "CreationDialog.hpp"
 
 CreationDialog::CreationDialog(QWidget *parent) : BaseConfigurationDialog(parent)
 {
@@ -40,7 +40,7 @@ CreationDialog::CreationDialog(QWidget *parent) : BaseConfigurationDialog(parent
     setLayout(mainL);
 }
 
-QVariant CreationDialog::createConfigurationData()
+QVariant CreationDialog::CreateConfigurationData()
 {
     return QVariant("Creator widget data.");
 }
