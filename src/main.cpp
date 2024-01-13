@@ -7,8 +7,6 @@
 #include <QDebug>
 
 // Project files
-#include "GUI/StackedLaunchWidget.hpp"
-#include "GUI/HotkeysMainWindow.hpp"
 #include "GUI/WindowManager.hpp"
 #include "Parsers/CSFParser.hpp"
 #include "Logger.hpp"
@@ -32,8 +30,8 @@ int main(int argc, char *argv[])
 
     try
     {
-        WindowManager pWindowManager;
-        pWindowManager.Show();
+        WindowManager wndManager;
+        wndManager.Show();
         HotkeyEditor.exec();
     }
     catch (const exception& exception)

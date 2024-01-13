@@ -193,7 +193,7 @@
 
                 {
                     "Name"       : "USAPathfinder",
-                    "IngameName" : "",
+                    "IngameName" : "OBJECT:Pathfinder",
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
@@ -596,7 +596,7 @@
 
                 {
                     "Name"       : "USAPathfinder",
-                    "IngameName" : "",
+                    "IngameName" : "OBJECT:Pathfinder",
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
@@ -975,7 +975,7 @@
 
                 {
                     "Name"       : "USAPathfinder",
-                    "IngameName" : "",
+                    "IngameName" : "OBJECT:Pathfinder",
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
@@ -1363,7 +1363,7 @@
 
                 {
                     "Name"       : "USAPathfinder",
-                    "IngameName" : "",
+                    "IngameName" : "OBJECT:Pathfinder",
                     "Actions"    : 
                     [
                         {"IconName" : "AttackMove", "HotkeyString" : "CONTROLBAR:AttackMove"},
