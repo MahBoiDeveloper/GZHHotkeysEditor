@@ -2,7 +2,7 @@
 
 #include <QJsonArray>
 
-#include "../Data/faction.hpp"
+#include "../Data/Faction.hpp"
 #include "../config.hpp"
 
 class TechTreeJsonParser

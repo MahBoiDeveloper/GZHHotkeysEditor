@@ -6,6 +6,7 @@
 #include "../Info.hpp"
 #include "../Logger.hpp"
 #include "../Parsers/TechTreeJsonParser.hpp"
+#include "../Parsers/CSFParser.hpp"
 #include "HotkeysMainWindow.hpp"
 #include "HotkeyElement.hpp"
 #include "GUIConfig.hpp"
@@ -165,7 +166,7 @@ void HotkeysMainWindow::setEntitiesList(const QString& factionShortName)
         for (const auto & entity : TechTreeJsonParser::getFactionEntities(it.key(), factionShortName))
         {
             QTreeWidgetItem* currentNewEntityItem = new QTreeWidgetItem;
-            currentNewEntityItem->setText(0, entity.getName());
+            currentNewEntityItem->setText(0, CSFPARSER->GetStringValue(entity.getIngameName()));
             currentNewEntityItem->setIcon(0, QPixmap::fromImage(GUIConfig::decodeWebpIcon(entity.getName())));
             newTopEntityItem->addChild(currentNewEntityItem);
         }
