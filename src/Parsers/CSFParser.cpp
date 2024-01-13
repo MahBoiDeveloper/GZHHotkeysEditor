@@ -6,19 +6,19 @@
 using namespace std;
 
 #pragma region CTORs and DTORs
-    CSFParser::CSFParser(const string& filePath) : Path(filePath)
+    CSFParser::CSFParser(const string& filePath)  : Path(filePath)
     {
         Parse();
     }
 
-    CSFParser::CSFParser(const char* filePath)
+    CSFParser::CSFParser(const char* filePath)    : Path(string(filePath))
     {
-        CSFParser(string(filePath));
+        Parse();
     }
 
-    CSFParser::CSFParser(const QString& filePath)
+    CSFParser::CSFParser(const QString& filePath) : Path(filePath.toStdString())
     {
-        CSFParser(filePath.toStdString());
+        Parse();
     }
 #pragma endregion
 
@@ -27,8 +27,7 @@ using namespace std;
     void CSFParser::Parse()
     {
         ifstream csfFile(Path, ios::binary | ios::in);
-
-        LOGSTM << "Attempt to read binary file \"" << Path << "\"..." << endl;
+        LOGMSG("Attempt to read binary file \"" + Path + "\"...");
 
         if (csfFile.is_open())
         {
@@ -41,8 +40,6 @@ using namespace std;
         {
             throw Exception(string("Bad file name; unable to open file \"" + Path + "\""));
         }
-
-        csfFile.close();
     }
 
     void CSFParser::ReadHeader(ifstream* csfFile)
@@ -234,6 +231,12 @@ using namespace std;
             }
 
         return returnValue;
+    }
+
+    /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
+    QString CSFParser::GetStringValue(const char* strName) const
+    {
+        return GetStringValue(QString(strName));
     }
 
     /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.

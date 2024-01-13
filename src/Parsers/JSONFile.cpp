@@ -1,5 +1,3 @@
-#include <exception>
-
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonArray>
@@ -11,27 +9,42 @@
 using namespace std;
 
 #pragma region CTORs and DTORs
-    JSONFile::JSONFile(const QString& filePath) : FileName{filePath}
+    JSONFile::JSONFile(const QString& filePath) : FileName(filePath)
     {
-        QFile openedFile(FileName);
-        QJsonParseError err;
+        Parse();
+    }
 
-        // Read data from *.json file
-        if (openedFile.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            LOGSTM << "Parsing \"" << filePath.toStdString() << "\"..." << endl;
-            JsonMainObject = QJsonDocument::fromJson(openedFile.readAll(), &err).object();
-            openedFile.close();
-            LOGSTM << "Errors while parsing: " << err.errorString().toStdString() << endl;
-            LOGSTM << "JSON file has been parsed" << endl;
-        }
-        else
-        {
-            LOGSTM << "Errors while parsing: " << err.errorString().toStdString();
-            throw Exception(QString("Bad file name; unable to open file \"" + FileName + "\"").toStdString());
-        }
+    JSONFile::JSONFile(const char* filePath) : FileName(filePath)
+    {
+        Parse();
+    }
+
+    JSONFile::JSONFile(const std::string& filePath) : FileName(filePath.c_str())
+    {
+        Parse();
     }
 #pragma endregion
+
+void JSONFile::Parse()
+{
+    QFile openedFile(FileName);
+    QJsonParseError err;
+
+    // Read data from *.json file
+    if (openedFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        LOGMSG("Parsing \"" + FileName + "\"...");
+        JsonMainObject = QJsonDocument::fromJson(openedFile.readAll(), &err).object();
+        openedFile.close();
+        LOGMSG("Errors while parsing: " + err.errorString());
+        LOGMSG("JSON file has been parsed");
+    }
+    else
+    {
+        LOGMSG("Errors while parsing: " + err.errorString());
+        throw Exception("Bad file name; unable to open file \"" + FileName + "\"");
+    }
+}
 
 #pragma region Getters
     /// @brief Returns main object of parsed JSON file
@@ -104,14 +117,14 @@ using namespace std;
             }
         }
 
-        LOGSTM << "Information about return value:" << endl;
-        LOGSTM << "\tValue is Array?     - "        << currVal.isArray() << endl;
-        LOGSTM << "\tValue is Bool?      - "        << currVal.isBool() << endl;
-        LOGSTM << "\tValue is Double?    - "        << currVal.isDouble() << endl;
-        LOGSTM << "\tValue is Null?      - "        << currVal.isNull() << endl;
-        LOGSTM << "\tValue is Object?    - "        << currVal.isObject() << endl;
-        LOGSTM << "\tValue is String?    - "        << currVal.isString() << endl;
-        LOGSTM << "\tValue is Undefined? - "        << currVal.isUndefined() << endl;
+        LOGSTM << "Information about return value:"                             << endl;
+        LOGSTM << "\tValue is Array?     - "        << currVal.isArray()        << endl;
+        LOGSTM << "\tValue is Bool?      - "        << currVal.isBool()         << endl;
+        LOGSTM << "\tValue is Double?    - "        << currVal.isDouble()       << endl;
+        LOGSTM << "\tValue is Null?      - "        << currVal.isNull()         << endl;
+        LOGSTM << "\tValue is Object?    - "        << currVal.isObject()       << endl;
+        LOGSTM << "\tValue is String?    - "        << currVal.isString()       << endl;
+        LOGSTM << "\tValue is Undefined? - "        << currVal.isUndefined()    << endl;
         LOGSTM << "\tLength of array is : "         << currVal.toArray().size() << endl;
 
         return currVal;

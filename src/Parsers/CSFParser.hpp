@@ -1,4 +1,6 @@
 #pragma once
+#define CSFPARSER CSFParser::Instance
+
 #include <list>
 #include <memory>
 #include <string>
@@ -8,7 +10,7 @@
 
 class CSFParser final
 {
-public: // Data
+public: // Types
     struct CompiledString
     {
         std::string  Name;
@@ -31,19 +33,30 @@ public: // Data
         uint32_t languageCode;
     };
 
-    inline static std::unique_ptr<CSFParser> Instance;
-private:
+private: //Data
     const uint8_t  FSC[4]  {' ', 'F', 'S', 'C'}; // Begining of any CSF file header
     const uint8_t  LBL[4]  {' ', 'L', 'B', 'L'}; // Begining of any string name aka "label"
     const uint8_t  RTS[4]  {' ', 'R', 'T', 'S'}; // Begining of any string value aka "string"
     const uint8_t  WRTS[4] {'W', 'R', 'T', 'S'}; // Begining of any string with extra value
     const uint32_t CNC_CSF_VERSION = 3;          // Standart file format. Legacy by WW
     
-    std::string Path;
-    CSFHeader Header;
+    std::string               Path;
+    CSFHeader                 Header;
     std::list<CompiledString> Table;
+public:
+    inline static std::unique_ptr<CSFParser> Instance;
 
-public: // Methods
+private: // Methods
+    void Parse();
+    void ReadHeader(std::ifstream* csfFile);
+    void ReadBody(std::ifstream* csfFile);
+
+    void WriteHeader(std::ofstream* csfFile);
+    void WriteBody(std::ofstream* csfFile);
+
+    std::string  CharArrayToString(const size_t& arrayLength, const char* pArray)     const;
+    std::wstring WharArrayToWstring(const size_t& arrayLength, const wchar_t* pArray) const;
+public:
     CSFParser(const char* strFilePath);
     CSFParser(const std::string& strFilePath);
     CSFParser(const QString& strFilePath);
@@ -53,10 +66,11 @@ public: // Methods
     void Save(const std::string& strFileName);
     void Save(const QString& strFileName);
 
+    QString                   GetStringValue(const char* strName)                                              const;
     QString                   GetStringValue(const QString& strName)                                           const;
+    std::wstring              GetStringValue(const std::string& strName)                                       const;
     QStringList               GetCategoryStrings(const QString& strCategoryName)                               const;
     QStringList               GetCategoryStringsWithFullNames(const QString& strCategoryName)                  const;
-    std::wstring              GetStringValue(const std::string& strName)                                       const;
     std::list<std::string>    GetStringNames()                                                                 const;
     std::list<std::string>    GetCategories()                                                                  const;
     std::list<std::string>    GetCategoryStrings(const std::string& strCategoryName)                           const;
@@ -76,15 +90,4 @@ public: // Methods
     void SetStringValue(const std::string& strName, const std::wstring& wstrValue);
     void SetStringValue(const CompiledString& stString);
     void SetStringsValue(const std::list<CompiledString>& lstChanges);
-
-private:
-    void Parse();
-    void ReadHeader(std::ifstream* csfFile);
-    void ReadBody(std::ifstream* csfFile);
-
-    void WriteHeader(std::ofstream* csfFile);
-    void WriteBody(std::ofstream* csfFile);
-
-    std::string  CharArrayToString(const size_t& arrayLength, const char* pArray)     const;
-    std::wstring WharArrayToWstring(const size_t& arrayLength, const wchar_t* pArray) const;
 };

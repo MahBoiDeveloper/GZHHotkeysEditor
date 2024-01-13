@@ -7,19 +7,19 @@
 using namespace std;
 
 #pragma region CTORs and DTORs
-    GINIParser::GINIParser(const string& filePath) : Path(filePath)
+    GINIParser::GINIParser(const string& filePath)  : Path(filePath)
     {
         Parse();
     }
 
-    GINIParser::GINIParser(const char* filePath)
+    GINIParser::GINIParser(const char* filePath)    : Path(string(filePath))
     {
-        GINIParser(string(filePath));
+       Parse();
     }
 
-    GINIParser::GINIParser(const QString& filePath)
+    GINIParser::GINIParser(const QString& filePath) : Path(filePath.toStdString())
     {
-        GINIParser(filePath.toStdString());
+       Parse();
     }
 #pragma endregion
 
@@ -29,7 +29,7 @@ using namespace std;
     {
         ifstream file(Path, ios::in);
 
-        LOGSTM << "Attempt to read file \"" << Path << "\"..." << endl;
+        LOGMSG("Attempt to read file \"" + Path + "\"...");
 
         if (file.is_open())
         {
@@ -90,7 +90,7 @@ using namespace std;
                         break;
 
                     case 0: // Error due to only equal sign in line
-                        throw Exception(string("Unexpected \"=\" sign in [") + buff + string("] at line ") + QString::number(fileLineIndex).toStdString());
+                        throw Exception("Unexpected \"=\" sign in [" + buff + "] at line " + QString::number(fileLineIndex).toStdString());
                         break;
                 
                     default: // Read line is a value
@@ -102,11 +102,11 @@ using namespace std;
                 }
             }
 
-            LOGSTM << "File \"" << Path << "\" has been parsed; Sections count: " << GINIParser::Instance->Sections.size() << endl;
+            LOGMSG( "File \"" + Path + "\" has been parsed; Sections count: " + QString::number(GINIParser::Instance->Sections.size()).toStdString());
         }
         else
         {
-            throw Exception(string("Bad file name; unable to open file \"" + Path + "\""));
+            throw Exception("Bad file name; unable to open file \"" + Path + "\"");
         }
 
         file.close();
@@ -117,7 +117,7 @@ using namespace std;
     {
         ofstream file(Path, ios::out);
 
-        LOGSTM << "Attempt to write file \"" << Path << "\"..." << endl;
+        LOGMSG("Attempt to write file \"" + Path + "\"...");
 
         if (file.is_open())
         {
@@ -126,18 +126,16 @@ using namespace std;
                 file << elem.Name << endl;
 
                 for (const auto& key : elem.Keys)
-                {
                     file << "  " << key.Name << " = " << key.Value << endl;
-                }
 
                 file << "End" << endl;
             }
 
-            LOGSTM << "File \"" << Path << "\" has been saved." << endl;
+            LOGMSG("File \"" + Path + "\" has been saved.");
         }
         else
         {
-            throw Exception(string("Unable write settings to file \"" + Path + "\"; make sure program have right to write into folder and into file."));
+            throw Exception("Unable write settings to file \"" + Path + "\"; make sure program have right to write into folder and into file.");
         }
     }
 
