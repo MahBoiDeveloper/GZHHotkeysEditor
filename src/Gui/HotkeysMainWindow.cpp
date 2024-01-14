@@ -198,9 +198,11 @@ void HotkeysMainWindow::setEntitiesList(const QString& factionShortName)
 
 void HotkeysMainWindow::setHotkeysLayout()
 {
+    // Skip if there are no selected items
+    if (entitiesTreeWidget->selectedItems().isEmpty()) return;
+
     // Current single selected item
     QTreeWidgetItem* item = entitiesTreeWidget->selectedItems().first();
-    if (item == nullptr) return;
 
     // Skip if it's the top level section item
     for (int i = 0; i < entitiesTreeWidget->topLevelItemCount(); ++i)
