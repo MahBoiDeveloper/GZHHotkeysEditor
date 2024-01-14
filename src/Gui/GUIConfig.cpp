@@ -12,6 +12,7 @@ QImage GUIConfig::decodeWebpIcon(const QString& iconName)
 
     if (!allMatchIconFiles.isEmpty())
     {
+        // Take the first match
         return decodeWebpIconPath(allMatchIconFiles.first());
     }
     else
@@ -43,7 +44,13 @@ QStringList GUIConfig::findAllMatchingFiles(const QString& pathToDir, const QStr
         }
         else
         {
-            if (fileInfo.fileName().contains(nameFilter))
+            // Return if it's a complete match
+            if (nameFilter == fileInfo.baseName())
+            {
+                return {fileInfo.absoluteFilePath()};
+            }
+            // Else remember this file
+            else if (fileInfo.fileName().contains(nameFilter))
             {
                 files.append(fileInfo.absoluteFilePath());
             }
