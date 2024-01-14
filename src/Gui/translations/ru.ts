@@ -84,38 +84,38 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="141"/>
+        <location filename="../HotkeysMainWindow.cpp" line="154"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="142"/>
+        <location filename="../HotkeysMainWindow.cpp" line="155"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="144"/>
+        <location filename="../HotkeysMainWindow.cpp" line="157"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="145"/>
+        <location filename="../HotkeysMainWindow.cpp" line="158"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="147"/>
-        <location filename="../HotkeysMainWindow.cpp" line="256"/>
+        <location filename="../HotkeysMainWindow.cpp" line="160"/>
+        <location filename="../HotkeysMainWindow.cpp" line="274"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="242"/>
+        <location filename="../HotkeysMainWindow.cpp" line="260"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="249"/>
+        <location filename="../HotkeysMainWindow.cpp" line="267"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

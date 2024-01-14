@@ -15,6 +15,11 @@ BaseConfigurationDialog QPushButton
     padding-right: 30px;
 }
 
+HotkeysMainWindow QTreeWidget::item
+{
+    min-height: 40px;
+}
+
 /*HotkeyElement QLabel
 {
     padding-left: 30px;

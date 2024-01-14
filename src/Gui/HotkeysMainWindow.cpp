@@ -105,7 +105,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 //        factionsL->addLayout(secondL);
     }
 
-    connect(entitiesTreeWidget, &QTreeWidget::itemClicked, this, &HotkeysMainWindow::setHotkeysLayout);
+    connect(entitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &HotkeysMainWindow::setHotkeysLayout);
 
     //=========================================================================================
 
@@ -131,9 +131,22 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 
     connect(&factionsButtonsGroup, &QButtonGroup::idClicked, this, [=](int)
     {
-        // TODO: show firs entity actions
+        // Skip if missing
+        const auto firstTopLevelItem = entitiesTreeWidget->topLevelItem(0);
+        if (firstTopLevelItem == nullptr) return;
+
+        // Skip if missing
+        const auto firstEntity = firstTopLevelItem->child(0);
+        if (firstEntity == nullptr) return;
+
+        // Set start entity
+        entitiesTreeWidget->setCurrentItem(firstEntity);
+        entitiesTreeWidget->setFocus();
     });
-    factionsButtonsGroup.buttons().first()->click();
+
+    // Set start faction
+    const auto firstFactionButton = factionsButtonsGroup.buttons().first();
+    if (firstFactionButton != nullptr) firstFactionButton->click();
 }
 
 void HotkeysMainWindow::configureMenu()
@@ -158,14 +171,13 @@ void HotkeysMainWindow::setEntitiesList(const QString& factionShortName)
         QVector<Entity> currentTypeEntities = TechTreeJsonParser::getFactionEntities(it.key(), factionShortName);
 
         // Skip if there are no entities of that type
-        if (currentTypeEntities.isEmpty())
-        {
-            continue;
-        }
+        if (currentTypeEntities.isEmpty()) continue;
 
         // Create new section of tree list
         QTreeWidgetItem* newTopEntityItem = new QTreeWidgetItem;
         newTopEntityItem->setText(0, it.value());
+        // Decorate
+        newTopEntityItem->setBackground(0, QColor{0x73, 0xE9, 0xFF, 128});
 
         // Append entities to the section
         for (const auto & entity : currentTypeEntities)
@@ -184,9 +196,13 @@ void HotkeysMainWindow::setEntitiesList(const QString& factionShortName)
     entitiesTreeWidget->expandAll();
 }
 
-void HotkeysMainWindow::setHotkeysLayout(const QTreeWidgetItem* item, int column)
+void HotkeysMainWindow::setHotkeysLayout()
 {
-    // Skip if it's the section item
+    // Current single selected item
+    QTreeWidgetItem* item = entitiesTreeWidget->selectedItems().first();
+    if (item == nullptr) return;
+
+    // Skip if it's the top level section item
     for (int i = 0; i < entitiesTreeWidget->topLevelItemCount(); ++i)
     {
         if (item == entitiesTreeWidget->topLevelItem(i)) return;
@@ -220,6 +236,8 @@ void HotkeysMainWindow::setHotkeysLayout(const QTreeWidgetItem* item, int column
             }
         }
     }
+    // Condense the actions at the top
+    hotkeysLayout->addStretch(1);
 
     if (hotkeysScrollWidget != nullptr) hotkeysScrollWidget->deleteLater();
     hotkeysScrollWidget = new QWidget;
