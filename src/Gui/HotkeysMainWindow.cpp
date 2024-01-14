@@ -145,7 +145,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     });
 
     // Set start faction
-    const auto firstFactionButton = factionsButtonsGroup.buttons().first();
+    const auto firstFactionButton = factionsButtonsGroup.button(-2);
     if (firstFactionButton != nullptr) firstFactionButton->click();
 }
 
@@ -220,14 +220,17 @@ void HotkeysMainWindow::setHotkeysLayout()
 
     for (const auto & faction : factions)
     {
+        // Skip wrong faction
         if (faction.getShortName() != factionShortName) continue;
 
         for (const auto & currentTypeEntities : faction.getEntitiesMap())
         {
             for (const auto & entity : currentTypeEntities)
             {
+                // Skip wrong entity
                 if (entity.getName() != entityName) continue;
 
+                // For all the actions create a widget
                 for (const auto & action : entity.getActions())
                 {
                     ActionHotkeyWidget* actionHotkey = new ActionHotkeyWidget(CSFPARSER->GetStringValue(action.getCsfString()),

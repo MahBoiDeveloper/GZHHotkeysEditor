@@ -8,12 +8,21 @@
 
 QImage GUIConfig::decodeWebpIcon(const QString& iconName)
 {
-    QStringList allMatchIconFiles = findAllMatchingFiles(iconsPath, iconName);
+    // If it there, get the image from cache
+    const auto it = imagesCache.constFind(iconName);
+    if (it != imagesCache.constEnd()) return it.value();
 
-    if (!allMatchIconFiles.isEmpty())
+    // Find
+    const QFileInfo targetIconFile = findIconFile(iconsDirPath, iconName);
+
+    if (targetIconFile.exists())
     {
-        // Take the first match
-        return decodeWebpIconPath(allMatchIconFiles.first());
+        // Get the image
+        const QImage targetImage = decodeWebpIconPath(targetIconFile.absoluteFilePath());
+        // Save the image in the cache
+        imagesCache.insert(iconName, targetImage);
+        // Return the image
+        return targetImage;
     }
     else
     {
@@ -26,38 +35,31 @@ QImage GUIConfig::decodeDefaultWebpIcon()
     return decodeWebpIconPath(defaultIconFile);
 }
 
-QStringList GUIConfig::findAllMatchingFiles(const QString& pathToDir, const QString& nameFilter)
+QFileInfo GUIConfig::findIconFile(const QString& pathToIconsDir, const QString& fileBaseName)
 {
-    QStringList files;
+    // Find all files and dirs in current directory
+    QFileInfoList fileInfoList = QDir{pathToIconsDir}.entryInfoList(QDir::Filter::Files |
+                                                                    QDir::Filter::Dirs  |
+                                                                    QDir::Filter::NoDotAndDotDot);
 
-    // find all files and dirs in current directory
-    QFileInfoList fileInfoList = QDir{pathToDir}.entryInfoList(QDir::Filter::Files |
-                                                               QDir::Filter::Dirs  |
-                                                               QDir::Filter::NoDotAndDotDot);
-
-    // if dir -> recursive find, if file -> remember path
     for (const auto & fileInfo : fileInfoList)
     {
+        // if dir -> recursive find
         if (fileInfo.isDir())
         {
-            files.append(findAllMatchingFiles(fileInfo.absoluteFilePath(), nameFilter));
+            QFileInfo foundFile = findIconFile(fileInfo.absoluteFilePath(), fileBaseName);
+
+            // Return if it's a complete match
+            if (foundFile.baseName() == fileBaseName) return foundFile;
         }
+        // else if it is a matching file -> return it
         else
         {
-            // Return if it's a complete match
-            if (nameFilter == fileInfo.baseName())
-            {
-                return {fileInfo.absoluteFilePath()};
-            }
-            // Else remember this file
-            else if (fileInfo.fileName().contains(nameFilter))
-            {
-                files.append(fileInfo.absoluteFilePath());
-            }
+            if (fileInfo.baseName() == fileBaseName) return fileInfo;
         }
     }
 
-    return files;
+    return QFileInfo{};
 }
 
 QImage GUIConfig::decodeWebpIconPath(const QString& iconPath)
