@@ -6,12 +6,12 @@
     <message>
         <location filename="../ActionHotkeyWidget.cpp" line="73"/>
         <source>It isn&apos;t latin key...</source>
-        <translation type="unfinished">Это не латинская клавиша...</translation>
+        <translation>Это не латинская клавиша!</translation>
     </message>
     <message>
         <location filename="../ActionHotkeyWidget.cpp" line="108"/>
         <source>Press latin key...</source>
-        <translation type="unfinished">Нажмите латинскую клавишу...</translation>
+        <translation>Нажмите латинскую клавишу...</translation>
     </message>
 </context>
 <context>
@@ -48,12 +48,12 @@
     <message>
         <location filename="../GreetingWidget.cpp" line="38"/>
         <source>New Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Новый проект</translation>
     </message>
     <message>
         <location filename="../GreetingWidget.cpp" line="45"/>
         <source>Load Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузить проект</translation>
     </message>
     <message>
         <location filename="../GreetingWidget.cpp" line="64"/>
