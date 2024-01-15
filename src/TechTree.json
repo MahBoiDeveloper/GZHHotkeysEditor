@@ -474,7 +474,7 @@
                 },
 
                 {
-                    "Name"       : "USAPatriot",
+                    "Name"       : "SWGPatriot",
                     "IngameName" : "OBJECT:PatriotBattery",
                     "Actions"    : 
                     [
