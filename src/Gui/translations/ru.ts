@@ -84,38 +84,38 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="154"/>
+        <location filename="../HotkeysMainWindow.cpp" line="155"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="155"/>
+        <location filename="../HotkeysMainWindow.cpp" line="156"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="157"/>
+        <location filename="../HotkeysMainWindow.cpp" line="158"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="158"/>
+        <location filename="../HotkeysMainWindow.cpp" line="159"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="160"/>
-        <location filename="../HotkeysMainWindow.cpp" line="279"/>
+        <location filename="../HotkeysMainWindow.cpp" line="161"/>
+        <location filename="../HotkeysMainWindow.cpp" line="280"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="265"/>
+        <location filename="../HotkeysMainWindow.cpp" line="266"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="272"/>
+        <location filename="../HotkeysMainWindow.cpp" line="273"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>
@@ -146,6 +146,29 @@
         <location filename="../LoadDialog.cpp" line="40"/>
         <source>Load installed game hotkey map</source>
         <translation>Загрузить горячие клавиши из игры</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../../Config.hpp" line="24"/>
+        <source>Buildings</source>
+        <translation>Постройки</translation>
+    </message>
+    <message>
+        <location filename="../../Config.hpp" line="25"/>
+        <source>Infantry</source>
+        <translation>Пехота</translation>
+    </message>
+    <message>
+        <location filename="../../Config.hpp" line="26"/>
+        <source>Vehicles</source>
+        <translation>Транспорт</translation>
+    </message>
+    <message>
+        <location filename="../../Config.hpp" line="27"/>
+        <source>Aircraft</source>
+        <translation>Авиация</translation>
     </message>
 </context>
 </TS>

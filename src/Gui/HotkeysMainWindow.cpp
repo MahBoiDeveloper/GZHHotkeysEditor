@@ -2,6 +2,7 @@
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QHeaderView>
+#include <QCoreApplication>
 
 #include "../Info.hpp"
 #include "../Logger.hpp"
@@ -32,6 +33,8 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     // icon size
     entitiesTreeWidget->setIconSize(QSize{GUIConfig::entityIconMinimumHeight, GUIConfig::entityIconMinimumHeight});
 //    entitiesTreeWidget.setSpacing(GUIConfig::entityIconMinimumHeight * 0.1);
+
+    connect(entitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &HotkeysMainWindow::setHotkeysLayout);
 
     //============================ Factions button group configure ============================
     QBoxLayout* factionsL = nullptr;
@@ -105,7 +108,20 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 //        factionsL->addLayout(secondL);
     }
 
-    connect(entitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &HotkeysMainWindow::setHotkeysLayout);
+    connect(&factionsButtonsGroup, &QButtonGroup::idClicked, this, [=](int)
+    {
+        // Skip if missing
+        const auto firstTopLevelItem = entitiesTreeWidget->topLevelItem(0);
+        if (firstTopLevelItem == nullptr) return;
+
+        // Skip if missing
+        const auto firstEntity = firstTopLevelItem->child(0);
+        if (firstEntity == nullptr) return;
+
+        // Set start entity
+        entitiesTreeWidget->setCurrentItem(firstEntity);
+        entitiesTreeWidget->setFocus();
+    });
 
     //=========================================================================================
 
@@ -128,21 +144,6 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     QWidget* centralWidget = new QWidget;
     centralWidget->setLayout(mainL);
     setCentralWidget(centralWidget);
-
-    connect(&factionsButtonsGroup, &QButtonGroup::idClicked, this, [=](int)
-    {
-        // Skip if missing
-        const auto firstTopLevelItem = entitiesTreeWidget->topLevelItem(0);
-        if (firstTopLevelItem == nullptr) return;
-
-        // Skip if missing
-        const auto firstEntity = firstTopLevelItem->child(0);
-        if (firstEntity == nullptr) return;
-
-        // Set start entity
-        entitiesTreeWidget->setCurrentItem(firstEntity);
-        entitiesTreeWidget->setFocus();
-    });
 
     // Set start faction
     const auto firstFactionButton = factionsButtonsGroup.button(-2);
@@ -175,7 +176,7 @@ void HotkeysMainWindow::setEntitiesList(const QString& factionShortName)
 
         // Create new section of tree list
         QTreeWidgetItem* newTopEntityItem = new QTreeWidgetItem;
-        newTopEntityItem->setText(0, it.value());
+        newTopEntityItem->setText(0, QCoreApplication::translate("QObject", it.value().toUtf8().constData()));
         // Decorate
         newTopEntityItem->setBackground(0, QColor{0x73, 0xE9, 0xFF, 128});
 

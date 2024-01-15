@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QMap>
+#include <QObject>
 
 class Config
 {
@@ -20,10 +21,10 @@ public: // Data
 
     inline static const QMap<Entities, QString> ENTITIES_STRINGS =
     {
-        {Entities::Buildings, "Buildings"},
-        {Entities::Infantry, "Infantry"},
-        {Entities::Vehicles, "Vehicles"},
-        {Entities::Aircraft, "Aircraft"}
+        {Entities::Buildings, QObject::tr("Buildings")},
+        {Entities::Infantry,  QObject::tr("Infantry")},
+        {Entities::Vehicles,  QObject::tr("Vehicles")},
+        {Entities::Aircraft,  QObject::tr("Aircraft")}
     };
 
     enum class Languages
