@@ -2071,7 +2071,7 @@
                     "Actions"    : 
                     [
                         {"IconName" : "PRCMIG",          "HotkeyString" : "CONTROLBAR:ConstructChinaJetMIG"},
-                        {"IconName" : "PRCHelix",        "HotkeyString" : "CONTROLBAR:ConstructChinaVehicleHelix"},
+                        {"IconName" : "PRCHelix",        "HotkeyString" : "CONTROLBAR:Infa_ConstructChinaVehicleHelix"},
                         {"IconName" : "PRCMiGArmour",    "HotkeyString" : "CONTROLBAR:UpgradeChinaAircraftArmor"},
                         {"IconName" : "PRCLandMine",     "HotkeyString" : "CONTROLBAR:UpgradeChinaMines"},
                         {"IconName" : "PRCNeutronMines", "HotkeyString" : "CONTROLBAR:UpgradeEMPMines"},
@@ -2293,14 +2293,12 @@
 
                 {
                     "Name"       : "PRCHelix",
-                    "IngameName" : "OBJECT:Helix",
+                    "IngameName" : "OBJECT:Infa_Helix",
                     "Actions"    : 
                     [
                         {"IconName" : "PRCNapalmBomb",          "HotkeyString" : "CONTROLBAR:UpgradeHelixNapalmBomb"},
                         {"IconName" : "PRCDropNapalmBomb",      "HotkeyString" : "CONTROLBAR:DropNapalmBomb"},
                         {"IconName" : "PRCHelixBattleBunker",   "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixBattleBunker"},
-                        {"IconName" : "PRCHelixSpeakerTower",   "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixPropagandaTower"},
-                        {"IconName" : "PRCHelixGattlingCannon", "HotkeyString" : "CONTROLBAR:UpgradeChinaHelixGattlingCannon"},
                         {"IconName" : "Evacuate",               "HotkeyString" : "CONTROLBAR:Evacuate"},
                         {"IconName" : "AttackMove",             "HotkeyString" : "CONTROLBAR:AttackMove"},
                         {"IconName" : "Guard",                  "HotkeyString" : "CONTROLBAR:Guard"},
