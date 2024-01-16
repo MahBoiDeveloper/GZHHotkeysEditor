@@ -3,7 +3,7 @@
 #include <QStackedWidget>
 #include "GreetingWidget.hpp"
 
-class StackedLaunchWidget : public QStackedWidget
+class LaunchWidget : public QStackedWidget
 {
     Q_OBJECT
 private: // Data
@@ -14,7 +14,7 @@ private: // Methods
     void SetTranslator(Config::Languages language);
     void UpdateConnectionsToSignals();
 public:
-    StackedLaunchWidget(Config::Languages language, QWidget* parent = nullptr);
+    LaunchWidget(Config::Languages language, QWidget* parent = nullptr);
 
 private slots:
     void OnChangeLanguage(int intLngIndex);

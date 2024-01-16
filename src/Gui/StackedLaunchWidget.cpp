@@ -6,9 +6,9 @@
 #include "GUIConfig.hpp"
 #include "CreationDialog.hpp"
 #include "LoadDialog.hpp"
-#include "StackedLaunchWidget.hpp"
+#include "LaunchWidget.hpp"
 
-StackedLaunchWidget::StackedLaunchWidget(Config::Languages lngType, QWidget *parent) : QStackedWidget(parent)
+LaunchWidget::LaunchWidget(Config::Languages lngType, QWidget* parent) : QStackedWidget(parent)
 {
     // Application style settings
     QFile styleSheetsFile{":/my/css/mainStyleSheet.css"};
@@ -38,7 +38,7 @@ StackedLaunchWidget::StackedLaunchWidget(Config::Languages lngType, QWidget *par
 }
 
 /// @brief Set or reset translator for start window.
-void StackedLaunchWidget::SetTranslator(Config::Languages lngType)
+void LaunchWidget::SetTranslator(Config::Languages lngType)
 {
     // Delete old translator
     if (pTranslator != nullptr) QCoreApplication::removeTranslator(pTranslator);
@@ -54,15 +54,15 @@ void StackedLaunchWidget::SetTranslator(Config::Languages lngType)
 }
 
 /// @brief Call this fucntion on every new pointer of pStartWidget.
-void StackedLaunchWidget::UpdateConnectionsToSignals()
+void LaunchWidget::UpdateConnectionsToSignals()
 {
     connect(pStartWidget, &GreetingWidget::languageChanged,
-            this,         &StackedLaunchWidget::OnChangeLanguage);
+            this,         &LaunchWidget::OnChangeLanguage);
     connect(pStartWidget, &GreetingWidget::pressed,
-            this,         &StackedLaunchWidget::OnStartButtonClicked);
+            this,         &LaunchWidget::OnStartButtonClicked);
 }
 
-void StackedLaunchWidget::OnChangeLanguage(int intLngIndex)
+void LaunchWidget::OnChangeLanguage(int intLngIndex)
 {
     // Find language type by its code.
     Config::Languages lngType = static_cast<Config::Languages>(intLngIndex);
@@ -78,25 +78,25 @@ void StackedLaunchWidget::OnChangeLanguage(int intLngIndex)
 }
 
 /// @brief Open create/loader widget.
-void StackedLaunchWidget::OnStartButtonClicked(GreetingWidget::StandartButtons standartButton)
+void LaunchWidget::OnStartButtonClicked(GreetingWidget::StandartButtons standartButton)
 {
-    BaseConfigurationDialog* configurationWidget = nullptr;
+    BaseConfigurationDialog* pConfigurationWidget = nullptr;
 
     switch (standartButton)
     {
-    case GreetingWidget::StandartButtons::NewProject:
-        configurationWidget = new CreationDialog();
-        break;
-    case GreetingWidget::StandartButtons::LoadProject:
-        configurationWidget = new LoadDialog();
-        break;
-    default:
-        configurationWidget = new CreationDialog();
-        break;
+        case GreetingWidget::StandartButtons::NewProject:
+            pConfigurationWidget = new CreationDialog();
+            break;
+        case GreetingWidget::StandartButtons::LoadProject:
+            pConfigurationWidget = new LoadDialog();
+            break;
+        default:
+            pConfigurationWidget = new CreationDialog();
+            break;
     }
-    addWidget(configurationWidget);
-    setCurrentWidget(configurationWidget); // next window (creator)
+    addWidget(pConfigurationWidget);
+    setCurrentWidget(pConfigurationWidget); // next window (creator)
 
     // if accepted -> send signal with configuration
-    connect(configurationWidget, &CreationDialog::AcceptedConfiguration, this, &StackedLaunchWidget::AcceptedConfiguration);
+    connect(pConfigurationWidget, &CreationDialog::AcceptedConfiguration, this, &LaunchWidget::AcceptedConfiguration);
 }

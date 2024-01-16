@@ -7,11 +7,11 @@ WindowManager::WindowManager()
     WindowName = "C&C: Generals Zero Hour Hotkey Editor";
 
     LOGMSG("Loading launch window...");
-    pLaunchWidget = std::make_unique<StackedLaunchWidget>(Config::GetLangEnumByLocale(Registry::GetCurrentUserLanguage()));
+    pLaunchWidget = std::make_unique<LaunchWidget>(Config::GetLangEnumByLocale(Registry::GetCurrentUserLanguage()));
     pLaunchWidget->setWindowTitle(WindowName);
     LOGMSG("Launch window has been loaded");
 
-    QObject::connect(pLaunchWidget.get(), &StackedLaunchWidget::AcceptedConfiguration, pLaunchWidget.get(), [=](const QVariant& cfg)
+    QObject::connect(pLaunchWidget.get(), &LaunchWidget::AcceptedConfiguration, pLaunchWidget.get(), [=](const QVariant& cfg)
     {
         LOGMSG("Loading editor window...");
         pHotkeysEditor = std::make_unique<HotkeysMainWindow>(cfg);
