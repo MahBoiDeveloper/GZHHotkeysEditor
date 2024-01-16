@@ -12,14 +12,15 @@ private: // Data
 private: // Methods
     void Parse();
 public:
-    JSONFile(const char* filePath);
+    JSONFile() = delete;
+    JSONFile(const char*        filePath);
     JSONFile(const std::string& filePath);
-    JSONFile(const QString& filePath);
+    JSONFile(const QString&     filePath);
 
     QJsonObject       GetMainObject();
-    QJsonValue        Query(const char* strQuery)        const;
+    QJsonValue        Query(const char*        strQuery) const;
     QJsonValue        Query(const std::string& strQuery) const;
-    QJsonValue        Query(const QString& strQuery)     const;
-    static QJsonValue Query(const QJsonObject&, const char* strQuery);
+    QJsonValue        Query(const QString&     strQuery) const;
+    static QJsonValue Query(const QJsonObject&, const char*    strQuery);
     static QJsonValue Query(const QJsonObject&, const QString& strQuery);
 };
