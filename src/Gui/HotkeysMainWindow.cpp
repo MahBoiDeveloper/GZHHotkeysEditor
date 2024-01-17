@@ -17,8 +17,8 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     , factionsButtonsGroup{}
     , pEntitiesTreeWidget{new QTreeWidget}
     , pHotkeysArea{new QScrollArea}
-    , hotkeysScrollWidget{nullptr}
-    , aboutDialog{nullptr}
+    , pHotkeysScrollWidget{nullptr}
+    , pAboutDialog{nullptr}
 {
     factions = GetFactions();
     resize(1200, 800);
@@ -158,7 +158,7 @@ void HotkeysMainWindow::ConfigureMenu()
     QMenu* settingsM = new QMenu(tr("Settings"));
     menuBar()->addMenu(settingsM);
     QAction* aboutA = new QAction(tr("About"));
-    connect(aboutA, &QAction::triggered, this, &HotkeysMainWindow::onAbout);
+    connect(aboutA, &QAction::triggered, this, &HotkeysMainWindow::OnAbout);
     settingsM->addAction(aboutA);
 }
 
@@ -244,20 +244,20 @@ void HotkeysMainWindow::SetHotkeysLayout()
     // Condense the actions at the top
     hotkeysLayout->addStretch(1);
 
-    if (hotkeysScrollWidget != nullptr) hotkeysScrollWidget->deleteLater();
-    hotkeysScrollWidget = new QWidget;
-    hotkeysScrollWidget->setLayout(hotkeysLayout);
-    hotkeysScrollWidget->setMinimumSize(hotkeysScrollWidget->sizeHint());
+    if (pHotkeysScrollWidget != nullptr) pHotkeysScrollWidget->deleteLater();
+    pHotkeysScrollWidget = new QWidget;
+    pHotkeysScrollWidget->setLayout(hotkeysLayout);
+    pHotkeysScrollWidget->setMinimumSize(pHotkeysScrollWidget->sizeHint());
 
-    pHotkeysArea->setWidget(hotkeysScrollWidget);
+    pHotkeysArea->setWidget(pHotkeysScrollWidget);
 }
 
-void HotkeysMainWindow::onAbout()
+void HotkeysMainWindow::OnAbout()
 {
     // if dialog already exists
-    if (aboutDialog != nullptr)
+    if (pAboutDialog != nullptr)
     {
-        aboutDialog->activateWindow();
+        pAboutDialog->activateWindow();
         return;
     }
 
@@ -275,24 +275,24 @@ void HotkeysMainWindow::onAbout()
     contentL->addWidget(textL, 1, 0);
     contentL->setSizeConstraint(QLayout::SetFixedSize);
 
-    aboutDialog = new QDialog{this};
-    aboutDialog->setWindowTitle(tr("About"));
-    aboutDialog->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    aboutDialog->setWindowFlags(aboutDialog->windowFlags() &
+    pAboutDialog = new QDialog{this};
+    pAboutDialog->setWindowTitle(tr("About"));
+    pAboutDialog->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    pAboutDialog->setWindowFlags(pAboutDialog->windowFlags() &
                                ~Qt::WindowContextHelpButtonHint |
                                 Qt::MSWindowsFixedSizeDialogHint);
 
-    connect(aboutDialog, &QDialog::finished, this, [this]()
+    connect(pAboutDialog, &QDialog::finished, this, [this]()
     {
-        aboutDialog->deleteLater();
-        aboutDialog = nullptr;
+        pAboutDialog->deleteLater();
+        pAboutDialog = nullptr;
     });
 
     QDialogButtonBox* buttons = new QDialogButtonBox{QDialogButtonBox::Ok,
                                                      Qt::Orientation::Horizontal,
-                                                     aboutDialog};
+                                                     pAboutDialog};
 
-    connect(buttons, &QDialogButtonBox::accepted, aboutDialog, &QDialog::accept);
+    connect(buttons, &QDialogButtonBox::accepted, pAboutDialog, &QDialog::accept);
 
     QHBoxLayout* buttonsL = new QHBoxLayout;
     buttonsL->addStretch();
@@ -305,10 +305,10 @@ void HotkeysMainWindow::onAbout()
     mainL->addLayout(contentL);
     mainL->addLayout(buttonsL);
 
-    aboutDialog->setLayout(mainL);
-    aboutDialog->show();
-    aboutDialog->raise();
-    aboutDialog->activateWindow();
+    pAboutDialog->setLayout(mainL);
+    pAboutDialog->show();
+    pAboutDialog->raise();
+    pAboutDialog->activateWindow();
 }
 
 #pragma region TechTree.json parsing methods

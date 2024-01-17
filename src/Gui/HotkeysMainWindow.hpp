@@ -20,13 +20,12 @@ private:
     QTreeWidget* pEntitiesTreeWidget = nullptr;
     QScrollArea* pHotkeysArea        = nullptr;
 
+    // Renewable widgets
+    QWidget* pHotkeysScrollWidget    = nullptr;
+    QDialog* pAboutDialog            = nullptr;
+
     QVector<Faction> factions;
     QButtonGroup     factionsButtonsGroup;
-
-    // Renewable widgets
-    QWidget* hotkeysScrollWidget = nullptr;
-    QDialog* aboutDialog         = nullptr;
-
     JSONFile TechTree{Config::techTreeFile};
 
 private: // Methods
@@ -39,5 +38,5 @@ private: // Methods
     QVector<EntityAction> GetActionsFromJsonArray(const QJsonArray& array);
     QVector<EntityAction> GetEntityActions(const QString& entityName);
 private slots:
-    void onAbout();
+    void OnAbout();
 };
