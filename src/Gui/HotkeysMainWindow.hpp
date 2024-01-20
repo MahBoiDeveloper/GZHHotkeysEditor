@@ -1,42 +1,39 @@
 #pragma once
-#include <QButtonGroup>
-#include <QVBoxLayout>
-#include <QListWidget>
+
 #include <QMainWindow>
-#include <QTreeWidgetItem>
-#include <QScrollArea>
-#include "../Config.hpp"
-#include "../Data/Faction.hpp"
-#include "../Parsers/JSONFile.hpp"
+
+#include "FactionsManager.hpp"
+
+class QScrollArea;
+class QTreeWidget;
+class QButtonGroup;
 
 class HotkeysMainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public: // Data
+public:
     HotkeysMainWindow(const QVariant& configuration, QWidget* parent = nullptr);
+
 private:
+    FactionsManager FactionsManager;
+
+    // Qt object in a single copy
+    QButtonGroup* pFactionsButtonsGroup = nullptr;
+
     // Graphic widgets in a single copy
-    QTreeWidget* pEntitiesTreeWidget = nullptr;
-    QScrollArea* pHotkeysArea        = nullptr;
+    QTreeWidget* pEntitiesTreeWidget    = nullptr;
+    QScrollArea* pHotkeysArea           = nullptr;
 
     // Renewable widgets
-    QWidget* pHotkeysScrollWidget    = nullptr;
-    QDialog* pAboutDialog            = nullptr;
+    QWidget* pHotkeysScrollWidget       = nullptr;
+    QDialog* pAboutDialog               = nullptr;
 
-    QVector<Faction> factions;
-    QButtonGroup     factionsButtonsGroup;
-    JSONFile TechTree{Config::techTreeFile};
+private:
+    void ConfigureMenu();
+    void SetEntitiesList(const QString& factionShortName);
+    void SetHotkeysLayout();
 
-private: // Methods
-    void                  ConfigureMenu();
-    void                  SetEntitiesList(const QString& factionShortName);
-    void                  SetHotkeysLayout();
-    QVector<Faction>      GetFactions();
-    QVector<Entity>       GetFactionEntities(Config::Entities entity, const QString& factionShortName);
-    QVector<Entity>       GetEntitiesFromJsonArray(const QJsonArray& array);
-    QVector<EntityAction> GetActionsFromJsonArray(const QJsonArray& array);
-    QVector<EntityAction> GetEntityActions(const QString& entityName);
 private slots:
     void OnAbout();
 };

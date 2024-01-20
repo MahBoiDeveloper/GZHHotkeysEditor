@@ -1,9 +1,9 @@
 #include "EntityAction.hpp"
 
-EntityAction::EntityAction(const QString& name, const QString& csfString)
+EntityAction::EntityAction(const QString& name, const QString& iconName, const QString& hotkey)
     : name{name}
-    , csfString{csfString}
-    , hotkey{/*TODO: read from csf file*/ Qt::Key::Key_0}
+    , iconName{iconName}
+    , hotkey{hotkey}
 {
 }
 
@@ -12,17 +12,17 @@ const QString& EntityAction::getName() const
     return name;
 }
 
-const QString& EntityAction::getCsfString() const
+const QString& EntityAction::getIconName() const
 {
-    return csfString;
+    return iconName;
 }
 
-Qt::Key EntityAction::getHotkey() const
+const QString& EntityAction::getHotkey() const
 {
     return hotkey;
 }
 
-void EntityAction::setHotkey(Qt::Key newHotkey)
+void EntityAction::setHotkey(const QString& newHotkey)
 {
     hotkey = newHotkey;
 }

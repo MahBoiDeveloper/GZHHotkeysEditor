@@ -6,21 +6,17 @@
 class JSONFile final
 {
 private: // Data
-    QString     FileName;
     QJsonObject JsonMainObject;
 
-private: // Methods
-    void Parse();
 public:
-    JSONFile() = delete;
-    JSONFile(const char*        filePath);
-    JSONFile(const std::string& filePath);
     JSONFile(const QString&     filePath);
+    JSONFile(const std::string& filePath);
+    JSONFile(const char*        filePath);
 
-    QJsonObject       GetMainObject();
-    QJsonValue        Query(const char*        strQuery) const;
-    QJsonValue        Query(const std::string& strQuery) const;
-    QJsonValue        Query(const QString&     strQuery) const;
-    static QJsonValue Query(const QJsonObject&, const char*    strQuery);
-    static QJsonValue Query(const QJsonObject&, const QString& strQuery);
+    const QJsonObject&  GetMainObject();
+    QJsonValue          Query(const QString&     strQuery) const;
+    QJsonValue          Query(const std::string& strQuery) const;
+    QJsonValue          Query(const char*        strQuery) const;
+    static QJsonValue   Query(const QJsonObject&, const char*    strQuery);
+    static QJsonValue   Query(const QJsonObject&, const QString& strQuery);
 };

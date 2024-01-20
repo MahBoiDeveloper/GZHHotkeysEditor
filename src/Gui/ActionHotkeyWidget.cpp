@@ -92,6 +92,8 @@ void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
     hotkeyLabel.setPalette(QPalette());
     hotkeyLabel.setText(hotkey);
 
+    emit hotkeyChanged(hotkey);
+
     // Stop timer
     signalTimer.stop();
 

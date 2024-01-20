@@ -2,53 +2,46 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 
+#include "JSONFile.hpp"
 #include "../Exception.hpp"
 #include "../Logger.hpp"
-#include "JSONFile.hpp"
 
 using namespace std;
 
 #pragma region CTORs and DTORs
-    JSONFile::JSONFile(const QString& filePath) : FileName(filePath)
+
+    JSONFile::JSONFile(const QString& filePath)
     {
-        Parse();
+        QFile openedFile(filePath);
+        QJsonParseError err;
+
+        // Read data from *.json file
+        if (openedFile.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            LOGMSG("Parsing \"" + QString{filePath} + "\"...");
+            JsonMainObject = QJsonDocument::fromJson(openedFile.readAll(), &err).object();
+            openedFile.close();
+            LOGMSG("Errors while parsing: " + err.errorString());
+            LOGMSG("JSON file has been parsed");
+        }
+        else
+        {
+            LOGMSG("Errors while parsing: " + err.errorString());
+            throw Exception("Bad file name; unable to open file \"" + QString{filePath} + "\"");
+        }
     }
 
-    JSONFile::JSONFile(const char* filePath) : FileName(filePath)
-    {
-        Parse();
-    }
+    JSONFile::JSONFile(const char* filePath)        : JSONFile{QString{filePath}}
+    {}
 
-    JSONFile::JSONFile(const std::string& filePath) : FileName(filePath.c_str())
-    {
-        Parse();
-    }
+    JSONFile::JSONFile(const std::string& filePath) : JSONFile{QString::fromStdString(filePath)}
+    {}
+
 #pragma endregion
-
-void JSONFile::Parse()
-{
-    QFile openedFile(FileName);
-    QJsonParseError err;
-
-    // Read data from *.json file
-    if (openedFile.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        LOGMSG("Parsing \"" + FileName + "\"...");
-        JsonMainObject = QJsonDocument::fromJson(openedFile.readAll(), &err).object();
-        openedFile.close();
-        LOGMSG("Errors while parsing: " + err.errorString());
-        LOGMSG("JSON file has been parsed");
-    }
-    else
-    {
-        LOGMSG("Errors while parsing: " + err.errorString());
-        throw Exception("Bad file name; unable to open file \"" + FileName + "\"");
-    }
-}
 
 #pragma region Getters
     /// @brief Returns main object of parsed JSON file
-    QJsonObject JSONFile::GetMainObject()
+    const QJsonObject& JSONFile::GetMainObject()
     {
         return JsonMainObject;
     }
@@ -75,7 +68,7 @@ void JSONFile::Parse()
     QJsonValue JSONFile::Query(const QJsonObject& jsonObject, const QString& strQuery)
     {
         // Find dollar sign in place of the first character
-        if (strQuery.at(0) != '$') throw Exception(string("JSON path doesn't begin with \'$\'"));
+        if (strQuery.at(0) != '$') throw Exception(string{"JSON path doesn't begin with \'$\'"});
 
         QStringList splitList = strQuery.split('.');
         splitList.removeFirst();
@@ -98,8 +91,7 @@ void JSONFile::Parse()
                 int arrayIndex = regexp.match(currSplit).captured(0).remove('[').remove(']').toInt();
                 
                 // Try to find QJsonValue in array
-                currVal = currObj.value(
-                                        currSplit.remove(currSplit.indexOf('['), 
+                currVal = currObj.value(currSplit.remove(currSplit.indexOf('['),
                                                          currSplit.length() - currSplit.indexOf('[')))
                                                          .toArray()
                                                          .at(arrayIndex);

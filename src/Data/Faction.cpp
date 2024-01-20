@@ -1,13 +1,12 @@
 #include "Faction.hpp"
 
-Faction::Faction(const QString& shortName, const QString& displayName, const QString& displayNameDesctiontion)
+Faction::Faction(const QString& shortName, const QString& displayName, const QString& displayNameDescription)
     : shortName{shortName}
     , displayName{displayName}
-    , displayNameDesctiontion{displayNameDesctiontion}
-{
-}
+    , displayNameDescription{displayNameDescription}
+{}
 
-void Faction::addEntities(Config::Entities entityType, const QVector<Entity>& newEntities)
+void Faction::addEntities(Config::EntitiesTypes entityType, const QVector<Entity>& newEntities)
 {
     entities.insert(entityType, newEntities);
 }
@@ -22,17 +21,12 @@ const QString& Faction::getDisplayName() const
     return displayName;
 }
 
-const QString& Faction::getDisplayNameDesctiontion() const
+const QString& Faction::getDisplayNameDescription() const
 {
-    return displayNameDesctiontion;
+    return displayNameDescription;
 }
 
-const QMap<Config::Entities, QVector<Entity>>& Faction::getEntitiesMap() const
+const QMap<Config::EntitiesTypes, QVector<Entity>>& Faction::getEntitiesMap() const
 {
     return entities;
-}
-
-QVector<Entity> Faction::getEntitiesByType(Config::Entities entityType)
-{
-    return entities.value(entityType);
 }

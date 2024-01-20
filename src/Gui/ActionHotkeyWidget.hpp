@@ -35,4 +35,5 @@ private slots: // Signals and slots
     void OnNewHotkeyPressed();
 signals:
     void signalRepeatNewHotkey();
+    void hotkeyChanged(QString hotkey);
 };

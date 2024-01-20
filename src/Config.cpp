@@ -1,5 +1,4 @@
-#include <algorithm>
-#include "config.hpp"
+#include "Config.hpp"
 
 const QString Config::GetLocaleFromLangEnum(Languages language)
 {

@@ -9,7 +9,7 @@
         {
             "ShortName"               : "USA",
             "DisplayName"             : "USA",
-            "DisplayNameDesctiontion" : "United Stated Of America",
+            "DisplayNameDescription"  : "United Stated Of America",
 
             "Buildings" : 
             [
@@ -415,7 +415,7 @@
         {
             "ShortName"               : "SWG",
             "DisplayName"             : "SUPERWEAPON",
-            "DisplayNameDesctiontion" : "Superweapons General",
+            "DisplayNameDescription"  : "Superweapons General",
 
             "Buildings" : 
             [
@@ -790,7 +790,7 @@
         {
             "ShortName"               : "AIR",
             "DisplayName"             : "AIR",
-            "DisplayNameDesctiontion" : "Airforce General",
+            "DisplayNameDescription"  : "Airforce General",
 
             "Buildings" : 
             [
@@ -1180,7 +1180,7 @@
         {
             "ShortName"               : "LSR",
             "DisplayName"             : "LASER",
-            "DisplayNameDesctiontion" : "Laser Weapons Generals",
+            "DisplayNameDescription"  : "Laser Weapons Generals",
 
             "Buildings" : 
             [
@@ -1571,7 +1571,7 @@
         {
             "ShortName"               : "PRC",
             "DisplayName"             : "CHINA",
-            "DisplayNameDesctiontion" : "China",
+            "DisplayNameDescription"  : "China",
             
             "Buildings"               : 
             [
@@ -1962,7 +1962,7 @@
         {
             "ShortName"               : "INF",
             "DisplayName"             : "INFANTRY",
-            "DisplayNameDesctiontion" : "Infantry General",
+            "DisplayNameDescription"  : "Infantry General",
 
             "Buildings"               : 
             [
@@ -2311,7 +2311,7 @@
         {
             "ShortName"               : "NUK",
             "DisplayName"             : "NUKE",
-            "DisplayNameDesctiontion" : "Nuke General",
+            "DisplayNameDescription"  : "Nuke General",
 
             "Buildings"               : 
             [
@@ -2702,7 +2702,7 @@
         {
             "ShortName"               : "TNK",
             "DisplayName"             : "TANK",
-            "DisplayNameDesctiontion" : "Tank General",
+            "DisplayNameDescription"  : "Tank General",
 
             "Buildings"               : 
             [
@@ -3065,7 +3065,7 @@
         {
             "ShortName"               : "GLA",
             "DisplayName"             : "GLA",
-            "DisplayNameDesctiontion" : "Global Liberation Army",
+            "DisplayNameDescription"  : "Global Liberation Army",
 
             "Buildings"               : 
             [
@@ -3507,7 +3507,7 @@
         {
             "ShortName"               : "TOX",
             "DisplayName"             : "TOXIC",
-            "DisplayNameDesctiontion" : "Toxic Weapons General",
+            "DisplayNameDescription"  : "Toxic Weapons General",
 
             "Buildings"               : 
             [
@@ -3916,7 +3916,7 @@
         {
             "ShortName"               : "STL",
             "DisplayName"             : "STEALTH",
-            "DisplayNameDesctiontion" : "Stealth General",
+            "DisplayNameDescription"  : "Stealth General",
 
             "Buildings"               : 
             [
@@ -4320,7 +4320,7 @@
         {
             "ShortName"               : "DML",
             "DisplayName"             : "DEMO",
-            "DisplayNameDesctiontion" : "Demolition General",
+            "DisplayNameDescription"  : "Demolition General",
 
             "Buildings"               : 
             [

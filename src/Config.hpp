@@ -11,7 +11,7 @@ public: // Data
     inline static const QString techTreeFile     = resourcesFolder + "/TechTree.json";
     inline static const double recomendedStartWidgetSizeRatio = 3./7.;
 
-    enum class Entities
+    enum class EntitiesTypes
     {
         Buildings,
         Infantry,
@@ -19,12 +19,12 @@ public: // Data
         Aircraft
     };
 
-    inline static const QMap<Entities, QString> ENTITIES_STRINGS =
+    inline static const QMap<EntitiesTypes, QString> ENTITIES_STRINGS =
     {
-        {Entities::Buildings, QObject::tr("Buildings")},
-        {Entities::Infantry,  QObject::tr("Infantry")},
-        {Entities::Vehicles,  QObject::tr("Vehicles")},
-        {Entities::Aircraft,  QObject::tr("Aircraft")}
+        {EntitiesTypes::Buildings, QObject::tr("Buildings")},
+        {EntitiesTypes::Infantry,  QObject::tr("Infantry")},
+        {EntitiesTypes::Vehicles,  QObject::tr("Vehicles")},
+        {EntitiesTypes::Aircraft,  QObject::tr("Aircraft")}
     };
 
     enum class Languages

@@ -1,19 +1,19 @@
 #pragma once
+
 #include <QString>
 
-/// @brief class for storing building data
+/// @brief class for storing entity action data
 class EntityAction
 {
 public:
-    EntityAction(const QString& name, const QString& csfString);
+    EntityAction(const QString& name, const QString& iconName, const QString& hotkey);
     const QString& getName() const;
-    const QString& getCsfString() const;
-
-    Qt::Key getHotkey() const;
-    void setHotkey(Qt::Key newHotkey);
+    const QString& getIconName() const;
+    const QString& getHotkey() const;
+    void setHotkey(const QString& newHotkey);
 
 private:
     QString name;
-    QString csfString;
-    Qt::Key hotkey;
+    QString iconName;
+    QString hotkey;
 };

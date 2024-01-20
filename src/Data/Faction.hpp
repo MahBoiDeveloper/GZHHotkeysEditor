@@ -1,28 +1,24 @@
 #pragma once
+
 #include <QMap>
-#include "../Config.hpp"
+
 #include "Entity.hpp"
+#include "../Config.hpp"
 
 class Faction
 {
 public:
-    Faction(const QString& shortName, const QString& displayName, const QString& displayNameDesctiontion);
-    void addEntities(Config::Entities entityType, const QVector<Entity>& newEntities);
+    Faction(const QString& shortName, const QString& displayName, const QString& displayNameDescription);
+    void addEntities(Config::EntitiesTypes entityType, const QVector<Entity>& newEntities);
 
     const QString& getShortName() const;
-
     const QString& getDisplayName() const;
-
-    const QString& getDisplayNameDesctiontion() const;
-
-    const QMap<Config::Entities, QVector<Entity>>& getEntitiesMap() const;
-
-    QVector<Entity> getEntitiesByType(Config::Entities entityType);
-
+    const QString& getDisplayNameDescription() const;
+    const QMap<Config::EntitiesTypes, QVector<Entity>>& getEntitiesMap() const;
 
 private:
     QString shortName;
     QString displayName;
-    QString displayNameDesctiontion;
-    QMap<Config::Entities, QVector<Entity>> entities;
+    QString displayNameDescription;
+    QMap<Config::EntitiesTypes, QVector<Entity>> entities;
 };

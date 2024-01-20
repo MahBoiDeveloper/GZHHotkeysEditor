@@ -1,20 +1,19 @@
 #pragma once
+
 #include <QVector>
+
 #include "EntityAction.hpp"
 
 class Entity
 {
 public:
-    Entity(const QString& name, const QString& ingameName, const QVector<EntityAction>& actions);
-
+    Entity(const QString& name, const QString& iconName, const QVector<EntityAction>& actions);
     const QString& getName() const;
-
-    const QString& getIngameName() const;
-
+    const QString& getIconName() const;
     const QVector<EntityAction>& getActions() const;
 
 private:
     QString name;
-    QString ingameName;
+    QString iconName;
     QVector<EntityAction> actions;
 };
