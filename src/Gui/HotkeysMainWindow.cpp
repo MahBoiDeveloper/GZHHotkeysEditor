@@ -110,19 +110,23 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
         // factionsL->addLayout(secondL);
     }
 
-    connect(pFactionsButtonsGroup, &QButtonGroup::idClicked, this, [=](int)
+    connect(pFactionsButtonsGroup, &QButtonGroup::idClicked, this, [=](int id)
     {
-        // Skip if missing
-        const auto firstTopLevelItem = pEntitiesTreeWidget->topLevelItem(0);
-        if (firstTopLevelItem == nullptr) return;
-
-        // Skip if missing
-        const auto firstEntity = firstTopLevelItem->child(0);
-        if (firstEntity == nullptr) return;
-
-        // Set start entity
-        pEntitiesTreeWidget->setCurrentItem(firstEntity);
+        // Take the focus from the buttons group
         pEntitiesTreeWidget->setFocus();
+
+        // Select pressed faction button
+        for (auto * button : pFactionsButtonsGroup->buttons())
+        {
+            if (button == pFactionsButtonsGroup->button(id))
+            {
+                button->setDown(true);
+            }
+            else
+            {
+                button->setDown(false);
+            }
+        }
     });
 
     //=========================================================================================
@@ -202,7 +206,20 @@ void HotkeysMainWindow::SetEntitiesList(const QString& factionShortName)
         pEntitiesTreeWidget->addTopLevelItem(newTopEntityItem);
     }
 
+    // Configure view
     pEntitiesTreeWidget->expandAll();
+    pEntitiesTreeWidget->scrollToTop();
+
+    // Skip if missing top item
+    const auto firstTopLevelItem = pEntitiesTreeWidget->topLevelItem(0);
+    if (firstTopLevelItem == nullptr) return;
+
+    // Skip if missing first entity
+    const auto firstEntity = firstTopLevelItem->child(0);
+    if (firstEntity == nullptr) return;
+
+    // Set start entity
+    pEntitiesTreeWidget->setCurrentItem(firstEntity);
 }
 
 void HotkeysMainWindow::SetHotkeysLayout()

@@ -372,6 +372,11 @@ using namespace std;
         return returnList;
     }
 
+    QString CSFParser::GetClearName(const QString& strName) const
+    {
+        return GetStringValue(strName).remove(QRegExp{"\\[&[A-Z]\\]"}).trimmed();
+    }
+
     /// @brief Returns wide character (letter after & sign) assinged to keyboard key. 
     wchar_t CSFParser::GetHotkey(const string& strName) const
     {

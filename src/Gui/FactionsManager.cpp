@@ -139,9 +139,11 @@ const Faction* FactionsManager::_GetFactionByShortName(const QString& factionSho
 
         for (const auto & jsonAction : array)
         {
-            actions.append(EntityAction{CSFPARSER->GetStringValue(jsonAction.toObject().value("HotkeyString").toString()).remove('&'),
+            const QString hotkeyString = jsonAction.toObject().value("HotkeyString").toString();
+
+            actions.append(EntityAction{CSFPARSER->GetClearName(hotkeyString),
                                         jsonAction.toObject().value("IconName").toString(),
-                                        QChar{static_cast<char16_t>(CSFPARSER->GetHotkey(jsonAction.toObject().value("HotkeyString").toString()))}});
+                                        QChar{static_cast<char16_t>(CSFPARSER->GetHotkey(hotkeyString))}});
         }
 
         return actions;

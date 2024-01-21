@@ -80,6 +80,8 @@ public:
     std::list<std::string>    GetStringsContainsSymbol(const wchar_t& wch, const std::string& strCategoryName) const;
     std::list<CompiledString> GetStringsByNameList(const std::list<std::string>& lstNames)                     const;
 
+    QString GetClearName(const QString& strName)                                                               const;
+
     wchar_t GetHotkey(const std::string& strName)                                                              const;
     wchar_t GetHotkey(const char* strName)                                                                     const;
     wchar_t GetHotkey(const QString& strName)                                                                  const;
