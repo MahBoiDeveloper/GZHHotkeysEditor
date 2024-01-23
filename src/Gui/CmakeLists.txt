@@ -33,7 +33,7 @@ foreach(_QT_LIB ${_QT_LIBS})
 endforeach()
 
 # add qt source file
-qt5_add_resources(QT_RESOURCES styles.qrc)
+qt5_add_resources(QT_RESOURCES QtSources/styles.qrc)
 
 #===========================================================================================
 #================================ Configure target =========================================

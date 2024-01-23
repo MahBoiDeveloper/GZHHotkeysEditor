@@ -21,12 +21,12 @@ int main(int argc, char *argv[])
     // All out text MUST be showed via wcout and all chars should be converted as (wchar_t)
     _setmode(_fileno(stdout), _O_U16TEXT);
 
+    // Initialize main qt application
+    QApplication HotkeyEditor(argc, argv);
+
     // Define logger as a singleton class, that could be used anywhere in project
     Logger::Instance    = make_unique<Logger>();
     CSFParser::Instance = make_unique<CSFParser>(Config::resourcesFolder + "/generalsRU.csf");
-
-    // Initialize main cute application
-    QApplication HotkeyEditor(argc, argv);
 
     try
     {

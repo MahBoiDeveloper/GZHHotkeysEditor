@@ -22,12 +22,10 @@ public: // Methods
 
     std::ofstream& Log();
 
-    void Log(const QString& msg);
-
-    void Log(const std::stringstream& msg);
-    void Log(const std::string& msg);
     void Log(const char* msg);
-
+    void Log(const std::string& msg);
+    void Log(const QString& msg);
+    void Log(const std::stringstream& msg);
     void Log(const std::wstringstream& msg);
     void Log(const std::wstring& msg);
     void Log(const wchar_t* msg);

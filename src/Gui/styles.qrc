@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/my/css">
-        <file>mainStyleSheet.css</file>
-    </qresource>
-    <qresource prefix="/my/icons">
-        <file alias="NoImageSmall.webp">icons/NoImageSmall.webp</file>
-    </qresource>
-</RCC>

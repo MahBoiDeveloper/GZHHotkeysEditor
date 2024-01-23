@@ -1,10 +1,10 @@
-#include <QFile>
 #include <QDir>
-#include <QDebug>
+#include <QImage>
+#include <QPixmap>
 
+#include "GUIConfig.hpp"
 #include "../Logger.hpp"
 #include "libwebp/src/webp/decode.h"
-#include "GUIConfig.hpp"
 
 QImage GUIConfig::decodeWebpIcon(const QString& iconName)
 {
@@ -33,6 +33,11 @@ QImage GUIConfig::decodeWebpIcon(const QString& iconName)
 QImage GUIConfig::decodeDefaultWebpIcon()
 {
     return decodeWebpIconPath(defaultIconFile);
+}
+
+QPixmap GUIConfig::getEntityTypePixmap(Config::EntitiesTypes entityType)
+{
+    return QPixmap{qtSourceIconsPath + "/" + QString{"%1.png"}.arg(Config::ENTITIES_STRINGS.value(entityType))};
 }
 
 QFileInfo GUIConfig::findIconFile(const QString& pathToIconsDir, const QString& fileBaseName)

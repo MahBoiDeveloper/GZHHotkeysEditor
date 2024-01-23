@@ -189,8 +189,11 @@ void HotkeysMainWindow::SetEntitiesList(const QString& factionShortName)
         // Create new section of tree list
         QTreeWidgetItem* newTopEntityItem = new QTreeWidgetItem;
         newTopEntityItem->setText(0, QCoreApplication::translate("QObject", Config::ENTITIES_STRINGS.value(it.key()).toUtf8().constData()));
+
         // Decorate
-        newTopEntityItem->setBackground(0, QColor{0x73, 0xE9, 0xFF, 128});
+        newTopEntityItem->setIcon(0, GUIConfig::getEntityTypePixmap(it.key()).scaledToHeight(GUIConfig::entitySectionIconsScalingHeight,
+                                                                                             Qt::SmoothTransformation));
+//        newTopEntityItem->setBackground(0, QColor{0x73, 0xE9, 0xFF, 128});
 
         // Append entities to the section
         for (const auto & entity : currentTypeEntities)
