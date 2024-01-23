@@ -99,8 +99,7 @@ using namespace std;
 
     void Logger::Log(const char* msg)
     {
-        ofstream& l = Log();
-        l << msg << endl;
+         Log() << msg << endl;
     }
 
     void Logger::Log(const string& msg)
