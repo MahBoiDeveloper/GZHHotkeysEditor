@@ -227,7 +227,7 @@
                         {"IconName" : "USAColdFusionReactor",    "HotkeyString" : "CONTROLBAR:ConstructAmericaPowerPlant"},
                         {"IconName" : "USABarracks",             "HotkeyString" : "CONTROLBAR:ConstructAmericaBarracks"},
                         {"IconName" : "USASupplyCenter",         "HotkeyString" : "CONTROLBAR:ConstructAmericaSupplyCenter"},
-                        {"IconName" : "USAPatriotMissileSystem", "HotkeyString" : "CONTROLBAR:ConstructAmericaPatriotBattery"},
+                        {"IconName" : "USAPatriot",              "HotkeyString" : "CONTROLBAR:ConstructAmericaPatriotBattery"},
                         {"IconName" : "USAFireBase",             "HotkeyString" : "CONTROLBAR:ConstructAmericaFireBase"},
                         {"IconName" : "USAWarFactory",           "HotkeyString" : "CONTROLBAR:ConstructAmericaWarFactory"},
                         {"IconName" : "USAAirfield",             "HotkeyString" : "CONTROLBAR:ConstructAmericaAirfield"},
