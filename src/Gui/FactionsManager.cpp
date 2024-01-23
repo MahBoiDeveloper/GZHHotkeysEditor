@@ -9,6 +9,8 @@
 FactionsManager::FactionsManager(const QString& techTreeFilePath, QObject *parent)
     : QObject{parent}
     , pTechTree{new JSONFile{techTreeFilePath}}
+    , ActionsPool{}
+    , EntitiesPool{}
     , Factions{_GetTechTreeFactions()}
 {}
 
@@ -17,33 +19,31 @@ const QVector<Faction>& FactionsManager::GetFactions() const
     return Factions;
 }
 
-const QMap<Config::EntitiesTypes, QVector<Entity>>* FactionsManager::GetFactionEntities(const QString& factionShortName) const
+const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>> FactionsManager::GetFactionEntities(const QString& factionShortName) const
 {
     const Faction* const faction = _GetFactionByShortName(factionShortName);
 
-    if (faction == nullptr) return nullptr;
+    if (faction == nullptr) return {};
 
-    return &faction->getEntitiesMap();
+    return faction->GetEntitiesMap();
 }
 
-const QVector<EntityAction>* FactionsManager::GetEntityActions(const QString& factionShortName, const QString& entityName) const
+const QVector<QSharedPointer<EntityAction>> FactionsManager::GetEntityActions(const QString& factionShortName, const QString& entityName) const
 {
-    const QMap<Config::EntitiesTypes, QVector<Entity>>* const factionEntities = GetFactionEntities(factionShortName);
+    const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>> factionEntities = GetFactionEntities(factionShortName);
 
-    if (factionEntities == nullptr) return nullptr;
-
-    for (const auto & currentEntitiesType : *factionEntities)
+    for (const auto & currentEntitiesType : factionEntities)
     {
         for (const auto & entity : currentEntitiesType)
         {
-            if (entity.getName() == entityName)
+            if (entity->GetName() == entityName)
             {
-                return &entity.getActions();
+                return entity->GetActions();
             }
         }
     }
 
-    return nullptr;
+    return {};
 }
 
 void FactionsManager::SetEntityActionHotkey(const QString& factionShortName,
@@ -51,16 +51,14 @@ void FactionsManager::SetEntityActionHotkey(const QString& factionShortName,
                                             const QString& actionName,
                                             const QString& hotkey)
 {
-     QVector<EntityAction>* const entityActions = const_cast<QVector<EntityAction>*>(GetEntityActions(factionShortName, entityName));
+     QVector<QSharedPointer<EntityAction>> entityActions = GetEntityActions(factionShortName, entityName);
 
-    if (entityActions == nullptr) return;
-
-    for (auto & entityAction : *entityActions)
+    for (auto & entityAction : entityActions)
     {
         // Skip if wrong action
-        if (entityAction.getName() != actionName) continue;
+        if (entityAction->getName() != actionName) continue;
 
-        entityAction.setHotkey(hotkey);
+        entityAction->setHotkey(hotkey);
     }
 }
 
@@ -68,7 +66,7 @@ const Faction* FactionsManager::_GetFactionByShortName(const QString& factionSho
 {
     for (const auto & faction : Factions)
     {
-        if (faction.getShortName() == factionShortName)
+        if (faction.GetShortName() == factionShortName)
         {
             return &faction;
         }
@@ -93,10 +91,10 @@ const Faction* FactionsManager::_GetFactionByShortName(const QString& factionSho
 
             for (auto it = Config::ENTITIES_STRINGS.cbegin(); it != Config::ENTITIES_STRINGS.cend(); ++it)
             {
-                QVector<Entity> entities = _GetEntitiesFromJsonArray(factionObject.value(it.value()).toArray());
+                QVector<QSharedPointer<const Entity>> entities = _GetEntitiesFromJsonArray(factionObject.value(it.value()).toArray());
                 if (!entities.isEmpty())
                 {
-                    newFaction.addEntities(it.key(), entities);
+                    newFaction.AddEntities(it.key(), entities);
                 }
             }
 
@@ -106,44 +104,56 @@ const Faction* FactionsManager::_GetFactionByShortName(const QString& factionSho
         return factions;
     }
 
-    QVector<Entity> FactionsManager::_GetTechTreeFactionEntities(Config::EntitiesTypes entity, const QString& factionShortName)
+    QVector<QSharedPointer<const Entity>> FactionsManager::_GetTechTreeFactionEntities(Config::EntitiesTypes entity, const QString& factionShortName)
     {
-        for (const auto& faction : pTechTree->Query("$.TechTree").toArray())
+        for (const auto& jsonFaction : pTechTree->Query("$.TechTree").toArray())
         {
-            if (factionShortName == faction.toObject().value("ShortName").toString())
+            if (factionShortName == jsonFaction.toObject().value("ShortName").toString())
             {
-                return _GetEntitiesFromJsonArray(faction.toObject().value(Config::ENTITIES_STRINGS.value(entity)).toArray());
+                return _GetEntitiesFromJsonArray(jsonFaction.toObject().value(Config::ENTITIES_STRINGS.value(entity)).toArray());
             }
         }
 
         return {};
     }
 
-    QVector<Entity> FactionsManager::_GetEntitiesFromJsonArray(const QJsonArray& array)
+    QVector<QSharedPointer<const Entity>> FactionsManager::_GetEntitiesFromJsonArray(const QJsonArray& array)
     {
-        QVector<Entity> entities;
+        QVector<QSharedPointer<const Entity>> entities;
 
         for (const auto & jsonEntity : array)
         {
-            entities.append(Entity{CSFPARSER->GetStringValue(jsonEntity.toObject().value("IngameName").toString()),
-                                   jsonEntity.toObject().value("Name").toString(),
-                                   _GetActionsFromJsonArray(jsonEntity.toObject().value("Actions").toArray())});
+            const QString hotkeyString = jsonEntity.toObject().value("IngameName").toString();
+
+            if (!EntitiesPool.contains(hotkeyString))
+            {
+                EntitiesPool.insert(hotkeyString, QSharedPointer<const Entity>::create(CSFPARSER->GetStringValue(hotkeyString),
+                                                                                       jsonEntity.toObject().value("Name").toString(),
+                                                                                       _GetActionsFromJsonArray(jsonEntity.toObject().value("Actions").toArray())));
+            }
+
+            entities.append(EntitiesPool.value(hotkeyString));
         }
 
         return entities;
     }
 
-    QVector<EntityAction> FactionsManager::_GetActionsFromJsonArray(const QJsonArray& array)
+    QVector<QSharedPointer<EntityAction>> FactionsManager::_GetActionsFromJsonArray(const QJsonArray& array)
     {
-        QVector<EntityAction> actions;
+        QVector<QSharedPointer<EntityAction>> actions;
 
         for (const auto & jsonAction : array)
         {
             const QString hotkeyString = jsonAction.toObject().value("HotkeyString").toString();
 
-            actions.append(EntityAction{CSFPARSER->GetClearName(hotkeyString),
-                                        jsonAction.toObject().value("IconName").toString(),
-                                        QChar{static_cast<char16_t>(CSFPARSER->GetHotkey(hotkeyString))}});
+            if (!ActionsPool.contains(hotkeyString))
+            {
+                ActionsPool.insert(hotkeyString, QSharedPointer<EntityAction>::create(CSFPARSER->GetClearName(hotkeyString),
+                                                                                      jsonAction.toObject().value("IconName").toString(),
+                                                                                      QChar{static_cast<char16_t>(CSFPARSER->GetHotkey(hotkeyString))}));
+            }
+
+            actions.append(ActionsPool.value(hotkeyString));
         }
 
         return actions;

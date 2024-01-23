@@ -57,11 +57,11 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
             {
                 const Faction currentFaction = FactionsManager.GetFactions().at(sectionIndex + i);
 
-                QPushButton* factionButton = new QPushButton{currentFaction.getDisplayName()};
+                QPushButton* factionButton = new QPushButton{currentFaction.GetDisplayName()};
 
                 connect(factionButton, &QPushButton::pressed, this, [=]()
                 {
-                    SetEntitiesList(currentFaction.getShortName());
+                    SetEntitiesList(currentFaction.GetShortName());
                 });
 
                 pFactionsButtonsGroup->addButton(factionButton);
@@ -173,15 +173,12 @@ void HotkeysMainWindow::SetEntitiesList(const QString& factionShortName)
 {
     pEntitiesTreeWidget->clear();
 
-    const QMap<Config::EntitiesTypes, QVector<Entity>>* factionEntities = FactionsManager.GetFactionEntities(factionShortName);
-
-    // Skip if there are no entities of this faction
-    if (factionEntities == nullptr) return;
+    const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>> factionEntities = FactionsManager.GetFactionEntities(factionShortName);
 
     // Create sections for all faction entities types
-    for (auto it = factionEntities->cbegin(); it != factionEntities->cend(); ++it)
+    for (auto it = factionEntities.cbegin(); it != factionEntities.cend(); ++it)
     {
-        const QVector<Entity>& currentTypeEntities = it.value();
+        const QVector<QSharedPointer<const Entity>>& currentTypeEntities = it.value();
 
         // Skip if there are no entities of that type
         if (currentTypeEntities.isEmpty()) continue;
@@ -199,9 +196,9 @@ void HotkeysMainWindow::SetEntitiesList(const QString& factionShortName)
         for (const auto & entity : currentTypeEntities)
         {
             QTreeWidgetItem* currentNewEntityItem = new QTreeWidgetItem;
-            currentNewEntityItem->setText(0, entity.getName());
-            currentNewEntityItem->setIcon(0, QPixmap::fromImage(GUIConfig::decodeWebpIcon(entity.getIconName())));
-            currentNewEntityItem->setData(0, Qt::UserRole, QVariant::fromValue(QPair{factionShortName, entity.getName()}));
+            currentNewEntityItem->setText(0, entity->GetName());
+            currentNewEntityItem->setIcon(0, QPixmap::fromImage(GUIConfig::decodeWebpIcon(entity->GetIconName())));
+            currentNewEntityItem->setData(0, Qt::UserRole, QVariant::fromValue(QPair{factionShortName, entity->GetName()}));
             newTopEntityItem->addChild(currentNewEntityItem);
         }
 
@@ -244,19 +241,17 @@ void HotkeysMainWindow::SetHotkeysLayout()
     const QString& factionShortName = specialItemInfo.first;
     const QString& entityName = specialItemInfo.second;
 
-    const QVector<EntityAction>* const entityActions = FactionsManager.GetEntityActions(factionShortName, entityName);
-
-    if (entityActions == nullptr) return;
+    const QVector<QSharedPointer<EntityAction>> entityActions = FactionsManager.GetEntityActions(factionShortName, entityName);
 
     QVBoxLayout* hotkeysLayout = new QVBoxLayout;
 
-    for (const EntityAction & action : *entityActions)
+    for (const auto & action : entityActions)
     {
-        ActionHotkeyWidget* actionHotkey = new ActionHotkeyWidget(action.getName(), action.getHotkey(), action.getIconName());
+        ActionHotkeyWidget* actionHotkey = new ActionHotkeyWidget(action->getName(), action->getHotkey(), action->getIconName());
 
         connect(actionHotkey, &ActionHotkeyWidget::hotkeyChanged, this, [=](const QString& newHotkey)
         {
-            FactionsManager.SetEntityActionHotkey(factionShortName, entityName, action.getName(), newHotkey);
+            FactionsManager.SetEntityActionHotkey(factionShortName, entityName, action->getName(), newHotkey);
         });
 
         hotkeysLayout->addWidget(actionHotkey);

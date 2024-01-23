@@ -1,32 +1,32 @@
 #include "Faction.hpp"
 
 Faction::Faction(const QString& shortName, const QString& displayName, const QString& displayNameDescription)
-    : shortName{shortName}
-    , displayName{displayName}
-    , displayNameDescription{displayNameDescription}
+    : ShortName{shortName}
+    , DisplayName{displayName}
+    , DisplayNameDescription{displayNameDescription}
 {}
 
-void Faction::addEntities(Config::EntitiesTypes entityType, const QVector<Entity>& newEntities)
+void Faction::AddEntities(Config::EntitiesTypes entityType, QVector<QSharedPointer<const Entity>>& newEntities)
 {
-    entities.insert(entityType, newEntities);
+    Entities.insert(entityType, newEntities);
 }
 
-const QString& Faction::getShortName() const
+const QString& Faction::GetShortName() const
 {
-    return shortName;
+    return ShortName;
 }
 
-const QString& Faction::getDisplayName() const
+const QString& Faction::GetDisplayName() const
 {
-    return displayName;
+    return DisplayName;
 }
 
-const QString& Faction::getDisplayNameDescription() const
+const QString& Faction::GetDisplayNameDescription() const
 {
-    return displayNameDescription;
+    return DisplayNameDescription;
 }
 
-const QMap<Config::EntitiesTypes, QVector<Entity>>& Faction::getEntitiesMap() const
+const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>>& Faction::GetEntitiesMap() const
 {
-    return entities;
+    return Entities;
 }

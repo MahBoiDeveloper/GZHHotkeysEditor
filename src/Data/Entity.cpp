@@ -1,23 +1,22 @@
 #include "Entity.hpp"
 
-Entity::Entity(const QString& name, const QString& iconName, const QVector<EntityAction>& actions)
-    : name{name}
-    , iconName{iconName}
-    , actions{actions}
+Entity::Entity(const QString& name, const QString& iconName, const QVector<QSharedPointer<EntityAction>>& actions)
+    : Name{name}
+    , IconName{iconName}
+    , Actions{actions}
+{}
+
+const QString& Entity::GetName() const
 {
+    return Name;
 }
 
-const QString& Entity::getName() const
+const QString& Entity::GetIconName() const
 {
-    return name;
+    return IconName;
 }
 
-const QString& Entity::getIconName() const
+const QVector<QSharedPointer<EntityAction>>& Entity::GetActions() const
 {
-    return iconName;
-}
-
-const QVector<EntityAction>& Entity::getActions() const
-{
-    return actions;
+    return Actions;
 }

@@ -105,17 +105,17 @@
     </message>
     <message>
         <location filename="../HotkeysMainWindow.cpp" line="167"/>
-        <location filename="../HotkeysMainWindow.cpp" line="300"/>
+        <location filename="../HotkeysMainWindow.cpp" line="295"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="286"/>
+        <location filename="../HotkeysMainWindow.cpp" line="281"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="293"/>
+        <location filename="../HotkeysMainWindow.cpp" line="288"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

@@ -9,16 +9,17 @@ class Faction
 {
 public:
     Faction(const QString& shortName, const QString& displayName, const QString& displayNameDescription);
-    void addEntities(Config::EntitiesTypes entityType, const QVector<Entity>& newEntities);
+    void AddEntities(Config::EntitiesTypes entityType, QVector<QSharedPointer<const Entity>>& newEntities);
 
-    const QString& getShortName() const;
-    const QString& getDisplayName() const;
-    const QString& getDisplayNameDescription() const;
-    const QMap<Config::EntitiesTypes, QVector<Entity>>& getEntitiesMap() const;
+    const QString& GetShortName() const;
+    const QString& GetDisplayName() const;
+    const QString& GetDisplayNameDescription() const;
+    const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>>& GetEntitiesMap() const;
 
 private:
-    QString shortName;
-    QString displayName;
-    QString displayNameDescription;
-    QMap<Config::EntitiesTypes, QVector<Entity>> entities;
+    QString ShortName;
+    QString DisplayName;
+    QString DisplayNameDescription;
+
+    QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>> Entities;
 };
