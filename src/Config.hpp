@@ -6,6 +6,9 @@
 class Config
 {
 public: // Data
+
+    inline static const QPair<Qt::Key, Qt::Key> availableKeys = {Qt::Key_A, Qt::Key_Z};
+
     inline static const QString resourcesFolder  = "Resources";
     inline static const QString translationsPath = resourcesFolder + "/Translations";
     inline static const QString techTreeFile     = resourcesFolder + "/TechTree.json";

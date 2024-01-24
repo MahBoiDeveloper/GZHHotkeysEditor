@@ -151,22 +151,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../Config.hpp" line="24"/>
+        <location filename="../../Config.hpp" line="27"/>
         <source>Buildings</source>
         <translation>Постройки</translation>
     </message>
     <message>
-        <location filename="../../Config.hpp" line="25"/>
+        <location filename="../../Config.hpp" line="28"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../Config.hpp" line="26"/>
+        <location filename="../../Config.hpp" line="29"/>
         <source>Vehicles</source>
         <translation>Транспорт</translation>
     </message>
     <message>
-        <location filename="../../Config.hpp" line="27"/>
+        <location filename="../../Config.hpp" line="30"/>
         <source>Aircraft</source>
         <translation>Авиация</translation>
     </message>

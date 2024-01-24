@@ -16,6 +16,8 @@ public:
     const QString& GetDisplayNameDescription() const;
     const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>>& GetEntitiesMap() const;
 
+   QSet<QSharedPointer<const Entity>> GetAllEntities() const;
+
 private:
     QString ShortName;
     QString DisplayName;

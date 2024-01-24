@@ -16,7 +16,6 @@ private: // Data
     QLabel image;
     QPushButton newHotkeyButton;
     QTimer signalTimer;
-    QPair<int, int> availableKeys = {Qt::Key_A, Qt::Key_Z};
     int timerMseconds = 1300;
 
 protected: // Methods

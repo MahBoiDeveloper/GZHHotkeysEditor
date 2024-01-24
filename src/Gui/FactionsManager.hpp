@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QObject>
+#include <QSet>
 
 #include "../Data/Faction.hpp"
 
@@ -24,14 +25,19 @@ private:
     const Faction* _GetFactionByShortName(const QString& factionShortName) const;
 
 private:
-    QVector<Faction>      _GetTechTreeFactions();
+    QVector<Faction> _GetTechTreeFactions();
     QVector<QSharedPointer<const Entity>> _GetTechTreeFactionEntities(Config::EntitiesTypes entity, const QString& factionShortName);
     QVector<QSharedPointer<const Entity>> _GetEntitiesFromJsonArray(const QJsonArray& array);
     QVector<QSharedPointer<EntityAction>> _GetActionsFromJsonArray(const QJsonArray& array);
+
+    void _UpdateCollisionsForHotkey(const QString& newHotkey);
+    void _CheckHotkeyCollisions(const QString& oldHotkey, const QString& newHotkey);
 
 private:
     const QSharedPointer<const JSONFile> pTechTree;
     QMap<QString, QSharedPointer<EntityAction>> ActionsPool;
     QMap<QString, QSharedPointer<const Entity>> EntitiesPool;
     QVector<Faction> Factions;
+
+    QMap<QString, QSet<QSharedPointer<const Entity>>> HotkeyCollisions;
 };

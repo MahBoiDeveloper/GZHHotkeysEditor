@@ -1,5 +1,7 @@
 #include "Faction.hpp"
 
+#include <QSet>
+
 Faction::Faction(const QString& shortName, const QString& displayName, const QString& displayNameDescription)
     : ShortName{shortName}
     , DisplayName{displayName}
@@ -29,4 +31,19 @@ const QString& Faction::GetDisplayNameDescription() const
 const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>>& Faction::GetEntitiesMap() const
 {
     return Entities;
+}
+
+QSet<QSharedPointer<const Entity>> Faction::GetAllEntities() const
+{
+    QSet<QSharedPointer<const Entity>> allEntities;
+
+    for (const auto & entitiesCollection : Entities)
+    {
+        for (const auto & entity : entitiesCollection)
+        {
+            allEntities.insert(entity);
+        }
+    }
+
+    return allEntities;
 }

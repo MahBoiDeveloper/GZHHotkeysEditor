@@ -1,5 +1,6 @@
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QKeySequence>
 
 #include "FactionsManager.hpp"
 #include "../Parsers/JSONFile.hpp"
@@ -12,7 +13,27 @@ FactionsManager::FactionsManager(const QString& techTreeFilePath, QObject *paren
     , ActionsPool{}
     , EntitiesPool{}
     , Factions{_GetTechTreeFactions()}
-{}
+{
+    // Update collisions sets for all available keys
+    for (Qt::Key key = Config::availableKeys.first; key <= Config::availableKeys.second; key = static_cast<Qt::Key>(key+1))
+    {
+        _UpdateCollisionsForHotkey(QKeySequence(key).toString());
+    }
+
+    // TODO: temporary
+//    if (HotkeyCollisions.isEmpty()) return;
+//    qDebug() << "\n" << "======== Collisions ========";
+//    for (auto it = HotkeyCollisions.cbegin(); it != HotkeyCollisions.cend(); ++it)
+//    {
+//        qDebug() << "\n" << "Key: " << it.key();
+
+//        for (const auto & entity : it.value())
+//        {
+//            qDebug() << " - entity name: " << entity->GetName();
+//        }
+//    }
+//    qDebug() << "\n";
+}
 
 const QVector<Faction>& FactionsManager::GetFactions() const
 {
@@ -58,7 +79,10 @@ void FactionsManager::SetEntityActionHotkey(const QString& factionShortName,
         // Skip if wrong action
         if (entityAction->getName() != actionName) continue;
 
+        const QString oldHotkey = entityAction->getHotkey();
         entityAction->setHotkey(hotkey);
+        _CheckHotkeyCollisions(oldHotkey, hotkey);
+        return;
     }
 }
 
@@ -66,12 +90,85 @@ const Faction* FactionsManager::_GetFactionByShortName(const QString& factionSho
 {
     for (const auto & faction : Factions)
     {
+        // Find the right faction
         if (faction.GetShortName() == factionShortName)
         {
             return &faction;
         }
     }
     return nullptr;
+}
+
+
+void FactionsManager::_UpdateCollisionsForHotkey(const QString& newHotkey)
+{
+    QSet<QSharedPointer<const Entity>> newHotkeyCollisionsSet = HotkeyCollisions.value(newHotkey);
+
+    for (const auto & faction : Factions)
+    {
+        for (const auto & entity : faction.GetAllEntities())
+        {
+            // Skip if entity already in collision set
+            if (newHotkeyCollisionsSet.contains(entity)) continue;
+
+            int hotkeyActionsCount = 0;
+
+            for (const auto & action : entity->GetActions())
+            {
+                if (action->getHotkey() == newHotkey) ++hotkeyActionsCount;
+            }
+
+            // If there ARE collisions for a new hotkey in current entity -> insert it to the set
+            if (hotkeyActionsCount > 1) newHotkeyCollisionsSet.insert(entity);
+        }
+    }
+
+    // If the set are NOT empty -> add hotkey to collisions
+    if (!newHotkeyCollisionsSet.isEmpty()) HotkeyCollisions.insert(newHotkey, newHotkeyCollisionsSet);
+}
+
+void FactionsManager::_CheckHotkeyCollisions(const QString& oldHotkey, const QString& newHotkey)
+{
+    if (HotkeyCollisions.contains(oldHotkey))
+    {
+        QSet<QSharedPointer<const Entity>> noCollisionEntities;
+
+        // For all entities in collision set
+        for (const auto & entity : HotkeyCollisions[oldHotkey])
+        {
+            int hotkeyActionsCount = 0;
+
+            for (const auto & action : entity->GetActions())
+            {
+                if (action->getHotkey() == oldHotkey) ++hotkeyActionsCount;
+            }
+
+            // If there are NO collisions for an old hotkey in current entity -> prepare it to be removed from set
+            if (hotkeyActionsCount <= 1) noCollisionEntities.insert(entity);
+        }
+
+        // Remove normal entities from collisions set
+        HotkeyCollisions[oldHotkey].subtract(noCollisionEntities);
+
+        // If the set has become empty -> delete old hotkey collisions section
+        if (HotkeyCollisions[oldHotkey].isEmpty()) HotkeyCollisions.remove(oldHotkey);
+    }
+
+    _UpdateCollisionsForHotkey(newHotkey);
+
+    // TODO: temporary
+//    if (HotkeyCollisions.isEmpty()) return;
+//    qDebug() << "\n" << "======== Collisions ========";
+//    for (auto it = HotkeyCollisions.cbegin(); it != HotkeyCollisions.cend(); ++it)
+//    {
+//        qDebug() << "\n" << "Key: " << it.key();
+
+//        for (const auto & entity : it.value())
+//        {
+//            qDebug() << " - entity name: " << entity->GetName();
+//        }
+//    }
+//    qDebug() << "\n";
 }
 
 #pragma region TechTree.json parsing methods
@@ -83,6 +180,7 @@ const Faction* FactionsManager::_GetFactionByShortName(const QString& factionSho
         {
             QJsonObject factionObject = jsonFaction.toObject();
 
+            // TODO: check fields in file
             QString ShortName               = factionObject.value("ShortName").toString();
             QString DisplayName             = factionObject.value("DisplayName").toString();
             QString DisplayNameDescription  = factionObject.value("DisplayNameDescription").toString();

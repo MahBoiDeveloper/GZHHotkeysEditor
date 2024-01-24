@@ -57,7 +57,7 @@ QString ActionHotkeyWidget::GetHotkey() const
 void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
 {
     int key = event->key();
-    if (key >= availableKeys.first && key <= availableKeys.second)
+    if (key >= Config::availableKeys.first && key <= Config::availableKeys.second)
     {
         // Set new text
         hotkey = QKeySequence(key).toString();
