@@ -221,16 +221,17 @@ void FactionsManager::_CheckHotkeyCollisions(const QString& oldHotkey, const QSt
 
         for (const auto & jsonEntity : array)
         {
+            const QString name = jsonEntity.toObject().value("Name").toString();
             const QString hotkeyString = jsonEntity.toObject().value("IngameName").toString();
 
-            if (!EntitiesPool.contains(hotkeyString))
+            if (!EntitiesPool.contains(name))
             {
-                EntitiesPool.insert(hotkeyString, QSharedPointer<const Entity>::create(CSFPARSER->GetStringValue(hotkeyString),
-                                                                                       jsonEntity.toObject().value("Name").toString(),
-                                                                                       _GetActionsFromJsonArray(jsonEntity.toObject().value("Actions").toArray())));
+                EntitiesPool.insert(name, QSharedPointer<const Entity>::create(CSFPARSER->GetStringValue(hotkeyString),
+                                                                               name,
+                                                                               _GetActionsFromJsonArray(jsonEntity.toObject().value("Actions").toArray())));
             }
 
-            entities.append(EntitiesPool.value(hotkeyString));
+            entities.append(EntitiesPool.value(name));
         }
 
         return entities;
