@@ -1,27 +1,24 @@
-DI_ICON1   ICON    DISCARDABLE "EditorIcon.ico"
+IDI_ICON1	ICON	DISCARDABLE	"EditorIcon.ico"
 
-#include <windows.h>
-#include "..\..\Info.hpp"
-
-
-VS_VERSION_INFO VERSIONINFO
-FILEVERSION     VER_FILEVERSION
-PRODUCTVERSION  VER_PRODUCTVERSION
+1 VERSIONINFO
+FILEVERSION     0,0,0,3
+PRODUCTVERSION  0,0,0,3
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
         BLOCK "040904E4"
         BEGIN
-            VALUE "CompanyName",        VER_COMPANYNAME_STR
-            VALUE "FileDescription",    VER_FILEDESCRIPTION_STR
-            VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       VER_INTERNALNAME_STR
-            VALUE "LegalCopyright",     VER_LEGALCOPYRIGHT_STR
-            VALUE "LegalTrademarks1",   VER_LEGALTRADEMARKS1_STR
-            VALUE "LegalTrademarks2",   VER_LEGALTRADEMARKS2_STR
-            VALUE "OriginalFilename",   VER_ORIGINALFILENAME_STR
-            VALUE "ProductName",        VER_PRODUCTNAME_STR
-            VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
+            VALUE "FileDescription",  "Hotkeys Editor For C&C: Generals Zero Hour"
+            VALUE "ProductVersion",   "0.0.0.3"
+            VALUE "FileVersion",      "0.0.0.3"
+            VALUE "ProductName",      "GZH Hotkeys Editor"
+            VALUE "InternalName",     "GZHHotkeyEditor"
+            VALUE "OriginalFilename", ""
+            VALUE "CompanyName",      "GZH Hotkey Editor Developers. All rights reserved."
+            VALUE "LegalCopyright",   "Copyright (C) GZH Hotkey Editor Developers 2023-2024"
+            VALUE "Licence",          "GNU GPL v3"
+            VALUE "Info",             "https://github.com/MahBoiDeveloper/GZHHotkeysEditor"
+            VALUE "Comment",          "GZH Hotkeys Editor"
         END
     END
 
