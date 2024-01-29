@@ -153,7 +153,7 @@
     <message>
         <location filename="../../Config.hpp" line="27"/>
         <source>Buildings</source>
-        <translation>Постройки</translation>
+        <translation>Здания</translation>
     </message>
     <message>
         <location filename="../../Config.hpp" line="28"/>
@@ -163,7 +163,7 @@
     <message>
         <location filename="../../Config.hpp" line="29"/>
         <source>Vehicles</source>
-        <translation>Транспорт</translation>
+        <translation>Техника</translation>
     </message>
     <message>
         <location filename="../../Config.hpp" line="30"/>
