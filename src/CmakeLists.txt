@@ -1,145 +1,125 @@
-project(GZHHotkeysEditor)
-get_property(PROJECT_DESTINATION_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_FOLDER) # exe folder
-get_property(PROJECT_DESTINATION_BIN_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_BIN_FOLDER) # bin folder
-get_property(GLOBAL_PATH_TO_QT GLOBAL PROPERTY GLOBAL_PATH_TO_QT) # Qt path
+# General settings
+    project(GZHHotkeysEditor)                                                                   # Definitions from ../CMakeLists.txt
+    get_property(PROJECT_DESTINATION_FOLDER     GLOBAL PROPERTY PROJECT_DESTINATION_FOLDER)     # exe folder
+    get_property(PROJECT_DESTINATION_BIN_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_BIN_FOLDER) # bin folder
+    get_property(GLOBAL_PATH_TO_QT              GLOBAL PROPERTY GLOBAL_PATH_TO_QT)              # Qt path
 
-# target names
-set(MAIN_TARGET_NAME "LoadEditor")
-set(LINK_MAIN_TARGET_NAME "HotkeyEditor")
+    # Target names for actual editor and its loader
+    set(MAIN_TARGET_NAME      "LoadEditor")
+    set(LINK_MAIN_TARGET_NAME "HotkeyEditor")
 
-# =========================== link target ======================================
+    # Set release flags with -O3
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 
-# target link source files
-file(GLOB_RECURSE TARGET_LINK_SOURCES "mainLink.cpp")
+    # Look at cmake.org about how to link .dlls           - https://cmake.org/pipermail/cmake/2018-August/068011.html
+    # And look at gnu.org about how to work ld.exe linker - https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_3.html#:~:text=Output%20Sections).-,%2D%2Dwhole%2Darchive,-For%20each%20archive
+    # --no-whole-archive used due to because --whole-archive gives error at linking time with .rc files
+    # 3 days pissing of cmake and this fucking config (c) mah_boi
+    set(CMAKE_CXX_STANDARD_LIBRARIES "${CMAKE_CXX_STANDARD_LIBRARIES} -static-libgcc -static-libstdc++ -lwsock32 -lws2_32")
+    set(CMAKE_EXE_LINKER_FLAGS       "${CMAKE_EXE_LINKER_FLAGS} -lwinpthread -Wl,--no-whole-archive -Wl,-Bstatic,--no-whole-archive")
 
-# link (to main) target
-add_executable(${LINK_MAIN_TARGET_NAME}
-    ${TARGET_LINK_SOURCES}
-)
-set_target_properties(${LINK_MAIN_TARGET_NAME}
-    PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_FOLDER}
-)
-# the path to the link program relative to the main one
-target_compile_definitions(${LINK_MAIN_TARGET_NAME} PRIVATE
-    -DPROJECT_EXE_RELATIVE_PATH="$<PATH:RELATIVE_PATH,$<TARGET_FILE:${MAIN_TARGET_NAME}>,${PROJECT_DESTINATION_FOLDER}>"
-)
-
-# =========================== main target ======================================
-
-# project sources
-file(
-    GLOB_RECURSE SOURCES
-    LIST_DIRECTORIES true
-    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.[ch]pp
-)
-
-# GUI sources
-file(
-    GLOB_RECURSE EXCLUDE_SOURCES
-    LIST_DIRECTORIES true
-    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/GUI/*.[ch]pp
-)
-
-# remove unnecessary files from main target
-list(REMOVE_ITEM SOURCES ${TARGET_LINK_SOURCES} ${EXCLUDE_SOURCES})
-
-# main target
-add_executable(${MAIN_TARGET_NAME}
-    ${SOURCES}
-)
-
-set_target_properties(${MAIN_TARGET_NAME}
-    PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED ON
-    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_BIN_FOLDER}
-)
-
-# link Gui subproject
-subdirs(Gui)
-# target_sources(${MAIN_TARGET_NAME} PRIVATE $<TARGET_OBJECTS:Gui>)
-target_link_libraries(${MAIN_TARGET_NAME}
-    PRIVATE Gui
-)
-
-# copy additional resources
-set(ALL_RESOURCE_FILES  "TechTree.json"
-                        "Settings.json")
-
-
-file(
-    GLOB_RECURSE _DATA_SAMPLES_FILES
-    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/DataSamples/*
-)
-
-list(APPEND ALL_RESOURCE_FILES ${_DATA_SAMPLES_FILES})
-
-foreach(RESOURCE_FILE ${ALL_RESOURCE_FILES})
-    get_filename_component(_FILE_NAME ${RESOURCE_FILE} NAME)
-    add_custom_target(
-        "${_FILE_NAME}Target" ALL
-        COMMAND ${CMAKE_COMMAND} -E copy ${RESOURCE_FILE} ${PROJECT_DESTINATION_RESOURCES_FOLDER}
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+# Linker target configuration
+    # Add to .exe list
+    add_executable(${LINK_MAIN_TARGET_NAME}
+        "GUI/QtSources/resources.rc"
+        "mainLink.cpp"
     )
-endforeach()
+    set_target_properties(${LINK_MAIN_TARGET_NAME}
+        PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_FOLDER}
+    )
+    # the path to the link program relative to the main one
+    target_compile_definitions(${LINK_MAIN_TARGET_NAME} PRIVATE
+        -DPROJECT_EXE_RELATIVE_PATH="$<PATH:RELATIVE_PATH,$<TARGET_FILE:${MAIN_TARGET_NAME}>,${PROJECT_DESTINATION_FOLDER}>"
+    )
 
-# flags
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
-# look https://cmake.org/pipermail/cmake/2018-August/068011.html
-set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ -lwsock32 -lws2_32 ${CMAKE_CSS_STANDARD_LIBRARIES}")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive")
+# Main target configuration
+    # List all sources 
+    file(
+        GLOB_RECURSE SOURCES
+        LIST_DIRECTORIES true
+        RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.[ch]pp
+    )
 
-#---------------------------------------------------------------------------------
-#-----------------------------------jsoncons--------------------------------------
-#---------------------------------------------------------------------------------
-# set(CMAKE_LIBS_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/install)
+    # List only GUI sources
+    file(
+        GLOB_RECURSE EXCLUDE_SOURCES
+        LIST_DIRECTORIES true
+        RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/GUI/*.[ch]pp
+    )
 
-# if(POLICY CMP0135)
-#     cmake_policy(SET CMP0135 NEW)
-# endif()
+    # Remove all non-GUI files from main target
+    list(REMOVE_ITEM SOURCES "mainLink.cpp" ${EXCLUDE_SOURCES})
 
-# include(ExternalProject)
-# ExternalProject_Add(jsoncons
-#     URL "https://github.com/danielaparker/jsoncons/archive/refs/tags/v0.171.0.zip"
-#     CMAKE_ARGS
-#         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-#         -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-#         -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_LIBS_INSTALL_PREFIX}
-#         -DJSONCONS_BUILD_TESTS=OFF
-# )
+    # Add source files to the file compiling list
+    add_executable(${MAIN_TARGET_NAME}
+        GUI/QtSources/resources.rc
+        ${SOURCES}
+    )
 
-# find_package(jsoncons PATHS ${CMAKE_LIBS_INSTALL_PREFIX})
-# target_include_directories(${JSON_LIB_TARGET_NAME} PRIVATE
-#     AFTER
-#     ${CMAKE_LIBS_INSTALL_PREFIX}/include
-# )
-#---------------------------------------------------------------------------------
+    # Set C++17 as default
+    set_target_properties(${MAIN_TARGET_NAME}
+        PROPERTIES
+        CXX_STANDARD 17
+        CXX_STANDARD_REQUIRED ON
+        RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_BIN_FOLDER}
+    )
 
-#---------------------------------------------------------------------------------
-#-------------------------------Qt libs deploy------------------------------------
-#---------------------------------------------------------------------------------
-if(WIN32)
+    # Link GUI subproject
+    subdirs(GUI)
+    # And make it private
     target_link_libraries(${MAIN_TARGET_NAME}
-        PRIVATE rpcrt4
+        PRIVATE GUI
     )
-    set(CMAKE_PREFIX_PATH ${GLOBAL_PATH_TO_QT})
-    if(CMAKE_BUILD_TYPE STREQUAL "Release")
-        # relese qt dll-s
-        add_custom_command(
-            TARGET ${MAIN_TARGET_NAME} POST_BUILD
-            COMMAND "${CMAKE_PREFIX_PATH}/bin/windeployqt.exe"
-                # --release
-                # --no-compiler-runtime
-                --compiler-runtime
-                --force
-                --dir $<TARGET_PROPERTY:${MAIN_TARGET_NAME},RUNTIME_OUTPUT_DIRECTORY>
-                # --dir "${CMAKE_CURRENT_BINARY_DIR}/deploy"
-                $<TARGET_FILE:${MAIN_TARGET_NAME}>
+
+    # Copy json's
+    set(ALL_RESOURCE_FILES  "TechTree.json" "Settings.json")
+
+    file(
+        GLOB_RECURSE _DATA_SAMPLES_FILES
+        RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/DataSamples/*
+    )
+
+    list(APPEND ALL_RESOURCE_FILES ${_DATA_SAMPLES_FILES})
+
+    # Holy cow, WTF is going on?
+    # TODO: Need to ask nikitvs
+    foreach(RESOURCE_FILE ${ALL_RESOURCE_FILES})
+        get_filename_component(_FILE_NAME ${RESOURCE_FILE} NAME)
+        add_custom_target(
+            "${_FILE_NAME}Target" ALL
+            COMMAND ${CMAKE_COMMAND} -E copy ${RESOURCE_FILE} ${PROJECT_DESTINATION_RESOURCES_FOLDER}
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
         )
+    endforeach()
+
+# Qt libs linking aka copying dependecies to the standalone release version of the project
+    if(WIN32)
+        target_link_libraries(
+            ${MAIN_TARGET_NAME}
+            PRIVATE rpcrt4
+        )
+        set(CMAKE_PREFIX_PATH ${GLOBAL_PATH_TO_QT})
+
+        if(CMAKE_BUILD_TYPE STREQUAL "Release")
+            # Copy Qt dlls in Editor/Resource folder
+            add_custom_command(
+                TARGET ${MAIN_TARGET_NAME} POST_BUILD
+                COMMAND "${CMAKE_PREFIX_PATH}/bin/windeployqt.exe"
+                    --compiler-runtime
+                    --force
+                    --dir $<TARGET_PROPERTY:${MAIN_TARGET_NAME},RUNTIME_OUTPUT_DIRECTORY>
+                    $<TARGET_FILE:${MAIN_TARGET_NAME}>
+            )
+
+            # Copy libwinpthread-1.dll near linker .exe
+            configure_file(
+                "${GLOBAL_PATH_TO_QT}/bin/libwinpthread-1.dll"
+                "${PROJECT_DESTINATION_FOLDER}/libwinpthread-1.dll" 
+                COPYONLY
+            )
+        endif()
     endif()
-endif()
-#---------------------------------------------------------------------------------

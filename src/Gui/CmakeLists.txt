@@ -1,15 +1,10 @@
-#===========================================================================================
-#=============================== General settings ==========================================
-#===========================================================================================
-
-project(GZHHotkeysEditor)
-
-# get global vars
-get_property(PROJECT_DESTINATION_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_FOLDER) # exe folder
+# General settings
+project(GZHHotkeysEditor)                                                                             # Definitions from ../../CMakeLists.txt
+get_property(PROJECT_DESTINATION_FOLDER           GLOBAL PROPERTY PROJECT_DESTINATION_FOLDER)         # exe folder
 get_property(PROJECT_DESTINATION_RESOURCES_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_SOURCES_FOLDER) # resources folder
 
 # declare current target name
-set(TARGET_NAME Gui)
+set(TARGET_NAME GUI)
 
 #===========================================================================================
 #======================================= Qt ================================================
@@ -39,7 +34,7 @@ qt5_add_resources(QT_RESOURCES QtSources/styles.qrc)
 #================================ Configure target =========================================
 #===========================================================================================
 
-# Gui target
+# GUI target
 add_library(${TARGET_NAME} OBJECT)
 
 # set target properties
@@ -49,7 +44,7 @@ set_target_properties(${TARGET_NAME}
     CXX_STANDARD_REQUIRED ON
 )
 
-# add Gui folder to include path
+# add GUI folder to include path
 target_include_directories(${TARGET_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 # add external headers folder to include path
@@ -76,13 +71,13 @@ target_sources(${TARGET_NAME} PRIVATE
     ${QT_RESOURCES}
 )
 
-
 #===========================================================================================
 #=============================== translation files =========================================
 #===========================================================================================
 
 # available languages
-set(LANGUAGES
+set(
+    LANGUAGES
     ru
 )
 
@@ -166,10 +161,8 @@ add_custom_target(LibWebpTarget
 add_dependencies(${TARGET_NAME} LibWebpTarget)
 
 # link lib
-target_link_directories(${TARGET_NAME} PUBLIC ${LIB_WEBP_BUILD_DIR})
-target_link_libraries(${TARGET_NAME} PRIVATE
-    ${LIB_WEBP_NAME}
-)
+target_link_directories(${TARGET_NAME} PUBLIC  ${LIB_WEBP_BUILD_DIR})
+target_link_libraries(  ${TARGET_NAME} PRIVATE ${LIB_WEBP_NAME})
 
 # for included headers
 target_include_directories(${TARGET_NAME} PUBLIC
