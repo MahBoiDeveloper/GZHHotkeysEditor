@@ -6,7 +6,6 @@
 #include "../Parsers/JSONFile.hpp"
 #include "../Parsers/CSFParser.hpp"
 
-
 FactionsManager::FactionsManager(const QString& techTreeFilePath, QObject *parent)
     : QObject{parent}
     , pTechTree{new JSONFile{techTreeFilePath}}
@@ -21,18 +20,17 @@ FactionsManager::FactionsManager(const QString& techTreeFilePath, QObject *paren
     }
 
     // TODO: temporary
-//    if (HotkeyCollisions.isEmpty()) return;
-//    qDebug() << "\n" << "======== Collisions ========";
-//    for (auto it = HotkeyCollisions.cbegin(); it != HotkeyCollisions.cend(); ++it)
-//    {
-//        qDebug() << "\n" << "Key: " << it.key();
-
-//        for (const auto & entity : it.value())
-//        {
-//            qDebug() << " - entity name: " << entity->GetName();
-//        }
-//    }
-//    qDebug() << "\n";
+    //    if (HotkeyCollisions.isEmpty()) return;
+    //    qDebug() << "\n" << "======== Collisions ========";
+    //    for (auto it = HotkeyCollisions.cbegin(); it != HotkeyCollisions.cend(); ++it)
+    //    {
+    //        qDebug() << "\n" << "Key: " << it.key();
+    //        for (const auto & entity : it.value())
+    //        {
+    //            qDebug() << " - entity name: " << entity->GetName();
+    //        }
+    //    }
+    //    qDebug() << "\n";
 }
 
 const QVector<Faction>& FactionsManager::GetFactions() const
@@ -157,18 +155,17 @@ void FactionsManager::_CheckHotkeyCollisions(const QString& oldHotkey, const QSt
     _UpdateCollisionsForHotkey(newHotkey);
 
     // TODO: temporary
-//    if (HotkeyCollisions.isEmpty()) return;
-//    qDebug() << "\n" << "======== Collisions ========";
-//    for (auto it = HotkeyCollisions.cbegin(); it != HotkeyCollisions.cend(); ++it)
-//    {
-//        qDebug() << "\n" << "Key: " << it.key();
-
-//        for (const auto & entity : it.value())
-//        {
-//            qDebug() << " - entity name: " << entity->GetName();
-//        }
-//    }
-//    qDebug() << "\n";
+    //    if (HotkeyCollisions.isEmpty()) return;
+    //    qDebug() << "\n" << "======== Collisions ========";
+    //    for (auto it = HotkeyCollisions.cbegin(); it != HotkeyCollisions.cend(); ++it)
+    //    {
+    //        qDebug() << "\n" << "Key: " << it.key();
+    //        for (const auto & entity : it.value())
+    //        {
+    //            qDebug() << " - entity name: " << entity->GetName();
+    //        }
+    //    }
+    //    qDebug() << "\n";
 }
 
 #pragma region TechTree.json parsing methods

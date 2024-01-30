@@ -8,14 +8,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4"
         BEGIN
-            VALUE "FileDescription",  "Hotkeys Editor For C&C: Generals Zero Hour"
+            VALUE "FileDescription",  "Hotkeys Editor For C&C: Generals"
             VALUE "ProductVersion",   "0.0.0.3"
             VALUE "FileVersion",      "0.0.0.3"
             VALUE "ProductName",      "GZH Hotkeys Editor"
             VALUE "InternalName",     "GZHHotkeyEditor"
-            VALUE "OriginalFilename", ""
+            VALUE "OriginalFilename", "HotkeyEditor.exe"
             VALUE "CompanyName",      "GZH Hotkey Editor Developers. All rights reserved."
-            VALUE "LegalCopyright",   "Copyright (C) GZH Hotkey Editor Developers 2023-2024"
+            VALUE "LegalCopyright",   "Copyright (C) GZHHE Developers 2023-2024"
             VALUE "Licence",          "GNU GPL v3"
             VALUE "Info",             "https://github.com/MahBoiDeveloper/GZHHotkeysEditor"
             VALUE "Comment",          "GZH Hotkeys Editor"

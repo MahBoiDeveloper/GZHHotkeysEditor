@@ -21,8 +21,8 @@
 # Linker target configuration
     # Add to .exe list
     add_executable(${LINK_MAIN_TARGET_NAME}
-        "GUI/QtSources/resources.rc"
-        "mainLink.cpp"
+        "GUI/QtSources/LinkerDescription.rc"
+        "MainLink.cpp"
     )
     set_target_properties(${LINK_MAIN_TARGET_NAME}
         PROPERTIES
@@ -51,11 +51,11 @@
     )
 
     # Remove all non-GUI files from main target
-    list(REMOVE_ITEM SOURCES "mainLink.cpp" ${EXCLUDE_SOURCES})
+    list(REMOVE_ITEM SOURCES "MainLink.cpp" ${EXCLUDE_SOURCES})
 
     # Add source files to the file compiling list
     add_executable(${MAIN_TARGET_NAME}
-        GUI/QtSources/resources.rc
+        "GUI/QtSources/EditorDescription.rc"
         ${SOURCES}
     )
 
@@ -75,7 +75,7 @@
     )
 
     # Copy json's
-    set(ALL_RESOURCE_FILES  "TechTree.json" "Settings.json")
+    set(ALL_RESOURCE_FILES "TechTree.json" "Settings.json")
 
     file(
         GLOB_RECURSE _DATA_SAMPLES_FILES

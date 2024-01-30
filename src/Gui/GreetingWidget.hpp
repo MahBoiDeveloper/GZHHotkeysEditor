@@ -1,6 +1,6 @@
 #pragma once
 #include <QWidget>
-#include "../config.hpp"
+#include "../Config.hpp"
 
 class GreetingWidget : public QWidget
 {
