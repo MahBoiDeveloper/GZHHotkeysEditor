@@ -116,19 +116,20 @@ target_sources(${TARGET_NAME} PRIVATE
 #====================================== Lbwebp =============================================
 #===========================================================================================
 
-set(LIB_WEBP_DIR_NAME libwebp)                                              # lib folder name
-set(LIB_WEBP_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}/${LIB_WEBP_DIR_NAME})    # lib build folder
-set(LIB_WEBP_NAME webpdecoder)                                              # lib target
+set(LIB_WEBP_DIR_NAME  libwebp)                                               # lib folder name
+set(LIB_WEBP_DIR       ${CMAKE_CURRENT_SOURCE_DIR}../../../${LIB_WEBP_DIR_NAME}) # lib folder path
+set(LIB_WEBP_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}/${LIB_WEBP_DIR_NAME})      # lib build folder
+set(LIB_WEBP_NAME      webpdecoder)                                           # lib target
 
 # find all lib sources
 file(
     GLOB_RECURSE LIB_WEBP_SOURCE_FILES
     LIST_DIRECTORIES FALSE
-    ${CMAKE_CURRENT_SOURCE_DIR}/${LIB_WEBP_DIR_NAME}/*
+    ${LIB_WEBP_DIR}/*
 )
 
 # define a file that will be an indicator of source changes
-set(LIB_WEBP_FILE_INDICATOR "${CMAKE_CURRENT_BINARY_DIR}/${LIB_WEBP_DIR_NAME}/LIB_WEBP_FILE_INDICATOR")
+set(LIB_WEBP_FILE_INDICATOR "${LIB_WEBP_BUILD_DIR}/LIB_WEBP_FILE_INDICATOR")
 
 # create a lib build folder
 file(MAKE_DIRECTORY ${LIB_WEBP_BUILD_DIR})
@@ -145,7 +146,7 @@ add_custom_command(
                              -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
                              -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
                              -G ${CMAKE_GENERATOR}
-                             ${CMAKE_CURRENT_SOURCE_DIR}/${LIB_WEBP_DIR_NAME}
+                             ${LIB_WEBP_DIR}
     # cmake build
     COMMAND ${CMAKE_COMMAND} --build .
                              --config ${CMAKE_BUILD_TYPE}
@@ -166,7 +167,7 @@ target_link_libraries(  ${TARGET_NAME} PRIVATE ${LIB_WEBP_NAME})
 
 # for included headers
 target_include_directories(${TARGET_NAME} PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/${LIB_WEBP_DIR_NAME}/src
+    ${LIB_WEBP_DIR}/src
 )
 
 #===========================================================================================

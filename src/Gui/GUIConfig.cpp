@@ -2,9 +2,9 @@
 #include <QImage>
 #include <QPixmap>
 
-#include "GUIConfig.hpp"
+#include "../../libwebp/src/webp/decode.h"
 #include "../Logger.hpp"
-#include "libwebp/src/webp/decode.h"
+#include "GUIConfig.hpp"
 
 QImage GUIConfig::decodeWebpIcon(const QString& iconName)
 {
