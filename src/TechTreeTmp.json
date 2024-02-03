@@ -1,0 +1,159 @@
+{
+    "TechTree" :
+    [
+        {
+            "ShortName"               : "USA",
+            "DisplayName"             : "USA",
+            "DisplayNameDescription"  : "United Stated Of America",
+
+            "Buildings" : 
+            [
+                {
+                    "Name"       : "USACommandCenter",
+                    "IngameName" : "OBJECT:CommandCenter",
+                    "Actions"    : 
+                    [
+                        [
+                            {"IconName" : "USADozer",                       "HotkeyString" : "CONTROLBAR:ConstructAmericaDozer"},
+                            {"IconName" : "USASpectreGunship",              "HotkeyString" : "CONTROLBAR:SpectreGunship"},
+                            {"IconName" : "USALeafletDrop",                 "HotkeyString" : "CONTROLBAR:LeafletDrop"},
+                            {"IconName" : "USAA10ThunderboltMissileStrike", "HotkeyString" : "CONTROLBAR:A10ThunderboltMissileStrike"},
+                            {"IconName" : "Paradrop",                       "HotkeyString" : "CONTROLBAR:Paradrop"}
+                        ],
+                        [
+                            {"IconName" : "USADrone",                       "HotkeyString" : "CONTROLBAR:SpyDrone"},
+                            {"IconName" : "EmergencyRepair",                "HotkeyString" : "CONTROLBAR:EmergencyRepair"},
+                            {"IconName" : "USADaisyCutter",                 "HotkeyString" : "CONTROLBAR:DaisyCutter"},
+                            {"IconName" : "USAMOAB",                        "HotkeyString" : "CONTROLBAR:MOAB"},
+                            {"IconName" : "USASpySattelite",                "HotkeyString" : "CONTROLBAR:SpySatellite"},
+                            {"IconName" : "Sell",                           "HotkeyString" : "CONTROLBAR:Sell"}
+                        ]
+                    ]
+                },
+
+                {
+                    "Name"       : "USAColdFusionReactor",
+                    "IngameName" : "OBJECT:ColdFusionReactor",
+                    "Actions"    : 
+                    [
+                        [
+                            {"IconName" : "USAControlRods", "HotkeyString" : "CONTROLBAR:UpgradeAmericaAdvancedControlRods"},
+                            {"IconName" : "Sell",           "HotkeyString" : "CONTROLBAR:Sell"}
+                        ]
+                    ]
+                },
+
+                {
+                    "Name"       : "USABarracks",
+                    "IngameName" : "OBJECT:Barracks",
+                    "Actions"    : 
+                    [
+                        [
+                            {"IconName" : "USARanger",          "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryRanger"},
+                            {"IconName" : "USAMissileDefender", "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryMissileDefender"}
+                        ],
+                        [
+                            {"IconName" : "USABurton",          "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryColonelBurton"},
+                            {"IconName" : "USAPathfinder",      "HotkeyString" : "CONTROLBAR:ConstructAmericaInfantryPathfinder"},
+                            {"IconName" : "USAFlashbangs",      "HotkeyString" : "CONTROLBAR:UpgradeAmericaFlashBangGrenade"}
+                        ],
+                        [
+                            {"IconName" : "CaptureBuilding",    "HotkeyString" : "CONTROLBAR:UpgradeAmericaRangerCaptureBuilding"},
+                            {"IconName" : "Sell",               "HotkeyString" : "CONTROLBAR:Sell"}
+                        ]
+                    ]
+                },
+
+                {
+                    "Name"       : "USASupplyCenter",
+                    "IngameName" : "OBJECT:SupplyCenter",
+                    "Actions"    : 
+                    [
+                        [
+                            {"IconName" : "USAChinook", "HotkeyString" : "CONTROLBAR:ConstructAmericaVehicleChinook"},
+                            {"IconName" : "Sell",       "HotkeyString" : "CONTROLBAR:Sell"}
+                        ]
+                    ]
+                },
+
+                {
+                    "Name"       : "USAPatriot",
+                    "IngameName" : "OBJECT:PatriotBattery",
+                    "Actions"    : 
+                    [
+                        [
+                            {"IconName" : "Stop", "HotkeyString" : "CONTROLBAR:Stop"},
+                            {"IconName" : "Sell", "HotkeyString" : "CONTROLBAR:Sell"}
+                        ]
+                    ]
+                }
+            ]
+        },
+
+        {
+            "ShortName"               : "SWG",
+            "DisplayName"             : "SUPERWEAPON",
+            "DisplayNameDescription"  : "Superweapons General"
+        },
+
+        {
+            "ShortName"               : "AIR",
+            "DisplayName"             : "AIR",
+            "DisplayNameDescription"  : "Airforce General"
+        },
+
+        {
+            "ShortName"               : "LSR",
+            "DisplayName"             : "LASER",
+            "DisplayNameDescription"  : "Laser Weapons Generals"
+        },
+
+        {
+            "ShortName"               : "PRC",
+            "DisplayName"             : "CHINA",
+            "DisplayNameDescription"  : "China"
+        },
+
+        {
+            "ShortName"               : "INF",
+            "DisplayName"             : "INFANTRY",
+            "DisplayNameDescription"  : "Infantry General"
+        },
+
+        {
+            "ShortName"               : "NUK",
+            "DisplayName"             : "NUKE",
+            "DisplayNameDescription"  : "Nuke General"
+        },
+
+        {
+            "ShortName"               : "TNK",
+            "DisplayName"             : "TANK",
+            "DisplayNameDescription"  : "Tank General"
+        },
+
+        {
+            "ShortName"               : "GLA",
+            "DisplayName"             : "GLA",
+            "DisplayNameDescription"  : "Global Liberation Army"
+        },
+
+        {
+            "ShortName"               : "TOX",
+            "DisplayName"             : "TOXIC",
+            "DisplayNameDescription"  : "Toxic Weapons General"
+        },
+        
+        {
+            "ShortName"               : "STL",
+            "DisplayName"             : "STEALTH",
+            "DisplayNameDescription"  : "Stealth General"
+        },
+        
+        {
+            "ShortName"               : "DML",
+            "DisplayName"             : "DEMO",
+            "DisplayNameDescription"  : "Demolition General"
+        }
+    ]
+}

@@ -1,12 +1,14 @@
 #pragma once
 
-#include <QMainWindow>
-
 #include "FactionsManager.hpp"
+
+#include <QMainWindow>
 
 class QScrollArea;
 class QTreeWidget;
 class QButtonGroup;
+
+class ActionHotkeyWidget;
 
 class HotkeysMainWindow : public QMainWindow
 {
@@ -16,7 +18,16 @@ public:
     HotkeysMainWindow(const QVariant& configuration, QWidget* parent = nullptr);
 
 private:
-    FactionsManager FactionsManager;
+    void configureMenu();
+    void setEntitiesList(const QString& factionShortName);
+    void setHotkeysPanelsWidget();
+    void highlightKeys(const QString& entityName) const;
+
+private slots:
+    void onAbout();
+
+private:
+    FactionsManager factionsManager;
 
     // Qt object in a single copy
     QButtonGroup* pFactionsButtonsGroup = nullptr;
@@ -26,14 +37,8 @@ private:
     QScrollArea* pHotkeysArea           = nullptr;
 
     // Renewable widgets
-    QWidget* pHotkeysScrollWidget       = nullptr;
+    QTabWidget* pHotkeysPanelsWidget    = nullptr;
     QDialog* pAboutDialog               = nullptr;
 
-private:
-    void ConfigureMenu();
-    void SetEntitiesList(const QString& factionShortName);
-    void SetHotkeysLayout();
-
-private slots:
-    void OnAbout();
+    QVector<QSet<ActionHotkeyWidget*>> hotkeyWdgets;
 };

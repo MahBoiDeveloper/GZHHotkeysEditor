@@ -1,9 +1,9 @@
 #pragma once
 
+#include "../Data/Faction.hpp"
+
 #include <QObject>
 #include <QSet>
-
-#include "../Data/Faction.hpp"
 
 class JSONFile;
 
@@ -13,31 +13,31 @@ class FactionsManager : public QObject
 
 public:
     explicit FactionsManager(const QString& techTreeFilePath, QObject* parent = nullptr);
-    const QVector<Faction>& GetFactions() const;
-    const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>> GetFactionEntities(const QString& factionShortName) const;
-    const QVector<QSharedPointer<EntityAction> > GetEntityActions(const QString& factionShortName, const QString& entityName) const;
-    void SetEntityActionHotkey(const QString& factionShortName,
+    const QVector<Faction>& getFactions() const;
+    const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>> getFactionEntities(const QString& factionShortName) const;
+    const QVector<QVector<QSharedPointer<EntityAction>>> getEntityActionPanels(const QString& factionShortName, const QString& entityName) const;
+    const QVector<QSet<QString>> getEntityCollisionsKeys(const QSharedPointer<const Entity>& entity) const;
+    const QVector<QSet<QString>> getEntityCollisionsKeys(const QString& entityName) const;
+    void setEntityActionHotkey(const QString& factionShortName,
                                const QString& entityName,
                                const QString& actionName,
                                const QString& hotkey);
 
 private:
-    const Faction* _GetFactionByShortName(const QString& factionShortName) const;
+    const Faction* _getFactionByShortName(const QString& factionShortName) const;
+    void _appendNewCollisionsForHotkey(const QString& newHotkey);
+    void _updateHotkeyCollisions(const QString& oldHotkey, const QString& newHotkey);
 
 private:
-    QVector<Faction> _GetTechTreeFactions();
-    QVector<QSharedPointer<const Entity>> _GetTechTreeFactionEntities(Config::EntitiesTypes entity, const QString& factionShortName);
-    QVector<QSharedPointer<const Entity>> _GetEntitiesFromJsonArray(const QJsonArray& array);
-    QVector<QSharedPointer<EntityAction>> _GetActionsFromJsonArray(const QJsonArray& array);
-
-    void _UpdateCollisionsForHotkey(const QString& newHotkey);
-    void _CheckHotkeyCollisions(const QString& oldHotkey, const QString& newHotkey);
+    QVector<Faction> _getTechTreeFactions();
+    QVector<QSharedPointer<const Entity>> _getTechTreeFactionEntities(Config::EntitiesTypes entity, const QString& factionShortName);
+    QVector<QSharedPointer<const Entity>> _getEntitiesFromJsonArray(const QJsonArray& array);
+    QVector<QSharedPointer<EntityAction> > _getActionsFromJsonArray(const QJsonArray& array);
 
 private:
+    QMap<QSharedPointer<const Entity>, QVector<QSet<QString>>> entitiesPanelsCollisionKeys;
+    QMap<QString, QSharedPointer<EntityAction>> actionsPool;
+    QMap<QString, QSharedPointer<const Entity>> entitiesPool;
     const QSharedPointer<const JSONFile> pTechTree;
-    QMap<QString, QSharedPointer<EntityAction>> ActionsPool;
-    QMap<QString, QSharedPointer<const Entity>> EntitiesPool;
-    QVector<Faction> Factions;
-
-    QMap<QString, QSet<QSharedPointer<const Entity>>> HotkeyCollisions;
+    const QVector<Faction> factions;
 };

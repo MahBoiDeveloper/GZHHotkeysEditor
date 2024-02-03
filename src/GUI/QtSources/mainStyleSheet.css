@@ -20,9 +20,9 @@ HotkeysMainWindow QTreeWidget::item
     min-height: 40px;
 }
 
-/*HotkeyElement QLabel
+QLabel#HotkeyLabel
 {
     padding-left: 30px;
     padding-right: 30px;
-    background-color: gray
-}*/
+    background-color: #ABABAB;
+}

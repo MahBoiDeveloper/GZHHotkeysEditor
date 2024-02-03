@@ -1,20 +1,22 @@
 #pragma once
 
+#include "EntityAction.hpp"
+
+#include <QSet>
 #include <QVector>
 #include <QSharedPointer>
-
-#include "EntityAction.hpp"
 
 class Entity
 {
 public:
-    Entity(const QString& name, const QString& iconName, const QVector<QSharedPointer<EntityAction>>& actions);
-    const QString& GetName() const;
-    const QString& GetIconName() const;
-    const QVector<QSharedPointer<EntityAction>>& GetActions() const;
+    Entity(const QString& name, const QString& iconName, const QVector<QVector<QSharedPointer<EntityAction>>>& actionPanels);
+    const QString& getName() const;
+    const QString& getIconName() const;
+    const QVector<QVector<QSharedPointer<EntityAction>>>& getActionPanels() const;
+    int getPanelsCount() const;
 
 private:
-    QString Name;
-    QString IconName;
-    QVector<QSharedPointer<EntityAction>> Actions;
+    QString name;
+    QString iconName;
+    QVector<QVector<QSharedPointer<EntityAction>>> actionPanels;
 };

@@ -75,7 +75,7 @@
     )
 
     # Copy json's
-    set(ALL_RESOURCE_FILES "TechTree.json" "Settings.json")
+    set(ALL_RESOURCE_FILES "TechTree.json" "TechTreeTmp.json" "Settings.json")
 
     file(
         GLOB_RECURSE _DATA_SAMPLES_FILES

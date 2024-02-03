@@ -1,8 +1,9 @@
+#include "ActionHotkeyWidget.hpp"
+#include "GUIConfig.hpp"
+
+#include <QVBoxLayout>
 #include <QKeyEvent>
 #include <QDebug>
-
-#include "GUIConfig.hpp"
-#include "ActionHotkeyWidget.hpp"
 
 ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
                                        const QString& hotkeyStr,
@@ -13,8 +14,13 @@ ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
     , actionNameLabel{actionName}
     , hotkeyLabel{hotkey}
     , newHotkeyButton{"+"}
+    , signalTimer{}
+    , timerMseconds{1300}
 {
-    connect(&newHotkeyButton, &QPushButton::pressed, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
+    // Object name for css
+    hotkeyLabel.setObjectName("HotkeyLabel");
+
+    connect(&newHotkeyButton, &QPushButton::pressed, this, &ActionHotkeyWidget::onNewHotkeyPressed);
 
     // Signal timer settings
     signalTimer.setSingleShot(true);
@@ -25,15 +31,14 @@ ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
 
     // Hotkey label
     hotkeyLabel.setAlignment(Qt::AlignCenter);
-    hotkeyLabel.setStyleSheet("padding-left: 30px;"
-                              "padding-right: 30px;"
-                              "background-color: #ABABAB");
+
     // TODO: doesn't work
     hotkeyLabel.setWindowOpacity(0.7);
+
     // Square button size
     newHotkeyButton.setFixedSize(newHotkeyButton.sizeHint().height(), newHotkeyButton.sizeHint().height());
 
-    QHBoxLayout* mainL = new QHBoxLayout(this);
+    QHBoxLayout* mainL = new QHBoxLayout{this};
     mainL->setAlignment(Qt::AlignTop);
     mainL->addWidget(imageLb);
     mainL->addWidget(&actionNameLabel);
@@ -44,18 +49,37 @@ ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
     setLayout(mainL);
 }
 
-QString ActionHotkeyWidget::GetActionName() const
+QString ActionHotkeyWidget::getActionName() const
 {
     return actionNameLabel.text();
 }
 
-QString ActionHotkeyWidget::GetHotkey() const
+QString ActionHotkeyWidget::getHotkey() const
 {
     return hotkeyLabel.text();
 }
 
+void ActionHotkeyWidget::highlightKey(bool collision)
+{
+    if (collision)
+    {
+        hotkeyLabel.setStyleSheet(hotkeyLabel.styleSheet() + "\n" + "color: red;");
+    }
+    else
+    {
+        hotkeyLabel.setStyleSheet(QLabel{}.styleSheet());
+    }
+}
+
 void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
 {
+    // Skip if there are modifiers
+    if (event->modifiers() != Qt::NoModifier)
+    {
+        QWidget::keyPressEvent(event);
+        return;
+    }
+
     int key = event->key();
     if (key >= Config::availableKeys.first && key <= Config::availableKeys.second)
     {
@@ -63,7 +87,7 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
         hotkey = QKeySequence(key).toString();
 
         // If the key is correct -> disconnect the input error reset signal
-        disconnect(this, &ActionHotkeyWidget::signalRepeatNewHotkey, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
+        disconnect(this, &ActionHotkeyWidget::signalRepeatNewHotkey, this, &ActionHotkeyWidget::onNewHotkeyPressed);
 
         // Return focus to parent
         parentWidget()->setFocus();
@@ -88,8 +112,8 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
 void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
 {
     // Unset decoration
-    hotkeyLabel.setFont(QFont());
-    hotkeyLabel.setPalette(QPalette());
+    hotkeyLabel.setFont(QFont{});
+    hotkeyLabel.setPalette(QPalette{});
     hotkeyLabel.setText(hotkey);
 
     emit hotkeyChanged(hotkey);
@@ -100,11 +124,11 @@ void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
     QWidget::focusOutEvent(event);
 }
 
-void ActionHotkeyWidget::OnNewHotkeyPressed()
+void ActionHotkeyWidget::onNewHotkeyPressed()
 {
     // Reconnect the input error reset signal
-    disconnect(this, &ActionHotkeyWidget::signalRepeatNewHotkey, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
-    connect(this, &ActionHotkeyWidget::signalRepeatNewHotkey, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
+    disconnect(this, &ActionHotkeyWidget::signalRepeatNewHotkey, this, &ActionHotkeyWidget::onNewHotkeyPressed);
+    connect(this, &ActionHotkeyWidget::signalRepeatNewHotkey, this, &ActionHotkeyWidget::onNewHotkeyPressed);
 
     // Decorate
     hotkeyLabel.setText(tr("Press latin key..."));

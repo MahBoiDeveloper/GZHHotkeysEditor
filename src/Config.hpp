@@ -11,7 +11,7 @@ public: // Data
 
     inline static const QString resourcesFolder  = "Resources";
     inline static const QString translationsPath = resourcesFolder + "/Translations";
-    inline static const QString techTreeFile     = resourcesFolder + "/TechTree.json";
+    inline static const QString techTreeFile     = resourcesFolder + "/TechTreeTmp.json";
     inline static const double recomendedStartWidgetSizeRatio = 3./7.;
 
     enum class EntitiesTypes

@@ -1,22 +1,27 @@
 #include "Entity.hpp"
 
-Entity::Entity(const QString& name, const QString& iconName, const QVector<QSharedPointer<EntityAction>>& actions)
-    : Name{name}
-    , IconName{iconName}
-    , Actions{actions}
+Entity::Entity(const QString& name, const QString& iconName, const QVector<QVector<QSharedPointer<EntityAction>>>& actionPanels)
+    : name{name}
+    , iconName{iconName}
+    , actionPanels{actionPanels}
 {}
 
-const QString& Entity::GetName() const
+const QString& Entity::getName() const
 {
-    return Name;
+    return name;
 }
 
-const QString& Entity::GetIconName() const
+const QString& Entity::getIconName() const
 {
-    return IconName;
+    return iconName;
 }
 
-const QVector<QSharedPointer<EntityAction>>& Entity::GetActions() const
+const QVector<QVector<QSharedPointer<EntityAction>>>& Entity::getActionPanels() const
 {
-    return Actions;
+    return actionPanels;
+}
+
+int Entity::getPanelsCount() const
+{
+    return actionPanels.size();
 }
