@@ -13,7 +13,7 @@ public:
     inline static const int entitySectionIconsScalingHeight = 25;
     inline static const QString qtSourceIconsPath = ":/my/icons";
     inline static const QString defaultIconFile = qtSourceIconsPath + "/NoImageSmall.webp";
-    inline static const QString iconsDirPath = Config::resourcesFolder + "/Icons";
+    inline static const QString iconsDirPath = Config::RESOURCE_FOLDER + "/Icons";
 
 public:
     GUIConfig() = delete;

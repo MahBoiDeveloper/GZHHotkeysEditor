@@ -65,7 +65,7 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
 
     cmbLangList = new QComboBox();
     for (int i = 0; i < static_cast<int>(Config::Languages::Count); ++i)
-        cmbLangList->addItem(Config::GetStringFromLangEnum(static_cast<Config::Languages>(i)));
+        cmbLangList->addItem(Config::GetLanguageFullName(static_cast<Config::Languages>(i)));
     cmbLangList->setCurrentIndex(static_cast<int>(language));
     connect(cmbLangList, QOverload<int>::of(&QComboBox::activated), this, &GreetingWidget::languageChanged);
     

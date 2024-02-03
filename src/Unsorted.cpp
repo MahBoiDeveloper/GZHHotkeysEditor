@@ -3,7 +3,6 @@ using namespace std;
 
 namespace Unsorted
 {
-    /// @brief Returns list QStringList of QString as element by converting std::list<std::string>value
     QStringList STDStringListToQStringList(const list<string>& srcList)
     {
         QStringList retList;
@@ -14,7 +13,6 @@ namespace Unsorted
         return retList;
     }
 
-    /// @brief Returns list std::list of std::string as element by converting QStringList<QString> value
     list<string> QStringListToSTDStringList(const QStringList& srcList)
     {
         list<string> retList;

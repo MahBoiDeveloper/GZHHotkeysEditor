@@ -1,18 +1,16 @@
 #pragma once
-
 #include <QMap>
 #include <QObject>
 
 class Config
 {
 public: // Data
+    inline static const QPair<Qt::Key, Qt::Key> AVAILABLE_KEYS = {Qt::Key_A, Qt::Key_Z};
 
-    inline static const QPair<Qt::Key, Qt::Key> availableKeys = {Qt::Key_A, Qt::Key_Z};
-
-    inline static const QString resourcesFolder  = "Resources";
-    inline static const QString translationsPath = resourcesFolder + "/Translations";
-    inline static const QString techTreeFile     = resourcesFolder + "/TechTreeTmp.json";
-    inline static const double recomendedStartWidgetSizeRatio = 3./7.;
+    inline static const QString RESOURCE_FOLDER     = "Resources";
+    inline static const QString TRANSLATIONS_FOLDER = RESOURCE_FOLDER + "/Translations";
+    inline static const QString TECH_TREE_PATH      = RESOURCE_FOLDER + "/TechTreeTmp.json";
+    inline static const double  START_WIDGET_SIZE_RATIO = 3./7.;
 
     enum class EntitiesTypes
     {
@@ -46,8 +44,12 @@ public: // Data
 public: // Methods
     Config() = delete;
 
-    static const QString GetLocaleFromLangEnum(Languages language);
-    static Languages GetLangEnumByLocale(const QString& locale);
-    static Languages GetLangEnumByLocale(const std::string& locale);
-    static const QString GetStringFromLangEnum(Languages language);
+    /// @brief Return short language name text equivalent of the enum Languages value.
+    static const QString GetLanguageShortName(Languages language);
+    /// @brief Return full language name text equivalent of the enum Languages value.
+    static const QString GetLanguageFullName(Languages language);
+    /// @brief Return enum Languages value that equivalent to the text value.
+    static Languages     GetLangEnumByLocale(const QString& locale);
+    /// @brief Return enum Languages value that equivalent to the text value.
+    static Languages     GetLangEnumByLocale(const std::string& locale);
 };

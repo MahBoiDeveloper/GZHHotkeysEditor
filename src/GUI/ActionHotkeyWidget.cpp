@@ -81,7 +81,7 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
     }
 
     int key = event->key();
-    if (key >= Config::availableKeys.first && key <= Config::availableKeys.second)
+    if (key >= Config::AVAILABLE_KEYS.first && key <= Config::AVAILABLE_KEYS.second)
     {
         // Set new text
         hotkey = QKeySequence(key).toString();

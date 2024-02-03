@@ -12,7 +12,7 @@ FactionsManager::FactionsManager(const QString& techTreeFilePath, QObject *paren
     , factions{_getTechTreeFactions()}
 {
     // Update collisions sets for all available keys
-    for (Qt::Key key = Config::availableKeys.first; key <= Config::availableKeys.second; key = static_cast<Qt::Key>(key+1))
+    for (Qt::Key key = Config::AVAILABLE_KEYS.first; key <= Config::AVAILABLE_KEYS.second; key = static_cast<Qt::Key>(key+1))
     {
         _appendNewCollisionsForHotkey(QKeySequence(key).toString());
     }

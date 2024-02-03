@@ -20,6 +20,7 @@ public:
     {
     }
 
+    /// @brief Get normal text context of the error 
     inline const char* what() const noexcept override
     {
         return message.c_str();

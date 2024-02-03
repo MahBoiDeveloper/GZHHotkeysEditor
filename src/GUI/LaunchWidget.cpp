@@ -47,8 +47,8 @@ void LaunchWidget::SetTranslator(Config::Languages lngType)
     if (lngType != Config::Languages::English)
     {
         pTranslator = new QTranslator;
-        pTranslator->load(Config::GetLocaleFromLangEnum(lngType),
-                         Config::translationsPath);
+        pTranslator->load(Config::GetLanguageShortName(lngType),
+                          Config::TRANSLATIONS_FOLDER);
         QCoreApplication::installTranslator(pTranslator);
     }
 }

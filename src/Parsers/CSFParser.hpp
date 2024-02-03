@@ -1,5 +1,4 @@
 #pragma once
-#define CSFPARSER CSFParser::Instance
 
 #include <list>
 #include <memory>
@@ -7,6 +6,8 @@
 #include <sstream>
 #include <fstream>
 #include <QStringList>
+
+#define CSFPARSER CSFParser::Instance
 
 class CSFParser final
 {
@@ -59,8 +60,8 @@ private: // Methods
 
 public:
     CSFParser(const std::string& strFilePath);
-    CSFParser(const char* strFilePath);
-    CSFParser(const QString& strFilePath);
+    CSFParser(const char*        strFilePath);
+    CSFParser(const QString&     strFilePath);
 
     void Save();
     void Save(const std::string& strFileName);

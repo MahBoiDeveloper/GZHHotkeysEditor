@@ -1,12 +1,13 @@
+// std headers
 #include <fcntl.h>   // Allows to use UTF-16 encoding as the default encoding
 #include <iostream>
 
-// Internal cute logic
+// Qt headers
 #include <QApplication>
 #include <QMessageBox>
 #include <QDebug>
 
-// Project files
+// Project headers
 #include "GUI/WindowManager.hpp"
 #include "Parsers/CSFParser.hpp"
 #include "Logger.hpp"
@@ -18,7 +19,7 @@ int main(int argc, char *argv[])
     // Hide console
     // ShowWindow(GetConsoleWindow(), SW_HIDE);
     
-    // All out text MUST be showed via wcout and all chars should be converted as (wchar_t)
+    // After this all out text to console MUST be showed via std::wcout and all chars should be converted as wchar_t
     _setmode(_fileno(stdout), _O_U16TEXT);
 
     // Initialize main qt application
@@ -26,7 +27,7 @@ int main(int argc, char *argv[])
 
     // Define logger as a singleton class, that could be used anywhere in project
     Logger::Instance    = make_unique<Logger>();
-    CSFParser::Instance = make_unique<CSFParser>(Config::resourcesFolder + "/generalsRU.csf");
+    CSFParser::Instance = make_unique<CSFParser>(Config::RESOURCE_FOLDER + "/generalsRU.csf");
 
     try
     {
@@ -37,8 +38,7 @@ int main(int argc, char *argv[])
     catch (const exception& exception)
     {
         // Log exception message
-        Logger::Instance->LogException();
-        LOGMSG(exception.what());
+        Logger::Instance->LogException(exception.what());
 
         // And show it to user
         QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", exception.what());

@@ -28,7 +28,6 @@ using namespace std;
 #pragma endregion
 
 #pragma region Log methods
-    /// @brief Write system information from Windows registry to .log file
     void Logger::LogSystemInformation()
     {
         // Write to log all necessary information about MS Windows
@@ -58,7 +57,6 @@ using namespace std;
         LogFile << endl;
     }
 
-    /// @brief Get current time in yyyy-MM-dd hh:mm:ss format
     string Logger::GetCurrentTime() const
     {
         time_t timeStomp = time(nullptr);
@@ -74,7 +72,6 @@ using namespace std;
         return ss.str();
     }
 
-    /// @brief Get file name like "Logs\\Log YYYY-mm-dd hh-MM-ss.log"
     string Logger::GetLogFileName() const
     {
         time_t timeStomp = time(nullptr);
@@ -90,7 +87,6 @@ using namespace std;
         return ss.str();
     }
 
-    /// @brief Writes [DATE-TIME] and return stream to write other data. Needs to be ended with `endl`
     ofstream& Logger::Log()
     {
         LogFile << "[" << Logger::GetCurrentTime().c_str() << "]\t";
@@ -132,15 +128,15 @@ using namespace std;
         Log() << msg << endl;
     }
 
-    void Logger::LogException()
+    void Logger::LogException(const char* msg)
     {
         LogFile << endl << endl;
-        Log() << "\t\t\t\tI'VE GOT A PRESENT FOR YA" << endl;
+        Log("\t\t\t\tI'VE GOT A PRESENT FOR YA");
+        Log(msg);
     }
 #pragma endregion
 
 #pragma region Support methods
-    /// @brief Returns Windows bit as a string.
     string Logger::GetWindowsBit() const
     {
         if (Registry::GetWindowsBit() == Registry::WindowsBit::Win32)

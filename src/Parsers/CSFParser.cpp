@@ -6,7 +6,6 @@
 using namespace std;
 
 #pragma region CTORs and DTORs
-
     CSFParser::CSFParser(const string& filePath) : Path{filePath}
     {
         // Parse
@@ -26,12 +25,8 @@ using namespace std;
         }
     }
 
-    CSFParser::CSFParser(const char* filePath)    : CSFParser{string{filePath}}
-    {}
-
-    CSFParser::CSFParser(const QString& filePath) : CSFParser{filePath.toStdString()}
-    {}
-
+    CSFParser::CSFParser(const char* filePath)    : CSFParser{string{filePath}}       {}
+    CSFParser::CSFParser(const QString& filePath) : CSFParser{filePath.toStdString()} {}
 #pragma endregion
 
 #pragma region Parsing

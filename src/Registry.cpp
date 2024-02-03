@@ -7,7 +7,6 @@
 
 using namespace std;
 
-/// @brief Returns actual Windows bit like a enum value.
 Registry::WindowsBit Registry::GetWindowsBit()
 {
     HKEY rKey;
@@ -23,7 +22,6 @@ Registry::WindowsBit Registry::GetWindowsBit()
     return windowsBit;
 }
 
-/// @brief Returns REG_SZ string value from MS Windows registry.
 string Registry::GetTextFromKey(const Registry::RootFolder Folder, const char* pPathToFolder, const char* pKeyName)
 {
     HKEY  rKey;
@@ -50,7 +48,6 @@ string Registry::GetTextFromKey(const Registry::RootFolder Folder, const char* p
     return returnValue;
 }
 
-/// @brief Sets paths to all games (C&C: Generals and C&C: Generals - Zero Hour).
 string Registry::GetPathToGame(const Games game)
 {
     string Key  = "InstallPath";
@@ -58,7 +55,6 @@ string Registry::GetPathToGame(const Games game)
     return GetTextFromKey(Registry::RootFolder::HKLM, Path.c_str(), Key.c_str());
 }
 
-/// @brief Returns equal string for enum class value.
 string Registry::ToString(Games game)
 {
     string returnValue;
@@ -76,20 +72,17 @@ string Registry::ToString(Games game)
     return returnValue;
 }
 
-/// @brief Checks if Windows is 64-bit.
 bool Registry::IsWindow64bit()
 {
     return GetWindowsBit() == WindowsBit::Win64;
 }
-    
-/// @brief Checks if Windows is 32-bit.
+
 bool Registry::IsWindow32bit()
 {
     return GetWindowsBit() == WindowsBit::Win32;
 }
 
 #pragma region Logger methods
-    /// @brief Returns current user language from HKCU\\Control Panel\\International\\Geo\\Name.
     string Registry::GetCurrentUserLanguage()
     {
         const char Path[] = {"Control Panel\\International\\Geo"};
@@ -97,7 +90,6 @@ bool Registry::IsWindow32bit()
         return GetTextFromKey(Registry::RootFolder::HKCU, &Path[0], &Key[0]);
     }
 
-    /// @brief Returns Windows version from HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProductName.
     string Registry::GetWindowsVersion()
     {
         const char Path[] = {"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"};
@@ -105,7 +97,6 @@ bool Registry::IsWindow32bit()
         return GetTextFromKey(Registry::RootFolder::HKLM, &Path[0], &Key[0]);
     }
 
-    /// @brief Returns processor vendor infomation from HKLM\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString.
     string Registry::GetProcessorInfo()
     {
         const char Path[]  = {"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"};
@@ -113,7 +104,6 @@ bool Registry::IsWindow32bit()
         return GetTextFromKey(Registry::RootFolder::HKLM, &Path[0], &Value[0]);
     }
 
-    /// @brief Returns current all memory size information in Mebibytes.
     string Registry::GetMemoryInfo()
     {
         stringstream ss;
@@ -125,7 +115,6 @@ bool Registry::IsWindow32bit()
         return ss.str();
     }
 
-    /// @brief Returns universal unique identifier as a string.
     string Registry::GetUUID()
     {
         // Magic code by stackoverflow: https://stackoverflow.com/questions/24365331/how-can-i-generate-uuid-in-c-without-using-boost-library

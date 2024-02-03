@@ -16,7 +16,7 @@
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
     : QMainWindow(parent)
-    , factionsManager{Config::techTreeFile}
+    , FactionsManager{Config::TECH_TREE_PATH}
     , pFactionsButtonsGroup{new QButtonGroup{this}}
     , pEntitiesTreeWidget{new QTreeWidget}
     , pHotkeysArea{new QScrollArea}
