@@ -1,7 +1,7 @@
 #pragma once
 #include <QObject>
 #include <QSet>
-#include "../Data/Faction.hpp"
+#include "Faction.hpp"
 
 class JSONFile;
 
