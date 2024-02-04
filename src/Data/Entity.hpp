@@ -1,10 +1,8 @@
 #pragma once
-
-#include "EntityAction.hpp"
-
 #include <QSet>
 #include <QVector>
 #include <QSharedPointer>
+#include "EntityAction.hpp"
 
 class Entity
 {

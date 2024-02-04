@@ -1,10 +1,11 @@
-#include "FactionsManager.hpp"
-#include "../Parsers/JSONFile.hpp"
-#include "../Parsers/CSFParser.hpp"
-
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QKeySequence>
+
+#include "../Parsers/JSONFile.hpp"
+#include "../Parsers/CSFParser.hpp"
+
+#include "FactionsManager.hpp"
 
 FactionsManager::FactionsManager(const QString& techTreeFilePath, QObject *parent)
     : QObject{parent}
@@ -328,7 +329,7 @@ void FactionsManager::_updateHotkeyCollisions(const QString& oldHotkey, const QS
             {
                 QVector<QVector<QSharedPointer<EntityAction>>> actionPanels;
 
-                for (const auto & jsonPanel : jsonEntity.toObject().value("Actions").toArray())
+                for (const auto & jsonPanel : jsonEntity.toObject().value("KeyboardLayouts").toArray())
                 {
                     actionPanels.append(_getActionsFromJsonArray(jsonPanel.toArray()));
                 }

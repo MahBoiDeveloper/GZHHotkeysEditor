@@ -1,9 +1,3 @@
-#include "HotkeysMainWindow.hpp"
-#include "ActionHotkeyWidget.hpp"
-#include "GUIConfig.hpp"
-#include "../Info.hpp"
-#include "../Logger.hpp"
-
 #include <QMenuBar>
 #include <QHeaderView>
 #include <QCoreApplication>
@@ -13,6 +7,13 @@
 #include <QVBoxLayout>
 #include <QTreeWidgetItem>
 #include <QScrollArea>
+
+#include "../Info.hpp"
+#include "../Logger.hpp"
+
+#include "ActionHotkeyWidget.hpp"
+#include "GUIConfig.hpp"
+#include "HotkeysMainWindow.hpp"
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
     : QMainWindow(parent)

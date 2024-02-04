@@ -1,6 +1,5 @@
-#include "Faction.hpp"
-
 #include <QSet>
+#include "Faction.hpp"
 
 Faction::Faction(const QString& shortName, const QString& displayName, const QString& displayNameDescription)
     : ShortName{shortName}

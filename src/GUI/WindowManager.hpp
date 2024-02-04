@@ -1,7 +1,5 @@
 #pragma once
-
 #include <memory>
-
 #include "LaunchWidget.hpp"
 #include "HotkeysMainWindow.hpp"
 

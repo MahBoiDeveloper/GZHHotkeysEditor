@@ -1,9 +1,7 @@
 #pragma once
-
 #include <QMap>
-
-#include "Entity.hpp"
 #include "../Config.hpp"
+#include "Entity.hpp"
 
 class Faction
 {

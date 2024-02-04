@@ -1,9 +1,8 @@
-#include "ActionHotkeyWidget.hpp"
-#include "GUIConfig.hpp"
-
 #include <QVBoxLayout>
 #include <QKeyEvent>
 #include <QDebug>
+#include "ActionHotkeyWidget.hpp"
+#include "GUIConfig.hpp"
 
 ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
                                        const QString& hotkeyStr,

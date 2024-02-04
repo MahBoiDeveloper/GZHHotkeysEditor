@@ -1,8 +1,7 @@
 #pragma once
-
 #include <QString>
 
-/// @brief class for storing entity action data
+/// @brief Class for storing entity action data.
 class EntityAction
 {
 public:

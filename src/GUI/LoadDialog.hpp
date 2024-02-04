@@ -1,5 +1,4 @@
 #pragma once
-
 #include "BaseConfigurationDialog.hpp"
 
 class LoadDialog : public BaseConfigurationDialog

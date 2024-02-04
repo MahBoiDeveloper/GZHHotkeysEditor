@@ -4,12 +4,12 @@
 <context>
     <name>ActionHotkeyWidget</name>
     <message>
-        <location filename="../ActionHotkeyWidget.cpp" line="97"/>
+        <location filename="../ActionHotkeyWidget.cpp" line="96"/>
         <source>It isn&apos;t latin key...</source>
         <translation>Это не латинская клавиша!</translation>
     </message>
     <message>
-        <location filename="../ActionHotkeyWidget.cpp" line="134"/>
+        <location filename="../ActionHotkeyWidget.cpp" line="133"/>
         <source>Press latin key...</source>
         <translation>Нажмите латинскую клавишу...</translation>
     </message>
@@ -84,38 +84,38 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="160"/>
+        <location filename="../HotkeysMainWindow.cpp" line="161"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="161"/>
+        <location filename="../HotkeysMainWindow.cpp" line="162"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="163"/>
+        <location filename="../HotkeysMainWindow.cpp" line="164"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="164"/>
+        <location filename="../HotkeysMainWindow.cpp" line="165"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="166"/>
-        <location filename="../HotkeysMainWindow.cpp" line="370"/>
+        <location filename="../HotkeysMainWindow.cpp" line="167"/>
+        <location filename="../HotkeysMainWindow.cpp" line="371"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="356"/>
+        <location filename="../HotkeysMainWindow.cpp" line="357"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="363"/>
+        <location filename="../HotkeysMainWindow.cpp" line="364"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

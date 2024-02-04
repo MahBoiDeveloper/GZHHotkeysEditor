@@ -13,7 +13,7 @@ QImage GUIConfig::decodeWebpIcon(const QString& iconName)
     if (it != imagesCache.constEnd()) return it.value();
 
     // Find
-    const QFileInfo targetIconFile = findIconFile(iconsDirPath, iconName);
+    const QFileInfo targetIconFile = findIconFile(ICONS_FOLDER, iconName);
 
     if (targetIconFile.exists())
     {
@@ -32,12 +32,12 @@ QImage GUIConfig::decodeWebpIcon(const QString& iconName)
 
 QImage GUIConfig::decodeDefaultWebpIcon()
 {
-    return decodeWebpIconPath(defaultIconFile);
+    return decodeWebpIconPath(DEFAULT_ICON_PATH);
 }
 
 QPixmap GUIConfig::getEntityTypePixmap(Config::EntitiesTypes entityType)
 {
-    return QPixmap{qtSourceIconsPath + "/" + QString{"%1.png"}.arg(Config::ENTITIES_STRINGS.value(entityType))};
+    return QPixmap{QT_ICONS_FOLDER + "/" + QString{"%1.png"}.arg(Config::ENTITIES_STRINGS.value(entityType))};
 }
 
 QFileInfo GUIConfig::findIconFile(const QString& pathToIconsDir, const QString& fileBaseName)
