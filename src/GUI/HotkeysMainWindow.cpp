@@ -290,7 +290,7 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
 
         QWidget* panelScrollWidget = new QWidget;
         panelScrollWidget->setLayout(hotkeysLayout);
-        pHotkeysPanelsWidget->addTab(panelScrollWidget, QString("Panel_%1").arg(++i));
+        pHotkeysPanelsWidget->addTab(panelScrollWidget, QString(tr("Layout %1")).arg(++i));
     }
 
     // If only one panel -> hide header

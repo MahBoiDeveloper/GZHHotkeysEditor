@@ -110,6 +110,11 @@
         <translation>О программе</translation>
     </message>
     <message>
+        <location filename="../HotkeysMainWindow.cpp" line="293"/>
+        <source>Layout %1</source>
+        <translation>Раскладка %1</translation>
+    </message>
+    <message>
         <location filename="../HotkeysMainWindow.cpp" line="358"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
