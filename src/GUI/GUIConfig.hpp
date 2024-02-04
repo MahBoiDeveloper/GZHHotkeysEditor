@@ -6,12 +6,12 @@
 class GUIConfig
 {
 public:
-    inline static const QSize startButtonsSize              = QSize(230, 110);
-    inline static const int entityIconMinimumHeight         = 80;
-    inline static const int entitySectionIconsScalingHeight = 25;
-    inline static const QString QT_ICONS_FOLDER             = ":/my/icons";
-    inline static const QString DEFAULT_ICON_PATH           = QT_ICONS_FOLDER + "/NoImageSmall.webp";
-    inline static const QString ICONS_FOLDER                = Config::RESOURCE_FOLDER + "/Icons";
+    inline static const QSize   START_BUTTON_SIZE   = QSize(230, 110);
+    inline static const int     ICON_MIN_HEIGHT     = 80;
+    inline static const int     ICON_SCALING_HEIGHT = 25;
+    inline static const QString QT_ICONS_FOLDER     = ":/my/icons";
+    inline static const QString DEFAULT_ICON_PATH   = QT_ICONS_FOLDER + "/NoImageSmall.webp";
+    inline static const QString ICONS_FOLDER        = Config::RESOURCE_FOLDER + "/Icons";
 
 public:
     GUIConfig() = delete;

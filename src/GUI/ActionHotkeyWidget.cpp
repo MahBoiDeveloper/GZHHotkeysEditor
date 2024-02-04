@@ -19,11 +19,11 @@ ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
     // Object name for css
     hotkeyLabel.setObjectName("HotkeyLabel");
 
-    connect(&newHotkeyButton, &QPushButton::pressed, this, &ActionHotkeyWidget::onNewHotkeyPressed);
+    connect(&newHotkeyButton, &QPushButton::pressed, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
 
     // Signal timer settings
     signalTimer.setSingleShot(true);
-    connect(&signalTimer, &QTimer::timeout, this, &ActionHotkeyWidget::signalRepeatNewHotkey);
+    connect(&signalTimer, &QTimer::timeout, this, &ActionHotkeyWidget::SignalRepeatNewHotkey);
 
     QLabel* imageLb = new QLabel;
     imageLb->setPixmap(QPixmap::fromImage(GUIConfig::decodeWebpIcon(iconName)));
@@ -48,17 +48,17 @@ ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
     setLayout(mainL);
 }
 
-QString ActionHotkeyWidget::getActionName() const
+QString ActionHotkeyWidget::GetActionName() const
 {
     return actionNameLabel.text();
 }
 
-QString ActionHotkeyWidget::getHotkey() const
+QString ActionHotkeyWidget::GetHotkey() const
 {
     return hotkeyLabel.text();
 }
 
-void ActionHotkeyWidget::highlightKey(bool collision)
+void ActionHotkeyWidget::HighlightKey(bool collision)
 {
     if (collision)
     {
@@ -86,7 +86,7 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
         hotkey = QKeySequence(key).toString();
 
         // If the key is correct -> disconnect the input error reset signal
-        disconnect(this, &ActionHotkeyWidget::signalRepeatNewHotkey, this, &ActionHotkeyWidget::onNewHotkeyPressed);
+        disconnect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
 
         // Return focus to parent
         parentWidget()->setFocus();
@@ -115,7 +115,7 @@ void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
     hotkeyLabel.setPalette(QPalette{});
     hotkeyLabel.setText(hotkey);
 
-    emit hotkeyChanged(hotkey);
+    emit HotkeyChanged(hotkey);
 
     // Stop timer
     signalTimer.stop();
@@ -123,11 +123,11 @@ void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
     QWidget::focusOutEvent(event);
 }
 
-void ActionHotkeyWidget::onNewHotkeyPressed()
+void ActionHotkeyWidget::OnNewHotkeyPressed()
 {
     // Reconnect the input error reset signal
-    disconnect(this, &ActionHotkeyWidget::signalRepeatNewHotkey, this, &ActionHotkeyWidget::onNewHotkeyPressed);
-    connect(this, &ActionHotkeyWidget::signalRepeatNewHotkey, this, &ActionHotkeyWidget::onNewHotkeyPressed);
+    disconnect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
+    connect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
 
     // Decorate
     hotkeyLabel.setText(tr("Press latin key..."));

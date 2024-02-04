@@ -7,22 +7,22 @@ EntityAction::EntityAction(const QString& name, const QString& iconName, const Q
 {
 }
 
-const QString& EntityAction::getName() const
+const QString& EntityAction::GetName() const
 {
     return name;
 }
 
-const QString& EntityAction::getIconName() const
+const QString& EntityAction::GetIconName() const
 {
     return iconName;
 }
 
-const QString& EntityAction::getHotkey() const
+const QString& EntityAction::GetHotkey() const
 {
     return hotkey;
 }
 
-void EntityAction::setHotkey(const QString& newHotkey)
+void EntityAction::SetHotkey(const QString& newHotkey)
 {
     hotkey = newHotkey;
 }

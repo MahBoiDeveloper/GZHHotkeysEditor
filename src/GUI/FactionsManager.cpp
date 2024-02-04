@@ -7,60 +7,60 @@
 
 #include "FactionsManager.hpp"
 
-FactionsManager::FactionsManager(const QString& techTreeFilePath, QObject *parent)
+FactionsManager::FactionsManager(const QString& techTreeFilePath, QObject* parent)
     : QObject{parent}
     , pTechTree{new JSONFile{techTreeFilePath}}
-    , factions{_getTechTreeFactions()}
+    , FACTIONS{_GetTechTreeFactions()}
 {
     // Update collisions sets for all available keys
     for (Qt::Key key = Config::AVAILABLE_KEYS.first; key <= Config::AVAILABLE_KEYS.second; key = static_cast<Qt::Key>(key+1))
     {
-        _appendNewCollisionsForHotkey(QKeySequence(key).toString());
+        _AppendNewCollisionsForHotkey(QKeySequence(key).toString());
     }
 
     // TODO: temporary
-//    if (entitiesPanelsCollisionKeys.isEmpty())
-//    {
-//        qDebug() << "\n" << "No collisions" << "\n";
-//        return;
-//    }
-//    qDebug() << "\n" << "======== Collisions ========";
-//    for (auto it = entitiesPanelsCollisionKeys.cbegin(); it != entitiesPanelsCollisionKeys.cend(); ++it)
-//    {
-//        qDebug() << "\n" << "Entity name:" << it.key()->getName();
-//        for (const auto & key : it.value())
-//        {
-//            qDebug() << " - " << key;
-//        }
-//    }
-//    qDebug() << "\n";
+    //    if (entitiesPanelsCollisionKeys.isEmpty())
+    //    {
+    //        qDebug() << "\n" << "No collisions" << "\n";
+    //        return;
+    //    }
+    //    qDebug() << "\n" << "======== Collisions ========";
+    //    for (auto it = entitiesPanelsCollisionKeys.cbegin(); it != entitiesPanelsCollisionKeys.cend(); ++it)
+    //    {
+    //        qDebug() << "\n" << "Entity name:" << it.key()->getName();
+    //        for (const auto & key : it.value())
+    //        {
+    //            qDebug() << " - " << key;
+    //        }
+    //    }
+    //    qDebug() << "\n";
 }
 
-const QVector<Faction>& FactionsManager::getFactions() const
+const QVector<Faction>& FactionsManager::GetFactions() const
 {
-    return factions;
+    return FACTIONS;
 }
 
-const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>> FactionsManager::getFactionEntities(const QString& factionShortName) const
+const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>> FactionsManager::GetFactionEntities(const QString& factionShortName) const
 {
-    const Faction* const faction = _getFactionByShortName(factionShortName);
+    const Faction* const faction = _GetFactionByShortName(factionShortName);
 
     if (faction == nullptr) return {};
 
     return faction->GetEntitiesMap();
 }
 
-const QVector<QVector<QSharedPointer<EntityAction>>> FactionsManager::getEntityActionPanels(const QString& factionShortName, const QString& entityName) const
+const QVector<QVector<QSharedPointer<EntityAction>>> FactionsManager::GetEntityActionPanels(const QString& factionShortName, const QString& entityName) const
 {
-    const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>> factionEntities = getFactionEntities(factionShortName);
+    const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>> factionEntities = GetFactionEntities(factionShortName);
 
     for (const auto & currentEntitiesType : factionEntities)
     {
         for (const auto & entity : currentEntitiesType)
         {
-            if (entity->getName() == entityName)
+            if (entity->GetName() == entityName)
             {
-                return entity->getActionPanels();
+                return entity->GetActionPanels();
             }
         }
     }
@@ -68,52 +68,52 @@ const QVector<QVector<QSharedPointer<EntityAction>>> FactionsManager::getEntityA
     return {};
 }
 
-void FactionsManager::setEntityActionHotkey(const QString& factionShortName,
+void FactionsManager::SetEntityActionHotkey(const QString& factionShortName,
                                             const QString& entityName,
                                             const QString& actionName,
                                             const QString& hotkey)
 {
-    const QVector<QVector<QSharedPointer<EntityAction>>> entityActionPanels = getEntityActionPanels(factionShortName, entityName);
+    const QVector<QVector<QSharedPointer<EntityAction>>> entityActionPanels = GetEntityActionPanels(factionShortName, entityName);
 
     for (const auto & actionPanel : entityActionPanels)
     {
         for (auto & entityAction : actionPanel)
         {
             // Skip wrong action
-            if (entityAction->getName() != actionName) continue;
+            if (entityAction->GetName() != actionName) continue;
 
             // Set hotkey
-            const QString oldHotkey = entityAction->getHotkey();
-            entityAction->setHotkey(hotkey);
+            const QString oldHotkey = entityAction->GetHotkey();
+            entityAction->SetHotkey(hotkey);
 
             // Update new collisions and quit
-            _updateHotkeyCollisions(oldHotkey, hotkey);
+            _UpdateHotkeyCollisions(oldHotkey, hotkey);
             return;
         }
     }
 }
 
-const QVector<QSet<QString>> FactionsManager::getEntityCollisionsKeys(const QSharedPointer<const Entity>& entity) const
+const QVector<QSet<QString>> FactionsManager::GetEntityCollisionsKeys(const QSharedPointer<const Entity>& entity) const
 {
     return entitiesPanelsCollisionKeys.value(entity);
 }
 
-const QVector<QSet<QString>> FactionsManager::getEntityCollisionsKeys(const QString& entityName) const
+const QVector<QSet<QString>> FactionsManager::GetEntityCollisionsKeys(const QString& entityName) const
 {
     for (const auto & entity : entitiesPool)
     {
-        if (entity->getName() == entityName)
+        if (entity->GetName() == entityName)
         {
-            return getEntityCollisionsKeys(entity);
+            return GetEntityCollisionsKeys(entity);
         }
     }
 
     return {};
 }
 
-const Faction* FactionsManager::_getFactionByShortName(const QString& factionShortName) const
+const Faction* FactionsManager::_GetFactionByShortName(const QString& factionShortName) const
 {
-    for (const auto & faction : factions)
+    for (const auto & faction : FACTIONS)
     {
         // Find the right faction
         if (faction.GetShortName() == factionShortName)
@@ -124,15 +124,15 @@ const Faction* FactionsManager::_getFactionByShortName(const QString& factionSho
     return nullptr;
 }
 
-void FactionsManager::_appendNewCollisionsForHotkey(const QString& newHotkey)
+void FactionsManager::_AppendNewCollisionsForHotkey(const QString& newHotkey)
 {
-    for (const auto & faction : factions)
+    for (const auto & faction : FACTIONS)
     {
         for (const auto & entity : faction.GetAllEntities())
         {
             QVector<QSet<QString>> newPanelsCollisionSets = entitiesPanelsCollisionKeys.value(entity);
 
-            const QVector<QVector<QSharedPointer<EntityAction>>>& entityPanels = entity->getActionPanels();
+            const QVector<QVector<QSharedPointer<EntityAction>>>& entityPanels = entity->GetActionPanels();
 
             // Panel index
             int i = -1;
@@ -158,7 +158,7 @@ void FactionsManager::_appendNewCollisionsForHotkey(const QString& newHotkey)
 
                 for (const auto & action : panel)
                 {
-                    if (action->getHotkey() == newHotkey) ++hotkeyActionsCount;
+                    if (action->GetHotkey() == newHotkey) ++hotkeyActionsCount;
                 }
 
                 // If there ARE collisions for a new hotkey in current panel -> insert the key into the set
@@ -188,7 +188,7 @@ void FactionsManager::_appendNewCollisionsForHotkey(const QString& newHotkey)
     }
 }
 
-void FactionsManager::_updateHotkeyCollisions(const QString& oldHotkey, const QString& newHotkey)
+void FactionsManager::_UpdateHotkeyCollisions(const QString& oldHotkey, const QString& newHotkey)
 {
     QSet<QSharedPointer<const Entity>> noCollisionEntities;
 
@@ -201,7 +201,7 @@ void FactionsManager::_updateHotkeyCollisions(const QString& oldHotkey, const QS
         int i = -1;
 
         // For all entity panels
-        for (const auto & panel : it.key()->getActionPanels())
+        for (const auto & panel : it.key()->GetActionPanels())
         {
             // Increase index
             ++i;
@@ -210,7 +210,7 @@ void FactionsManager::_updateHotkeyCollisions(const QString& oldHotkey, const QS
 
             for (const auto & action : panel)
             {
-                if (action->getHotkey() == oldHotkey) ++hotkeyActionsCount;
+                if (action->GetHotkey() == oldHotkey) ++hotkeyActionsCount;
             }
 
             // If there are NO collision -> remove key from current panel
@@ -251,29 +251,28 @@ void FactionsManager::_updateHotkeyCollisions(const QString& oldHotkey, const QS
     }
 
     // Append new hotkey collisions
-    _appendNewCollisionsForHotkey(newHotkey);
-
+    _AppendNewCollisionsForHotkey(newHotkey);
 
     // TODO: temporary
-//    if (entitiesPanelsCollisionKeys.isEmpty())
-//    {
-//        qDebug() << "\n" << "No collisions" << "\n";
-//        return;
-//    }
-//    qDebug() << "\n" << "======== Collisions ========";
-//    for (auto it = entitiesPanelsCollisionKeys.cbegin(); it != entitiesPanelsCollisionKeys.cend(); ++it)
-//    {
-//        qDebug() << "\n" << "Entity name:" << it.key()->getName();
-//        for (const auto & key : it.value())
-//        {
-//            qDebug() << " - " << key;
-//        }
-//    }
-//    qDebug() << "\n";
+    //    if (entitiesPanelsCollisionKeys.isEmpty())
+    //    {
+    //        qDebug() << "\n" << "No collisions" << "\n";
+    //        return;
+    //    }
+    //    qDebug() << "\n" << "======== Collisions ========";
+    //    for (auto it = entitiesPanelsCollisionKeys.cbegin(); it != entitiesPanelsCollisionKeys.cend(); ++it)
+    //    {
+    //        qDebug() << "\n" << "Entity name:" << it.key()->getName();
+    //        for (const auto & key : it.value())
+    //        {
+    //            qDebug() << " - " << key;
+    //        }
+    //    }
+    //    qDebug() << "\n";
 }
 
 #pragma region TechTree.json parsing methods
-    QVector<Faction> FactionsManager::_getTechTreeFactions()
+    QVector<Faction> FactionsManager::_GetTechTreeFactions()
     {
         QVector<Faction> factions;
 
@@ -290,7 +289,7 @@ void FactionsManager::_updateHotkeyCollisions(const QString& oldHotkey, const QS
 
             for (auto it = Config::ENTITIES_STRINGS.cbegin(); it != Config::ENTITIES_STRINGS.cend(); ++it)
             {
-                QVector<QSharedPointer<const Entity>> entities = _getEntitiesFromJsonArray(factionObject.value(it.value()).toArray());
+                QVector<QSharedPointer<const Entity>> entities = _GetEntitiesFromJsonArray(factionObject.value(it.value()).toArray());
                 if (!entities.isEmpty())
                 {
                     newFaction.AddEntities(it.key(), entities);
@@ -303,20 +302,20 @@ void FactionsManager::_updateHotkeyCollisions(const QString& oldHotkey, const QS
         return factions;
     }
 
-    QVector<QSharedPointer<const Entity>> FactionsManager::_getTechTreeFactionEntities(Config::EntitiesTypes entity, const QString& factionShortName)
+    QVector<QSharedPointer<const Entity>> FactionsManager::_GetTechTreeFactionEntities(Config::EntitiesTypes entity, const QString& factionShortName)
     {
         for (const auto& jsonFaction : pTechTree->Query("$.TechTree").toArray())
         {
             if (factionShortName == jsonFaction.toObject().value("ShortName").toString())
             {
-                return _getEntitiesFromJsonArray(jsonFaction.toObject().value(Config::ENTITIES_STRINGS.value(entity)).toArray());
+                return _GetEntitiesFromJsonArray(jsonFaction.toObject().value(Config::ENTITIES_STRINGS.value(entity)).toArray());
             }
         }
 
         return {};
     }
 
-    QVector<QSharedPointer<const Entity>> FactionsManager::_getEntitiesFromJsonArray(const QJsonArray& array)
+    QVector<QSharedPointer<const Entity>> FactionsManager::_GetEntitiesFromJsonArray(const QJsonArray& array)
     {
         QVector<QSharedPointer<const Entity>> entities;
 
@@ -331,7 +330,7 @@ void FactionsManager::_updateHotkeyCollisions(const QString& oldHotkey, const QS
 
                 for (const auto & jsonPanel : jsonEntity.toObject().value("KeyboardLayouts").toArray())
                 {
-                    actionPanels.append(_getActionsFromJsonArray(jsonPanel.toArray()));
+                    actionPanels.append(_GetActionsFromJsonArray(jsonPanel.toArray()));
                 }
 
                 entitiesPool.insert(name, QSharedPointer<const Entity>::create(CSFPARSER->GetStringValue(hotkeyString), name, actionPanels));
@@ -343,7 +342,7 @@ void FactionsManager::_updateHotkeyCollisions(const QString& oldHotkey, const QS
         return entities;
     }
 
-    QVector<QSharedPointer<EntityAction>> FactionsManager::_getActionsFromJsonArray(const QJsonArray& array)
+    QVector<QSharedPointer<EntityAction>> FactionsManager::_GetActionsFromJsonArray(const QJsonArray& array)
     {
         QVector<QSharedPointer<EntityAction>> actions;
 

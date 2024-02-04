@@ -6,22 +6,22 @@ Entity::Entity(const QString& name, const QString& iconName, const QVector<QVect
     , actionPanels{actionPanels}
 {}
 
-const QString& Entity::getName() const
+const QString& Entity::GetName() const
 {
     return name;
 }
 
-const QString& Entity::getIconName() const
+const QString& Entity::GetIconName() const
 {
     return iconName;
 }
 
-const QVector<QVector<QSharedPointer<EntityAction>>>& Entity::getActionPanels() const
+const QVector<QVector<QSharedPointer<EntityAction>>>& Entity::GetActionPanels() const
 {
     return actionPanels;
 }
 
-int Entity::getPanelsCount() const
+int Entity::GetPanelsCount() const
 {
     return actionPanels.size();
 }

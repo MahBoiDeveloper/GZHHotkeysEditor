@@ -13,6 +13,6 @@ BaseConfigurationDialog::BaseConfigurationDialog(QWidget *parent) : QDialog(pare
     {
         emit AcceptedConfiguration(CreateConfigurationData());
     });
-    
+
     connect(&dialogButtons, &QDialogButtonBox::rejected, this, &QDialog::deleteLater);
 }

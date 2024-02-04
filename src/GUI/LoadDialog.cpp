@@ -5,66 +5,68 @@
 #include <QFileDialog>
 #include <QLineEdit>
 #include <QFontMetrics>
-#include <QDebug>
 
 #include "LoadDialog.hpp"
 
-LoadDialog::LoadDialog(QWidget *parent) : BaseConfigurationDialog(parent)
+LoadDialog::LoadDialog(QWidget* parent) : BaseConfigurationDialog(parent)
 {
     // configure file path selection
-    QLineEdit* pathToFileLineEdit = new QLineEdit;
+    QLineEdit* pathToFileLineEdit = new QLineEdit();
     pathToFileLineEdit->setMaximumWidth(700);
+
     QFont font(pathToFileLineEdit->font());
     font.setPointSize(font.pointSize()-2); // reduce standart font size
     pathToFileLineEdit->setFont(font);
-    QFileDialog* fileDialog = new QFileDialog; // dialog for selecting the path to the file
+
+    QFileDialog* fileDialog = new QFileDialog(); // dialog for selecting the path to the file
     fileDialog->setFileMode(QFileDialog::FileMode::ExistingFile);
     fileDialog->setAcceptMode(QFileDialog::AcceptMode::AcceptOpen);
     fileDialog->setNameFilters({tr("Text files") + "(*.txt)",
                                 tr("Any files")  + "(*)"});
     connect(fileDialog, &QFileDialog::fileSelected, pathToFileLineEdit, &QLineEdit::setText);
+    
     // review button
-    QPushButton* reviewButton = new QPushButton(tr("Review"));
-    reviewButton->setStyleSheet("QPushButton { padding-top: 2px; padding-bottom: 2px; }");
-    reviewButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    connect(reviewButton, &QPushButton::clicked, fileDialog, &QFileDialog::exec);
+    QPushButton* btnReview = new QPushButton(tr("Review"));
+    btnReview->setStyleSheet("QPushButton { padding-top: 2px; padding-bottom: 2px; }");
+    btnReview->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    connect(btnReview, &QPushButton::clicked, fileDialog, &QFileDialog::exec);
 
     // configure choise buttons
     QRadioButton* loadFromFileButton = new QRadioButton(tr("Load project"));
-    connect(loadFromFileButton, &QPushButton::toggled, this,
-        [=](bool checked){
-            pathToFileLineEdit->setEnabled(checked);
-            reviewButton->setEnabled(checked);
-        }
-    );
-    QRadioButton* loadFromGameButton = new QRadioButton(tr("Load installed game hotkey map"));
-    groupB.setExclusive(true);
-    loadFromFileButton->setChecked(true);
-    groupB.addButton(loadFromFileButton);
-    groupB.addButton(loadFromGameButton);
+    connect(loadFromFileButton, &QPushButton::toggled, this, [=](bool checked)
+    {
+        pathToFileLineEdit->setEnabled(checked);
+        btnReview->setEnabled(checked);
+    });
 
-    QHBoxLayout* reviewL = new QHBoxLayout;
-    reviewL->addWidget(pathToFileLineEdit);
-    reviewL->addSpacing(5);
-    reviewL->addWidget(reviewButton);
-    reviewL->setContentsMargins(loadFromFileButton->sizeHint().width() -
+    QRadioButton* loadFromGameButton = new QRadioButton(tr("Load installed game hotkey map"));
+    buttonsGroup.setExclusive(true);
+    loadFromFileButton->setChecked(true);
+    buttonsGroup.addButton(loadFromFileButton);
+    buttonsGroup.addButton(loadFromGameButton);
+
+    QHBoxLayout* ltReview = new QHBoxLayout();
+    ltReview->addWidget(pathToFileLineEdit);
+    ltReview->addSpacing(5);
+    ltReview->addWidget(btnReview);
+    ltReview->setContentsMargins(loadFromFileButton->sizeHint().width() -
                                 QFontMetrics(loadFromFileButton->font()).horizontalAdvance(loadFromFileButton->text()),
                                 0,0,0);
 
     // configure dialog view
-    QVBoxLayout* mainL = new QVBoxLayout;
-    mainL->setContentsMargins(80,0,80,0);
-    mainL->setAlignment(Qt::Alignment::enum_type::AlignCenter);
-    mainL->addStretch(5);
-    mainL->addWidget(loadFromFileButton);
-    mainL->addSpacing(10);
-    mainL->addLayout(reviewL);
-    mainL->addStretch(2);
-    mainL->addWidget(loadFromGameButton);
-    mainL->addStretch(5);
-    mainL->addWidget(&dialogButtons, 0, Qt::AlignCenter);
-    mainL->addStretch(1);
-    setLayout(mainL);
+    QVBoxLayout* ltMainBlock = new QVBoxLayout();
+    ltMainBlock->setContentsMargins(80,0,80,0);
+    ltMainBlock->setAlignment(Qt::Alignment::enum_type::AlignCenter);
+    ltMainBlock->addStretch(5);
+    ltMainBlock->addWidget(loadFromFileButton);
+    ltMainBlock->addSpacing(10);
+    ltMainBlock->addLayout(ltReview);
+    ltMainBlock->addStretch(2);
+    ltMainBlock->addWidget(loadFromGameButton);
+    ltMainBlock->addStretch(5);
+    ltMainBlock->addWidget(&dialogButtons, 0, Qt::AlignCenter);
+    ltMainBlock->addStretch(1);
+    setLayout(ltMainBlock);
 }
 
 QVariant LoadDialog::CreateConfigurationData()

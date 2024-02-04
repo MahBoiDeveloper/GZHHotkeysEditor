@@ -37,7 +37,6 @@ LaunchWidget::LaunchWidget(Config::Languages lngType, QWidget* parent) : QStacke
     UpdateConnectionsToSignals();
 }
 
-/// @brief Set or reset translator for start window.
 void LaunchWidget::SetTranslator(Config::Languages lngType)
 {
     // Delete old translator
@@ -53,7 +52,6 @@ void LaunchWidget::SetTranslator(Config::Languages lngType)
     }
 }
 
-/// @brief Call this fucntion on every new pointer of pStartWidget.
 void LaunchWidget::UpdateConnectionsToSignals()
 {
     connect(pStartWidget, &GreetingWidget::languageChanged,
@@ -77,7 +75,6 @@ void LaunchWidget::OnChangeLanguage(int intLngIndex)
     UpdateConnectionsToSignals();
 }
 
-/// @brief Open create/loader widget.
 void LaunchWidget::OnStartButtonClicked(GreetingWidget::StandartButtons standartButton)
 {
     BaseConfigurationDialog* pConfigurationWidget = nullptr;
