@@ -8,7 +8,6 @@ using namespace std;
 #pragma region CTORs and DTORs
     CSFParser::CSFParser(const string& filePath) : Path{filePath}
     {
-        // Parse
         ifstream csfFile(Path, ios::binary | ios::in);
         LOGMSG("Attempt to read binary file \"" + Path + "\"...");
 
@@ -25,12 +24,11 @@ using namespace std;
         }
     }
 
-    CSFParser::CSFParser(const char* filePath)    : CSFParser{string{filePath}}       {}
+    CSFParser::CSFParser(const char*    filePath) : CSFParser{string{filePath}}       {}
     CSFParser::CSFParser(const QString& filePath) : CSFParser{filePath.toStdString()} {}
 #pragma endregion
 
 #pragma region Parsing
-
     void CSFParser::ReadHeader(ifstream* csfFile)
     {
         csfFile->read(reinterpret_cast<char*>(&Header), sizeof(Header));
@@ -130,7 +128,6 @@ using namespace std;
         }
     }
 
-    /// @brief Save compiled string table data to the specific file
     void CSFParser::Save(const string& strFileName)
     {
         ofstream csfFile{strFileName, ios::binary | ios::out};
@@ -152,19 +149,16 @@ using namespace std;
         csfFile.close();
     }
 
-    /// @brief Save compiled string table data to the specific file
     void CSFParser::Save(const char* strFileName)
     {
         Save(string{strFileName});
     }
 
-    /// @brief Save compiled string table data to the specific file
     void CSFParser::Save(const QString& strFileName)
     {
         Save(strFileName.toStdString());
     }
 
-    /// @brief Save compiled sting table data to the parsed file before
     void CSFParser::Save()
     {
         Save(Path);
@@ -207,7 +201,6 @@ using namespace std;
 #pragma endregion
 
 #pragma region Getters
-    /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
     wstring CSFParser::GetStringValue(const string& strName) const
     {
         wstring returnValue;
@@ -222,147 +215,110 @@ using namespace std;
         return returnValue;
     }
 
-    /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
     QString CSFParser::GetStringValue(const QString& strName) const
     {
         return QString::fromStdWString(GetStringValue(strName.toStdString()));
     }
 
-    /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
     QString CSFParser::GetStringValue(const char* strName) const
     {
         return GetStringValue(QString{strName});
     }
 
-    /// @brief Returns all string names in compiled sting table.
     list<string> CSFParser::GetStringNames() const
     {
         list<string> returnList;
        
         for (const auto& elem : Table)
-        {
             returnList.push_back(elem.Name);
-        }
 
         return returnList;
     }
 
-    /// @brief Returns list of categories (substrings before ':').
     list<string> CSFParser::GetCategories() const
     {
         list<string> returnList;
 
         for (const auto& elem : Table)
-        {
             returnList.push_back(elem.Name.substr(0, elem.Name.find_first_of(':', 0) ));
-        }
 
         returnList.sort();
         returnList.unique();
         return returnList;
     }
 
-    /// @brief Returns list of all strings in category with short name (substrings after ':').
     list<string> CSFParser::GetCategoryStrings(const string& strCategoryName) const
     {
         list<string> returnList;
 
         for (const auto& elem : Table)
-        {
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
-            {
                 returnList.push_back(elem.Name.substr(elem.Name.find_first_of(':', 0) + 1, elem.Name.size() - 1));
-            }
-        }
 
         returnList.sort();
         return returnList;
     }
 
-    /// @brief Returns list of all strings in category with short name (substrings after ':').
     QStringList CSFParser::GetCategoryStrings(const QString& strCategoryName) const
     {
         list<string> tmp = GetCategoryStrings(strCategoryName.toStdString());
         return Unsorted::STDStringListToQStringList(tmp);
     }
 
-    /// @brief Returns list of all strings in category.
     list<string> CSFParser::GetCategoryStringsWithFullNames(const string& strCategoryName) const
     {
         list<string> returnList;
 
         for (const auto& elem : Table)
-        {
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
-            {
                 returnList.push_back(elem.Name);
-            }
-        }
 
         returnList.sort();
         return returnList;
     }
 
-    /// @brief Returns list of all strings in category.
     QStringList CSFParser::GetCategoryStringsWithFullNames(const QString& strCategoryName) const
     {
         list<string> tmp = GetCategoryStringsWithFullNames(strCategoryName.toStdString());
         return Unsorted::STDStringListToQStringList(tmp);
     }
     
-    /// @brief Returns list of all strings that values contains wide character.
     list<string> CSFParser::GetStringsContainsSymbol(const wchar_t& wch) const
     {
         list<string> returnList;
        
         for (const auto& elem : Table)
-        {
             if (elem.Value.find(wch) <= elem.Value.size())
-            {
                 returnList.push_back(elem.Name);
-            }
-        }
 
         returnList.sort();
         return returnList;
     }
 
-    /// @brief Returns list of all strings that values contains wide character in specific category.
     list<string> CSFParser::GetStringsContainsSymbol(const wchar_t& wch, const string& strCategoryName) const
     {
         list<string> returnList;
 
         for (const auto& elem : Table)
-        {
             if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
-            {
                 if (elem.Value.find_first_of(wch) <= elem.Value.size())
-                {
                     returnList.push_back(elem.Name);
-                }
-            }
-        }
 
         returnList.sort();
         return returnList;
     }
 
-    /// @brief Returns list of full strings data.
     list<CSFParser::CompiledString> CSFParser::GetStringsByNameList(const list<string>& lstNames) const
     {
         list<CompiledString> returnList;
 
         for (const auto& strName : lstNames)
-        {
             for (const auto& elem : Table)
-            {
                 if (elem.Name == strName)
                 {
                     returnList.push_back(elem);
                     break;
                 }
-            }
-        }
 
         return returnList;
     }
@@ -372,62 +328,49 @@ using namespace std;
         return GetStringValue(strName).remove(QRegExp{"\\[&[A-Z]\\]"}).trimmed();
     }
 
-    /// @brief Returns wide character (letter after & sign) assinged to keyboard key. 
     wchar_t CSFParser::GetHotkey(const string& strName) const
     {
-        wchar_t hk = L'\0';
-        size_t index = 0;
+        wchar_t hk    = L'\0';
+        size_t  index = 0;
 
         for (const auto& elem : Table)
-        {
             if (elem.Name == strName)
-            {
                 if ((index = elem.Value.find_first_of(L'&')) <= elem.Value.size())
                 {
                     hk = elem.Value.at(index + 1);
                     break;
                 }
-            }
-        }
 
         return hk;
     }
 
-    /// @brief Returns wide character (letter after & sign) assinged to keyboard key. 
     wchar_t CSFParser::GetHotkey(const char* strName) const
     {
         return GetHotkey(string(strName));
     }
 
-    /// @brief Returns wide character (letter after & sign) assinged to keyboard key. 
     wchar_t CSFParser::GetHotkey(const QString& strName) const
     {
         return GetHotkey(strName.toStdString());
     }
 
-    /// @brief Returns list of data structs with string names and its keyboard key assignment.
     list<CSFParser::HotkeyAssociation> CSFParser::GetHotkeys(const list<string>& lstStringNames) const
     {
         list<HotkeyAssociation> returnList;
 
         for (const auto& strName : lstStringNames)
-        {
             for (const auto& elem : Table)
-            {
                 if (strName == elem.Name)
                 {
                     returnList.push_back({strName, CSFParser::GetHotkey(strName)});
                     break;
                 }
-            }
-        }
 
         return returnList;
     }
 #pragma endregion
 
 #pragma region Setters
-    /// @brief Searchs any match for string name and rewriting hotkey assignment for it.
     void CSFParser::SetHotkey(const string& strName, const wchar_t& wchLetter)
     {
         LOGSTM << "Changing for string \"" << strName << "\" hotkey assingment to letter \"" << (const char)wchLetter << "\"" << endl;
@@ -457,79 +400,58 @@ using namespace std;
         }
     }
 
-    /// @brief Searchs any match for string name and rewriting hotkey assignment for it.
     void CSFParser::SetHotkey(const char* strName, const wchar_t& wchLetter)
     {
         SetHotkey(string(strName), wchLetter);
     }
 
-    /// @brief Searchs any match for string name and rewriting hotkey assignment for it.
     void CSFParser::SetHotkey(const QString& strName, const wchar_t& wchLetter)
     {
         SetHotkey(strName.toStdString(), wchLetter);
     }
 
-    /// @brief Searchs any match for string name and rewriting its value.
     void CSFParser::SetStringValue(const string& strName, const wstring& wstrValue)
     {
         LOGSTM << "Changing value for string \"" << strName << "\"" << endl;
 
         for (auto& elem : Table)
-        {
             if (elem.Name == strName)
-            {
                 elem.Value = wstrValue;
-            }
-        }
     }
 
-    /// @brief Searchs any match for string name and rewriting its value.
     void CSFParser::SetStringValue(const CompiledString& stString)
     {
         LOGSTM << "Changing value for string \"" << stString.Name << "\"" << endl;
 
         for (auto& elem : Table)
-        {
             if (elem.Name == stString.Name)
-            {
                 elem.Value = stString.Value;
-            }
-        }
     }
 
-    /// @brief Searchs any match for string names and rewriting its values.
     void CSFParser::SetStringsValue(const list<CompiledString>& lstChanges)
     {
         for (const auto& elem : lstChanges)
-        {
             SetStringValue(elem);
-        }
     }
 #pragma endregion
 
 #pragma region Support methods
-    /// @brief Pure function-convertor from char array to std::string.
     string CSFParser::CharArrayToString(const size_t& arrayLength, const char* pArray) const
     {
         stringstream ss;
        
         for(size_t i = 0 ; i < arrayLength; i++)
-        {
             ss << pArray[i];
-        }
     
         return ss.str();
     }
     
-    /// @brief Pure function-convertor from wchar_t array to std::wstring.
     wstring CSFParser::WharArrayToWstring(const size_t& arrayLength, const wchar_t* pArray) const
     {
         wstringstream wss;
        
         for(size_t i = 0 ; i < arrayLength; i++)
-        {
             wss << pArray[i];
-        }
     
         return wss.str();
     }

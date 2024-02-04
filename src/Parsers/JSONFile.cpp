@@ -9,7 +9,6 @@
 using namespace std;
 
 #pragma region CTORs and DTORs
-
     JSONFile::JSONFile(const QString& filePath)
     {
         QFile openedFile(filePath);
@@ -31,40 +30,32 @@ using namespace std;
         }
     }
 
-    JSONFile::JSONFile(const char* filePath)        : JSONFile{QString{filePath}}
-    {}
+    JSONFile::JSONFile(const char* filePath)        : JSONFile{QString{filePath}}                {}
 
-    JSONFile::JSONFile(const std::string& filePath) : JSONFile{QString::fromStdString(filePath)}
-    {}
-
+    JSONFile::JSONFile(const std::string& filePath) : JSONFile{QString::fromStdString(filePath)} {}
 #pragma endregion
 
 #pragma region Getters
-    /// @brief Returns main object of parsed JSON file
     const QJsonObject& JSONFile::GetMainObject()
     {
         return JsonMainObject;
     }
 
-    /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
     QJsonValue JSONFile::Query(const QString& strQuery) const
     {
         return Query(JsonMainObject, strQuery);
     }
 
-    /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
     QJsonValue JSONFile::Query(const char* strQuery) const
     {
         return Query(JsonMainObject, QString{strQuery});
     }
 
-    /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
     QJsonValue JSONFile::Query(const std::string& strQuery) const
     {
         return Query(JsonMainObject, QString::fromStdString(strQuery));
     }
 
-    /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
     QJsonValue JSONFile::Query(const QJsonObject& jsonObject, const QString& strQuery)
     {
         // Find dollar sign in place of the first character

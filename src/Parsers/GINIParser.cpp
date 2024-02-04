@@ -14,17 +14,16 @@ using namespace std;
 
     GINIParser::GINIParser(const char* filePath)    : Path(string(filePath))
     {
-       Parse();
+        Parse();
     }
 
     GINIParser::GINIParser(const QString& filePath) : Path(filePath.toStdString())
     {
-       Parse();
+        Parse();
     }
 #pragma endregion
 
 #pragma region Parsing
-    /// @brief Parsing Generals Zero Hour .ini file format.
     void GINIParser::Parse()
     {
         ifstream file(Path, ios::in);
@@ -112,7 +111,6 @@ using namespace std;
         file.close();
     }
 
-    /// @brief Save .ini file.
     void GINIParser::Save()
     {
         ofstream file(Path, ios::out);
@@ -139,7 +137,6 @@ using namespace std;
         }
     }
 
-    /// @brief Save .ini file.
     void GINIParser::Save(const string& strFileSample)
     {
         string tmp = Path;
@@ -148,13 +145,11 @@ using namespace std;
         Path = tmp;
     }
 
-    /// @brief Save .ini file.
     void GINIParser::Save(const char* strFileSample)
     {
         Save(string(strFileSample));
     }
 
-    /// @brief Save .ini file.
     void GINIParser::Save(const QString& strFileSample)
     {
         Save(strFileSample.toStdString());
@@ -162,7 +157,6 @@ using namespace std;
 #pragma endregion
 
 #pragma region Getters and setter
-    /// @brief Returns all section names from .ini file.
     vector<string> GINIParser::GetSectionsNames() const
     {
         vector<string> tmp;
@@ -173,7 +167,6 @@ using namespace std;
         return tmp;
     }
 
-    /// @brief Returns all keys for direct section from .ini file.
     vector<string> GINIParser::GetSectionKeys(const string& strSectionName) const
     {
         vector<string> tmp;
@@ -190,19 +183,16 @@ using namespace std;
         return tmp;
     }
 
-    /// @brief Returns all keys for direct section from .ini file.
     vector<string> GINIParser::GetSectionKeys(const char* strSectionName) const
     {
         return GetSectionKeys(string(strSectionName));
     }
 
-    /// @brief Returns all keys for direct section from .ini file.
     vector<string> GINIParser::GetSectionKeys(const QString& strSectionName) const
     {
         return GetSectionKeys(strSectionName.toStdString());
     }
 
-    /// @brief Returns text value from section's key.
     string GINIParser::GetSectionValue(const string& strSectionName, const string& strSectionKey) const
     {
         string tmp;
@@ -223,19 +213,16 @@ using namespace std;
         return tmp;
     }
 
-    /// @brief Returns text value from section's key.
     string GINIParser::GetSectionValue(const char* strSectionName, const char* strSectionKey) const
     {
         return GetSectionValue(string(strSectionName), string(strSectionKey));
     }
 
-    /// @brief Returns text value from section's key.
     QString GINIParser::GetSectionValue(const QString& strSectionName, const QString& strSectionKey) const
     {
         return QString::fromStdString(GetSectionValue(strSectionName.toStdString(), strSectionKey.toStdString()));
     }
 
-    /// @brief Set new value for section's key.
     void GINIParser::SetSectionValue(const string& strName, const string& strKey, const string& strValue)
     {
         for (const auto& elem : Sections)
@@ -252,13 +239,11 @@ using namespace std;
             }
     }
 
-    /// @brief Set new value for section's key.
     void GINIParser::SetSectionValue(const char* strName, const char* strKey, const char* strValue)
     {
         SetSectionValue(string(strName), string(strKey), string(strValue));
     }
 
-    /// @brief Set new value for section's key.
     void GINIParser::SetSectionValue(const QString& strName, const QString& strKey, const QString& strValue)
     {
         SetSectionValue(strName.toStdString(), strKey.toStdString(), strValue.toStdString());

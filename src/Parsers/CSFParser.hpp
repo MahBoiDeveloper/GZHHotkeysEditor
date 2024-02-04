@@ -55,7 +55,9 @@ private: // Methods
     void WriteHeader(std::ofstream* csfFile);
     void WriteBody(std::ofstream* csfFile);
 
+    /// @brief Pure function-convertor from char array to std::string.
     std::string  CharArrayToString(const size_t& arrayLength, const char* pArray)     const;
+    /// @brief Pure function-convertor from wchar_t array to std::wstring.
     std::wstring WharArrayToWstring(const size_t& arrayLength, const wchar_t* pArray) const;
 
 public:
@@ -63,35 +65,62 @@ public:
     CSFParser(const char*        strFilePath);
     CSFParser(const QString&     strFilePath);
 
+    /// @brief Save compiled sting table data to the parsed file before.
     void Save();
+    /// @brief Save compiled string table data to the specific file.
     void Save(const std::string& strFileName);
+    /// @brief Save compiled string table data to the specific file.
     void Save(const char* strFileName);
+    /// @brief Save compiled string table data to the specific file.
     void Save(const QString& strFileName);
 
+    /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
     std::wstring              GetStringValue(const std::string& strName)                                       const;
+    /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
     QString                   GetStringValue(const QString& strName)                                           const;
+    /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
     QString                   GetStringValue(const char* strName)                                              const;
+    /// @brief Returns list of all strings in category with short name (substrings after ':').
     QStringList               GetCategoryStrings(const QString& strCategoryName)                               const;
+    /// @brief Returns list of all strings in category.
     QStringList               GetCategoryStringsWithFullNames(const QString& strCategoryName)                  const;
+    /// @brief Returns all string names in compiled sting table.
     std::list<std::string>    GetStringNames()                                                                 const;
+    /// @brief Returns list of categories (substrings before ':').
     std::list<std::string>    GetCategories()                                                                  const;
+    /// @brief Returns list of all strings in category with short name (substrings after ':').
     std::list<std::string>    GetCategoryStrings(const std::string& strCategoryName)                           const;
+    /// @brief Returns list of all strings in category.
     std::list<std::string>    GetCategoryStringsWithFullNames(const std::string& strCategoryName)              const;
+    /// @brief Returns list of all strings that values contains wide character.
     std::list<std::string>    GetStringsContainsSymbol(const wchar_t& wch)                                     const;
+    /// @brief Returns list of all strings that values contains wide character in specific category.
     std::list<std::string>    GetStringsContainsSymbol(const wchar_t& wch, const std::string& strCategoryName) const;
+    /// @brief Returns list of full strings data.
     std::list<CompiledString> GetStringsByNameList(const std::list<std::string>& lstNames)                     const;
 
+    /// @brief Delete all text by regular expression \[&[A-Z]\].
     QString GetClearName(const QString& strName)                                                               const;
 
+    /// @brief Returns wide character (letter after & sign) assinged to keyboard key. 
     wchar_t GetHotkey(const std::string& strName)                                                              const;
+    /// @brief Returns wide character (letter after & sign) assinged to keyboard key. 
     wchar_t GetHotkey(const char* strName)                                                                     const;
+    /// @brief Returns wide character (letter after & sign) assinged to keyboard key. 
     wchar_t GetHotkey(const QString& strName)                                                                  const;
+    /// @brief Returns list of data structs with string names and its keyboard key assignment.
     std::list<HotkeyAssociation> GetHotkeys(const std::list<std::string>& lstStringNames)                      const;
 
+    /// @brief Searchs any match for string name and rewriting hotkey assignment for it.
     void SetHotkey(const std::string& strName, const wchar_t& wchLetter);
+    /// @brief Searchs any match for string name and rewriting hotkey assignment for it.
     void SetHotkey(const char* strName, const wchar_t& wchLetter);
+    /// @brief Searchs any match for string name and rewriting hotkey assignment for it.
     void SetHotkey(const QString& strName, const wchar_t& wchLetter);
+    /// @brief Searchs any match for string name and rewriting its value.
     void SetStringValue(const std::string& strName, const std::wstring& wstrValue);
+    /// @brief Searchs any match for string name and rewriting its value.
     void SetStringValue(const CompiledString& stString);
+    /// @brief Searchs any match for string names and rewriting its values.
     void SetStringsValue(const std::list<CompiledString>& lstChanges);
 };
