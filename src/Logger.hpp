@@ -8,6 +8,7 @@
 
 #define LOGSTM      Logger::Instance->Log()
 #define LOGMSG(msg) Logger::Instance->Log(msg)
+#define LOGCSL(msg) Logger::Instance->LogToConsole(msg)
 
 class Logger final
 {
@@ -22,6 +23,21 @@ public: // Methods
 
     /// @brief Write [DATE-TIME] and return stream to write other data. Needs to be ended with `endl`
     std::ofstream& Log();
+    
+    /// @brief Write message to the console.
+    void LogToConsole(const char* msg);
+    /// @brief Write message to the console.
+    void LogToConsole(const std::string& msg);
+    /// @brief Write message to the console.
+    void LogToConsole(const QString& msg);
+    /// @brief Write message to the console.
+    void LogToConsole(const std::stringstream& msg);
+    /// @brief Write message to the console.
+    void LogToConsole(const std::wstringstream& msg);
+    /// @brief Write message to the console.
+    void LogToConsole(const std::wstring& msg);
+    /// @brief Write message to the console.
+    void LogToConsole(const wchar_t* msg);
 
     /// @brief Write message to the log file.
     void Log(const char* msg);

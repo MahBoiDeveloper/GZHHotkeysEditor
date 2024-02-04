@@ -1,5 +1,6 @@
 #include <ctime>
 #include <QMessageBox>
+#include <QDebug>
 
 #include "Logger.hpp"
 #include "Registry.hpp"
@@ -12,11 +13,14 @@ using namespace std;
     {
         LogFile.open(GetLogFileName());
         
-        if (!LogFile.is_open()) QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", "Unable to create log file; make sure \"Logs\" folder are exists.");
+        if (!LogFile.is_open()) QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", "Unable to create log file; Make sure \"Logs\" folder are exists.");
+        
+        Log("C&C Generals and Generals Zero Hour hotkey editor");
+        Log(string("Version: ") + VERSION);
+        Log(string("Authors: ") + AUTHORS);
 
-        Log() << "C&C Generals and Generals Zero Hour hotkey editor" << endl; 
-        Log() << "Version: " << VERSION << endl;
-        Log() << "Authors: " << AUTHORS << endl << endl;
+        LogFile  << endl; 
+        qDebug() << "";
 
         LogSystemInformation();
     }
@@ -87,15 +91,51 @@ using namespace std;
         return ss.str();
     }
 
+    void Logger::LogToConsole(const char* msg)
+    {
+        qDebug() << "[" << GetCurrentTime().c_str() << "]\t" << msg;
+    }
+
+    void Logger::LogToConsole(const wchar_t* msg)
+    {
+        qDebug() << "[" << GetCurrentTime().c_str() << "]\t" << QString::fromStdWString(wstring(msg));
+    }
+
+    void Logger::LogToConsole(const std::string& msg)
+    {
+        LogToConsole(msg.c_str());
+    }
+
+    void Logger::LogToConsole(const QString& msg)
+    {
+        LogToConsole(msg);
+    }
+
+    void Logger::LogToConsole(const std::stringstream& msg)
+    {
+        LogToConsole(msg.str().c_str());
+    }
+
+    void Logger::LogToConsole(const std::wstringstream& msg)
+    {
+        LogToConsole(msg.str().c_str());
+    }
+
+    void Logger::LogToConsole(const std::wstring& msg)
+    {
+        LogToConsole(msg.c_str());
+    }
+
     ofstream& Logger::Log()
     {
-        LogFile << "[" << Logger::GetCurrentTime().c_str() << "]\t";
+        LogFile << "[" << GetCurrentTime().c_str() << "]\t";
         return LogFile;
     }
 
     void Logger::Log(const char* msg)
     {
-         Log() << msg << endl;
+        Log() << msg << endl;
+        LogToConsole(msg);
     }
 
     void Logger::Log(const string& msg)
@@ -126,6 +166,7 @@ using namespace std;
     void Logger::Log(const wchar_t* msg)
     {
         Log() << msg << endl;
+        LogToConsole(msg);
     }
 
     void Logger::LogException(const char* msg)
