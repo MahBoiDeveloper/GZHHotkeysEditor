@@ -7,8 +7,7 @@
 #include <QString>
 
 #define LOGSTM      Logger::Instance->Log()
-#define LOGMSG(msg) Logger::Instance->Log(msg)
-#define LOGCSL(msg) Logger::Instance->LogToConsole(msg)
+#define LOGMSG(msg) Logger::Instance->Log(msg);Logger::Instance->LogToConsole(msg)
 
 class Logger final
 {

@@ -15,12 +15,13 @@ using namespace std;
         
         if (!LogFile.is_open()) QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", "Unable to create log file; Make sure \"Logs\" folder are exists.");
         
-        Log("C&C Generals and Generals Zero Hour hotkey editor");
-        Log(string("Version: ") + VERSION);
-        Log(string("Authors: ") + AUTHORS);
-
-        LogFile  << endl; 
-        qDebug() << "";
+        string title   = "C&C Generals and Generals Zero Hour hotkey editor";
+        string version = string("Version: ") + VERSION;
+        string authors = string("Authors: ") + AUTHORS;
+        Log(title);      LogToConsole(title);
+        Log(version);    LogToConsole(version);
+        Log(authors);    LogToConsole(authors);
+        LogFile << endl; qDebug() << "";
 
         LogSystemInformation();
     }
@@ -135,7 +136,6 @@ using namespace std;
     void Logger::Log(const char* msg)
     {
         Log() << msg << endl;
-        LogToConsole(msg);
     }
 
     void Logger::Log(const string& msg)
