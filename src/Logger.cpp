@@ -99,7 +99,7 @@ using namespace std;
 
     void Logger::LogToConsole(const wchar_t* msg)
     {
-        qDebug() << "[" << GetCurrentTime().c_str() << "]\t" << QString::fromStdWString(wstring(msg));
+        qDebug() << "[" << GetCurrentTime().c_str() << "]\t" << msg;
     }
 
     void Logger::LogToConsole(const std::string& msg)
@@ -109,7 +109,7 @@ using namespace std;
 
     void Logger::LogToConsole(const QString& msg)
     {
-        LogToConsole(msg);
+        LogToConsole(msg.toStdString().c_str());
     }
 
     void Logger::LogToConsole(const std::stringstream& msg)
@@ -166,7 +166,6 @@ using namespace std;
     void Logger::Log(const wchar_t* msg)
     {
         Log() << msg << endl;
-        LogToConsole(msg);
     }
 
     void Logger::LogException(const char* msg)
