@@ -12,20 +12,20 @@ public: // Data
     inline static const QString TECH_TREE_PATH      = RESOURCE_FOLDER + "/TechTreeTmp.json";
     inline static const double  START_WIDGET_SIZE_RATIO = 3./7.;
 
-    enum class EntitiesTypes
+    enum class GameObjectTypes
     {
         Buildings,
         Infantry,
         Vehicles,
-        Aircraft
+        Aircrafts
     };
 
-    inline static const QMap<EntitiesTypes, QString> ENTITIES_STRINGS =
+    inline static const QMap<GameObjectTypes, QString> ENTITIES_STRINGS =
     {
-        {EntitiesTypes::Buildings, QObject::tr("Buildings")},
-        {EntitiesTypes::Infantry,  QObject::tr("Infantry")},
-        {EntitiesTypes::Vehicles,  QObject::tr("Vehicles")},
-        {EntitiesTypes::Aircraft,  QObject::tr("Aircraft")}
+        {GameObjectTypes::Buildings, QObject::tr("Buildings")},
+        {GameObjectTypes::Infantry,  QObject::tr("Infantry")},
+        {GameObjectTypes::Vehicles,  QObject::tr("Vehicles")},
+        {GameObjectTypes::Aircrafts, QObject::tr("Aircraft")}
     };
 
     enum class Languages

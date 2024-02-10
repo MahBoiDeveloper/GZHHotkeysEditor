@@ -6,41 +6,41 @@
 #include "../Logger.hpp"
 #include "GUIConfig.hpp"
 
-QImage GUIConfig::decodeWebpIcon(const QString& iconName)
+QImage GUIConfig::DecodeWebpIcon(const QString& iconName)
 {
     // If it there, get the image from cache
-    const auto it = imagesCache.constFind(iconName);
-    if (it != imagesCache.constEnd()) return it.value();
+    const auto it = ImagesCache.constFind(iconName);
+    if (it != ImagesCache.constEnd()) return it.value();
 
     // Find
-    const QFileInfo targetIconFile = findIconFile(ICONS_FOLDER, iconName);
+    const QFileInfo targetIconFile = FindIconFile(ICONS_FOLDER, iconName);
 
     if (targetIconFile.exists())
     {
         // Get the image
-        const QImage targetImage = decodeWebpIconPath(targetIconFile.absoluteFilePath());
+        const QImage targetImage = DecodeWebpIconPath(targetIconFile.absoluteFilePath());
         // Save the image in the cache
-        imagesCache.insert(iconName, targetImage);
+        ImagesCache.insert(iconName, targetImage);
         // Return the image
         return targetImage;
     }
     else
     {
-        return decodeDefaultWebpIcon();
+        return DecodeDefaultWebpIcon();
     }
 }
 
-QImage GUIConfig::decodeDefaultWebpIcon()
+QImage GUIConfig::DecodeDefaultWebpIcon()
 {
-    return decodeWebpIconPath(DEFAULT_ICON_PATH);
+    return DecodeWebpIconPath(DEFAULT_ICON_PATH);
 }
 
-QPixmap GUIConfig::getEntityTypePixmap(Config::EntitiesTypes entityType)
+QPixmap GUIConfig::GetEntityTypePixmap(Config::GameObjectTypes entityType)
 {
     return QPixmap{QT_ICONS_FOLDER + "/" + QString{"%1.png"}.arg(Config::ENTITIES_STRINGS.value(entityType))};
 }
 
-QFileInfo GUIConfig::findIconFile(const QString& pathToIconsDir, const QString& fileBaseName)
+QFileInfo GUIConfig::FindIconFile(const QString& pathToIconsDir, const QString& fileBaseName)
 {
     // Find all files and dirs in current directory
     QFileInfoList fileInfoList = QDir{pathToIconsDir}.entryInfoList(QDir::Filter::Files |
@@ -52,7 +52,7 @@ QFileInfo GUIConfig::findIconFile(const QString& pathToIconsDir, const QString& 
         // if dir -> recursive find
         if (fileInfo.isDir())
         {
-            QFileInfo foundFile = findIconFile(fileInfo.absoluteFilePath(), fileBaseName);
+            QFileInfo foundFile = FindIconFile(fileInfo.absoluteFilePath(), fileBaseName);
 
             // Return if it's a complete match
             if (foundFile.baseName() == fileBaseName) return foundFile;
@@ -67,7 +67,7 @@ QFileInfo GUIConfig::findIconFile(const QString& pathToIconsDir, const QString& 
     return QFileInfo{};
 }
 
-QImage GUIConfig::decodeWebpIconPath(const QString& iconPath)
+QImage GUIConfig::DecodeWebpIconPath(const QString& iconPath)
 {
     QFile iconFile(iconPath);
 
@@ -77,13 +77,13 @@ QImage GUIConfig::decodeWebpIconPath(const QString& iconPath)
         {
             LOGMSG("No icon file [" + iconFile.fileName() + "] was found");
         }
-        return decodeDefaultWebpIcon();
+        return DecodeDefaultWebpIcon();
     }
 
-    return decodeImageFromData(iconFile.readAll());
+    return DecodeImageFromData(iconFile.readAll());
 }
 
-QImage GUIConfig::decodeImageFromData(const QByteArray& iconData)
+QImage GUIConfig::DecodeImageFromData(const QByteArray& iconData)
 {
     int width, height;
     uint8_t* decodedImage = WebPDecodeRGBA(reinterpret_cast<const uint8_t*>(iconData.constData()), // amogus

@@ -84,43 +84,43 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="161"/>
+        <location filename="../HotkeysMainWindow.cpp" line="124"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="162"/>
+        <location filename="../HotkeysMainWindow.cpp" line="125"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="164"/>
+        <location filename="../HotkeysMainWindow.cpp" line="127"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="166"/>
+        <location filename="../HotkeysMainWindow.cpp" line="129"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="169"/>
-        <location filename="../HotkeysMainWindow.cpp" line="372"/>
+        <location filename="../HotkeysMainWindow.cpp" line="132"/>
+        <location filename="../HotkeysMainWindow.cpp" line="349"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="293"/>
+        <location filename="../HotkeysMainWindow.cpp" line="255"/>
         <source>Layout %1</source>
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="358"/>
+        <location filename="../HotkeysMainWindow.cpp" line="335"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="365"/>
+        <location filename="../HotkeysMainWindow.cpp" line="342"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

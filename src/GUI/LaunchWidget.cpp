@@ -23,7 +23,7 @@ LaunchWidget::LaunchWidget(Config::Languages lngType, QWidget* parent) : QStacke
         LOGMSG("Unable to read the style file mainStyleSheet.css.");
     }
 
-    qApp->setWindowIcon(QIcon(QPixmap::fromImage(GUIConfig::decodeDefaultWebpIcon())));
+    qApp->setWindowIcon(QIcon(QPixmap::fromImage(GUIConfig::DecodeDefaultWebpIcon())));
 
     // MainLaunchWidget settings
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);

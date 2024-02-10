@@ -10,6 +10,7 @@
 
 #include "../Info.hpp"
 #include "../Logger.hpp"
+#include "../Parsers/CSFParser.hpp"
 
 #include "ActionHotkeyWidget.hpp"
 #include "GUIConfig.hpp"
@@ -17,17 +18,16 @@
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
     : QMainWindow(parent)
-    , factionsManager{Config::TECH_TREE_PATH}
     , pFactionsButtonsGroup{new QButtonGroup{this}}
     , pEntitiesTreeWidget{new QTreeWidget}
     , pHotkeysArea{new QScrollArea}
     , pHotkeysPanelsWidget{nullptr}
     , pAboutDialog{nullptr}
 {
+    SetFactions();
+
     resize(1200, 800);
     ConfigureMenu();
-
-    //============================ Entities Tree Widget configure =============================
 
     pEntitiesTreeWidget->header()->hide();
     // smooth scrolling
@@ -38,76 +38,45 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 
     connect(pEntitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &HotkeysMainWindow::SetHotkeysPanelsWidget);
 
-    //============================ Factions button group configure ============================
-    QBoxLayout* factionsL = nullptr;
-    int factonsCount = factionsManager.GetFactions().size();
+    QBoxLayout* ltFactions = nullptr;
+    int factonsCount = factionVector.size();
 
-    const int standartFactionsCount = 12;
-    if (factonsCount == standartFactionsCount)
+    if (factonsCount == Faction::BASIC_FACTION_COUNT)
     {
-        factionsL = new QHBoxLayout;
+        ltFactions = new QHBoxLayout();
 
         // only 3 sections with factions and subfactions, 4 in each
-        for (int sectionIndex = 0; sectionIndex < standartFactionsCount; sectionIndex += 4)
+        for (int sectionIndex = 0; sectionIndex < Faction::BASIC_FACTION_COUNT; sectionIndex += 4)
         {
-            QVBoxLayout* currentFactionL = new QVBoxLayout;
-            QHBoxLayout* currenSubfactionsL = new QHBoxLayout;
+            QVBoxLayout* ltCurrentFaction    = new QVBoxLayout();
+            QHBoxLayout* ltCurrentSubfaction = new QHBoxLayout();
 
             for (int i = 0; i < 4; ++i)
             {
-                const Faction currentFaction = factionsManager.GetFactions().at(sectionIndex + i);
+                const Faction currFaction = factionVector.at(sectionIndex + i);
 
-                QPushButton* factionButton = new QPushButton{currentFaction.GetDisplayName()};
+                QPushButton* factionButton = new QPushButton{currFaction.GetDisplayName()};
 
                 connect(factionButton, &QPushButton::pressed, this, [=]()
                 {
-                    SetEntitiesList(currentFaction.GetShortName());
+                    SetEntitiesList(currFaction.GetShortName());
                 });
 
                 pFactionsButtonsGroup->addButton(factionButton);
-
-                // main faction
-                if (i == 0)
-                {
-                    currentFactionL->addWidget(factionButton);
-                }
-                // subfactions
-                else
-                {
-                    currenSubfactionsL->addWidget(factionButton);
-                }
+                
+                if (i == 0) // main faction
+                    ltCurrentFaction->addWidget(factionButton);
+                else        // subfactions
+                    ltCurrentSubfaction->addWidget(factionButton);
             }
 
-            currentFactionL->addLayout(currenSubfactionsL);
-            factionsL->addLayout(currentFactionL);
+            ltCurrentFaction->addLayout(ltCurrentSubfaction);
+            ltFactions->addLayout(ltCurrentFaction);
         }
     }
     else
     {
-        LOGMSG(QString("It has to be 12 factions. But it's: ") + QString::number(factonsCount));
-
-        // TODO: not relevant
-        // QHBoxLayout* firstL = new QHBoxLayout;
-        // QHBoxLayout* secondL = new QHBoxLayout;
-
-        // int i = 0;
-        // for (const auto & faction : factions)
-        // {
-        //     QPushButton* factionButton = new QPushButton(QString::fromStdString(factions.at(i).DisplayName));
-        //     if (i < factonsCount / 2)
-        //     {
-        //         firstL->addWidget(factionButton);
-        //     }
-        //     else
-        //     {
-        //         secondL->addWidget(factionButton);
-        //     }
-        //     ++i;
-        // }
-
-        // factionsL = new QVBoxLayout;
-        // factionsL->addLayout(firstL);
-        // factionsL->addLayout(secondL);
+        LOGMSG(QString("Unable to parse more than 12 factions. Found factions : ") + QString::number(factonsCount));
     }
 
     connect(pFactionsButtonsGroup, &QButtonGroup::idClicked, this, [=](int id)
@@ -116,39 +85,33 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
         pEntitiesTreeWidget->setFocus();
 
         // Select pressed faction button
-        for (auto * button : pFactionsButtonsGroup->buttons())
+        for (auto* button : pFactionsButtonsGroup->buttons())
         {
             if (button == pFactionsButtonsGroup->button(id))
-            {
                 button->setDown(true);
-            }
             else
-            {
                 button->setDown(false);
-            }
         }
     });
-
-    //=========================================================================================
 
     // Fill all available space
     pHotkeysArea->setWidgetResizable(true);
 
-    QVBoxLayout* buildingConfigurationL = new QVBoxLayout;
-    buildingConfigurationL->addWidget(pHotkeysArea, 2);
-    buildingConfigurationL->addWidget(new QScrollArea, 1);
+    QVBoxLayout* ltBuildingConfiguration = new QVBoxLayout();
+    ltBuildingConfiguration->addWidget(pHotkeysArea, 2);
+    ltBuildingConfiguration->addWidget(new QScrollArea, 1);
 
-    QHBoxLayout* contentL = new QHBoxLayout;
-    contentL->addWidget(pEntitiesTreeWidget, 4);
-    contentL->addLayout(buildingConfigurationL, 7);
+    QHBoxLayout* ltContent = new QHBoxLayout();
+    ltContent->addWidget(pEntitiesTreeWidget, 4);
+    ltContent->addLayout(ltBuildingConfiguration, 7);
 
-    QVBoxLayout* mainL = new QVBoxLayout;
-    mainL->addLayout(factionsL);
-    mainL->addLayout(contentL);
+    QVBoxLayout* ltMain = new QVBoxLayout();
+    ltMain->addLayout(ltFactions);
+    ltMain->addLayout(ltContent);
 
     // main widget
-    QWidget* centralWidget = new QWidget;
-    centralWidget->setLayout(mainL);
+    QWidget* centralWidget = new QWidget();
+    centralWidget->setLayout(ltMain);
     setCentralWidget(centralWidget);
 
     // Set start faction
@@ -176,32 +139,29 @@ void HotkeysMainWindow::SetEntitiesList(const QString& factionShortName)
 {
     pEntitiesTreeWidget->clear();
 
-    const QMap<Config::EntitiesTypes, QVector<QSharedPointer<const Entity>>> factionEntities = factionsManager.GetFactionEntities(factionShortName);
+    QMap<Config::GameObjectTypes, Faction::GameObject> goMap = GetFactionRef(factionShortName).GetTechTree();
+
+    // Skip if there are no entities of that type
+    if(goMap.isEmpty()) return;
 
     // Create sections for all faction entities types
-    for (auto it = factionEntities.cbegin(); it != factionEntities.cend(); ++it)
+    for(const auto& objectType : Config::ENTITIES_STRINGS)
     {
-        const QVector<QSharedPointer<const Entity>>& currentTypeEntities = it.value();
-
-        // Skip if there are no entities of that type
-        if (currentTypeEntities.isEmpty()) continue;
-
         // Create new section of tree list
         QTreeWidgetItem* newTopEntityItem = new QTreeWidgetItem();
-        newTopEntityItem->setText(0, QCoreApplication::translate("QObject", Config::ENTITIES_STRINGS.value(it.key()).toUtf8().constData()));
+        newTopEntityItem->setText(0, QCoreApplication::translate("QObject", objectType.toUtf8().constData()));
 
         // Decorate
-        newTopEntityItem->setIcon(0, GUIConfig::getEntityTypePixmap(it.key()).scaledToHeight(GUIConfig::ICON_SCALING_HEIGHT,
-                                                                                             Qt::SmoothTransformation));
-        // newTopEntityItem->setBackground(0, QColor{0x73, 0xE9, 0xFF, 128});
+        newTopEntityItem->setIcon(0, GUIConfig::GetEntityTypePixmap(Config::ENTITIES_STRINGS.key(objectType))
+                                               .scaledToHeight(GUIConfig::ICON_SCALING_HEIGHT, Qt::SmoothTransformation));
 
         // Append entities to the section
-        for (const auto & entity : currentTypeEntities)
+        for (const auto& go : goMap)
         {
             QTreeWidgetItem* currentNewEntityItem = new QTreeWidgetItem();
-            currentNewEntityItem->setText(0, entity->GetName());
-            currentNewEntityItem->setIcon(0, QPixmap::fromImage(GUIConfig::decodeWebpIcon(entity->GetIconName())));
-            currentNewEntityItem->setData(0, Qt::UserRole, QVariant::fromValue(QPair{factionShortName, entity->GetName()}));
+            currentNewEntityItem->setText(0, CSFPARSER->GetStringValue(go.ingameName));
+            currentNewEntityItem->setIcon(0, QPixmap::fromImage(GUIConfig::DecodeWebpIcon(go.iconName)));
+            currentNewEntityItem->setData(0, Qt::UserRole, QVariant::fromValue(QPair{factionShortName, go.iconName}));
             newTopEntityItem->addChild(currentNewEntityItem);
         }
 
@@ -231,38 +191,40 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
     if (pEntitiesTreeWidget->selectedItems().isEmpty()) return;
 
     // Current single selected item
-    QTreeWidgetItem* item = pEntitiesTreeWidget->selectedItems().first();
+    QTreeWidgetItem* pItem = pEntitiesTreeWidget->selectedItems().first();
 
     // Skip if it's the top level section item
     for (int i = 0; i < pEntitiesTreeWidget->topLevelItemCount(); ++i)
-        if (item == pEntitiesTreeWidget->topLevelItem(i)) return;
+        if (pItem == pEntitiesTreeWidget->topLevelItem(i)) return;
 
-    const QPair<QString, QString> specialItemInfo = item->data(0, Qt::UserRole).value<QPair<QString, QString>>();
+    const QPair<QString, QString> specialItemInfo = pItem->data(0, Qt::UserRole).value<QPair<QString, QString>>();
 
     const QString& factionShortName = specialItemInfo.first;
-    const QString& entityName = specialItemInfo.second;
+    const QString& gameObjectName   = specialItemInfo.second;
 
-    const QVector<QVector<QSharedPointer<EntityAction>>> entityPanels = factionsManager.GetEntityActionPanels(factionShortName, entityName);
+    // const QVector<QVector<QSharedPointer<EntityAction>>> entityPanels = factionsManager.GetEntityActionPanels(factionShortName, gameObjectName);
+    const auto gameObjectKeyboardLayouts = GetFactionRef(factionShortName).GetKeyboardLayoutsByObjectName(gameObjectName);
 
     // Recreate panels widget
     if (pHotkeysPanelsWidget != nullptr) pHotkeysPanelsWidget->deleteLater();
     pHotkeysPanelsWidget = new QTabWidget();
 
     // Forget old hotkey widgets
-    hotkeyWdgets.clear();
+    vHotkeyWidgets.clear();
 
     // Panel index
     int i = 0;
 
-    for (const auto & actionPanel : entityPanels)
+    for (const auto& currLayout : gameObjectKeyboardLayouts)
     {
         QSet<ActionHotkeyWidget*> currentPanelWidgets;
-
         QVBoxLayout* hotkeysLayout = new QVBoxLayout();
 
-        for (const auto & action : actionPanel)
+        for (const auto& currAction : currLayout)
         {
-            ActionHotkeyWidget* actionHotkey = new ActionHotkeyWidget{action->GetName(), action->GetHotkey(), action->GetIconName()};
+            ActionHotkeyWidget* actionHotkey = new ActionHotkeyWidget{CSFPARSER->GetClearName(currAction.hotkeyString), 
+                                                                      QString::fromStdWString(std::wstring{CSFPARSER->GetHotkey(currAction.hotkeyString)}),
+                                                                      currAction.iconName};
 
             // Remember widget
             currentPanelWidgets.insert(actionHotkey);
@@ -270,25 +232,25 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
             connect(actionHotkey, &ActionHotkeyWidget::HotkeyChanged, this, [=](const QString& newHotkey)
             {
                 // Set new hotkey
-                factionsManager.SetEntityActionHotkey(factionShortName, entityName, action->GetName(), newHotkey);
+                SetActionHotkey(factionShortName, gameObjectName, currAction.iconName, newHotkey);
 
                 // Highlight keys for entity
-                HighlightKeys(entityName);
+                HighlightKeys(factionShortName, gameObjectName);
             });
 
             hotkeysLayout->addWidget(actionHotkey);
         }
 
         // Remember hotkeys panel
-        hotkeyWdgets.append(currentPanelWidgets);
+        vHotkeyWidgets.append(currentPanelWidgets);
 
         // Highlight keys for entity
-        HighlightKeys(entityName);
+        HighlightKeys(factionShortName, gameObjectName);
 
         // Condense the actions at the top
         hotkeysLayout->addStretch(1);
 
-        QWidget* panelScrollWidget = new QWidget;
+        QWidget* panelScrollWidget = new QWidget();
         panelScrollWidget->setLayout(hotkeysLayout);
         pHotkeysPanelsWidget->addTab(panelScrollWidget, QString(tr("Layout %1")).arg(++i));
     }
@@ -300,25 +262,21 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
     pHotkeysArea->setWidget(pHotkeysPanelsWidget);
 }
 
-void HotkeysMainWindow::HighlightKeys(const QString& entityName) const
+void HotkeysMainWindow::HighlightKeys(const QString& fctIconName, const QString& goIconName) const
 {
     // Skip if no widgets
-    if (hotkeyWdgets.isEmpty()) return;
+    if (vHotkeyWidgets.isEmpty()) return;
 
     // Change color if the current key is in collisions
-    QVector<QSet<QString>> keysCollisions = factionsManager.GetEntityCollisionsKeys(entityName);
+    QVector<QSet<QString>> keysCollisions = {}; // TODO: Implement code to detect groups of the same hotkeys in 1 keyboard layout
 
     // If no collisions
     if (keysCollisions.isEmpty())
     {
         // Unhighlight all keys and quit
-        for (const auto & panel : hotkeyWdgets)
-        {
-            for (auto & hotkeyWidget : panel)
-            {
+        for (const auto& panel : vHotkeyWidgets)
+            for (auto& hotkeyWidget : panel)
                 hotkeyWidget->HighlightKey(false);
-            }
-        }
 
         return;
     }
@@ -326,21 +284,40 @@ void HotkeysMainWindow::HighlightKeys(const QString& entityName) const
     // Panel index
     int i = -1;
 
-    for (const auto & panel : hotkeyWdgets)
+    for (const auto& panel : vHotkeyWidgets)
     {
         // Increase panel index
         ++i;
 
-        for (auto & hotkeyWidget : panel)
-        {
+        for (auto& hotkeyWidget : panel)
             if (keysCollisions.at(i).contains(hotkeyWidget->GetHotkey()))
-            {
                 hotkeyWidget->HighlightKey(true);
-            }
             else
-            {
                 hotkeyWidget->HighlightKey(false);
-            }
+    }
+}
+
+void HotkeysMainWindow::SetFactions()
+{
+    for(const auto& elem : TECH_TREE_SOURCE.Query("$.TechTree").toArray())
+        factionVector.push_back(Faction{elem.toObject()});
+}
+
+Faction& HotkeysMainWindow::GetFactionRef(const QString& name)
+{
+    for(Faction& elem : factionVector)
+        if(elem.GetShortName() == name)
+            return elem;
+}
+
+void HotkeysMainWindow::SetActionHotkey(const QString& fctShortName, const QString& goName, const QString& actName, const QString& hk)
+{
+    for(Faction& fct : factionVector)
+    {
+        if(fct.GetShortName() == fctShortName)
+        {
+            fct.SetHotkey(goName, actName, hk);
+            break;
         }
     }
 }
@@ -359,8 +336,8 @@ void HotkeysMainWindow::OnAbout()
 
     QGridLayout* contentL = new QGridLayout();
     contentL->addLayout(authorsL, 0, 0);
-    QLabel* pixmap = new QLabel;
-    pixmap->setPixmap(QPixmap::fromImage(GUIConfig::decodeDefaultWebpIcon()));
+    QLabel* pixmap = new QLabel();
+    pixmap->setPixmap(QPixmap::fromImage(GUIConfig::DecodeDefaultWebpIcon()));
     contentL->addWidget(pixmap, 0, 1);
     QLabel* textL = new QLabel{tr("Program licensed by GNU GPL v3")};
     textL->setWordWrap(true);

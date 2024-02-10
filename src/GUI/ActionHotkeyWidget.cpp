@@ -25,8 +25,8 @@ ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
     signalTimer.setSingleShot(true);
     connect(&signalTimer, &QTimer::timeout, this, &ActionHotkeyWidget::SignalRepeatNewHotkey);
 
-    QLabel* imageLb = new QLabel;
-    imageLb->setPixmap(QPixmap::fromImage(GUIConfig::decodeWebpIcon(iconName)));
+    QLabel* imageLb = new QLabel();
+    imageLb->setPixmap(QPixmap::fromImage(GUIConfig::DecodeWebpIcon(iconName)));
 
     // Hotkey label
     hotkeyLabel.setAlignment(Qt::AlignCenter);

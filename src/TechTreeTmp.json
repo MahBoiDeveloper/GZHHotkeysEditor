@@ -394,7 +394,7 @@
                     ]
                 }
             ],
-            "Aircraft" : 
+            "Aircrafts" : 
             [
                 {
                     "Name"            : "USAChinook",
@@ -823,7 +823,7 @@
                     ]
                 }
             ],
-            "Aircraft" : 
+            "Aircrafts" : 
             [
                 {
                     "Name"            : "USAChinook",
@@ -1256,7 +1256,7 @@
                     ]
                 }
             ],
-            "Aircraft" : 
+            "Aircrafts" : 
             [
                 {
                     "Name"            : "USAChinook",
@@ -1716,7 +1716,7 @@
                     ]
                 }
             ],
-            "Aircraft" : 
+            "Aircrafts" : 
             [
                 {
                     "Name"            : "USAChinook",
@@ -2270,7 +2270,7 @@
                     ]
                 }
             ],
-            "Aircraft"                : 
+            "Aircrafts"                : 
             [
                 {
                     "Name"            : "PRCMIG",
@@ -2738,7 +2738,7 @@
                     ]
                 }
             ],
-            "Aircraft"                : 
+            "Aircrafts"                : 
             [
                 {
                     "Name"            : "PRCMIG",
@@ -3255,7 +3255,7 @@
                     ]
                 }
             ],
-            "Aircraft"                : 
+            "Aircrafts"                : 
             [
                 {
                     "Name"            : "PRCMIG",
@@ -3740,7 +3740,7 @@
                     ]
                 }
             ],
-            "Aircraft"                : 
+            "Aircrafts"                : 
             [
                 {
                     "Name"            : "PRCMIG",
@@ -4286,7 +4286,7 @@
                     ]
                 }
             ],
-            "Aircraft"                : []
+            "Aircrafts"                : []
         },
 
         {
@@ -4761,7 +4761,7 @@
                     ]
                 }
             ],
-            "Aircraft"                : []
+            "Aircrafts"                : []
         },
         
         {
@@ -5229,7 +5229,7 @@
                     ]
                 }
             ],
-            "Aircraft"                : []
+            "Aircrafts"                : []
         },
         
         {
@@ -5724,7 +5724,7 @@
                     ]
                 }
             ],
-            "Aircraft"                : []
+            "Aircrafts"                : []
         }
     ]
 }
