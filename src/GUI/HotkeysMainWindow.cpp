@@ -303,11 +303,22 @@ void HotkeysMainWindow::SetFactions()
         factionVector.push_back(Faction{elem.toObject()});
 }
 
-Faction& HotkeysMainWindow::GetFactionRef(const QString& name)
+const Faction& HotkeysMainWindow::GetFactionRef(const QString& name)
 {
-    for(Faction& elem : factionVector)
+    int tmp = 0;
+
+    for(int i = 0; i < factionVector.count(); i++)
+    {
+        const Faction& elem = factionVector[i];
+        
         if(elem.GetShortName() == name)
-            return elem;
+        {
+            tmp = i;
+            break;
+        }
+    }
+    
+    return factionVector.at(tmp);
 }
 
 void HotkeysMainWindow::SetActionHotkey(const QString& fctShortName, const QString& goName, const QString& actName, const QString& hk)

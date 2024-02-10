@@ -105,7 +105,7 @@
     </message>
     <message>
         <location filename="../HotkeysMainWindow.cpp" line="132"/>
-        <location filename="../HotkeysMainWindow.cpp" line="349"/>
+        <location filename="../HotkeysMainWindow.cpp" line="359"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
@@ -115,12 +115,12 @@
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="335"/>
+        <location filename="../HotkeysMainWindow.cpp" line="345"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="342"/>
+        <location filename="../HotkeysMainWindow.cpp" line="352"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>

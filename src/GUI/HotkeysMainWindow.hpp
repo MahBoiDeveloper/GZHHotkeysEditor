@@ -38,7 +38,7 @@ private:
     /// @brief Read data from TechTree.json and parse it to game objects.
     void SetFactions();
     /// @brief Return faction from HotkeysMainWindow::factionVector vector.
-    Faction& GetFactionRef(const QString& name);
+    const Faction& GetFactionRef(const QString& name);
     /// @brief Set context menu bar functions and logics.
     void ConfigureMenu();
     void SetEntitiesList(const QString& factionShortName);
