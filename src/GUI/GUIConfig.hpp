@@ -16,14 +16,20 @@ public:
     inline static const QString ICONS_FOLDER        = Config::RESOURCE_FOLDER + "/Icons";
 
 private: // Methods
+    /// @brief Search recursively icons in folders.
     static QFileInfo FindIconFile(const QString& pathToIconsDir, const QString& fileBaseName);
+    /// @brief Decode WEBP image from path to the icon.
     static QImage    DecodeWebpIconPath(const QString& iconPath);
+    /// @brief Decode WEBP image from byte array.
     static QImage    DecodeImageFromData(const QByteArray& iconData);
 public:
     GUIConfig() = delete;
 
+    /// @brief Decode WEBP image icon name.
     static QImage  DecodeWebpIcon(const QString& iconName);
+    /// @brief Get image if needed file cannot be found.
     static QImage  DecodeDefaultWebpIcon();
-    static QPixmap GetEntityTypePixmap(Config::GameObjectTypes entityType);
+    /// @brief Return pixel map by object type.
+    static QPixmap GetGameObjectTypePixmap(Config::GameObjectTypes goType);
 
 };

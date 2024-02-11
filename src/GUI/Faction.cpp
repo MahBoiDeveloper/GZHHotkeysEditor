@@ -105,4 +105,3 @@ void Faction::SetHotkey(const QString& goName, const QString& actName, const QSt
         }
     }
 }
-

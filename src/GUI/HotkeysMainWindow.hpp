@@ -43,6 +43,7 @@ private:
     void ConfigureMenu();
     /// @brief Set game object and their actions for window by short faction name.
     void SetGameObjectList(const QString& factionShortName);
+    /// @brief Set game object to display.
     void SetHotkeysPanelsWidget();
     /// @brief Set hotkeys colors. Default color is black. Changes color to red for keys, that is conflict to each other in one unit/building.
     void HighlightKeys(const QString& fctIconName, const QString& goIconName) const;

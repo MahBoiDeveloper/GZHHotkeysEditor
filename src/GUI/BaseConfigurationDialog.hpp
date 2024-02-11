@@ -12,9 +12,9 @@ protected: // Data
     QDialogButtonBox dialogButtons;
 
 public: // Methods
-    BaseConfigurationDialog(QWidget *parent = nullptr);
+    BaseConfigurationDialog(QWidget* parent = nullptr);
 protected:
-    // Create configuration data for editor creation
+    // Create configuration data for editor creation.
     virtual QVariant CreateConfigurationData() = 0;
 
 signals:

@@ -37,15 +37,15 @@ ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
     // Square button size
     newHotkeyButton.setFixedSize(newHotkeyButton.sizeHint().height(), newHotkeyButton.sizeHint().height());
 
-    QHBoxLayout* mainL = new QHBoxLayout{this};
-    mainL->setAlignment(Qt::AlignTop);
-    mainL->addWidget(imageLb);
-    mainL->addWidget(&actionNameLabel);
+    QHBoxLayout* ltMainBlock = new QHBoxLayout{this};
+    ltMainBlock->setAlignment(Qt::AlignTop);
+    ltMainBlock->addWidget(imageLb);
+    ltMainBlock->addWidget(&actionNameLabel);
     // Move action name label to left
-    mainL->setStretch(1, 1);
-    mainL->addWidget(&hotkeyLabel);
-    mainL->addWidget(&newHotkeyButton);
-    setLayout(mainL);
+    ltMainBlock->setStretch(1, 1);
+    ltMainBlock->addWidget(&hotkeyLabel);
+    ltMainBlock->addWidget(&newHotkeyButton);
+    setLayout(ltMainBlock);
 }
 
 QString ActionHotkeyWidget::GetActionName() const

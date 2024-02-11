@@ -152,7 +152,7 @@ void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
         newTopEntityItem->setText(0, QCoreApplication::translate("QObject", objectType.toUtf8().constData()));
 
         // Decorate
-        newTopEntityItem->setIcon(0, GUIConfig::GetEntityTypePixmap(Config::ENTITIES_STRINGS.key(objectType))
+        newTopEntityItem->setIcon(0, GUIConfig::GetGameObjectTypePixmap(Config::ENTITIES_STRINGS.key(objectType))
                                                .scaledToHeight(GUIConfig::ICON_SCALING_HEIGHT, Qt::SmoothTransformation));
 
         // Append entities to the section

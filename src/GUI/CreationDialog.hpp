@@ -10,6 +10,6 @@ private: // Data
     QCheckBox saveToGameBox;
 
 public: // Method
-    CreationDialog(QWidget *parent = nullptr);
+    CreationDialog(QWidget* parent = nullptr);
     QVariant CreateConfigurationData() override;
 };

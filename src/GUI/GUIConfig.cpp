@@ -35,7 +35,7 @@ QImage GUIConfig::DecodeDefaultWebpIcon()
     return DecodeWebpIconPath(DEFAULT_ICON_PATH);
 }
 
-QPixmap GUIConfig::GetEntityTypePixmap(Config::GameObjectTypes entityType)
+QPixmap GUIConfig::GetGameObjectTypePixmap(Config::GameObjectTypes entityType)
 {
     return QPixmap{QT_ICONS_FOLDER + "/" + QString{"%1.png"}.arg(Config::ENTITIES_STRINGS.value(entityType))};
 }

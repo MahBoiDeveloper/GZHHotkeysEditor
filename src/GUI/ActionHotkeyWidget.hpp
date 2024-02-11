@@ -17,7 +17,7 @@ private: // Data
     int         timerMseconds;
 
 protected: // Methods
-    void keyPressEvent(QKeyEvent* event) override;
+    void keyPressEvent(QKeyEvent*   event) override;
     void focusOutEvent(QFocusEvent* event) override;
 public:
     ActionHotkeyWidget(const QString& actionName,
