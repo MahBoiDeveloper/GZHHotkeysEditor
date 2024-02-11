@@ -59,7 +59,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 
                 connect(factionButton, &QPushButton::pressed, this, [=]()
                 {
-                    SetEntitiesList(currFaction.GetShortName());
+                    SetGameObjectList(currFaction.GetShortName());
                 });
 
                 pFactionsButtonsGroup->addButton(factionButton);
@@ -135,7 +135,7 @@ void HotkeysMainWindow::ConfigureMenu()
     mnSettingsOptions->addAction(actAbout);
 }
 
-void HotkeysMainWindow::SetEntitiesList(const QString& factionShortName)
+void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
 {
     pEntitiesTreeWidget->clear();
 
