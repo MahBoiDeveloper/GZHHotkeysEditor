@@ -8,7 +8,7 @@ class JSONFile final
 private: // Data
     QJsonObject JsonMainObject;
 
-public:
+public: // Methods
     JSONFile(const QString&     filePath);
     JSONFile(const std::string& filePath);
     JSONFile(const char*        filePath);
@@ -25,4 +25,7 @@ public:
     static QJsonValue   Query(const QJsonObject&, const char*    strQuery);
     /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
     static QJsonValue   Query(const QJsonObject&, const QString& strQuery);
+
+    /// @brief Write via LOGMSG information about value. Use it only if debug.
+    void LogInfoAboutValue(const QJsonValue& val);
 };

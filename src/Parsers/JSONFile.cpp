@@ -100,21 +100,24 @@ using namespace std;
             }
         }
 
-        LOGSTM << "Information about return value:"                             << endl;
-        LOGSTM << "\tValue is Array?     - "        << currVal.isArray()        << endl;
-        LOGSTM << "\tValue is Bool?      - "        << currVal.isBool()         << endl;
-        LOGSTM << "\tValue is Double?    - "        << currVal.isDouble()       << endl;
-        LOGSTM << "\tValue is Null?      - "        << currVal.isNull()         << endl;
-        LOGSTM << "\tValue is Object?    - "        << currVal.isObject()       << endl;
-        LOGSTM << "\tValue is String?    - "        << currVal.isString()       << endl;
-        LOGSTM << "\tValue is Undefined? - "        << currVal.isUndefined()    << endl;
-        LOGSTM << "\tLength of array is : "         << currVal.toArray().size() << endl;
-
         return currVal;
     }
 
     QJsonValue JSONFile::Query(const QJsonObject& jsonObject, const char* strQuery)
     {
         return Query(jsonObject, strQuery);
+    }
+
+    void JSONFile::LogInfoAboutValue(const QJsonValue& val)
+    {
+        LOGMSG("Information about return value:");
+        LOGMSG(QString("\tValue is Array?     - ") + val.isArray());
+        LOGMSG(QString("\tValue is Bool?      - ") + val.isBool());
+        LOGMSG(QString("\tValue is Double?    - ") + val.isDouble());
+        LOGMSG(QString("\tValue is Null?      - ") + val.isNull());
+        LOGMSG(QString("\tValue is Object?    - ") + val.isObject());
+        LOGMSG(QString("\tValue is String?    - ") + val.isString());
+        LOGMSG(QString("\tValue is Undefined? - ") + val.isUndefined());
+        LOGMSG(QString("\tLength of array is : " ) + QString::number(val.toArray().size()));
     }
 #pragma endregion
