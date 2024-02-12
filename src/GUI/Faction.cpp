@@ -1,5 +1,7 @@
 #include <QSet>
 #include "../Parsers/CSFParser.hpp"
+#include "../Parsers/JSONFile.hpp"
+#include "../Logger.hpp"
 #include "Faction.hpp"
 
 Faction::Faction(const QString& _shortName, const QString& _displayName, const QString& _displayNameDescription)
@@ -30,29 +32,29 @@ const QString& Faction::GetDisplayNameDescription() const
     return displayNameDescription;
 }
 
-const QMap<Config::GameObjectTypes, Faction::GameObject>& Faction::GetTechTree() const
+const QMap<Faction::GameObject, Config::GameObjectTypes>& Faction::GetTechTree() const
 {
     return techTree;
 }
 
 const QVector<QVector<Faction::Action>>& Faction::GetKeyboardLayoutsByObjectName(const QString& objName) const
 {
-    for(const Faction::GameObject& go : techTree)
+    for(const Faction::GameObject& go : techTree.keys())
         if(go.iconName == objName)
             return go.keyboardLayouts;
 
     return *(new QVector<QVector<Faction::Action>>());
 }
 
-QMap<Config::GameObjectTypes, Faction::GameObject> Faction::ParseJsonObject(const QJsonObject& obj)
+QMap<Faction::GameObject, Config::GameObjectTypes> Faction::ParseJsonObject(const QJsonObject& obj)
 {
-    QMap<Config::GameObjectTypes, GameObject> tmpMap;
+    QMap<GameObject, Config::GameObjectTypes> tmpMap;
 
     // Circle for each element in {"Buildings", "Infantry", "Vehicles", "Aircrafts"} map
     for(const QString& qstrObjectsArray : Config::ENTITIES_STRINGS)
     {
         QJsonArray currArr  = obj[qstrObjectsArray].toArray();
-        
+
         for(const auto& elemGameObj : currArr)
         {
             QJsonObject currGameObj      = elemGameObj.toObject();
@@ -76,16 +78,16 @@ QMap<Config::GameObjectTypes, Faction::GameObject> Faction::ParseJsonObject(cons
                 _layouts.push_back(_layout);
             }
 
-            tmpMap.insert(Config::ENTITIES_STRINGS.key(qstrObjectsArray), GameObject{_name, _ingameName, _layouts});
+            tmpMap.insert(Faction::GameObject{_name, _ingameName, _layouts}, Config::ENTITIES_STRINGS.key(qstrObjectsArray));
         }
     }
-
+    
     return tmpMap;
 }
 
 void Faction::SetHotkey(const QString& goName, const QString& actName, const QString& hk)
 {
-    for(Faction::GameObject& currGO : techTree)
+    for(Faction::GameObject& currGO : techTree.keys())
     {
         if(currGO.iconName == goName)
         {
@@ -104,4 +106,9 @@ void Faction::SetHotkey(const QString& goName, const QString& actName, const QSt
             break;
         }
     }
+}
+
+bool operator < (Faction::GameObject a, Faction::GameObject b)
+{
+    return a.iconName < b.iconName ? true : false;
 }

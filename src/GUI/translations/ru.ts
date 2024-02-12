@@ -105,22 +105,22 @@
     </message>
     <message>
         <location filename="../HotkeysMainWindow.cpp" line="132"/>
-        <location filename="../HotkeysMainWindow.cpp" line="360"/>
+        <location filename="../HotkeysMainWindow.cpp" line="363"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="255"/>
+        <location filename="../HotkeysMainWindow.cpp" line="258"/>
         <source>Layout %1</source>
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="346"/>
+        <location filename="../HotkeysMainWindow.cpp" line="349"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="353"/>
+        <location filename="../HotkeysMainWindow.cpp" line="356"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>
@@ -172,8 +172,12 @@
     </message>
     <message>
         <location filename="../../Config.hpp" line="28"/>
-        <source>Aircraft</source>
+        <source>Aircrafts</source>
         <translation>Авиация</translation>
+    </message>
+    <message>
+        <source>Aircraft</source>
+        <translation type="vanished">Авиация</translation>
     </message>
 </context>
 </TS>

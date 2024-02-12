@@ -26,12 +26,12 @@ private: // Data
     QString shortName;
     QString displayName;
     QString displayNameDescription;
-    QMap<Config::GameObjectTypes, GameObject> techTree;
+    QMap<GameObject, Config::GameObjectTypes> techTree;
 public:
     inline static const int BASIC_FACTION_COUNT = 12;
 
 private: // Methods
-    QMap<Config::GameObjectTypes, GameObject> ParseJsonObject(const QJsonObject& obj);
+    QMap<GameObject, Config::GameObjectTypes> ParseJsonObject(const QJsonObject& obj);
 public:
     Faction();
     Faction(const QString& _shortName, const QString& _displayName, const QString& _displayNameDescription);
@@ -44,9 +44,11 @@ public:
     /// @brief Returns long faction name from field `DisplayNameDescription` of TechTree.json.
     const QString& GetDisplayNameDescription() const;
     /// @brief Returns link to the techTree field.
-    const QMap<Config::GameObjectTypes, GameObject>& GetTechTree() const;
+    const QMap<GameObject, Config::GameObjectTypes>& GetTechTree() const;
     /// @brief Returns link to the keyboard layout vector searching by object name.
     const QVector<QVector<Action>>& GetKeyboardLayoutsByObjectName(const QString& objName) const;
     /// @brief Replace hotkey with new one.
     void SetHotkey(const QString& goName, const QString& actName, const QString& hk);
 };
+
+bool operator < (Faction::GameObject a, Faction::GameObject b);

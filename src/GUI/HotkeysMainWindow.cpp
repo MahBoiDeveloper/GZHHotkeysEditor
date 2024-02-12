@@ -8,9 +8,9 @@
 #include <QTreeWidgetItem>
 #include <QScrollArea>
 
+#include "../Parsers/CSFParser.hpp"
 #include "../Info.hpp"
 #include "../Logger.hpp"
-#include "../Parsers/CSFParser.hpp"
 
 #include "ActionHotkeyWidget.hpp"
 #include "GUIConfig.hpp"
@@ -139,24 +139,27 @@ void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
 {
     pEntitiesTreeWidget->clear();
 
-    QMap<Config::GameObjectTypes, Faction::GameObject> goMap = GetFactionRef(factionShortName).GetTechTree();
+    QMap<Faction::GameObject, Config::GameObjectTypes> goMap = GetFactionRef(factionShortName).GetTechTree();
 
     // Skip if there are no entities of that type
     if(goMap.isEmpty()) return;
 
     // Create sections for all faction entities types
-    for(const auto& objectType : Config::ENTITIES_STRINGS)
+    for(const auto& objectType : Config::ENTITIES_STRINGS.keys())
     {
         // Create new section of tree list
         QTreeWidgetItem* newTopEntityItem = new QTreeWidgetItem();
-        newTopEntityItem->setText(0, QCoreApplication::translate("QObject", objectType.toUtf8().constData()));
+        newTopEntityItem->setText(0, QCoreApplication::translate("QObject", Config::ENTITIES_STRINGS.value(objectType).toUtf8().constData()));
 
         // Decorate
-        newTopEntityItem->setIcon(0, GUIConfig::GetGameObjectTypePixmap(Config::ENTITIES_STRINGS.key(objectType))
+        newTopEntityItem->setIcon(0, GUIConfig::GetGameObjectTypePixmap(objectType)
                                                .scaledToHeight(GUIConfig::ICON_SCALING_HEIGHT, Qt::SmoothTransformation));
 
+        // If there no objects by type - then skip
+        if (goMap.keys(objectType).isEmpty()) continue;
+        
         // Append entities to the section
-        for (const auto& go : goMap)
+        for (const auto& go : goMap.keys(objectType))
         {
             QTreeWidgetItem* currentNewEntityItem = new QTreeWidgetItem();
             currentNewEntityItem->setText(0, CSFPARSER->GetStringValue(go.ingameName));
