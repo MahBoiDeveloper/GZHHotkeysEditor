@@ -25,6 +25,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     , pAboutDialog{nullptr}
 {
     SetFactions();
+    LOGMSG(QString{"Total faction count that has been read from json file: "} + QString::number(factionVector.size()));
 
     resize(1200, 800);
     ConfigureMenu();
@@ -344,20 +345,27 @@ void HotkeysMainWindow::OnAbout()
         pAboutDialog->activateWindow();
         return;
     }
+    QGridLayout* lblContent = new QGridLayout();
+    lblContent->setSizeConstraint(QLayout::SetFixedSize);
+    
+    QLabel* lblEditorIcon = new QLabel();
+    lblEditorIcon->setPixmap(QPixmap::fromImage(GUIConfig::DecodeEditorWebpIcon()));
+    lblContent->addWidget(lblEditorIcon, 0, 1);
 
-    QVBoxLayout* authorsL = new QVBoxLayout();
-    authorsL->addWidget(new QLabel{tr("Authors: ") + AUTHORS});
-
-    QGridLayout* contentL = new QGridLayout();
-    contentL->addLayout(authorsL, 0, 0);
-    QLabel* pixmap = new QLabel();
-    pixmap->setPixmap(QPixmap::fromImage(GUIConfig::DecodeDefaultWebpIcon()));
-    contentL->addWidget(pixmap, 0, 1);
-    QLabel* textL = new QLabel{tr("Program licensed by GNU GPL v3")};
-    textL->setWordWrap(true);
-    textL->setAlignment(Qt::AlignJustify);
-    contentL->addWidget(textL, 1, 0);
-    contentL->setSizeConstraint(QLayout::SetFixedSize);
+    QVBoxLayout* lblAuthors = new QVBoxLayout();
+    lblAuthors->addWidget(new QLabel{tr("Authors: ") + AUTHORS});
+    lblContent->addLayout(lblAuthors, 0, 0);
+    
+    QLabel* lblLicense = new QLabel{tr("Program licensed by GNU GPL v3")};
+    lblLicense->setWordWrap(true);
+    lblLicense->setAlignment(Qt::AlignJustify);
+    lblContent->addWidget(lblLicense, 1, 0);
+    
+    QLabel* lblGitHub = new QLabel{tr("<a href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">GitHub Repository</a>")};
+    lblGitHub->setTextFormat(Qt::RichText);
+    lblGitHub->setTextInteractionFlags(Qt::TextBrowserInteraction);
+    lblGitHub->setOpenExternalLinks(true);
+    lblContent->addWidget(lblGitHub, 2, 0);
 
     pAboutDialog = new QDialog{this};
     pAboutDialog->setWindowTitle(tr("About"));
@@ -378,18 +386,18 @@ void HotkeysMainWindow::OnAbout()
 
     connect(buttons, &QDialogButtonBox::accepted, pAboutDialog, &QDialog::accept);
 
-    QHBoxLayout* buttonsL = new QHBoxLayout();
-    buttonsL->addStretch();
-    buttons->button(QDialogButtonBox::Ok)->setFixedWidth(100);
-    buttonsL->addWidget(buttons->button(QDialogButtonBox::Ok));
-    buttonsL->addStretch();
-    buttonsL->setAlignment(Qt::AlignCenter);
+    QHBoxLayout* btnOk = new QHBoxLayout();
+    btnOk->addStretch();
+    buttons->button(QDialogButtonBox::Ok)->setFixedWidth(80);
+    btnOk->addWidget(buttons->button(QDialogButtonBox::Ok));
+    btnOk->addStretch();
+    btnOk->setAlignment(Qt::AlignCenter);
 
-    QVBoxLayout* mainL = new QVBoxLayout();
-    mainL->addLayout(contentL);
-    mainL->addLayout(buttonsL);
+    QVBoxLayout* ltMainBlock = new QVBoxLayout();
+    ltMainBlock->addLayout(lblContent);
+    ltMainBlock->addLayout(btnOk);
 
-    pAboutDialog->setLayout(mainL);
+    pAboutDialog->setLayout(ltMainBlock);
     pAboutDialog->show();
     pAboutDialog->raise();
     pAboutDialog->activateWindow();

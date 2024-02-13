@@ -26,13 +26,18 @@ QImage GUIConfig::DecodeWebpIcon(const QString& iconName)
     }
     else
     {
-        return DecodeDefaultWebpIcon();
+        return DecodeMissingWebpIcon();
     }
 }
 
-QImage GUIConfig::DecodeDefaultWebpIcon()
+QImage GUIConfig::DecodeMissingWebpIcon()
 {
-    return DecodeWebpIconPath(DEFAULT_ICON_PATH);
+    return DecodeWebpIconPath(MISSING_ICON_PATH);
+}
+
+QImage GUIConfig::DecodeEditorWebpIcon()
+{
+    return DecodeWebpIconPath(EDITOR_ICON_PATH);
 }
 
 QPixmap GUIConfig::GetGameObjectTypePixmap(Config::GameObjectTypes entityType)
@@ -77,7 +82,7 @@ QImage GUIConfig::DecodeWebpIconPath(const QString& iconPath)
         {
             LOGMSG("No icon file [" + iconFile.fileName() + "] was found");
         }
-        return DecodeDefaultWebpIcon();
+        return DecodeMissingWebpIcon();
     }
 
     return DecodeImageFromData(iconFile.readAll());

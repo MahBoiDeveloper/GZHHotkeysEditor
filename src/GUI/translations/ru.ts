@@ -84,45 +84,50 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="124"/>
+        <location filename="../HotkeysMainWindow.cpp" line="125"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="125"/>
+        <location filename="../HotkeysMainWindow.cpp" line="126"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="127"/>
+        <location filename="../HotkeysMainWindow.cpp" line="128"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="129"/>
+        <location filename="../HotkeysMainWindow.cpp" line="130"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="132"/>
-        <location filename="../HotkeysMainWindow.cpp" line="363"/>
+        <location filename="../HotkeysMainWindow.cpp" line="133"/>
+        <location filename="../HotkeysMainWindow.cpp" line="371"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="258"/>
+        <location filename="../HotkeysMainWindow.cpp" line="259"/>
         <source>Layout %1</source>
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="349"/>
+        <location filename="../HotkeysMainWindow.cpp" line="356"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="356"/>
+        <location filename="../HotkeysMainWindow.cpp" line="359"/>
         <source>Program licensed by GNU GPL v3</source>
         <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
+    </message>
+    <message>
+        <location filename="../HotkeysMainWindow.cpp" line="364"/>
+        <source>&lt;a href=&quot;https://github.com/MahBoiDeveloper/GZHHotkeysEditor&quot;&gt;GitHub Repository&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;https://github.com/MahBoiDeveloper/GZHHotkeysEditor&quot;&gt;Репозиторий на GitHub&lt;/a&gt;</translation>
     </message>
 </context>
 <context>
