@@ -12,7 +12,8 @@ public:
     inline static const int     ICON_MIN_HEIGHT     = 80;
     inline static const int     ICON_SCALING_HEIGHT = 25;
     inline static const QString QT_ICONS_FOLDER     = ":/my/icons";
-    inline static const QString DEFAULT_ICON_PATH   = QT_ICONS_FOLDER + "/NoImageSmall.webp";
+    inline static const QString MISSING_ICON_PATH   = QT_ICONS_FOLDER + "/NoImageSmall.webp";
+    inline static const QString EDITOR_ICON_PATH    = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
     inline static const QString ICONS_FOLDER        = Config::RESOURCE_FOLDER + "/Icons";
 
 private: // Methods
@@ -28,8 +29,9 @@ public:
     /// @brief Decode WEBP image icon name.
     static QImage  DecodeWebpIcon(const QString& iconName);
     /// @brief Get image if needed file cannot be found.
-    static QImage  DecodeDefaultWebpIcon();
+    static QImage  DecodeMissingWebpIcon();
+    /// @brief Return image of the main executable WEBP icon.
+    static QImage  DecodeEditorWebpIcon();
     /// @brief Return pixel map by object type.
     static QPixmap GetGameObjectTypePixmap(Config::GameObjectTypes goType);
-
 };

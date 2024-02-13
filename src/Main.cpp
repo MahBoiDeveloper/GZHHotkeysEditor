@@ -43,6 +43,27 @@ int main(int argc, char *argv[])
         // And show it to user
         QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", exception.what());
     }
+    catch (const char* msg)
+    {
+        Logger::Instance->LogException(msg);
+        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", msg);
+    }
+    catch (const string& msg)
+    {
+        Logger::Instance->LogException(msg.c_str());
+        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", msg.c_str());
+    }
+    catch (const QString& msg)
+    {
+        Logger::Instance->LogException(msg.toStdString().c_str());
+        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", msg.toStdString().c_str());
+    }
+    catch (...)
+    {
+        string tmp = "Unknown error has been occured.";
+        Logger::Instance->LogException(tmp.c_str());
+        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", tmp.c_str());
+    }
 
     return 0;
 }

@@ -27,5 +27,5 @@ public: // Methods
     static QJsonValue   Query(const QJsonObject&, const QString& strQuery);
 
     /// @brief Write via LOGMSG information about value. Use it only if debug.
-    void LogInfoAboutValue(const QJsonValue& val);
+    static void LogInfoAboutValue(const QJsonValue& val);
 };

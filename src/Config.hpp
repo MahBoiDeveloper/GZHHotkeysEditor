@@ -25,7 +25,7 @@ public: // Data
         {GameObjectTypes::Buildings, QObject::tr("Buildings")},
         {GameObjectTypes::Infantry,  QObject::tr("Infantry")},
         {GameObjectTypes::Vehicles,  QObject::tr("Vehicles")},
-        {GameObjectTypes::Aircrafts, QObject::tr("Aircraft")}
+        {GameObjectTypes::Aircrafts, QObject::tr("Aircrafts")}
     };
 
     enum class Languages
