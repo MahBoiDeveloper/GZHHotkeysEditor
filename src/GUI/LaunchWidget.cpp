@@ -11,7 +11,7 @@
 LaunchWidget::LaunchWidget(Config::Languages lngType, QWidget* parent) : QStackedWidget(parent)
 {
     // Application style settings
-    QFile styleSheetsFile{":/my/css/mainStyleSheet.css"};
+    QFile styleSheetsFile{":/my/css/MainStyleSheet.css"};
 
     if (styleSheetsFile.open(QIODevice::ReadOnly))
     {
@@ -20,7 +20,7 @@ LaunchWidget::LaunchWidget(Config::Languages lngType, QWidget* parent) : QStacke
     }
     else
     {
-        LOGMSG("Unable to read the style file mainStyleSheet.css.");
+        LOGMSG("Unable to read the style file MainStyleSheet.css.");
     }
 
     qApp->setWindowIcon(QIcon(QPixmap::fromImage(GUIConfig::DecodeMissingWebpIcon())));

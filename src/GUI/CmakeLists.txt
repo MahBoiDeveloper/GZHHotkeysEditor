@@ -1,189 +1,132 @@
 # General settings
-project(GZHHotkeysEditor)                                                                             # Definitions from ../../CMakeLists.txt
-get_property(PROJECT_DESTINATION_FOLDER           GLOBAL PROPERTY PROJECT_DESTINATION_FOLDER)         # exe folder
-get_property(PROJECT_DESTINATION_RESOURCES_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_SOURCES_FOLDER) # resources folder
+    
+    # Resources folder
+    get_property(PROJECT_DESTINATION_RESOURCES_FOLDER GLOBAL PROPERTY PROJECT_DESTINATION_SOURCES_FOLDER)
 
-# declare current target name
-set(TARGET_NAME GUI)
+    set(CMAKE_AUTOUIC ON)
+    set(CMAKE_AUTOMOC ON)
+    set(CMAKE_AUTORCC ON)
 
-#===========================================================================================
-#======================================= Qt ================================================
-#===========================================================================================
+    # Declare required qt libs
+    set(QT_LIBS Core Widgets)
 
-set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/mingw81_64")
+    # Find qt packages
+    find_package(QT NAMES Qt5 Qt6 REQUIRED)
 
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
+    # Find qt libs
+    foreach(LIB ${QT_LIBS})
+        find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${LIB})
+    endforeach()
 
-# declare required qt libs
-set(_QT_LIBS Core Widgets)
+# GUI target configuration
 
-# find qt packages
-find_package(QT NAMES Qt5 Qt6 REQUIRED)
+    # Declare GUI target name
+    set(TARGET_NAME GUI)
 
-# find qt libs
-foreach(_QT_LIB ${_QT_LIBS})
-    find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${_QT_LIB})
-endforeach()
+    # Define GUI target
+    add_library(${TARGET_NAME} OBJECT)
 
-# add qt source file
-qt5_add_resources(QT_RESOURCES QtSources/styles.qrc)
-
-#===========================================================================================
-#================================ Configure target =========================================
-#===========================================================================================
-
-# GUI target
-add_library(${TARGET_NAME} OBJECT)
-
-# set target properties
-set_target_properties(${TARGET_NAME}
-    PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED ON
-)
-
-# add GUI folder to include path
-target_include_directories(${TARGET_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-
-# add external headers folder to include path
-target_include_directories(${TARGET_NAME} PUBLIC ${_HEADERS_INCLUDE_DIRECTORY})
-
-# project sources
-file(
-    GLOB_RECURSE SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.[ch]pp
-)
-
-# set target code sources
-target_sources(${TARGET_NAME} PRIVATE
-    ${SOURCES}
-)
-
-# link qt libs
-foreach(_QT_LIB ${_QT_LIBS})
-    target_link_libraries(${TARGET_NAME} PUBLIC Qt${QT_VERSION_MAJOR}::${_QT_LIB})
-endforeach()
-
-# set target qt sources
-target_sources(${TARGET_NAME} PRIVATE
-    ${QT_RESOURCES}
-)
-
-#===========================================================================================
-#=============================== translation files =========================================
-#===========================================================================================
-
-# available languages
-set(
-    LANGUAGES
-    ru
-)
-
-# find translations programs
-find_program(LUPDATE_EXECUTABLE  lupdate)
-find_program(LRELEASE_EXECUTABLE lrelease)
-
-# create translation binaries folder
-set(TRANSLATION_DESTINATION_FOLDER ${PROJECT_DESTINATION_RESOURCES_FOLDER}/Translations)
-file(MAKE_DIRECTORY ${TRANSLATION_DESTINATION_FOLDER})
-
-# generate translations files
-foreach(LANGUAGE ${LANGUAGES})
-    set(TS_FILE ${CMAKE_CURRENT_SOURCE_DIR}/translations/${LANGUAGE}.ts)    # source translation file
-    set(TRANSLATION_SOURCES ${TRANSLATION_SOURCES} ${TS_FILE})              # all source translation files
-    set(QM_FILE ${TRANSLATION_DESTINATION_FOLDER}/${LANGUAGE}.qm)           # binary translation file
-    add_custom_command(
-        PRE_BUILD
-        OUTPUT ${QM_FILE}
-        # generate translation source file
-        COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_SOURCE_DIR} -recursive -ts ${TS_FILE} # -no-obsolete
-        # generate translation binary file
-        COMMAND ${LRELEASE_EXECUTABLE} ${TS_FILE} -qm ${QM_FILE}
-        MAIN_DEPENDENCY ${SOURCES} ${TS_FILE}
-        DEPENDS ${SOURCES} ${TS_FILE}
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    # Define a list of all GUI sources
+    file(
+        GLOB_RECURSE SOURCES
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.[ch]pp
     )
-endforeach()
 
-# set target translation sources
-target_sources(${TARGET_NAME} PRIVATE
-    ${TRANSLATION_SOURCES}
-)
+    # Assign source files to the GUI target
+    target_sources(${TARGET_NAME} PRIVATE ${SOURCES})
 
-#===========================================================================================
-#====================================== Lbwebp =============================================
-#===========================================================================================
+    # Assign qt sources file to the GUI target
+    target_sources(${TARGET_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/QtSources/CompilationSources.qrc)
 
-set(LIB_WEBP_DIR_NAME  libwebp)                                               # lib folder name
-set(LIB_WEBP_DIR       ${CMAKE_CURRENT_SOURCE_DIR}../../../${LIB_WEBP_DIR_NAME}) # lib folder path
-set(LIB_WEBP_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}/${LIB_WEBP_DIR_NAME})      # lib build folder
-set(LIB_WEBP_NAME      webpdecoder)                                           # lib target
+    # link qt libs
+    foreach(LIB ${QT_LIBS})
+        target_link_libraries(${TARGET_NAME} PUBLIC Qt${QT_VERSION_MAJOR}::${LIB})
+    endforeach()
 
-# find all lib sources
-file(
-    GLOB_RECURSE LIB_WEBP_SOURCE_FILES
-    LIST_DIRECTORIES FALSE
-    ${LIB_WEBP_DIR}/*
-)
+# Translation files configuration
 
-# define a file that will be an indicator of source changes
-set(LIB_WEBP_FILE_INDICATOR "${LIB_WEBP_BUILD_DIR}/LIB_WEBP_FILE_INDICATOR")
+    # Declare available translation languages
+    set(LANGUAGES ru)
 
-# create a lib build folder
-file(MAKE_DIRECTORY ${LIB_WEBP_BUILD_DIR})
+    # Find translation programs
+    find_program(LUPDATE_EXECUTABLE  lupdate)
+    find_program(LRELEASE_EXECUTABLE lrelease)
 
-# define a command to build libwebp (only for the selected target) if the sources have changed
-add_custom_command(
-    OUTPUT ${LIB_WEBP_FILE_INDICATOR}
-    # create/update file indicator
-    COMMAND ${CMAKE_COMMAND} -E touch ${LIB_WEBP_FILE_INDICATOR}
-    # cmake configure
-    COMMAND ${CMAKE_COMMAND} --no-warn-unused-cli
-                             -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
-                             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-                             -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
-                             -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-                             -G ${CMAKE_GENERATOR}
-                             ${LIB_WEBP_DIR}
-    # cmake build
-    COMMAND ${CMAKE_COMMAND} --build .
-                             --config ${CMAKE_BUILD_TYPE}
-                             --target ${LIB_WEBP_NAME}
-    WORKING_DIRECTORY ${LIB_WEBP_BUILD_DIR}
-    DEPENDS ${LIB_WEBP_SOURCE_FILES}
-)
+    # Create translation binaries folder
+    set(TRANSLATION_DESTINATION_FOLDER ${PROJECT_DESTINATION_RESOURCES_FOLDER}/Translations)
+    file(MAKE_DIRECTORY ${TRANSLATION_DESTINATION_FOLDER})
 
-# define the target that is launched by the libwebp build command and activates the rebuild of the main target 
-add_custom_target(LibWebpTarget
-    DEPENDS ${LIB_WEBP_FILE_INDICATOR}
-)
-add_dependencies(${TARGET_NAME} LibWebpTarget)
+    # Generate translation files
+    foreach(LANGUAGE ${LANGUAGES})
 
-# link lib
-target_link_directories(${TARGET_NAME} PUBLIC  ${LIB_WEBP_BUILD_DIR})
-target_link_libraries(  ${TARGET_NAME} PRIVATE ${LIB_WEBP_NAME})
+        # Define source translation file
+        set(TS_FILE ${CMAKE_CURRENT_SOURCE_DIR}/translations/${LANGUAGE}.ts)
 
-# for included headers
-target_include_directories(${TARGET_NAME} PUBLIC
-    ${LIB_WEBP_DIR}/src
-)
+        # Define all source translation files
+        set(TRANSLATION_SOURCES ${TRANSLATION_SOURCES} ${TS_FILE})
 
-#===========================================================================================
-#========================= Copying icons to the build folder ===============================
-#===========================================================================================
+        # Define binary translation file
+        set(QM_FILE ${TRANSLATION_DESTINATION_FOLDER}/${LANGUAGE}.qm)
+        
+        # Define command to create translation files
+        add_custom_command(
+            PRE_BUILD
+            OUTPUT ${QM_FILE}
+            # Generate translation source file
+            COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_SOURCE_DIR} -recursive -ts ${TS_FILE} # -no-obsolete
+            # Generate translation binary file
+            COMMAND ${LRELEASE_EXECUTABLE} ${TS_FILE} -qm ${QM_FILE}
+            MAIN_DEPENDENCY ${SOURCES} ${TS_FILE}
+            DEPENDS ${SOURCES} ${TS_FILE}
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        )
 
-set(ICONS_WEBP_DIR "Icons")
+    endforeach()
 
-file(
-    GLOB_RECURSE ICONS_WEBP_FILES
-    LIST_DIRECTORIES TRUE
-    ${CMAKE_CURRENT_SOURCE_DIR}/${ICONS_WEBP_DIR}/*
-)
+    # Assign translation source files to the GUI target
+    target_sources(${TARGET_NAME} PRIVATE ${TRANSLATION_SOURCES})
 
-file(
-    COPY ${CMAKE_CURRENT_SOURCE_DIR}/${ICONS_WEBP_DIR}
-    DESTINATION ${PROJECT_DESTINATION_RESOURCES_FOLDER}
-    FILES_MATCHING PATTERN "*"
-)
+# Lbwebp configuration
+
+    set(LIB_WEBP_TARGET_NAME webpdecoder)                           # Define lib folder path
+    set(LIB_WEBP_TARGET_FILE "lib${LIB_WEBP_TARGET_NAME}.a")        # Define lib file
+    set(LIB_WEBP_SOURCE_DIR ${CMAKE_SOURCE_DIR}/libwebp)            # Define lib folder path
+    set(LIB_WEBP_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/libwebp)    # Define lib build folder
+
+    # Create a lib build folder
+    file(MAKE_DIRECTORY ${LIB_WEBP_BINARY_DIR})
+    
+    add_custom_command(
+        OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/QtSources/${LIB_WEBP_TARGET_FILE}"
+        # Cmake configure
+        COMMAND ${CMAKE_COMMAND} --no-warn-unused-cli
+                                 -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
+                                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+                                 -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+                                 -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+                                 -G ${CMAKE_GENERATOR}
+                                 ${LIB_WEBP_SOURCE_DIR}
+        # Cmake build
+        COMMAND ${CMAKE_COMMAND} --build . --config ${CMAKE_BUILD_TYPE} --target ${LIB_WEBP_TARGET_NAME} -j10
+        COMMAND ${CMAKE_COMMAND} -E copy "${LIB_WEBP_BINARY_DIR}/${LIB_WEBP_TARGET_FILE}" "${CMAKE_CURRENT_SOURCE_DIR}/QtSources"
+        WORKING_DIRECTORY ${LIB_WEBP_BINARY_DIR}
+    )
+
+    # Define the target that is launched by the libwebp build command and activates the rebuild of the main target 
+    add_custom_target(LibWebpTarget DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/QtSources/${LIB_WEBP_TARGET_FILE}")
+
+    # Add a libwebp target as a dependency to GUI target
+    add_dependencies(${TARGET_NAME} LibWebpTarget)
+
+    # Make the libwebp target output file visible to the GUI target
+    target_link_directories(${TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/QtSources)
+
+    # Link the libwebp target to the GUI target
+    target_link_libraries(${TARGET_NAME} PRIVATE ${LIB_WEBP_TARGET_NAME})
+    
+# Managing icons files
+
+    file(
+        COPY "${CMAKE_CURRENT_SOURCE_DIR}/Icons"
+        DESTINATION ${PROJECT_DESTINATION_RESOURCES_FOLDER}
+    )

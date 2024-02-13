@@ -1,13 +1,13 @@
 <RCC>
     <qresource prefix="/my/css">
-        <file>mainStyleSheet.css</file>
+        <file>MainStyleSheet.css</file>
     </qresource>
     <qresource prefix="/my/icons">
         <file>EditorIconSmall.webp</file>
         <file>NoImageSmall.webp</file>
-        <file>Aircraft.png</file>
         <file>Buildings.png</file>
         <file>Infantry.png</file>
         <file>Vehicles.png</file>
+        <file>Aircrafts.png</file>
     </qresource>
 </RCC>
