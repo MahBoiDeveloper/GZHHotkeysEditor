@@ -9,7 +9,7 @@ public: // Data
 
     inline static const QString RESOURCE_FOLDER     = "Resources";
     inline static const QString TRANSLATIONS_FOLDER = RESOURCE_FOLDER + "/Translations";
-    inline static const QString TECH_TREE_PATH      = RESOURCE_FOLDER + "/TechTreeTmp.json";
+    inline static const QString TECH_TREE_PATH      = RESOURCE_FOLDER + "/TechTree.json";
     inline static const double  START_WIDGET_SIZE_RATIO = 3./7.;
 
     enum class GameObjectTypes

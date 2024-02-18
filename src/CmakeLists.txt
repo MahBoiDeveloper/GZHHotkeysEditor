@@ -97,7 +97,6 @@
     set(
         ADDITIONAL_RESOURCES
         "TechTree.json"
-        "TechTreeTmp.json"
         "Settings.json"
     )
 
