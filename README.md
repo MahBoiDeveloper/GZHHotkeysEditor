@@ -5,9 +5,8 @@ GZHHotkeysEditor is an attempt to create a useful tool for editing C&C: Generals
 ## Building manually
 0. Download and install [Qt 5.15.2](https://www.qt.io/offline-installers) to the `C:\Qt` folder
 1. Download and install [CMake 3.15](https://cmake.org/download/) or newer
-2. Download and install [VS Code](https://code.visualstudio.com) with CMake extension
-3. Clone this repository recursively via your git client
-4. Run `Build` in VS Code
+2. Clone this repository recursively via your git client
+3. Run `zBuild.bat` or run build in your favourite editor
 
 ## Future features
 * C&C: Generals — Zero Hour support
