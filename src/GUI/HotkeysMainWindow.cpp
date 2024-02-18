@@ -347,25 +347,21 @@ void HotkeysMainWindow::OnAbout()
     }
     QGridLayout* lblContent = new QGridLayout();
     lblContent->setSizeConstraint(QLayout::SetFixedSize);
+        
+    QLabel* lblAboutText = new QLabel{QString("<p>") 
+                                        + tr("Authors: ") + AUTHORS + "<br>"
+                                        + tr("Version: ") + VERSION + "<br>"
+                                        + tr("Program licensed with ") + "<a href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE\">GNU GPL v3</a><br>" 
+                                        + "<a href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">" + tr("GitHub Repository") 
+                                      + "</a></p>"};
+    lblAboutText->setTextFormat(Qt::RichText);
+    lblAboutText->setTextInteractionFlags(Qt::TextBrowserInteraction);
+    lblAboutText->setOpenExternalLinks(true);
+    lblContent->addWidget(lblAboutText, 0, 0);
     
     QLabel* lblEditorIcon = new QLabel();
     lblEditorIcon->setPixmap(QPixmap::fromImage(GUIConfig::DecodeEditorWebpIcon()));
     lblContent->addWidget(lblEditorIcon, 0, 1);
-
-    QVBoxLayout* lblAuthors = new QVBoxLayout();
-    lblAuthors->addWidget(new QLabel{tr("Authors: ") + AUTHORS});
-    lblContent->addLayout(lblAuthors, 0, 0);
-    
-    QLabel* lblLicense = new QLabel{tr("Program licensed by GNU GPL v3")};
-    lblLicense->setWordWrap(true);
-    lblLicense->setAlignment(Qt::AlignJustify);
-    lblContent->addWidget(lblLicense, 1, 0);
-    
-    QLabel* lblGitHub = new QLabel{tr("<a href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">GitHub Repository</a>")};
-    lblGitHub->setTextFormat(Qt::RichText);
-    lblGitHub->setTextInteractionFlags(Qt::TextBrowserInteraction);
-    lblGitHub->setOpenExternalLinks(true);
-    lblContent->addWidget(lblGitHub, 2, 0);
 
     pAboutDialog = new QDialog{this};
     pAboutDialog->setWindowTitle(tr("About"));

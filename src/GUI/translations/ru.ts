@@ -105,7 +105,7 @@
     </message>
     <message>
         <location filename="../HotkeysMainWindow.cpp" line="133"/>
-        <location filename="../HotkeysMainWindow.cpp" line="371"/>
+        <location filename="../HotkeysMainWindow.cpp" line="367"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
@@ -115,19 +115,32 @@
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="356"/>
+        <location filename="../HotkeysMainWindow.cpp" line="352"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="359"/>
-        <source>Program licensed by GNU GPL v3</source>
-        <translation>Программа лицензирована под лицензией GNU GPL v3</translation>
+        <location filename="../HotkeysMainWindow.cpp" line="353"/>
+        <source>Version: </source>
+        <translation>Версия: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="364"/>
+        <location filename="../HotkeysMainWindow.cpp" line="354"/>
+        <source>Program licensed with </source>
+        <translation>Программа лицензирована под </translation>
+    </message>
+    <message>
+        <source>Program licensed by GNU GPL v3</source>
+        <translation type="vanished">Программа лицензирована под лицензией GNU GPL v3</translation>
+    </message>
+    <message>
+        <location filename="../HotkeysMainWindow.cpp" line="355"/>
+        <source>GitHub Repository</source>
+        <translation>Репозиторий на GitHub</translation>
+    </message>
+    <message>
         <source>&lt;a href=&quot;https://github.com/MahBoiDeveloper/GZHHotkeysEditor&quot;&gt;GitHub Repository&lt;/a&gt;</source>
-        <translation>&lt;a href=&quot;https://github.com/MahBoiDeveloper/GZHHotkeysEditor&quot;&gt;Репозиторий на GitHub&lt;/a&gt;</translation>
+        <translation type="vanished">&lt;a href=&quot;https://github.com/MahBoiDeveloper/GZHHotkeysEditor&quot;&gt;Репозиторий на GitHub&lt;/a&gt;</translation>
     </message>
 </context>
 <context>
