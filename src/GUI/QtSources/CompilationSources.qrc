@@ -4,6 +4,7 @@
     </qresource>
     <qresource prefix="/my/icons">
         <file>EditorIconSmall.webp</file>
+        <file>EditorIconBig.webp</file>
         <file>NoImageSmall.webp</file>
         <file>Buildings.png</file>
         <file>Infantry.png</file>

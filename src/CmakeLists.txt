@@ -20,6 +20,7 @@
 
     # Editor target name
     set(MAIN_TARGET_NAME "HotkeyEditor")
+    set(ACTUAL_EXE_NAME "LoadEditor")
     
     # Define editor executable
     add_executable(${MAIN_TARGET_NAME})
@@ -55,6 +56,7 @@
         ${MAIN_TARGET_NAME}
         PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DESTINATION_BIN_FOLDER}
+        OUTPUT_NAME ${ACTUAL_EXE_NAME}
     )
     
     # Add a Windows library dependency to the main target

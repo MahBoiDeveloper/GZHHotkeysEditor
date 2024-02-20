@@ -8,13 +8,14 @@ class GUIConfig
 private: // Data
     inline static QMap<QString, QImage> ImagesCache;
 public:
-    inline static const QSize   START_BUTTON_SIZE   = QSize(230, 110);
-    inline static const int     ICON_MIN_HEIGHT     = 80;
-    inline static const int     ICON_SCALING_HEIGHT = 25;
-    inline static const QString QT_ICONS_FOLDER     = ":/my/icons";
-    inline static const QString MISSING_ICON_PATH   = QT_ICONS_FOLDER + "/NoImageSmall.webp";
-    inline static const QString EDITOR_ICON_PATH    = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
-    inline static const QString ICONS_FOLDER        = Config::RESOURCE_FOLDER + "/Icons";
+    inline static const QSize   START_BUTTON_SIZE    = QSize(230, 110);
+    inline static const int     ICON_MIN_HEIGHT      = 80;
+    inline static const int     ICON_SCALING_HEIGHT  = 25;
+    inline static const QString ICONS_FOLDER         = Config::RESOURCE_FOLDER + "/Icons";
+    inline static const QString QT_ICONS_FOLDER      = ":/my/icons";
+    inline static const QString MISSING_ICON_PATH    = QT_ICONS_FOLDER + "/NoImageSmall.webp";
+    inline static const QString EDITOR_ICON_PATH     = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
+    inline static const QString EDITOR_BIG_ICON_PATH = QT_ICONS_FOLDER + "/EditorIconBig.webp";
 
 private: // Methods
     /// @brief Search recursively icons in folders.
@@ -32,6 +33,8 @@ public:
     static QImage  DecodeMissingWebpIcon();
     /// @brief Return image of the main executable WEBP icon.
     static QImage  DecodeEditorWebpIcon();
+    /// @brief Return project's official WEBP image.
+    static QImage  DecodeBigEditorWebpIcon();
     /// @brief Return pixel map by object type.
     static QPixmap GetGameObjectTypePixmap(Config::GameObjectTypes goType);
 };

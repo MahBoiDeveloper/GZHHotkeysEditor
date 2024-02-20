@@ -360,7 +360,7 @@ void HotkeysMainWindow::OnAbout()
     lblContent->addWidget(lblAboutText, 0, 0);
     
     QLabel* lblEditorIcon = new QLabel();
-    lblEditorIcon->setPixmap(QPixmap::fromImage(GUIConfig::DecodeEditorWebpIcon()));
+    lblEditorIcon->setPixmap(QPixmap::fromImage(GUIConfig::DecodeBigEditorWebpIcon()));
     lblContent->addWidget(lblEditorIcon, 0, 1);
 
     pAboutDialog = new QDialog{this};

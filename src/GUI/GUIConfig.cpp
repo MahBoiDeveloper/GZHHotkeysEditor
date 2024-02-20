@@ -40,6 +40,11 @@ QImage GUIConfig::DecodeEditorWebpIcon()
     return DecodeWebpIconPath(EDITOR_ICON_PATH);
 }
 
+QImage GUIConfig::DecodeBigEditorWebpIcon()
+{
+    return DecodeWebpIconPath(EDITOR_BIG_ICON_PATH);
+}
+
 QPixmap GUIConfig::GetGameObjectTypePixmap(Config::GameObjectTypes entityType)
 {
     return QPixmap{QT_ICONS_FOLDER + "/" + QString{"%1.png"}.arg(Config::ENTITIES_STRINGS.value(entityType))};

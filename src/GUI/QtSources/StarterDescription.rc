@@ -15,7 +15,7 @@ BEGIN
             VALUE "InternalName",     "GZHHotkeyEditor"
             VALUE "OriginalFilename", "HotkeyEditor.exe"
             VALUE "CompanyName",      "GZH Hotkey Editor Developers. All rights reserved."
-            VALUE "LegalCopyright",   "Copyright (C) GZHHE Developers 2023-2024"
+            VALUE "LegalCopyright",   "Copyright (C) GZHHE Devs 2023-2024"
             VALUE "Licence",          "GNU GPL v3"
             VALUE "Info",             "https://github.com/MahBoiDeveloper/GZHHotkeysEditor"
             VALUE "Comment",          "GZH Hotkeys Editor"
