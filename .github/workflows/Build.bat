@@ -21,7 +21,7 @@ echo Configuring MinGW Make done
 echo.
 
 echo Compilation and linking executables...
-cmake --build .\build --config Release --target all -j 4
+cmake --build .\build --config Release --target all -j 16
 echo Compilation and linking executables done
 echo.
 

@@ -21,14 +21,14 @@ jobs:
 
       # Check this about more info: https://github.com/marketplace/actions/install-version-specific-mingw
       # Setting up MinGW_x64 version 8.1.0
-      - name: Set up MinGW
+      - name: Set Up MinGW
         uses: egor-tensin/setup-mingw@v2
         with:
           platform: x64
           version: 8.1.0
 
       # Check this about more info: https://github.com/marketplace/actions/install-qt
-      - name: Set up Qt
+      - name: Set Up Qt
         uses: jurplel/install-qt-action@v3
         with: 
           version: 5.15.2
@@ -37,13 +37,13 @@ jobs:
           # tools: tools.win64_mingw810
           target: desktop
           dir: C:\
-      
+
       # Check this about more info: https://github.com/marketplace/actions/cmake-action
-      - name: Set up CMake
+      - name: Set Up CMake
         uses: threeal/cmake-action@v1.3.0
 
       # Compile code
-      - name: Compile project
+      - name: Compile Project
         shell: cmd
         run: call .github/workflows/Build.bat
 
@@ -52,6 +52,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
            # ${{github.sha}} - commit long hash name
-           name: GZHHotkeyEditor-${{github.sha}}.zip
+           name: GZHHotkeyEditor-${{github.sha}}
            # zip all content in the "build\exe" folder
            path: build/exe/**
