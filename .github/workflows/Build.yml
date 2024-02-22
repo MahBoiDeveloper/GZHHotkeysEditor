@@ -1,0 +1,57 @@
+name: Build Project
+
+# Workflow will trigger on any push to the master/main branch
+on: 
+  pull_request:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  Autocompilation:
+    # Our project is windows only, so we will compile project at windows server
+    runs-on: windows-2022
+    steps:
+      # Cloning all repository recursively
+      - name: Get Sources
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      # Check this about more info: https://github.com/marketplace/actions/install-version-specific-mingw
+      # Setting up MinGW_x64 version 8.1.0
+      - name: Set up MinGW
+        uses: egor-tensin/setup-mingw@v2
+        with:
+          platform: x64
+          version: 8.1.0
+
+      # Check this about more info: https://github.com/marketplace/actions/install-qt
+      - name: Set up Qt
+        uses: jurplel/install-qt-action@v3
+        with: 
+          version: 5.15.2
+          arch: win64_mingw81
+          # this action cannot download needed mingw810
+          # tools: tools.win64_mingw810
+          target: desktop
+          dir: C:\
+      
+      # Check this about more info: https://github.com/marketplace/actions/cmake-action
+      - name: Set up CMake
+        uses: threeal/cmake-action@v1.3.0
+
+      # Compile code
+      - name: Compile project
+        shell: cmd
+        run: call .github/workflows/Build.bat
+
+      # Upload artifact to the GitHub
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+           # ${{github.sha}} - commit long hash name
+           name: GZHHotkeyEditor-${{github.sha}}.zip
+           # zip all content in the "build\exe" folder
+           path: build/exe/**
