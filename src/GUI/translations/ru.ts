@@ -46,22 +46,22 @@
         <translation type="vanished">Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="38"/>
+        <location filename="../GreetingWidget.cpp" line="26"/>
         <source>New Project</source>
         <translation>Новый проект</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="45"/>
+        <location filename="../GreetingWidget.cpp" line="33"/>
         <source>Load Project</source>
         <translation>Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="64"/>
+        <location filename="../GreetingWidget.cpp" line="40"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="26"/>
+        <location filename="../GreetingWidget.cpp" line="63"/>
         <source>Greetings, %username%. You have launched the hotkey editing program for the game Command and Conquer: Generals and Command and Conquer: Generals — Zero Hour. At the moment, the program supports in test mode only the creation of hotkey maps based on pre-prepared hotkeys. We hope that you will like the program.</source>
         <translation>Приветствую тебя, %username%. Ты запустил программу редактирования горячих клавиш для игры Command and Conquer: Generals и Command and  Conquer: Generals — Zero Hour. На текущий момент программа поддерживает в тестовом режиме только создание карт горячих клавиш на основе заранее подготовленных горячих клавиш. Надеемся, что программа тебе понравится.</translation>
     </message>

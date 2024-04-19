@@ -11,7 +11,7 @@
 LaunchWidget::LaunchWidget(Config::Languages lngType, QWidget* parent) : QStackedWidget(parent)
 {
     // Application style settings
-    QFile styleSheetsFile{":/my/css/MainStyleSheet.css"};
+    QFile styleSheetsFile{":/css/MainStyleSheet.css"};
 
     if (styleSheetsFile.open(QIODevice::ReadOnly))
     {

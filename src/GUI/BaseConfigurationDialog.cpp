@@ -7,6 +7,7 @@ BaseConfigurationDialog::BaseConfigurationDialog(QWidget* parent) : QDialog(pare
     dialogButtons.setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     dialogButtons.button(QDialogButtonBox::Ok)->setText(tr("Configure"));
     dialogButtons.button(QDialogButtonBox::Cancel)->setText(tr("Back"));
+    dialogButtons.setContentsMargins(0, 0, 0, 30);
 
     // emit accepted configurations
     connect(&dialogButtons, &QDialogButtonBox::accepted, this, [=]()

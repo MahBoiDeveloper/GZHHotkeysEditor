@@ -2,9 +2,10 @@
 {
     font-family: "Consolas";
     font-size: 11pt;
+    color: white;
 }
 
-QPushButton
+GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton
 {
     padding: 10px;
     
@@ -17,27 +18,40 @@ QPushButton
     border-radius: 3px;
 }
 
-QPushButton:hover
+GreetingWidget QPushButton:hover, LoadDialog QPushButton:hover, CreationDialog QPushButton:hover
 {
     background-color: #b1b7ff;
     border-color: #3543e7;
     color: black;
 }
 
-LoadDialog
+QComboBox
 {
-    background-image: url(:/my/icons/mainmenuruleruserinterface.png);
+    width: 80px;
+    color: white;
+    background-color: #3543e7;
+    
+    border-style: outset;
+    border-width: 2px;
+    border-color: #b1b7ff;
+    border-radius: 3px;
+}
+QComboBox::drop-down
+{
+    color: black;
 }
 
-LaunchWidget
+LoadDialog, LaunchWidget, CreationDialog
 {
-    background-image: url(:/my/icons/mainmenuruleruserinterface.png);
+    background-image: url(Resources/Icons/StartMenuBackground.png);
+    background-color: black;
 }
 
-CreationDialog
+/* HotkeysMainWindow, ActionHotkeyWidget, HotkeysMainWindow#QVBoxLayout, HotkeysMainWindow#QHBoxLayout
 {
-    background-image: url(:/my/icons/mainmenuruleruserinterface.png);
-}
+    background-color: black;
+    color: white;
+} */
 
 BaseConfigurationDialog QPushButton
 {

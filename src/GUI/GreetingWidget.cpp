@@ -21,18 +21,6 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
 
     // Makes greeting window unresizeable
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    
-    // Program description
-    lblGreeting = new QLabel(tr("Greetings, %username%. "
-                                "You have launched the hotkey editing program "
-                                "for the game Command and Conquer: Generals "
-                                "and Command and Conquer: Generals — Zero Hour. "
-                                "At the moment, the program supports in test mode "
-                                "only the creation of hotkey maps based on pre-prepared hotkeys. "
-                                "We hope that you will like the program."));
-    lblGreeting->setWordWrap(true);
-    lblGreeting->setAlignment(Qt::AlignmentFlag::AlignJustify);
-    lblGreeting->setFixedWidth(GetGreetingTextAverageSize(lblGreeting->text()) + 50);
 
     // Add "New Project" and "Load Project" buttons to the window
     btnNewProject = new QPushButton(tr("New Project"));
@@ -49,18 +37,6 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
         emit pressed(GreetingWidget::StandartButtons::LoadProject);
     });
 
-    ltButtons = new QVBoxLayout();
-    ltButtons->setSpacing(50);
-    ltButtons->setAlignment(Qt::AlignTop);
-    ltButtons->addWidget(btnNewProject);
-    ltButtons->addWidget(btnLoadProject);
-
-    ltContent = new QHBoxLayout();
-    ltContent->setAlignment(Qt::AlignLeft);
-    ltContent->addLayout(ltButtons);
-    ltContent->addWidget(lblGreeting);
-    ltContent->setAlignment(lblGreeting, Qt::AlignTop);
-
     lblLanguage = new QLabel(tr("Language"));
 
     cmbLangList = new QComboBox();
@@ -75,12 +51,36 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
     ltLanguages->addWidget(lblLanguage);
     ltLanguages->addWidget(cmbLangList);
 
+    ltButtons = new QVBoxLayout();
+    ltButtons->setSpacing(50);
+    ltButtons->setAlignment(Qt::AlignTop);
+    ltButtons->addWidget(btnNewProject);
+    ltButtons->addWidget(btnLoadProject);
+    ltButtons->setSpacing(30);
+    ltButtons->addLayout(ltLanguages);
+
+    // Program description
+    lblGreeting = new QLabel(tr("Greetings, %username%. "
+                                "You have launched the hotkey editing program "
+                                "for the game Command and Conquer: Generals "
+                                "and Command and Conquer: Generals — Zero Hour. "
+                                "At the moment, the program supports in test mode "
+                                "only the creation of hotkey maps based on pre-prepared hotkeys. "
+                                "We hope that you will like the program."));
+    lblGreeting->setWordWrap(true);
+    lblGreeting->setAlignment(Qt::AlignVCenter);
+    lblGreeting->setFixedWidth(GetGreetingTextAverageSize(lblGreeting->text()) + 50);
+
+    ltContent = new QHBoxLayout();
+    ltContent->setAlignment(Qt::AlignLeft);
+    ltContent->addLayout(ltButtons);
+    ltContent->addWidget(lblGreeting);
+    ltContent->setAlignment(lblGreeting, Qt::AlignTop);
+
     ltMain = new QVBoxLayout();
     ltMain->setSpacing(50);
-    ltMain->setContentsMargins(50, 50, 50, 30);
+    ltMain->setContentsMargins(50, 50, 50, 86);
     ltMain->addLayout(ltContent);
-    ltMain->addSpacing(80);
-    ltMain->addLayout(ltLanguages);
 
     setLayout(ltMain);
 }

@@ -1,9 +1,8 @@
 <RCC>
-    <qresource prefix="/my/css">
+    <qresource prefix="css">
         <file>MainStyleSheet.css</file>
     </qresource>
-    <qresource prefix="/my/icons">
-        <file>mainmenuruleruserinterface.png</file>
+    <qresource prefix="icons">
         <file>EditorIconSmall.webp</file>
         <file>EditorIconBig.webp</file>
         <file>NoImageSmall.webp</file>
