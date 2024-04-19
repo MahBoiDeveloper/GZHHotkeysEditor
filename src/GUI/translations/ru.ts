@@ -30,7 +30,7 @@
 <context>
     <name>CreationDialog</name>
     <message>
-        <location filename="../CreationDialog.cpp" line="28"/>
+        <location filename="../CreationDialog.cpp" line="29"/>
         <source>Save hotkeys dirrectly to the game.</source>
         <translation>Сохранять горячие клавиши в игре.</translation>
     </message>

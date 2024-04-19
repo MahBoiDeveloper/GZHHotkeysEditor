@@ -2,6 +2,7 @@
 #include <QRadioButton>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QPixmap>
 
 #include "../Registry.hpp"
 #include "CreationDialog.hpp"

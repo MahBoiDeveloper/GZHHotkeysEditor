@@ -7,6 +7,36 @@
 QPushButton
 {
     padding: 10px;
+    
+    color: white;
+    background-color: #3543e7;
+    
+    border-style: outset;
+    border-width: 2px;
+    border-color: #b1b7ff;
+    border-radius: 3px;
+}
+
+QPushButton:hover
+{
+    background-color: #b1b7ff;
+    border-color: #3543e7;
+    color: black;
+}
+
+LoadDialog
+{
+    background-image: url(:/my/icons/mainmenuruleruserinterface.png);
+}
+
+LaunchWidget
+{
+    background-image: url(:/my/icons/mainmenuruleruserinterface.png);
+}
+
+CreationDialog
+{
+    background-image: url(:/my/icons/mainmenuruleruserinterface.png);
 }
 
 BaseConfigurationDialog QPushButton

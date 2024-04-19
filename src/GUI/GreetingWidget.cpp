@@ -21,7 +21,7 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
 
     // Makes greeting window unresizeable
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-
+    
     // Program description
     lblGreeting = new QLabel(tr("Greetings, %username%. "
                                 "You have launched the hotkey editing program "

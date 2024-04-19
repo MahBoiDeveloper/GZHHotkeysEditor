@@ -3,6 +3,7 @@
         <file>MainStyleSheet.css</file>
     </qresource>
     <qresource prefix="/my/icons">
+        <file>mainmenuruleruserinterface.png</file>
         <file>EditorIconSmall.webp</file>
         <file>EditorIconBig.webp</file>
         <file>NoImageSmall.webp</file>
