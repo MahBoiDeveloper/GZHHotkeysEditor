@@ -1,27 +1,10 @@
+/* Global style setting */
+
 *
 {
     font-family: "Consolas";
     font-size: 11pt;
     color: white;
-}
-
-GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton
-{
-    padding: 10px;
-    
-    color: white;
-    background-color: #181d5a;
-    
-    border-style: outset;
-    border-width: 2px;
-    border-color: #b1b7ff;
-    border-radius: 3px;
-}
-
-GreetingWidget QPushButton:hover, LoadDialog QPushButton:hover, CreationDialog QPushButton:hover
-{
-    background-color: #3543e7;
-    color: #baff0c;
 }
 
 QComboBox
@@ -59,20 +42,50 @@ QComboBox::drop-down
      border-color: #b1b7ff;
      border-radius: 3px;
      padding-left: 10px;
- }
+}
 
 QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow
 {
      image: url(:/icons/down_arrow.png);
 }
 
-/* ------------------------------------------------------------------------------ */
+/* Start widget style setting */
 
 LoadDialog, LaunchWidget, CreationDialog
 {
     background-image: url(Resources/Icons/StartMenuBackground.png);
     background-color: black;
 }
+
+GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton
+{
+    font-family: Calibri;
+    font-weight: bold;
+    padding: 10px;
+    
+    color: white;
+    background-color: #181d5a;
+    
+    border-style: outset;
+    border-width: 2px;
+    border-color: #b1b7ff;
+    border-radius: 3px;
+}
+
+GreetingWidget QPushButton:hover, LoadDialog QPushButton:hover, CreationDialog QPushButton:hover
+{
+    background-color: #3543e7;
+    color: #baff0c;
+}
+
+
+QPushButton#btnReview
+{
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* ------------------------------------------------------------------------------ */
 
 /* HotkeysMainWindow, ActionHotkeyWidget, HotkeysMainWindow#QVBoxLayout, HotkeysMainWindow#QHBoxLayout
 {

@@ -22,21 +22,21 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
     // Makes greeting window unresizeable
 
     // Add "New Project" and "Load Project" buttons to the window
-    btnNewProject = new QPushButton(tr("New Project"));
+    btnNewProject = new QPushButton(tr("NEW PROJECT"));
     btnNewProject->setFixedSize(GUIConfig::START_BUTTON_SIZE);
     connect(btnNewProject, &QPushButton::clicked, this, [=](bool)
     {
         emit pressed(GreetingWidget::StandartButtons::NewProject);
     });
 
-    btnLoadProject = new QPushButton(tr("Load Project"));
+    btnLoadProject = new QPushButton(tr("LOAD PROJECT"));
     btnLoadProject->setFixedSize(GUIConfig::START_BUTTON_SIZE);
     connect(btnLoadProject, &QPushButton::clicked, this, [=](bool)
     {
         emit pressed(GreetingWidget::StandartButtons::LoadProject);
     });
 
-    lblLanguage = new QLabel(tr("Language"));
+    lblLanguage = new QLabel(tr("LANGUAGE"));
 
     cmbLangList = new QComboBox();
     for (int i = 0; i < static_cast<int>(Config::Languages::Count); ++i)

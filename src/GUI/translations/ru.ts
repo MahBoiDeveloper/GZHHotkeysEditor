@@ -17,14 +17,22 @@
 <context>
     <name>BaseConfigurationDialog</name>
     <message>
-        <location filename="../BaseConfigurationDialog.cpp" line="8"/>
         <source>Configure</source>
-        <translation>Настройка</translation>
+        <translation type="vanished">Настройка</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation type="vanished">Назад</translation>
+    </message>
+    <message>
+        <location filename="../BaseConfigurationDialog.cpp" line="8"/>
+        <source>CONFIGURE</source>
+        <translation>НАСТРОЙКА</translation>
     </message>
     <message>
         <location filename="../BaseConfigurationDialog.cpp" line="9"/>
-        <source>Back</source>
-        <translation>Назад</translation>
+        <source>BACK</source>
+        <translation>НАЗАД</translation>
     </message>
 </context>
 <context>
@@ -46,19 +54,31 @@
         <translation type="vanished">Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="25"/>
         <source>New Project</source>
-        <translation>Новый проект</translation>
+        <translation type="vanished">Новый проект</translation>
+    </message>
+    <message>
+        <source>Load Project</source>
+        <translation type="vanished">Загрузить проект</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation type="vanished">Язык</translation>
+    </message>
+    <message>
+        <location filename="../GreetingWidget.cpp" line="25"/>
+        <source>NEW PROJECT</source>
+        <translation>НОВЫЙ ПРОЕКТ</translation>
     </message>
     <message>
         <location filename="../GreetingWidget.cpp" line="32"/>
-        <source>Load Project</source>
-        <translation>Загрузить проект</translation>
+        <source>LOAD PROJECT</source>
+        <translation>ЗАГРУЗИТЬ ПРОЕКТ</translation>
     </message>
     <message>
         <location filename="../GreetingWidget.cpp" line="39"/>
-        <source>Language</source>
-        <translation>Язык</translation>
+        <source>LANGUAGE</source>
+        <translation>ЯЗЫК</translation>
     </message>
     <message>
         <location filename="../GreetingWidget.cpp" line="62"/>
@@ -157,16 +177,24 @@
     </message>
     <message>
         <location filename="../LoadDialog.cpp" line="29"/>
-        <source>Review</source>
-        <translation>Обзор</translation>
+        <source>REVIEW</source>
+        <translation>ОБЗОР</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="35"/>
+        <source>LOAD PROJECT</source>
+        <translation type="vanished">ЗАГРУЗИТЬ ПРОЕКТ</translation>
+    </message>
+    <message>
+        <source>Review</source>
+        <translation type="vanished">Обзор</translation>
+    </message>
+    <message>
+        <location filename="../LoadDialog.cpp" line="34"/>
         <source>Load project</source>
         <translation>Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="42"/>
+        <location filename="../LoadDialog.cpp" line="41"/>
         <source>Load installed game hotkey map</source>
         <translation>Загрузить горячие клавиши из игры</translation>
     </message>

@@ -26,8 +26,7 @@ LoadDialog::LoadDialog(QWidget* parent) : BaseConfigurationDialog(parent)
     connect(fileDialog, &QFileDialog::fileSelected, pathToFileLineEdit, &QLineEdit::setText);
     
     // review button
-    QPushButton* btnReview = new QPushButton(tr("Review"));
-    btnReview->setStyleSheet("QPushButton { padding-top: 2px; padding-bottom: 2px; }");
+    QPushButton* btnReview = new QPushButton(tr("REVIEW"));
     btnReview->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(btnReview, &QPushButton::clicked, fileDialog, &QFileDialog::exec);
 
