@@ -44,12 +44,12 @@ QComboBox:checked
 
 QComboBox QAbstractItemView
 {
-    border-width: 3px;
-    border-color: #b1b7ff;
+    border-width: 2px;
     border-radius: 3px;
     border-style: outset;
-    color: black;
-    selection-background-color: #181d5a;
+    border-color: #b1b7ff;
+    background-color: #181d5a;
+    selection-background-color: #3543e7;
 }
 
 QComboBox::drop-down

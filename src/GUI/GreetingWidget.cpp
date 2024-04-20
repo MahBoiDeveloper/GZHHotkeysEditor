@@ -20,8 +20,6 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
     QVBoxLayout* ltMain         = nullptr;
 
     // Makes greeting window unresizeable
-    // setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    // setFixedSize(800, 600);
 
     // Add "New Project" and "Load Project" buttons to the window
     btnNewProject = new QPushButton(tr("New Project"));
@@ -79,13 +77,10 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
 
     ltMain = new QVBoxLayout();
     ltMain->setSpacing(50);
-    ltMain->setContentsMargins(50, 50, 50, 86);
+    ltMain->setContentsMargins(60, 60, 60, 86);
     ltMain->addLayout(ltContent);
 
     setLayout(ltMain);
-
-    // LOGMSG(QString("Width = ") +  QString::number(this->width()));
-    // LOGMSG(QString("Height = ") + QString::number(this->height()));
 }
 
 /// @brief Calculate size of long description text block.

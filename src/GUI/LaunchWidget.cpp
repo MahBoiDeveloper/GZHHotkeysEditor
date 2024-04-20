@@ -26,7 +26,6 @@ LaunchWidget::LaunchWidget(Config::Languages lngType, QWidget* parent) : QStacke
     qApp->setWindowIcon(QIcon(QPixmap::fromImage(GUIConfig::DecodeEditorWebpIcon())));
 
     // MainLaunchWidget settings
-    // setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     setFixedSize(795, 440);
     setWindowFlags(windowFlags() |  Qt::MSWindowsFixedSizeDialogHint);
     setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint &
