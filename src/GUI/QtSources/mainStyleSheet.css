@@ -53,8 +53,9 @@ QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::d
 
 LoadDialog, LaunchWidget, CreationDialog
 {
-    background-image: url(Resources/Icons/StartMenuBackground.webp);
+    background-image: url(Resources/Icons/StartMenuBackground.png);
     background-color: black;
+    /* background-position: center; */
 }
 
 GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton
