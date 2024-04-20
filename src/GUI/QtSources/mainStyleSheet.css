@@ -10,7 +10,7 @@ GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton
     padding: 10px;
     
     color: white;
-    background-color: #3543e7;
+    background-color: #181d5a;
     
     border-style: outset;
     border-width: 2px;
@@ -20,26 +20,53 @@ GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton
 
 GreetingWidget QPushButton:hover, LoadDialog QPushButton:hover, CreationDialog QPushButton:hover
 {
-    background-color: #b1b7ff;
-    border-color: #3543e7;
-    color: black;
+    background-color: #3543e7;
+    color: #baff0c;
 }
 
 QComboBox
 {
-    width: 80px;
+    width: 70px;
     color: white;
-    background-color: #3543e7;
+    background-color: #181d5a;
     
     border-style: outset;
     border-width: 2px;
     border-color: #b1b7ff;
     border-radius: 3px;
 }
+
+QComboBox:checked
+{
+    background-color: #3543e7;
+    color: #baff0c;
+}
+
+QComboBox QAbstractItemView
+{
+    border-width: 3px;
+    border-color: #b1b7ff;
+    border-radius: 3px;
+    border-style: outset;
+    color: black;
+    selection-background-color: #181d5a;
+}
+
 QComboBox::drop-down
 {
-    color: black;
+     width: 15px;
+     color: white;
+     border-color: #b1b7ff;
+     border-radius: 3px;
+     padding-left: 10px;
+ }
+
+QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow
+{
+     image: url(:/icons/down_arrow.png);
 }
+
+/* ------------------------------------------------------------------------------ */
 
 LoadDialog, LaunchWidget, CreationDialog
 {
