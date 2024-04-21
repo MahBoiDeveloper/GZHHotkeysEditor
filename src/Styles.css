@@ -4,7 +4,7 @@
 {
     font-family: "Consolas";
     font-size: 11pt;
-    color: white;
+    color: black;
 }
 
 QComboBox
@@ -31,6 +31,7 @@ QComboBox QAbstractItemView
     border-radius: 3px;
     border-style: outset;
     border-color: #b1b7ff;
+    color: white;
     background-color: #181d5a;
     selection-background-color: #3543e7;
 }
@@ -51,14 +52,20 @@ QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::d
 
 /* Start widget style setting */
 
-LoadDialog, LaunchWidget, CreationDialog
+LoadDialog, LaunchWidget, CreationDialog, HotkeysMainWindow
 {
     background-image: url(Resources/Icons/StartMenuBackground.png);
     background-color: black;
     /* background-position: center; */
 }
 
-GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton
+BaseConfigurationDialog QPushButton
+{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton, HotkeysMainWindow QPushButton
 {
     font-family: Calibri;
     font-weight: bold;
@@ -73,12 +80,18 @@ GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton
     border-radius: 3px;
 }
 
-GreetingWidget QPushButton:hover, LoadDialog QPushButton:hover, CreationDialog QPushButton:hover
+GreetingWidget QLabel, LoadDialog QLabel, CreationDialog QLabel, 
+GreetingWidget QRadioButton, LoadDialog QRadioButton, CreationDialog QRadioButton, 
+GreetingWidget QCheckBox, LoadDialog QCheckBox, CreationDialog QCheckBox
+{
+    color: white;
+}
+
+GreetingWidget QPushButton:hover, LoadDialog QPushButton:hover, CreationDialog QPushButton:hover, HotkeysMainWindow QPushButton:hover
 {
     background-color: #3543e7;
     color: #baff0c;
 }
-
 
 QPushButton#btnReview
 {
@@ -88,16 +101,11 @@ QPushButton#btnReview
 
 /* ------------------------------------------------------------------------------ */
 
-/* HotkeysMainWindow, ActionHotkeyWidget, HotkeysMainWindow#QVBoxLayout, HotkeysMainWindow#QHBoxLayout
+HotkeysMainWindow, HotkeysMainWindow#QVBoxLayout, HotkeysMainWindow#QHBoxLayout, HotkeysMainWindow#QBoxLayout, HotkeysMainWindow#QWidget, 
+ActionHotkeyWidget, ActionHotkeyWidget#QVBoxLayout, ActionHotkeyWidget#QHBoxLayout, ActionHotkeyWidget#QBoxLayout, ActionHotkeyWidget#QWidget
 {
     background-color: black;
     color: white;
-} */
-
-BaseConfigurationDialog QPushButton
-{
-    padding-left: 30px;
-    padding-right: 30px;
 }
 
 HotkeysMainWindow QTreeWidget::item

@@ -12,6 +12,7 @@ public:
     inline static const int     ICON_MIN_HEIGHT      = 80;
     inline static const int     ICON_SCALING_HEIGHT  = 25;
     inline static const QString ICONS_FOLDER         = Config::RESOURCE_FOLDER + "/Icons";
+    inline static const QString STYLES_SHEET         = "Resources/Styles.css";
     inline static const QString QT_ICONS_FOLDER      = ":/icons";
     inline static const QString MISSING_ICON_PATH    = QT_ICONS_FOLDER + "/NoImageSmall.webp";
     inline static const QString EDITOR_ICON_PATH     = QT_ICONS_FOLDER + "/EditorIconSmall.webp";

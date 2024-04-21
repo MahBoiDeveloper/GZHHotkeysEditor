@@ -1,6 +1,4 @@
 #include <QApplication>
-#include <QFile>
-#include <QDebug>
 
 #include "../Logger.hpp"
 #include "GUIConfig.hpp"
@@ -10,21 +8,6 @@
 
 LaunchWidget::LaunchWidget(Config::Languages lngType, QWidget* parent) : QStackedWidget(parent)
 {
-    // Application style settings
-    QFile styleSheetsFile{":/css/MainStyleSheet.css"};
-
-    if (styleSheetsFile.open(QIODevice::ReadOnly))
-    {
-        qApp->setStyleSheet(styleSheetsFile.readAll());
-        styleSheetsFile.close();
-    }
-    else
-    {
-        LOGMSG("Unable to read the style file MainStyleSheet.css.");
-    }
-
-    qApp->setWindowIcon(QIcon(QPixmap::fromImage(GUIConfig::DecodeEditorWebpIcon())));
-
     // MainLaunchWidget settings
     setFixedSize(795, 440);
     setWindowFlags(windowFlags() |  Qt::MSWindowsFixedSizeDialogHint);

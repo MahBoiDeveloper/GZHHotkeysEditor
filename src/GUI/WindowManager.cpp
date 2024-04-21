@@ -1,10 +1,28 @@
+#include <QApplication>
+
 #include "../Logger.hpp"
 #include "../Registry.hpp"
+#include "GUIConfig.hpp"
 #include "WindowManager.hpp"
 
 WindowManager::WindowManager()
 {
     WindowName = "C&C: Generals Zero Hour Hotkey Editor";
+    
+    qApp->setWindowIcon(QIcon(QPixmap::fromImage(GUIConfig::DecodeEditorWebpIcon())));
+    
+    LOGMSG(QString("Loading loading \"") + GUIConfig::STYLES_SHEET + "\"...");
+    QFile css{GUIConfig::STYLES_SHEET};
+    if (css.open(QIODevice::ReadOnly))
+    {
+        qApp->setStyleSheet(css.readAll());
+        css.close();
+        LOGMSG("Styles sheet has been loaded");
+    }
+    else
+    {
+        LOGMSG("Unable to read the style file MainStyleSheet.css.");
+    }
 
     LOGMSG("Loading launch window...");
     pLaunchWidget = std::make_unique<LaunchWidget>(Config::GetLangEnumByLocale(Registry::GetCurrentUserLanguage()));

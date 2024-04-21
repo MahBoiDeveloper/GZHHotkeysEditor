@@ -1,7 +1,4 @@
 <RCC>
-    <qresource prefix="css">
-        <file>MainStyleSheet.css</file>
-    </qresource>
     <qresource prefix="icons">
         <file>EditorIconSmall.webp</file>
         <file>EditorIconBig.webp</file>
