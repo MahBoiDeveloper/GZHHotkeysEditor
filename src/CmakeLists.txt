@@ -100,7 +100,6 @@
         ADDITIONAL_RESOURCES
         "TechTree.json"
         "Settings.json"
-        "Styles.css"
     )
 
     # Copy json files

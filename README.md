@@ -22,7 +22,7 @@ GZHHotkeysEditor is an attempt to create a useful tool for editing C&C: Generals
 * [mah_boi](https://github.com/MahBoiDeveloper) — project's leader
 * [nikitvs](https://github.com/nikitvs) — Qt expert and mah_boi's right hand
 ### Contributors
-* [titoWWN](https://vk.com/artcandc20) — missing and editor icon author
+* [TitoWWN](https://vk.com/artcandc20) — missing and editor icon author
 * [DESolatorTrooper](https://www.moddb.com/members/deso3latortro0per/addons) — background edits
 
 ## License

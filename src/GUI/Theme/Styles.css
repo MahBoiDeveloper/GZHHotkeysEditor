@@ -55,7 +55,7 @@ LoadDialog, LaunchWidget, CreationDialog
 {
     /* background: center no-repeat url(Resources/Icons/StartMenuBackground.png); */
     /* Watch at https://forum.qt.io/topic/40151/solved-scaled-background-image-using-stylesheet/3 */
-    border-image: url(Resources/Icons/StartMenuBackground.webp) 0 0 0 0 stretch stretch;
+    border-image: url(Resources/Theme/StartMenuBackground.webp) 0 0 0 0 stretch stretch;
     background-color: black;
 }
 
@@ -104,7 +104,7 @@ QPushButton#btnReview
 HotkeysMainWindow
 {
     /* Watch at https://forum.qt.io/topic/40151/solved-scaled-background-image-using-stylesheet/3 */
-    border-image: url(Resources/Icons/EditorBackground.webp) 0 0 0 0 stretch stretch;
+    border-image: url(Resources/Theme/EditorBackground.webp) 0 0 0 0 stretch stretch;
     background-color: black;
 }
 

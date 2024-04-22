@@ -123,10 +123,16 @@
 
     # Link the libwebp target to the GUI target
     target_link_libraries(${TARGET_NAME} PRIVATE ${LIB_WEBP_TARGET_NAME})
-    
-# Managing icons files
 
+# Copying folders with configs
+    # Copy icons
     file(
         COPY "${CMAKE_CURRENT_SOURCE_DIR}/Icons"
+        DESTINATION ${PROJECT_DESTINATION_RESOURCES_FOLDER}
+    )
+    
+    # Copy theme files
+    file(
+        COPY "${CMAKE_CURRENT_SOURCE_DIR}/Theme"
         DESTINATION ${PROJECT_DESTINATION_RESOURCES_FOLDER}
     )

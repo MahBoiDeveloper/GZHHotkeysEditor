@@ -22,7 +22,7 @@ WindowManager::WindowManager()
     }
     else
     {
-        LOGMSG("Unable to read the style file MainStyleSheet.css.");
+        LOGMSG("Unable to read the style file");
     }
 
     LOGMSG("Loading launch window...");
