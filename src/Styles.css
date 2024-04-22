@@ -51,12 +51,12 @@ QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::d
 }
 
 /* Start widget style setting */
-
-LoadDialog, LaunchWidget, CreationDialog, HotkeysMainWindow
+LoadDialog, LaunchWidget, CreationDialog
 {
-    background-image: url(Resources/Icons/StartMenuBackground.png);
+    /* background: center no-repeat url(Resources/Icons/StartMenuBackground.png); */
+    /* Watch at https://forum.qt.io/topic/40151/solved-scaled-background-image-using-stylesheet/3 */
+    border-image: url(Resources/Icons/StartMenuBackground.png) 0 0 0 0 stretch stretch;
     background-color: black;
-    /* background-position: center; */
 }
 
 BaseConfigurationDialog QPushButton
@@ -100,6 +100,13 @@ QPushButton#btnReview
 }
 
 /* ------------------------------------------------------------------------------ */
+
+HotkeysMainWindow
+{
+    /* Watch at https://forum.qt.io/topic/40151/solved-scaled-background-image-using-stylesheet/3 */
+    border-image: url(Resources/Icons/StartMenuBackground.png) 0 0 0 0 stretch stretch;
+    background-color: black;
+}
 
 HotkeysMainWindow, HotkeysMainWindow#QVBoxLayout, HotkeysMainWindow#QHBoxLayout, HotkeysMainWindow#QBoxLayout, HotkeysMainWindow#QWidget, 
 ActionHotkeyWidget, ActionHotkeyWidget#QVBoxLayout, ActionHotkeyWidget#QHBoxLayout, ActionHotkeyWidget#QBoxLayout, ActionHotkeyWidget#QWidget

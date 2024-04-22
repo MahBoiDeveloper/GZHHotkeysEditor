@@ -19,7 +19,7 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
     QHBoxLayout* ltLanguages    = nullptr;
     QVBoxLayout* ltMain         = nullptr;
 
-    // Makes greeting window unresizeable
+    // Makes greeting window unresizeable and equal to the size of the background file
     setFixedSize(795, 440);
     
     // Add "New Project" and "Load Project" buttons to the window

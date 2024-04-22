@@ -10,6 +10,7 @@ WindowManager::WindowManager()
     WindowName = "C&C: Generals Zero Hour Hotkey Editor";
     
     qApp->setWindowIcon(QIcon(QPixmap::fromImage(GUIConfig::DecodeEditorWebpIcon())));
+    // qApp->setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
     
     LOGMSG(QString("Loading loading \"") + GUIConfig::STYLES_SHEET + "\"...");
     QFile css{GUIConfig::STYLES_SHEET};
