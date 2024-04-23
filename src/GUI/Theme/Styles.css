@@ -1,3 +1,7 @@
+/* See more information about Qt .css syntax in documentation */
+/* 1. https://doc.qt.io/qt-5/stylesheet-syntax.html */
+/* 2. https://doc.qt.io/qt-5/stylesheet-reference.html */
+/* 3. https://forum.qt.io/topic/40151/solved-scaled-background-image-using-stylesheet/3 */
 /* Global style setting */
 
 *
@@ -87,7 +91,7 @@ GreetingWidget QCheckBox, LoadDialog QCheckBox, CreationDialog QCheckBox
     color: white;
 }
 
-GreetingWidget QPushButton:hover, LoadDialog QPushButton:hover, CreationDialog QPushButton:hover, HotkeysMainWindow QPushButton:hover
+GreetingWidget QPushButton:hover, LoadDialog QPushButton:hover, CreationDialog QPushButton:hover
 {
     background-color: #3543e7;
     color: #baff0c;
@@ -99,11 +103,10 @@ QPushButton#btnReview
     padding-bottom: 2px;
 }
 
-/* ------------------------------------------------------------------------------ */
+/* Main editor window style settings */
 
 HotkeysMainWindow
 {
-    /* Watch at https://forum.qt.io/topic/40151/solved-scaled-background-image-using-stylesheet/3 */
     border-image: url(Resources/Theme/EditorBackground.webp) 0 0 0 0 stretch stretch;
     background-color: black;
 }
@@ -115,14 +118,47 @@ ActionHotkeyWidget, ActionHotkeyWidget#QVBoxLayout, ActionHotkeyWidget#QHBoxLayo
     color: white;
 }
 
+HotkeysMainWindow QPushButton:hover
+{
+    background-color: #3543e7;
+    color: #baff0c;
+}
+
+HotkeysMainWindow QPushButton:pressed
+{
+    background-color: #3543e7;
+    color: white;
+}
+
+HotkeysMainWindow QPushButton:pressed:hover
+{
+    background-color: #3543e7;
+    color: #baff0c;
+}
+
+HotkeysMainWindow QTreeWidget, HotkeyMainWindow QWidget, 
+HotkeyMainWindow QHBoxLayout, HotkeyMainWindow QVBoxLayout, 
+HotkeyMainWindow QScrollArea, HotkeyMainWindow QTabWidget,
+ActionHotkeyWidget QWidget,
+HotkeyMainWindow QTabWidget::QLayout,
+HotkeyMainWindow QTabWidget::QVBoxLayout,
+QVBoxLayout#hotkeysLayout
+{
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 3px;
+    border-width: 5px;
+    border-color: white;
+    color: white;
+}
+
 HotkeysMainWindow QTreeWidget::item
 {
     min-height: 40px;
 }
 
-QLabel#HotkeyLabel
+HotkeysMainWindow QLabel#HotkeyLabel
 {
     padding-left: 30px;
     padding-right: 30px;
-    background-color: #ABABAB;
+    background-color: #128d2d;
 }

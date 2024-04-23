@@ -353,7 +353,7 @@ void HotkeysMainWindow::OnAbout()
                                         + tr("Version: ") + VERSION + "<br>"
                                         + tr("Program licensed with ") + "<a href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE\">GNU GPL v3</a><br>" 
                                         + "<a href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">" + tr("GitHub Repository") 
-                                      + "</a></p>"};
+                                        + "</a></p>"};
     lblAboutText->setTextFormat(Qt::RichText);
     lblAboutText->setTextInteractionFlags(Qt::TextBrowserInteraction);
     lblAboutText->setOpenExternalLinks(true);
