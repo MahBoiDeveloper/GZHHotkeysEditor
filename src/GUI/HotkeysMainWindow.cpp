@@ -98,9 +98,11 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     // Fill all available space
     pHotkeysArea->setWidgetResizable(true);
 
+    QScrollArea* pKeyboardWindow = new QScrollArea();
+
     QVBoxLayout* ltBuildingConfiguration = new QVBoxLayout();
     ltBuildingConfiguration->addWidget(pHotkeysArea, 2);
-    ltBuildingConfiguration->addWidget(new QScrollArea, 1);
+    ltBuildingConfiguration->addWidget(pKeyboardWindow, 1);
 
     QHBoxLayout* ltContent = new QHBoxLayout();
     ltContent->addWidget(pEntitiesTreeWidget, 4);

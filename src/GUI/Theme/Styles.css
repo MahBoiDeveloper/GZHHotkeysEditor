@@ -2,8 +2,8 @@
 /* 1. https://doc.qt.io/qt-5/stylesheet-syntax.html */
 /* 2. https://doc.qt.io/qt-5/stylesheet-reference.html */
 /* 3. https://forum.qt.io/topic/40151/solved-scaled-background-image-using-stylesheet/3 */
-/* Global style setting */
 
+/* Global style setting */
 *
 {
     font-family: "Consolas";
@@ -69,7 +69,7 @@ BaseConfigurationDialog QPushButton
     padding-right: 30px;
 }
 
-GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton, HotkeysMainWindow QPushButton
+GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton
 {
     font-family: Calibri;
     font-weight: bold;
@@ -111,11 +111,19 @@ HotkeysMainWindow
     background-color: black;
 }
 
-HotkeysMainWindow, HotkeysMainWindow#QVBoxLayout, HotkeysMainWindow#QHBoxLayout, HotkeysMainWindow#QBoxLayout, HotkeysMainWindow#QWidget, 
-ActionHotkeyWidget, ActionHotkeyWidget#QVBoxLayout, ActionHotkeyWidget#QHBoxLayout, ActionHotkeyWidget#QBoxLayout, ActionHotkeyWidget#QWidget
+HotkeysMainWindow QPushButton
 {
-    background-color: black;
+    font-family: Calibri;
+    font-weight: bold;
+    padding: 10px;
+    
     color: white;
+    background-color: #181d5a;
+    
+    border-style: outset;
+    border-width: 2px;
+    border-color: #b1b7ff;
+    border-radius: 3px;
 }
 
 HotkeysMainWindow QPushButton:hover
@@ -136,19 +144,45 @@ HotkeysMainWindow QPushButton:pressed:hover
     color: #baff0c;
 }
 
-HotkeysMainWindow QTreeWidget, HotkeyMainWindow QWidget, 
-HotkeyMainWindow QHBoxLayout, HotkeyMainWindow QVBoxLayout, 
-HotkeyMainWindow QScrollArea, HotkeyMainWindow QTabWidget,
-ActionHotkeyWidget QWidget,
-HotkeyMainWindow QTabWidget::QLayout,
-HotkeyMainWindow QTabWidget::QVBoxLayout,
-QVBoxLayout#hotkeysLayout
+HotkeysMainWindow QTreeWidget, HotkeysMainWindow QScrollArea, HotkeysMainWindow QTabWidget
 {
     background: rgba(0, 0, 0, 0.7);
     border-radius: 3px;
-    border-width: 5px;
+    border-width: 1px;
+    border-style: outset;
     border-color: white;
+    
     color: white;
+}
+
+QTabWidget::pane
+{
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    border: none;
+}
+
+QTabWidget QWidget
+{
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    border: none; 
+}
+
+/* Maybe useful in near future */
+/* HotkeysMainWindow QMenu
+{
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    border: none; 
+} */
+
+QTabBar::tab
+{
+    min-height: 15px;
+    min-width: 30px;
+    color: white;
+    border: none;
 }
 
 HotkeysMainWindow QTreeWidget::item
