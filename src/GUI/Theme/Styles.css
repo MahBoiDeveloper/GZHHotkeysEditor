@@ -57,8 +57,6 @@ QComboBox::down-arrow
 /* Start widget style setting */
 LoadDialog, LaunchWidget, CreationDialog
 {
-    /* background: center no-repeat url(Resources/Icons/StartMenuBackground.png); */
-    /* Watch at https://forum.qt.io/topic/40151/solved-scaled-background-image-using-stylesheet/3 */
     border-image: url(Resources/Theme/StartMenuBackground.webp) 0 0 0 0 stretch stretch;
     background-color: black;
 }
@@ -84,9 +82,9 @@ GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton
     border-radius: 3px;
 }
 
-GreetingWidget QLabel, LoadDialog QLabel, CreationDialog QLabel, 
+GreetingWidget QLabel,       LoadDialog QLabel,       CreationDialog QLabel, 
 GreetingWidget QRadioButton, LoadDialog QRadioButton, CreationDialog QRadioButton, 
-GreetingWidget QCheckBox, LoadDialog QCheckBox, CreationDialog QCheckBox
+GreetingWidget QCheckBox,    LoadDialog QCheckBox,    CreationDialog QCheckBox
 {
     color: white;
 }
@@ -104,7 +102,6 @@ QPushButton#btnReview
 }
 
 /* Main editor window style settings */
-
 HotkeysMainWindow
 {
     border-image: url(Resources/Theme/EditorBackground.webp) 0 0 0 0 stretch stretch;
@@ -117,8 +114,8 @@ HotkeysMainWindow QPushButton
     font-weight: bold;
     padding: 10px;
     
-    color: white;
     background-color: #181d5a;
+    color: white;
     
     border-style: outset;
     border-width: 2px;
@@ -155,13 +152,6 @@ HotkeysMainWindow QTreeWidget, HotkeysMainWindow QScrollArea, HotkeysMainWindow 
     color: white;
 }
 
-QTabWidget::pane
-{
-    background: rgba(0, 0, 0, 0);
-    color: white;
-    border: none;
-}
-
 QTabWidget QWidget
 {
     background: rgba(0, 0, 0, 0);
@@ -169,21 +159,61 @@ QTabWidget QWidget
     border: none; 
 }
 
-/* Maybe useful in near future */
+QTabWidget::pane
+{
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    border: none;
+}
+
+QTabBar::tab
+{
+    background: rgba(0, 0, 0, 0);
+    height: 20px;
+    width: 100px;
+    color: white;
+}
+
+QTabBar::tab:first
+{
+    border-right-width: 1px;
+    border-right-style: outset;
+    border-right-color: white;
+}
+
+QTabBar::tab:selected
+{
+    border-right-width: 1px;
+    border-right-style: outset;
+    border-right-color: white;
+}
+
+QTabBar::tab:!selected
+{
+    border-bottom-width: 1px;
+    border-bottom-style: outset;
+    border-bottom-color: white;
+
+    border-right-width: 1px;
+    border-right-style: outset;
+    border-right-color: white;
+}
+
+QTabBar::tab:last
+{
+    border-bottom-right-radius: 3px;
+    border-right-width: 1px;
+    border-right-style: outset;
+    border-right-color: white;
+}
+
+/* Maybe useful in future */
 /* HotkeysMainWindow QMenu
 {
     background: rgba(0, 0, 0, 0);
     color: white;
     border: none; 
 } */
-
-QTabBar::tab
-{
-    min-height: 15px;
-    min-width: 30px;
-    color: white;
-    border: none;
-}
 
 HotkeysMainWindow QTreeWidget::item
 {
