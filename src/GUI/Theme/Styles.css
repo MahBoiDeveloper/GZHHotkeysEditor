@@ -152,6 +152,21 @@ HotkeysMainWindow QTreeWidget, HotkeysMainWindow QScrollArea, HotkeysMainWindow 
     color: white;
 }
 
+QTreeWidget::item
+{
+    min-height: 40px;
+}
+
+QTreeWidget::branch:open:has-children
+{
+    background-image: url(Resources/Theme/DropArrowDown.webp);
+}
+
+QTreeWidget::branch:closed:has-children
+{
+    background-image: url(Resources/Theme/DropArrowRight.webp);
+}
+
 QTabWidget QWidget
 {
     background: rgba(0, 0, 0, 0);
@@ -214,11 +229,6 @@ QTabBar::tab:last
     color: white;
     border: none; 
 } */
-
-HotkeysMainWindow QTreeWidget::item
-{
-    min-height: 40px;
-}
 
 HotkeysMainWindow QLabel#HotkeyLabel
 {
