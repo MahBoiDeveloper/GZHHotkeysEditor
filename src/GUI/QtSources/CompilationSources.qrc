@@ -7,5 +7,9 @@
         <file>Infantry.png</file>
         <file>Vehicles.png</file>
         <file>Aircrafts.png</file>
+        <file>Buildings.webp</file>
+        <file>Infantry.webp</file>
+        <file>Vehicles.webp</file>
+        <file>Aircrafts.webp</file>
     </qresource>
 </RCC>

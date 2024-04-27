@@ -47,7 +47,7 @@ QImage GUIConfig::DecodeBigEditorWebpIcon()
 
 QPixmap GUIConfig::GetGameObjectTypePixmap(Config::GameObjectTypes entityType)
 {
-    return QPixmap{QT_ICONS_FOLDER + "/" + QString{"%1.png"}.arg(Config::ENTITIES_STRINGS.value(entityType))};
+    return QPixmap{QT_ICONS_FOLDER + "/" + QString{"%1.webp"}.arg(Config::ENTITIES_STRINGS.value(entityType))};
 }
 
 QFileInfo GUIConfig::FindIconFile(const QString& pathToIconsDir, const QString& fileBaseName)

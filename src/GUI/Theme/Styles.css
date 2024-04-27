@@ -222,6 +222,41 @@ QTabBar::tab:last
     border-right-color: white;
 }
 
+QScrollBar
+{
+    background: rgba(0, 0, 0, 0);
+}
+
+QScrollBar::handle
+{
+    background: white;
+    border-radius: 1px;
+}
+
+QScrollBar::add-line, QScrollBar::sub-line, 
+QScrollBar::up-arrow, QScrollBar::down-arrow,
+QScrollBar::add-page, QScrollBar::sub-page
+{
+    background: none;
+}
+
+QDialog
+{
+    border-image: url(Resources/Theme/StartMenuBackground.webp) 0 0 0 0 stretch stretch;
+    background-color: black;
+}
+
+QDialog QLabel
+{
+    margin: 40px 40px 40px 40px;
+    color: white;
+}
+
+QDialog QPushButton
+{
+    margin-bottom: 40px;
+}
+
 /* Maybe useful in future */
 /* HotkeysMainWindow QMenu
 {
