@@ -26,13 +26,13 @@ int main(int argc, char *argv[])
     QApplication HotkeyEditor(argc, argv);
 
     // Define logger as a singleton class, that could be used anywhere in project
-    Logger::Instance    = make_unique<Logger>();
-    CSFParser::Instance = make_unique<CSFParser>(Config::RESOURCE_FOLDER + "/DataSamples/generalsRU.csf");
+    Logger::Instance        = make_unique<Logger>();
+    WindowManager::Instance = make_unique<WindowManager>();
+    CSFParser::Instance     = make_unique<CSFParser>(Config::RESOURCE_FOLDER + "/DataSamples/generalsRU.csf");
 
     try
     {
-        WindowManager wndManager;
-        wndManager.Show();
+        WindowManager::Instance->Show();
         HotkeyEditor.exec();
     }
     catch (const exception& exception)
