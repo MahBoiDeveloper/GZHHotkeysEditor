@@ -1,4 +1,5 @@
 # C&C: Generals — Zero Hour Hotkeys Editor
+[![Support me on Boosty](https://img.shields.io/badge/boosty-50₽/month-green.svg?logo=boosty)](https://boosty.to/mah_boi)
 ## About the project
 GZHHotkeysEditor is an attempt to create a useful tool for editing C&C: Generals and C&C: Generals - Zero Hour hotkeys without editing the main game text file (`generals.csf`). At the moment the editor is in alpha stage, which means that the program is unstable and many features aren't implemented yet.
 
