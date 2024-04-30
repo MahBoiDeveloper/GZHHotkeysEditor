@@ -1,10 +1,8 @@
-#include <QApplication>
-
 #include "../Logger.hpp"
 #include "GUIConfig.hpp"
 #include "CreationDialog.hpp"
 #include "LoadDialog.hpp"
-#include "LaunchWidget.hpp"
+#include "WindowManager.hpp"
 
 LaunchWidget::LaunchWidget(Config::Languages lngType, QWidget* parent) : QStackedWidget(parent)
 {
@@ -14,25 +12,10 @@ LaunchWidget::LaunchWidget(Config::Languages lngType, QWidget* parent) : QStacke
     setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint &
                                    ~Qt::WindowMinimizeButtonHint);
     
-    SetTranslator(lngType);
+    WindowManager::Instance->SetTranslator(lngType);
     pStartWidget = new GreetingWidget{lngType};
     addWidget(pStartWidget);
     UpdateConnectionsToSignals();
-}
-
-void LaunchWidget::SetTranslator(Config::Languages lngType)
-{
-    // Delete old translator
-    if (pTranslator != nullptr) QCoreApplication::removeTranslator(pTranslator);
-
-    // Create new translator
-    if (lngType != Config::Languages::English)
-    {
-        pTranslator = new QTranslator;
-        pTranslator->load(Config::GetLanguageShortName(lngType),
-                          Config::TRANSLATIONS_FOLDER);
-        QCoreApplication::installTranslator(pTranslator);
-    }
 }
 
 void LaunchWidget::UpdateConnectionsToSignals()
@@ -49,7 +32,7 @@ void LaunchWidget::OnChangeLanguage(int intLngIndex)
     Config::Languages lngType = static_cast<Config::Languages>(intLngIndex);
 
     // Change class' translator.
-    SetTranslator(lngType);
+    WindowManager::Instance->SetTranslator(lngType);
 
     // Recreate StartWidget and update connections.
     pStartWidget->deleteLater();
