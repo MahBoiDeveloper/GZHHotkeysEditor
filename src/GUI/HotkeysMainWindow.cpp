@@ -131,6 +131,7 @@ void HotkeysMainWindow::ConfigureMenu()
 
     QMenu* mnSettingsOptions = new QMenu(tr("Settings"));
     menuBar()->addMenu(mnSettingsOptions);
+    mnSettingsOptions->addAction(tr("Language"));
 
     QAction* actAbout = new QAction(tr("About"));
     connect(actAbout, &QAction::triggered, this, &HotkeysMainWindow::OnAbout);

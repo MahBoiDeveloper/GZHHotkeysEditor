@@ -124,28 +124,33 @@
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="135"/>
-        <location filename="../HotkeysMainWindow.cpp" line="369"/>
+        <location filename="../HotkeysMainWindow.cpp" line="134"/>
+        <source>Language</source>
+        <translation type="unfinished">Язык</translation>
+    </message>
+    <message>
+        <location filename="../HotkeysMainWindow.cpp" line="136"/>
+        <location filename="../HotkeysMainWindow.cpp" line="370"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="261"/>
+        <location filename="../HotkeysMainWindow.cpp" line="262"/>
         <source>Layout %1</source>
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="354"/>
+        <location filename="../HotkeysMainWindow.cpp" line="355"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="355"/>
+        <location filename="../HotkeysMainWindow.cpp" line="356"/>
         <source>Version: </source>
         <translation>Версия: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="356"/>
+        <location filename="../HotkeysMainWindow.cpp" line="357"/>
         <source>Program licensed with </source>
         <translation>Программа лицензирована под </translation>
     </message>
@@ -154,7 +159,7 @@
         <translation type="vanished">Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="357"/>
+        <location filename="../HotkeysMainWindow.cpp" line="358"/>
         <source>GitHub Repository</source>
         <translation>Репозиторий на GitHub</translation>
     </message>
