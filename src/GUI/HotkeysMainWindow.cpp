@@ -15,6 +15,7 @@
 #include "ActionHotkeyWidget.hpp"
 #include "GUIConfig.hpp"
 #include "HotkeysMainWindow.hpp"
+#include "WindowManager.hpp"
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
     : QMainWindow(parent)
@@ -131,11 +132,13 @@ void HotkeysMainWindow::ConfigureMenu()
 
     QMenu* mnSettingsOptions = new QMenu(tr("Settings"));
     menuBar()->addMenu(mnSettingsOptions);
-    mnSettingsOptions->addAction(tr("Language"));
+    
+    QAction* actLanguage = new QAction(tr("Language"));
+    connect(actLanguage, &QAction::triggered, this, &HotkeysMainWindow::OnLanguageChange);
+    mnSettingsOptions->addAction(actLanguage);
 
     QAction* actAbout = new QAction(tr("About"));
     connect(actAbout, &QAction::triggered, this, &HotkeysMainWindow::OnAbout);
-
     mnSettingsOptions->addAction(actAbout);
 }
 
@@ -400,4 +403,18 @@ void HotkeysMainWindow::OnAbout()
     pAboutDialog->show();
     pAboutDialog->raise();
     pAboutDialog->activateWindow();
+}
+
+void HotkeysMainWindow::OnLanguageChange()
+{
+    QDialog* pWindowToChangeLanugage = new QDialog{this};
+    pWindowToChangeLanugage->setWindowTitle(tr("Lanugage"));
+    pWindowToChangeLanugage->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    pWindowToChangeLanugage->setWindowFlags(pWindowToChangeLanugage->windowFlags() &
+                               ~Qt::WindowContextHelpButtonHint |
+                                Qt::MSWindowsFixedSizeDialogHint);
+
+    pWindowToChangeLanugage->show();
+    pWindowToChangeLanugage->raise();
+    pWindowToChangeLanugage->activateWindow();
 }

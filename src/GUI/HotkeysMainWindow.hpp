@@ -52,4 +52,5 @@ private:
 
 private slots:
     void OnAbout();
+    void OnLanguageChange();
 };
