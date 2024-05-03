@@ -10,6 +10,10 @@ GZHHotkeysEditor is an attempt to create a useful tool for editing C&C: Generals
 3. Clone this repository recursively via your git client
 4. Run `zBuildAndRun.bat` or run build in your favourite editor
 
+## Requirements
+* OS: Windows 10 x64 or newer
+* Memory: 128 MB RAM
+
 ## Future features
 * C&C: Generals — Zero Hour support
 * C&C: Generals support
