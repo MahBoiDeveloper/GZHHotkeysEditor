@@ -13,7 +13,7 @@ private: // Data
     inline static QTranslator*         pAppTranslator = nullptr;
     QString WindowName;
 public:
-    inline static std::unique_ptr<WindowManager> Instance = nullptr;
+    inline const static std::unique_ptr<WindowManager> Instance = std::make_unique<WindowManager>();
 
 public: // Methods
     WindowManager();

@@ -12,7 +12,7 @@
 class Logger final
 {
 public: // Data
-    static inline std::unique_ptr<Logger> Instance;
+    inline const static std::unique_ptr<Logger> Instance = std::make_unique<Logger>();
 private:
     std::ofstream LogFile;
 
