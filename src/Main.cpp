@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
     QApplication HotkeyEditor(argc, argv);
 
     // Define logger as a singleton class, that could be used anywhere in project
+    WindowManager::Instance = make_unique<WindowManager>();
     CSFParser::Instance = make_unique<CSFParser>(Config::RESOURCE_FOLDER + "/DataSamples/generalsRU.csf");
 
     try
