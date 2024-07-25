@@ -16,7 +16,10 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    // Hide console
+    // TODO:
+    //   Make it toggable via .json config
+
+    // Hides console
     // ShowWindow(GetConsoleWindow(), SW_HIDE);
     
     // After this all out text to console MUST be showed via std::wcout and all chars should be converted as wchar_t
@@ -27,7 +30,7 @@ int main(int argc, char *argv[])
 
     // Define logger as a singleton class, that could be used anywhere in project
     WindowManager::Instance = make_unique<WindowManager>();
-    CSFParser::Instance = make_unique<CSFParser>(Config::RESOURCE_FOLDER + "/DataSamples/generalsRU.csf");
+    CSFParser::Instance     = make_unique<CSFParser>(Config::RESOURCE_FOLDER + "/DataSamples/generalsRU.csf");
 
     try
     {
@@ -37,31 +40,31 @@ int main(int argc, char *argv[])
     catch (const exception& exception)
     {
         // Log exception message
-        Logger::Instance->LogException(exception.what());
+        LOGGER->LogException(exception.what());
 
         // And show it to user
         QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", exception.what());
     }
     catch (const char* msg)
     {
-        Logger::Instance->LogException(msg);
+        LOGGER->LogException(msg);
         QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", msg);
     }
     catch (const string& msg)
     {
-        Logger::Instance->LogException(msg.c_str());
+        LOGGER->LogException(msg.c_str());
         QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", msg.c_str());
     }
     catch (const QString& msg)
     {
-        Logger::Instance->LogException(msg.toStdString().c_str());
+        LOGGER->LogException(msg.toStdString().c_str());
         QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", msg.toStdString().c_str());
     }
     catch (...)
     {
-        string tmp = "Unknown error has been occured.";
-        Logger::Instance->LogException(tmp.c_str());
-        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", tmp.c_str());
+        const char* tmp = "Unknown error has been occured.";
+        LOGGER->LogException(tmp);
+        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", tmp);
     }
 
     return 0;

@@ -6,6 +6,7 @@
 #include <memory>
 #include <QString>
 
+#define LOGGER      Logger::Instance
 #define LOGSTM      Logger::Instance->Log()
 #define LOGMSG(msg) Logger::Instance->Log(msg);Logger::Instance->LogToConsole(msg)
 
