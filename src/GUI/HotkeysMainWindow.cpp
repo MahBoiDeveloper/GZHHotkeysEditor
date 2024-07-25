@@ -169,7 +169,7 @@ void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
         for (const auto& go : goMap.keys(objectType))
         {
             QTreeWidgetItem* currentNewEntityItem = new QTreeWidgetItem();
-            currentNewEntityItem->setText(0, CSFPARSER->GetStringValue(go.ingameName));
+            currentNewEntityItem->setText(0, CSF_PARSER->GetStringValue(go.ingameName));
             currentNewEntityItem->setIcon(0, QPixmap::fromImage(GUIConfig::DecodeWebpIcon(go.iconName)));
             currentNewEntityItem->setData(0, Qt::UserRole, QVariant::fromValue(QPair{factionShortName, go.iconName}));
             newTopEntityItem->addChild(currentNewEntityItem);
@@ -232,8 +232,8 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
 
         for (const auto& currAction : currLayout)
         {
-            ActionHotkeyWidget* actionHotkey = new ActionHotkeyWidget{CSFPARSER->GetClearName(currAction.hotkeyString), 
-                                                                      QString::fromStdWString(std::wstring{CSFPARSER->GetHotkey(currAction.hotkeyString)}),
+            ActionHotkeyWidget* actionHotkey = new ActionHotkeyWidget{CSF_PARSER->GetClearName(currAction.hotkeyString), 
+                                                                      QString::fromStdWString(std::wstring{CSF_PARSER->GetHotkey(currAction.hotkeyString)}),
                                                                       currAction.iconName};
 
             // Remember widget

@@ -97,7 +97,7 @@ void Faction::SetHotkey(const QString& goName, const QString& actName, const QSt
                 {
                     if(currAct.iconName == actName)
                     {
-                        CSFPARSER->SetHotkey(currAct.hotkeyString, hk.toStdWString()[0]);
+                        CSF_PARSER->SetHotkey(currAct.hotkeyString, hk.toStdWString()[0]);
                         break;
                     }
                 }

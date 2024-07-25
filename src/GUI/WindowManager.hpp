@@ -5,6 +5,8 @@
 #include "LaunchWidget.hpp"
 #include "HotkeysMainWindow.hpp"
 
+#define WINDOW_MANAGER WindowManager::Instance
+
 class WindowManager final
 {
 private: // Data

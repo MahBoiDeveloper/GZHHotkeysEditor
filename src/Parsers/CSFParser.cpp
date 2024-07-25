@@ -6,8 +6,16 @@
 using namespace std;
 
 #pragma region CTORs and DTORs
-    CSFParser::CSFParser(const string& filePath) : Path{filePath}
+    CSFParser::CSFParser()                        {}
+    CSFParser::CSFParser(const string&  filePath) {Parse(filePath);}
+    CSFParser::CSFParser(const char*    filePath) {Parse(filePath);}
+    CSFParser::CSFParser(const QString& filePath) {Parse(filePath);}
+#pragma endregion
+
+#pragma region Parsing
+    void CSFParser::Parse(const char* strFilePath)
     {
+        Path = QString{strFilePath}.toStdString();
         ifstream csfFile(Path, ios::binary | ios::in);
         LOGMSG("Attempt to read binary file \"" + Path + "\"...");
 
@@ -23,12 +31,9 @@ using namespace std;
             throw Exception("Bad file name; unable to open file \"" + Path + "\"");
         }
     }
+    void CSFParser::Parse(const std::string& strFilePath) {Parse(strFilePath.c_str());}
+    void CSFParser::Parse(const QString& strFilePath)     {Parse(strFilePath.toStdString().c_str());}
 
-    CSFParser::CSFParser(const char*    filePath) : CSFParser{string{filePath}}       {}
-    CSFParser::CSFParser(const QString& filePath) : CSFParser{filePath.toStdString()} {}
-#pragma endregion
-
-#pragma region Parsing
     void CSFParser::ReadHeader(ifstream* csfFile)
     {
         csfFile->read(reinterpret_cast<char*>(&Header), sizeof(Header));

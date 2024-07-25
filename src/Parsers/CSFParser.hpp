@@ -1,5 +1,4 @@
 #pragma once
-
 #include <list>
 #include <memory>
 #include <string>
@@ -7,7 +6,7 @@
 #include <fstream>
 #include <QStringList>
 
-#define CSFPARSER CSFParser::Instance
+#define CSF_PARSER CSFParser::Instance
 
 class CSFParser final
 {
@@ -46,7 +45,7 @@ private: //Data
     std::list<CompiledString> Table;
 
 public:
-    inline static std::unique_ptr<CSFParser> Instance;
+    inline const static std::unique_ptr<CSFParser> Instance = std::make_unique<CSFParser>();
 
 private: // Methods
     void ReadHeader(std::ifstream* csfFile);
@@ -61,9 +60,17 @@ private: // Methods
     std::wstring WharArrayToWstring(const size_t& arrayLength, const wchar_t* pArray) const;
 
 public:
+    CSFParser();
     CSFParser(const std::string& strFilePath);
     CSFParser(const char*        strFilePath);
     CSFParser(const QString&     strFilePath);
+
+    /// @brief Parse .csf file with direct path.
+    void Parse(const std::string& strFilePath);
+    /// @brief Parse .csf file with direct path.
+    void Parse(const char*        strFilePath);
+    /// @brief Parse .csf file with direct path.
+    void Parse(const QString&     strFilePath);
 
     /// @brief Save compiled sting table data to the parsed file before.
     void Save();
