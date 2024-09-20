@@ -9,14 +9,13 @@
 
 GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QWidget(parent)
 {
-    QLabel*      lblGreeting    = nullptr;
     QPushButton* btnNewProject  = nullptr;
     QPushButton* btnLoadProject = nullptr;
-    QVBoxLayout* ltButtons      = nullptr;
-    QHBoxLayout* ltContent      = nullptr;
+    QHBoxLayout* ltButtons      = nullptr;
+    QVBoxLayout* ltContent      = nullptr;
     QLabel*      lblLanguage    = nullptr;
     QComboBox*   cmbLangList    = nullptr;
-    QHBoxLayout* ltLanguages    = nullptr;
+    QVBoxLayout* ltLanguages    = nullptr;
     QVBoxLayout* ltMain         = nullptr;
 
     // Makes greeting window unresizeable and equal to the size of the background file
@@ -45,40 +44,27 @@ GreetingWidget::GreetingWidget(Config::Languages language, QWidget* parent) : QW
     cmbLangList->setCurrentIndex(static_cast<int>(language));
     connect(cmbLangList, QOverload<int>::of(&QComboBox::activated), this, &GreetingWidget::languageChanged);
     
-    ltLanguages = new QHBoxLayout();
+    ltLanguages = new QVBoxLayout();
     ltLanguages->addStretch(1);
     ltLanguages->setSpacing(10);
     ltLanguages->addWidget(lblLanguage);
     ltLanguages->addWidget(cmbLangList);
 
-    ltButtons = new QVBoxLayout();
+    ltButtons = new QHBoxLayout();
     ltButtons->setSpacing(50);
     ltButtons->setAlignment(Qt::AlignTop);
     ltButtons->addWidget(btnNewProject);
     ltButtons->addWidget(btnLoadProject);
     ltButtons->setSpacing(30);
-    ltButtons->addLayout(ltLanguages);
 
-    // Program description
-    lblGreeting = new QLabel(tr("Greetings, %username%. "
-                                "You have launched the hotkey editing program "
-                                "for the game Command and Conquer: Generals "
-                                "and Command and Conquer: Generals — Zero Hour. "
-                                "At the moment, the program supports in test mode "
-                                "only the creation of hotkey maps based on pre-prepared hotkeys. "
-                                "We hope that you will like the program."));
-    lblGreeting->setWordWrap(true);
-    lblGreeting->setAlignment(Qt::AlignVCenter);
-
-    ltContent = new QHBoxLayout();
-    ltContent->setAlignment(Qt::AlignLeft);
+    ltContent = new QVBoxLayout();
+    ltContent->setAlignment(Qt::AlignCenter);
     ltContent->addLayout(ltButtons);
-    ltContent->addWidget(lblGreeting);
-    ltContent->setAlignment(lblGreeting, Qt::AlignTop);
+    ltContent->addLayout(ltLanguages);
 
     ltMain = new QVBoxLayout();
-    ltMain->setSpacing(50);
-    ltMain->setContentsMargins(60, 60, 60, 86);
+    ltMain->setSpacing(20);
+    ltMain->setContentsMargins(160, 120, 160, 120);
     ltMain->addLayout(ltContent);
 
     setLayout(ltMain);
