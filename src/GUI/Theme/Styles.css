@@ -6,8 +6,8 @@
 /* Global style setting */
 *
 {
-    font-family: "Consolas";
-    font-size: 11pt;
+    font-family: Calibri;
+    font-size: 10pt;
     color: black;
 }
 
@@ -15,7 +15,7 @@ QComboBox
 {
     width: 70px;
     color: white;
-    background-color: #181d5a;
+    background-color: #2e39b3;
     
     border-style: outset;
     border-width: 2px;
@@ -42,16 +42,16 @@ QComboBox QAbstractItemView
 
 QComboBox::drop-down
 {
-     width: 15px;
+     /* width: 15px;
      color: white;
      border-color: #b1b7ff;
      border-radius: 3px;
-     padding-left: 10px;
+     padding-left: 10px; */
 }
 
 QComboBox::down-arrow
 {
-     image: url(:/icons/down_arrow.png);
+     /* image: url(:/icons/down_arrow.png); */
 }
 
 /* Start widget style setting */
@@ -155,6 +155,8 @@ HotkeysMainWindow QTreeWidget, HotkeysMainWindow QScrollArea, HotkeysMainWindow 
 QTreeWidget::item
 {
     min-height: 40px;
+    font-family: "Collibri";
+    font-size: 9pt;
 }
 
 QTreeWidget::branch:open:has-children
@@ -265,9 +267,16 @@ QDialog QPushButton
     border: none; 
 } */
 
-HotkeysMainWindow QLabel#HotkeyLabel
+HotkeysMainWindow QLabel#HotkeyLabel:disabled
 {
     padding-left: 30px;
     padding-right: 30px;
     background-color: #128d2d;
+}
+
+HotkeysMainWindow QLabel#HotkeyLabel:enabled
+{
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #cb0d27;
 }

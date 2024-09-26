@@ -357,8 +357,8 @@ void HotkeysMainWindow::OnAbout()
     QLabel* lblAboutText = new QLabel{QString("<p>") 
                                         + tr("Authors: ") + AUTHORS + "<br>"
                                         + tr("Version: ") + VERSION + "<br>"
-                                        + tr("Program licensed with ") + "<a href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE\">GNU GPL v3</a><br>" 
-                                        + "<a href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">" + tr("GitHub Repository") 
+                                        + tr("Program licensed with ") + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE\">GNU GPL v3</a><br>" 
+                                        + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">" + tr("GitHub Repository") 
                                         + "</a></p>"};
     lblAboutText->setTextFormat(Qt::RichText);
     lblAboutText->setTextInteractionFlags(Qt::TextBrowserInteraction);
@@ -397,7 +397,7 @@ void HotkeysMainWindow::OnAbout()
 
     QVBoxLayout* ltMainBlock = new QVBoxLayout();
     ltMainBlock->addLayout(lblContent);
-    ltMainBlock->addLayout(btnOk);
+    // ltMainBlock->addLayout(btnOk);
 
     pAboutDialog->setLayout(ltMainBlock);
     pAboutDialog->show();

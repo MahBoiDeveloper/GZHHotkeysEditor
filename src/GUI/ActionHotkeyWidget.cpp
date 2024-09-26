@@ -18,6 +18,7 @@ ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
 {
     // Object name for css
     hotkeyLabel.setObjectName("HotkeyLabel");
+    hotkeyLabel.setEnabled(false);
 
     connect(&newHotkeyButton, &QPushButton::pressed, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
 
@@ -62,11 +63,11 @@ void ActionHotkeyWidget::HighlightKey(bool collision)
 {
     if (collision)
     {
-        hotkeyLabel.setStyleSheet(hotkeyLabel.styleSheet() + "\n" + "color: red;");
+        hotkeyLabel.setEnabled(true);
     }
     else
     {
-        hotkeyLabel.setStyleSheet(QLabel{}.styleSheet());
+        hotkeyLabel.setEnabled(false);
     }
 }
 
@@ -84,7 +85,7 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
     {
         // Set new text
         hotkey = QKeySequence(key).toString();
-
+        hotkeyLabel.setEnabled(false);
         // If the key is correct -> disconnect the input error reset signal
         disconnect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
 
@@ -94,16 +95,13 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
     else
     {
         hotkeyLabel.setText(tr("It isn't latin key..."));
-        QPalette palette;
-        palette.setColor(QPalette::WindowText, Qt::GlobalColor::red);
-        hotkeyLabel.setPalette(palette);
-
+        
         // Start the signal timer with a delay of n seconds
         if (signalTimer.isActive())
-        {
             signalTimer.stop();
-        }
+
         signalTimer.start(timerMseconds);
+        hotkeyLabel.setEnabled(true);
     }
     QWidget::keyPressEvent(event);
 }
@@ -116,9 +114,11 @@ void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
     hotkeyLabel.setText(hotkey);
 
     emit HotkeyChanged(hotkey);
+    hotkeyLabel.setEnabled(false);
 
     // Stop timer
     signalTimer.stop();
+
 
     QWidget::focusOutEvent(event);
 }
@@ -131,12 +131,10 @@ void ActionHotkeyWidget::OnNewHotkeyPressed()
 
     // Decorate
     hotkeyLabel.setText(tr("Press latin key..."));
+    hotkeyLabel.setEnabled(false);
     QFont f(hotkeyLabel.font());
     f.setItalic(true);
     hotkeyLabel.setFont(f);
-    QPalette palette;
-    palette.setColor(QPalette::WindowText, Qt::GlobalColor::blue);
-    hotkeyLabel.setPalette(palette);
 
     // Set focus on hotkey element
     setFocus();
