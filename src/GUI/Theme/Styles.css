@@ -67,7 +67,23 @@ BaseConfigurationDialog QPushButton
     padding-right: 30px;
 }
 
-GreetingWidget QPushButton, LoadDialog QPushButton, CreationDialog QPushButton
+GreetingWidget QPushButton
+{
+    font-family: Calibri;
+    font-weight: bold;
+    font-size: 18pt;
+    color: white;
+
+    background-color: #181d5a;
+    padding: 10px;
+
+    border-style: outset;
+    border-width: 2px;
+    border-color: #b1b7ff;
+    border-radius: 3px;
+}
+
+LoadDialog QPushButton, CreationDialog QPushButton
 {
     font-family: Calibri;
     font-weight: bold;
@@ -104,7 +120,7 @@ QPushButton#btnReview
 /* Main editor window style settings */
 HotkeysMainWindow
 {
-    border-image: url(Resources/Theme/EditorBackground.webp) 0 0 0 0 stretch stretch;
+    border-image: url(Resources/Theme/EditorBackgroundWithPicture.webp) 0 0 0 0 stretch stretch;
     background-color: black;
 }
 

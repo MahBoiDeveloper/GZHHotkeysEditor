@@ -125,7 +125,7 @@
     <message>
         <location filename="../HotkeysMainWindow.cpp" line="136"/>
         <source>Language</source>
-        <translation type="unfinished">Язык</translation>
+        <translation>Язык</translation>
     </message>
     <message>
         <location filename="../HotkeysMainWindow.cpp" line="140"/>
@@ -156,7 +156,7 @@
     <message>
         <location filename="../HotkeysMainWindow.cpp" line="411"/>
         <source>Lanugage</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Program licensed by GNU GPL v3</source>
