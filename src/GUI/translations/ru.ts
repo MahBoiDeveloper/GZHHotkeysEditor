@@ -46,18 +46,6 @@
 <context>
     <name>GreetingWidget</name>
     <message>
-        <source>New project</source>
-        <translation type="vanished">Новый проект</translation>
-    </message>
-    <message>
-        <source>Load project</source>
-        <translation type="vanished">Загрузить проект</translation>
-    </message>
-    <message>
-        <source>New Project</source>
-        <translation type="vanished">Новый проект</translation>
-    </message>
-    <message>
         <source>Load Project</source>
         <translation type="vanished">Загрузить проект</translation>
     </message>
@@ -66,14 +54,28 @@
         <translation type="vanished">Язык</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="25"/>
         <source>NEW PROJECT</source>
-        <translation>НОВЫЙ ПРОЕКТ</translation>
+        <translation type="vanished">НОВЫЙ ПРОЕКТ</translation>
+    </message>
+    <message>
+        <source>LOAD PROJECT</source>
+        <translation type="vanished">ЗАГРУЗИТЬ ПРОЕКТ</translation>
+    </message>
+    <message>
+        <location filename="../GreetingWidget.cpp" line="25"/>
+        <source>NEW</source>
+        <translation>НОВЫЙ</translation>
+    </message>
+    <message>
+        <location filename="../GreetingWidget.cpp" line="25"/>
+        <location filename="../GreetingWidget.cpp" line="32"/>
+        <source>PROJECT</source>
+        <translation>ПРОЕКТ</translation>
     </message>
     <message>
         <location filename="../GreetingWidget.cpp" line="32"/>
-        <source>LOAD PROJECT</source>
-        <translation>ЗАГРУЗИТЬ ПРОЕКТ</translation>
+        <source>LOAD</source>
+        <translation>ЗАГРУЗИТЬ</translation>
     </message>
     <message>
         <location filename="../GreetingWidget.cpp" line="39"/>
