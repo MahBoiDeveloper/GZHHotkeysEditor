@@ -131,7 +131,7 @@
     </message>
     <message>
         <location filename="../HotkeysMainWindow.cpp" line="140"/>
-        <location filename="../HotkeysMainWindow.cpp" line="373"/>
+        <location filename="../HotkeysMainWindow.cpp" line="375"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
@@ -156,7 +156,17 @@
         <translation>Программа лицензирована под </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="411"/>
+        <location filename="../HotkeysMainWindow.cpp" line="361"/>
+        <source>GitHub repository:</source>
+        <translation>Репозиторий на GitHub:</translation>
+    </message>
+    <message>
+        <location filename="../HotkeysMainWindow.cpp" line="363"/>
+        <source>Support development:</source>
+        <translation>Поддержать разработку:</translation>
+    </message>
+    <message>
+        <location filename="../HotkeysMainWindow.cpp" line="413"/>
         <source>Lanugage</source>
         <translation></translation>
     </message>
@@ -165,9 +175,8 @@
         <translation type="vanished">Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="361"/>
         <source>GitHub Repository</source>
-        <translation>Репозиторий на GitHub</translation>
+        <translation type="vanished">Репозиторий на GitHub</translation>
     </message>
     <message>
         <source>&lt;a href=&quot;https://github.com/MahBoiDeveloper/GZHHotkeysEditor&quot;&gt;GitHub Repository&lt;/a&gt;</source>

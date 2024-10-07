@@ -356,10 +356,12 @@ void HotkeysMainWindow::OnAbout()
         
     QLabel* lblAboutText = new QLabel{QString("<p>") 
                                         + tr("Authors: ") + AUTHORS + "<br>"
-                                        + tr("Version: ") + VERSION + "<br>"
-                                        + tr("Program licensed with ") + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE\">GNU GPL v3</a><br>" 
-                                        + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">" + tr("GitHub Repository") 
-                                        + "</a></p>"};
+                                        + tr("Version: ") + VERSION + "<br><br>"
+                                        + tr("Program licensed with ") + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE\">GNU GPL v3</a><br><br>" 
+                                        + tr("GitHub repository:") + "<br>"
+                                        + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">github.com/MahBoiDeveloper/GZHHotkeysEditor</a><br><br>"
+                                        + tr("Support development:") + "<br>"
+                                        + "<a style=\"color: #baff0c;\" href=\"https://boosty.to/mah_boi\">boosty.to/mah_boi</a></p>"};
     lblAboutText->setTextFormat(Qt::RichText);
     lblAboutText->setTextInteractionFlags(Qt::TextBrowserInteraction);
     lblAboutText->setOpenExternalLinks(true);
