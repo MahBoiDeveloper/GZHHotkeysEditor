@@ -42,16 +42,21 @@ QComboBox QAbstractItemView
 
 QComboBox::drop-down
 {
-     /* width: 15px;
+     width: 15px;
      color: white;
      border-color: #b1b7ff;
      border-radius: 3px;
-     padding-left: 10px; */
+     padding-left: 10px;
 }
 
 QComboBox::down-arrow
 {
-     /* image: url(:/icons/down_arrow.png); */
+    image: url(Resources/Theme/ScrollArrowDown.webp);
+}
+
+QComboBox::up-arrow
+{
+    image: url(Resources/Theme/ScrollArrowUp.webp);
 }
 
 /* Start widget style setting */
