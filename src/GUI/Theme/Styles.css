@@ -301,3 +301,10 @@ HotkeysMainWindow QLabel#HotkeyLabel:enabled
     padding-right: 30px;
     background-color: #cb0d27;
 }
+
+QScrollArea#pKeyboardWindow QLabel
+{
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #128d2d;
+}

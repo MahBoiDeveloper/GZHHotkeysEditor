@@ -32,9 +32,9 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     ConfigureMenu();
 
     pEntitiesTreeWidget->header()->hide();
-    // smooth scrolling
+    // Enable smooth scrolling
     pEntitiesTreeWidget->setVerticalScrollMode(QTreeWidget::ScrollMode::ScrollPerPixel);
-    // icon size
+    // Set icon size
     pEntitiesTreeWidget->setIconSize(QSize{GUIConfig::ICON_MIN_HEIGHT, GUIConfig::ICON_MIN_HEIGHT});
     // entitiesTreeWidget.setSpacing(GUIConfig::entityIconMinimumHeight * 0.1);
 
@@ -100,6 +100,14 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     pHotkeysArea->setWidgetResizable(true);
 
     QScrollArea* pKeyboardWindow = new QScrollArea();
+    
+    // QVector<QLabel*> vKeys;
+    // for (const auto& ch : QString("QWERTYUIOP"))
+    // {
+        // vKeys.push_back(new QLabel(QString(ch)));
+        // pKeyboardWindow->setWidget(new QLabel(QString(ch)));
+    // }
+
 
     QVBoxLayout* ltBuildingConfiguration = new QVBoxLayout();
     ltBuildingConfiguration->addWidget(pHotkeysArea, 2);
@@ -119,7 +127,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     setCentralWidget(centralWidget);
 
     // Set start faction
-    const auto firstFactionButton = pFactionsButtonsGroup->button(-2);
+    const auto firstFactionButton = pFactionsButtonsGroup->button(-2); // Magic number equals the begining of the array of the all buttons.
     if (firstFactionButton != nullptr) firstFactionButton->click();
 }
 
@@ -293,7 +301,6 @@ void HotkeysMainWindow::HighlightKeys(const QString& fctIconName, const QString&
 
     // Panel index
     int i = -1;
-
     for (const auto& panel : vHotkeyWidgets)
     {
         // Increase panel index

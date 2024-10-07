@@ -4,12 +4,12 @@
 <context>
     <name>ActionHotkeyWidget</name>
     <message>
-        <location filename="../ActionHotkeyWidget.cpp" line="98"/>
+        <location filename="../ActionHotkeyWidget.cpp" line="94"/>
         <source>It isn&apos;t latin key...</source>
         <translation>Это не латинская клавиша!</translation>
     </message>
     <message>
-        <location filename="../ActionHotkeyWidget.cpp" line="134"/>
+        <location filename="../ActionHotkeyWidget.cpp" line="130"/>
         <source>Press latin key...</source>
         <translation>Нажмите латинскую клавишу...</translation>
     </message>
@@ -105,68 +105,68 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="128"/>
+        <location filename="../HotkeysMainWindow.cpp" line="135"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="129"/>
+        <location filename="../HotkeysMainWindow.cpp" line="136"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="131"/>
+        <location filename="../HotkeysMainWindow.cpp" line="138"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="133"/>
+        <location filename="../HotkeysMainWindow.cpp" line="140"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="136"/>
+        <location filename="../HotkeysMainWindow.cpp" line="143"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="140"/>
-        <location filename="../HotkeysMainWindow.cpp" line="375"/>
+        <location filename="../HotkeysMainWindow.cpp" line="147"/>
+        <location filename="../HotkeysMainWindow.cpp" line="381"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="265"/>
+        <location filename="../HotkeysMainWindow.cpp" line="272"/>
         <source>Layout %1</source>
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="358"/>
+        <location filename="../HotkeysMainWindow.cpp" line="364"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="359"/>
+        <location filename="../HotkeysMainWindow.cpp" line="365"/>
         <source>Version: </source>
         <translation>Версия: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="360"/>
+        <location filename="../HotkeysMainWindow.cpp" line="366"/>
         <source>Program licensed with </source>
         <translation>Программа лицензирована под </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="361"/>
+        <location filename="../HotkeysMainWindow.cpp" line="367"/>
         <source>GitHub repository:</source>
         <translation>Репозиторий на GitHub:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="363"/>
+        <location filename="../HotkeysMainWindow.cpp" line="369"/>
         <source>Support development:</source>
         <translation>Поддержать разработку:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="413"/>
+        <location filename="../HotkeysMainWindow.cpp" line="419"/>
         <source>Lanugage</source>
         <translation></translation>
     </message>

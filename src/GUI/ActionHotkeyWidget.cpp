@@ -62,13 +62,9 @@ QString ActionHotkeyWidget::GetHotkey() const
 void ActionHotkeyWidget::HighlightKey(bool collision)
 {
     if (collision)
-    {
         hotkeyLabel.setEnabled(true);
-    }
     else
-    {
         hotkeyLabel.setEnabled(false);
-    }
 }
 
 void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
