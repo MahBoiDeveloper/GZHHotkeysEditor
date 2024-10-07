@@ -4,12 +4,12 @@
 <context>
     <name>ActionHotkeyWidget</name>
     <message>
-        <location filename="../ActionHotkeyWidget.cpp" line="97"/>
+        <location filename="../ActionHotkeyWidget.cpp" line="98"/>
         <source>It isn&apos;t latin key...</source>
         <translation>Это не латинская клавиша!</translation>
     </message>
     <message>
-        <location filename="../ActionHotkeyWidget.cpp" line="133"/>
+        <location filename="../ActionHotkeyWidget.cpp" line="134"/>
         <source>Press latin key...</source>
         <translation>Нажмите латинскую клавишу...</translation>
     </message>

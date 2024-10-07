@@ -86,6 +86,7 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
         // Set new text
         hotkey = QKeySequence(key).toString();
         hotkeyLabel.setEnabled(false);
+        
         // If the key is correct -> disconnect the input error reset signal
         disconnect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
 
@@ -109,8 +110,9 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
 void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
 {
     // Unset decoration
-    hotkeyLabel.setFont(QFont{});
-    hotkeyLabel.setPalette(QPalette{});
+    QFont fnt(hotkeyLabel.font());
+    fnt.setItalic(false);
+    hotkeyLabel.setFont(fnt);
     hotkeyLabel.setText(hotkey);
 
     emit HotkeyChanged(hotkey);
@@ -118,7 +120,6 @@ void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
 
     // Stop timer
     signalTimer.stop();
-
 
     QWidget::focusOutEvent(event);
 }
