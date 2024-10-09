@@ -210,6 +210,10 @@ QTabBar::tab
     height: 30px;
     width: 120px;
     color: white;
+
+    border-bottom-width: 1px;
+    border-bottom-style: outset;
+    border-bottom-color: white;
 }
 
 QTabBar::tab:first
@@ -224,17 +228,8 @@ QTabBar::tab:selected
     border-right-width: 1px;
     border-right-style: outset;
     border-right-color: white;
-}
-
-QTabBar::tab:!selected
-{
-    border-bottom-width: 1px;
-    border-bottom-style: outset;
-    border-bottom-color: white;
-
-    border-right-width: 1px;
-    border-right-style: outset;
-    border-right-color: white;
+    
+    background: #3543e7;
 }
 
 QTabBar::tab:last
