@@ -373,7 +373,7 @@ void HotkeysMainWindow::OnAbout()
                                         + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">github.com/MahBoiDeveloper/GZHHotkeysEditor</a><br><br>"
                                         + tr("Support development:") + "<br>"
                                         + "<a style=\"color: #baff0c;\" href=\"https://boosty.to/mah_boi\">boosty.to/mah_boi</a></p>"};
-    lblAboutText->setProperty("left", "true");
+    lblAboutText->setObjectName("left");
     lblAboutText->setTextFormat(Qt::RichText);
     lblAboutText->setTextInteractionFlags(Qt::TextBrowserInteraction);
     lblAboutText->setOpenExternalLinks(true);
@@ -381,7 +381,7 @@ void HotkeysMainWindow::OnAbout()
     
     QLabel* lblEditorIcon = new QLabel();
     lblEditorIcon->setPixmap(QPixmap::fromImage(GUIConfig::DecodeBigEditorWebpIcon()));
-    lblEditorIcon->setProperty("right", "true");
+    lblEditorIcon->setObjectName("right");
     lblContent->addWidget(lblEditorIcon, 0, 1);
 
     pAboutDialog = new QDialog{this};
