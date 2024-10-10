@@ -397,22 +397,8 @@ void HotkeysMainWindow::OnAbout()
         pAboutDialog = nullptr;
     });
 
-    QDialogButtonBox* buttons = new QDialogButtonBox{QDialogButtonBox::Ok,
-                                                     Qt::Orientation::Horizontal,
-                                                     pAboutDialog};
-
-    connect(buttons, &QDialogButtonBox::accepted, pAboutDialog, &QDialog::accept);
-
-    QHBoxLayout* btnOk = new QHBoxLayout();
-    btnOk->addStretch();
-    buttons->button(QDialogButtonBox::Ok)->setFixedWidth(80);
-    btnOk->addWidget(buttons->button(QDialogButtonBox::Ok));
-    btnOk->addStretch();
-    btnOk->setAlignment(Qt::AlignCenter);
-
     QVBoxLayout* ltMainBlock = new QVBoxLayout();
     ltMainBlock->addLayout(lblContent);
-    // ltMainBlock->addLayout(btnOk);
 
     pAboutDialog->setLayout(ltMainBlock);
     pAboutDialog->show();

@@ -166,7 +166,7 @@
         <translation>Поддержать разработку:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="426"/>
+        <location filename="../HotkeysMainWindow.cpp" line="412"/>
         <source>Lanugage</source>
         <translation></translation>
     </message>
