@@ -22,6 +22,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     , pFactionsButtonsGroup{new QButtonGroup{this}}
     , pEntitiesTreeWidget{new QTreeWidget}
     , pHotkeysArea{new QScrollArea}
+    , pKeyboardWindow{new QScrollArea}
     , pHotkeysPanelsWidget{nullptr}
     , pAboutDialog{nullptr}
 {
@@ -99,29 +100,32 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     // Fill all available space
     pHotkeysArea->setWidgetResizable(true);
 
-    QScrollArea* pKeyboardWindow = new QScrollArea();
+    pKeyboardWindow->setProperty("keyboard", "true");
     
-    // QVector<QLabel*> vKeys;
+    // QHBoxLayout* pKeyboard = new QHBoxLayout();
+
     // for (const auto& ch : QString("QWERTYUIOP"))
     // {
-        // vKeys.push_back(new QLabel(QString(ch)));
-        // pKeyboardWindow->setWidget(new QLabel(QString(ch)));
+    //     const QString qwe(ch);
+    //     QLabel* temp = new QLabel(qwe);
+    //     temp->margin();
+    //     pKeyboardWindow->setWidget(temp);
     // }
+    // pKeyboardWindow->setLayout(pKeyboard);
 
-
-    QVBoxLayout* ltBuildingConfiguration = new QVBoxLayout();
-    ltBuildingConfiguration->addWidget(pHotkeysArea, 2);
-    ltBuildingConfiguration->addWidget(pKeyboardWindow, 1);
+    QVBoxLayout* ltGameObject = new QVBoxLayout();
+    ltGameObject->addWidget(pHotkeysArea, 2);
+    ltGameObject->addWidget(pKeyboardWindow, 1);
 
     QHBoxLayout* ltContent = new QHBoxLayout();
     ltContent->addWidget(pEntitiesTreeWidget, 4);
-    ltContent->addLayout(ltBuildingConfiguration, 7);
+    ltContent->addLayout(ltGameObject, 7);
 
     QVBoxLayout* ltMain = new QVBoxLayout();
     ltMain->addLayout(ltFactions);
     ltMain->addLayout(ltContent);
 
-    // main widget
+    // Main widget
     QWidget* centralWidget = new QWidget();
     centralWidget->setLayout(ltMain);
     setCentralWidget(centralWidget);
@@ -274,7 +278,7 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
     }
 
     // If only one panel -> hide header
-    if (pHotkeysPanelsWidget->count() <= 1) pHotkeysPanelsWidget->tabBar()->hide();
+    if (pHotkeysPanelsWidget->count() < 2) pHotkeysPanelsWidget->tabBar()->hide();
 
     pHotkeysPanelsWidget->setMinimumSize(pHotkeysPanelsWidget->sizeHint());
     pHotkeysArea->setWidget(pHotkeysPanelsWidget);

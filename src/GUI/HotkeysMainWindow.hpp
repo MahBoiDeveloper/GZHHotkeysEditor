@@ -24,6 +24,7 @@ private: // Data
     // Graphic widgets in a single copy
     QTreeWidget*  pEntitiesTreeWidget   = nullptr;
     QScrollArea*  pHotkeysArea          = nullptr;
+    QScrollArea*  pKeyboardWindow       = nullptr;
 
     // Renewable widgets
     QTabWidget*   pHotkeysPanelsWidget  = nullptr;

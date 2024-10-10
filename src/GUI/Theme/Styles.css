@@ -162,7 +162,7 @@ HotkeysMainWindow QPushButton:pressed:hover
     color: #baff0c;
 }
 
-HotkeysMainWindow QTreeWidget, HotkeysMainWindow QScrollArea, HotkeysMainWindow QTabWidget
+HotkeysMainWindow QTreeWidget, HotkeysMainWindow QTabWidget, HotkeysMainWindow QScrollArea
 {
     background: rgba(0, 0, 0, 0.7);
     border-radius: 3px;
@@ -171,6 +171,11 @@ HotkeysMainWindow QTreeWidget, HotkeysMainWindow QScrollArea, HotkeysMainWindow 
     border-color: white;
     
     color: white;
+}
+
+QScrollArea[keyboard="true"]
+{
+    border-image: url(Resources/Theme/Keyboard.webp) 0 0 0 0 stretch stretch;   
 }
 
 QTreeWidget::item
@@ -230,6 +235,11 @@ QTabBar::tab:selected
     border-right-color: white;
     
     background: #3543e7;
+}
+
+QTabBar::tab:selected:hover, QTabBar::tab:hover
+{
+    color: #baff0c;
 }
 
 QTabBar::tab:last
@@ -295,11 +305,4 @@ HotkeysMainWindow QLabel#HotkeyLabel:enabled
     padding-left: 30px;
     padding-right: 30px;
     background-color: #cb0d27;
-}
-
-QScrollArea#pKeyboardWindow QLabel
-{
-    padding-left: 30px;
-    padding-right: 30px;
-    background-color: #128d2d;
 }
