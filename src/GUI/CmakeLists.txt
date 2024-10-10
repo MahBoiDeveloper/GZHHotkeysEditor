@@ -124,7 +124,7 @@
     # Link the libwebp target to the GUI target
     target_link_libraries(${TARGET_NAME} PRIVATE ${LIB_WEBP_TARGET_NAME})
 
-# Copying folders with configs
+# Copying folders with configs, but without update
     # Copy icons
     file(
         COPY "${CMAKE_CURRENT_SOURCE_DIR}/Icons"
@@ -137,5 +137,5 @@
         DESTINATION ${PROJECT_DESTINATION_RESOURCES_FOLDER}
     )
 
-    # Copy with update for Styles.css
-    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/Theme/Styles.css" ${PROJECT_DESTINATION_RESOURCES_FOLDER})
+# Copy Styles.css with updates
+    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/Theme/Styles.css" "${PROJECT_DESTINATION_RESOURCES_FOLDER}/Theme/Styles.css")
