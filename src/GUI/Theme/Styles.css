@@ -173,7 +173,7 @@ HotkeysMainWindow QTreeWidget, HotkeysMainWindow QTabWidget, HotkeysMainWindow Q
     color: white;
 }
 
-QScrollArea[keyboard="true"]
+QScrollArea#Keyboard
 {
     border-image: url(Resources/Theme/Keyboard.webp) 0 0 0 0 stretch stretch;   
 }
@@ -302,14 +302,14 @@ QDialog QPushButton
     border: none; 
 } */
 
-HotkeysMainWindow QLabel#HotkeyLabel:disabled
+QLabel#HotkeyLabel:disabled
 {
     padding-left: 30px;
     padding-right: 30px;
     background-color: #128d2d;
 }
 
-HotkeysMainWindow QLabel#HotkeyLabel:enabled
+QLabel#HotkeyLabel:enabled
 {
     padding-left: 30px;
     padding-right: 30px;

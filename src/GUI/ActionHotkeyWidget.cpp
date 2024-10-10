@@ -19,6 +19,8 @@ ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
     // Object name for css
     hotkeyLabel.setObjectName("HotkeyLabel");
     hotkeyLabel.setEnabled(false);
+    hotkeyLabel.setMinimumSize(GUIConfig::DecodeMissingWebpIcon().size().width() + 15, // Checked for letter W
+                               GUIConfig::DecodeMissingWebpIcon().size().height());
 
     connect(&newHotkeyButton, &QPushButton::pressed, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
 

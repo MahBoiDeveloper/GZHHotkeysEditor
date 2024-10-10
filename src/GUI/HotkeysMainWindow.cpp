@@ -100,7 +100,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     // Fill all available space
     pHotkeysArea->setWidgetResizable(true);
 
-    pKeyboardWindow->setProperty("keyboard", "true");
+    pKeyboardWindow->setObjectName("Keyboard");
 
     // QHBoxLayout* pKeyboard = new QHBoxLayout();
 
@@ -131,7 +131,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     setCentralWidget(centralWidget);
 
     // Set start faction
-    const auto firstFactionButton = pFactionsButtonsGroup->button(-2); // Magic number equals the begining of the array of the all buttons.
+    const auto firstFactionButton = pFactionsButtonsGroup->button(-2); // Magic number equals to begining of the array of the all buttons.
     if (firstFactionButton != nullptr) firstFactionButton->click();
 }
 
