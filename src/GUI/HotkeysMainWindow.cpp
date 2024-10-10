@@ -100,18 +100,50 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     // Fill all available space
     pHotkeysArea->setWidgetResizable(true);
 
+    // Draw keyboard with letters
     pKeyboardWindow->setObjectName("Keyboard");
+    QHBoxLayout* pKeyboardFirstLine  = new QHBoxLayout(); pKeyboardFirstLine->setAlignment(Qt::AlignHCenter);
+    QHBoxLayout* pKeyboardSecondLine = new QHBoxLayout(); pKeyboardSecondLine->setAlignment(Qt::AlignHCenter);
+    QHBoxLayout* pKeyboardThirdLine  = new QHBoxLayout(); pKeyboardThirdLine->setAlignment(Qt::AlignHCenter);
+    QVBoxLayout* pKeyboardLines      = new QVBoxLayout();
+    
+    QPushButton* btnEmptyButton= new QPushButton();
+    btnEmptyButton->setProperty("key", "null");
+    btnEmptyButton->setFixedWidth(GUIConfig::EMTPTY_KEY_WIDTH);
 
-    // QHBoxLayout* pKeyboard = new QHBoxLayout();
+    // Set 1st line of keys
+    for (const auto& ch : QString("QWERTYUIOP"))
+    {
+        auto tmp = new QPushButton(ch);
+        tmp->setProperty("key", ch);
+        tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
+        pKeyboardFirstLine->addWidget(tmp);
+    }
 
-    // for (const auto& ch : QString("QWERTYUIOP"))
-    // {
-    //     const QString qwe(ch);
-    //     QLabel* temp = new QLabel(qwe);
-    //     temp->margin();
-    //     pKeyboardWindow->setWidget(temp);
-    // }
-    // pKeyboardWindow->setLayout(pKeyboard);
+    // Set 2nd line of keys
+    for (const auto& ch : QString("ASDFGHJKL"))
+    {
+        auto tmp = new QPushButton(ch);
+        tmp->setProperty("key", ch);
+        tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
+        pKeyboardSecondLine->addWidget(tmp);
+    }
+    
+    // Set 3rd line of keys
+    for (const auto& ch : QString("ZXCVBNM"))
+    {
+        auto tmp = new QPushButton(ch);
+        tmp->setProperty("key", ch);
+        tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
+        pKeyboardThirdLine->addWidget(tmp);
+    }
+    pKeyboardThirdLine->addWidget(btnEmptyButton);
+
+    pKeyboardLines->addLayout(pKeyboardFirstLine);
+    pKeyboardLines->addLayout(pKeyboardSecondLine);
+    pKeyboardLines->addLayout(pKeyboardThirdLine);
+
+    pKeyboardWindow->setLayout(pKeyboardLines);
 
     QVBoxLayout* ltGameObject = new QVBoxLayout();
     ltGameObject->addWidget(pHotkeysArea, 2);

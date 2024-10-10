@@ -2,6 +2,7 @@
 /* 1. https://doc.qt.io/qt-5/stylesheet-syntax.html */
 /* 2. https://doc.qt.io/qt-5/stylesheet-reference.html */
 /* 3. https://forum.qt.io/topic/40151/solved-scaled-background-image-using-stylesheet/3 */
+/* 4. https://www.qtcentre.org/threads/55152-Is-it-possible-to-logically-combine-dynamic-properties-in-a-Qt-Stylesheet */
 
 /* Global style setting */
 *
@@ -173,11 +174,6 @@ HotkeysMainWindow QTreeWidget, HotkeysMainWindow QTabWidget, HotkeysMainWindow Q
     color: white;
 }
 
-QScrollArea#Keyboard
-{
-    border-image: url(Resources/Theme/Keyboard.webp) 0 0 0 0 stretch stretch;   
-}
-
 QTreeWidget::item
 {
     min-height: 40px;
@@ -309,4 +305,22 @@ QLabel#HotkeyLabel:enabled
     padding-left: 30px;
     padding-right: 30px;
     background-color: #cb0d27;
+}
+
+QScrollArea#Keyboard QPushButton
+{
+    /* border-image: url(Resources/Theme/Keyboard.webp) 0 0 0 0 stretch stretch;    */
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 9pt;
+
+    border-width: 1px;
+    border-style: outset;
+    border-color: white;
+}
+
+QScrollArea#Keyboard QPushButton[key="null"]
+{
+    background: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
 }
