@@ -131,7 +131,7 @@
     </message>
     <message>
         <location filename="../HotkeysMainWindow.cpp" line="152"/>
-        <location filename="../HotkeysMainWindow.cpp" line="386"/>
+        <location filename="../HotkeysMainWindow.cpp" line="388"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
@@ -166,7 +166,7 @@
         <translation>Поддержать разработку:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="424"/>
+        <location filename="../HotkeysMainWindow.cpp" line="426"/>
         <source>Lanugage</source>
         <translation></translation>
     </message>
