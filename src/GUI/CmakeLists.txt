@@ -136,3 +136,6 @@
         COPY "${CMAKE_CURRENT_SOURCE_DIR}/Theme"
         DESTINATION ${PROJECT_DESTINATION_RESOURCES_FOLDER}
     )
+
+    # Copy with update for Styles.css
+    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/Theme/Styles.css" ${PROJECT_DESTINATION_RESOURCES_FOLDER})
