@@ -111,11 +111,14 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     btnEmptyButton->setProperty("key", "null");
     btnEmptyButton->setFixedWidth(GUIConfig::EMTPTY_KEY_WIDTH);
 
+    // TODO :
+    //      Make it in different fucntion
     // Set 1st line of keys
     for (const auto& ch : QString("QWERTYUIOP"))
     {
         auto tmp = new QPushButton(ch);
         tmp->setProperty("key", ch);
+        tmp->setObjectName(ch);
         tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
         pKeyboardFirstLine->addWidget(tmp);
     }
@@ -125,6 +128,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     {
         auto tmp = new QPushButton(ch);
         tmp->setProperty("key", ch);
+        tmp->setObjectName(ch);
         tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
         pKeyboardSecondLine->addWidget(tmp);
     }
@@ -134,6 +138,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     {
         auto tmp = new QPushButton(ch);
         tmp->setProperty("key", ch);
+        tmp->setObjectName(ch);
         tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
         pKeyboardThirdLine->addWidget(tmp);
     }
@@ -343,10 +348,23 @@ void HotkeysMainWindow::HighlightKeys(const QString& fctIconName, const QString&
         ++i;
 
         for (auto& hotkeyWidget : panel)
-            if (keysCollisions.at(i).contains(hotkeyWidget->GetHotkey()))
+        {
+            const auto& thisHotkey = hotkeyWidget->GetHotkey();
+            auto* btnThisButton = pKeyboardWindow->findChild<QPushButton*>(thisHotkey, Qt::FindChildrenRecursively);
+
+            if (keysCollisions.at(i).contains(thisHotkey))
+            {
                 hotkeyWidget->HighlightKey(true);
+                btnThisButton->setProperty("status", "good");
+            }
             else
+            {
                 hotkeyWidget->HighlightKey(false);
+                btnThisButton->setProperty("status", "bad");
+            }
+
+            // LOGSTM << thisHotkey.toStdString() << " - - - " << QString(btnThisButton->isDown()).toStdString();
+        }
     }
 }
 

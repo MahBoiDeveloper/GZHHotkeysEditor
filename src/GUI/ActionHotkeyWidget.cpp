@@ -66,7 +66,7 @@ void ActionHotkeyWidget::HighlightKey(bool collision)
     if (collision)
         hotkeyLabel.setEnabled(true);
     else
-        hotkeyLabel.setEnabled(false);
+        hotkeyLabel.setDisabled(true);
 }
 
 void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
