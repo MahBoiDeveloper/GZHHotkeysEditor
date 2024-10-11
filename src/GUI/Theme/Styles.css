@@ -333,6 +333,11 @@ QScrollArea#Keyboard QPushButton[status="bad"]
     background-color: #cb0d27;
 }
 
+QScrollArea#Keyboard QPushButton[status="null"]
+{
+    background: rgba(0, 0, 0, 0);
+}
+
 QScrollArea#Keyboard QPushButton[key="null"]
 {
     background: rgba(0, 0, 0, 0);
@@ -341,7 +346,7 @@ QScrollArea#Keyboard QPushButton[key="null"]
 
 /* Temporary, delete later */
 /* This is demo of what should be in future */
-QScrollArea#Keyboard QPushButton[key="F"]
+/* QScrollArea#Keyboard QPushButton[key="F"]
 {
     background-color: #cb0d27;
 }
@@ -359,4 +364,4 @@ QScrollArea#Keyboard QPushButton[key="D"]
 QScrollArea#Keyboard QPushButton[key="C"]
 {
     background-color: #128d2d;
-}
+} */

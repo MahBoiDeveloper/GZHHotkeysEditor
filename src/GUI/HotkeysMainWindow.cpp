@@ -261,21 +261,20 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
     const QString& factionShortName = specialItemInfo.first;
     const QString& gameObjectName   = specialItemInfo.second;
 
-    // const QVector<QVector<QSharedPointer<EntityAction>>> entityPanels = factionsManager.GetEntityActionPanels(factionShortName, gameObjectName);
     const auto gameObjectKeyboardLayouts = GetFactionRef(factionShortName).GetKeyboardLayoutsByObjectName(gameObjectName);
 
     // Recreate panels widget
     if (pHotkeysPanelsWidget != nullptr) pHotkeysPanelsWidget->deleteLater();
     pHotkeysPanelsWidget = new QTabWidget();
 
-    // Forget old hotkey widgets
-    vHotkeyWidgets.clear();
-
     // Panel index
     int i = 0;
 
     for (const auto& currLayout : gameObjectKeyboardLayouts)
     {
+        // Forget old hotkey widgets
+        vHotkeyWidgets.clear();
+
         QSet<ActionHotkeyWidget*> currentPanelWidgets;
         QVBoxLayout* hotkeysLayout = new QVBoxLayout();
 
@@ -294,7 +293,7 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
                 SetActionHotkey(factionShortName, gameObjectName, currAction.iconName, newHotkey);
 
                 // Highlight keys for entity
-                HighlightKeys(factionShortName, gameObjectName);
+                HighlightCurrentKeys();
             });
 
             hotkeysLayout->addWidget(actionHotkey);
@@ -304,7 +303,7 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
         vHotkeyWidgets.append(currentPanelWidgets);
 
         // Highlight keys for entity
-        HighlightKeys(factionShortName, gameObjectName);
+        HighlightCurrentKeys();
 
         // Condense the actions at the top
         hotkeysLayout->addStretch(1);
@@ -321,13 +320,17 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
     pHotkeysArea->setWidget(pHotkeysPanelsWidget);
 }
 
-void HotkeysMainWindow::HighlightKeys(const QString& fctIconName, const QString& goIconName) const
+void HotkeysMainWindow::HighlightCurrentKeys()
 {
     // Skip if no widgets
     if (vHotkeyWidgets.isEmpty()) return;
 
     // Change color if the current key is in collisions
-    QVector<QSet<QString>> keysCollisions = {}; // TODO: Implement code to detect groups of the same hotkeys in 1 keyboard layout
+    QList<QString> keysCollisions;
+
+    // Fill list with only letters of keys
+    for (const auto& elem: vHotkeyWidgets.at(0))
+        keysCollisions.push_back(elem->GetHotkey());
 
     // If no collisions
     if (keysCollisions.isEmpty())
@@ -335,37 +338,41 @@ void HotkeysMainWindow::HighlightKeys(const QString& fctIconName, const QString&
         // Unhighlight all keys and quit
         for (const auto& panel : vHotkeyWidgets)
             for (auto& hotkeyWidget : panel)
+            {
+                auto btnThisButton = pKeyboardWindow->findChild<QPushButton*>(hotkeyWidget->GetHotkey(), Qt::FindChildrenRecursively);
                 hotkeyWidget->HighlightKey(false);
+                btnThisButton->setProperty("status", "null");
+            }
 
         return;
     }
-
-    // Panel index
-    int i = -1;
-    for (const auto& panel : vHotkeyWidgets)
+    
+    // Else code does check for collisions
+    NullifyKeyboardStatus();
+    for (auto& hotkeyWidget : vHotkeyWidgets.at(0))
     {
-        // Increase panel index
-        ++i;
 
-        for (auto& hotkeyWidget : panel)
+        const QString& thisHotkey = hotkeyWidget->GetHotkey();
+        auto* btnHotkeyOnKeyboard = pKeyboardWindow->findChild<QPushButton*>(thisHotkey, Qt::FindChildrenRecursively);
+        
+        if (keysCollisions.count(thisHotkey) < 2)
         {
-            const auto& thisHotkey = hotkeyWidget->GetHotkey();
-            auto* btnThisButton = pKeyboardWindow->findChild<QPushButton*>(thisHotkey, Qt::FindChildrenRecursively);
-
-            if (keysCollisions.at(i).contains(thisHotkey))
-            {
-                hotkeyWidget->HighlightKey(true);
-                btnThisButton->setProperty("status", "good");
-            }
-            else
-            {
-                hotkeyWidget->HighlightKey(false);
-                btnThisButton->setProperty("status", "bad");
-            }
-
-            // LOGSTM << thisHotkey.toStdString() << " - - - " << QString(btnThisButton->isDown()).toStdString();
+            hotkeyWidget->HighlightKey(false);
+            btnHotkeyOnKeyboard->setProperty("status", "good");
+        }
+        else
+        {
+            hotkeyWidget->HighlightKey(true);
+            btnHotkeyOnKeyboard->setProperty("status", "bad");
         }
     }
+}
+
+void HotkeysMainWindow::NullifyKeyboardStatus()
+{
+    for (QChar& qc : QString("QWERTYUIOPASDFGHJKLZXCVBNM")) 
+        pKeyboardWindow->findChild<QPushButton*>(qc, Qt::FindChildrenRecursively)
+                       ->setProperty("status", "null");
 }
 
 void HotkeysMainWindow::SetFactions()

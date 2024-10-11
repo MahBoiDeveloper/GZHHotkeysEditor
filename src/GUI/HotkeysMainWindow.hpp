@@ -47,7 +47,9 @@ private:
     /// @brief Set game object to display.
     void SetHotkeysPanelsWidget();
     /// @brief Set hotkeys colors. Default color is black. Changes color to red for keys, that is conflict to each other in one unit/building.
-    void HighlightKeys(const QString& fctIconName, const QString& goIconName) const;
+    void HighlightCurrentKeys();
+    /// @brief Set key's styles on keyboard block to property `status=null`.
+    void NullifyKeyboardStatus();
     /// @brief Replace current action assigned hotkey with new one.
     void SetActionHotkey(const QString& fctShortName, const QString& goName, const QString& actName, const QString& hk);
 
