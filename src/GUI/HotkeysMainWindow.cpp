@@ -294,6 +294,8 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
 
                 // Highlight keys for entity
                 HighlightCurrentKeys();
+
+                emit pHotkeysPanelsWidget->currentChanged(i);
             });
 
             hotkeysLayout->addWidget(actionHotkey);
@@ -320,29 +322,7 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
     pHotkeysPanelsWidget->setMinimumSize(pHotkeysPanelsWidget->sizeHint());
     pHotkeysArea->setWidget(pHotkeysPanelsWidget);
 
-    connect(pHotkeysPanelsWidget, &QTabWidget::currentChanged, this, [=](int id)
-    {
-        NullifyKeyboardStatus();
-        auto currTab = pHotkeysPanelsWidget->findChild<QWidget*>(QString("Layout ") + QString::number(id + 1), Qt::FindChildrenRecursively);
-        
-        QString accum;
-        for (const auto& elem : currTab->findChildren<ActionHotkeyWidget*>(QString(), Qt::FindChildrenRecursively))
-            accum += QString(elem->GetHotkey());
-
-        for (const QChar& ch : accum)
-        {
-            auto key = pKeyboardWindow->findChild<QPushButton*>(ch, Qt::FindChildrenRecursively);
-            
-            if (accum.count(ch) < 2)
-                key->setProperty("status", "good");
-            else
-                key->setProperty("status", "bad");
-
-            key->style()->unpolish(key);
-            key->style()->polish(key);
-            key->update();
-        }
-    });
+    connect(pHotkeysPanelsWidget, &QTabWidget::currentChanged, this, &HotkeysMainWindow::UpdateKeyboardStatus);
 
     emit pHotkeysPanelsWidget->currentChanged(0);
 }
@@ -364,10 +344,8 @@ void HotkeysMainWindow::HighlightCurrentKeys()
         {
             const QString& thisHotkey = hotkeyWidget->GetHotkey();
 
-            if (keysCollisions.count(thisHotkey) < 2)
-                hotkeyWidget->HighlightKey(false);
-            else
-                hotkeyWidget->HighlightKey(true);
+            if (keysCollisions.count(thisHotkey) < 2) hotkeyWidget->HighlightKey(false);
+            else                                      hotkeyWidget->HighlightKey(true);
         }
     }
 }
@@ -378,6 +356,28 @@ void HotkeysMainWindow::NullifyKeyboardStatus()
     {
         auto key = pKeyboardWindow->findChild<QPushButton*>(qc, Qt::FindChildrenRecursively);
         key->setProperty("status", "null");
+        key->style()->unpolish(key);
+        key->style()->polish(key);
+        key->update();
+    }
+}
+
+void HotkeysMainWindow::UpdateKeyboardStatus(int id)
+{
+    NullifyKeyboardStatus();
+    auto currTab = pHotkeysPanelsWidget->findChild<QWidget*>(QString("Layout ") + QString::number(id + 1), Qt::FindChildrenRecursively);
+        
+    QString accum;
+    for (const auto& elem : currTab->findChildren<ActionHotkeyWidget*>(QString(), Qt::FindChildrenRecursively))
+        accum += QString(elem->GetHotkey());
+
+    for (const QChar& ch : accum)
+    {
+        auto key = pKeyboardWindow->findChild<QPushButton*>(ch, Qt::FindChildrenRecursively);
+
+        if (accum.count(ch) < 2) key->setProperty("status", "good");
+        else                     key->setProperty("status", "bad");
+        
         key->style()->unpolish(key);
         key->style()->polish(key);
         key->update();

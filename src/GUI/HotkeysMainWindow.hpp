@@ -56,4 +56,5 @@ private:
 private slots:
     void OnAbout();
     void OnLanguageChange();
+    void UpdateKeyboardStatus(int id = 0);
 };

@@ -131,42 +131,42 @@
     </message>
     <message>
         <location filename="../HotkeysMainWindow.cpp" line="189"/>
-        <location filename="../HotkeysMainWindow.cpp" line="465"/>
+        <location filename="../HotkeysMainWindow.cpp" line="454"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="314"/>
+        <location filename="../HotkeysMainWindow.cpp" line="316"/>
         <source>Layout %1</source>
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="446"/>
+        <location filename="../HotkeysMainWindow.cpp" line="435"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="447"/>
+        <location filename="../HotkeysMainWindow.cpp" line="436"/>
         <source>Version: </source>
         <translation>Версия: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="448"/>
+        <location filename="../HotkeysMainWindow.cpp" line="437"/>
         <source>Program licensed with </source>
         <translation>Программа лицензирована под </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="449"/>
+        <location filename="../HotkeysMainWindow.cpp" line="438"/>
         <source>GitHub repository:</source>
         <translation>Репозиторий на GitHub:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="451"/>
+        <location filename="../HotkeysMainWindow.cpp" line="440"/>
         <source>Support development:</source>
         <translation>Поддержать разработку:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="489"/>
+        <location filename="../HotkeysMainWindow.cpp" line="478"/>
         <source>Lanugage</source>
         <translation type="unfinished"></translation>
     </message>

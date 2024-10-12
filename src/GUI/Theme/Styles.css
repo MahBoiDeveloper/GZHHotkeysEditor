@@ -343,25 +343,3 @@ QScrollArea#Keyboard QPushButton[key="null"]
     background: rgba(0, 0, 0, 0);
     border-color: rgba(0, 0, 0, 0);
 }
-
-/* Temporary, delete later */
-/* This is demo of what should be in future */
-/* QScrollArea#Keyboard QPushButton[key="F"]
-{
-    background-color: #cb0d27;
-}
-
-QScrollArea#Keyboard QPushButton[key="T"]
-{
-    background-color: #128d2d;
-}
-
-QScrollArea#Keyboard QPushButton[key="D"]
-{
-    background-color: #128d2d;
-}
-
-QScrollArea#Keyboard QPushButton[key="C"]
-{
-    background-color: #128d2d;
-} */
