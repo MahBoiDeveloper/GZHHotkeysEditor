@@ -45,7 +45,7 @@ private:
     /// @brief Set game object and their actions for window by short faction name.
     void SetGameObjectList(const QString& factionShortName);
     /// @brief Set game object to display.
-    void SetHotkeysPanelsWidget();
+    void SetHotkeysPanels();
     /// @brief Set hotkeys colors. Default color is black. Changes color to red for keys, that is conflict to each other in one unit/building.
     void HighlightCurrentKeys();
     /// @brief Set key's styles on keyboard block to property `status=null`.

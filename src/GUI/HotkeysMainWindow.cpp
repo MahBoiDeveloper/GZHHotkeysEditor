@@ -39,7 +39,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     pEntitiesTreeWidget->setIconSize(QSize{GUIConfig::ICON_MIN_HEIGHT, GUIConfig::ICON_MIN_HEIGHT});
     // entitiesTreeWidget.setSpacing(GUIConfig::entityIconMinimumHeight * 0.1);
 
-    connect(pEntitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &HotkeysMainWindow::SetHotkeysPanelsWidget);
+    connect(pEntitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &HotkeysMainWindow::SetHotkeysPanels);
 
     QBoxLayout* ltFactions = nullptr;
     int factonsCount = factionVector.size();
@@ -263,7 +263,7 @@ void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
     pEntitiesTreeWidget->setCurrentItem(firstEntity);
 }
 
-void HotkeysMainWindow::SetHotkeysPanelsWidget()
+void HotkeysMainWindow::SetHotkeysPanels()
 {
     // Skip if there are no selected items
     if (pEntitiesTreeWidget->selectedItems().isEmpty()) return;
