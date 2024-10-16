@@ -128,7 +128,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     
     QPushButton* btnEmptyButton= new QPushButton();
     btnEmptyButton->setProperty("key", "null");
-    btnEmptyButton->setFixedWidth(GUIConfig::EMTPTY_KEY_WIDTH);
+    btnEmptyButton->setFixedWidth(GUIConfig::EMPTY_KEY_WIDTH);
 
     // TODO :
     //      Make it in different fucntion
@@ -303,9 +303,6 @@ void HotkeysMainWindow::SetHotkeysPanels()
                                                                       QString::fromStdWString(std::wstring{CSF_PARSER->GetHotkey(currAction.hotkeyString)}),
                                                                       currAction.iconName};
 
-            // Remember widget
-            currentPanelWidgets.insert(actionHotkey);
-
             connect(actionHotkey, &ActionHotkeyWidget::HotkeyChanged, this, [=](const QString& newHotkey)
             {
                 // Set new hotkey
@@ -318,6 +315,9 @@ void HotkeysMainWindow::SetHotkeysPanels()
             });
 
             hotkeysLayout->addWidget(actionHotkey);
+
+            // Remember widget
+            currentPanelWidgets.insert(actionHotkey);
         }
 
         // Remember hotkeys panel
@@ -327,7 +327,7 @@ void HotkeysMainWindow::SetHotkeysPanels()
         HighlightCurrentKeys();
 
         // Condense the actions at the top
-        hotkeysLayout->addStretch(1);
+        hotkeysLayout->setAlignment(Qt::AlignTop);
 
         QWidget* panelScrollWidget = new QWidget();
         panelScrollWidget->setLayout(hotkeysLayout);
