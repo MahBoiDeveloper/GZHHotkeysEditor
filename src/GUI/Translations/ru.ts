@@ -105,68 +105,68 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="177"/>
+        <location filename="../HotkeysMainWindow.cpp" line="196"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="178"/>
+        <location filename="../HotkeysMainWindow.cpp" line="197"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="180"/>
+        <location filename="../HotkeysMainWindow.cpp" line="199"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="182"/>
+        <location filename="../HotkeysMainWindow.cpp" line="201"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="185"/>
+        <location filename="../HotkeysMainWindow.cpp" line="204"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="189"/>
-        <location filename="../HotkeysMainWindow.cpp" line="454"/>
+        <location filename="../HotkeysMainWindow.cpp" line="208"/>
+        <location filename="../HotkeysMainWindow.cpp" line="473"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="316"/>
+        <location filename="../HotkeysMainWindow.cpp" line="335"/>
         <source>Layout %1</source>
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="435"/>
+        <location filename="../HotkeysMainWindow.cpp" line="454"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="436"/>
+        <location filename="../HotkeysMainWindow.cpp" line="455"/>
         <source>Version: </source>
         <translation>Версия: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="437"/>
+        <location filename="../HotkeysMainWindow.cpp" line="456"/>
         <source>Program licensed with </source>
         <translation>Программа лицензирована под </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="438"/>
+        <location filename="../HotkeysMainWindow.cpp" line="457"/>
         <source>GitHub repository:</source>
         <translation>Репозиторий на GitHub:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="440"/>
+        <location filename="../HotkeysMainWindow.cpp" line="459"/>
         <source>Support development:</source>
         <translation>Поддержать разработку:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="478"/>
+        <location filename="../HotkeysMainWindow.cpp" line="497"/>
         <source>Lanugage</source>
         <translation type="unfinished"></translation>
     </message>

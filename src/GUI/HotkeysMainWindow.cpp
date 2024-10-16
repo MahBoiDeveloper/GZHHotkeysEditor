@@ -57,12 +57,31 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
             for (int i = 0; i < 4; ++i)
             {
                 const Faction currFaction = factionVector.at(sectionIndex + i);
-
+                
                 QPushButton* factionButton = new QPushButton{currFaction.GetDisplayName()};
+                
+                auto shortName = currFaction.GetShortName();
+                if (shortName == "USA" || 
+                    shortName == "SWG" ||
+                    shortName == "AIR" ||
+                    shortName == "LSR")
+                    ;
+
+                if (shortName == "PRC" || 
+                    shortName == "TNK" ||
+                    shortName == "INF" ||
+                    shortName == "NUK")
+                    factionButton->setProperty("faction", "PRC");
+                
+                if (shortName == "GLA" || 
+                    shortName == "TOX" ||
+                    shortName == "STL" ||
+                    shortName == "DML")
+                    factionButton->setProperty("faction", "GLA");
 
                 connect(factionButton, &QPushButton::pressed, this, [=]()
                 {
-                    SetGameObjectList(currFaction.GetShortName());
+                    SetGameObjectList(shortName);
                 });
 
                 pFactionsButtonsGroup->addButton(factionButton);
