@@ -326,8 +326,9 @@ void HotkeysMainWindow::SetHotkeysPanels()
         // Highlight keys for entity
         HighlightCurrentKeys();
 
-        // Condense the actions at the top
+        // Condense the actions at the top with minumum spacing
         hotkeysLayout->setAlignment(Qt::AlignTop);
+        hotkeysLayout->setSpacing(0);
 
         QWidget* panelScrollWidget = new QWidget();
         panelScrollWidget->setLayout(hotkeysLayout);
