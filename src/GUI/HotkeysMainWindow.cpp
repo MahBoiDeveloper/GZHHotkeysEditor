@@ -451,14 +451,17 @@ void HotkeysMainWindow::OnAbout()
     QGridLayout* lblContent = new QGridLayout();
     lblContent->setSizeConstraint(QLayout::SetFixedSize);
         
-    QLabel* lblAboutText = new QLabel{QString("<p>") 
-                                        + tr("Authors: ") + AUTHORS + "<br>"
-                                        + tr("Version: ") + VERSION + "<br><br>"
-                                        + tr("Program licensed with ") + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE\">GNU GPL v3</a><br><br>" 
-                                        + tr("GitHub repository:") + "<br>"
-                                        + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">github.com/MahBoiDeveloper/GZHHotkeysEditor</a><br><br>"
-                                        + tr("Support development:") + "<br>"
-                                        + "<a style=\"color: #baff0c;\" href=\"https://boosty.to/mah_boi\">boosty.to/mah_boi</a></p>"};
+    QLabel* lblAboutText = new QLabel
+    {
+        QString("<p>") 
+        + tr("Authors: ") + AUTHORS + "<br>"
+        + tr("Version: ") + VERSION + "<br><br>"
+        + tr("Program licensed with ") + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE\">GNU GPL v3</a><br><br>" 
+        + tr("GitHub repository:") + "<br>"
+        + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">github.com/MahBoiDeveloper/GZHHotkeysEditor</a><br><br>"
+        + tr("Support development:") + "<br>"
+        + "<a style=\"color: #baff0c;\" href=\"https://boosty.to/mah_boi\">boosty.to/mah_boi</a></p>"
+    };
     lblAboutText->setObjectName("left");
     lblAboutText->setTextFormat(Qt::RichText);
     lblAboutText->setTextInteractionFlags(Qt::TextBrowserInteraction);
