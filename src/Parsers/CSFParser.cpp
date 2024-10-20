@@ -333,7 +333,22 @@ using namespace std;
         return GetStringValue(strName).remove(QRegExp{"\\[&[A-Z]\\]"}).trimmed();
     }
 
-    wchar_t CSFParser::GetHotkey(const string& strName) const
+    QChar CSFParser::GetHotkey(const string& strName) const
+    {
+        return QChar(GetHotkeyWchar(strName));
+    }
+
+    QChar CSFParser::GetHotkey(const char* strName) const
+    {
+        return QChar(GetHotkeyWchar(strName));
+    }
+
+    QChar CSFParser::GetHotkey(const QString& strName) const
+    {
+        return QChar(GetHotkeyWchar(strName));
+    }
+
+    wchar_t CSFParser::GetHotkeyWchar(const string& strName) const
     {
         wchar_t hk    = L'\0';
         size_t  index = 0;
@@ -349,14 +364,14 @@ using namespace std;
         return hk;
     }
 
-    wchar_t CSFParser::GetHotkey(const char* strName) const
+    wchar_t CSFParser::GetHotkeyWchar(const char* strName) const
     {
-        return GetHotkey(string(strName));
+        return GetHotkeyWchar(string(strName));
     }
 
-    wchar_t CSFParser::GetHotkey(const QString& strName) const
+    wchar_t CSFParser::GetHotkeyWchar(const QString& strName) const
     {
-        return GetHotkey(strName.toStdString());
+        return GetHotkeyWchar(strName.toStdString());
     }
 
     list<CSFParser::HotkeyAssociation> CSFParser::GetHotkeys(const list<string>& lstStringNames) const
@@ -367,7 +382,7 @@ using namespace std;
             for (const auto& elem : Table)
                 if (strName == elem.Name)
                 {
-                    returnList.push_back({strName, CSFParser::GetHotkey(strName)});
+                    returnList.push_back({strName, CSFParser::GetHotkeyWchar(strName)});
                     break;
                 }
 

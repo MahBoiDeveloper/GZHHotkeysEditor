@@ -109,12 +109,19 @@ public:
     /// @brief Delete all text by regular expression \[&[A-Z]\].
     QString GetClearName(const QString& strName)                                                               const;
 
-    /// @brief Returns wide character (letter after & sign) assinged to keyboard key. 
-    wchar_t GetHotkey(const std::string& strName)                                                              const;
-    /// @brief Returns wide character (letter after & sign) assinged to keyboard key. 
-    wchar_t GetHotkey(const char* strName)                                                                     const;
-    /// @brief Returns wide character (letter after & sign) assinged to keyboard key. 
-    wchar_t GetHotkey(const QString& strName)                                                                  const;
+
+    /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
+    QChar GetHotkey(const std::string& strName)                                                                const;
+    /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
+    QChar GetHotkey(const char* strName)                                                                       const;
+    /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
+    QChar GetHotkey(const QString& strName)                                                                    const;
+    /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
+    wchar_t GetHotkeyWchar(const std::string& strName)                                                         const;
+    /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
+    wchar_t GetHotkeyWchar(const char* strName)                                                                const;
+    /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
+    wchar_t GetHotkeyWchar(const QString& strName)                                                             const;
     /// @brief Returns list of data structs with string names and its keyboard key assignment.
     std::list<HotkeyAssociation> GetHotkeys(const std::list<std::string>& lstStringNames)                      const;
 

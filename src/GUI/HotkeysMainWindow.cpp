@@ -300,7 +300,7 @@ void HotkeysMainWindow::SetHotkeysPanels()
         for (const auto& currAction : currLayout)
         {
             ActionHotkeyWidget* actionHotkey = new ActionHotkeyWidget{CSF_PARSER->GetClearName(currAction.hotkeyString), 
-                                                                      QString::fromStdWString(std::wstring{CSF_PARSER->GetHotkey(currAction.hotkeyString)}),
+                                                                      CSF_PARSER->GetHotkey(currAction.hotkeyString),
                                                                       currAction.iconName};
 
             connect(actionHotkey, &ActionHotkeyWidget::HotkeyChanged, this, [=](const QString& newHotkey)
