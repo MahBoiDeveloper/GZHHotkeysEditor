@@ -22,6 +22,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     , pFactionsButtonsGroup{new QButtonGroup{this}}
     , pEntitiesTreeWidget{new QTreeWidget}
     , pHotkeysArea{new QScrollArea}
+    , pKeyboardWindow{new QScrollArea}
     , pHotkeysPanelsWidget{nullptr}
     , pAboutDialog{nullptr}
 {
@@ -32,13 +33,13 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     ConfigureMenu();
 
     pEntitiesTreeWidget->header()->hide();
-    // smooth scrolling
+    // Enable smooth scrolling
     pEntitiesTreeWidget->setVerticalScrollMode(QTreeWidget::ScrollMode::ScrollPerPixel);
-    // icon size
+    // Set icon size
     pEntitiesTreeWidget->setIconSize(QSize{GUIConfig::ICON_MIN_HEIGHT, GUIConfig::ICON_MIN_HEIGHT});
     // entitiesTreeWidget.setSpacing(GUIConfig::entityIconMinimumHeight * 0.1);
 
-    connect(pEntitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &HotkeysMainWindow::SetHotkeysPanelsWidget);
+    connect(pEntitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &HotkeysMainWindow::SetHotkeysPanels);
 
     QBoxLayout* ltFactions = nullptr;
     int factonsCount = factionVector.size();
@@ -56,12 +57,31 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
             for (int i = 0; i < 4; ++i)
             {
                 const Faction currFaction = factionVector.at(sectionIndex + i);
-
+                
                 QPushButton* factionButton = new QPushButton{currFaction.GetDisplayName()};
+                
+                auto shortName = currFaction.GetShortName();
+                if (shortName == "USA" || 
+                    shortName == "SWG" ||
+                    shortName == "AIR" ||
+                    shortName == "LSR")
+                    ;
+
+                if (shortName == "PRC" || 
+                    shortName == "TNK" ||
+                    shortName == "INF" ||
+                    shortName == "NUK")
+                    factionButton->setProperty("faction", "PRC");
+                
+                if (shortName == "GLA" || 
+                    shortName == "TOX" ||
+                    shortName == "STL" ||
+                    shortName == "DML")
+                    factionButton->setProperty("faction", "GLA");
 
                 connect(factionButton, &QPushButton::pressed, this, [=]()
                 {
-                    SetGameObjectList(currFaction.GetShortName());
+                    SetGameObjectList(shortName);
                 });
 
                 pFactionsButtonsGroup->addButton(factionButton);
@@ -99,27 +119,75 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     // Fill all available space
     pHotkeysArea->setWidgetResizable(true);
 
-    QScrollArea* pKeyboardWindow = new QScrollArea();
+    // Draw keyboard with letters
+    pKeyboardWindow->setObjectName("Keyboard");
+    QHBoxLayout* pKeyboardFirstLine  = new QHBoxLayout(); pKeyboardFirstLine->setAlignment(Qt::AlignHCenter);
+    QHBoxLayout* pKeyboardSecondLine = new QHBoxLayout(); pKeyboardSecondLine->setAlignment(Qt::AlignHCenter);
+    QHBoxLayout* pKeyboardThirdLine  = new QHBoxLayout(); pKeyboardThirdLine->setAlignment(Qt::AlignHCenter);
+    QVBoxLayout* pKeyboardLines      = new QVBoxLayout();
+    
+    QPushButton* btnEmptyButton= new QPushButton();
+    btnEmptyButton->setProperty("key", "null");
+    btnEmptyButton->setFixedWidth(GUIConfig::EMPTY_KEY_WIDTH);
 
-    QVBoxLayout* ltBuildingConfiguration = new QVBoxLayout();
-    ltBuildingConfiguration->addWidget(pHotkeysArea, 2);
-    ltBuildingConfiguration->addWidget(pKeyboardWindow, 1);
+    // TODO :
+    //      Make it in different fucntion
+    // Set 1st line of keys
+    for (const auto& ch : QString("QWERTYUIOP"))
+    {
+        auto tmp = new QPushButton(ch);
+        tmp->setProperty("key", ch);
+        tmp->setObjectName(ch);
+        tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
+        pKeyboardFirstLine->addWidget(tmp);
+    }
+
+    // Set 2nd line of keys
+    for (const auto& ch : QString("ASDFGHJKL"))
+    {
+        auto tmp = new QPushButton(ch);
+        tmp->setProperty("key", ch);
+        tmp->setObjectName(ch);
+        tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
+        pKeyboardSecondLine->addWidget(tmp);
+    }
+    
+    // Set 3rd line of keys
+    for (const auto& ch : QString("ZXCVBNM"))
+    {
+        auto tmp = new QPushButton(ch);
+        tmp->setProperty("key", ch);
+        tmp->setObjectName(ch);
+        tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
+        pKeyboardThirdLine->addWidget(tmp);
+    }
+    pKeyboardThirdLine->addWidget(btnEmptyButton);
+
+    pKeyboardLines->addLayout(pKeyboardFirstLine);
+    pKeyboardLines->addLayout(pKeyboardSecondLine);
+    pKeyboardLines->addLayout(pKeyboardThirdLine);
+
+    pKeyboardWindow->setLayout(pKeyboardLines);
+
+    QVBoxLayout* ltGameObject = new QVBoxLayout();
+    ltGameObject->addWidget(pHotkeysArea, 2);
+    ltGameObject->addWidget(pKeyboardWindow, 1);
 
     QHBoxLayout* ltContent = new QHBoxLayout();
     ltContent->addWidget(pEntitiesTreeWidget, 4);
-    ltContent->addLayout(ltBuildingConfiguration, 7);
+    ltContent->addLayout(ltGameObject, 7);
 
     QVBoxLayout* ltMain = new QVBoxLayout();
     ltMain->addLayout(ltFactions);
     ltMain->addLayout(ltContent);
 
-    // main widget
+    // Main widget
     QWidget* centralWidget = new QWidget();
     centralWidget->setLayout(ltMain);
     setCentralWidget(centralWidget);
 
     // Set start faction
-    const auto firstFactionButton = pFactionsButtonsGroup->button(-2);
+    const auto firstFactionButton = pFactionsButtonsGroup->button(-2); // Magic number equals to begining of the array of the all buttons.
     if (firstFactionButton != nullptr) firstFactionButton->click();
 }
 
@@ -195,7 +263,7 @@ void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
     pEntitiesTreeWidget->setCurrentItem(firstEntity);
 }
 
-void HotkeysMainWindow::SetHotkeysPanelsWidget()
+void HotkeysMainWindow::SetHotkeysPanels()
 {
     // Skip if there are no selected items
     if (pEntitiesTreeWidget->selectedItems().isEmpty()) return;
@@ -212,7 +280,6 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
     const QString& factionShortName = specialItemInfo.first;
     const QString& gameObjectName   = specialItemInfo.second;
 
-    // const QVector<QVector<QSharedPointer<EntityAction>>> entityPanels = factionsManager.GetEntityActionPanels(factionShortName, gameObjectName);
     const auto gameObjectKeyboardLayouts = GetFactionRef(factionShortName).GetKeyboardLayoutsByObjectName(gameObjectName);
 
     // Recreate panels widget
@@ -224,7 +291,7 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
 
     // Panel index
     int i = 0;
-
+    
     for (const auto& currLayout : gameObjectKeyboardLayouts)
     {
         QSet<ActionHotkeyWidget*> currentPanelWidgets;
@@ -233,11 +300,8 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
         for (const auto& currAction : currLayout)
         {
             ActionHotkeyWidget* actionHotkey = new ActionHotkeyWidget{CSF_PARSER->GetClearName(currAction.hotkeyString), 
-                                                                      QString::fromStdWString(std::wstring{CSF_PARSER->GetHotkey(currAction.hotkeyString)}),
+                                                                      CSF_PARSER->GetHotkey(currAction.hotkeyString),
                                                                       currAction.iconName};
-
-            // Remember widget
-            currentPanelWidgets.insert(actionHotkey);
 
             connect(actionHotkey, &ActionHotkeyWidget::HotkeyChanged, this, [=](const QString& newHotkey)
             {
@@ -245,65 +309,98 @@ void HotkeysMainWindow::SetHotkeysPanelsWidget()
                 SetActionHotkey(factionShortName, gameObjectName, currAction.iconName, newHotkey);
 
                 // Highlight keys for entity
-                HighlightKeys(factionShortName, gameObjectName);
+                HighlightCurrentKeys();
+
+                emit pHotkeysPanelsWidget->currentChanged(i);
             });
 
             hotkeysLayout->addWidget(actionHotkey);
+
+            // Remember widget
+            currentPanelWidgets.insert(actionHotkey);
         }
 
         // Remember hotkeys panel
         vHotkeyWidgets.append(currentPanelWidgets);
 
         // Highlight keys for entity
-        HighlightKeys(factionShortName, gameObjectName);
+        HighlightCurrentKeys();
 
-        // Condense the actions at the top
-        hotkeysLayout->addStretch(1);
+        // Condense the actions at the top with minumum spacing
+        hotkeysLayout->setAlignment(Qt::AlignTop);
+        hotkeysLayout->setSpacing(0);
 
         QWidget* panelScrollWidget = new QWidget();
         panelScrollWidget->setLayout(hotkeysLayout);
+        panelScrollWidget->setObjectName(QString("Layout ") + QString::number(i+1));
         pHotkeysPanelsWidget->addTab(panelScrollWidget, QString(tr("Layout %1")).arg(++i));
     }
 
     // If only one panel -> hide header
-    if (pHotkeysPanelsWidget->count() <= 1) pHotkeysPanelsWidget->tabBar()->hide();
+    if (pHotkeysPanelsWidget->count() < 2) pHotkeysPanelsWidget->tabBar()->hide();
 
     pHotkeysPanelsWidget->setMinimumSize(pHotkeysPanelsWidget->sizeHint());
     pHotkeysArea->setWidget(pHotkeysPanelsWidget);
+
+    connect(pHotkeysPanelsWidget, &QTabWidget::currentChanged, this, &HotkeysMainWindow::UpdateKeyboardStatus);
+
+    emit pHotkeysPanelsWidget->currentChanged(0);
 }
 
-void HotkeysMainWindow::HighlightKeys(const QString& fctIconName, const QString& goIconName) const
+void HotkeysMainWindow::HighlightCurrentKeys()
 {
     // Skip if no widgets
     if (vHotkeyWidgets.isEmpty()) return;
 
-    // Change color if the current key is in collisions
-    QVector<QSet<QString>> keysCollisions = {}; // TODO: Implement code to detect groups of the same hotkeys in 1 keyboard layout
-
-    // If no collisions
-    if (keysCollisions.isEmpty())
+    // Else code does check for collisions
+    for (auto& panel : vHotkeyWidgets)
     {
-        // Unhighlight all keys and quit
-        for (const auto& panel : vHotkeyWidgets)
-            for (auto& hotkeyWidget : panel)
-                hotkeyWidget->HighlightKey(false);
-
-        return;
-    }
-
-    // Panel index
-    int i = -1;
-
-    for (const auto& panel : vHotkeyWidgets)
-    {
-        // Increase panel index
-        ++i;
+        // Fill list with only letters of keys
+        QList<QString> keysCollisions;
+        for (const auto& hotkeyWidget: panel)
+            keysCollisions.push_back(hotkeyWidget->GetHotkey());
 
         for (auto& hotkeyWidget : panel)
-            if (keysCollisions.at(i).contains(hotkeyWidget->GetHotkey()))
-                hotkeyWidget->HighlightKey(true);
-            else
-                hotkeyWidget->HighlightKey(false);
+        {
+            const QString& thisHotkey = hotkeyWidget->GetHotkey();
+
+            if (keysCollisions.count(thisHotkey) < 2) hotkeyWidget->HighlightKey(false);
+            else                                      hotkeyWidget->HighlightKey(true);
+        }
+    }
+}
+
+void HotkeysMainWindow::NullifyKeyboardStatus()
+{
+    for (QChar& qc : QString("QWERTYUIOPASDFGHJKLZXCVBNM")) 
+    {
+        auto key = pKeyboardWindow->findChild<QPushButton*>(qc, Qt::FindChildrenRecursively);
+        key->setProperty("status", "null");
+        key->style()->unpolish(key);
+        key->style()->polish(key);
+        key->update();
+    }
+}
+
+void HotkeysMainWindow::UpdateKeyboardStatus(int id)
+{
+    NullifyKeyboardStatus();
+    auto currTab = pHotkeysPanelsWidget->findChild<QWidget*>(QString("Layout ") + QString::number(id + 1), Qt::FindChildrenRecursively);
+        
+    QString accum;
+    for (const auto& elem : currTab->findChildren<ActionHotkeyWidget*>(QString(), Qt::FindChildrenRecursively))
+        accum += QString(elem->GetHotkey());
+
+    for (const QChar& ch : accum)
+    {
+        auto key = pKeyboardWindow->findChild<QPushButton*>(ch, Qt::FindChildrenRecursively);
+
+        if (accum.count(ch) < 2) key->setProperty("status", "good");
+        else                     key->setProperty("status", "bad");
+        
+        key->style()->unpolish(key);
+        key->style()->polish(key);
+        key->update();
     }
 }
 
@@ -354,12 +451,18 @@ void HotkeysMainWindow::OnAbout()
     QGridLayout* lblContent = new QGridLayout();
     lblContent->setSizeConstraint(QLayout::SetFixedSize);
         
-    QLabel* lblAboutText = new QLabel{QString("<p>") 
-                                        + tr("Authors: ") + AUTHORS + "<br>"
-                                        + tr("Version: ") + VERSION + "<br>"
-                                        + tr("Program licensed with ") + "<a href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE\">GNU GPL v3</a><br>" 
-                                        + "<a href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">" + tr("GitHub Repository") 
-                                        + "</a></p>"};
+    QLabel* lblAboutText = new QLabel
+    {
+        QString("<p>") 
+        + tr("Authors: ") + AUTHORS + "<br>"
+        + tr("Version: ") + VERSION + "<br><br>"
+        + tr("Program licensed with ") + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE\">GNU GPL v3</a><br><br>" 
+        + tr("GitHub repository:") + "<br>"
+        + "<a style=\"color: #baff0c;\" href=\"https://github.com/MahBoiDeveloper/GZHHotkeysEditor\">github.com/MahBoiDeveloper/GZHHotkeysEditor</a><br><br>"
+        + tr("Support development:") + "<br>"
+        + "<a style=\"color: #baff0c;\" href=\"https://boosty.to/mah_boi\">boosty.to/mah_boi</a></p>"
+    };
+    lblAboutText->setObjectName("left");
     lblAboutText->setTextFormat(Qt::RichText);
     lblAboutText->setTextInteractionFlags(Qt::TextBrowserInteraction);
     lblAboutText->setOpenExternalLinks(true);
@@ -367,6 +470,7 @@ void HotkeysMainWindow::OnAbout()
     
     QLabel* lblEditorIcon = new QLabel();
     lblEditorIcon->setPixmap(QPixmap::fromImage(GUIConfig::DecodeBigEditorWebpIcon()));
+    lblEditorIcon->setObjectName("right");
     lblContent->addWidget(lblEditorIcon, 0, 1);
 
     pAboutDialog = new QDialog{this};
@@ -382,22 +486,8 @@ void HotkeysMainWindow::OnAbout()
         pAboutDialog = nullptr;
     });
 
-    QDialogButtonBox* buttons = new QDialogButtonBox{QDialogButtonBox::Ok,
-                                                     Qt::Orientation::Horizontal,
-                                                     pAboutDialog};
-
-    connect(buttons, &QDialogButtonBox::accepted, pAboutDialog, &QDialog::accept);
-
-    QHBoxLayout* btnOk = new QHBoxLayout();
-    btnOk->addStretch();
-    buttons->button(QDialogButtonBox::Ok)->setFixedWidth(80);
-    btnOk->addWidget(buttons->button(QDialogButtonBox::Ok));
-    btnOk->addStretch();
-    btnOk->setAlignment(Qt::AlignCenter);
-
     QVBoxLayout* ltMainBlock = new QVBoxLayout();
     ltMainBlock->addLayout(lblContent);
-    ltMainBlock->addLayout(btnOk);
 
     pAboutDialog->setLayout(ltMainBlock);
     pAboutDialog->show();

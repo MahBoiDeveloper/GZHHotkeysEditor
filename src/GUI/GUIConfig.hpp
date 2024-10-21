@@ -11,6 +11,8 @@ public:
     inline static const QSize   START_BUTTON_SIZE    = QSize(230, 110);
     inline static const int     ICON_MIN_HEIGHT      = 80;
     inline static const int     ICON_SCALING_HEIGHT  = 25;
+    inline static const int     KEYBOARD_KEY_WIDTH   = 50;
+    inline static const int     EMPTY_KEY_WIDTH      = 25;
     inline static const QString ICONS_FOLDER         = Config::RESOURCE_FOLDER + "/Icons";
     inline static const QString STYLES_SHEET         = Config::RESOURCE_FOLDER + "/Theme/Styles.css";
     inline static const QString QT_ICONS_FOLDER      = ":/icons";

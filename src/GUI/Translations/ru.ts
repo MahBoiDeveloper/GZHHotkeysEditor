@@ -9,7 +9,7 @@
         <translation>Это не латинская клавиша!</translation>
     </message>
     <message>
-        <location filename="../ActionHotkeyWidget.cpp" line="133"/>
+        <location filename="../ActionHotkeyWidget.cpp" line="132"/>
         <source>Press latin key...</source>
         <translation>Нажмите латинскую клавишу...</translation>
     </message>
@@ -46,18 +46,6 @@
 <context>
     <name>GreetingWidget</name>
     <message>
-        <source>New project</source>
-        <translation type="vanished">Новый проект</translation>
-    </message>
-    <message>
-        <source>Load project</source>
-        <translation type="vanished">Загрузить проект</translation>
-    </message>
-    <message>
-        <source>New Project</source>
-        <translation type="vanished">Новый проект</translation>
-    </message>
-    <message>
         <source>Load Project</source>
         <translation type="vanished">Загрузить проект</translation>
     </message>
@@ -66,24 +54,37 @@
         <translation type="vanished">Язык</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="26"/>
         <source>NEW PROJECT</source>
-        <translation>НОВЫЙ ПРОЕКТ</translation>
+        <translation type="vanished">НОВЫЙ ПРОЕКТ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="33"/>
         <source>LOAD PROJECT</source>
-        <translation>ЗАГРУЗИТЬ ПРОЕКТ</translation>
+        <translation type="vanished">ЗАГРУЗИТЬ ПРОЕКТ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="40"/>
+        <location filename="../GreetingWidget.cpp" line="25"/>
+        <source>NEW</source>
+        <translation>НОВЫЙ</translation>
+    </message>
+    <message>
+        <location filename="../GreetingWidget.cpp" line="25"/>
+        <location filename="../GreetingWidget.cpp" line="32"/>
+        <source>PROJECT</source>
+        <translation>ПРОЕКТ</translation>
+    </message>
+    <message>
+        <location filename="../GreetingWidget.cpp" line="32"/>
+        <source>LOAD</source>
+        <translation>ЗАГРУЗИТЬ</translation>
+    </message>
+    <message>
+        <location filename="../GreetingWidget.cpp" line="39"/>
         <source>LANGUAGE</source>
         <translation>ЯЗЫК</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="63"/>
         <source>Greetings, %username%. You have launched the hotkey editing program for the game Command and Conquer: Generals and Command and Conquer: Generals — Zero Hour. At the moment, the program supports in test mode only the creation of hotkey maps based on pre-prepared hotkeys. We hope that you will like the program.</source>
-        <translation>Приветствую тебя, %username%. Ты запустил программу редактирования горячих клавиш для игры Command and Conquer: Generals и Command and  Conquer: Generals — Zero Hour. На текущий момент программа поддерживает в тестовом режиме только создание карт горячих клавиш на основе заранее подготовленных горячих клавиш. Надеемся, что программа тебе понравится.</translation>
+        <translation type="vanished">Приветствую тебя, %username%. Ты запустил программу редактирования горячих клавиш для игры Command and Conquer: Generals и Command and  Conquer: Generals — Zero Hour. На текущий момент программа поддерживает в тестовом режиме только создание карт горячих клавиш на основе заранее подготовленных горячих клавиш. Надеемся, что программа тебе понравится.</translation>
     </message>
 </context>
 <context>
@@ -104,58 +105,68 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="128"/>
+        <location filename="../HotkeysMainWindow.cpp" line="196"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="129"/>
+        <location filename="../HotkeysMainWindow.cpp" line="197"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="131"/>
+        <location filename="../HotkeysMainWindow.cpp" line="199"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="133"/>
+        <location filename="../HotkeysMainWindow.cpp" line="201"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="136"/>
+        <location filename="../HotkeysMainWindow.cpp" line="204"/>
         <source>Language</source>
-        <translation type="unfinished">Язык</translation>
+        <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="140"/>
-        <location filename="../HotkeysMainWindow.cpp" line="373"/>
+        <location filename="../HotkeysMainWindow.cpp" line="208"/>
+        <location filename="../HotkeysMainWindow.cpp" line="477"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="265"/>
+        <location filename="../HotkeysMainWindow.cpp" line="336"/>
         <source>Layout %1</source>
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="358"/>
+        <location filename="../HotkeysMainWindow.cpp" line="457"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="359"/>
+        <location filename="../HotkeysMainWindow.cpp" line="458"/>
         <source>Version: </source>
         <translation>Версия: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="360"/>
+        <location filename="../HotkeysMainWindow.cpp" line="459"/>
         <source>Program licensed with </source>
         <translation>Программа лицензирована под </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="411"/>
+        <location filename="../HotkeysMainWindow.cpp" line="460"/>
+        <source>GitHub repository:</source>
+        <translation>Репозиторий на GitHub:</translation>
+    </message>
+    <message>
+        <location filename="../HotkeysMainWindow.cpp" line="462"/>
+        <source>Support development:</source>
+        <translation>Поддержать разработку:</translation>
+    </message>
+    <message>
+        <location filename="../HotkeysMainWindow.cpp" line="501"/>
         <source>Lanugage</source>
         <translation type="unfinished"></translation>
     </message>
@@ -164,9 +175,8 @@
         <translation type="vanished">Программа лицензирована под лицензией GNU GPL v3</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="361"/>
         <source>GitHub Repository</source>
-        <translation>Репозиторий на GitHub</translation>
+        <translation type="vanished">Репозиторий на GitHub</translation>
     </message>
     <message>
         <source>&lt;a href=&quot;https://github.com/MahBoiDeveloper/GZHHotkeysEditor&quot;&gt;GitHub Repository&lt;/a&gt;</source>
