@@ -12,7 +12,8 @@ mklink C:\Qt\Tools\mingw_64 C:\ProgramData\chocolatey\lib\mingw\tools\install\mi
 tree C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64
 xcopy /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\x86_64-w64-mingw32\ C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\
 xcopy /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\ C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\
-tree C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64
+rmdir /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\
+tree /f C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64
 set PATH=%PATH%;C:\Qt;C:\Qt\5.15.2\mingw81_64\bin;C:\Qt\Tools\mingw_64\bin
 
 echo Generals Zero Hour Hotkeys editor
