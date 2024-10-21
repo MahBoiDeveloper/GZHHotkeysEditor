@@ -9,6 +9,7 @@ rmdir /s /q build > nul 2> nul
 :: Make link to the MinGW x64 v8.1.0 due to install-qt-action limitations
 mkdir C:\Qt\Tools > nul
 mklink C:\Qt\Tools\mingw810_64 C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64 > nul
+xcopy /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\ C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\
 tree C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64
 set PATH=%PATH%;C:\Qt;C:\Qt\5.15.2\mingw81_64\bin;C:\Qt\Tools\mingw810_64\bin;C:\Qt\Tools\mingw810_64
 
