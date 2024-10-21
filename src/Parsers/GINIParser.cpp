@@ -101,7 +101,7 @@ using namespace std;
                 }
             }
 
-            LOGMSG( "File \"" + Path + "\" has been parsed; Sections count: " + QString::number(GINIParser::Instance->Sections.size()).toStdString());
+            LOGMSG( "File \"" + Path + "\" has been parsed; Sections count: " + GINIParser::Instance->Sections.size());
         }
         else
         {

@@ -17,7 +17,7 @@ using namespace std;
         // Read data from *.json file
         if (openedFile.open(QIODevice::ReadOnly | QIODevice::Text))
         {
-            LOGMSG("Parsing \"" + QString{filePath} + "\"...");
+            LOGMSG("Parsing \"" + filePath + "\"...");
             JsonMainObject = QJsonDocument::fromJson(openedFile.readAll(), &err).object();
             openedFile.close();
             LOGMSG("Errors while parsing: " + err.errorString());
@@ -118,6 +118,6 @@ using namespace std;
         LOGMSG(QString("\tValue is Object?    - ") + (val.isObject()    ? "True" : "False"));
         LOGMSG(QString("\tValue is String?    - ") + (val.isString()    ? "True" : "False"));
         LOGMSG(QString("\tValue is Undefined? - ") + (val.isUndefined() ? "True" : "False"));
-        LOGMSG(QString("\tLength of array is : " ) + QString::number(val.toArray().size()));
+        LOGMSG(QString("\tLength of array is : " ) + val.toArray().size());
     }
 #pragma endregion

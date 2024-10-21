@@ -68,29 +68,28 @@ private:
 };
 
 template<class T>
-concept IsNumber = std::same_as<T, int> || std::same_as<T, size_t>;
+concept IsNumber = std::same_as<T, int> || std::same_as<T, size_t> || std::same_as<T, std::size_t>;
 
-template<class T>
-concept IsString = std::same_as<T, QString>     || std::same_as<T, QChar> ||
-                   std::same_as<T, std::string> || std::same_as<T, std::wstring> ||
-                   std::same_as<T, char>        || std::same_as<T, wchar_t> ||
-                   std::same_as<T, const char*> || std::same_as<T, const wchar_t*> ||
-                   std::same_as<T, char*>       || std::same_as<T, wchar_t*>;
-
-template<IsNumber N, IsString S>
-QString operator+ (S str, N num)
+template<IsNumber N>
+QString& operator+ (QString str, N num)
 {
-    return QString(str) + QString::number(num);
+    return str.append(QString::number(num));
 }
 
-template<IsNumber N, IsString S>
-QString operator+ (N num, S str)
+template<IsNumber N>
+QString& operator+ (N num, QString str)
 {
-    return QString::number(num) + QString(str);
+    return QString::number(num).append(str);
 }
 
-template<IsString S>
-QString operator+ (S first, S second)
+template<IsNumber N>
+QString& operator+ (N num, std::string str)
 {
-    return QString{first} + QString{second};
+    return QString::number(num).append(QString::fromStdString(str));
+}
+
+template<IsNumber N>
+QString& operator+ (std::string str, N num)
+{
+    return QString::fromStdString(str).append(QString::number(num));
 }

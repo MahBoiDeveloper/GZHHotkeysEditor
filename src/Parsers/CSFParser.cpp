@@ -24,7 +24,7 @@ using namespace std;
             ReadHeader(&csfFile);
             ReadBody(&csfFile);
 
-            LOGMSG(string("File \"") + Path + "\" has been parsed; strings count : " + QString::number(qulonglong{Table.size()}).toStdString());
+            LOGMSG("File \"" + Path + "\" has been parsed; strings count : " + Table.size());
         }
         else
         {
