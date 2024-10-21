@@ -9,12 +9,14 @@ rmdir /s /q build > nul 2> nul
 :: Make link to the MinGW x64 v11.2.0 due to install-qt-action limitations
 mkdir C:\Qt\Tools > nul
 mklink C:\Qt\Tools\mingw_64 C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64 > nul
-tree C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64
+
 xcopy /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\x86_64-w64-mingw32\ C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\
 xcopy /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\ C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\
 rmdir /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\
-tree C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64
+
 set PATH=%PATH%;C:\Qt;C:\Qt\5.15.2\mingw81_64\bin;C:\Qt\Tools\mingw_64\bin
+
+if (exist C:\Qt\Tools\mingw_64\bin\g++.exe) echo "Compiler found in C:\Qt\Tools\mingw_64\bin\g++.exe"
 
 echo Generals Zero Hour Hotkeys editor
 echo Authors: mah_boi, nikitvs
