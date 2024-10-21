@@ -165,7 +165,7 @@ using namespace std;
 
     void Logger::Log(const wchar_t* msg)
     {
-        Log() << msg << endl;
+        Log() << QString::fromStdWString(wstring{msg}).toStdString().c_str() << endl;
     }
 
     void Logger::LogException(const char* msg)

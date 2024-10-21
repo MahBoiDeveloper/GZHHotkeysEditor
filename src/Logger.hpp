@@ -3,6 +3,7 @@
 #include <sstream>
 #include <fstream>
 #include <memory>
+#include <concepts>
 #include <QString>
 
 #define LOGGER      Logger::Instance
@@ -65,3 +66,31 @@ private:
     /// @brief Returns Windows bit as a string.
     std::string GetWindowsBit()  const;
 };
+
+template<class T>
+concept IsNumber = std::same_as<T, int> || std::same_as<T, size_t>;
+
+template<class T>
+concept IsString = std::same_as<T, QString>     || std::same_as<T, QChar> ||
+                   std::same_as<T, std::string> || std::same_as<T, std::wstring> ||
+                   std::same_as<T, char>        || std::same_as<T, wchar_t> ||
+                   std::same_as<T, const char*> || std::same_as<T, const wchar_t*> ||
+                   std::same_as<T, char*>       || std::same_as<T, wchar_t*>;
+
+template<IsNumber N, IsString S>
+QString operator+ (S str, N num)
+{
+    return QString(str) + QString::number(num);
+}
+
+template<IsNumber N, IsString S>
+QString operator+ (N num, S str)
+{
+    return QString::number(num) + QString(str);
+}
+
+template<IsString S>
+QString operator+ (S first, S second)
+{
+    return QString{first} + QString{second};
+}
