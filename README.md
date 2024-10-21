@@ -5,7 +5,7 @@ GZHHotkeysEditor is an attempt to create a useful tool for editing C&C: Generals
 
 ## Building manually
 0. Download and install [Qt 5.15.2](https://www.qt.io/offline-installers) to the `C:\Qt` folder
-1. Download and install [MinGW_w64 8.1.0](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/sjlj/x86_64-8.1.0-release-win32-sjlj-rt_v6-rev0.7z/download) to the `C:\Qt\Tools\mingw810_64` folder
+1. Download and install [MinGW_w64 12.2.0](https://github.com/brechtsanders/winlibs_mingw/releases/download/12.2.0-14.0.6-10.0.0-ucrt-r2/winlibs-x86_64-posix-seh-gcc-12.2.0-mingw-w64ucrt-10.0.0-r2.7z) to the `C:\Qt\Tools\mingw_64` folder
 2. Download and install [CMake 3.15](https://cmake.org/download/) or newer
 3. Clone this repository recursively via your git client
 4. Run `zBuildAndRun.bat` or run build in your favourite editor
