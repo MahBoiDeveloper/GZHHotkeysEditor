@@ -12,18 +12,17 @@ mklink C:\Qt\Tools\mingw_64 C:\ProgramData\chocolatey\lib\mingw\tools\install\mi
 
 xcopy /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\x86_64-w64-mingw32\ C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\
 xcopy /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\ C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\
-rmdir /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\
+: rmdir /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c++\11.2.0\
 
-set PATH=%PATH%;C:\Qt;C:\Qt\5.15.2\mingw81_64\bin;C:\Qt\Tools\mingw_64\bin
+set PATH=%PATH%;C:\Qt\5.15.2\mingw81_64\bin;C:\Qt\Tools\mingw_64\bin
 
-if exist C:\Qt\Tools\mingw_64\bin\g++.exe echo "Compiler found in C:\Qt\Tools\mingw_64\bin\g++.exe"
 
 echo Generals Zero Hour Hotkeys editor
 echo Authors: mah_boi, nikitvs
 echo.
 
 echo Configuring MinGW Make...
-cmake -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=C:\Qt\Tools\mingw_64\bin\x86_64-w64-mingw32-gcc.exe -DCMAKE_CXX_COMPILER:FILEPATH=C:\Qt\Tools\mingw_64\bin\x86_64-w64-mingw32-g++.exe -S.\ -B.\build -G "MinGW Makefiles"
+cmake -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=C:\Qt\Tools\mingw_64\bin\gcc.exe -DCMAKE_CXX_COMPILER:FILEPATH=C:\Qt\Tools\mingw_64\bin\g++.exe -S.\ -B.\build -G "MinGW Makefiles"
 echo Configuring MinGW Make done
 echo.
 
