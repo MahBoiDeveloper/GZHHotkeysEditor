@@ -32,7 +32,7 @@ LoadDialog::LoadDialog(QWidget* parent) : BaseConfigurationDialog(parent)
 
     // configure choise buttons
     QRadioButton* loadFromFileButton = new QRadioButton(tr("Load project"));
-    connect(loadFromFileButton, &QPushButton::toggled, this, [=](bool checked)
+    connect(loadFromFileButton, &QPushButton::toggled, this, [=, this](bool checked)
     {
         pathToFileLineEdit->setEnabled(checked);
         btnReview->setEnabled(checked);

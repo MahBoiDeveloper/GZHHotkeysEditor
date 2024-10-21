@@ -28,7 +28,7 @@ WindowManager::WindowManager()
     pLaunchWidget->setWindowTitle(WindowName);
     LOGMSG("Launch window has been loaded");
 
-    QObject::connect(pLaunchWidget.get(), &LaunchWidget::AcceptedConfiguration, pLaunchWidget.get(), [=](const QVariant& cfg)
+    QObject::connect(pLaunchWidget.get(), &LaunchWidget::AcceptedConfiguration, pLaunchWidget.get(), [=, this](const QVariant& cfg)
     {
         LOGMSG("Loading editor window...");
         pHotkeysEditor = std::make_unique<HotkeysMainWindow>(cfg);

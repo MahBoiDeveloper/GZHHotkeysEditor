@@ -79,7 +79,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
                     shortName == "DML")
                     factionButton->setProperty("faction", "GLA");
 
-                connect(factionButton, &QPushButton::pressed, this, [=]()
+                connect(factionButton, &QPushButton::pressed, this, [=, this]()
                 {
                     SetGameObjectList(shortName);
                 });
@@ -101,7 +101,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
         LOGMSG(QString("Unable to parse more than 12 factions. Found factions : ") + QString::number(factonsCount));
     }
 
-    connect(pFactionsButtonsGroup, &QButtonGroup::idClicked, this, [=](int id)
+    connect(pFactionsButtonsGroup, &QButtonGroup::idClicked, this, [=, this](int id)
     {
         // Take the focus from the buttons group
         pEntitiesTreeWidget->setFocus();
@@ -303,7 +303,7 @@ void HotkeysMainWindow::SetHotkeysPanels()
                                                                       CSF_PARSER->GetHotkey(currAction.hotkeyString),
                                                                       currAction.iconName};
 
-            connect(actionHotkey, &ActionHotkeyWidget::HotkeyChanged, this, [=](const QString& newHotkey)
+            connect(actionHotkey, &ActionHotkeyWidget::HotkeyChanged, this, [=, this](const QString& newHotkey)
             {
                 // Set new hotkey
                 SetActionHotkey(factionShortName, gameObjectName, currAction.iconName, newHotkey);

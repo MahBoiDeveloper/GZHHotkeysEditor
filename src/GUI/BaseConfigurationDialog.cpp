@@ -10,7 +10,7 @@ BaseConfigurationDialog::BaseConfigurationDialog(QWidget* parent) : QDialog(pare
     dialogButtons.setContentsMargins(0, 0, 0, 30);
 
     // emit accepted configurations
-    connect(&dialogButtons, &QDialogButtonBox::accepted, this, [=]()
+    connect(&dialogButtons, &QDialogButtonBox::accepted, this, [=, this]()
     {
         emit AcceptedConfiguration(CreateConfigurationData());
     });
