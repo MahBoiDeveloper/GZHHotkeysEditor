@@ -9,7 +9,7 @@ rmdir /s /q build > nul 2> nul
 :: Make link to the MinGW x64 v8.1.0 due to install-qt-action limitations
 mkdir C:\Qt\Tools > nul
 mklink C:\Qt\Tools\mingw810_64 C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64 > nul
-tree
+tree C:\Qt\Tools
 set PATH=%PATH%;C:\Qt;C:\Qt\5.15.2\mingw81_64\bin;C:\Qt\Tools\mingw810_64\bin;C:\Qt\Tools\mingw810_64
 
 echo Generals Zero Hour Hotkeys editor
