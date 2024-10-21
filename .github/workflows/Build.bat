@@ -16,7 +16,7 @@ rmdir /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\include\c+
 
 set PATH=%PATH%;C:\Qt;C:\Qt\5.15.2\mingw81_64\bin;C:\Qt\Tools\mingw_64\bin
 
-if (exist C:\Qt\Tools\mingw_64\bin\g++.exe) echo "Compiler found in C:\Qt\Tools\mingw_64\bin\g++.exe"
+if exist C:\Qt\Tools\mingw_64\bin\g++.exe echo "Compiler found in C:\Qt\Tools\mingw_64\bin\g++.exe"
 
 echo Generals Zero Hour Hotkeys editor
 echo Authors: mah_boi, nikitvs
