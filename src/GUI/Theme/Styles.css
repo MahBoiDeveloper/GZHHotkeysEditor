@@ -52,15 +52,8 @@ QComboBox::drop-down
      padding-left: 10px;
 }
 
-QComboBox::down-arrow
-{
-    image: url(Resources/Theme/ScrollArrowDown.webp);
-}
-
-QComboBox::up-arrow
-{
-    image: url(Resources/Theme/ScrollArrowUp.webp);
-}
+QComboBox::down-arrow { image: url(Resources/Theme/ScrollArrowDown.webp); }
+QComboBox::up-arrow   { image: url(Resources/Theme/ScrollArrowUp.webp); }
 
 /* Start widget style setting */
 LoadDialog, LaunchWidget, CreationDialog
@@ -299,6 +292,7 @@ QDialog QLabel#right
 
 QLabel#HotkeyLabel:disabled
 {
+    font-weight: bold;
     padding-left: 30px;
     padding-right: 30px;
     background-color: #128d2d;
@@ -306,6 +300,7 @@ QLabel#HotkeyLabel:disabled
 
 QLabel#HotkeyLabel:enabled
 {
+    font-weight: bold;
     padding-left: 30px;
     padding-right: 30px;
     background-color: #cb0d27;
