@@ -149,13 +149,13 @@ HotkeysMainWindow QPushButton:pressed:hover { background-color: #3543e7; color: 
 QPushButton[faction="GLA"] { background-color: #185a22; border-color: #b1ffbf; }
 QPushButton[faction="PRC"] { background-color: #5a1f18; border-color: #ffbbb1; }
 
-QPushButton[faction="GLA"]:hover { background-color: #60ba47; color: #4c4f50; }
+QPushButton[faction="GLA"]:hover { background-color: #53a23d; color: #383939; }
 QPushButton[faction="PRC"]:hover { background-color: #e74135; color: #baff0c; }
 
-QPushButton[faction="GLA"]:pressed { background-color: #60ba47; color: black; }
+QPushButton[faction="GLA"]:pressed { background-color: #53a23d; color: black; }
 QPushButton[faction="PRC"]:pressed { background-color: #e74135; color: white; }
 
-QPushButton[faction="GLA"]:pressed:hover { background-color: #60ba47; color: #4c4f50; }
+QPushButton[faction="GLA"]:pressed:hover { background-color: #53a23d; color: #383939; }
 QPushButton[faction="PRC"]:pressed:hover { background-color: #e74135; color: #baff0c; }
 
 HotkeysMainWindow QTreeWidget, HotkeysMainWindow QTabWidget, HotkeysMainWindow QScrollArea
