@@ -67,29 +67,54 @@ private:
     std::string GetWindowsBit()  const;
 };
 
+#pragma region QString extension
+
+template<class T>
+concept IsSymbol = std::same_as<T, char> || std::same_as<T, wchar_t> || std::same_as<T, QChar>;
+
 template<class T>
 concept IsNumber = std::same_as<T, int> || std::same_as<T, size_t> || std::same_as<T, std::size_t>;
 
 template<IsNumber N>
-QString& operator+ (QString str, N num)
+QString& operator+ (const QString& str, const N& num)
 {
-    return str.append(QString::number(num));
+    return QString(str).append(QString::number(num));
 }
 
 template<IsNumber N>
-QString& operator+ (N num, QString str)
+QString& operator+ (const N& num, const QString& str)
 {
     return QString::number(num).append(str);
 }
 
 template<IsNumber N>
-QString& operator+ (N num, std::string str)
+QString& operator+ (const N& num, const std::string& str)
 {
     return QString::number(num).append(QString::fromStdString(str));
 }
 
 template<IsNumber N>
-QString& operator+ (std::string str, N num)
+QString& operator+ (const std::string& str, const N& num)
 {
     return QString::fromStdString(str).append(QString::number(num));
 }
+
+template<IsSymbol C>
+QString& operator+ (const C& char1, const C& char2)
+{
+    return QString(char1).append(char2);
+}
+
+template<IsSymbol C>
+QString& operator+ (const QString& str, const C& ch)
+{
+    return QString(str).append(ch);
+}
+
+template<IsSymbol C>
+QString& operator+ (const C& ch, const QString& str)
+{
+    return QString(ch).append(str);
+}
+
+#pragma endregion
