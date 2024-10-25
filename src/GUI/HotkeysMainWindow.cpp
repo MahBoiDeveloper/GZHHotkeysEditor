@@ -27,7 +27,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     , pAboutDialog{nullptr}
 {
     SetFactions();
-    LOGMSG(QString("Total faction count that has been read from json file: ") + factionVector.size());
+    LOGMSG("Total faction count that has been read from json file: " + factionVector.size());
 
     resize(1200, 800);
     ConfigureMenu();
@@ -98,7 +98,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     }
     else
     {
-        LOGMSG(QString("Unable to parse more than 12 factions. Found factions : ") + factonsCount);
+        LOGMSG("Unable to parse more than 12 factions. Found factions : " + factonsCount);
     }
 
     connect(pFactionsButtonsGroup, &QButtonGroup::idClicked, this, [=, this](int id)

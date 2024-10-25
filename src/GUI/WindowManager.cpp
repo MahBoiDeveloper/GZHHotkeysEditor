@@ -10,7 +10,7 @@ WindowManager::WindowManager()
     WindowName = "C&C: Generals Zero Hour Hotkey Editor";
     qApp->setWindowIcon(QIcon(QPixmap::fromImage(GUIConfig::DecodeEditorWebpIcon())));
     
-    LOGMSG(QString("Loading loading \"") + GUIConfig::STYLES_SHEET + "\"...");
+    LOGMSG("Loading loading \"" + GUIConfig::STYLES_SHEET + "\"...");
     QFile css{GUIConfig::STYLES_SHEET};
     if (css.open(QIODevice::ReadOnly))
     {
@@ -50,7 +50,7 @@ void WindowManager::SetTranslator(Config::Languages lngType)
     if (pAppTranslator != nullptr) qApp->removeTranslator(pAppTranslator);
 
     QString lngShortName = Config::GetLanguageShortName(lngType);
-    LOGMSG(QString("Set editor language to ") + lngShortName.toUpper());
+    LOGMSG("Set editor language to " + lngShortName.toUpper());
 
     // Create new translator
     if (lngType != Config::Languages::English)

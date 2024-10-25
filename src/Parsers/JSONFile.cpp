@@ -111,13 +111,13 @@ using namespace std;
     void JSONFile::LogInfoAboutValue(const QJsonValue& val)
     {
         LOGMSG("Information about QJsonValue value:");
-        LOGMSG(QString("\tValue is Array?     - ") + (val.isArray()     ? "True" : "False"));
-        LOGMSG(QString("\tValue is Bool?      - ") + (val.isBool()      ? "True" : "False"));
-        LOGMSG(QString("\tValue is Double?    - ") + (val.isDouble()    ? "True" : "False"));
-        LOGMSG(QString("\tValue is Null?      - ") + (val.isNull()      ? "True" : "False"));
-        LOGMSG(QString("\tValue is Object?    - ") + (val.isObject()    ? "True" : "False"));
-        LOGMSG(QString("\tValue is String?    - ") + (val.isString()    ? "True" : "False"));
-        LOGMSG(QString("\tValue is Undefined? - ") + (val.isUndefined() ? "True" : "False"));
-        LOGMSG(QString("\tLength of array is : " ) + val.toArray().size());
+        LOGMSG("\tValue is Array?     - " + (val.isArray()     ? "True" : "False"));
+        LOGMSG("\tValue is Bool?      - " + (val.isBool()      ? "True" : "False"));
+        LOGMSG("\tValue is Double?    - " + (val.isDouble()    ? "True" : "False"));
+        LOGMSG("\tValue is Null?      - " + (val.isNull()      ? "True" : "False"));
+        LOGMSG("\tValue is Object?    - " + (val.isObject()    ? "True" : "False"));
+        LOGMSG("\tValue is String?    - " + (val.isString()    ? "True" : "False"));
+        LOGMSG("\tValue is Undefined? - " + (val.isUndefined() ? "True" : "False"));
+        LOGMSG("\tLength of array is : "  + val.toArray().size());
     }
 #pragma endregion
