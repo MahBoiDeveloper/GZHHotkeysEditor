@@ -121,47 +121,24 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 
     // Draw keyboard with letters
     pKeyboardWindow->setObjectName("Keyboard");
-    QHBoxLayout* pKeyboardFirstLine  = new QHBoxLayout(); pKeyboardFirstLine->setAlignment(Qt::AlignHCenter);
-    QHBoxLayout* pKeyboardSecondLine = new QHBoxLayout(); pKeyboardSecondLine->setAlignment(Qt::AlignHCenter);
-    QHBoxLayout* pKeyboardThirdLine  = new QHBoxLayout(); pKeyboardThirdLine->setAlignment(Qt::AlignHCenter);
+    QHBoxLayout* pKeyboardFirstLine;
+    QHBoxLayout* pKeyboardSecondLine;
+    QHBoxLayout* pKeyboardThirdLine;
     QVBoxLayout* pKeyboardLines      = new QVBoxLayout();
     
     QPushButton* btnEmptyButton= new QPushButton();
     btnEmptyButton->setProperty("key", "null");
     btnEmptyButton->setFixedWidth(GUIConfig::EMPTY_KEY_WIDTH);
 
-    // TODO :
-    //      Make it in different fucntion
-    // Set 1st line of keys
-    for (const auto& ch : QString("QWERTYUIOP"))
-    {
-        auto tmp = new QPushButton(ch);
-        tmp->setProperty("key", ch);
-        tmp->setObjectName(ch);
-        tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
-        pKeyboardFirstLine->addWidget(tmp);
-    }
-
-    // Set 2nd line of keys
-    for (const auto& ch : QString("ASDFGHJKL"))
-    {
-        auto tmp = new QPushButton(ch);
-        tmp->setProperty("key", ch);
-        tmp->setObjectName(ch);
-        tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
-        pKeyboardSecondLine->addWidget(tmp);
-    }
+    pKeyboardFirstLine = CreateKeysOnKeyboard("QWERTYUIOP");
+    pKeyboardSecondLine = CreateKeysOnKeyboard("ASDFGHJKL");
+    pKeyboardThirdLine = CreateKeysOnKeyboard("ZXCVBNM");
     
-    // Set 3rd line of keys
-    for (const auto& ch : QString("ZXCVBNM"))
-    {
-        auto tmp = new QPushButton(ch);
-        tmp->setProperty("key", ch);
-        tmp->setObjectName(ch);
-        tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
-        pKeyboardThirdLine->addWidget(tmp);
-    }
     pKeyboardThirdLine->addWidget(btnEmptyButton);
+
+    pKeyboardFirstLine->setAlignment(Qt::AlignHCenter);
+    pKeyboardSecondLine->setAlignment(Qt::AlignHCenter);
+    pKeyboardThirdLine->setAlignment(Qt::AlignHCenter);
 
     pKeyboardLines->addLayout(pKeyboardFirstLine);
     pKeyboardLines->addLayout(pKeyboardSecondLine);
@@ -507,4 +484,18 @@ void HotkeysMainWindow::OnLanguageChange()
     pWindowToChangeLanugage->show();
     pWindowToChangeLanugage->raise();
     pWindowToChangeLanugage->activateWindow();
+}
+
+QHBoxLayout* HotkeysMainWindow::CreateKeysOnKeyboard(const QString& str)
+{
+    QHBoxLayout* pKeys = new QHBoxLayout();
+    for (const auto& ch : str)
+    {
+        auto tmp = new QPushButton(ch);
+        tmp->setProperty("key", ch);
+        tmp->setObjectName(ch);
+        tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
+        pKeys->addWidget(tmp);
+    }
+    return pKeys;
 }

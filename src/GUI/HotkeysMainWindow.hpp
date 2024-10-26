@@ -6,6 +6,7 @@
 class QScrollArea;
 class QTreeWidget;
 class QButtonGroup;
+class QHBoxLayout;
 
 class ActionHotkeyWidget;
 
@@ -52,6 +53,8 @@ private:
     void NullifyKeyboardStatus();
     /// @brief Replace current action assigned hotkey with new one.
     void SetActionHotkey(const QString& fctShortName, const QString& goName, const QString& actName, const QString& hk);
+    /// @brief Creates line of keys for keyboard layout.
+    QHBoxLayout* CreateKeysOnKeyboard(const QString& str);
 
 private slots:
     void OnAbout();
