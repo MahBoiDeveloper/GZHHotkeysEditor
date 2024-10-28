@@ -1,0 +1,70 @@
+name: Cppcheck Test
+
+# Workflow will trigger on any push to the master/main branch
+on: 
+  pull_request:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  CodeChecks:
+    # Our project is windows only, so we will compile project at windows server
+    runs-on: windows-2022
+    steps:
+      # Cloning all repository recursively
+      - name: Get Sources
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      # Check this about more info: https://github.com/marketplace/actions/install-version-specific-mingw
+      # Setting up MinGW_x64 version 8.1.0
+      - name: Set Up MinGW
+        uses: egor-tensin/setup-mingw@v2
+        with:
+          platform: x64
+          version: 12.2.0
+
+      - name: Link MinGW
+      - shell: cmd
+      - run:
+          # Make link to the MinGW x64 due to install-qt-action limitations
+          mkdir C:\Qt\Tools > nul
+          mklink C:\Qt\Tools\mingw_64 C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64 > nul
+          set PATH=%PATH%;C:\Qt\5.15.2\mingw81_64\bin;C:\Qt\Tools\mingw_64\bin
+
+      # Check this about more info: https://github.com/marketplace/actions/install-qt
+      - name: Set Up Qt
+        uses: jurplel/install-qt-action@v3
+        with: 
+          version: 5.15.2
+          arch: win64_mingw81
+          # this action cannot download needed mingw810
+          # tools: tools.win64_mingw810
+          target: desktop
+          dir: C:\
+
+      # Check this about more info: https://github.com/marketplace/actions/cmake-action
+      - name: Set Up CMake
+        uses: threeal/cmake-action@v1.3.0
+
+      # Deploy cppcheck
+      - name: Set Up Cppcheck
+      - shell: cmd
+      - run: |
+          curl -O https://github.com/danmar/cppcheck/releases/download/2.16.0/cppcheck-2.16.0-x64-Setup.msi
+          cppcheck-2.16.0-x64-Setup.msi /quiet
+          cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        
+      # Run cppcheck
+      - name: Run Cppcheck
+      - shell: cmd
+      - run: |
+          "C:\Program Files\cppcheck\cppcheck.exe" --enable=all --suppress=missingIncludeSystem --report-progress --check-level=exhaustive --template=">>>{file}:{line}: {severity}: {message}\n{code}<<<" --template-location=">>>{file}:{line}: note: {info}\n{code}<<<" --platform=win64 --project=build\compile_commands.json --project-configuration="Release"  --output-file=cppcheckresult.log  --max-ctu-depth=10 --inconclusive -j 12
+      
+      # Show cpppcheck results
+      - name: Show Cppcheck results
+      - shell: cmd
+      - run: type cppcheckresult.log
