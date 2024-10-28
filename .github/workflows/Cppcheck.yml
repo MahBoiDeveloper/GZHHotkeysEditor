@@ -1,4 +1,4 @@
-name: Cppcheck Test
+name: Code Analysis
 
 # Workflow will trigger on any push to the master/main branch
 on: 
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  CodeChecks:
+  CppcheckTest:
     # Our project is windows only, so we will compile project at windows server
     runs-on: windows-2022
     steps:
@@ -27,44 +27,65 @@ jobs:
           platform: x64
           version: 12.2.0
 
-      - name: Link MinGW
-      - shell: cmd
-      - run:
-          # Make link to the MinGW x64 due to install-qt-action limitations
-          mkdir C:\Qt\Tools > nul
-          mklink C:\Qt\Tools\mingw_64 C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64 > nul
-          set PATH=%PATH%;C:\Qt\5.15.2\mingw81_64\bin;C:\Qt\Tools\mingw_64\bin
-
       # Check this about more info: https://github.com/marketplace/actions/install-qt
+      # This action cannot download needed mingw810
+      # So it downloads only Qt part
       - name: Set Up Qt
         uses: jurplel/install-qt-action@v3
         with: 
           version: 5.15.2
           arch: win64_mingw81
-          # this action cannot download needed mingw810
-          # tools: tools.win64_mingw810
           target: desktop
           dir: C:\
+
+      # Make link to the MinGW x64 due to install-qt-action limitations
+      - name: Link MinGW
+        shell: cmd
+        run: |
+          mkdir C:\Qt\Tools > nul
+          mklink C:\Qt\Tools\mingw_64 C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64 > nul
+          set PATH=%PATH%;C:\Qt\5.15.2\mingw81_64\bin;C:\Qt\Tools\mingw_64\bin
 
       # Check this about more info: https://github.com/marketplace/actions/cmake-action
       - name: Set Up CMake
         uses: threeal/cmake-action@v1.3.0
+        with:
+          run-build: false
 
-      # Deploy cppcheck
-      - name: Set Up Cppcheck
-      - shell: cmd
-      - run: |
-          curl -O https://github.com/danmar/cppcheck/releases/download/2.16.0/cppcheck-2.16.0-x64-Setup.msi
-          cppcheck-2.16.0-x64-Setup.msi /quiet
-          cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+      # Deploy cppcheck from https://github.com/MahBoiDeveloper/CI-CD-buffer/releases/tag/v1.0
+      - name: Download Cppcheck
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: MahBoiDeveloper/CI-CD-buffer
+          latest: true
+          fileName: cppcheck*
         
+      - name: Set Up Cppcheck
+        shell: cmd
+        run: powershell Expand-Archive -path .\cppcheck.zip -DestinationPath .
+
       # Run cppcheck
       - name: Run Cppcheck
-      - shell: cmd
-      - run: |
-          "C:\Program Files\cppcheck\cppcheck.exe" --enable=all --suppress=missingIncludeSystem --report-progress --check-level=exhaustive --template=">>>{file}:{line}: {severity}: {message}\n{code}<<<" --template-location=">>>{file}:{line}: note: {info}\n{code}<<<" --platform=win64 --project=build\compile_commands.json --project-configuration="Release"  --output-file=cppcheckresult.log  --max-ctu-depth=10 --inconclusive -j 12
-      
+        shell: cmd
+        run: |
+          (
+            rmdir /s /q build 
+            cmake -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=C:\Qt\Tools\mingw_64\bin\gcc.exe -DCMAKE_CXX_COMPILER:FILEPATH=C:\Qt\Tools\mingw_64\bin\g++.exe -S.\ -B.\build -G "MinGW Makefiles"
+            cmake --build .\build --config Debug --target all -j 16
+          ) > nul 2> nul
+
+          cppcheck\cppcheck --enable=all --suppress=missingIncludeSystem --report-progress --check-level=exhaustive --template=">>>{file}:{line}: {severity}: {message}\n{code}<<<" --template-location=">>>{file}:{line}: note: {info}\n{code}<<<" --platform=win64 --project=build\compile_commands.json --project-configuration="Release"  --output-file=cppcheckresult.log  --max-ctu-depth=10 --inconclusive -j 12
+
       # Show cpppcheck results
-      - name: Show Cppcheck results
-      - shell: cmd
-      - run: type cppcheckresult.log
+      - name: Publish Results
+        shell: cmd
+        run: type cppcheckresult.log
+
+      # Upload artifact to the GitHub
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+           # ${{github.sha}} - commit long hash name
+           name: cppcheckresult-${{github.sha}}
+           # zip all content in the "build\exe" folder
+           path: cppcheckresult.log
