@@ -109,7 +109,6 @@ public:
     /// @brief Delete all text by regular expression \[&[A-Z]\].
     QString GetClearName(const QString& strName)                                                               const;
 
-
     /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
     QChar GetHotkey(const std::string& strName)                                                                const;
     /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
