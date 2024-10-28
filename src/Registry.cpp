@@ -123,9 +123,9 @@ bool Registry::IsWindow32bit()
         UUID uuid;
         auto tmpUuidCreate = UuidCreate(&uuid);
         char* str;
-        auto tmpUuidToStringA = UuidToStringA(&uuid, (RPC_CSTR*)(&str));
+        auto tmpUuidToStringA = UuidToStringA(&uuid, reinterpret_cast<RPC_CSTR*>(&str));
         ss << str;
-        RpcStringFreeA((RPC_CSTR*)(&str));
+        RpcStringFreeA(reinterpret_cast<RPC_CSTR*>(&str));
 
         return ss.str();
     }

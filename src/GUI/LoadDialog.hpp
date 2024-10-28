@@ -5,7 +5,7 @@ class LoadDialog : public BaseConfigurationDialog
 {
     Q_OBJECT
 private: // Data
-    QButtonGroup buttonsGroup;
+    // QButtonGroup buttonsGroup; // Inherited from BaseConfigurationDialog
 
 public: // Methods
     explicit LoadDialog(QWidget *parent = nullptr);

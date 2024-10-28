@@ -65,7 +65,7 @@ using namespace std;
     string Logger::GetCurrentTime() const
     {
         time_t timeStomp = time(nullptr);
-        tm timeNow;
+        tm timeNow = {};
         localtime_s(&timeNow, &timeStomp);
 
         char currentTime[128];
@@ -80,7 +80,7 @@ using namespace std;
     string Logger::GetLogFileName() const
     {
         time_t timeStomp = time(nullptr);
-        tm timeNow;
+        tm timeNow = {};
         localtime_s(&timeNow, &timeStomp);
 
         char currentTime[128];
@@ -129,7 +129,7 @@ using namespace std;
 
     ofstream& Logger::Log()
     {
-        LogFile << "[" << GetCurrentTime().c_str() << "]\t";
+        LogFile << "[" << GetCurrentTime() << "]\t";
         return LogFile;
     }
 

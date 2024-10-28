@@ -4,7 +4,7 @@
     #include <string>
     
     // Links local executable to the main application of the project
-    int main(int argc, char *argv[])
+    int main(int argc, const char** argv)
     {
         std::string projectExecCommand(PROJECT_EXE_RELATIVE_PATH);
     
