@@ -32,5 +32,8 @@
 # vscode
 .vscode
 
+# Log files
+*.log
+
 # Building
 *build*/
