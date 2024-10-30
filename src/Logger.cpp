@@ -92,40 +92,13 @@ using namespace std;
         return ss.str();
     }
 
-    void Logger::LogToConsole(const char* msg)
-    {
-        qDebug() << "[" << GetCurrentTime().c_str() << "]\t" << msg;
-    }
-
-    void Logger::LogToConsole(const wchar_t* msg)
-    {
-        qDebug() << "[" << GetCurrentTime().c_str() << "]\t" << msg;
-    }
-
-    void Logger::LogToConsole(const std::string& msg)
-    {
-        LogToConsole(msg.c_str());
-    }
-
-    void Logger::LogToConsole(const QString& msg)
-    {
-        LogToConsole(msg.toStdString().c_str());
-    }
-
-    void Logger::LogToConsole(const std::stringstream& msg)
-    {
-        LogToConsole(msg.str().c_str());
-    }
-
-    void Logger::LogToConsole(const std::wstringstream& msg)
-    {
-        LogToConsole(msg.str().c_str());
-    }
-
-    void Logger::LogToConsole(const std::wstring& msg)
-    {
-        LogToConsole(msg.c_str());
-    }
+    void Logger::LogToConsole(const char* msg)               const { qDebug() << "[" << GetCurrentTime().c_str() << "]\t" << msg; }
+    void Logger::LogToConsole(const wchar_t* msg)            const { qDebug() << "[" << GetCurrentTime().c_str() << "]\t" << msg; }
+    void Logger::LogToConsole(const std::string& msg)        const { LogToConsole(msg.c_str()); }
+    void Logger::LogToConsole(const QString& msg)            const { LogToConsole(msg.toStdString().c_str()); }
+    void Logger::LogToConsole(const std::stringstream& msg)  const { LogToConsole(msg.str().c_str()); }
+    void Logger::LogToConsole(const std::wstringstream& msg) const { LogToConsole(msg.str().c_str()); }
+    void Logger::LogToConsole(const std::wstring& msg)       const { LogToConsole(msg.c_str()); }
 
     ofstream& Logger::Log()
     {
@@ -133,40 +106,13 @@ using namespace std;
         return LogFile;
     }
 
-    void Logger::Log(const char* msg)
-    {
-        Log() << msg << endl;
-    }
-
-    void Logger::Log(const string& msg)
-    {
-        Log(msg.c_str());
-    }
-
-    void Logger::Log(const QString& msg)
-    {
-        Log(msg.toStdString());
-    }
-
-    void Logger::Log(const stringstream& msg)
-    {
-        Log(msg.str());
-    }
-
-    void Logger::Log(const wstringstream& msg)
-    {
-        Log(msg.str());
-    }
-
-    void Logger::Log(const wstring& msg)
-    {
-        Log(msg.c_str());
-    }
-
-    void Logger::Log(const wchar_t* msg)
-    {
-        Log() << QString::fromStdWString(wstring{msg}).toStdString().c_str() << endl;
-    }
+    void Logger::Log(const char* msg)          { Log() << msg << endl; }
+    void Logger::Log(const string& msg)        { Log(msg.c_str()); }
+    void Logger::Log(const QString& msg)       { Log(msg.toStdString()); }
+    void Logger::Log(const stringstream& msg)  { Log(msg.str()); }
+    void Logger::Log(const wstringstream& msg) { Log(msg.str()); }
+    void Logger::Log(const wstring& msg)       { Log(msg.c_str()); }
+    void Logger::Log(const wchar_t* msg)       { Log() << QString::fromStdWString(wstring{msg}).toStdString().c_str() << endl; }
 
     void Logger::LogException(const char* msg)
     {

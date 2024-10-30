@@ -25,19 +25,19 @@ public: // Methods
     std::ofstream& Log();
     
     /// @brief Write message to the console.
-    void LogToConsole(const char* msg);
+    void LogToConsole(const char* msg) const;
     /// @brief Write message to the console.
-    void LogToConsole(const std::string& msg);
+    void LogToConsole(const std::string& msg) const;
     /// @brief Write message to the console.
-    void LogToConsole(const QString& msg);
+    void LogToConsole(const QString& msg) const;
     /// @brief Write message to the console.
-    void LogToConsole(const std::stringstream& msg);
+    void LogToConsole(const std::stringstream& msg) const;
     /// @brief Write message to the console.
-    void LogToConsole(const std::wstringstream& msg);
+    void LogToConsole(const std::wstringstream& msg) const;
     /// @brief Write message to the console.
-    void LogToConsole(const std::wstring& msg);
+    void LogToConsole(const std::wstring& msg) const;
     /// @brief Write message to the console.
-    void LogToConsole(const wchar_t* msg);
+    void LogToConsole(const wchar_t* msg) const;
 
     /// @brief Write message to the log file.
     void Log(const char* msg);
