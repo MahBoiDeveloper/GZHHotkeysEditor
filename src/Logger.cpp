@@ -62,7 +62,7 @@ using namespace std;
         LogFile << endl;
     }
 
-    string Logger::GetCurrentTime() const
+    const string Logger::GetCurrentTime() const
     {
         time_t timeStomp = time(nullptr);
         tm timeNow = {};
@@ -77,7 +77,7 @@ using namespace std;
         return ss.str();
     }
 
-    string Logger::GetLogFileName() const
+    const string Logger::GetLogFileName() const
     {
         time_t timeStomp = time(nullptr);
         tm timeNow = {};
@@ -123,7 +123,7 @@ using namespace std;
 #pragma endregion
 
 #pragma region Support methods
-    string Logger::GetWindowsBit() const
+    const string Logger::GetWindowsBit() const
     {
         if (Registry::GetWindowsBit() == Registry::WindowsBit::Win32)
             return "32-bit";

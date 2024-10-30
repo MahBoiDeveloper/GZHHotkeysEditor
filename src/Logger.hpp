@@ -60,15 +60,14 @@ private:
     /// @brief Write system information from Windows registry to .log file
     void LogSystemInformation();
     /// @brief Get file name like "Logs\\Log YYYY-mm-dd hh-MM-ss.log"
-    std::string GetLogFileName() const;
+    const std::string GetLogFileName() const;
     /// @brief Get current time in yyyy-MM-dd hh:mm:ss format
-    std::string GetCurrentTime() const;
+    const std::string GetCurrentTime() const;
     /// @brief Returns Windows bit as a string.
-    std::string GetWindowsBit()  const;
+    const std::string GetWindowsBit()  const;
 };
 
 #pragma region QString extension
-
 template<class T>
 concept IsSymbol = std::same_as<T, char> || std::same_as<T, wchar_t> || std::same_as<T, QChar>;
 

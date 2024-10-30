@@ -225,13 +225,13 @@ using namespace std;
 
     void GINIParser::SetSectionValue(const string& strName, const string& strKey, const string& strValue)
     {
-        for (const auto& elem : Sections)
+        for (auto& elem : Sections)
             if (elem.Name == strName)
             {
-                for (const auto& key : elem.Keys)
+                for (auto& key : elem.Keys)
                     if (key.Name == strKey)
                     {
-                        key.Value == strValue;
+                        key.Value = strValue;
                         break;
                     }
 

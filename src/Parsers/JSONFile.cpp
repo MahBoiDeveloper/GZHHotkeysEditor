@@ -36,7 +36,7 @@ using namespace std;
 #pragma endregion
 
 #pragma region Getters
-    const QJsonObject& JSONFile::GetMainObject()
+    const QJsonObject& JSONFile::GetMainObject() const
     {
         return JsonMainObject;
     }

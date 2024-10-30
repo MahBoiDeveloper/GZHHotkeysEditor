@@ -14,7 +14,7 @@ public: // Methods
     JSONFile(const char*        filePath);
 
     /// @brief Returns main object of parsed JSON file
-    const QJsonObject&  GetMainObject();
+    const QJsonObject&  GetMainObject() const;
     /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.
     QJsonValue          Query(const QString&     strQuery) const;
     /// @brief Returns Qt JSON value object by path. Path must begins with `$.`, example `$.MainObject.ChildArray[index].FieldName`.

@@ -54,8 +54,6 @@ using namespace std;
     void CSFParser::ReadBody(ifstream* csfFile)
     {
         uint8_t lbl[4];
-        uint8_t rts[4];
-        uint8_t wrts[4];
 
         for (uint32_t i = 0; i < Header.numberOfLabels; i++)
         {
