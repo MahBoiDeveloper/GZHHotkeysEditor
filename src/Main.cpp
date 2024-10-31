@@ -19,8 +19,8 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-    JSONFile settings{SETTINGS_PATH};
-    
+    JSONFile settings(SETTINGS_PATH);
+
     // Hides console
     if (!settings.Query("$.DebugConsole").toBool()) 
         ShowWindow(GetConsoleWindow(), SW_HIDE);
@@ -46,28 +46,28 @@ int main(int argc, char** argv)
         LOGGER->LogException(exception.what());
 
         // And show it to user
-        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", exception.what());
+        QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, exception.what());
     }
     catch (const char* msg)
     {
         LOGGER->LogException(msg);
-        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", msg);
+        QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, msg);
     }
     catch (const string& msg)
     {
         LOGGER->LogException(msg.c_str());
-        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", msg.c_str());
+        QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, msg.c_str());
     }
     catch (const QString& msg)
     {
         LOGGER->LogException(msg.toStdString().c_str());
-        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", msg.toStdString().c_str());
+        QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, msg.toStdString().c_str());
     }
     catch (...)
     {
         const char* tmp = "Unknown error has been occured.";
         LOGGER->LogException(tmp);
-        QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", tmp);
+        QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, tmp);
     }
 
     return 0;

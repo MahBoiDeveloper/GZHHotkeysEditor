@@ -13,7 +13,7 @@ using namespace std;
     {
         LogFile.open(GetLogFileName());
         
-        if (!LogFile.is_open()) QMessageBox::critical(nullptr, "I'VE GOT A PRESENT FOR YA", "Unable to create log file; Make sure \"Logs\" folder are exists.");
+        if (!LogFile.is_open()) QMessageBox::critical(nullptr, EXCEPTION_HEADER, "Unable to create log file; Make sure \"Logs\" folder are exists.");
         
         string title   = "C&C Generals and Generals Zero Hour hotkey editor";
         string version = string("Version: ") + VERSION;

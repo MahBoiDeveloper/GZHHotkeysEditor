@@ -14,6 +14,7 @@ class Logger final
 {
 public: // Data
     inline const static std::unique_ptr<Logger> Instance = std::make_unique<Logger>();
+    inline const static QString EXCEPTION_HEADER = "I'VE GOT A PRESENT FOR YA";
 private:
     std::ofstream LogFile;
 
@@ -56,6 +57,7 @@ public: // Methods
 
     /// @brief Write text "I'VE GOT A MESSAGE FOR YA" to the log file with text of the exception.
     void LogException(const char* msg);
+    const char* GetExceptionHeader();
 private:
     /// @brief Write system information from Windows registry to .log file
     void LogSystemInformation();
