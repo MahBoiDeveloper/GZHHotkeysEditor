@@ -31,24 +31,13 @@ QImage ImageManager::DecodeWebpIcon(const QString& iconName)
     }
 }
 
-QImage ImageManager::DecodeMissingWebpIcon()
-{
-    return DecodeWebpIconPath(MISSING_ICON_PATH);
-}
-
-QImage ImageManager::DecodeEditorWebpIcon()
-{
-    return DecodeWebpIconPath(EDITOR_ICON_PATH);
-}
-
-QImage ImageManager::DecodeBigEditorWebpIcon()
-{
-    return DecodeWebpIconPath(EDITOR_BIG_ICON_PATH);
-}
+QImage ImageManager::DecodeMissingWebpIcon()   { return DecodeWebpIconPath(MISSING_ICON_PATH); }
+QImage ImageManager::DecodeEditorWebpIcon()    { return DecodeWebpIconPath(EDITOR_ICON_PATH); }
+QImage ImageManager::DecodeBigEditorWebpIcon() { return DecodeWebpIconPath(EDITOR_BIG_ICON_PATH); }
 
 QPixmap ImageManager::GetGameObjectTypePixmap(GameObjectTypes entityType)
 {
-    return QPixmap{QT_ICONS_FOLDER + "/" + QString{"%1.webp"}.arg(ENTITIES_STRINGS.value(entityType))};
+    return QPixmap{QT_ICONS_FOLDER + "/" + ENTITIES_STRINGS.value(entityType) + ".webp"};
 }
 
 QFileInfo ImageManager::FindIconFile(const QString& pathToIconsDir, const QString& fileBaseName)
