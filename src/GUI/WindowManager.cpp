@@ -1,6 +1,7 @@
 #include <QApplication>
 
 #include "../Logger.hpp"
+#include "../Unsorted.hpp"
 #include "../Registry.hpp"
 #include "GUIConfig.hpp"
 #include "WindowManager.hpp"
@@ -24,7 +25,7 @@ WindowManager::WindowManager()
     }
 
     LOGMSG("Loading launch window...");
-    pLaunchWidget = std::make_unique<LaunchWidget>(Config::GetLangEnumByLocale(Registry::GetCurrentUserLanguage()));
+    pLaunchWidget = std::make_unique<LaunchWidget>(Unsorted::GetLangEnumByLocale(Registry::GetCurrentUserLanguage()));
     pLaunchWidget->setWindowTitle(WindowName);
     LOGMSG("Launch window has been loaded");
 
@@ -44,19 +45,19 @@ void WindowManager::Show()
     pLaunchWidget->show();
 }
 
-void WindowManager::SetTranslator(Config::Languages lngType)
+void WindowManager::SetTranslator(Languages lngType)
 {
     // Delete old translator
     if (pAppTranslator != nullptr) qApp->removeTranslator(pAppTranslator);
 
-    QString lngShortName = Config::GetLanguageShortName(lngType);
+    QString lngShortName = Unsorted::GetLanguageShortName(lngType);
     LOGMSG("Set editor language to " + lngShortName.toUpper());
 
     // Create new translator
-    if (lngType != Config::Languages::English)
+    if (lngType != Languages::English)
     {
         pAppTranslator = new QTranslator();
-        pAppTranslator->load(lngShortName, Config::TRANSLATIONS_FOLDER);
+        pAppTranslator->load(lngShortName, TRANSLATIONS_FOLDER);
         qApp->installTranslator(pAppTranslator);
     }
 }

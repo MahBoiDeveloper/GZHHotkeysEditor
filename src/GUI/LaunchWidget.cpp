@@ -4,7 +4,7 @@
 #include "LoadDialog.hpp"
 #include "WindowManager.hpp"
 
-LaunchWidget::LaunchWidget(Config::Languages lngType, QWidget* parent) : QStackedWidget(parent)
+LaunchWidget::LaunchWidget(Languages lngType, QWidget* parent) : QStackedWidget(parent)
 {
     // MainLaunchWidget settings
     setFixedSize(795, 440);
@@ -29,7 +29,7 @@ void LaunchWidget::UpdateConnectionsToSignals()
 void LaunchWidget::OnChangeLanguage(int intLngIndex)
 {
     // Find language type by its code.
-    Config::Languages lngType = static_cast<Config::Languages>(intLngIndex);
+    Languages lngType = static_cast<Languages>(intLngIndex);
 
     // Change class' translator.
     WindowManager::Instance->SetTranslator(lngType);

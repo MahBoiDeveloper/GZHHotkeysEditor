@@ -32,7 +32,7 @@ const QString& Faction::GetDisplayNameDescription() const
     return displayNameDescription;
 }
 
-const QMap<Faction::GameObject, Config::GameObjectTypes>& Faction::GetTechTree() const
+const QMap<Faction::GameObject, GameObjectTypes>& Faction::GetTechTree() const
 {
     return techTree;
 }
@@ -46,12 +46,12 @@ const QVector<QVector<Faction::Action>>& Faction::GetKeyboardLayoutsByObjectName
     return *(new QVector<QVector<Faction::Action>>());
 }
 
-QMap<Faction::GameObject, Config::GameObjectTypes> Faction::ParseJsonObject(const QJsonObject& obj)
+QMap<Faction::GameObject, GameObjectTypes> Faction::ParseJsonObject(const QJsonObject& obj)
 {
-    QMap<GameObject, Config::GameObjectTypes> tmpMap;
+    QMap<GameObject, GameObjectTypes> tmpMap;
 
     // Circle for each element in {"Buildings", "Infantry", "Vehicles", "Aircrafts"} map
-    for(const QString& qstrObjectsArray : Config::ENTITIES_STRINGS)
+    for(const QString& qstrObjectsArray : ENTITIES_STRINGS)
     {
         QJsonArray currArr  = obj[qstrObjectsArray].toArray();
 
@@ -78,7 +78,7 @@ QMap<Faction::GameObject, Config::GameObjectTypes> Faction::ParseJsonObject(cons
                 _layouts.push_back(_layout);
             }
 
-            tmpMap.insert(Faction::GameObject{_name, _ingameName, _layouts}, Config::ENTITIES_STRINGS.key(qstrObjectsArray));
+            tmpMap.insert(Faction::GameObject{_name, _ingameName, _layouts}, ENTITIES_STRINGS.key(qstrObjectsArray));
         }
     }
     

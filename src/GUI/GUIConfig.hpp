@@ -1,7 +1,7 @@
 #pragma once
 #include <QSize>
 #include <QFileInfo>
-#include "../Config.hpp"
+#include "../ProgramConstants.hpp"
 
 class GUIConfig
 {
@@ -13,8 +13,8 @@ public:
     inline static const int     ICON_SCALING_HEIGHT  = 25;
     inline static const int     KEYBOARD_KEY_WIDTH   = 50;
     inline static const int     EMPTY_KEY_WIDTH      = 25;
-    inline static const QString ICONS_FOLDER         = Config::RESOURCE_FOLDER + "/Icons";
-    inline static const QString STYLES_SHEET         = Config::RESOURCE_FOLDER + "/Theme/Styles.css";
+    inline static const QString ICONS_FOLDER         = RESOURCE_FOLDER + "/Icons";
+    inline static const QString STYLES_SHEET         = RESOURCE_FOLDER + "/Theme/Styles.css";
     inline static const QString QT_ICONS_FOLDER      = ":/icons";
     inline static const QString MISSING_ICON_PATH    = QT_ICONS_FOLDER + "/NoImageSmall.webp";
     inline static const QString EDITOR_ICON_PATH     = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
@@ -39,5 +39,5 @@ public:
     /// @brief Return project's official WEBP image.
     static QImage  DecodeBigEditorWebpIcon();
     /// @brief Return pixel map by object type.
-    static QPixmap GetGameObjectTypePixmap(Config::GameObjectTypes goType);
+    static QPixmap GetGameObjectTypePixmap(GameObjectTypes goType);
 };

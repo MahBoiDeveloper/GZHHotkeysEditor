@@ -30,7 +30,7 @@ int main(int argc, char** argv)
 
     // Define logger as a singleton class, that could be used anywhere in project
     WINDOW_MANAGER = make_unique<WindowManager>();
-    CSF_PARSER->Parse(Config::RESOURCE_FOLDER + "/DataSamples/generalsRU.csf");
+    CSF_PARSER->Parse(RESOURCE_FOLDER + "/DataSamples/generalsRU.csf");
 
     try
     {

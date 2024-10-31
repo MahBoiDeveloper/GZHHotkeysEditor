@@ -45,9 +45,9 @@ QImage GUIConfig::DecodeBigEditorWebpIcon()
     return DecodeWebpIconPath(EDITOR_BIG_ICON_PATH);
 }
 
-QPixmap GUIConfig::GetGameObjectTypePixmap(Config::GameObjectTypes entityType)
+QPixmap GUIConfig::GetGameObjectTypePixmap(GameObjectTypes entityType)
 {
-    return QPixmap{QT_ICONS_FOLDER + "/" + QString{"%1.webp"}.arg(Config::ENTITIES_STRINGS.value(entityType))};
+    return QPixmap{QT_ICONS_FOLDER + "/" + QString{"%1.webp"}.arg(ENTITIES_STRINGS.value(entityType))};
 }
 
 QFileInfo GUIConfig::FindIconFile(const QString& pathToIconsDir, const QString& fileBaseName)

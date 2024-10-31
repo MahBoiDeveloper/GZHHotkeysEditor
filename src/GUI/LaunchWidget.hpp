@@ -12,7 +12,7 @@ private: // Methods
     /// @brief Updates connections with new pointers to the translator and start widget.
     void UpdateConnectionsToSignals();
 public:
-    LaunchWidget(Config::Languages language, QWidget* parent = nullptr);
+    LaunchWidget(Languages language, QWidget* parent = nullptr);
 
 private slots:
     /// @brief Change language by its index if language has been changed via select list.

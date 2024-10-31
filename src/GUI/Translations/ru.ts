@@ -62,23 +62,23 @@
         <translation type="vanished">ЗАГРУЗИТЬ ПРОЕКТ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="25"/>
+        <location filename="../GreetingWidget.cpp" line="26"/>
         <source>NEW</source>
         <translation>НОВЫЙ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="25"/>
-        <location filename="../GreetingWidget.cpp" line="32"/>
+        <location filename="../GreetingWidget.cpp" line="26"/>
+        <location filename="../GreetingWidget.cpp" line="33"/>
         <source>PROJECT</source>
         <translation>ПРОЕКТ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="32"/>
+        <location filename="../GreetingWidget.cpp" line="33"/>
         <source>LOAD</source>
         <translation>ЗАГРУЗИТЬ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="39"/>
+        <location filename="../GreetingWidget.cpp" line="40"/>
         <source>LANGUAGE</source>
         <translation>ЯЗЫК</translation>
     </message>
@@ -222,22 +222,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../Config.hpp" line="25"/>
+        <location filename="../../ProgramConstants.hpp" line="22"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../Config.hpp" line="26"/>
+        <location filename="../../ProgramConstants.hpp" line="23"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../Config.hpp" line="27"/>
+        <location filename="../../ProgramConstants.hpp" line="24"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../Config.hpp" line="28"/>
+        <location filename="../../ProgramConstants.hpp" line="25"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>

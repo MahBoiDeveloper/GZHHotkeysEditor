@@ -15,7 +15,7 @@ class HotkeysMainWindow final : public QMainWindow
     Q_OBJECT
 
 private: // Data
-    JSONFile TECH_TREE_SOURCE{Config::TECH_TREE_PATH};
+    JSONFile TECH_TREE_SOURCE{TECH_TREE_PATH};
 
     QVector<Faction> factionVector;
 

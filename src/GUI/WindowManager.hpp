@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 #include <QTranslator>
-#include "../Config.hpp"
+#include "../ProgramConstants.hpp"
 #include "LaunchWidget.hpp"
 #include "HotkeysMainWindow.hpp"
 
@@ -22,5 +22,5 @@ public: // Methods
     /// @brief Enable start widget rendering.
     void Show();
     /// @brief Set common l10n translator for the whole project by language type from enum.
-    void SetTranslator(Config::Languages language);
+    void SetTranslator(Languages language);
 };

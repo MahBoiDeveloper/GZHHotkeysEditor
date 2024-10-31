@@ -191,17 +191,17 @@ void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
 {
     pEntitiesTreeWidget->clear();
 
-    QMap<Faction::GameObject, Config::GameObjectTypes> goMap = GetFactionRef(factionShortName).GetTechTree();
+    QMap<Faction::GameObject, GameObjectTypes> goMap = GetFactionRef(factionShortName).GetTechTree();
 
     // Skip if there are no entities of that type
     if(goMap.isEmpty()) return;
 
     // Create sections for all faction entities types
-    for(const auto& objectType : Config::ENTITIES_STRINGS.keys())
+    for(const auto& objectType : ENTITIES_STRINGS.keys())
     {
         // Create new section of tree list
         QTreeWidgetItem* newTopEntityItem = new QTreeWidgetItem();
-        newTopEntityItem->setText(0, QCoreApplication::translate("QObject", Config::ENTITIES_STRINGS.value(objectType).toUtf8().constData()));
+        newTopEntityItem->setText(0, QCoreApplication::translate("QObject", ENTITIES_STRINGS.value(objectType).toUtf8().constData()));
 
         // Decorate
         newTopEntityItem->setIcon(0, GUIConfig::GetGameObjectTypePixmap(objectType)

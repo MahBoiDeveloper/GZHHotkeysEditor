@@ -22,4 +22,29 @@ namespace Unsorted
     
         return retList;
     }
+    const QString GetLanguageShortName(Languages language)
+{
+    return LANGUAGES_STRINGS.value(language).first;
+}
+
+    Languages GetLangEnumByLocale(const QString& locale)
+    {
+        QString lowerLocale = locale.toLower();
+
+        for(auto it = LANGUAGES_STRINGS.cbegin(); it != LANGUAGES_STRINGS.cend(); ++it)
+            if (GetLanguageShortName(it.key()) == lowerLocale)
+                return it.key();
+    
+        return Languages::English;
+    }
+
+    Languages GetLangEnumByLocale(const std::string& locale)
+    {
+        return GetLangEnumByLocale(QString::fromStdString(locale));
+    }
+
+    const QString GetLanguageFullName(Languages language)
+    {
+        return LANGUAGES_STRINGS.value(language).second;
+    }
 }

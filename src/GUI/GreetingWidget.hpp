@@ -1,6 +1,6 @@
 #pragma once
 #include <QWidget>
-#include "../Config.hpp"
+#include "../ProgramConstants.hpp"
 
 class GreetingWidget : public QWidget
 {
@@ -14,7 +14,7 @@ public: // Data
     };
 
 public: // Methods
-    GreetingWidget(Config::Languages language = Config::Languages::English, QWidget* parent = nullptr);
+    GreetingWidget(Languages language = Languages::English, QWidget* parent = nullptr);
 private:
     int GetGreetingTextAverageSize(const QString& text) const;
 
