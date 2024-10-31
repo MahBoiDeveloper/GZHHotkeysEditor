@@ -5,7 +5,7 @@
 
 #include "../../libwebp/src/webp/decode.h"
 #include "../Logger.hpp"
-#include "GUIConfig.hpp"
+#include "ImageManager.hpp"
 
 QImage ImageManager::DecodeWebpIcon(const QString& iconName)
 {

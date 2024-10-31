@@ -13,7 +13,7 @@
 #include "../Logger.hpp"
 
 #include "ActionHotkeyWidget.hpp"
-#include "GUIConfig.hpp"
+#include "ImageManager.hpp"
 #include "HotkeysMainWindow.hpp"
 #include "WindowManager.hpp"
 

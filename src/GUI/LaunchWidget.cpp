@@ -1,5 +1,5 @@
 #include "../Logger.hpp"
-#include "GUIConfig.hpp"
+#include "ImageManager.hpp"
 #include "CreationDialog.hpp"
 #include "LoadDialog.hpp"
 #include "WindowManager.hpp"

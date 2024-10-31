@@ -2,7 +2,7 @@
 #include <QKeyEvent>
 #include <QDebug>
 #include "ActionHotkeyWidget.hpp"
-#include "GUIConfig.hpp"
+#include "ImageManager.hpp"
 
 ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
                                        const QString& hotkeyStr,

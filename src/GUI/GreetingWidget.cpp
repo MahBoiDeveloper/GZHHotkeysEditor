@@ -5,7 +5,7 @@
 
 #include "../Logger.hpp"
 #include "../Unsorted.hpp"
-#include "GUIConfig.hpp"
+#include "ImageManager.hpp"
 #include "GreetingWidget.hpp"
 
 GreetingWidget::GreetingWidget(Languages language, QWidget* parent) : QWidget(parent)

@@ -6,7 +6,7 @@
 #include "../Registry.hpp"
 #include "../ProgramConstants.hpp"
 
-#include "GUIConfig.hpp"
+#include "ImageManager.hpp"
 #include "WindowManager.hpp"
 
 WindowManager::WindowManager()
