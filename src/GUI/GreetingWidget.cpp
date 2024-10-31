@@ -24,14 +24,14 @@ GreetingWidget::GreetingWidget(Languages language, QWidget* parent) : QWidget(pa
     
     // Add "New Project" and "Load Project" buttons to the window
     btnNewProject = new QPushButton(tr("NEW") + '\n' + tr("PROJECT"));
-    btnNewProject->setFixedSize(GUIConfig::START_BUTTON_SIZE);
+    btnNewProject->setFixedSize(START_BUTTON_SIZE);
     connect(btnNewProject, &QPushButton::clicked, this, [this](bool)
     {
         emit pressed(GreetingWidget::StandartButtons::NewProject);
     });
 
     btnLoadProject = new QPushButton(tr("LOAD") + '\n' + tr("PROJECT"));
-    btnLoadProject->setFixedSize(GUIConfig::START_BUTTON_SIZE);
+    btnLoadProject->setFixedSize(START_BUTTON_SIZE);
     connect(btnLoadProject, &QPushButton::clicked, this, [this](bool)
     {
         emit pressed(GreetingWidget::StandartButtons::LoadProject);

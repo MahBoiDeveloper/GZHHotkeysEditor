@@ -1,12 +1,13 @@
 #include <QDir>
 #include <QImage>
 #include <QPixmap>
+#include <QFileInfo>
 
 #include "../../libwebp/src/webp/decode.h"
 #include "../Logger.hpp"
 #include "GUIConfig.hpp"
 
-QImage GUIConfig::DecodeWebpIcon(const QString& iconName)
+QImage ImageManager::DecodeWebpIcon(const QString& iconName)
 {
     // If it there, get the image from cache
     const auto it = ImagesCache.constFind(iconName);
@@ -30,27 +31,27 @@ QImage GUIConfig::DecodeWebpIcon(const QString& iconName)
     }
 }
 
-QImage GUIConfig::DecodeMissingWebpIcon()
+QImage ImageManager::DecodeMissingWebpIcon()
 {
     return DecodeWebpIconPath(MISSING_ICON_PATH);
 }
 
-QImage GUIConfig::DecodeEditorWebpIcon()
+QImage ImageManager::DecodeEditorWebpIcon()
 {
     return DecodeWebpIconPath(EDITOR_ICON_PATH);
 }
 
-QImage GUIConfig::DecodeBigEditorWebpIcon()
+QImage ImageManager::DecodeBigEditorWebpIcon()
 {
     return DecodeWebpIconPath(EDITOR_BIG_ICON_PATH);
 }
 
-QPixmap GUIConfig::GetGameObjectTypePixmap(GameObjectTypes entityType)
+QPixmap ImageManager::GetGameObjectTypePixmap(GameObjectTypes entityType)
 {
     return QPixmap{QT_ICONS_FOLDER + "/" + QString{"%1.webp"}.arg(ENTITIES_STRINGS.value(entityType))};
 }
 
-QFileInfo GUIConfig::FindIconFile(const QString& pathToIconsDir, const QString& fileBaseName)
+QFileInfo ImageManager::FindIconFile(const QString& pathToIconsDir, const QString& fileBaseName)
 {
     // Find all files and dirs in current directory
     QFileInfoList fileInfoList = QDir{pathToIconsDir}.entryInfoList(QDir::Filter::Files |
@@ -77,7 +78,7 @@ QFileInfo GUIConfig::FindIconFile(const QString& pathToIconsDir, const QString& 
     return QFileInfo{};
 }
 
-QImage GUIConfig::DecodeWebpIconPath(const QString& iconPath)
+QImage ImageManager::DecodeWebpIconPath(const QString& iconPath)
 {
     QFile iconFile(iconPath);
 
@@ -93,7 +94,7 @@ QImage GUIConfig::DecodeWebpIconPath(const QString& iconPath)
     return DecodeImageFromData(iconFile.readAll());
 }
 
-QImage GUIConfig::DecodeImageFromData(const QByteArray& iconData)
+QImage ImageManager::DecodeImageFromData(const QByteArray& iconData)
 {
     int width, height;
     uint8_t* decodedImage = WebPDecodeRGBA(reinterpret_cast<const uint8_t*>(iconData.constData()), // amogus

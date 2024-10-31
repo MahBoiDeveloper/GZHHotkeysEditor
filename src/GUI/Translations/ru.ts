@@ -222,22 +222,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="22"/>
+        <location filename="../../ProgramConstants.hpp" line="34"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="23"/>
+        <location filename="../../ProgramConstants.hpp" line="35"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="24"/>
+        <location filename="../../ProgramConstants.hpp" line="36"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="25"/>
+        <location filename="../../ProgramConstants.hpp" line="37"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>

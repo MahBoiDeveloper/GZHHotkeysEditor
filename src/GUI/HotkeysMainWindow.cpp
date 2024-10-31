@@ -36,7 +36,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     // Enable smooth scrolling
     pEntitiesTreeWidget->setVerticalScrollMode(QTreeWidget::ScrollMode::ScrollPerPixel);
     // Set icon size
-    pEntitiesTreeWidget->setIconSize(QSize{GUIConfig::ICON_MIN_HEIGHT, GUIConfig::ICON_MIN_HEIGHT});
+    pEntitiesTreeWidget->setIconSize(QSize{ICON_MIN_HEIGHT, ICON_MIN_HEIGHT});
     // entitiesTreeWidget.setSpacing(GUIConfig::entityIconMinimumHeight * 0.1);
 
     connect(pEntitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &HotkeysMainWindow::SetHotkeysPanels);
@@ -128,7 +128,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     
     QPushButton* btnEmptyButton= new QPushButton();
     btnEmptyButton->setProperty("key", "null");
-    btnEmptyButton->setFixedWidth(GUIConfig::EMPTY_KEY_WIDTH);
+    btnEmptyButton->setFixedWidth(EMPTY_KEY_WIDTH);
 
     pKeyboardFirstLine = CreateKeysOnKeyboard("QWERTYUIOP");
     pKeyboardSecondLine = CreateKeysOnKeyboard("ASDFGHJKL");
@@ -204,8 +204,8 @@ void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
         newTopEntityItem->setText(0, QCoreApplication::translate("QObject", ENTITIES_STRINGS.value(objectType).toUtf8().constData()));
 
         // Decorate
-        newTopEntityItem->setIcon(0, GUIConfig::GetGameObjectTypePixmap(objectType)
-                                               .scaledToHeight(GUIConfig::ICON_SCALING_HEIGHT, Qt::SmoothTransformation));
+        newTopEntityItem->setIcon(0, ImageManager::GetGameObjectTypePixmap(objectType)
+                                               .scaledToHeight(ICON_SCALING_HEIGHT, Qt::SmoothTransformation));
 
         // If there no objects by type - then skip
         if (goMap.keys(objectType).isEmpty()) continue;
@@ -215,7 +215,7 @@ void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
         {
             QTreeWidgetItem* currentNewEntityItem = new QTreeWidgetItem();
             currentNewEntityItem->setText(0, CSF_PARSER->GetStringValue(go.ingameName));
-            currentNewEntityItem->setIcon(0, QPixmap::fromImage(GUIConfig::DecodeWebpIcon(go.iconName)));
+            currentNewEntityItem->setIcon(0, QPixmap::fromImage(ImageManager::DecodeWebpIcon(go.iconName)));
             currentNewEntityItem->setData(0, Qt::UserRole, QVariant::fromValue(QPair{factionShortName, go.iconName}));
             newTopEntityItem->addChild(currentNewEntityItem);
         }
@@ -446,7 +446,7 @@ void HotkeysMainWindow::OnAbout()
     lblContent->addWidget(lblAboutText, 0, 0);
     
     QLabel* lblEditorIcon = new QLabel();
-    lblEditorIcon->setPixmap(QPixmap::fromImage(GUIConfig::DecodeBigEditorWebpIcon()));
+    lblEditorIcon->setPixmap(QPixmap::fromImage(ImageManager::DecodeBigEditorWebpIcon()));
     lblEditorIcon->setObjectName("right");
     lblContent->addWidget(lblEditorIcon, 0, 1);
 
@@ -494,7 +494,7 @@ QHBoxLayout* HotkeysMainWindow::CreateKeysOnKeyboard(const QString& str)
         auto tmp = new QPushButton(ch);
         tmp->setProperty("key", ch);
         tmp->setObjectName(ch);
-        tmp->setFixedWidth(GUIConfig::KEYBOARD_KEY_WIDTH);
+        tmp->setFixedWidth(KEYBOARD_KEY_WIDTH);
         pKeys->addWidget(tmp);
     }
     return pKeys;

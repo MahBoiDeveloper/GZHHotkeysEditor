@@ -19,8 +19,8 @@ ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
     // Object name for css
     hotkeyLabel.setObjectName("HotkeyLabel");
     hotkeyLabel.setEnabled(false);
-    hotkeyLabel.setMinimumSize(GUIConfig::DecodeMissingWebpIcon().size().width() + 15, // Checked for letter W
-                               GUIConfig::DecodeMissingWebpIcon().size().height());
+    hotkeyLabel.setMinimumSize(ImageManager::DecodeMissingWebpIcon().size().width() + 15, // Checked for letter W
+                               ImageManager::DecodeMissingWebpIcon().size().height());
 
     connect(&newHotkeyButton, &QPushButton::pressed, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
 
@@ -29,7 +29,7 @@ ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
     connect(&signalTimer, &QTimer::timeout, this, &ActionHotkeyWidget::SignalRepeatNewHotkey);
 
     QLabel* imageLb = new QLabel();
-    imageLb->setPixmap(QPixmap::fromImage(GUIConfig::DecodeWebpIcon(iconName)));
+    imageLb->setPixmap(QPixmap::fromImage(ImageManager::DecodeWebpIcon(iconName)));
 
     // Hotkey label
     hotkeyLabel.setAlignment(Qt::AlignCenter);
