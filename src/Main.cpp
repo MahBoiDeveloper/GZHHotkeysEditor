@@ -1,5 +1,6 @@
 // std headers
 #include <fcntl.h>   // Allows to use UTF-16 encoding as the default encoding
+#include <windows.h> // Allows disable console
 #include <iostream>
 
 // Qt headers
@@ -10,17 +11,19 @@
 // Project headers
 #include "GUI/WindowManager.hpp"
 #include "Parsers/CSFParser.hpp"
+#include "Parsers/JSONFile.hpp"
+#include "ProgramConstants.hpp"
 #include "Logger.hpp"
 
 using namespace std;
 
 int main(int argc, char** argv)
 {
-    // TODO:
-    //   Make it toggable via .json config
-
+    JSONFile settings{SETTINGS_PATH};
+    
     // Hides console
-    // ShowWindow(GetConsoleWindow(), SW_HIDE);
+    if (!settings.Query("$.DebugConsole").toBool()) 
+        ShowWindow(GetConsoleWindow(), SW_HIDE);
     
     // After this all out text to console MUST be showed via std::wcout and all chars should be converted as wchar_t
     _setmode(_fileno(stdout), _O_U16TEXT);
@@ -34,7 +37,7 @@ int main(int argc, char** argv)
 
     try
     {
-        WindowManager::Instance->Show();
+        WINDOW_MANAGER->Show();
         HotkeyEditor.exec();
     }
     catch (const exception& exception)
