@@ -2,7 +2,6 @@
 #include <fcntl.h>   // Allows to use UTF-16 encoding as the default encoding
 #include <windows.h> // Allows disable console
 #include <iostream>
-#include <filesystem>
 
 // Qt headers
 #include <QApplication>
@@ -23,9 +22,6 @@ int main(int argc, const char** argv)
     // After this all out text to console MUST be showed via std::wcout and all chars should be converted as wchar_t
     _setmode(_fileno(stdout), _O_U16TEXT);
     
-    if (!filesystem::exists("..\\..\\Logs"))
-        filesystem::create_directory("..\\..\\Logs");
-
     JSONFile settings(SETTINGS_PATH);
 
     // Hides console

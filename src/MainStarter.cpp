@@ -43,8 +43,8 @@ int main(int argc, const char** argv)
     while ((pos = realExecutablePath.find('/',pos)) != std::string::npos)
         realExecutablePath.replace(pos++, 1, "\\\\");
 
-    // Add commands from argv
-    for (int i = 0; i < argc; i++)
+    // Add commands from argv. Skip first argument because it is just MainStarter.cpp .exe name
+    for (int i = 1; i < argc; i++)
         realExecutablePath += std::string(" ") + std::string(argv[i]);
 
     // Call the main executable

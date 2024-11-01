@@ -1,4 +1,5 @@
 #include <ctime>
+#include <filesystem>
 #include <QMessageBox>
 #include <QDebug>
 
@@ -11,6 +12,8 @@ using namespace std;
 #pragma region ctor and dtor
     Logger::Logger()
     {
+        filesystem::create_directory("..\\..\\Logs");
+
         LogFile.open(GetLogFileName());
         
         if (!LogFile.is_open()) QMessageBox::critical(nullptr, EXCEPTION_HEADER, "Unable to create log file; Make sure \"Logs\" folder are exists.");

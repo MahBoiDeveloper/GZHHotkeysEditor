@@ -50,3 +50,10 @@ inline static const QMap<Languages, QPair<QString, QString>> LANGUAGES_STRINGS =
     {Languages::English, {"en", "English"}},
     {Languages::Russian, {"ru", "Русский"}}
 };
+
+inline static const QMap<QChar, Qt::Key> KEYBOARD_KEYS = 
+{
+    {'Q', Qt::Key_Q}, {'W', Qt::Key_W}, {'E', Qt::Key_E}, {'R', Qt::Key_R}, {'T', Qt::Key_T}, {'Y', Qt::Key_Y}, {'U', Qt::Key_U}, {'I', Qt::Key_I}, {'O', Qt::Key_O}, {'P', Qt::Key_P},
+    {'A', Qt::Key_A}, {'S', Qt::Key_S}, {'D', Qt::Key_D}, {'F', Qt::Key_F}, {'G', Qt::Key_G}, {'H', Qt::Key_H}, {'J', Qt::Key_J}, {'K', Qt::Key_K}, {'L', Qt::Key_L}, 
+    {'Z', Qt::Key_Z}, {'X', Qt::Key_X}, {'C', Qt::Key_C}, {'V', Qt::Key_V}, {'B', Qt::Key_B}, {'N', Qt::Key_N}, {'M', Qt::Key_M}
+};
