@@ -48,6 +48,9 @@ jobs:
       - name: Compile Project
         shell: cmd
         run: |
+          :: Remove previous cmake build folder
+          
+          rmdir /s /q build >nul 2>nul
           :: Link MinGW to system variables
           mkdir C:\Qt\Tools > nul
           mklink C:\Qt\Tools\mingw_64 C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64 > nul
