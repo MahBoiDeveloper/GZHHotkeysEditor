@@ -1,6 +1,6 @@
 {
     "Theme"        : "Default",
-    "DebugConsole" : false,
+    "DebugConsole" : true,
     "DiscordRPC"   : false,
 
     "AllowedHotkeys" :
