@@ -18,4 +18,6 @@ namespace Unsorted
     inline Languages     GetLangEnumByLocale(const QString& locale);
     /// @brief Return enum Languages value that equivalent to the text value.
     Languages GetLangEnumByLocale(const std::string& locale);
+    /// @brief Converts QChar to Qt::Key enum equivalent.
+    Qt::Key ToQtKey(const QChar& ch);
 }

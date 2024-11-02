@@ -5,18 +5,8 @@
 
     "AllowedHotkeys" :
     [
-        "Q", "W", "E", "R", "T", "Y", "U", "O", "P",
+        "R", "T", "Y", "U", "O", "I", "P",
         "A", "S", "D", "F", "G", "H", "J", "K", "L",
         "Z", "X", "C", "V", "B", "N", "M"
-    ],
-
-    "ForbiddenHotkeys" :
-    [
-        
-    ],
-
-    "IgnoreCSFKeysPairCollision" : 
-    [
-        {"1" : "CONTROLBAR:UpgradeChinaMines", "2" : "CONTROLBAR:UpgradeEMPMines"}
     ]
 }

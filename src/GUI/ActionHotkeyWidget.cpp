@@ -79,7 +79,7 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
     }
 
     int key = event->key();
-    if (key >= AVAILABLE_KEYS.first && key <= AVAILABLE_KEYS.second)
+    if (PROGRAM_CONSTANTS->GetAllowedKeys().contains(static_cast<Qt::Key>(key)))
     {
         // Set new text
         hotkey = QKeySequence(key).toString();
@@ -93,7 +93,10 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
     }
     else
     {
-        hotkeyLabel.setText(tr("It isn't latin key..."));
+        if (KEYBOARD_KEYS.contains(key))
+            hotkeyLabel.setText(tr("This key doesn't allowed!"));
+        else
+            hotkeyLabel.setText(tr("It isn't latin key!"));
         
         // Start the signal timer with a delay of n seconds
         if (signalTimer.isActive())

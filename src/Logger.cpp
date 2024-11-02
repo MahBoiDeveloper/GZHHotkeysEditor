@@ -1,3 +1,4 @@
+#include <windows.h>
 #include <ctime>
 #include <filesystem>
 #include <QMessageBox>
@@ -12,11 +13,17 @@ using namespace std;
 #pragma region ctor and dtor
     Logger::Logger()
     {
-        filesystem::create_directory("..\\..\\Logs");
-
         LogFile.open(GetLogFileName());
         
-        if (!LogFile.is_open()) QMessageBox::critical(nullptr, EXCEPTION_HEADER, "Unable to create log file; Make sure \"Logs\" folder are exists.");
+        // Due to Logger is a singleton, we must create check if folder Logs exists.
+        if (!LogFile.is_open())
+        {
+            filesystem::create_directory("..\\..\\Logs");
+            LogFile.open(string("..\\..\\") + GetLogFileName());
+        }
+
+        if (!LogFile.is_open()) 
+            QMessageBox::critical(nullptr, EXCEPTION_HEADER, "Unable to create log file; Make sure \"Logs\" folder are exists.");
         
         string title   = "C&C Generals and Generals Zero Hour hotkey editor";
         string version = string("Version: ") + VERSION;
@@ -27,6 +34,8 @@ using namespace std;
         LogFile << endl; qDebug() << "";
 
         LogSystemInformation();
+
+        Log(filesystem::current_path().c_str());
     }
 
     Logger::~Logger()

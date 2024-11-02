@@ -30,9 +30,8 @@ using namespace std;
         }
     }
 
-    JSONFile::JSONFile(const char* filePath)        : JSONFile{QString{filePath}}                {}
-
-    JSONFile::JSONFile(const std::string& filePath) : JSONFile{QString::fromStdString(filePath)} {}
+    JSONFile::JSONFile(const char* filePath)        {JSONFile(QString(filePath));}
+    JSONFile::JSONFile(const std::string& filePath) {JSONFile(QString::fromStdString(filePath));}
 #pragma endregion
 
 #pragma region Getters

@@ -11,6 +11,7 @@
 #include "../Parsers/CSFParser.hpp"
 #include "../Info.hpp"
 #include "../Logger.hpp"
+#include "../Unsorted.hpp"
 
 #include "ActionHotkeyWidget.hpp"
 #include "ImageManager.hpp"
@@ -343,6 +344,9 @@ void HotkeysMainWindow::HighlightCurrentKeys()
 
             if (keysCollisions.count(thisHotkey) < 2) hotkeyWidget->HighlightKey(false);
             else                                      hotkeyWidget->HighlightKey(true);
+
+            if (!PROGRAM_CONSTANTS->GetAllowedKeys().contains(Unsorted::ToQtKey(thisHotkey[0])))
+                hotkeyWidget->HighlightKey(true);
         }
     }
 }
@@ -374,6 +378,9 @@ void HotkeysMainWindow::UpdateKeyboardStatus(int id)
 
         if (accum.count(ch) < 2) key->setProperty("status", "good");
         else                     key->setProperty("status", "bad");
+
+        if (!PROGRAM_CONSTANTS->GetAllowedKeys().contains(Unsorted::ToQtKey(ch)))
+            key->setProperty("status", "bad");
         
         key->style()->unpolish(key);
         key->style()->polish(key);

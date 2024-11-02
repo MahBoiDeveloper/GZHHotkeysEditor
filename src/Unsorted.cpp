@@ -47,4 +47,9 @@ namespace Unsorted
     {
         return LANGUAGES_STRINGS.value(language).second;
     }
+
+    Qt::Key ToQtKey(const QChar& ch)
+    {
+        return static_cast<Qt::Key>(QChar(ch).unicode());
+    }
 }

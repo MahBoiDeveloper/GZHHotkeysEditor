@@ -2,6 +2,7 @@
 #include <fcntl.h>   // Allows to use UTF-16 encoding as the default encoding
 #include <windows.h> // Allows disable console
 #include <iostream>
+#include <filesystem>
 
 // Qt headers
 #include <QApplication>
@@ -21,11 +22,22 @@ int main(int argc, const char** argv)
 {
     // After this all out text to console MUST be showed via std::wcout and all chars should be converted as wchar_t
     _setmode(_fileno(stdout), _O_U16TEXT);
+
+    QString workingDirectory = QString::fromStdWString(filesystem::current_path().c_str());
     
-    JSONFile settings(SETTINGS_PATH);
+    if (workingDirectory.indexOf(BINARIES_FOLDER) != -1)
+    {
+        LOGMSG("Program started from Resources\\Binaries folder. Redirect working directory to the ..\\..\\");
+        LOGMSG("Before redirect: " + workingDirectory);
+        LOGMSG("After redirect:  " + workingDirectory.replace(BINARIES_FOLDER, "", Qt::CaseSensitive));
+        filesystem::current_path(workingDirectory.toStdWString());
+    }
+
+    // Calls parsing from Settings.json
+    PROGRAM_CONSTANTS = make_unique<ProgramConstants>();
 
     // Hides console
-    if (!settings.Query("$.DebugConsole").toBool()) 
+    if (!PROGRAM_CONSTANTS->IsConsoleEnabled()) 
         ShowWindow(GetConsoleWindow(), SW_HIDE);
 
     // Initialize main qt application
