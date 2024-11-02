@@ -2,6 +2,7 @@
 #include <QFileInfo>
 
 #include "../Logger.hpp"
+#include "../Convert.hpp"
 #include "../Unsorted.hpp"
 #include "../Registry.hpp"
 #include "../ProgramConstants.hpp"
@@ -28,7 +29,7 @@ WindowManager::WindowManager()
     }
 
     LOGMSG("Loading launch window...");
-    pLaunchWidget = std::make_unique<LaunchWidget>(Unsorted::GetLangEnumByLocale(Registry::GetCurrentUserLanguage()));
+    pLaunchWidget = std::make_unique<LaunchWidget>(Convert::ToLangEnum(Registry::GetCurrentUserLanguage()));
     pLaunchWidget->setWindowTitle(WindowName);
     LOGMSG("Launch window has been loaded");
 

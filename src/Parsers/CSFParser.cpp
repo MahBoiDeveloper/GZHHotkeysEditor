@@ -1,4 +1,5 @@
 #include "../Logger.hpp"
+#include "../Convert.hpp"
 #include "../Unsorted.hpp"
 #include "../Exception.hpp"
 #include "CSFParser.hpp"
@@ -265,7 +266,7 @@ using namespace std;
     QStringList CSFParser::GetCategoryStrings(const QString& strCategoryName) const
     {
         list<string> tmp = GetCategoryStrings(strCategoryName.toStdString());
-        return Unsorted::STDStringListToQStringList(tmp);
+        return Convert::ToQStringList(tmp);
     }
 
     list<string> CSFParser::GetCategoryStringsWithFullNames(const string& strCategoryName) const
@@ -283,7 +284,7 @@ using namespace std;
     QStringList CSFParser::GetCategoryStringsWithFullNames(const QString& strCategoryName) const
     {
         list<string> tmp = GetCategoryStringsWithFullNames(strCategoryName.toStdString());
-        return Unsorted::STDStringListToQStringList(tmp);
+        return Convert::ToQStringList(tmp);
     }
     
     list<string> CSFParser::GetStringsContainsSymbol(const wchar_t& wch) const
