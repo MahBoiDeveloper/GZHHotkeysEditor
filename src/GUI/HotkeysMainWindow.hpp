@@ -28,8 +28,9 @@ private: // Data
     QScrollArea*  pKeyboardWindow       = nullptr;
 
     // Renewable widgets
-    QTabWidget*   pHotkeysPanelsWidget  = nullptr;
-    QDialog*      pAboutDialog          = nullptr;
+    QTabWidget*   pHotkeysPanelsWidget    = nullptr;
+    QDialog*      pAboutDialog            = nullptr;
+    QDialog*      pWindowToChangeLanguage = nullptr;
 
     QVector<QSet<ActionHotkeyWidget*>> vHotkeyWidgets;
 
@@ -60,4 +61,7 @@ private slots:
     void OnAbout();
     void OnLanguageChange();
     void UpdateKeyboardStatus(int id = 0);
+
+signals:
+    Languages languageChanged(int index);
 };

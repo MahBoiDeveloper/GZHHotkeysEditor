@@ -5,7 +5,6 @@
 #include "../Convert.hpp"
 #include "../Unsorted.hpp"
 #include "../Registry.hpp"
-#include "../ProgramConstants.hpp"
 
 #include "ImageManager.hpp"
 #include "WindowManager.hpp"
@@ -60,8 +59,14 @@ void WindowManager::SetTranslator(Languages lngType)
     // Create new translator
     if (lngType != Languages::English)
     {
+        Language       = lngType;
         pAppTranslator = new QTranslator();
         pAppTranslator->load(lngShortName, TRANSLATIONS_FOLDER);
         qApp->installTranslator(pAppTranslator);
     }
+}
+
+Languages WindowManager::GetLanguage()
+{
+    return Language;
 }

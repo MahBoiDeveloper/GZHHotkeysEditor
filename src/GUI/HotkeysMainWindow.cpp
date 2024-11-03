@@ -1,3 +1,4 @@
+#include <QApplication>
 #include <QMenuBar>
 #include <QHeaderView>
 #include <QCoreApplication>
@@ -7,6 +8,7 @@
 #include <QVBoxLayout>
 #include <QTreeWidgetItem>
 #include <QScrollArea>
+#include <QComboBox>
 
 #include "../Parsers/CSFParser.hpp"
 #include "../Info.hpp"
@@ -482,16 +484,75 @@ void HotkeysMainWindow::OnAbout()
 
 void HotkeysMainWindow::OnLanguageChange()
 {
-    QDialog* pWindowToChangeLanugage = new QDialog{this};
-    pWindowToChangeLanugage->setWindowTitle(tr("Lanugage"));
-    pWindowToChangeLanugage->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    pWindowToChangeLanugage->setWindowFlags(pWindowToChangeLanugage->windowFlags() &
+    // if dialog already exists
+    if (pWindowToChangeLanguage != nullptr)
+    {
+        pWindowToChangeLanguage->activateWindow();
+        return;
+    }
+
+    Languages currLang = WINDOW_MANAGER->GetLanguage();
+    Languages actLang = Languages::English;
+
+    pWindowToChangeLanguage = new QDialog{this};
+    pWindowToChangeLanguage->setWindowTitle(tr("Lanugage"));
+    pWindowToChangeLanguage->setObjectName("WindowToChangeLanguage");
+    pWindowToChangeLanguage->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    // pWindowToChangeLanguage->setFixedSize(LANGUAGE_CHANGE_SIZE);
+    pWindowToChangeLanguage->setWindowFlags(pWindowToChangeLanguage->windowFlags() &
                                ~Qt::WindowContextHelpButtonHint |
                                 Qt::MSWindowsFixedSizeDialogHint);
 
-    pWindowToChangeLanugage->show();
-    pWindowToChangeLanugage->raise();
-    pWindowToChangeLanugage->activateWindow();
+    QHBoxLayout* ltLanguageAndCombobox = new QHBoxLayout();
+    QLabel*      lblLanguage           = new QLabel(tr("LANGUAGE"));
+    QComboBox*   cmbLangList           = new QComboBox();
+
+    for (int i = 0; i < static_cast<int>(Languages::Count); ++i)
+        cmbLangList->addItem(Unsorted::GetLanguageFullName(static_cast<Languages>(i)));
+    
+    cmbLangList->setCurrentIndex(static_cast<int>(currLang));
+
+    ltLanguageAndCombobox->addWidget(lblLanguage);
+    ltLanguageAndCombobox->addWidget(cmbLangList);
+
+    QHBoxLayout*  ltOkAndCancel   = new QHBoxLayout();
+    QPushButton*  btnOk           = new QPushButton(tr("OK"));
+    QPushButton*  btnCancel       = new QPushButton(tr("Cancel"));
+    ltOkAndCancel->addWidget(btnOk);
+    ltOkAndCancel->addWidget(btnCancel);
+
+    QVBoxLayout* ltMainBlock = new QVBoxLayout();
+    ltMainBlock->addLayout(ltLanguageAndCombobox);
+    ltMainBlock->addLayout(ltOkAndCancel);
+
+    pWindowToChangeLanguage->setLayout(ltMainBlock);
+    pWindowToChangeLanguage->show();
+    pWindowToChangeLanguage->raise();
+    pWindowToChangeLanguage->activateWindow();
+
+    // Todo:
+    // Make it work. Need to recreate HotkeysMainWindow through WindowManager
+    connect(cmbLangList, QOverload<int>::of(&QComboBox::activated), this, &HotkeysMainWindow::languageChanged);
+
+    connect(pWindowToChangeLanguage, &QDialog::finished, this, [this]()
+    {
+        pWindowToChangeLanguage->deleteLater();
+        pWindowToChangeLanguage = nullptr;
+    });
+
+    // Todo:
+    // Make apply changes after
+    connect(btnCancel, &QPushButton::clicked, this, [this]()
+    {
+        pWindowToChangeLanguage->deleteLater();
+        pWindowToChangeLanguage = nullptr;
+    });
+
+    connect(btnOk, &QPushButton::clicked, this, [this]()
+    {
+        pWindowToChangeLanguage->deleteLater();
+        pWindowToChangeLanguage = nullptr;
+    });
 }
 
 QHBoxLayout* HotkeysMainWindow::CreateKeysOnKeyboard(const QString& str)

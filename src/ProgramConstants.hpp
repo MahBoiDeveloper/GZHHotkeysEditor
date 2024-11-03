@@ -15,6 +15,7 @@ inline const static QString TECH_TREE_PATH          = RESOURCE_FOLDER + "/TechTr
 inline const static QString SETTINGS_PATH           = RESOURCE_FOLDER + "/Settings.json";
 inline const static double  START_WIDGET_SIZE_RATIO = 3./7.;
 inline const static QSize   START_BUTTON_SIZE       = QSize(230, 110);
+inline const static QSize   LANGUAGE_CHANGE_SIZE    = QSize(250, 100);
 inline const static int     ICON_MIN_HEIGHT         = 80;
 inline const static int     ICON_SCALING_HEIGHT     = 25;
 inline const static int     KEYBOARD_KEY_WIDTH      = 50;

@@ -12,7 +12,7 @@ LaunchWidget::LaunchWidget(Languages lngType, QWidget* parent) : QStackedWidget(
     setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint &
                                    ~Qt::WindowMinimizeButtonHint);
     
-    WindowManager::Instance->SetTranslator(lngType);
+    WINDOW_MANAGER->SetTranslator(lngType);
     pStartWidget = new GreetingWidget{lngType};
     addWidget(pStartWidget);
     UpdateConnectionsToSignals();
@@ -32,7 +32,7 @@ void LaunchWidget::OnChangeLanguage(int intLngIndex)
     Languages lngType = static_cast<Languages>(intLngIndex);
 
     // Change class' translator.
-    WindowManager::Instance->SetTranslator(lngType);
+    WINDOW_MANAGER->SetTranslator(lngType);
 
     // Recreate StartWidget and update connections.
     pStartWidget->deleteLater();

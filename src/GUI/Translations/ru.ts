@@ -114,70 +114,85 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="175"/>
+        <location filename="../HotkeysMainWindow.cpp" line="177"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="176"/>
+        <location filename="../HotkeysMainWindow.cpp" line="178"/>
         <source>Special</source>
         <translation>Доп</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="178"/>
+        <location filename="../HotkeysMainWindow.cpp" line="180"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="180"/>
+        <location filename="../HotkeysMainWindow.cpp" line="182"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="183"/>
+        <location filename="../HotkeysMainWindow.cpp" line="185"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="187"/>
-        <location filename="../HotkeysMainWindow.cpp" line="462"/>
+        <location filename="../HotkeysMainWindow.cpp" line="189"/>
+        <location filename="../HotkeysMainWindow.cpp" line="464"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="315"/>
+        <location filename="../HotkeysMainWindow.cpp" line="317"/>
         <source>Layout %1</source>
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="442"/>
+        <location filename="../HotkeysMainWindow.cpp" line="444"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="443"/>
+        <location filename="../HotkeysMainWindow.cpp" line="445"/>
         <source>Version: </source>
         <translation>Версия: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="444"/>
+        <location filename="../HotkeysMainWindow.cpp" line="446"/>
         <source>Program licensed with </source>
         <translation>Программа лицензирована под </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="445"/>
+        <location filename="../HotkeysMainWindow.cpp" line="447"/>
         <source>GitHub repository:</source>
         <translation>Репозиторий на GitHub:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="447"/>
+        <location filename="../HotkeysMainWindow.cpp" line="449"/>
         <source>Support development:</source>
         <translation>Поддержать разработку:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="486"/>
+        <location filename="../HotkeysMainWindow.cpp" line="498"/>
         <source>Lanugage</source>
         <translation>Язык</translation>
+    </message>
+    <message>
+        <location filename="../HotkeysMainWindow.cpp" line="507"/>
+        <source>LANGUAGE</source>
+        <translation>ЯЗЫК</translation>
+    </message>
+    <message>
+        <location filename="../HotkeysMainWindow.cpp" line="519"/>
+        <source>OK</source>
+        <translation>Ок</translation>
+    </message>
+    <message>
+        <location filename="../HotkeysMainWindow.cpp" line="520"/>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
     </message>
     <message>
         <source>Program licensed by GNU GPL v3</source>
@@ -231,22 +246,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="39"/>
+        <location filename="../../ProgramConstants.hpp" line="40"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="40"/>
+        <location filename="../../ProgramConstants.hpp" line="41"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="41"/>
+        <location filename="../../ProgramConstants.hpp" line="42"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="42"/>
+        <location filename="../../ProgramConstants.hpp" line="43"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>
