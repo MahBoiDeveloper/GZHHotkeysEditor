@@ -18,10 +18,25 @@
 
 using namespace std;
 
+int ShowErrorMessage(const char* txt)
+{
+    // Log exception message
+    LOGGER->LogException(txt);
+    
+    // And show it to user
+    QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, txt);
+
+    // Also return -1 as error
+    return -1;
+}
+
 int main(int argc, const char** argv)
 {
     // After this all out text to console MUST be showed via std::wcout and all chars should be converted as wchar_t
     _setmode(_fileno(stdout), _O_U16TEXT);
+
+    // Initialize main Qt application
+    QApplication HotkeyEditor(argc, const_cast<char**>(argv));
 
     QString workingDirectory = QString::fromStdWString(filesystem::current_path().c_str());
     
@@ -33,15 +48,27 @@ int main(int argc, const char** argv)
         filesystem::current_path(workingDirectory.toStdWString());
     }
 
-    // Calls parsing from Settings.json
+    if (!filesystem::exists(SETTINGS_PATH.toStdString().c_str()))
+        return ShowErrorMessage(SETTINGS_NO_FOUND);
+
+    if (!filesystem::exists(TECH_TREE_PATH.toStdString().c_str()))
+        return ShowErrorMessage(TECH_TREE_NO_FOUND);
+
+    if (!filesystem::exists(ICONS_FOLDER.toStdString().c_str()))
+        return ShowErrorMessage(ICONS_FOLDER_NO_FOUND);
+
+    if (!filesystem::exists(THEME_FOLDER.toStdString().c_str()))
+        return ShowErrorMessage(THEME_FOLDER_NO_FOUND);
+
+    if (!filesystem::exists(TRANSLATIONS_FOLDER.toStdString().c_str()))
+        return ShowErrorMessage(TRANSLATIONS_NO_FOUND);
+
+    // Call parsing the Settings.json
     PROGRAM_CONSTANTS = make_unique<ProgramConstants>();
 
     // Hides console
     if (!PROGRAM_CONSTANTS->IsConsoleEnabled()) 
         ShowWindow(GetConsoleWindow(), SW_HIDE);
-
-    // Initialize main qt application
-    QApplication HotkeyEditor(argc, const_cast<char**>(argv));
 
     // Define logger as a singleton class, that could be used anywhere in project
     WINDOW_MANAGER = make_unique<WindowManager>();
@@ -52,35 +79,11 @@ int main(int argc, const char** argv)
         WINDOW_MANAGER->Show();
         HotkeyEditor.exec();
     }
-    catch (const exception& exception)
-    {
-        // Log exception message
-        LOGGER->LogException(exception.what());
-
-        // And show it to user
-        QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, exception.what());
-    }
-    catch (const char* msg)
-    {
-        LOGGER->LogException(msg);
-        QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, msg);
-    }
-    catch (const string& msg)
-    {
-        LOGGER->LogException(msg.c_str());
-        QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, msg.c_str());
-    }
-    catch (const QString& msg)
-    {
-        LOGGER->LogException(msg.toStdString().c_str());
-        QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, msg.toStdString().c_str());
-    }
-    catch (...)
-    {
-        const char* tmp = "Unknown error has been occured.";
-        LOGGER->LogException(tmp);
-        QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, tmp);
-    }
+    catch (const exception& exception) { return ShowErrorMessage(exception.what()); }
+    catch (const char* msg)            { return ShowErrorMessage(msg); }
+    catch (const string& msg)          { return ShowErrorMessage(msg.c_str()); }
+    catch (const QString& msg)         { return ShowErrorMessage(msg.toStdString().c_str()); }
+    catch (...)                        { return ShowErrorMessage(UNKNOWN_ERROR); }
 
     return 0;
 }

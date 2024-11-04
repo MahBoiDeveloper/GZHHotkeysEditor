@@ -2,13 +2,12 @@
 
 #define EXCEPTION_HEADER "I'VE GOT A PRESENT FOR YA"
 #define RESOURCES "Resources"
-#define BINARIES "Resources\\Binaries"
+#define BINARIES "Resources/Binaries"
 
 #include <cstdlib>
 #include <string>
 #include <filesystem>
 #include <iostream>
-// #include <QMessageBox>
 
 // Links local executable to the main application of the project
 int main(int argc, const char** argv)
@@ -21,7 +20,6 @@ int main(int argc, const char** argv)
         std::cout << "Folder \""<< RESOURCES <<"\" doesn't exist!" << std::endl 
                   << "You cannot use Hotkey Editor without configs and Qt binary files." << std::endl
                   << "Check your installation instruction." << std::endl;
-        // QMessageBox::critical(nullptr, EXCEPTION_HEADER, "Folder \"Resources\" is empty!\n Checkout installation instruction.");
         return -1;
     }
 
@@ -30,7 +28,6 @@ int main(int argc, const char** argv)
         std::cout << "Folder \"" << BINARIES << "\" doesn't exist!" << std::endl 
                   << "You cannot use Hotkey Editor without Qt binary files." << std::endl
                   << "Check your installation instruction." << std::endl;
-        // QMessageBox::critical(nullptr, EXCEPTION_HEADER, "Folder \"Resources\" is empty!\n Checkout installation instruction.");
         return -1;
     }
     

@@ -21,11 +21,18 @@ inline const static int     ICON_SCALING_HEIGHT     = 25;
 inline const static int     KEYBOARD_KEY_WIDTH      = 50;
 inline const static int     EMPTY_KEY_WIDTH         = 25;
 inline const static QString ICONS_FOLDER            = RESOURCE_FOLDER + "/Icons";
-inline const static QString STYLES_SHEET            = RESOURCE_FOLDER + "/Theme/Styles.css";
+inline const static QString THEME_FOLDER            = RESOURCE_FOLDER + "/Theme";
+inline const static QString STYLES_SHEET            = THEME_FOLDER + "/Styles.css";
 inline const static QString QT_ICONS_FOLDER         = ":/icons";
 inline const static QString MISSING_ICON_PATH       = QT_ICONS_FOLDER + "/NoImageSmall.webp";
 inline const static QString EDITOR_ICON_PATH        = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
 inline const static QString EDITOR_BIG_ICON_PATH    = QT_ICONS_FOLDER + "/EditorIconBig.webp";
+inline const static char*   SETTINGS_NO_FOUND       = "Unable to find Settings.json in Resource folder.";
+inline const static char*   TECH_TREE_NO_FOUND      = "Unable to find TechTree.json in Resource folder.";
+inline const static char*   THEME_FOLDER_NO_FOUND   = "Unable to find Resource/Theme folder.";
+inline const static char*   ICONS_FOLDER_NO_FOUND   = "Unable to find Resource/Icons folder.";
+inline const static char*   TRANSLATIONS_NO_FOUND   = "Unable to find Resource/Translations folder.";
+inline const static char*   UNKNOWN_ERROR           = "Unknown error has been occured.";
 
 enum class GameObjectTypes
 {
