@@ -21,6 +21,9 @@
 #include "HotkeysMainWindow.hpp"
 #include "WindowManager.hpp"
 
+#define HEIGTH 1200
+#define WIDTH 800
+
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
     : QMainWindow(parent)
     , pFactionsButtonsGroup{new QButtonGroup{this}}
@@ -30,10 +33,14 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     , pHotkeysPanelsWidget{nullptr}
     , pAboutDialog{nullptr}
 {
+    QVector<QString> vUSAFactionsShortName = {"USA", "SWG", "AIR", "LSR"};
+    QVector<QString> vPRCFactionsShortName = {"PRC", "NUK", "INF", "TNK"};
+    QVector<QString> vGLAFactionsShortName = {"GLA", "TOX", "STL", "DML"};
+
     SetFactions();
     LOGMSG("Total faction count that has been read from json file: " + factionVector.size());
 
-    resize(1200, 800);
+    resize(HEIGTH, WIDTH);
     ConfigureMenu();
 
     pEntitiesTreeWidget->header()->hide();
@@ -65,22 +72,13 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
                 QPushButton* factionButton = new QPushButton{currFaction.GetDisplayName()};
                 
                 auto shortName = currFaction.GetShortName();
-                if (shortName == "USA" || 
-                    shortName == "SWG" ||
-                    shortName == "AIR" ||
-                    shortName == "LSR")
+                if (vUSAFactionsShortName.contains(shortName))
                     ;
 
-                if (shortName == "PRC" || 
-                    shortName == "TNK" ||
-                    shortName == "INF" ||
-                    shortName == "NUK")
+                if (vPRCFactionsShortName.contains(shortName))
                     factionButton->setProperty("faction", "PRC");
                 
-                if (shortName == "GLA" || 
-                    shortName == "TOX" ||
-                    shortName == "STL" ||
-                    shortName == "DML")
+                if (vGLAFactionsShortName.contains(shortName))
                     factionButton->setProperty("faction", "GLA");
 
                 connect(factionButton, &QPushButton::pressed, this, [=, this]()
