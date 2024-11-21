@@ -128,7 +128,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     QHBoxLayout* pKeyboardFirstLine;
     QHBoxLayout* pKeyboardSecondLine;
     QHBoxLayout* pKeyboardThirdLine;
-    QVBoxLayout* pKeyboardLines      = new QVBoxLayout();
+    QVBoxLayout* pKeyboardLines = new QVBoxLayout();
     
     QPushButton* btnEmptyButton= new QPushButton();
     btnEmptyButton->setProperty("key", "null");
@@ -283,6 +283,8 @@ void HotkeysMainWindow::SetHotkeysPanels()
             ActionHotkeyWidget* actionHotkey = new ActionHotkeyWidget{CSF_PARSER->GetClearName(currAction.hotkeyString), 
                                                                       CSF_PARSER->GetHotkey(currAction.hotkeyString),
                                                                       currAction.iconName};
+
+            actionHotkey->setToolTip(currAction.hotkeyString + "\n\n" + CSF_PARSER->GetStringValue(currAction.hotkeyString));
 
             connect(actionHotkey, &ActionHotkeyWidget::HotkeyChanged, this, [=, this](const QString& newHotkey)
             {
