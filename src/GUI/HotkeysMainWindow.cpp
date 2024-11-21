@@ -23,6 +23,7 @@
 
 #define HEIGTH 1200
 #define WIDTH 800
+#define ARRAY_BEGIN 0
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
     : QMainWindow(parent)
@@ -148,13 +149,21 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 
     pKeyboardWindow->setLayout(pKeyboardLines);
 
+    enum Stretch
+    {
+        HotkeysArea = 2,
+        KeyboardWindow = 1,
+        EntitiesTreeWidget = 4,
+        GameObject = 7
+    };
+
     QVBoxLayout* ltGameObject = new QVBoxLayout();
-    ltGameObject->addWidget(pHotkeysArea, 2);
-    ltGameObject->addWidget(pKeyboardWindow, 1);
+    ltGameObject->addWidget(pHotkeysArea, Stretch::HotkeysArea);
+    ltGameObject->addWidget(pKeyboardWindow, Stretch::KeyboardWindow);
 
     QHBoxLayout* ltContent = new QHBoxLayout();
-    ltContent->addWidget(pEntitiesTreeWidget, 4);
-    ltContent->addLayout(ltGameObject, 7);
+    ltContent->addWidget(pEntitiesTreeWidget, Stretch::EntitiesTreeWidget);
+    ltContent->addLayout(ltGameObject, Stretch::GameObject);
 
     QVBoxLayout* ltMain = new QVBoxLayout();
     ltMain->addLayout(ltFactions);
@@ -269,7 +278,7 @@ void HotkeysMainWindow::SetHotkeysPanels()
     vHotkeyWidgets.clear();
 
     // Panel index
-    int i = 0;
+    int i = ARRAY_BEGIN;
     
     for (const auto& currLayout : gameObjectKeyboardLayouts)
     {
@@ -370,7 +379,12 @@ void HotkeysMainWindow::UpdateKeyboardStatus(int id)
 {
     NullifyKeyboardStatus();
     auto currTab = pHotkeysPanelsWidget->findChild<QWidget*>(QString("Layout ") + QString::number(id + 1), Qt::FindChildrenRecursively);
-        
+    if (currTab == nullptr)
+    {
+        LOGMSG("Error: unable to find keyboard \"Layout\" widget!");
+        return;
+    }
+
     QString accum;
     for (const auto& elem : currTab->findChildren<ActionHotkeyWidget*>(QString(), Qt::FindChildrenRecursively))
         accum += QString(elem->GetHotkey());
