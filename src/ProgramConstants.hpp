@@ -8,31 +8,34 @@
 
 #define PROGRAM_CONSTANTS ProgramConstants::Instance
 
-inline const static QString RESOURCE_FOLDER         = "Resources";
-inline const static QString BINARIES_FOLDER         = RESOURCE_FOLDER + "\\Binaries";
-inline const static QString TRANSLATIONS_FOLDER     = RESOURCE_FOLDER + "/Translations";
-inline const static QString TECH_TREE_PATH          = RESOURCE_FOLDER + "/TechTree.json";
-inline const static QString SETTINGS_PATH           = RESOURCE_FOLDER + "/Settings.json";
-inline const static double  START_WIDGET_SIZE_RATIO = 3./7.;
-inline const static QSize   START_BUTTON_SIZE       = QSize(230, 110);
-inline const static QSize   LANGUAGE_CHANGE_SIZE    = QSize(250, 100);
-inline const static int     ICON_MIN_HEIGHT         = 80;
-inline const static int     ICON_SCALING_HEIGHT     = 25;
-inline const static int     KEYBOARD_KEY_WIDTH      = 50;
-inline const static int     EMPTY_KEY_WIDTH         = 25;
-inline const static QString ICONS_FOLDER            = RESOURCE_FOLDER + "/Icons";
-inline const static QString THEME_FOLDER            = RESOURCE_FOLDER + "/Theme";
-inline const static QString STYLES_SHEET            = THEME_FOLDER + "/Styles.css";
-inline const static QString QT_ICONS_FOLDER         = ":/icons";
-inline const static QString MISSING_ICON_PATH       = QT_ICONS_FOLDER + "/NoImageSmall.webp";
-inline const static QString EDITOR_ICON_PATH        = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
-inline const static QString EDITOR_BIG_ICON_PATH    = QT_ICONS_FOLDER + "/EditorIconBig.webp";
-inline const static char*   SETTINGS_NO_FOUND       = "Unable to find Settings.json in Resource folder.";
-inline const static char*   TECH_TREE_NO_FOUND      = "Unable to find TechTree.json in Resource folder.";
-inline const static char*   THEME_FOLDER_NO_FOUND   = "Unable to find Resource/Theme folder.";
-inline const static char*   ICONS_FOLDER_NO_FOUND   = "Unable to find Resource/Icons folder.";
-inline const static char*   TRANSLATIONS_NO_FOUND   = "Unable to find Resource/Translations folder.";
-inline const static char*   UNKNOWN_ERROR           = "Unknown error has been occured.";
+inline const static QString          RESOURCE_FOLDER         = "Resources";
+inline const static QString          BINARIES_FOLDER         = RESOURCE_FOLDER + "\\Binaries";
+inline const static QString          TRANSLATIONS_FOLDER     = RESOURCE_FOLDER + "/Translations";
+inline const static QString          TECH_TREE_PATH          = RESOURCE_FOLDER + "/TechTree.json";
+inline const static QString          SETTINGS_PATH           = RESOURCE_FOLDER + "/Settings.json";
+inline const static double           START_WIDGET_SIZE_RATIO = 3./7.;
+inline const static QSize            START_BUTTON_SIZE       = QSize(230, 110);
+inline const static QSize            LANGUAGE_CHANGE_SIZE    = QSize(250, 100);
+inline const static int              ICON_MIN_HEIGHT         = 80;
+inline const static int              ICON_SCALING_HEIGHT     = 25;
+inline const static int              KEYBOARD_KEY_WIDTH      = 50;
+inline const static int              EMPTY_KEY_WIDTH         = 25;
+inline const static QString          ICONS_FOLDER            = RESOURCE_FOLDER + "/Icons";
+inline const static QString          THEME_FOLDER            = RESOURCE_FOLDER + "/Theme";
+inline const static QString          STYLES_SHEET            = THEME_FOLDER + "/Styles.css";
+inline const static QString          QT_ICONS_FOLDER         = ":/icons";
+inline const static QString          MISSING_ICON_PATH       = QT_ICONS_FOLDER + "/NoImageSmall.webp";
+inline const static QString          EDITOR_ICON_PATH        = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
+inline const static QString          EDITOR_BIG_ICON_PATH    = QT_ICONS_FOLDER + "/EditorIconBig.webp";
+inline const static char*            SETTINGS_NO_FOUND       = "Unable to find Settings.json in Resource folder.";
+inline const static char*            TECH_TREE_NO_FOUND      = "Unable to find TechTree.json in Resource folder.";
+inline const static char*            THEME_FOLDER_NO_FOUND   = "Unable to find Resource/Theme folder.";
+inline const static char*            ICONS_FOLDER_NO_FOUND   = "Unable to find Resource/Icons folder.";
+inline const static char*            TRANSLATIONS_NO_FOUND   = "Unable to find Resource/Translations folder.";
+inline const static char*            UNKNOWN_ERROR           = "Unknown error has been occured.";
+inline const static QVector<QString> vGLAShorNames           = {"GLA", "TOX", "STL", "DML"};
+inline const static QVector<QString> vUSAShorNames           = {"USA", "SWG", "AIR", "LSR"};
+inline const static QVector<QString> vPRCShorNames           = {"PRC", "TNK", "INF", "NUK"};
 
 enum class GameObjectTypes
 {

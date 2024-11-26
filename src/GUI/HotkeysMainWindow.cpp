@@ -65,22 +65,12 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
                 QPushButton* factionButton = new QPushButton{currFaction.GetDisplayName()};
                 
                 auto shortName = currFaction.GetShortName();
-                if (shortName == "USA" || 
-                    shortName == "SWG" ||
-                    shortName == "AIR" ||
-                    shortName == "LSR")
-                    ;
+                if (vUSAShorNames.contains(shortName)) ;
 
-                if (shortName == "PRC" || 
-                    shortName == "TNK" ||
-                    shortName == "INF" ||
-                    shortName == "NUK")
+                if (vPRCShorNames.contains(shortName))
                     factionButton->setProperty("faction", "PRC");
                 
-                if (shortName == "GLA" || 
-                    shortName == "TOX" ||
-                    shortName == "STL" ||
-                    shortName == "DML")
+                if (vGLAShorNames.contains(shortName))
                     factionButton->setProperty("faction", "GLA");
 
                 connect(factionButton, &QPushButton::pressed, this, [=, this]()
