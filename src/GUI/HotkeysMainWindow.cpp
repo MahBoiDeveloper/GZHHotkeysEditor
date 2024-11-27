@@ -41,7 +41,6 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     pEntitiesTreeWidget->setVerticalScrollMode(QTreeWidget::ScrollMode::ScrollPerPixel);
     // Set icon size
     pEntitiesTreeWidget->setIconSize(QSize{ICON_MIN_HEIGHT, ICON_MIN_HEIGHT});
-    // entitiesTreeWidget.setSpacing(GUIConfig::entityIconMinimumHeight * 0.1);
 
     connect(pEntitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &HotkeysMainWindow::SetHotkeysPanels);
 
@@ -165,9 +164,18 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 void HotkeysMainWindow::ConfigureMenu()
 {
     QMenu* mnFileOptions = new QMenu(tr("File"));
+    mnFileOptions->addAction(tr("Open"));
+    mnFileOptions->addAction(tr("Save"));
+    mnFileOptions->addAction(tr("Save As..."));
     mnFileOptions->addAction(tr("Special"));
     menuBar()->addMenu(mnFileOptions);
-    menuBar()->addAction(tr("View"));
+
+    QMenu* mnViewOptions = new QMenu(tr("View"));
+    QMenu* mnStatusBarChecbox = new QMenu(tr("Status Bar"));
+    mnStatusBarChecbox->addAction(tr("Enable"));
+    mnStatusBarChecbox->addAction(tr("Disable"));
+    mnViewOptions->addMenu(mnStatusBarChecbox);
+    menuBar()->addMenu(mnViewOptions);
 
     QMenu* mnSettingsOptions = new QMenu(tr("Settings"));
     menuBar()->addMenu(mnSettingsOptions);
@@ -274,6 +282,7 @@ void HotkeysMainWindow::SetHotkeysPanels()
                                                                       CSF_PARSER->GetHotkey(currAction.hotkeyString),
                                                                       currAction.iconName};
 
+            // TODO: Make it dynamic
             actionHotkey->setToolTip(currAction.hotkeyString + "\n\n" + CSF_PARSER->GetStringValue(currAction.hotkeyString));
 
             connect(actionHotkey, &ActionHotkeyWidget::HotkeyChanged, this, [=, this](const QString& newHotkey)
@@ -532,14 +541,14 @@ void HotkeysMainWindow::OnLanguageChange()
         pWindowToChangeLanguage = nullptr;
     });
 
-    // Todo:
-    // Make apply changes after
     connect(btnCancel, &QPushButton::clicked, this, [this]()
     {
         pWindowToChangeLanguage->deleteLater();
         pWindowToChangeLanguage = nullptr;
     });
 
+    // TODO: Make there emit signal to WindowsManager and 
+    //       show 2nd window to ask to apply new language and reset unsaved changes.
     connect(btnOk, &QPushButton::clicked, this, [this]()
     {
         pWindowToChangeLanguage->deleteLater();

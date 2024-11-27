@@ -117,7 +117,8 @@ void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
     hotkeyLabel.setText(hotkey);
 
     emit HotkeyChanged(hotkey);
-    hotkeyLabel.setEnabled(false);
+    if (!hotkeyLabel.isEnabled())
+        hotkeyLabel.setEnabled(false);
 
     // Stop timer
     signalTimer.stop();
