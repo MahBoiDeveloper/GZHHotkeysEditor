@@ -121,7 +121,7 @@ QPushButton#btnReview
 /* Main editor window style settings */
 HotkeysMainWindow
 {
-    border-image: url(Resources/Theme/EditorBackgroundWithPicture.webp) 0 0 0 0 stretch stretch;
+    border-image: url(Resources/Theme/EditorBackground.webp) 0 0 0 0 stretch stretch;
     background-color: black;
 }
 
