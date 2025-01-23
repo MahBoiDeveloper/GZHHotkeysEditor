@@ -48,4 +48,3 @@ int main(int argc, const char** argv)
     return system(realExecutablePath.c_str());
 }
 #endif
-

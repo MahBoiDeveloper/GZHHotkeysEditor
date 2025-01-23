@@ -2300,7 +2300,7 @@
                             {"IconName" : "Evacuate",               "HotkeyString" : "CONTROLBAR:Evacuate"},
                             {"IconName" : "AttackMove",             "HotkeyString" : "CONTROLBAR:AttackMove"},
                             {"IconName" : "Guard",                  "HotkeyString" : "CONTROLBAR:Guard"},
-                            {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
+                            {"IconName" : "Stop",                   "HotkeyString" : "CONTROLBAR:Stop"}
                         ]
                     ]
                 }
@@ -2766,7 +2766,7 @@
                             {"IconName" : "Evacuate",               "HotkeyString" : "CONTROLBAR:Evacuate"},
                             {"IconName" : "AttackMove",             "HotkeyString" : "CONTROLBAR:AttackMove"},
                             {"IconName" : "Guard",                  "HotkeyString" : "CONTROLBAR:Guard"},
-                            {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
+                            {"IconName" : "Stop",                   "HotkeyString" : "CONTROLBAR:Stop"}
                         ]
                     ]
                 }
@@ -3285,7 +3285,7 @@
                             {"IconName" : "Evacuate",               "HotkeyString" : "CONTROLBAR:Evacuate"},
                             {"IconName" : "AttackMove",             "HotkeyString" : "CONTROLBAR:AttackMove"},
                             {"IconName" : "Guard",                  "HotkeyString" : "CONTROLBAR:Guard"},
-                            {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
+                            {"IconName" : "Stop",                   "HotkeyString" : "CONTROLBAR:Stop"}
                         ]
                     ]
                 }
@@ -3770,7 +3770,7 @@
                             {"IconName" : "Evacuate",               "HotkeyString" : "CONTROLBAR:Evacuate"},
                             {"IconName" : "AttackMove",             "HotkeyString" : "CONTROLBAR:AttackMove"},
                             {"IconName" : "Guard",                  "HotkeyString" : "CONTROLBAR:Guard"},
-                            {"IconName" : "Sell",                   "HotkeyString" : "CONTROLBAR:Sell"}
+                            {"IconName" : "Stop",                   "HotkeyString" : "CONTROLBAR:Stop"}
                         ]
                     ]
                 }
