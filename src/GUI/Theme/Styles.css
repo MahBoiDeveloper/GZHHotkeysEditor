@@ -288,7 +288,7 @@ QDialog QLabel#right
     border: none; 
 } */
 
-QLabel#HotkeyLabel:disabled
+QPushButton[unique="true"]#btnHotkey
 {
     font-weight: bold;
     padding-left: 30px;
@@ -296,7 +296,7 @@ QLabel#HotkeyLabel:disabled
     background-color: #128d2d;
 }
 
-QLabel#HotkeyLabel:enabled
+QPushButton[unique="false"]#btnHotkey
 {
     font-weight: bold;
     padding-left: 30px;

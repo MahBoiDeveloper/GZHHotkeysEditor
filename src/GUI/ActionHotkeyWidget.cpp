@@ -1,72 +1,61 @@
 #include <QVBoxLayout>
 #include <QKeyEvent>
 #include <QDebug>
+#include <QStyle>
 #include "ActionHotkeyWidget.hpp"
 #include "ImageManager.hpp"
 
 ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
-                                       const QString& hotkeyStr,
+                                       const QString& key,
                                        const QString& iconName,
                                        QWidget* parent)
     : QWidget{parent}
-    , hotkey{hotkeyStr}
+    , hotkey{key}
     , actionNameLabel{actionName}
-    , hotkeyLabel{hotkey}
-    , newHotkeyButton{"+"}
+    , btnHotkey{hotkey}
     , signalTimer{}
     , timerMseconds{1300}
 {
     // Object name for css
-    hotkeyLabel.setObjectName("HotkeyLabel");
-    hotkeyLabel.setEnabled(false);
-    hotkeyLabel.setMinimumSize(ImageManager::DecodeMissingWebpIcon().size().width() + 15, // Checked for letter W
-                               ImageManager::DecodeMissingWebpIcon().size().height());
+    btnHotkey.setObjectName("btnHotkey");
+    btnHotkey.setProperty("unique", false);
+    btnHotkey.setMinimumSize(ImageManager::DecodeMissingWebpIcon().size().width() + 15, // Checked for letter W
+                             ImageManager::DecodeMissingWebpIcon().size().height());
 
-    connect(&newHotkeyButton, &QPushButton::pressed, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
+    connect(&btnHotkey, &QPushButton::pressed, this, &ActionHotkeyWidget::ChangeHotkeyClick);
 
     // Signal timer settings
     signalTimer.setSingleShot(true);
     connect(&signalTimer, &QTimer::timeout, this, &ActionHotkeyWidget::SignalRepeatNewHotkey);
 
-    QLabel* imageLb = new QLabel();
-    imageLb->setPixmap(QPixmap::fromImage(ImageManager::DecodeWebpIcon(iconName)));
-
-    // Hotkey label
-    hotkeyLabel.setAlignment(Qt::AlignCenter);
-
-    // TODO: doesn't work
-    hotkeyLabel.setWindowOpacity(0.7);
-
-    // Square button size
-    newHotkeyButton.setFixedSize(newHotkeyButton.sizeHint().height(), newHotkeyButton.sizeHint().height());
+    QLabel* lblImage = new QLabel();
+    lblImage->setPixmap(QPixmap::fromImage(ImageManager::DecodeWebpIcon(iconName)));
 
     QHBoxLayout* ltMainBlock = new QHBoxLayout{this};
     ltMainBlock->setAlignment(Qt::AlignTop);
-    ltMainBlock->addWidget(imageLb);
+    ltMainBlock->addWidget(lblImage);
     ltMainBlock->addWidget(&actionNameLabel);
     // Move action name label to left
     ltMainBlock->setStretch(1, 1);
-    ltMainBlock->addWidget(&hotkeyLabel);
-    ltMainBlock->addWidget(&newHotkeyButton);
+    ltMainBlock->addWidget(&btnHotkey);
     setLayout(ltMainBlock);
 }
 
-QString ActionHotkeyWidget::GetActionName() const
-{
-    return actionNameLabel.text();
-}
+QString ActionHotkeyWidget::GetActionName() const { return actionNameLabel.text(); }
 
-QString ActionHotkeyWidget::GetHotkey() const
-{
-    return hotkeyLabel.text();
-}
+QString ActionHotkeyWidget::GetHotkey()     const { return btnHotkey.text(); }
 
-void ActionHotkeyWidget::HighlightKey(bool collision)
+void ActionHotkeyWidget::HighlightKey(bool isKeysMoreThanTwo)
 {
-    if (collision)
-        hotkeyLabel.setEnabled(true);
+    if (isKeysMoreThanTwo)
+        btnHotkey.setProperty("unique", false);
     else
-        hotkeyLabel.setDisabled(true);
+        btnHotkey.setProperty("unique", true);
+
+    btnHotkey.style()->unpolish(&btnHotkey);
+    btnHotkey.style()->polish(&btnHotkey);
+
+    btnHotkey.update();
 }
 
 void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
@@ -83,42 +72,42 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
     {
         // Set new text
         hotkey = QKeySequence(key).toString();
-        hotkeyLabel.setEnabled(false);
         
         // If the key is correct -> disconnect the input error reset signal
-        disconnect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
+        disconnect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::ChangeHotkeyClick);
 
         // Return focus to parent
         parentWidget()->setFocus();
     }
     else
     {
-        if (KEYBOARD_KEYS.contains(key))
-            hotkeyLabel.setText(tr("This key doesn't allowed!"));
+        if (!KEYBOARD_KEYS.contains(key))
+            btnHotkey.setText(tr("It isn't latin key!"));
         else
-            hotkeyLabel.setText(tr("It isn't latin key!"));
+            btnHotkey.setText(tr("This key doesn't allowed!"));
         
         // Start the signal timer with a delay of n seconds
         if (signalTimer.isActive())
             signalTimer.stop();
 
         signalTimer.start(timerMseconds);
-        hotkeyLabel.setEnabled(true);
     }
+
+    btnHotkey.setProperty("unique", true);
     QWidget::keyPressEvent(event);
 }
 
 void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
 {
     // Unset decoration
-    QFont fnt(hotkeyLabel.font());
+    QFont fnt(btnHotkey.font());
     fnt.setItalic(false);
-    hotkeyLabel.setFont(fnt);
-    hotkeyLabel.setText(hotkey);
+    btnHotkey.setFont(fnt);
+    btnHotkey.setText(hotkey);
 
     emit HotkeyChanged(hotkey);
-    if (!hotkeyLabel.isEnabled())
-        hotkeyLabel.setEnabled(false);
+    if (btnHotkey.property("unique").Bool)
+        btnHotkey.setProperty("unique", false);
 
     // Stop timer
     signalTimer.stop();
@@ -126,18 +115,18 @@ void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
     QWidget::focusOutEvent(event);
 }
 
-void ActionHotkeyWidget::OnNewHotkeyPressed()
+void ActionHotkeyWidget::ChangeHotkeyClick()
 {
     // Reconnect the input error reset signal
-    disconnect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
-    connect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::OnNewHotkeyPressed);
+    disconnect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::ChangeHotkeyClick);
+    connect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::ChangeHotkeyClick);
 
     // Decorate
-    hotkeyLabel.setText(tr("Press latin key..."));
-    hotkeyLabel.setEnabled(false);
-    QFont f(hotkeyLabel.font());
+    btnHotkey.setText(tr("Press latin key..."));
+    btnHotkey.setProperty("unique", true);
+    QFont f(btnHotkey.font());
     f.setItalic(true);
-    hotkeyLabel.setFont(f);
+    btnHotkey.setFont(f);
 
     // Set focus on hotkey element
     setFocus();

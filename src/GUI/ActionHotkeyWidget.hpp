@@ -10,9 +10,8 @@ class ActionHotkeyWidget : public QWidget
 private: // Data
     QString     hotkey;
     QLabel      actionNameLabel;
-    QLabel      hotkeyLabel;
+    QPushButton btnHotkey;
     QLabel      image;
-    QPushButton newHotkeyButton;
     QTimer      signalTimer;
     int         timerMseconds;
 
@@ -26,11 +25,11 @@ public:
                        QWidget* parent = nullptr);
     QString GetActionName() const;
     QString GetHotkey() const;
-    void    HighlightKey(bool collision);
+    void    HighlightKey(bool isKeysLessThanTwo);
 
 signals:
     void SignalRepeatNewHotkey();
     void HotkeyChanged(QString hotkey);
 private slots:
-    void OnNewHotkeyPressed();
+    void ChangeHotkeyClick();
 };
