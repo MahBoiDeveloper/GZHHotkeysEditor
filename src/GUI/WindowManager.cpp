@@ -38,8 +38,8 @@ WindowManager::WindowManager()
         pHotkeysEditor = std::make_unique<HotkeysMainWindow>(cfg);
         pHotkeysEditor->setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
         pHotkeysEditor->show();
+        pLaunchWidget->hide();
         LOGMSG("Editor window has been loaded");
-        pLaunchWidget.reset();
     });
 }
 

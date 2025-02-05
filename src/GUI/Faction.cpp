@@ -37,13 +37,13 @@ const QMap<Faction::GameObject, GameObjectTypes>& Faction::GetTechTree() const
     return techTree;
 }
 
-const QVector<QVector<Faction::Action>>& Faction::GetKeyboardLayoutsByObjectName(const QString& objName) const
+const QVector<QVector<Faction::Action>> Faction::GetKeyboardLayoutsByObjectName(const QString& objName) const
 {
     for(const Faction::GameObject& go : techTree.keys())
         if(go.iconName == objName)
             return go.keyboardLayouts;
 
-    return *(new QVector<QVector<Faction::Action>>());
+    return {};
 }
 
 QMap<Faction::GameObject, GameObjectTypes> Faction::ParseJsonObject(const QJsonObject& obj)

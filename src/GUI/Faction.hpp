@@ -46,7 +46,7 @@ public:
     /// @brief Returns link to the techTree field.
     const QMap<GameObject, GameObjectTypes>& GetTechTree() const;
     /// @brief Returns link to the keyboard layout vector searching by object name.
-    const QVector<QVector<Action>>& GetKeyboardLayoutsByObjectName(const QString& objName) const;
+    const QVector<QVector<Action>> GetKeyboardLayoutsByObjectName(const QString& objName) const;
     /// @brief Replace hotkey with new one.
     void SetHotkey(const QString& goName, const QString& actName, const QString& hk);
 };
