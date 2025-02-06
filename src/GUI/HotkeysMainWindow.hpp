@@ -56,6 +56,8 @@ private:
     void SetActionHotkey(const QString& fctShortName, const QString& goName, const QString& actName, const QString& hk);
     /// @brief Creates line of keys for keyboard layout.
     QHBoxLayout* CreateKeysOnKeyboard(const QString& str);
+    /// @brief Saves changes into file.
+    void Save();
 
 private slots:
     void OnAbout();

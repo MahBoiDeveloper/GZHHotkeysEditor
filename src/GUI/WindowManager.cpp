@@ -43,11 +43,6 @@ WindowManager::WindowManager()
     });
 }
 
-void WindowManager::Show()
-{
-    pLaunchWidget->show();
-}
-
 void WindowManager::SetTranslator(Languages lngType)
 {
     // Delete old translator
@@ -66,7 +61,5 @@ void WindowManager::SetTranslator(Languages lngType)
     }
 }
 
-Languages WindowManager::GetLanguage()
-{
-    return Language;
-}
+void WindowManager::Show()             { pLaunchWidget->show(); }
+Languages WindowManager::GetLanguage() { return Language; }

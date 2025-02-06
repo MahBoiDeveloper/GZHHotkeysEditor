@@ -569,3 +569,8 @@ QHBoxLayout* HotkeysMainWindow::CreateKeysOnKeyboard(const QString& str)
     }
     return pKeys;
 }
+
+void HotkeysMainWindow::Save()
+{
+    
+}
