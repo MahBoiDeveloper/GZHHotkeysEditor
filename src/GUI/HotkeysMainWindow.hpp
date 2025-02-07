@@ -64,6 +64,8 @@ private slots:
     void OnLanguageChange();
     void UpdateKeyboardStatus(int id = 0);
 
+    void mnFileOptions_triggered(QAction* option);
+
 signals:
     Languages languageChanged(int index);
 };

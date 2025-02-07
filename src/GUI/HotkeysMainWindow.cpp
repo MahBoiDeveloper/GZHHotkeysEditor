@@ -169,6 +169,7 @@ void HotkeysMainWindow::ConfigureMenu()
     mnFileOptions->addAction(tr("Save As..."));
     mnFileOptions->addAction(tr("Special"));
     menuBar()->addMenu(mnFileOptions);
+    connect(mnFileOptions, &QMenu::triggered, this, &HotkeysMainWindow::mnFileOptions_triggered);
 
     QMenu* mnViewOptions = new QMenu(tr("View"));
     QMenu* mnStatusBarChecbox = new QMenu(tr("Status Bar"));
@@ -568,6 +569,11 @@ QHBoxLayout* HotkeysMainWindow::CreateKeysOnKeyboard(const QString& str)
         pKeys->addWidget(tmp);
     }
     return pKeys;
+}
+
+void HotkeysMainWindow::mnFileOptions_triggered(QAction* option)
+{
+    LOGMSG("mnFileOptions has been triggered // option text = " + option->text());
 }
 
 void HotkeysMainWindow::Save()
