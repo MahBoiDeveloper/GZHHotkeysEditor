@@ -164,12 +164,17 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
 void HotkeysMainWindow::ConfigureMenu()
 {
     QMenu* mnFileOptions = new QMenu(tr("File"));
-    mnFileOptions->addAction(tr("Open"));
-    mnFileOptions->addAction(tr("Save"));
-    mnFileOptions->addAction(tr("Save As..."));
-    mnFileOptions->addAction(tr("Special"));
+    QAction* actOpen     = new QAction(tr("Open"));
+    QAction* actSave     = new QAction(tr("Save"));
+    QAction* actSaveAs   = new QAction(tr("Save As..."));
+    QAction* actSpecial  = new QAction(tr("Special"));
+    mnFileOptions->addAction(actOpen);
+    mnFileOptions->addAction(actSave);
+    mnFileOptions->addAction(actSaveAs);
+    mnFileOptions->addAction(actSpecial);
     menuBar()->addMenu(mnFileOptions);
-    connect(mnFileOptions, &QMenu::triggered, this, &HotkeysMainWindow::mnFileOptions_triggered);
+
+    connect(actSave, &QAction::triggered, this, &HotkeysMainWindow::actSave_triggered);
 
     QMenu* mnViewOptions = new QMenu(tr("View"));
     QMenu* mnStatusBarChecbox = new QMenu(tr("Status Bar"));
@@ -182,11 +187,11 @@ void HotkeysMainWindow::ConfigureMenu()
     menuBar()->addMenu(mnSettingsOptions);
     
     QAction* actLanguage = new QAction(tr("Language"));
-    connect(actLanguage, &QAction::triggered, this, &HotkeysMainWindow::OnLanguageChange);
+    connect(actLanguage, &QAction::triggered, this, &HotkeysMainWindow::actLanguage_triggered);
     mnSettingsOptions->addAction(actLanguage);
 
     QAction* actAbout = new QAction(tr("About"));
-    connect(actAbout, &QAction::triggered, this, &HotkeysMainWindow::OnAbout);
+    connect(actAbout, &QAction::triggered, this, &HotkeysMainWindow::actAbout_triggered);
     mnSettingsOptions->addAction(actAbout);
 }
 
@@ -429,7 +434,7 @@ void HotkeysMainWindow::SetActionHotkey(const QString& fctShortName, const QStri
     }
 }
 
-void HotkeysMainWindow::OnAbout()
+void HotkeysMainWindow::actAbout_triggered()
 {
     // if dialog already exists
     if (pAboutDialog != nullptr)
@@ -484,7 +489,7 @@ void HotkeysMainWindow::OnAbout()
     pAboutDialog->activateWindow();
 }
 
-void HotkeysMainWindow::OnLanguageChange()
+void HotkeysMainWindow::actLanguage_triggered()
 {
     // if dialog already exists
     if (pWindowToChangeLanguage != nullptr)
@@ -571,9 +576,11 @@ QHBoxLayout* HotkeysMainWindow::CreateKeysOnKeyboard(const QString& str)
     return pKeys;
 }
 
-void HotkeysMainWindow::mnFileOptions_triggered(QAction* option)
+void HotkeysMainWindow::actSave_triggered()
 {
-    LOGMSG("mnFileOptions has been triggered // option text = " + option->text());
+    LOGMSG("Saving changes to .csf file...");
+    CSF_PARSER->Save();
+    LOGMSG("Changes has been saved");
 }
 
 void HotkeysMainWindow::Save()

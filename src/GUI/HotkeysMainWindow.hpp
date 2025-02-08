@@ -60,11 +60,10 @@ private:
     void Save();
 
 private slots:
-    void OnAbout();
-    void OnLanguageChange();
     void UpdateKeyboardStatus(int id = 0);
-
-    void mnFileOptions_triggered(QAction* option);
+    void actAbout_triggered();
+    void actLanguage_triggered();
+    void actSave_triggered();
 
 signals:
     Languages languageChanged(int index);
