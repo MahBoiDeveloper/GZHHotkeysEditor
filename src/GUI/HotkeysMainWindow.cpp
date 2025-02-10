@@ -174,7 +174,7 @@ void HotkeysMainWindow::ConfigureMenu()
     mnFileOptions->addAction(actSpecial);
     menuBar()->addMenu(mnFileOptions);
 
-    connect(actSave, &QAction::triggered, this, &HotkeysMainWindow::actSave_triggered);
+    connect(actSave, &QAction::triggered, this, &HotkeysMainWindow::ActSave_Triggered);
 
     QMenu* mnViewOptions = new QMenu(tr("View"));
     QMenu* mnStatusBarChecbox = new QMenu(tr("Status Bar"));
@@ -187,11 +187,11 @@ void HotkeysMainWindow::ConfigureMenu()
     menuBar()->addMenu(mnSettingsOptions);
     
     QAction* actLanguage = new QAction(tr("Language"));
-    connect(actLanguage, &QAction::triggered, this, &HotkeysMainWindow::actLanguage_triggered);
+    connect(actLanguage, &QAction::triggered, this, &HotkeysMainWindow::ActLanguage_Triggered);
     mnSettingsOptions->addAction(actLanguage);
 
     QAction* actAbout = new QAction(tr("About"));
-    connect(actAbout, &QAction::triggered, this, &HotkeysMainWindow::actAbout_triggered);
+    connect(actAbout, &QAction::triggered, this, &HotkeysMainWindow::ActAbout_Triggered);
     mnSettingsOptions->addAction(actAbout);
 }
 
@@ -330,7 +330,7 @@ void HotkeysMainWindow::SetHotkeysPanels()
     pHotkeysPanelsWidget->setMinimumSize(pHotkeysPanelsWidget->sizeHint());
     pHotkeysArea->setWidget(pHotkeysPanelsWidget);
 
-    connect(pHotkeysPanelsWidget, &QTabWidget::currentChanged, this, &HotkeysMainWindow::UpdateKeyboardStatus);
+    connect(pHotkeysPanelsWidget, &QTabWidget::currentChanged, this, &HotkeysMainWindow::KeyboardWindow_Update);
 
     emit pHotkeysPanelsWidget->currentChanged(0);
 }
@@ -361,7 +361,7 @@ void HotkeysMainWindow::HighlightCurrentKeys()
     }
 }
 
-void HotkeysMainWindow::NullifyKeyboardStatus()
+void HotkeysMainWindow::KeyboardWindow_Nullify()
 {
     for (QChar& qc : QString("QWERTYUIOPASDFGHJKLZXCVBNM")) 
     {
@@ -373,9 +373,9 @@ void HotkeysMainWindow::NullifyKeyboardStatus()
     }
 }
 
-void HotkeysMainWindow::UpdateKeyboardStatus(int id)
+void HotkeysMainWindow::KeyboardWindow_Update(int id)
 {
-    NullifyKeyboardStatus();
+    KeyboardWindow_Nullify();
     auto currTab = pHotkeysPanelsWidget->findChild<QWidget*>(QString("Layout ") + QString::number(id + 1), Qt::FindChildrenRecursively);
         
     QString accum;
@@ -434,7 +434,7 @@ void HotkeysMainWindow::SetActionHotkey(const QString& fctShortName, const QStri
     }
 }
 
-void HotkeysMainWindow::actAbout_triggered()
+void HotkeysMainWindow::ActAbout_Triggered()
 {
     // if dialog already exists
     if (pAboutDialog != nullptr)
@@ -489,7 +489,7 @@ void HotkeysMainWindow::actAbout_triggered()
     pAboutDialog->activateWindow();
 }
 
-void HotkeysMainWindow::actLanguage_triggered()
+void HotkeysMainWindow::ActLanguage_Triggered()
 {
     // if dialog already exists
     if (pWindowToChangeLanguage != nullptr)
@@ -576,7 +576,7 @@ QHBoxLayout* HotkeysMainWindow::CreateKeysOnKeyboard(const QString& str)
     return pKeys;
 }
 
-void HotkeysMainWindow::actSave_triggered()
+void HotkeysMainWindow::ActSave_Triggered()
 {
     LOGMSG("Saving changes to .csf file...");
     CSF_PARSER->Save();

@@ -51,7 +51,7 @@ private:
     /// @brief Set hotkeys colors. Default color is black. Changes color to red for keys, that is conflict to each other in one unit/building.
     void HighlightCurrentKeys();
     /// @brief Set key's styles on keyboard block to property `status=null`.
-    void NullifyKeyboardStatus();
+    void KeyboardWindow_Nullify();
     /// @brief Replace current action assigned hotkey with new one.
     void SetActionHotkey(const QString& fctShortName, const QString& goName, const QString& actName, const QString& hk);
     /// @brief Creates line of keys for keyboard layout.
@@ -60,10 +60,10 @@ private:
     void Save();
 
 private slots:
-    void UpdateKeyboardStatus(int id = 0);
-    void actAbout_triggered();
-    void actLanguage_triggered();
-    void actSave_triggered();
+    void KeyboardWindow_Update(int id = 0);
+    void ActAbout_Triggered();
+    void ActLanguage_Triggered();
+    void ActSave_Triggered();
 
 signals:
     Languages languageChanged(int index);
