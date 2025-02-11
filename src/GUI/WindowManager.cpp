@@ -1,5 +1,6 @@
-#include <QApplication>
 #include <QFileInfo>
+#include <QTranslator>
+#include <QApplication>
 
 #include "../Logger.hpp"
 #include "../Convert.hpp"
