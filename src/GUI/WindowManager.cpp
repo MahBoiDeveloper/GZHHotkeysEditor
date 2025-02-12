@@ -1,18 +1,14 @@
 #include <QFileInfo>
-#include <QTranslator>
 #include <QApplication>
 
 #include "../Logger.hpp"
-#include "../Convert.hpp"
 #include "../Unsorted.hpp"
-#include "../Registry.hpp"
 
 #include "ImageManager.hpp"
 #include "WindowManager.hpp"
 
 WindowManager::WindowManager()
 {
-    WindowName = "C&C: Generals Zero Hour Hotkey Editor";
     qApp->setWindowIcon(QIcon(QPixmap::fromImage(ImageManager::DecodeEditorWebpIcon())));
     
     LOGMSG("Loading \"" + STYLES_SHEET + "\"...");
@@ -29,37 +25,37 @@ WindowManager::WindowManager()
     }
 
     LOGMSG("Loading launch window...");
-    pLaunchWidget = std::make_unique<LaunchWidget>(Convert::ToLangEnum(Registry::GetCurrentUserLanguage()));
-    pLaunchWidget->setWindowTitle(WindowName);
+    pLaunchWidget = std::make_unique<LaunchWidget>();
+    pLaunchWidget->setWindowTitle(strWindowName);
     LOGMSG("Launch window has been loaded");
+}
 
-    QObject::connect(pLaunchWidget.get(), &LaunchWidget::AcceptedConfiguration, pLaunchWidget.get(), [=, this](const QVariant& cfg)
-    {
-        LOGMSG("Loading editor window...");
-        pHotkeysEditor = std::make_unique<HotkeysMainWindow>(cfg);
-        pHotkeysEditor->setWindowTitle("C&C: Generals Zero Hour Hotkey Editor");
-        pHotkeysEditor->show();
-        pLaunchWidget->hide();
-        LOGMSG("Editor window has been loaded");
-    });
+void WindowManager::LaunchWidget_AcceptConfiguration(const QVariant& cfg)
+{
+    // 2nd init protection 
+    if (bEditorInitialized) return;
+
+    LOGMSG("Loading editor window...");
+    pHotkeysEditor = std::make_unique<HotkeysMainWindow>(cfg);
+    pHotkeysEditor->setWindowTitle(strWindowName);
+    pHotkeysEditor->show();
+    pLaunchWidget->close();
+    bEditorInitialized = true;
+    LOGMSG("Editor window has been loaded");
 }
 
 void WindowManager::SetTranslator(Languages lngType)
 {
-    // Delete old translator
-    if (pAppTranslator != nullptr) qApp->removeTranslator(pAppTranslator);
-
+    if (pAppTranslator != nullptr) 
+        qApp->removeTranslator(pAppTranslator);
+    
     QString lngShortName = Unsorted::GetLanguageShortName(lngType);
     LOGMSG("Set editor language to " + lngShortName.toUpper());
 
-    // Create new translator
-    if (lngType != Languages::English)
-    {
-        Language       = lngType;
-        pAppTranslator = new QTranslator();
-        pAppTranslator->load(lngShortName, TRANSLATIONS_FOLDER);
-        qApp->installTranslator(pAppTranslator);
-    }
+    Language       = lngType;
+    pAppTranslator = new QTranslator();
+    pAppTranslator->load(lngShortName, TRANSLATIONS_FOLDER);
+    qApp->installTranslator(pAppTranslator);
 }
 
 void WindowManager::Show()             { pLaunchWidget->show(); }

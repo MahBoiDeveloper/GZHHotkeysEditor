@@ -5,7 +5,6 @@
 class GreetingWidget : public QWidget
 {
     Q_OBJECT
-
 public: // Data
     enum class StandartButtons
     {
@@ -14,7 +13,7 @@ public: // Data
     };
 
 public: // Methods
-    GreetingWidget(Languages language = Languages::English, QWidget* parent = nullptr);
+    GreetingWidget(QWidget* parent = nullptr);
 private:
     int GetGreetingTextAverageSize(const QString& text) const;
 

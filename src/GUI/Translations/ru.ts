@@ -83,23 +83,23 @@
         <translation type="vanished">ЗАГРУЗИТЬ ПРОЕКТ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="26"/>
+        <location filename="../GreetingWidget.cpp" line="28"/>
         <source>NEW</source>
         <translation>НОВЫЙ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="26"/>
-        <location filename="../GreetingWidget.cpp" line="33"/>
+        <location filename="../GreetingWidget.cpp" line="28"/>
+        <location filename="../GreetingWidget.cpp" line="35"/>
         <source>PROJECT</source>
         <translation>ПРОЕКТ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="33"/>
+        <location filename="../GreetingWidget.cpp" line="35"/>
         <source>LOAD</source>
         <translation>ЗАГРУЗИТЬ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="40"/>
+        <location filename="../GreetingWidget.cpp" line="42"/>
         <source>LANGUAGE</source>
         <translation>ЯЗЫК</translation>
     </message>

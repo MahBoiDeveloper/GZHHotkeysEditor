@@ -33,7 +33,7 @@ int ShowErrorMessage(const char* txt)
 int main(int argc, const char** argv)
 {
     // After this all out text to console MUST be showed via std::wcout and all chars should be converted as wchar_t
-    _setmode(_fileno(stdout), _O_U16TEXT);
+    // _setmode(_fileno(stdout), _O_U16TEXT);
 
     // Initialize main Qt application
     QApplication HotkeyEditor(argc, const_cast<char**>(argv));

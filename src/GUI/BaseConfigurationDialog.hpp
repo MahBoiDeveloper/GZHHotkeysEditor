@@ -18,5 +18,5 @@ protected:
     virtual QVariant CreateConfigurationData() = 0;
 
 signals:
-    void AcceptedConfiguration(QVariant configuration);
+    void acceptConfiguration(QVariant configuration);
 };

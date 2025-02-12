@@ -5,7 +5,6 @@
 class CreationDialog : public BaseConfigurationDialog
 {
     Q_OBJECT
-
 private: // Data
     QCheckBox saveToGameBox;
 

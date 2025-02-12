@@ -2,24 +2,25 @@
 #include <QStackedWidget>
 #include "GreetingWidget.hpp"
 
-class LaunchWidget : public QStackedWidget
+class LaunchWidget final : public QStackedWidget
 {
     Q_OBJECT
 private: // Data
-    GreetingWidget* pStartWidget = nullptr;
+    GreetingWidget* pGreetingWidget = nullptr;
 
 private: // Methods
-    /// @brief Updates connections with new pointers to the translator and start widget.
-    void UpdateConnectionsToSignals();
+    /// @brief Connects slots and singals.
+    void AttachConnections();
+    /// @brief Disconnects slots and signals.
+    void DetachConnections();
 public:
-    LaunchWidget(Languages language, QWidget* parent = nullptr);
+    LaunchWidget(QWidget* parent = nullptr);
 
 private slots:
     /// @brief Change language by its index if language has been changed via select list.
-    void OnChangeLanguage(int intLngIndex);
+    void GreetingWidget_LanguageChanged(int intLngIndex);
     /// @brief Open create/loader widget if start button has been clicked.
-    void OnStartButtonClicked(GreetingWidget::StandartButtons standartButton);
-signals:
+    void BtnNewProjectOrBtnLoadProject_Clicked(GreetingWidget::StandartButtons standartButton);
     /// @brief Returns checked configuration of user preferences.
-    void AcceptedConfiguration(const QVariant& configuration);
+    void CreationDialog_AcceptConfiguration(const QVariant& configuration);
 };

@@ -4,11 +4,13 @@
 #include <QVBoxLayout>
 
 #include "../Logger.hpp"
+#include "../ProgramConstants.hpp"
 #include "../Unsorted.hpp"
+#include "WindowManager.hpp"
 #include "ImageManager.hpp"
 #include "GreetingWidget.hpp"
 
-GreetingWidget::GreetingWidget(Languages language, QWidget* parent) : QWidget(parent)
+GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
 {
     QPushButton* btnNewProject  = nullptr;
     QPushButton* btnLoadProject = nullptr;
@@ -42,8 +44,10 @@ GreetingWidget::GreetingWidget(Languages language, QWidget* parent) : QWidget(pa
     cmbLangList = new QComboBox();
     for (int i = 0; i < static_cast<int>(Languages::Count); ++i)
         cmbLangList->addItem(Unsorted::GetLanguageFullName(static_cast<Languages>(i)));
-    cmbLangList->setCurrentIndex(static_cast<int>(language));
+    cmbLangList->setCurrentIndex(static_cast<int>(WINDOW_MANAGER->GetLanguage()));
+    cmbLangList->setCurrentText(LANGUAGES_STRINGS.value(WINDOW_MANAGER->GetLanguage()).second);
     connect(cmbLangList, QOverload<int>::of(&QComboBox::activated), this, &GreetingWidget::languageChanged);
+    
     
     ltLanguages = new QVBoxLayout();
     ltLanguages->addStretch(1);
