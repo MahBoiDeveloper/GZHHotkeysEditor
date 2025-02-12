@@ -3,8 +3,6 @@
 #include <QTranslator>
 
 #include "../ProgramConstants.hpp"
-#include "../Convert.hpp"
-#include "../Registry.hpp"
 
 #include "LaunchWidget.hpp"
 #include "HotkeysMainWindow.hpp"
@@ -17,7 +15,7 @@ private: // Data
     std::unique_ptr<LaunchWidget>      pLaunchWidget      = nullptr;
     std::unique_ptr<HotkeysMainWindow> pHotkeysEditor     = nullptr;
     inline static QTranslator*         pAppTranslator     = nullptr;
-    inline static Languages            Language           = Languages::English; // Convert::ToLangEnum(Registry::GetCurrentUserLanguage());
+    inline static Languages            Language           = Languages::English;
     QString                            strWindowName      = "C&C: Generals Zero Hour Hotkey Editor";
     bool                               bEditorInitialized = false;
 public:

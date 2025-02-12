@@ -51,7 +51,7 @@ QMap<Faction::GameObject, GameObjectTypes> Faction::ParseJsonObject(const QJsonO
     QMap<GameObject, GameObjectTypes> tmpMap;
 
     // Circle for each element in {"Buildings", "Infantry", "Vehicles", "Aircrafts"} map
-    for(const QString& qstrObjectsArray : ENTITIES_STRINGS)
+    for(const QString& qstrObjectsArray : PROGRAM_CONSTANTS->ENTITIES_STRINGS)
     {
         QJsonArray currArr  = obj[qstrObjectsArray].toArray();
 
@@ -78,7 +78,7 @@ QMap<Faction::GameObject, GameObjectTypes> Faction::ParseJsonObject(const QJsonO
                 _layouts.push_back(_layout);
             }
 
-            tmpMap.insert(Faction::GameObject{_name, _ingameName, _layouts}, ENTITIES_STRINGS.key(qstrObjectsArray));
+            tmpMap.insert(Faction::GameObject{_name, _ingameName, _layouts}, PROGRAM_CONSTANTS->ENTITIES_STRINGS.key(qstrObjectsArray));
         }
     }
     

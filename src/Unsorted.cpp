@@ -7,13 +7,13 @@ namespace Unsorted
     {
         QString lowerLocale = locale.toLower();
 
-        for(auto it = LANGUAGES_STRINGS.cbegin(); it != LANGUAGES_STRINGS.cend(); ++it)
+        for(auto it = PROGRAM_CONSTANTS->LANGUAGES_STRINGS.cbegin(); it != PROGRAM_CONSTANTS->LANGUAGES_STRINGS.cend(); ++it)
             if (GetLanguageShortName(it.key()) == lowerLocale)
                 return it.key();
     
         return Languages::English;
     }
 
-    const QString GetLanguageShortName(Languages language) { return LANGUAGES_STRINGS.value(language).first; }
-    const QString GetLanguageFullName(Languages language)  { return LANGUAGES_STRINGS.value(language).second; }
+    const QString GetLanguageShortName(Languages language) { return PROGRAM_CONSTANTS->LANGUAGES_STRINGS.value(language).first; }
+    const QString GetLanguageFullName(Languages language)  { return PROGRAM_CONSTANTS->LANGUAGES_STRINGS.value(language).second; }
 }

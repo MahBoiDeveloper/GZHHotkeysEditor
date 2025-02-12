@@ -26,14 +26,14 @@ GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
     
     // Add "New Project" and "Load Project" buttons to the window
     btnNewProject = new QPushButton(tr("NEW") + '\n' + tr("PROJECT"));
-    btnNewProject->setFixedSize(START_BUTTON_SIZE);
+    btnNewProject->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
     connect(btnNewProject, &QPushButton::clicked, this, [this](bool)
     {
         emit pressed(GreetingWidget::StandartButtons::NewProject);
     });
 
     btnLoadProject = new QPushButton(tr("LOAD") + '\n' + tr("PROJECT"));
-    btnLoadProject->setFixedSize(START_BUTTON_SIZE);
+    btnLoadProject->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
     connect(btnLoadProject, &QPushButton::clicked, this, [this](bool)
     {
         emit pressed(GreetingWidget::StandartButtons::LoadProject);
@@ -45,9 +45,8 @@ GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
     for (int i = 0; i < static_cast<int>(Languages::Count); ++i)
         cmbLangList->addItem(Unsorted::GetLanguageFullName(static_cast<Languages>(i)));
     cmbLangList->setCurrentIndex(static_cast<int>(WINDOW_MANAGER->GetLanguage()));
-    cmbLangList->setCurrentText(LANGUAGES_STRINGS.value(WINDOW_MANAGER->GetLanguage()).second);
+    cmbLangList->setCurrentText(PROGRAM_CONSTANTS->LANGUAGES_STRINGS.value(WINDOW_MANAGER->GetLanguage()).second);
     connect(cmbLangList, QOverload<int>::of(&QComboBox::activated), this, &GreetingWidget::languageChanged);
-    
     
     ltLanguages = new QVBoxLayout();
     ltLanguages->addStretch(1);

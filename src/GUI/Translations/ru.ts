@@ -288,22 +288,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="50"/>
+        <location filename="../../ProgramConstants.hpp" line="79"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="51"/>
+        <location filename="../../ProgramConstants.hpp" line="80"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="52"/>
+        <location filename="../../ProgramConstants.hpp" line="81"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="53"/>
+        <location filename="../../ProgramConstants.hpp" line="82"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>

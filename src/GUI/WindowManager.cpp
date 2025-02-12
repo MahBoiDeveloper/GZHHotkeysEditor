@@ -3,16 +3,21 @@
 
 #include "../Logger.hpp"
 #include "../Unsorted.hpp"
+#include "../Convert.hpp"
+#include "../Registry.hpp"
 
 #include "ImageManager.hpp"
 #include "WindowManager.hpp"
 
 WindowManager::WindowManager()
 {
+    Language = Convert::ToLangEnum(Registry::GetCurrentUserLanguage());
+    SetTranslator(Language);
+
     qApp->setWindowIcon(QIcon(QPixmap::fromImage(ImageManager::DecodeEditorWebpIcon())));
     
-    LOGMSG("Loading \"" + STYLES_SHEET + "\"...");
-    QFile css{STYLES_SHEET};
+    LOGMSG("Loading \"" + PROGRAM_CONSTANTS->STYLES_SHEET + "\"...");
+    QFile css{PROGRAM_CONSTANTS->STYLES_SHEET};
     if (css.open(QIODevice::ReadOnly))
     {
         qApp->setStyleSheet(css.readAll());
@@ -33,7 +38,7 @@ WindowManager::WindowManager()
 void WindowManager::LaunchWidget_AcceptConfiguration(const QVariant& cfg)
 {
     // 2nd init protection 
-    if (bEditorInitialized) return;
+    if (pHotkeysEditor != nullptr) return;
 
     LOGMSG("Loading editor window...");
     pHotkeysEditor = std::make_unique<HotkeysMainWindow>(cfg);
@@ -54,7 +59,7 @@ void WindowManager::SetTranslator(Languages lngType)
 
     Language       = lngType;
     pAppTranslator = new QTranslator();
-    pAppTranslator->load(lngShortName, TRANSLATIONS_FOLDER);
+    pAppTranslator->load(lngShortName, PROGRAM_CONSTANTS->TRANSLATIONS_FOLDER);
     qApp->installTranslator(pAppTranslator);
 }
 

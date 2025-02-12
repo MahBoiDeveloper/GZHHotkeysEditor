@@ -13,7 +13,7 @@ QImage ImageManager::DecodeWebpIcon(const QString& iconName)
     if (it != ImagesCache.constEnd()) return it.value();
 
     // Find
-    const QFileInfo targetIconFile = FindIconFile(ICONS_FOLDER, iconName);
+    const QFileInfo targetIconFile = FindIconFile(PROGRAM_CONSTANTS->ICONS_FOLDER, iconName);
 
     if (targetIconFile.exists())
     {
@@ -30,13 +30,13 @@ QImage ImageManager::DecodeWebpIcon(const QString& iconName)
     }
 }
 
-QImage ImageManager::DecodeMissingWebpIcon()   { return DecodeWebpIconPath(MISSING_ICON_PATH); }
-QImage ImageManager::DecodeEditorWebpIcon()    { return DecodeWebpIconPath(EDITOR_ICON_PATH); }
-QImage ImageManager::DecodeBigEditorWebpIcon() { return DecodeWebpIconPath(EDITOR_BIG_ICON_PATH); }
+QImage ImageManager::DecodeMissingWebpIcon()   { return DecodeWebpIconPath(PROGRAM_CONSTANTS->MISSING_ICON_PATH); }
+QImage ImageManager::DecodeEditorWebpIcon()    { return DecodeWebpIconPath(PROGRAM_CONSTANTS->EDITOR_ICON_PATH); }
+QImage ImageManager::DecodeBigEditorWebpIcon() { return DecodeWebpIconPath(PROGRAM_CONSTANTS->EDITOR_BIG_ICON_PATH); }
 
 QPixmap ImageManager::GetGameObjectTypePixmap(GameObjectTypes entityType)
 {
-    return QPixmap{QT_ICONS_FOLDER + "/" + ENTITIES_STRINGS.value(entityType) + ".webp"};
+    return QPixmap{PROGRAM_CONSTANTS->QT_ICONS_FOLDER + "/" + PROGRAM_CONSTANTS->ENTITIES_STRINGS.value(entityType) + ".webp"};
 }
 
 QFileInfo ImageManager::FindIconFile(const QString& pathToIconsDir, const QString& fileBaseName)

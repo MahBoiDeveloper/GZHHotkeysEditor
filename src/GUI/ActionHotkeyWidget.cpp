@@ -81,7 +81,7 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
     }
     else
     {
-        if (!KEYBOARD_KEYS.contains(key))
+        if (!(PROGRAM_CONSTANTS->KEYBOARD_KEYS.contains(key)))
             btnHotkey.setText(tr("It isn't character key!"));
         else
             btnHotkey.setText(tr("This key isn't allowed!"));

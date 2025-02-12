@@ -8,35 +8,6 @@
 
 #define PROGRAM_CONSTANTS ProgramConstants::Instance
 
-inline const static QString          RESOURCE_FOLDER         = "Resources";
-inline const static QString          BINARIES_FOLDER         = RESOURCE_FOLDER + "\\Binaries";
-inline const static QString          TRANSLATIONS_FOLDER     = RESOURCE_FOLDER + "/Translations";
-inline const static QString          TECH_TREE_PATH          = RESOURCE_FOLDER + "/TechTree.json";
-inline const static QString          SETTINGS_PATH           = RESOURCE_FOLDER + "/Settings.json";
-inline const static double           START_WIDGET_SIZE_RATIO = 3./7.;
-inline const static QSize            START_BUTTON_SIZE       = QSize(230, 110);
-inline const static QSize            LANGUAGE_CHANGE_SIZE    = QSize(250, 100);
-inline const static int              ICON_MIN_HEIGHT         = 80;
-inline const static int              ICON_SCALING_HEIGHT     = 25;
-inline const static int              KEYBOARD_KEY_WIDTH      = 50;
-inline const static int              EMPTY_KEY_WIDTH         = 25;
-inline const static QString          ICONS_FOLDER            = RESOURCE_FOLDER + "/Icons";
-inline const static QString          THEME_FOLDER            = RESOURCE_FOLDER + "/Theme";
-inline const static QString          STYLES_SHEET            = THEME_FOLDER + "/Styles.css";
-inline const static QString          QT_ICONS_FOLDER         = ":/icons";
-inline const static QString          MISSING_ICON_PATH       = QT_ICONS_FOLDER + "/NoImageSmall.webp";
-inline const static QString          EDITOR_ICON_PATH        = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
-inline const static QString          EDITOR_BIG_ICON_PATH    = QT_ICONS_FOLDER + "/EditorIconBig.webp";
-inline const static char*            SETTINGS_NO_FOUND       = "Unable to find Settings.json in Resource folder.";
-inline const static char*            TECH_TREE_NO_FOUND      = "Unable to find TechTree.json in Resource folder.";
-inline const static char*            THEME_FOLDER_NO_FOUND   = "Unable to find Resource/Theme folder.";
-inline const static char*            ICONS_FOLDER_NO_FOUND   = "Unable to find Resource/Icons folder.";
-inline const static char*            TRANSLATIONS_NO_FOUND   = "Unable to find Resource/Translations folder.";
-inline const static char*            UNKNOWN_ERROR           = "Unknown error has been occured.";
-inline const static QVector<QString> vGLAShorNames           = {"GLA", "TOX", "STL", "DML"};
-inline const static QVector<QString> vUSAShorNames           = {"USA", "SWG", "AIR", "LSR"};
-inline const static QVector<QString> vPRCShorNames           = {"PRC", "TNK", "INF", "NUK"};
-
 enum class GameObjectTypes
 {
     Buildings,
@@ -45,32 +16,11 @@ enum class GameObjectTypes
     Aircrafts
 };
 
-inline static const QMap<GameObjectTypes, QString> ENTITIES_STRINGS =
-{
-    {GameObjectTypes::Buildings, QObject::tr("Buildings")},
-    {GameObjectTypes::Infantry,  QObject::tr("Infantry")},
-    {GameObjectTypes::Vehicles,  QObject::tr("Vehicles")},
-    {GameObjectTypes::Aircrafts, QObject::tr("Aircrafts")}
-};
-
 enum class Languages
 {
     English,
     Russian,
     Count
-};
-
-inline static const QMap<Languages, QPair<QString, QString>> LANGUAGES_STRINGS =
-{
-    {Languages::English, {"en", "English"}},
-    {Languages::Russian, {"ru", "Русский"}}
-};
-
-inline static const QMap<QChar, Qt::Key> KEYBOARD_KEYS = 
-{
-    {'Q', Qt::Key_Q}, {'W', Qt::Key_W}, {'E', Qt::Key_E}, {'R', Qt::Key_R}, {'T', Qt::Key_T}, {'Y', Qt::Key_Y}, {'U', Qt::Key_U}, {'I', Qt::Key_I}, {'O', Qt::Key_O}, {'P', Qt::Key_P},
-    {'A', Qt::Key_A}, {'S', Qt::Key_S}, {'D', Qt::Key_D}, {'F', Qt::Key_F}, {'G', Qt::Key_G}, {'H', Qt::Key_H}, {'J', Qt::Key_J}, {'K', Qt::Key_K}, {'L', Qt::Key_L}, 
-    {'Z', Qt::Key_Z}, {'X', Qt::Key_X}, {'C', Qt::Key_C}, {'V', Qt::Key_V}, {'B', Qt::Key_B}, {'N', Qt::Key_N}, {'M', Qt::Key_M}
 };
 
 class ProgramConstants
@@ -81,8 +31,61 @@ private: // Data
 public:
     inline static std::unique_ptr<ProgramConstants> Instance;
 
+    const QString          RESOURCE_FOLDER         = "Resources";
+    const QString          BINARIES_FOLDER         = RESOURCE_FOLDER + "\\Binaries";
+    const QString          TRANSLATIONS_FOLDER     = RESOURCE_FOLDER + "/Translations";
+    const QString          TECH_TREE_PATH          = RESOURCE_FOLDER + "/TechTree.json";
+    const QString          SETTINGS_PATH           = RESOURCE_FOLDER + "/Settings.json";
+    const double           START_WIDGET_SIZE_RATIO = 3./7.;
+    const QSize            START_BUTTON_SIZE       = QSize(230, 110);
+    const QSize            LANGUAGE_CHANGE_SIZE    = QSize(250, 100);
+    const int              ICON_MIN_HEIGHT         = 80;
+    const int              ICON_SCALING_HEIGHT     = 25;
+    const int              KEYBOARD_KEY_WIDTH      = 50;
+    const int              EMPTY_KEY_WIDTH         = 25;
+    const QString          ICONS_FOLDER            = RESOURCE_FOLDER + "/Icons";
+    const QString          THEME_FOLDER            = RESOURCE_FOLDER + "/Theme";
+    const QString          STYLES_SHEET            = THEME_FOLDER + "/Styles.css";
+    const QString          QT_ICONS_FOLDER         = ":/icons";
+    const QString          MISSING_ICON_PATH       = QT_ICONS_FOLDER + "/NoImageSmall.webp";
+    const QString          EDITOR_ICON_PATH        = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
+    const QString          EDITOR_BIG_ICON_PATH    = QT_ICONS_FOLDER + "/EditorIconBig.webp";
+    const char*            SETTINGS_NO_FOUND       = "Unable to find Settings.json in Resource folder.";
+    const char*            TECH_TREE_NO_FOUND      = "Unable to find TechTree.json in Resource folder.";
+    const char*            THEME_FOLDER_NO_FOUND   = "Unable to find Resource/Theme folder.";
+    const char*            ICONS_FOLDER_NO_FOUND   = "Unable to find Resource/Icons folder.";
+    const char*            TRANSLATIONS_NO_FOUND   = "Unable to find Resource/Translations folder.";
+    const char*            UNKNOWN_ERROR           = "Unknown error has been occured.";
+    const QVector<QString> GLA_SHORT_NAMES         = {"GLA", "TOX", "STL", "DML"};
+    const QVector<QString> USA_SHORT_NAMES         = {"USA", "SWG", "AIR", "LSR"};
+    const QVector<QString> PRC_SHORT_NAMES         = {"PRC", "TNK", "INF", "NUK"};
+
+    const QMap<QChar, Qt::Key> KEYBOARD_KEYS = 
+    {
+        {'Q', Qt::Key_Q}, {'W', Qt::Key_W}, {'E', Qt::Key_E}, {'R', Qt::Key_R}, {'T', Qt::Key_T}, {'Y', Qt::Key_Y}, {'U', Qt::Key_U}, {'I', Qt::Key_I}, {'O', Qt::Key_O}, {'P', Qt::Key_P},
+        {'A', Qt::Key_A}, {'S', Qt::Key_S}, {'D', Qt::Key_D}, {'F', Qt::Key_F}, {'G', Qt::Key_G}, {'H', Qt::Key_H}, {'J', Qt::Key_J}, {'K', Qt::Key_K}, {'L', Qt::Key_L}, 
+        {'Z', Qt::Key_Z}, {'X', Qt::Key_X}, {'C', Qt::Key_C}, {'V', Qt::Key_V}, {'B', Qt::Key_B}, {'N', Qt::Key_N}, {'M', Qt::Key_M}
+    };
+
+    const QMap<Languages, QPair<QString, QString>> LANGUAGES_STRINGS =
+    {
+        {Languages::English, {"en", "English"}},
+        {Languages::Russian, {"ru", "Русский"}}
+    };
+
+    
+    const QMap<GameObjectTypes, QString> ENTITIES_STRINGS =
+    {
+        {GameObjectTypes::Buildings, QObject::tr("Buildings")},
+        {GameObjectTypes::Infantry,  QObject::tr("Infantry")},
+        {GameObjectTypes::Vehicles,  QObject::tr("Vehicles")},
+        {GameObjectTypes::Aircrafts, QObject::tr("Aircrafts")}
+    };
+
 public: // Methods
     ProgramConstants();
+    /// @brief Parse `Resource\Settings.json`.
+    void InitializeSettingsJSON();
     /// @brief Returns QSet of available keys from QWEWRTY keyboard to choice by user.
     const QSet<Qt::Key>& GetAllowedKeys();
     /// @brief Returns field status for console from settings file.

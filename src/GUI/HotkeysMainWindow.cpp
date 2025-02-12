@@ -36,7 +36,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     // Enable smooth scrolling
     pEntitiesTreeWidget->setVerticalScrollMode(QTreeWidget::ScrollMode::ScrollPerPixel);
     // Set icon size
-    pEntitiesTreeWidget->setIconSize(QSize{ICON_MIN_HEIGHT, ICON_MIN_HEIGHT});
+    pEntitiesTreeWidget->setIconSize(QSize{PROGRAM_CONSTANTS->ICON_MIN_HEIGHT, PROGRAM_CONSTANTS->ICON_MIN_HEIGHT});
 
     connect(pEntitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &HotkeysMainWindow::SetHotkeysPanels);
 
@@ -56,16 +56,16 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
             for (int i = 0; i < 4; ++i)
             {
                 const Faction currFaction = factionVector.at(sectionIndex + i);
-                
-                QPushButton* factionButton = new QPushButton{currFaction.GetDisplayName()};
-                
-                auto shortName = currFaction.GetShortName();
-                if (vUSAShorNames.contains(shortName)) ;
 
-                if (vPRCShorNames.contains(shortName))
+                QPushButton* factionButton = new QPushButton{currFaction.GetDisplayName()};
+
+                auto shortName = currFaction.GetShortName();
+                if (PROGRAM_CONSTANTS->USA_SHORT_NAMES.contains(shortName)) ;
+
+                if (PROGRAM_CONSTANTS->PRC_SHORT_NAMES.contains(shortName))
                     factionButton->setProperty("faction", "PRC");
-                
-                if (vGLAShorNames.contains(shortName))
+
+                if (PROGRAM_CONSTANTS->GLA_SHORT_NAMES.contains(shortName))
                     factionButton->setProperty("faction", "GLA");
 
                 connect(factionButton, &QPushButton::pressed, this, [=, this]()
@@ -74,7 +74,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
                 });
 
                 pFactionsButtonsGroup->addButton(factionButton);
-                
+
                 if (i == 0) // main faction
                     ltCurrentFaction->addWidget(factionButton);
                 else        // subfactions
@@ -117,7 +117,7 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     
     QPushButton* btnEmptyButton= new QPushButton();
     btnEmptyButton->setProperty("key", "null");
-    btnEmptyButton->setFixedWidth(EMPTY_KEY_WIDTH);
+    btnEmptyButton->setFixedWidth(PROGRAM_CONSTANTS->EMPTY_KEY_WIDTH);
 
     pKeyboardFirstLine = CreateKeysOnKeyboard("QWERTYUIOP");
     pKeyboardSecondLine = CreateKeysOnKeyboard("ASDFGHJKL");
@@ -201,15 +201,15 @@ void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
     if(goMap.isEmpty()) return;
 
     // Create sections for all faction entities types
-    for(const auto& objectType : ENTITIES_STRINGS.keys())
+    for(const auto& objectType : PROGRAM_CONSTANTS->ENTITIES_STRINGS.keys())
     {
         // Create new section of tree list
         QTreeWidgetItem* newTopEntityItem = new QTreeWidgetItem();
-        newTopEntityItem->setText(0, QCoreApplication::translate("QObject", ENTITIES_STRINGS.value(objectType).toUtf8().constData()));
+        newTopEntityItem->setText(0, QCoreApplication::translate("QObject", PROGRAM_CONSTANTS->ENTITIES_STRINGS.value(objectType).toUtf8().constData()));
 
         // Decorate
         newTopEntityItem->setIcon(0, ImageManager::GetGameObjectTypePixmap(objectType)
-                                               .scaledToHeight(ICON_SCALING_HEIGHT, Qt::SmoothTransformation));
+                                               .scaledToHeight(PROGRAM_CONSTANTS->ICON_SCALING_HEIGHT, Qt::SmoothTransformation));
 
         // If there no objects by type - then skip
         if (goMap.keys(objectType).isEmpty()) continue;
@@ -566,7 +566,7 @@ QHBoxLayout* HotkeysMainWindow::CreateKeysOnKeyboard(const QString& str)
         auto tmp = new QPushButton(ch);
         tmp->setProperty("key", ch);
         tmp->setObjectName(ch);
-        tmp->setFixedWidth(KEYBOARD_KEY_WIDTH);
+        tmp->setFixedWidth(PROGRAM_CONSTANTS->KEYBOARD_KEY_WIDTH);
         pKeys->addWidget(tmp);
     }
     return pKeys;

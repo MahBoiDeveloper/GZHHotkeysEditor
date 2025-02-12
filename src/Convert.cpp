@@ -28,7 +28,7 @@ namespace Convert
     {
         QString lowerLocale = locale.toLower();
 
-        for(auto it = LANGUAGES_STRINGS.cbegin(); it != LANGUAGES_STRINGS.cend(); ++it)
+        for(auto it = PROGRAM_CONSTANTS->LANGUAGES_STRINGS.cbegin(); it != PROGRAM_CONSTANTS->LANGUAGES_STRINGS.cend(); ++it)
             if (Unsorted::GetLanguageShortName(it.key()) == lowerLocale)
                 return it.key();
     
