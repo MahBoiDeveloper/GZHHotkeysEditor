@@ -82,9 +82,9 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
     else
     {
         if (!KEYBOARD_KEYS.contains(key))
-            btnHotkey.setText(tr("It isn't latin key!"));
+            btnHotkey.setText(tr("It isn't character key!"));
         else
-            btnHotkey.setText(tr("This key doesn't allowed!"));
+            btnHotkey.setText(tr("This key isn't allowed!"));
         
         // Start the signal timer with a delay of n seconds
         if (signalTimer.isActive())
@@ -122,7 +122,7 @@ void ActionHotkeyWidget::ChangeHotkeyClick()
     connect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::ChangeHotkeyClick);
 
     // Decorate
-    btnHotkey.setText(tr("Press latin key..."));
+    btnHotkey.setText(tr("Press the key..."));
     btnHotkey.setProperty("unique", true);
     QFont f(btnHotkey.font());
     f.setItalic(true);

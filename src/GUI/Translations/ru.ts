@@ -8,19 +8,31 @@
         <translation type="vanished">Это не латинская клавиша!</translation>
     </message>
     <message>
-        <location filename="../ActionHotkeyWidget.cpp" line="87"/>
         <source>This key doesn&apos;t allowed!</source>
-        <translation>Эта клавиша не разрешена!</translation>
+        <translation type="vanished">Эта клавиша не разрешена!</translation>
+    </message>
+    <message>
+        <source>It isn&apos;t latin key!</source>
+        <translation type="vanished">Эта не латинская клавиша!</translation>
+    </message>
+    <message>
+        <source>Press latin key...</source>
+        <translation type="vanished">Нажмите латинскую клавишу...</translation>
     </message>
     <message>
         <location filename="../ActionHotkeyWidget.cpp" line="85"/>
-        <source>It isn&apos;t latin key!</source>
-        <translation>Эта не латинская клавиша!</translation>
+        <source>It isn&apos;t character key!</source>
+        <translation>Эта клавиша не буква!</translation>
+    </message>
+    <message>
+        <location filename="../ActionHotkeyWidget.cpp" line="87"/>
+        <source>This key isn&apos;t allowed!</source>
+        <translation>Эта клавиша не разрешена!</translation>
     </message>
     <message>
         <location filename="../ActionHotkeyWidget.cpp" line="125"/>
-        <source>Press latin key...</source>
-        <translation>Нажмите латинскую клавишу...</translation>
+        <source>Press the key...</source>
+        <translation>Нажмите клавишу...</translation>
     </message>
 </context>
 <context>
