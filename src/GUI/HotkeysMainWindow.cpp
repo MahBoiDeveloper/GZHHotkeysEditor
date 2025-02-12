@@ -4,10 +4,7 @@
 #include <QCoreApplication>
 #include <QDialog>
 #include <QDialogButtonBox>
-#include <QButtonGroup>
 #include <QVBoxLayout>
-#include <QTreeWidgetItem>
-#include <QScrollArea>
 #include <QComboBox>
 
 #include "../Parsers/CSFParser.hpp"
@@ -16,10 +13,9 @@
 #include "../Unsorted.hpp"
 #include "../Convert.hpp"
 
-#include "ActionHotkeyWidget.hpp"
 #include "ImageManager.hpp"
-#include "HotkeysMainWindow.hpp"
 #include "WindowManager.hpp"
+#include "HotkeysMainWindow.hpp"
 
 HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
     : QMainWindow(parent)

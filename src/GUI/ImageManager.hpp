@@ -1,7 +1,6 @@
 #pragma once
+#include <QFileInfo>
 #include "../ProgramConstants.hpp"
-
-class QFileInfo;
 
 class ImageManager
 {

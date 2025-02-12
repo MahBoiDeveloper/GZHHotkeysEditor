@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <QTranslator>
 
 #include "../ProgramConstants.hpp"
 
@@ -7,8 +8,6 @@
 #include "HotkeysMainWindow.hpp"
 
 #define WINDOW_MANAGER WindowManager::Instance
-
-class QTranslator;
 
 class WindowManager final
 {

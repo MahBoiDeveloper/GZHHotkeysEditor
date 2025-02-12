@@ -1,7 +1,6 @@
 #include <QDir>
 #include <QImage>
 #include <QPixmap>
-#include <QFileInfo>
 
 #include "../../libwebp/src/webp/decode.h"
 #include "../Logger.hpp"

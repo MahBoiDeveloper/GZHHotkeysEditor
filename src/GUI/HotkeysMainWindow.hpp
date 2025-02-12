@@ -1,14 +1,13 @@
 #pragma once
 #include <QMainWindow>
+#include <QScrollArea>
+#include <QTreeWidgetItem>
+#include <QButtonGroup>
+#include <QHBoxLayout>
+
 #include "../Parsers/JSONFile.hpp"
+#include "ActionHotkeyWidget.hpp"
 #include "Faction.hpp"
-
-class QScrollArea;
-class QTreeWidget;
-class QButtonGroup;
-class QHBoxLayout;
-
-class ActionHotkeyWidget;
 
 class HotkeysMainWindow final : public QMainWindow
 {
