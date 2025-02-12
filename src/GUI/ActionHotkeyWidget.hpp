@@ -28,7 +28,7 @@ public:
     void    HighlightKey(bool isKeysLessThanTwo);
 
 signals:
-    void SignalRepeatNewHotkey();
+    void RepeatNewHotkeySignal();
     void HotkeyChanged(QString hotkey);
 private slots:
     void ChangeHotkeyClick();

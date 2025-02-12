@@ -26,7 +26,7 @@ ActionHotkeyWidget::ActionHotkeyWidget(const QString& actionName,
 
     // Signal timer settings
     signalTimer.setSingleShot(true);
-    connect(&signalTimer, &QTimer::timeout, this, &ActionHotkeyWidget::SignalRepeatNewHotkey);
+    connect(&signalTimer, &QTimer::timeout, this, &ActionHotkeyWidget::RepeatNewHotkeySignal);
 
     QLabel* lblImage = new QLabel();
     lblImage->setPixmap(QPixmap::fromImage(ImageManager::DecodeWebpIcon(iconName)));
@@ -74,7 +74,7 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
         hotkey = QKeySequence(key).toString();
         
         // If the key is correct -> disconnect the input error reset signal
-        disconnect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::ChangeHotkeyClick);
+        disconnect(this, &ActionHotkeyWidget::RepeatNewHotkeySignal, this, &ActionHotkeyWidget::ChangeHotkeyClick);
 
         // Return focus to parent
         parentWidget()->setFocus();
@@ -118,8 +118,8 @@ void ActionHotkeyWidget::focusOutEvent(QFocusEvent* event)
 void ActionHotkeyWidget::ChangeHotkeyClick()
 {
     // Reconnect the input error reset signal
-    disconnect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::ChangeHotkeyClick);
-    connect(this, &ActionHotkeyWidget::SignalRepeatNewHotkey, this, &ActionHotkeyWidget::ChangeHotkeyClick);
+    disconnect(this, &ActionHotkeyWidget::RepeatNewHotkeySignal, this, &ActionHotkeyWidget::ChangeHotkeyClick);
+    connect(this, &ActionHotkeyWidget::RepeatNewHotkeySignal, this, &ActionHotkeyWidget::ChangeHotkeyClick);
 
     // Decorate
     btnHotkey.setText(tr("Press the key..."));
