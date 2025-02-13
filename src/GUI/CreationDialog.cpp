@@ -15,26 +15,22 @@ CreationDialog::CreationDialog(QWidget* parent) : QDialog(parent)
     btnbxOkAndCancel->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     btnbxOkAndCancel->button(QDialogButtonBox::Ok)->setText(tr("START"));
     btnbxOkAndCancel->button(QDialogButtonBox::Cancel)->setText(tr("BACK"));
+    btnbxOkAndCancel->button(QDialogButtonBox::Ok)->setObjectName("btnOk");
+    btnbxOkAndCancel->button(QDialogButtonBox::Cancel)->setObjectName("btnCancel");
+    btnbxOkAndCancel->setContentsMargins(0, 0, 0, 40);
     connect(btnbxOkAndCancel, &QDialogButtonBox::rejected, this, [=, this] { emit btnBackClicked(); });
     connect(btnbxOkAndCancel, &QDialogButtonBox::accepted, this, [=, this] { emit btnStartClicked(); });
 
     // configure game buttons
-    QRadioButton* rbxGenerals = new QRadioButton(
-                QString::fromStdString(Registry::ToString(Registry::Games::Generals)));
+    QRadioButton* rbxGenerals = new QRadioButton(Registry::ToQString(Registry::Games::Generals));
     rbxGenerals->setDisabled(true);
     QFont rbxGeneralsFont = rbxGenerals->font();
     rbxGeneralsFont.setStrikeOut(true);
     rbxGenerals->setFont(rbxGeneralsFont);
 
-    QRadioButton* rbxZeroHour = new QRadioButton(
-                QString::fromStdString(Registry::ToString(Registry::Games::GeneralsZeroHour)));
+    QRadioButton* rbxZeroHour = new QRadioButton(Registry::ToQString(Registry::Games::GeneralsZeroHour));
 
-    QButtonGroup* btngRadioboxes = new QButtonGroup();
-
-    btngRadioboxes->setExclusive(true);
     rbxZeroHour->setChecked(true);
-    btngRadioboxes->addButton(rbxGenerals);
-    btngRadioboxes->addButton(rbxZeroHour);
     QVBoxLayout* ltChoiseGame = new QVBoxLayout();
     ltChoiseGame->addWidget(rbxGenerals);
     ltChoiseGame->addWidget(rbxZeroHour);

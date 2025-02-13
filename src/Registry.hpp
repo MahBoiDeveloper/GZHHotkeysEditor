@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <map>
+#include <QString>
+#include "StringExt.hpp"
 
 class Registry final
 {
@@ -36,6 +38,8 @@ public: // Methods
     
     /// @brief Returns equal string for enum class value.
     static std::string ToString(Games game);
+    /// @brief Returns equal string for enum class value. 
+    static QString ToQString(Games game);
     /// @brief Returns actual Windows bit like a enum value.
     static WindowsBit  GetWindowsBit();
     

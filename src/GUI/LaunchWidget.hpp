@@ -21,7 +21,7 @@ public:
     LaunchWidget(QWidget* parent = nullptr);
 
 private:
-    /// @brief Adds `GreetingWidget`, `CreationDialog`, `LoadDialog` to the class.
+    /// @brief Initialize `GreetingWidget`, `CreationDialog`, `LoadDialog`.
     void AddWidgets();
 
 private slots:

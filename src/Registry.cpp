@@ -72,6 +72,8 @@ string Registry::ToString(Games game)
     return returnValue;
 }
 
+QString Registry::ToQString(Games game) { return QString::fromStdString(Registry::ToString(game)); }
+
 bool Registry::IsWindow64bit()
 {
     return GetWindowsBit() == WindowsBit::Win64;

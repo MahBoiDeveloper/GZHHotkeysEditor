@@ -15,6 +15,9 @@ LoadDialog::LoadDialog(QWidget* parent) : QDialog(parent)
     btnbxOkAndCancel->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     btnbxOkAndCancel->button(QDialogButtonBox::Ok)->setText(tr("START"));
     btnbxOkAndCancel->button(QDialogButtonBox::Cancel)->setText(tr("BACK"));
+    btnbxOkAndCancel->button(QDialogButtonBox::Ok)->setObjectName("btnOk");
+    btnbxOkAndCancel->button(QDialogButtonBox::Cancel)->setObjectName("btnCancel");
+    btnbxOkAndCancel->setContentsMargins(0, 0, 0, 40);
     connect(btnbxOkAndCancel, &QDialogButtonBox::rejected, this, [=, this] { emit btnBackClicked(); });
     connect(btnbxOkAndCancel, &QDialogButtonBox::accepted, this, [=, this] { emit btnStartClicked(); });
 

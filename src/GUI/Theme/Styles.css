@@ -62,29 +62,7 @@ LoadDialog, LaunchWidget, CreationDialog
     background-color: black;
 }
 
-BaseConfigurationDialog QPushButton
-{
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-GreetingWidget QPushButton
-{
-    font-family: Calibri;
-    font-weight: bold;
-    font-size: 18pt;
-    color: white;
-
-    background-color: #181d5a;
-    padding: 10px;
-
-    border-style: outset;
-    border-width: 2px;
-    border-color: #b1b7ff;
-    border-radius: 3px;
-}
-
-LoadDialog QPushButton, CreationDialog QPushButton
+QPushButton
 {
     font-family: Calibri;
     font-weight: bold;
@@ -98,6 +76,8 @@ LoadDialog QPushButton, CreationDialog QPushButton
     border-color: #b1b7ff;
     border-radius: 3px;
 }
+
+GreetingWidget QPushButton { font-size: 18pt; }
 
 GreetingWidget QLabel,       LoadDialog QLabel,       CreationDialog QLabel, 
 GreetingWidget QRadioButton, LoadDialog QRadioButton, CreationDialog QRadioButton, 
@@ -140,8 +120,8 @@ HotkeysMainWindow QPushButton
     border-radius: 3px;
 }
 
-HotkeysMainWindow QPushButton:hover { background-color: #3543e7; color: #baff0c; }
-HotkeysMainWindow QPushButton:pressed { background-color: #3543e7; color: white; }
+HotkeysMainWindow QPushButton:hover         { background-color: #3543e7; color: #baff0c; }
+HotkeysMainWindow QPushButton:pressed       { background-color: #3543e7; color: white; }
 HotkeysMainWindow QPushButton:pressed:hover { background-color: #3543e7; color: #baff0c; }
 
 /* QPushButton[faction="USA"] */ /* Already defined as basic non-property */
@@ -176,15 +156,8 @@ QTreeWidget::item
 
 QTreeWidget::item:selected, QTreeWidget::item:selected:!active { background-color: #3543e7; color: white; }
 
-QTreeWidget::branch:open:has-children
-{
-    background-image: url(Resources/Theme/DropArrowDown.webp);
-}
-
-QTreeWidget::branch:closed:has-children
-{
-    background-image: url(Resources/Theme/DropArrowRight.webp);
-}
+QTreeWidget::branch:open:has-children   { background-image: url(Resources/Theme/DropArrowDown.webp); }
+QTreeWidget::branch:closed:has-children { background-image: url(Resources/Theme/DropArrowRight.webp); }
 
 QTabWidget QWidget
 {
@@ -265,22 +238,11 @@ QDialog
     background-color: black;
 }
 
-QDialog QLabel
-{
-    color: white;
-}
+QDialog QLabel       { color: white; }
+QDialog QLabel#left  { margin: 0px 0px 0px 60px; }
+QDialog QLabel#right { margin: 30px 40px 30px 0px; }
 
-QDialog QLabel#left
-{
-    margin: 0px 0px 0px 60px;
-}
-
-QDialog QLabel#right
-{
-    margin: 30px 40px 30px 0px;
-}
-
-/* Maybe useful in future */
+/* Maybe will be useful in future */
 /* HotkeysMainWindow QMenu
 {
     background: rgba(0, 0, 0, 0);
@@ -315,25 +277,10 @@ QScrollArea#Keyboard QPushButton
     border-color: white;
 }
 
-QScrollArea#Keyboard QPushButton:hover
-{
-    color: #baff0c;
-}
-
-QScrollArea#Keyboard QPushButton[status="good"]
-{
-    background-color: #128d2d;
-}
-
-QScrollArea#Keyboard QPushButton[status="bad"]
-{
-    background-color: #cb0d27;
-}
-
-QScrollArea#Keyboard QPushButton[status="null"]
-{
-    background: rgba(0, 0, 0, 0);
-}
+QScrollArea#Keyboard QPushButton:hover          { color: #baff0c; }
+QScrollArea#Keyboard QPushButton[status="good"] { background-color: #128d2d; }
+QScrollArea#Keyboard QPushButton[status="bad"]  { background-color: #cb0d27; }
+QScrollArea#Keyboard QPushButton[status="null"] { background: rgba(0, 0, 0, 0); }
 
 QScrollArea#Keyboard QPushButton[key="null"]
 {

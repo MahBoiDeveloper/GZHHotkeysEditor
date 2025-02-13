@@ -59,15 +59,15 @@
     <message>
         <location filename="../CreationDialog.cpp" line="16"/>
         <source>START</source>
-        <translation type="unfinished"></translation>
+        <translation>НАЧАТЬ</translation>
     </message>
     <message>
         <location filename="../CreationDialog.cpp" line="17"/>
         <source>BACK</source>
-        <translation type="unfinished">НАЗАД</translation>
+        <translation>НАЗАД</translation>
     </message>
     <message>
-        <location filename="../CreationDialog.cpp" line="44"/>
+        <location filename="../CreationDialog.cpp" line="40"/>
         <source>Save hotkeys dirrectly to the game.</source>
         <translation>Сохранять горячие клавиши в игре.</translation>
     </message>
@@ -262,25 +262,25 @@
     <message>
         <location filename="../LoadDialog.cpp" line="16"/>
         <source>START</source>
-        <translation type="unfinished"></translation>
+        <translation>НАЧАТЬ</translation>
     </message>
     <message>
         <location filename="../LoadDialog.cpp" line="17"/>
         <source>BACK</source>
-        <translation type="unfinished">НАЗАД</translation>
+        <translation>НАЗАД</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="32"/>
+        <location filename="../LoadDialog.cpp" line="35"/>
         <source>Text files</source>
         <translation>Текстовые файлы</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="33"/>
+        <location filename="../LoadDialog.cpp" line="36"/>
         <source>Any files</source>
         <translation>Все файлы</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="37"/>
+        <location filename="../LoadDialog.cpp" line="40"/>
         <source>REVIEW</source>
         <translation>ОБЗОР</translation>
     </message>
@@ -293,12 +293,12 @@
         <translation type="vanished">Обзор</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="42"/>
+        <location filename="../LoadDialog.cpp" line="45"/>
         <source>Load project</source>
         <translation>Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="50"/>
+        <location filename="../LoadDialog.cpp" line="53"/>
         <source>Load installed game hotkey map</source>
         <translation>Загрузить горячие клавиши из игры</translation>
     </message>
