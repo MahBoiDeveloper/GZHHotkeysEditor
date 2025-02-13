@@ -1,32 +1,47 @@
 #include <QDialogButtonBox>
 #include <QRadioButton>
 #include <QPushButton>
+#include <QButtonGroup>
 #include <QVBoxLayout>
 #include <QPixmap>
+#include <QCheckBox>
 
 #include "../Registry.hpp"
 #include "CreationDialog.hpp"
 
-CreationDialog::CreationDialog(QWidget* parent) : BaseConfigurationDialog(parent)
+CreationDialog::CreationDialog(QWidget* parent) : QDialog(parent)
 {
-    // configure game buttons
-    QRadioButton* generalsButton = new QRadioButton(
-                QString::fromStdString(Registry::ToString(Registry::Games::Generals)));
-    generalsButton->setDisabled(true);
+    QDialogButtonBox* btnbxOkAndCancel = new QDialogButtonBox();
+    btnbxOkAndCancel->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    btnbxOkAndCancel->button(QDialogButtonBox::Ok)->setText(tr("START"));
+    btnbxOkAndCancel->button(QDialogButtonBox::Cancel)->setText(tr("BACK"));
+    connect(btnbxOkAndCancel, &QDialogButtonBox::rejected, this, [=, this] { emit btnBackClicked(); });
+    connect(btnbxOkAndCancel, &QDialogButtonBox::accepted, this, [=, this] { emit btnStartClicked(); });
 
-    QRadioButton* zeroHourButton = new QRadioButton(
+    // configure game buttons
+    QRadioButton* rbxGenerals = new QRadioButton(
+                QString::fromStdString(Registry::ToString(Registry::Games::Generals)));
+    rbxGenerals->setDisabled(true);
+    QFont rbxGeneralsFont = rbxGenerals->font();
+    rbxGeneralsFont.setStrikeOut(true);
+    rbxGenerals->setFont(rbxGeneralsFont);
+
+    QRadioButton* rbxZeroHour = new QRadioButton(
                 QString::fromStdString(Registry::ToString(Registry::Games::GeneralsZeroHour)));
 
-    buttonsGroup.setExclusive(true);
-    zeroHourButton->setChecked(true);
-    buttonsGroup.addButton(generalsButton);
-    buttonsGroup.addButton(zeroHourButton);
+    QButtonGroup* btngRadioboxes = new QButtonGroup();
+
+    btngRadioboxes->setExclusive(true);
+    rbxZeroHour->setChecked(true);
+    btngRadioboxes->addButton(rbxGenerals);
+    btngRadioboxes->addButton(rbxZeroHour);
     QVBoxLayout* ltChoiseGame = new QVBoxLayout();
-    ltChoiseGame->addWidget(generalsButton);
-    ltChoiseGame->addWidget(zeroHourButton);
+    ltChoiseGame->addWidget(rbxGenerals);
+    ltChoiseGame->addWidget(rbxZeroHour);
 
     // configure save option
-    saveToGameBox.setText(tr("Save hotkeys dirrectly to the game."));
+    QCheckBox* chkSaveToGame = new QCheckBox();
+    chkSaveToGame->setText(tr("Save hotkeys dirrectly to the game."));
 
     // configure dialog view
     QVBoxLayout* ltMainBlock = new QVBoxLayout();
@@ -34,14 +49,9 @@ CreationDialog::CreationDialog(QWidget* parent) : BaseConfigurationDialog(parent
     ltMainBlock->addStretch(5);
     ltMainBlock->addLayout(ltChoiseGame);
     ltMainBlock->addStretch(2);
-    ltMainBlock->addWidget(&saveToGameBox);
+    ltMainBlock->addWidget(chkSaveToGame);
     ltMainBlock->addStretch(5);
-    ltMainBlock->addWidget(&dialogButtons, 0, Qt::AlignCenter);
+    ltMainBlock->addWidget(btnbxOkAndCancel, 0, Qt::AlignCenter);
     ltMainBlock->addStretch(1);
     setLayout(ltMainBlock);
-}
-
-QVariant CreationDialog::CreateConfigurationData()
-{
-    return QVariant("Creator widget data.");
 }

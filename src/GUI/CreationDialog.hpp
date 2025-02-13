@@ -1,14 +1,12 @@
 #pragma once
-#include <QCheckBox>
-#include "BaseConfigurationDialog.hpp"
+#include <QDialog>
 
-class CreationDialog : public BaseConfigurationDialog
+class CreationDialog : public QDialog
 {
     Q_OBJECT
-private: // Data
-    QCheckBox saveToGameBox;
-
-public: // Method
+public: // Methods
     CreationDialog(QWidget* parent = nullptr);
-    QVariant CreateConfigurationData() override;
+signals:
+    void btnBackClicked();
+    void btnStartClicked();
 };

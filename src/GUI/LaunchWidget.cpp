@@ -7,14 +7,14 @@
 
 LaunchWidget::LaunchWidget(QWidget* parent) : QStackedWidget(parent)
 {
-    // MainLaunchWidget settings
+    // Makes window unresizeable and equal to the size of the background
     setFixedSize(795, 440);
     setWindowFlags(windowFlags() |  Qt::MSWindowsFixedSizeDialogHint);
     setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint &
                                    ~Qt::WindowMinimizeButtonHint);
-    
-    pGreetingWidget = new GreetingWidget(this);
-    addWidget(pGreetingWidget);
+
+    AddWidgets();
+    setCurrentWidget(pGreetingWidget);
     AttachConnections();
 }
 
@@ -25,6 +25,15 @@ void LaunchWidget::AttachConnections()
 
     connect(pGreetingWidget, &GreetingWidget::pressed,
             this,            &LaunchWidget::BtnNewProjectOrBtnLoadProject_Clicked);
+
+    connect(pLoadDialog,     &LoadDialog::btnBackClicked,
+            this,            &LaunchWidget::BtnBack_Clicked);
+
+    connect(pCreationDialog, &CreationDialog::btnBackClicked,
+            this,            &LaunchWidget::BtnBack_Clicked);
+    
+    connect(pCreationDialog, &CreationDialog::btnStartClicked,
+            this,            &LaunchWidget::CreationDialog_AcceptConfiguration);
 }
 
 void LaunchWidget::DetachConnections()
@@ -34,48 +43,67 @@ void LaunchWidget::DetachConnections()
 
     disconnect(pGreetingWidget, &GreetingWidget::pressed,
                this,            &LaunchWidget::BtnNewProjectOrBtnLoadProject_Clicked);
+    
+    disconnect(pLoadDialog,     &LoadDialog::btnBackClicked,
+               this,            &LaunchWidget::BtnBack_Clicked);
+
+    disconnect(pCreationDialog, &CreationDialog::btnBackClicked,
+               this,            &LaunchWidget::BtnBack_Clicked);
+
+    disconnect(pCreationDialog, &CreationDialog::btnStartClicked,
+               this,            &LaunchWidget::CreationDialog_AcceptConfiguration);
+}
+
+void LaunchWidget::AddWidgets()
+{
+    pGreetingWidget = new GreetingWidget(this);
+    pCreationDialog = new CreationDialog(pGreetingWidget);
+    pLoadDialog     = new LoadDialog(pGreetingWidget);
+
+    pGreetingWidget->setFixedSize(size());
+    pCreationDialog->setFixedSize(size());
+    pLoadDialog->setFixedSize(size());
+
+    addWidget(pGreetingWidget);
+    addWidget(pCreationDialog);
+    addWidget(pLoadDialog);
 }
 
 void LaunchWidget::GreetingWidget_LanguageChanged(int intLngIndex)
 {
-    // Find language type by its code.
     Languages lngType = static_cast<Languages>(intLngIndex);
 
-    // Change class' translator.
     WINDOW_MANAGER->SetTranslator(lngType);
 
-    // Recreate StartWidget and update connections.
     DetachConnections();
-    removeWidget(pGreetingWidget);
+    // removeWidget(pGreetingWidget);
+    // removeWidget(pCreationDialog);
+    // removeWidget(pLoadDialog);
     pGreetingWidget->deleteLater();
+    pCreationDialog->deleteLater();
+    pLoadDialog->deleteLater();
 
-    pGreetingWidget = new GreetingWidget(this);
-    addWidget(pGreetingWidget);
-    setCurrentWidget(pGreetingWidget);
+    AddWidgets();
     AttachConnections();
+    setCurrentWidget(pGreetingWidget);
 }
 
 void LaunchWidget::BtnNewProjectOrBtnLoadProject_Clicked(GreetingWidget::StandartButtons standartButton)
 {
-    BaseConfigurationDialog* pConfigurationWidget = nullptr;
-
     switch (standartButton)
     {
         case GreetingWidget::StandartButtons::NewProject:
-            pConfigurationWidget = new CreationDialog();
+            setCurrentWidget(pCreationDialog);
             break;
         case GreetingWidget::StandartButtons::LoadProject:
-            pConfigurationWidget = new LoadDialog();
+            setCurrentWidget(pLoadDialog);
             break;
         default:
-            pConfigurationWidget = new CreationDialog();
+            setCurrentWidget(pCreationDialog);
             break;
     }
-    addWidget(pConfigurationWidget);
-    setCurrentWidget(pConfigurationWidget); // next window (creator)
-
-    // if accepted -> send signal with configuration
-    connect(pConfigurationWidget, &CreationDialog::acceptConfiguration, this, &LaunchWidget::CreationDialog_AcceptConfiguration);
 }
 
-void LaunchWidget::CreationDialog_AcceptConfiguration(const QVariant& cfg) { WINDOW_MANAGER->LaunchWidget_AcceptConfiguration(cfg); }
+void LaunchWidget::BtnBack_Clicked() { setCurrentWidget(pGreetingWidget); }
+
+void LaunchWidget::CreationDialog_AcceptConfiguration() { QVariant cfg; WINDOW_MANAGER->LaunchWidget_AcceptConfiguration(cfg); }

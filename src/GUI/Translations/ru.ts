@@ -46,20 +46,28 @@
         <translation type="vanished">Назад</translation>
     </message>
     <message>
-        <location filename="../BaseConfigurationDialog.cpp" line="8"/>
         <source>CONFIGURE</source>
-        <translation>НАСТРОЙКА</translation>
+        <translation type="vanished">НАСТРОЙКА</translation>
     </message>
     <message>
-        <location filename="../BaseConfigurationDialog.cpp" line="9"/>
         <source>BACK</source>
-        <translation>НАЗАД</translation>
+        <translation type="vanished">НАЗАД</translation>
     </message>
 </context>
 <context>
     <name>CreationDialog</name>
     <message>
-        <location filename="../CreationDialog.cpp" line="29"/>
+        <location filename="../CreationDialog.cpp" line="16"/>
+        <source>START</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CreationDialog.cpp" line="17"/>
+        <source>BACK</source>
+        <translation type="unfinished">НАЗАД</translation>
+    </message>
+    <message>
+        <location filename="../CreationDialog.cpp" line="44"/>
         <source>Save hotkeys dirrectly to the game.</source>
         <translation>Сохранять горячие клавиши в игре.</translation>
     </message>
@@ -83,23 +91,23 @@
         <translation type="vanished">ЗАГРУЗИТЬ ПРОЕКТ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="28"/>
+        <location filename="../GreetingWidget.cpp" line="25"/>
         <source>NEW</source>
         <translation>НОВЫЙ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="28"/>
-        <location filename="../GreetingWidget.cpp" line="35"/>
+        <location filename="../GreetingWidget.cpp" line="25"/>
+        <location filename="../GreetingWidget.cpp" line="32"/>
         <source>PROJECT</source>
         <translation>ПРОЕКТ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="35"/>
+        <location filename="../GreetingWidget.cpp" line="32"/>
         <source>LOAD</source>
         <translation>ЗАГРУЗИТЬ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="42"/>
+        <location filename="../GreetingWidget.cpp" line="39"/>
         <source>LANGUAGE</source>
         <translation>ЯЗЫК</translation>
     </message>
@@ -252,17 +260,27 @@
 <context>
     <name>LoadDialog</name>
     <message>
-        <location filename="../LoadDialog.cpp" line="24"/>
+        <location filename="../LoadDialog.cpp" line="16"/>
+        <source>START</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../LoadDialog.cpp" line="17"/>
+        <source>BACK</source>
+        <translation type="unfinished">НАЗАД</translation>
+    </message>
+    <message>
+        <location filename="../LoadDialog.cpp" line="32"/>
         <source>Text files</source>
         <translation>Текстовые файлы</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="25"/>
+        <location filename="../LoadDialog.cpp" line="33"/>
         <source>Any files</source>
         <translation>Все файлы</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="29"/>
+        <location filename="../LoadDialog.cpp" line="37"/>
         <source>REVIEW</source>
         <translation>ОБЗОР</translation>
     </message>
@@ -275,12 +293,12 @@
         <translation type="vanished">Обзор</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="34"/>
+        <location filename="../LoadDialog.cpp" line="42"/>
         <source>Load project</source>
         <translation>Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="41"/>
+        <location filename="../LoadDialog.cpp" line="50"/>
         <source>Load installed game hotkey map</source>
         <translation>Загрузить горячие клавиши из игры</translation>
     </message>

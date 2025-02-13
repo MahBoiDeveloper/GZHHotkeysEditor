@@ -1,14 +1,12 @@
 #pragma once
-#include "BaseConfigurationDialog.hpp"
+#include <QDialog>
 
-class LoadDialog : public BaseConfigurationDialog
+class LoadDialog : public QDialog
 {
     Q_OBJECT
-private: // Data
-    // QButtonGroup buttonsGroup; // Inherited from BaseConfigurationDialog
-
 public: // Methods
-    explicit LoadDialog(QWidget *parent = nullptr);
-    /// @brief Returns checked config data to initiate editor windows with user preferences.
-    QVariant CreateConfigurationData() override;
+    LoadDialog(QWidget *parent = nullptr);
+signals:
+    void btnBackClicked();
+    void btnStartClicked();
 };
