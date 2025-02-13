@@ -1,25 +1,36 @@
-#include <QDialogButtonBox>
 #include <QRadioButton>
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QVBoxLayout>
 #include <QPixmap>
 #include <QCheckBox>
+#include <QTranslator>
 
+#include "../Logger.hpp"
 #include "../Registry.hpp"
 #include "CreationDialog.hpp"
 
 CreationDialog::CreationDialog(QWidget* parent) : QDialog(parent)
 {
-    QDialogButtonBox* btnbxOkAndCancel = new QDialogButtonBox();
-    btnbxOkAndCancel->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-    btnbxOkAndCancel->button(QDialogButtonBox::Ok)->setText(tr("START"));
-    btnbxOkAndCancel->button(QDialogButtonBox::Cancel)->setText(tr("BACK"));
-    btnbxOkAndCancel->button(QDialogButtonBox::Ok)->setObjectName("btnOk");
-    btnbxOkAndCancel->button(QDialogButtonBox::Cancel)->setObjectName("btnCancel");
-    btnbxOkAndCancel->setContentsMargins(0, 0, 0, 40);
-    connect(btnbxOkAndCancel, &QDialogButtonBox::rejected, this, [=, this] { emit btnBackClicked(); });
-    connect(btnbxOkAndCancel, &QDialogButtonBox::accepted, this, [=, this] { emit btnStartClicked(); });
+    QHBoxLayout*  ltOkAndCancel   = new QHBoxLayout();
+    QPushButton*  btnOk           = new QPushButton(tr("START"));
+    QPushButton*  btnCancel       = new QPushButton(tr("BACK"));
+    QHBoxLayout*  ltBtnOk         = new QHBoxLayout();
+    QHBoxLayout*  ltBtnCancel     = new QHBoxLayout();
+
+    btnOk->setObjectName("btnOk");
+    btnOk->setFixedWidth(80);
+    ltBtnOk->setAlignment(Qt::Alignment::enum_type::AlignRight);
+    ltBtnOk->addWidget(btnOk);
+    btnCancel->setObjectName("btnCancel");
+    btnCancel->setFixedWidth(80);
+    ltBtnCancel->setAlignment(Qt::Alignment::enum_type::AlignLeft);
+    ltBtnCancel->addWidget(btnCancel);
+    ltOkAndCancel->addLayout(ltBtnOk);
+    ltOkAndCancel->addLayout(ltBtnCancel);
+
+    connect(btnOk,     &QPushButton::clicked, this, [=, this] { emit btnStartClicked(); });
+    connect(btnCancel, &QPushButton::clicked, this, [=, this] { emit btnBackClicked(); });
 
     // configure game buttons
     QRadioButton* rbxGenerals = new QRadioButton(Registry::ToQString(Registry::Games::Generals));
@@ -47,7 +58,7 @@ CreationDialog::CreationDialog(QWidget* parent) : QDialog(parent)
     ltMainBlock->addStretch(2);
     ltMainBlock->addWidget(chkSaveToGame);
     ltMainBlock->addStretch(5);
-    ltMainBlock->addWidget(btnbxOkAndCancel, 0, Qt::AlignCenter);
+    ltMainBlock->addLayout(ltOkAndCancel);
     ltMainBlock->addStretch(1);
     setLayout(ltMainBlock);
 }
