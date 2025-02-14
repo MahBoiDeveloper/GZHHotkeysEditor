@@ -63,6 +63,8 @@ private slots:
     void ActAbout_Triggered();
     void ActLanguage_Triggered();
     void ActSave_Triggered();
+    void ActSaveAs_Triggered();
+    void ActOpen_Triggered();
 
 signals:
     Languages languageChanged(int index);

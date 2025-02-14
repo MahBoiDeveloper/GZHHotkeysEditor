@@ -10,6 +10,7 @@
 #include "../Parsers/CSFParser.hpp"
 #include "../Info.hpp"
 #include "../Logger.hpp"
+#include "../NameOfExt.hpp"
 #include "../Unsorted.hpp"
 #include "../Convert.hpp"
 
@@ -170,7 +171,9 @@ void HotkeysMainWindow::ConfigureMenu()
     mnFileOptions->addAction(actSpecial);
     menuBar()->addMenu(mnFileOptions);
 
+    connect(actOpen, &QAction::triggered, this, &HotkeysMainWindow::ActOpen_Triggered);
     connect(actSave, &QAction::triggered, this, &HotkeysMainWindow::ActSave_Triggered);
+    connect(actSaveAs, &QAction::triggered, this, &HotkeysMainWindow::ActSaveAs_Triggered);
 
     QMenu* mnViewOptions = new QMenu(tr("View"));
     QMenu* mnStatusBarChecbox = new QMenu(tr("Status Bar"));
@@ -533,8 +536,7 @@ void HotkeysMainWindow::ActLanguage_Triggered()
     pWindowToChangeLanguage->raise();
     pWindowToChangeLanguage->activateWindow();
 
-    // Todo:
-    // Make it work. Need to recreate HotkeysMainWindow through WindowManager
+    // TODO: Make it work. Need to recreate HotkeysMainWindow through WindowManager
     connect(cmbLangList, QOverload<int>::of(&QComboBox::activated), this, &HotkeysMainWindow::languageChanged);
 
     connect(pWindowToChangeLanguage, &QDialog::finished, this, [this]()
@@ -579,7 +581,10 @@ void HotkeysMainWindow::ActSave_Triggered()
     LOGMSG("Changes has been saved");
 }
 
-void HotkeysMainWindow::Save()
+void HotkeysMainWindow::ActSaveAs_Triggered()
 {
-    
+}
+
+void HotkeysMainWindow::ActOpen_Triggered()
+{
 }
