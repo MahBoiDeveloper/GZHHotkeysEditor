@@ -4,6 +4,7 @@
 #include <QVBoxLayout>
 
 #include "../Logger.hpp"
+#include "../NameOfExt.hpp"
 #include "../ProgramConstants.hpp"
 #include "../Unsorted.hpp"
 #include "WindowManager.hpp"
@@ -24,6 +25,7 @@ GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
     // Add "New Project" and "Load Project" buttons to the window
     btnNewProject = new QPushButton(tr("NEW") + '\n' + tr("PROJECT"));
     btnNewProject->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
+    btnNewProject->setObjectName(nameof(btnNewProject));
     connect(btnNewProject, &QPushButton::clicked, this, [this](bool)
     {
         emit pressed(GreetingWidget::StandartButtons::NewProject);
@@ -31,14 +33,17 @@ GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
 
     btnLoadProject = new QPushButton(tr("LOAD") + '\n' + tr("PROJECT"));
     btnLoadProject->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
+    btnLoadProject->setObjectName(nameof(btnLoadProject));
     connect(btnLoadProject, &QPushButton::clicked, this, [this](bool)
     {
         emit pressed(GreetingWidget::StandartButtons::LoadProject);
     });
 
     lblLanguage = new QLabel(tr("LANGUAGE"));
+    lblLanguage->setObjectName(nameof(lblLanguage));
 
     cmbLangList = new QComboBox();
+    cmbLangList->setObjectName(nameof(cmbLangList));
     for (int i = 0; i < static_cast<int>(Languages::Count); ++i)
         cmbLangList->addItem(Unsorted::GetLanguageFullName(static_cast<Languages>(i)));
     cmbLangList->setCurrentIndex(static_cast<int>(WINDOW_MANAGER->GetLanguage()));
