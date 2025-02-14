@@ -30,7 +30,8 @@ GZH Hotkeys Editor is an attempt to create a useful tool for editing C&C: Genera
 * [TitoWWN](https://vk.com/artcandc20) — missing and editor icon author
 * [DESolatorTrooper](https://www.moddb.com/members/deso3latortro0per/addons) — background edits
 ### Others
-* [Neargye](https://github.com/Neargye) — [nameof library](https://github.com/Neargye/nameof) (MIT)
+* [Neargye](https://github.com/Neargye) — [nameof library](https://github.com/Neargye/nameof) (MIT License)
+* [WebM Project](https://github.com/webmproject) — [webp library](https://github.com/webmproject/libwebp) (WebM Project License)
 
 ## Legal 
 This project has no direct affiliation with Electronic Arts Inc. Command & Conquer, Command & Conquer Generals, Command & Conquer Generals Zero Hour are registered trademarks of Electronic Arts Inc. All Rights Reserved.
