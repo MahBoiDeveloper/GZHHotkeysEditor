@@ -6,6 +6,7 @@
 #include <QLineEdit>
 #include <QFontMetrics>
 
+#include "../NameOfExt.hpp"
 #include "LoadDialog.hpp"
 
 LoadDialog::LoadDialog(QWidget* parent) : QDialog(parent)
@@ -15,11 +16,11 @@ LoadDialog::LoadDialog(QWidget* parent) : QDialog(parent)
     QPushButton*  btnCancel       = new QPushButton(tr("BACK"));
     QHBoxLayout*  ltBtnOk         = new QHBoxLayout();
     QHBoxLayout*  ltBtnCancel     = new QHBoxLayout();
-    btnOk->setObjectName("btnOk");
+    btnOk->setObjectName(nameof(btnOk));
     btnOk->setFixedWidth(80);
     ltBtnOk->setAlignment(Qt::Alignment::enum_type::AlignRight);
     ltBtnOk->addWidget(btnOk);
-    btnCancel->setObjectName("btnCancel");
+    btnCancel->setObjectName(nameof(btnCancel));
     btnCancel->setFixedWidth(80);
     ltBtnCancel->setAlignment(Qt::Alignment::enum_type::AlignLeft);
     ltBtnCancel->addWidget(btnCancel);
@@ -45,6 +46,7 @@ LoadDialog::LoadDialog(QWidget* parent) : QDialog(parent)
     
     // review button
     QPushButton* btnReview = new QPushButton(tr("REVIEW"));
+    btnReview->setObjectName(nameof(btnReview));
     btnReview->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(btnReview, &QPushButton::clicked, fileDialog, &QFileDialog::exec);
 
