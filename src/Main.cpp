@@ -51,10 +51,10 @@ int main(int argc, const char** argv)
         filesystem::current_path(workingDirectory.toStdWString());
     }
 
-    if (!filesystem::exists(PROGRAM_CONSTANTS->SETTINGS_PATH.toStdString().c_str()))
+    if (!filesystem::exists(PROGRAM_CONSTANTS->SETTINGS_FILE.toStdString().c_str()))
         return ShowErrorMessage(PROGRAM_CONSTANTS->SETTINGS_NO_FOUND);
 
-    if (!filesystem::exists(PROGRAM_CONSTANTS->TECH_TREE_PATH.toStdString().c_str()))
+    if (!filesystem::exists(PROGRAM_CONSTANTS->TECH_TREE_FILE.toStdString().c_str()))
         return ShowErrorMessage(PROGRAM_CONSTANTS->TECH_TREE_NO_FOUND);
 
     if (!filesystem::exists(PROGRAM_CONSTANTS->ICONS_FOLDER.toStdString().c_str()))

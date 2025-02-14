@@ -52,18 +52,16 @@ LoadDialog::LoadDialog(QWidget* parent) : QDialog(parent)
 
     // configure choise buttons
     QRadioButton* rdxLoadFromFile = new QRadioButton(tr("Load project"));
+    rdxLoadFromFile->setChecked(true);
+    rdxLoadFromFile->setObjectName(nameof(rdxLoadFromFile));
     connect(rdxLoadFromFile, &QPushButton::toggled, this, [=, this](bool checked)
     {
         pathToFileLineEdit->setEnabled(checked);
         btnReview->setEnabled(checked);
     });
 
-    QButtonGroup* btngRadioboxes = new QButtonGroup();
-    QRadioButton* rbxLoadFromGame = new QRadioButton(tr("Load installed game hotkey map"));
-    btngRadioboxes->setExclusive(true);
-    rdxLoadFromFile->setChecked(true);
-    btngRadioboxes->addButton(rdxLoadFromFile);
-    btngRadioboxes->addButton(rbxLoadFromGame);
+    QRadioButton* rdxLoadFromGame = new QRadioButton(tr("Load installed game hotkey map"));
+    rdxLoadFromGame->setObjectName(nameof(rdxLoadFromGame));
 
     QHBoxLayout* ltReview = new QHBoxLayout();
     ltReview->addWidget(pathToFileLineEdit);
@@ -82,7 +80,7 @@ LoadDialog::LoadDialog(QWidget* parent) : QDialog(parent)
     ltMainBlock->addSpacing(10);
     ltMainBlock->addLayout(ltReview);
     ltMainBlock->addStretch(2);
-    ltMainBlock->addWidget(rbxLoadFromGame);
+    ltMainBlock->addWidget(rdxLoadFromGame);
     ltMainBlock->addStretch(5);
     ltMainBlock->addLayout(ltOkAndCancel);
     ltMainBlock->addStretch(1);

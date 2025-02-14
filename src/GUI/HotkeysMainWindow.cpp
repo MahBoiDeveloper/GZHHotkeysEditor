@@ -201,11 +201,11 @@ void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
     if(goMap.isEmpty()) return;
 
     // Create sections for all faction entities types
-    for(const auto& objectType : PROGRAM_CONSTANTS->ENTITIES_STRINGS.keys())
+    for(const auto& objectType : PROGRAM_CONSTANTS->INGAME_ENTITIES_STRINGS.keys())
     {
         // Create new section of tree list
         QTreeWidgetItem* newTopEntityItem = new QTreeWidgetItem();
-        newTopEntityItem->setText(0, QCoreApplication::translate("QObject", PROGRAM_CONSTANTS->ENTITIES_STRINGS.value(objectType).toUtf8().constData()));
+        newTopEntityItem->setText(0, QCoreApplication::translate("QObject", PROGRAM_CONSTANTS->INGAME_ENTITIES_STRINGS.value(objectType).toUtf8().constData()));
 
         // Decorate
         newTopEntityItem->setIcon(0, ImageManager::GetGameObjectTypePixmap(objectType)

@@ -12,7 +12,7 @@ const QSet<Qt::Key>& ProgramConstants::GetAllowedKeys() { return keys; }
 bool ProgramConstants::IsConsoleEnabled()               { return console; }
 void ProgramConstants::InitializeSettingsJSON()
 {
-    JSONFile settings(SETTINGS_PATH);
+    JSONFile settings(SETTINGS_FILE);
     console = settings.Query("$.DebugConsole").toBool();
 
     for (const QJsonValue& ch : settings.Query("$.AllowedHotkeys").toArray())

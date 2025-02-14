@@ -16,8 +16,8 @@ WindowManager::WindowManager()
 
     qApp->setWindowIcon(QIcon(QPixmap::fromImage(ImageManager::DecodeEditorWebpIcon())));
     
-    LOGMSG("Loading \"" + PROGRAM_CONSTANTS->STYLES_SHEET + "\"...");
-    QFile css{PROGRAM_CONSTANTS->STYLES_SHEET};
+    LOGMSG("Loading \"" + PROGRAM_CONSTANTS->STYLES_SHEET_FILE + "\"...");
+    QFile css{PROGRAM_CONSTANTS->STYLES_SHEET_FILE};
     if (css.open(QIODevice::ReadOnly))
     {
         qApp->setStyleSheet(css.readAll());

@@ -76,9 +76,6 @@ void LaunchWidget::GreetingWidget_LanguageChanged(int intLngIndex)
     WINDOW_MANAGER->SetTranslator(lngType);
 
     DetachConnections();
-    // removeWidget(pGreetingWidget);
-    // removeWidget(pCreationDialog);
-    // removeWidget(pLoadDialog);
     pGreetingWidget->deleteLater();
     pCreationDialog->deleteLater();
     pLoadDialog->deleteLater();

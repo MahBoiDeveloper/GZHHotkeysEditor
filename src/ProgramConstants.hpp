@@ -31,11 +31,30 @@ private: // Data
 public:
     inline static std::unique_ptr<ProgramConstants> Instance;
 
+    // Folders
     const QString          RESOURCE_FOLDER         = "Resources";
     const QString          BINARIES_FOLDER         = RESOURCE_FOLDER + "\\Binaries";
     const QString          TRANSLATIONS_FOLDER     = RESOURCE_FOLDER + "/Translations";
-    const QString          TECH_TREE_PATH          = RESOURCE_FOLDER + "/TechTree.json";
-    const QString          SETTINGS_PATH           = RESOURCE_FOLDER + "/Settings.json";
+    const QString          ICONS_FOLDER            = RESOURCE_FOLDER + "/Icons";
+    const QString          THEME_FOLDER            = RESOURCE_FOLDER + "/Theme";
+    const QString          QT_ICONS_FOLDER         = ":/icons";
+    
+    // Files
+    const QString          TECH_TREE_FILE          = RESOURCE_FOLDER + "/TechTree.json";
+    const QString          SETTINGS_FILE           = RESOURCE_FOLDER + "/Settings.json";
+    const QString          STYLES_SHEET_FILE       = THEME_FOLDER + "/Styles.css";
+    const QString          MISSING_ICON_FILE       = QT_ICONS_FOLDER + "/NoImageSmall.webp";
+    const QString          EDITOR_ICON_FILE        = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
+    const QString          EDITOR_BIG_ICON_FILE    = QT_ICONS_FOLDER + "/EditorIconBig.webp";
+
+    // Window titles
+    const QString          COMMON_TITLE            = "C&C: Generals Zero Hour Hotkey Editor";
+    const QString          SHORT_COMMON_TITLE      = "C&C: GZH Hotkey Editor";
+    const QString          EDITOR_TITLE            = SHORT_COMMON_TITLE + " — Editor";
+    const QString          LOAD_TITLE              = SHORT_COMMON_TITLE + " — Load";
+    const QString          CREATE_TITLE            = SHORT_COMMON_TITLE + " — New Set Up";
+
+    // Magic numbers that become known
     const double           START_WIDGET_SIZE_RATIO = 3./7.;
     const QSize            START_BUTTON_SIZE       = QSize(230, 110);
     const QSize            LANGUAGE_CHANGE_SIZE    = QSize(250, 100);
@@ -43,19 +62,16 @@ public:
     const int              ICON_SCALING_HEIGHT     = 25;
     const int              KEYBOARD_KEY_WIDTH      = 50;
     const int              EMPTY_KEY_WIDTH         = 25;
-    const QString          ICONS_FOLDER            = RESOURCE_FOLDER + "/Icons";
-    const QString          THEME_FOLDER            = RESOURCE_FOLDER + "/Theme";
-    const QString          STYLES_SHEET            = THEME_FOLDER + "/Styles.css";
-    const QString          QT_ICONS_FOLDER         = ":/icons";
-    const QString          MISSING_ICON_PATH       = QT_ICONS_FOLDER + "/NoImageSmall.webp";
-    const QString          EDITOR_ICON_PATH        = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
-    const QString          EDITOR_BIG_ICON_PATH    = QT_ICONS_FOLDER + "/EditorIconBig.webp";
+
+    // Errors
     const char*            SETTINGS_NO_FOUND       = "Unable to find Settings.json in Resource folder.";
     const char*            TECH_TREE_NO_FOUND      = "Unable to find TechTree.json in Resource folder.";
     const char*            THEME_FOLDER_NO_FOUND   = "Unable to find Resource/Theme folder.";
     const char*            ICONS_FOLDER_NO_FOUND   = "Unable to find Resource/Icons folder.";
     const char*            TRANSLATIONS_NO_FOUND   = "Unable to find Resource/Translations folder.";
     const char*            UNKNOWN_ERROR           = "Unknown error has been occured.";
+
+    // Other constants
     const QVector<QString> GLA_SHORT_NAMES         = {"GLA", "TOX", "STL", "DML"};
     const QVector<QString> USA_SHORT_NAMES         = {"USA", "SWG", "AIR", "LSR"};
     const QVector<QString> PRC_SHORT_NAMES         = {"PRC", "TNK", "INF", "NUK"};
@@ -74,7 +90,7 @@ public:
     };
 
     
-    const QMap<GameObjectTypes, QString> ENTITIES_STRINGS =
+    const QMap<GameObjectTypes, QString> INGAME_ENTITIES_STRINGS =
     {
         {GameObjectTypes::Buildings, QObject::tr("Buildings")},
         {GameObjectTypes::Infantry,  QObject::tr("Infantry")},
@@ -86,7 +102,7 @@ public: // Methods
     ProgramConstants();
     /// @brief Parse `Resource\Settings.json`.
     void InitializeSettingsJSON();
-    /// @brief Returns QSet of available keys from QWEWRTY keyboard to choice by user.
+    /// @brief Returns `QSet` of available keys from `QWEWRTY` keyboard to choice by user.
     const QSet<Qt::Key>& GetAllowedKeys();
     /// @brief Returns field status for console from settings file.
     bool IsConsoleEnabled();

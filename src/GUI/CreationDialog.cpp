@@ -8,6 +8,7 @@
 
 #include "../Logger.hpp"
 #include "../Registry.hpp"
+#include "../NameOfExt.hpp"
 #include "CreationDialog.hpp"
 
 CreationDialog::CreationDialog(QWidget* parent) : QDialog(parent)
@@ -20,10 +21,12 @@ CreationDialog::CreationDialog(QWidget* parent) : QDialog(parent)
 
     btnOk->setObjectName("btnOk");
     btnOk->setFixedWidth(80);
+    btnOk->setObjectName(nameof(btnOk));
     ltBtnOk->setAlignment(Qt::Alignment::enum_type::AlignRight);
     ltBtnOk->addWidget(btnOk);
     btnCancel->setObjectName("btnCancel");
     btnCancel->setFixedWidth(80);
+    btnCancel->setObjectName(nameof(btnCancel));
     ltBtnCancel->setAlignment(Qt::Alignment::enum_type::AlignLeft);
     ltBtnCancel->addWidget(btnCancel);
     ltOkAndCancel->addLayout(ltBtnOk);
@@ -33,22 +36,25 @@ CreationDialog::CreationDialog(QWidget* parent) : QDialog(parent)
     connect(btnCancel, &QPushButton::clicked, this, [=, this] { emit btnBackClicked(); });
 
     // configure game buttons
-    QRadioButton* rbxGenerals = new QRadioButton(Registry::ToQString(Registry::Games::Generals));
-    rbxGenerals->setDisabled(true);
-    QFont rbxGeneralsFont = rbxGenerals->font();
+    QRadioButton* rdxGenerals = new QRadioButton(Registry::ToQString(Registry::Games::Generals));
+    rdxGenerals->setDisabled(true);
+    rdxGenerals->setObjectName(nameof(rdxGenerals));
+    QFont rbxGeneralsFont = rdxGenerals->font();
     rbxGeneralsFont.setStrikeOut(true);
-    rbxGenerals->setFont(rbxGeneralsFont);
+    rdxGenerals->setFont(rbxGeneralsFont);
 
-    QRadioButton* rbxZeroHour = new QRadioButton(Registry::ToQString(Registry::Games::GeneralsZeroHour));
+    QRadioButton* rdxZeroHour = new QRadioButton(Registry::ToQString(Registry::Games::GeneralsZeroHour));
+    rdxZeroHour->setChecked(true);
+    rdxGenerals->setObjectName(nameof(rdxGenerals));
 
-    rbxZeroHour->setChecked(true);
     QVBoxLayout* ltChoiseGame = new QVBoxLayout();
-    ltChoiseGame->addWidget(rbxGenerals);
-    ltChoiseGame->addWidget(rbxZeroHour);
+    ltChoiseGame->addWidget(rdxGenerals);
+    ltChoiseGame->addWidget(rdxZeroHour);
 
     // configure save option
     QCheckBox* chkSaveToGame = new QCheckBox();
     chkSaveToGame->setText(tr("Save hotkeys dirrectly to the game."));
+    chkSaveToGame->setObjectName(nameof(chkSaveToGame));
 
     // configure dialog view
     QVBoxLayout* ltMainBlock = new QVBoxLayout();

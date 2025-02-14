@@ -57,17 +57,17 @@
 <context>
     <name>CreationDialog</name>
     <message>
-        <location filename="../CreationDialog.cpp" line="16"/>
+        <location filename="../CreationDialog.cpp" line="17"/>
         <source>START</source>
         <translation>НАЧАТЬ</translation>
     </message>
     <message>
-        <location filename="../CreationDialog.cpp" line="17"/>
+        <location filename="../CreationDialog.cpp" line="18"/>
         <source>BACK</source>
         <translation>НАЗАД</translation>
     </message>
     <message>
-        <location filename="../CreationDialog.cpp" line="51"/>
+        <location filename="../CreationDialog.cpp" line="56"/>
         <source>Save hotkeys dirrectly to the game.</source>
         <translation>Сохранять горячие клавиши в игре.</translation>
     </message>
@@ -293,12 +293,12 @@
         <translation type="vanished">Обзор</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="53"/>
+        <location filename="../LoadDialog.cpp" line="54"/>
         <source>Load project</source>
         <translation>Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="61"/>
+        <location filename="../LoadDialog.cpp" line="63"/>
         <source>Load installed game hotkey map</source>
         <translation>Загрузить горячие клавиши из игры</translation>
     </message>
@@ -306,22 +306,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="79"/>
+        <location filename="../../ProgramConstants.hpp" line="95"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="80"/>
+        <location filename="../../ProgramConstants.hpp" line="96"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="81"/>
+        <location filename="../../ProgramConstants.hpp" line="97"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="82"/>
+        <location filename="../../ProgramConstants.hpp" line="98"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>

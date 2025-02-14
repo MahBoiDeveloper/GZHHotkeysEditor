@@ -16,7 +16,7 @@ private: // Data
     std::unique_ptr<HotkeysMainWindow> pHotkeysEditor     = nullptr;
     inline static QTranslator*         pAppTranslator     = nullptr;
     inline static Languages            Language           = Languages::English;
-    QString                            strWindowName      = "C&C: Generals Zero Hour Hotkey Editor";
+    QString                            strWindowName      = PROGRAM_CONSTANTS->COMMON_TITLE;
     bool                               bEditorInitialized = false;
 public:
     inline static std::unique_ptr<WindowManager> Instance = nullptr;
