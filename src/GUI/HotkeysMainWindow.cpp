@@ -47,12 +47,15 @@ HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* par
     if (factonsCount == Faction::BASIC_FACTION_COUNT)
     {
         ltFactions = new QHBoxLayout();
+        ltFactions->setObjectName(nameof(ltFactions));
 
         // only 3 sections with factions and subfactions, 4 in each
         for (int sectionIndex = 0; sectionIndex < Faction::BASIC_FACTION_COUNT; sectionIndex += 4)
         {
             QVBoxLayout* ltCurrentFaction    = new QVBoxLayout();
             QHBoxLayout* ltCurrentSubfaction = new QHBoxLayout();
+            ltCurrentFaction->setObjectName(nameof(ltCurrentFaction));
+            ltCurrentSubfaction->setObjectName(nameof(ltCurrentSubfaction));
 
             for (int i = 0; i < 4; ++i)
             {
@@ -279,7 +282,7 @@ void HotkeysMainWindow::SetHotkeysPanels()
     for (const auto& currLayout : gameObjectKeyboardLayouts)
     {
         QSet<ActionHotkeyWidget*> currentPanelWidgets;
-        QVBoxLayout* hotkeysLayout = new QVBoxLayout();
+        QVBoxLayout* ltHotkeys = new QVBoxLayout();
 
         for (const auto& currAction : currLayout)
         {
@@ -301,7 +304,7 @@ void HotkeysMainWindow::SetHotkeysPanels()
                 emit pHotkeysPanelsWidget->currentChanged(i);
             });
 
-            hotkeysLayout->addWidget(actionHotkey);
+            ltHotkeys->addWidget(actionHotkey);
 
             // Remember widget
             currentPanelWidgets.insert(actionHotkey);
@@ -314,11 +317,11 @@ void HotkeysMainWindow::SetHotkeysPanels()
         HighlightCurrentKeys();
 
         // Condense the actions at the top with minumum spacing
-        hotkeysLayout->setAlignment(Qt::AlignTop);
-        hotkeysLayout->setSpacing(0);
+        ltHotkeys->setAlignment(Qt::AlignTop);
+        ltHotkeys->setSpacing(0);
 
         QWidget* panelScrollWidget = new QWidget();
-        panelScrollWidget->setLayout(hotkeysLayout);
+        panelScrollWidget->setLayout(ltHotkeys);
         panelScrollWidget->setObjectName(QString("Layout ") + QString::number(i+1));
         pHotkeysPanelsWidget->addTab(panelScrollWidget, QString(tr("Layout %1")).arg(++i));
     }

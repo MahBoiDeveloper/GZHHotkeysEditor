@@ -134,113 +134,113 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="163"/>
+        <location filename="../HotkeysMainWindow.cpp" line="166"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="164"/>
+        <location filename="../HotkeysMainWindow.cpp" line="167"/>
         <source>Open</source>
         <translation>Открыть</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="165"/>
+        <location filename="../HotkeysMainWindow.cpp" line="168"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="166"/>
+        <location filename="../HotkeysMainWindow.cpp" line="169"/>
         <source>Save As...</source>
         <translation>Сохранить как...</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="167"/>
+        <location filename="../HotkeysMainWindow.cpp" line="170"/>
         <source>Special</source>
         <translation>Дополнительно</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="178"/>
+        <location filename="../HotkeysMainWindow.cpp" line="181"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="179"/>
+        <location filename="../HotkeysMainWindow.cpp" line="182"/>
         <source>Status Bar</source>
         <translation>Строка состояния</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="180"/>
+        <location filename="../HotkeysMainWindow.cpp" line="183"/>
         <source>Enable</source>
         <translation>Включить</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="181"/>
+        <location filename="../HotkeysMainWindow.cpp" line="184"/>
         <source>Disable</source>
         <translation>Отключить</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="185"/>
+        <location filename="../HotkeysMainWindow.cpp" line="188"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="188"/>
+        <location filename="../HotkeysMainWindow.cpp" line="191"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="192"/>
-        <location filename="../HotkeysMainWindow.cpp" line="470"/>
+        <location filename="../HotkeysMainWindow.cpp" line="195"/>
+        <location filename="../HotkeysMainWindow.cpp" line="473"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="323"/>
+        <location filename="../HotkeysMainWindow.cpp" line="326"/>
         <source>Layout %1</source>
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="450"/>
+        <location filename="../HotkeysMainWindow.cpp" line="453"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="451"/>
+        <location filename="../HotkeysMainWindow.cpp" line="454"/>
         <source>Version: </source>
         <translation>Версия: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="452"/>
+        <location filename="../HotkeysMainWindow.cpp" line="455"/>
         <source>Program licensed with </source>
         <translation>Программа лицензирована под </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="453"/>
+        <location filename="../HotkeysMainWindow.cpp" line="456"/>
         <source>GitHub repository:</source>
         <translation>Репозиторий на GitHub:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="455"/>
+        <location filename="../HotkeysMainWindow.cpp" line="458"/>
         <source>Support development:</source>
         <translation>Поддержать разработку:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="504"/>
+        <location filename="../HotkeysMainWindow.cpp" line="507"/>
         <source>Lanugage</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="513"/>
+        <location filename="../HotkeysMainWindow.cpp" line="516"/>
         <source>LANGUAGE</source>
         <translation>ЯЗЫК</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="525"/>
+        <location filename="../HotkeysMainWindow.cpp" line="528"/>
         <source>OK</source>
         <translation>Ок</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="526"/>
+        <location filename="../HotkeysMainWindow.cpp" line="529"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
