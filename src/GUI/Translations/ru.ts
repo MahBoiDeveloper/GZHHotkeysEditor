@@ -306,22 +306,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="95"/>
+        <location filename="../../ProgramConstants.hpp" line="98"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="96"/>
+        <location filename="../../ProgramConstants.hpp" line="99"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="97"/>
+        <location filename="../../ProgramConstants.hpp" line="100"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="98"/>
+        <location filename="../../ProgramConstants.hpp" line="101"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>

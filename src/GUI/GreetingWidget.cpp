@@ -16,11 +16,11 @@ GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
     QPushButton* btnNewProject  = nullptr;
     QPushButton* btnLoadProject = nullptr;
     QHBoxLayout* ltButtons      = nullptr;
-    QVBoxLayout* ltContent      = nullptr;
+    QVBoxLayout* ltMain         = nullptr;
+    QHBoxLayout* ltSettings     = nullptr;
     QLabel*      lblLanguage    = nullptr;
     QComboBox*   cmbLangList    = nullptr;
     QVBoxLayout* ltLanguages    = nullptr;
-    QVBoxLayout* ltMain         = nullptr;
 
     // Add "New Project" and "Load Project" buttons to the window
     btnNewProject = new QPushButton(tr("NEW") + '\n' + tr("PROJECT"));
@@ -50,11 +50,23 @@ GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
     cmbLangList->setCurrentText(PROGRAM_CONSTANTS->LANGUAGES_STRINGS.value(WINDOW_MANAGER->GetLanguage()).second);
     connect(cmbLangList, QOverload<int>::of(&QComboBox::activated), this, &GreetingWidget::languageChanged);
     
+    QPushButton* btnSettings = new QPushButton();
+    QPixmap      pxmSettings = QPixmap{PROGRAM_CONSTANTS->GEARS_ICON_FILE};
+    btnSettings->setObjectName(nameof(btnSettings));
+    btnSettings->setIcon(pxmSettings);
+    btnSettings->setIconSize(pxmSettings.size());
+    btnSettings->setFixedSize(pxmSettings.size());
+    connect(btnSettings, &QPushButton::clicked, this, &GreetingWidget::btnSettings_Clicked);
+
     ltLanguages = new QVBoxLayout();
     ltLanguages->addStretch(1);
     ltLanguages->setSpacing(10);
     ltLanguages->addWidget(lblLanguage);
     ltLanguages->addWidget(cmbLangList);
+
+    ltSettings = new QHBoxLayout();
+    ltSettings->addLayout(ltLanguages);
+    ltSettings->addWidget(btnSettings);
 
     ltButtons = new QHBoxLayout();
     ltButtons->setSpacing(50);
@@ -63,16 +75,13 @@ GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
     ltButtons->addWidget(btnLoadProject);
     ltButtons->setSpacing(30);
 
-    ltContent = new QVBoxLayout();
-    ltContent->setAlignment(Qt::AlignCenter);
-    ltContent->addLayout(ltButtons);
-    ltContent->addLayout(ltLanguages);
-
     ltMain = new QVBoxLayout();
+    ltMain->setAlignment(Qt::AlignCenter);
+    ltMain->addLayout(ltButtons);
+    ltMain->addLayout(ltSettings);
     ltMain->setSpacing(20);
     ltMain->setContentsMargins(160, 120, 160, 120);
-    ltMain->addLayout(ltContent);
-
+    
     setLayout(ltMain);
 }
 

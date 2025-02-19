@@ -20,4 +20,5 @@ private:
 signals:
     void pressed(GreetingWidget::StandartButtons standartButton);
     void languageChanged(int index);
+    void btnSettings_Clicked();
 };

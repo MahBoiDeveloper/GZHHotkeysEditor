@@ -11,5 +11,6 @@
         <file>Infantry.webp</file>
         <file>Vehicles.webp</file>
         <file>Aircrafts.webp</file>
+        <file>Gears.webp</file>
     </qresource>
 </RCC>

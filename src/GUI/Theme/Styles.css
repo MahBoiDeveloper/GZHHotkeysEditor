@@ -77,6 +77,12 @@ QPushButton
     border-radius: 3px;
 }
 
+GreetingWidget QPushButton#btnSettings
+{
+    border-color: transparent;
+    background-color: transparent;
+}
+
 GreetingWidget QPushButton { font-size: 18pt; }
 
 GreetingWidget QLabel,       LoadDialog QLabel,       CreationDialog QLabel, 

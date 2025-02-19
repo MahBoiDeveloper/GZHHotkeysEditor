@@ -39,13 +39,16 @@ public:
     const QString          THEME_FOLDER            = RESOURCE_FOLDER + "/Theme";
     const QString          QT_ICONS_FOLDER         = ":/icons";
     
-    // Files
+    // Resource files
     const QString          TECH_TREE_FILE          = RESOURCE_FOLDER + "/TechTree.json";
     const QString          SETTINGS_FILE           = RESOURCE_FOLDER + "/Settings.json";
-    const QString          STYLES_SHEET_FILE       = THEME_FOLDER + "/Styles.css";
+    const QString          STYLES_SHEET_FILE       = THEME_FOLDER    + "/Styles.css";
+
+    // Build-in files
     const QString          MISSING_ICON_FILE       = QT_ICONS_FOLDER + "/NoImageSmall.webp";
     const QString          EDITOR_ICON_FILE        = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
     const QString          EDITOR_BIG_ICON_FILE    = QT_ICONS_FOLDER + "/EditorIconBig.webp";
+    const QString          GEARS_ICON_FILE         = QT_ICONS_FOLDER + "/Gears.webp";
 
     // Window titles
     const QString          COMMON_TITLE            = "C&C: Generals Zero Hour Hotkey Editor";
