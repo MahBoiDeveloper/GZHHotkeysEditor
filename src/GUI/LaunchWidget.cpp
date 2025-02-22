@@ -5,7 +5,7 @@
 #include "WindowManager.hpp"
 #include "LaunchWidget.hpp"
 
-LaunchWidget::LaunchWidget(QWidget* parent) : QStackedWidget(parent)
+SetUpWindowsWrapper::SetUpWindowsWrapper(QWidget* parent) : QStackedWidget(parent)
 {
     // Makes window unresizeable and equal to the size of the background
     setFixedSize(795, 440);
@@ -18,43 +18,43 @@ LaunchWidget::LaunchWidget(QWidget* parent) : QStackedWidget(parent)
     AttachConnections();
 }
 
-void LaunchWidget::AttachConnections()
+void SetUpWindowsWrapper::AttachConnections()
 {
     connect(pGreetingWidget, &GreetingWindow::languageChanged,
-            this,            &LaunchWidget::GreetingWidget_LanguageChanged);
+            this,            &SetUpWindowsWrapper::GreetingWidget_LanguageChanged);
 
     connect(pGreetingWidget, &GreetingWindow::pressed,
-            this,            &LaunchWidget::BtnNewProjectOrBtnLoadProject_Clicked);
+            this,            &SetUpWindowsWrapper::BtnNewProjectOrBtnLoadProject_Clicked);
 
     connect(pLoadDialog,     &LoadDialog::btnBackClicked,
-            this,            &LaunchWidget::BtnBack_Clicked);
+            this,            &SetUpWindowsWrapper::BtnBack_Clicked);
 
     connect(pCreationDialog, &CreationDialog::btnBackClicked,
-            this,            &LaunchWidget::BtnBack_Clicked);
+            this,            &SetUpWindowsWrapper::BtnBack_Clicked);
     
     connect(pCreationDialog, &CreationDialog::btnStartClicked,
-            this,            &LaunchWidget::CreationDialog_AcceptConfiguration);
+            this,            &SetUpWindowsWrapper::CreationDialog_AcceptConfiguration);
 }
 
-void LaunchWidget::DetachConnections()
+void SetUpWindowsWrapper::DetachConnections()
 {
     disconnect(pGreetingWidget, &GreetingWindow::languageChanged,
-               this,            &LaunchWidget::GreetingWidget_LanguageChanged);
+               this,            &SetUpWindowsWrapper::GreetingWidget_LanguageChanged);
 
     disconnect(pGreetingWidget, &GreetingWindow::pressed,
-               this,            &LaunchWidget::BtnNewProjectOrBtnLoadProject_Clicked);
+               this,            &SetUpWindowsWrapper::BtnNewProjectOrBtnLoadProject_Clicked);
     
     disconnect(pLoadDialog,     &LoadDialog::btnBackClicked,
-               this,            &LaunchWidget::BtnBack_Clicked);
+               this,            &SetUpWindowsWrapper::BtnBack_Clicked);
 
     disconnect(pCreationDialog, &CreationDialog::btnBackClicked,
-               this,            &LaunchWidget::BtnBack_Clicked);
+               this,            &SetUpWindowsWrapper::BtnBack_Clicked);
 
     disconnect(pCreationDialog, &CreationDialog::btnStartClicked,
-               this,            &LaunchWidget::CreationDialog_AcceptConfiguration);
+               this,            &SetUpWindowsWrapper::CreationDialog_AcceptConfiguration);
 }
 
-void LaunchWidget::AddWidgets()
+void SetUpWindowsWrapper::AddWidgets()
 {
     pGreetingWidget = new GreetingWindow(this);
     pCreationDialog = new CreationDialog(pGreetingWidget);
@@ -69,7 +69,7 @@ void LaunchWidget::AddWidgets()
     addWidget(pLoadDialog);
 }
 
-void LaunchWidget::GreetingWidget_LanguageChanged(int intLngIndex)
+void SetUpWindowsWrapper::GreetingWidget_LanguageChanged(int intLngIndex)
 {
     Languages lngType = static_cast<Languages>(intLngIndex);
 
@@ -85,7 +85,7 @@ void LaunchWidget::GreetingWidget_LanguageChanged(int intLngIndex)
     setCurrentWidget(pGreetingWidget);
 }
 
-void LaunchWidget::BtnNewProjectOrBtnLoadProject_Clicked(GreetingWindow::StandartButtons standartButton)
+void SetUpWindowsWrapper::BtnNewProjectOrBtnLoadProject_Clicked(GreetingWindow::StandartButtons standartButton)
 {
     switch (standartButton)
     {
@@ -101,6 +101,6 @@ void LaunchWidget::BtnNewProjectOrBtnLoadProject_Clicked(GreetingWindow::Standar
     }
 }
 
-void LaunchWidget::BtnBack_Clicked() { setCurrentWidget(pGreetingWidget); }
+void SetUpWindowsWrapper::BtnBack_Clicked() { setCurrentWidget(pGreetingWidget); }
 
-void LaunchWidget::CreationDialog_AcceptConfiguration() { QVariant cfg; WINDOW_MANAGER->LaunchWidget_AcceptConfiguration(cfg); }
+void SetUpWindowsWrapper::CreationDialog_AcceptConfiguration() { QVariant cfg; WINDOW_MANAGER->LaunchWidget_AcceptConfiguration(cfg); }

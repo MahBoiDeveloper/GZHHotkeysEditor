@@ -4,7 +4,7 @@
 #include "CreationDialog.hpp"
 #include "LoadDialog.hpp"
 
-class LaunchWidget final : public QStackedWidget
+class SetUpWindowsWrapper final : public QStackedWidget
 {
     Q_OBJECT
 private: // Data
@@ -18,7 +18,7 @@ private: // Methods
     /// @brief Disconnects slots and signals.
     void DetachConnections();
 public:
-    LaunchWidget(QWidget* parent = nullptr);
+    SetUpWindowsWrapper(QWidget* parent = nullptr);
 
 private:
     /// @brief Initialize `GreetingWindow`, `CreationDialog`, `LoadDialog`.

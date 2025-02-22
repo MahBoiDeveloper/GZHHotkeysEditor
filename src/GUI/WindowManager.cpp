@@ -30,7 +30,7 @@ WindowManager::WindowManager()
     }
 
     LOGMSG("Loading launch window...");
-    pLaunchWidget = std::make_unique<LaunchWidget>();
+    pLaunchWidget = std::make_unique<SetUpWindowsWrapper>();
     pLaunchWidget->setWindowTitle(strWindowName);
     LOGMSG("Launch window has been loaded");
 }

@@ -12,7 +12,7 @@
 class WindowManager final
 {
 private: // Data
-    std::unique_ptr<LaunchWidget>      pLaunchWidget      = nullptr;
+    std::unique_ptr<SetUpWindowsWrapper>      pLaunchWidget      = nullptr;
     std::unique_ptr<HotkeysMainWindow> pHotkeysEditor     = nullptr;
     inline static QTranslator*         pAppTranslator     = nullptr;
     inline static Languages            Language           = Languages::English;
@@ -29,6 +29,6 @@ public: // Methods
     void SetTranslator(Languages language);
     /// @brief Return current language type for the editor. To set language use `SetTranslator`.
     Languages GetLanguage();
-    /// @brief Due to Qt limitations this slot is a public and should be calls only in `LaunchWidget` to launch editor.
+    /// @brief Due to Qt limitations this slot is a public and should be calls only in `SetUpWindowsWrapper` to launch editor.
     void LaunchWidget_AcceptConfiguration(const QVariant& cfg);
 };
