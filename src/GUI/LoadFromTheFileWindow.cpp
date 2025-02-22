@@ -9,7 +9,7 @@
 #include "../NameOfExt.hpp"
 #include "LoadFromTheFileWindow.hpp"
 
-LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QDialog(parent)
+LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
 {
     QHBoxLayout* ltOkAndCancel = new QHBoxLayout();
     QPushButton* btnOk         = new QPushButton(tr("START"));

@@ -11,7 +11,7 @@
 #include "../NameOfExt.hpp"
 #include "LoadFromTheGameWindow.hpp"
 
-LoadFromTheGameWindow::LoadFromTheGameWindow(QWidget* parent) : QDialog(parent)
+LoadFromTheGameWindow::LoadFromTheGameWindow(QWidget* parent) : QWidget(parent)
 {
     QHBoxLayout*  ltOkAndCancel   = new QHBoxLayout();
     QPushButton*  btnOk           = new QPushButton(tr("START"));

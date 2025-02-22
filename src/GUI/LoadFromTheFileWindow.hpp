@@ -1,7 +1,7 @@
 #pragma once
-#include <QDialog>
+#include <QWidget>
 
-class LoadFromTheFileWindow : public QDialog
+class LoadFromTheFileWindow : public QWidget
 {
     Q_OBJECT
 public: // Methods
