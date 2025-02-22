@@ -7,15 +7,15 @@
 #include <QFontMetrics>
 
 #include "../NameOfExt.hpp"
-#include "LoadDialog.hpp"
+#include "LoadFromTheFileWindow.hpp"
 
-LoadDialog::LoadDialog(QWidget* parent) : QDialog(parent)
+LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QDialog(parent)
 {
-    QHBoxLayout*  ltOkAndCancel   = new QHBoxLayout();
-    QPushButton*  btnOk           = new QPushButton(tr("START"));
-    QPushButton*  btnCancel       = new QPushButton(tr("BACK"));
-    QHBoxLayout*  ltBtnOk         = new QHBoxLayout();
-    QHBoxLayout*  ltBtnCancel     = new QHBoxLayout();
+    QHBoxLayout* ltOkAndCancel = new QHBoxLayout();
+    QPushButton* btnOk         = new QPushButton(tr("START"));
+    QPushButton* btnCancel     = new QPushButton(tr("BACK"));
+    QHBoxLayout* ltBtnOk       = new QHBoxLayout();
+    QHBoxLayout* ltBtnCancel   = new QHBoxLayout();
     btnOk->setObjectName(nameof(btnOk));
     btnOk->setFixedWidth(80);
     ltBtnOk->setAlignment(Qt::Alignment::enum_type::AlignRight);

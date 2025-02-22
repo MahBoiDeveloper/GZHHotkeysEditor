@@ -1,11 +1,11 @@
 #pragma once
 #include <QDialog>
 
-class CreationDialog : public QDialog
+class LoadFromTheGameWindow : public QDialog
 {
     Q_OBJECT
 public: // Methods
-    CreationDialog(QWidget* parent = nullptr);
+    LoadFromTheGameWindow(QWidget* parent = nullptr);
 signals:
     void btnBackClicked();
     void btnStartClicked();

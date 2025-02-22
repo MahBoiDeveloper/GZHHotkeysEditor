@@ -1,16 +1,16 @@
 #pragma once
 #include <QStackedWidget>
 #include "GreetingWindow.hpp"
-#include "CreationDialog.hpp"
-#include "LoadDialog.hpp"
+#include "LoadFromTheGameWindow.hpp"
+#include "LoadFromTheFileWindow.hpp"
 
 class SetUpWindowsWrapper final : public QStackedWidget
 {
     Q_OBJECT
 private: // Data
     GreetingWindow* pGreetingWidget = nullptr;
-    CreationDialog* pCreationDialog = nullptr;
-    LoadDialog*     pLoadDialog     = nullptr;
+    LoadFromTheGameWindow* pCreationDialog = nullptr;
+    LoadFromTheFileWindow*     pLoadDialog     = nullptr;
 
 private: // Methods
     /// @brief Connects slots and singals.
@@ -21,7 +21,7 @@ public:
     SetUpWindowsWrapper(QWidget* parent = nullptr);
 
 private:
-    /// @brief Initialize `GreetingWindow`, `CreationDialog`, `LoadDialog`.
+    /// @brief Initialize `GreetingWindow`, `LoadFromTheGameWindow`, `LoadFromTheFileWindow`.
     void AddWidgets();
 
 private slots:

@@ -56,7 +56,7 @@ QComboBox::down-arrow { image: url(Resources/Theme/ScrollArrowDown.webp); }
 QComboBox::up-arrow   { image: url(Resources/Theme/ScrollArrowUp.webp); }
 
 /* Start widget style setting */
-LoadDialog, SetUpWindowsWrapper, CreationDialog
+LoadFromTheFileWindow, SetUpWindowsWrapper, LoadFromTheGameWindow
 {
     border-image: url(Resources/Theme/StartMenuBackground.webp) 0 0 0 0 stretch stretch;
     background-color: black;
@@ -85,14 +85,14 @@ GreetingWindow QPushButton#btnSettings
 
 GreetingWindow QPushButton { font-size: 18pt; }
 
-GreetingWindow QLabel,       LoadDialog QLabel,       CreationDialog QLabel, 
-GreetingWindow QRadioButton, LoadDialog QRadioButton, CreationDialog QRadioButton, 
-GreetingWindow QCheckBox,    LoadDialog QCheckBox,    CreationDialog QCheckBox
+GreetingWindow QLabel,       LoadFromTheFileWindow QLabel,       LoadFromTheGameWindow QLabel, 
+GreetingWindow QRadioButton, LoadFromTheFileWindow QRadioButton, LoadFromTheGameWindow QRadioButton, 
+GreetingWindow QCheckBox,    LoadFromTheFileWindow QCheckBox,    LoadFromTheGameWindow QCheckBox
 {
     color: white;
 }
 
-GreetingWindow QPushButton:hover, LoadDialog QPushButton:hover, CreationDialog QPushButton:hover
+GreetingWindow QPushButton:hover, LoadFromTheFileWindow QPushButton:hover, LoadFromTheGameWindow QPushButton:hover
 {
     background-color: #3543e7;
     color: #baff0c;

@@ -1,6 +1,7 @@
 #include "../Logger.hpp"
-#include "ImageManager.hpp"
 #include "WindowManager.hpp"
+#include "ImageManager.hpp"
+#include "LoadFromTheGameWindow.hpp"
 #include "SetUpWindowsWrapper.hpp"
 
 SetUpWindowsWrapper::SetUpWindowsWrapper(QWidget* parent) : QStackedWidget(parent)
@@ -24,13 +25,13 @@ void SetUpWindowsWrapper::AttachConnections()
     connect(pGreetingWidget, &GreetingWindow::pressed,
             this,            &SetUpWindowsWrapper::BtnNewProjectOrBtnLoadProject_Clicked);
 
-    connect(pLoadDialog,     &LoadDialog::btnBackClicked,
+    connect(pLoadDialog,     &LoadFromTheFileWindow::btnBackClicked,
             this,            &SetUpWindowsWrapper::BtnBack_Clicked);
 
-    connect(pCreationDialog, &CreationDialog::btnBackClicked,
+    connect(pCreationDialog, &LoadFromTheGameWindow::btnBackClicked,
             this,            &SetUpWindowsWrapper::BtnBack_Clicked);
     
-    connect(pCreationDialog, &CreationDialog::btnStartClicked,
+    connect(pCreationDialog, &LoadFromTheGameWindow::btnStartClicked,
             this,            &SetUpWindowsWrapper::CreationDialog_AcceptConfiguration);
 }
 
@@ -42,21 +43,21 @@ void SetUpWindowsWrapper::DetachConnections()
     disconnect(pGreetingWidget, &GreetingWindow::pressed,
                this,            &SetUpWindowsWrapper::BtnNewProjectOrBtnLoadProject_Clicked);
     
-    disconnect(pLoadDialog,     &LoadDialog::btnBackClicked,
+    disconnect(pLoadDialog,     &LoadFromTheFileWindow::btnBackClicked,
                this,            &SetUpWindowsWrapper::BtnBack_Clicked);
 
-    disconnect(pCreationDialog, &CreationDialog::btnBackClicked,
+    disconnect(pCreationDialog, &LoadFromTheGameWindow::btnBackClicked,
                this,            &SetUpWindowsWrapper::BtnBack_Clicked);
 
-    disconnect(pCreationDialog, &CreationDialog::btnStartClicked,
+    disconnect(pCreationDialog, &LoadFromTheGameWindow::btnStartClicked,
                this,            &SetUpWindowsWrapper::CreationDialog_AcceptConfiguration);
 }
 
 void SetUpWindowsWrapper::AddWidgets()
 {
     pGreetingWidget = new GreetingWindow(this);
-    pCreationDialog = new CreationDialog(pGreetingWidget);
-    pLoadDialog     = new LoadDialog(pGreetingWidget);
+    pCreationDialog = new LoadFromTheGameWindow(pGreetingWidget);
+    pLoadDialog     = new LoadFromTheFileWindow(pGreetingWidget);
 
     pGreetingWidget->setFixedSize(size());
     pCreationDialog->setFixedSize(size());

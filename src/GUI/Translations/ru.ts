@@ -57,19 +57,16 @@
 <context>
     <name>CreationDialog</name>
     <message>
-        <location filename="../CreationDialog.cpp" line="17"/>
         <source>START</source>
-        <translation>НАЧАТЬ</translation>
+        <translation type="vanished">НАЧАТЬ</translation>
     </message>
     <message>
-        <location filename="../CreationDialog.cpp" line="18"/>
         <source>BACK</source>
-        <translation>НАЗАД</translation>
+        <translation type="vanished">НАЗАД</translation>
     </message>
     <message>
-        <location filename="../CreationDialog.cpp" line="56"/>
         <source>Save hotkeys dirrectly to the game.</source>
-        <translation>Сохранять горячие клавиши в игре.</translation>
+        <translation type="vanished">Сохранять горячие клавиши в игре.</translation>
     </message>
 </context>
 <context>
@@ -279,29 +276,24 @@
 <context>
     <name>LoadDialog</name>
     <message>
-        <location filename="../LoadDialog.cpp" line="15"/>
         <source>START</source>
-        <translation>НАЧАТЬ</translation>
+        <translation type="vanished">НАЧАТЬ</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="16"/>
         <source>BACK</source>
-        <translation>НАЗАД</translation>
+        <translation type="vanished">НАЗАД</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="43"/>
         <source>Text files</source>
-        <translation>Текстовые файлы</translation>
+        <translation type="vanished">Текстовые файлы</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="44"/>
         <source>Any files</source>
-        <translation>Все файлы</translation>
+        <translation type="vanished">Все файлы</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="48"/>
         <source>REVIEW</source>
-        <translation>ОБЗОР</translation>
+        <translation type="vanished">ОБЗОР</translation>
     </message>
     <message>
         <source>LOAD PROJECT</source>
@@ -312,14 +304,99 @@
         <translation type="vanished">Обзор</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="54"/>
         <source>Load project</source>
-        <translation>Загрузить проект</translation>
+        <translation type="vanished">Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../LoadDialog.cpp" line="63"/>
         <source>Load installed game hotkey map</source>
-        <translation>Загрузить горячие клавиши из игры</translation>
+        <translation type="vanished">Загрузить горячие клавиши из игры</translation>
+    </message>
+</context>
+<context>
+    <name>LoadFromTheFileWindow</name>
+    <message>
+        <location filename="../LoadFromTheFileWindow.cpp" line="15"/>
+        <source>START</source>
+        <translation type="unfinished">НАЧАТЬ</translation>
+    </message>
+    <message>
+        <location filename="../LoadFromTheFileWindow.cpp" line="16"/>
+        <source>BACK</source>
+        <translation type="unfinished">НАЗАД</translation>
+    </message>
+    <message>
+        <location filename="../LoadFromTheFileWindow.cpp" line="43"/>
+        <source>Text files</source>
+        <translation type="unfinished">Текстовые файлы</translation>
+    </message>
+    <message>
+        <location filename="../LoadFromTheFileWindow.cpp" line="44"/>
+        <source>Any files</source>
+        <translation type="unfinished">Все файлы</translation>
+    </message>
+    <message>
+        <location filename="../LoadFromTheFileWindow.cpp" line="48"/>
+        <source>REVIEW</source>
+        <translation type="unfinished">ОБЗОР</translation>
+    </message>
+    <message>
+        <location filename="../LoadFromTheFileWindow.cpp" line="54"/>
+        <source>Load project</source>
+        <translation type="unfinished">Загрузить проект</translation>
+    </message>
+    <message>
+        <location filename="../LoadFromTheFileWindow.cpp" line="63"/>
+        <source>Load installed game hotkey map</source>
+        <translation type="unfinished">Загрузить горячие клавиши из игры</translation>
+    </message>
+</context>
+<context>
+    <name>LoadFromTheGameWindow</name>
+    <message>
+        <location filename="../LoadFromTheGameWindow.cpp" line="17"/>
+        <source>START</source>
+        <translation type="unfinished">НАЧАТЬ</translation>
+    </message>
+    <message>
+        <location filename="../LoadFromTheGameWindow.cpp" line="18"/>
+        <source>BACK</source>
+        <translation type="unfinished">НАЗАД</translation>
+    </message>
+    <message>
+        <location filename="../LoadFromTheGameWindow.cpp" line="56"/>
+        <source>Save hotkeys dirrectly to the game.</source>
+        <translation type="unfinished">Сохранять горячие клавиши в игре.</translation>
+    </message>
+</context>
+<context>
+    <name>LoadWindow</name>
+    <message>
+        <source>START</source>
+        <translation type="obsolete">НАЧАТЬ</translation>
+    </message>
+    <message>
+        <source>BACK</source>
+        <translation type="obsolete">НАЗАД</translation>
+    </message>
+    <message>
+        <source>Text files</source>
+        <translation type="obsolete">Текстовые файлы</translation>
+    </message>
+    <message>
+        <source>Any files</source>
+        <translation type="obsolete">Все файлы</translation>
+    </message>
+    <message>
+        <source>REVIEW</source>
+        <translation type="obsolete">ОБЗОР</translation>
+    </message>
+    <message>
+        <source>Load project</source>
+        <translation type="obsolete">Загрузить проект</translation>
+    </message>
+    <message>
+        <source>Load installed game hotkey map</source>
+        <translation type="obsolete">Загрузить горячие клавиши из игры</translation>
     </message>
 </context>
 <context>

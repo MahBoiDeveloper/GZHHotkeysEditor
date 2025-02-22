@@ -9,9 +9,9 @@
 #include "../Logger.hpp"
 #include "../Registry.hpp"
 #include "../NameOfExt.hpp"
-#include "CreationDialog.hpp"
+#include "LoadFromTheGameWindow.hpp"
 
-CreationDialog::CreationDialog(QWidget* parent) : QDialog(parent)
+LoadFromTheGameWindow::LoadFromTheGameWindow(QWidget* parent) : QDialog(parent)
 {
     QHBoxLayout*  ltOkAndCancel   = new QHBoxLayout();
     QPushButton*  btnOk           = new QPushButton(tr("START"));
