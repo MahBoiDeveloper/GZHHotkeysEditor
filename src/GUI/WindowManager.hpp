@@ -4,7 +4,7 @@
 
 #include "../ProgramConstants.hpp"
 
-#include "LaunchWidget.hpp"
+#include "SetUpWindowsWrapper.hpp"
 #include "HotkeysMainWindow.hpp"
 
 #define WINDOW_MANAGER WindowManager::Instance

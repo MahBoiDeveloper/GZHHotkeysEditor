@@ -1,7 +1,7 @@
 #include "../Logger.hpp"
 #include "ImageManager.hpp"
 #include "WindowManager.hpp"
-#include "LaunchWidget.hpp"
+#include "SetUpWindowsWrapper.hpp"
 
 SetUpWindowsWrapper::SetUpWindowsWrapper(QWidget* parent) : QStackedWidget(parent)
 {
