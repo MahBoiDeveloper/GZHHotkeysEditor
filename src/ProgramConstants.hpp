@@ -6,6 +6,8 @@
 #include <QSize>
 #include <QObject>
 
+#include "Settings.hpp"
+
 #define PROGRAM_CONSTANTS ProgramConstants::Instance
 
 enum class GameObjectTypes
@@ -26,10 +28,9 @@ enum class Languages
 class ProgramConstants
 {
 private: // Data
-    QSet<Qt::Key> keys = {};
-    bool console       = false;
+    std::unique_ptr<Settings>                       SettingsFile = nullptr;
 public:
-    inline static std::unique_ptr<ProgramConstants> Instance;
+    inline static std::unique_ptr<ProgramConstants> Instance     = nullptr;
 
     // Folders
     const QString          RESOURCE_FOLDER         = "Resources";
@@ -79,6 +80,13 @@ public:
     const QVector<QString> USA_SHORT_NAMES         = {"USA", "SWG", "AIR", "LSR"};
     const QVector<QString> PRC_SHORT_NAMES         = {"PRC", "TNK", "INF", "NUK"};
 
+    const QSet<Qt::Key> DEFAULT_ALLOWED_KEYS =
+    {
+        Qt::Key_R, Qt::Key_T, Qt::Key_Y, Qt::Key_U, Qt::Key_O, Qt::Key_I, Qt::Key_P,
+        Qt::Key_A, Qt::Key_S, Qt::Key_D, Qt::Key_F, Qt::Key_G, Qt::Key_H, Qt::Key_J, Qt::Key_K, Qt::Key_L,
+        Qt::Key_Z, Qt::Key_X, Qt::Key_C, Qt::Key_V, Qt::Key_B, Qt::Key_N, Qt::Key_M
+    };
+
     const QMap<QChar, Qt::Key> KEYBOARD_KEYS = 
     {
         {'Q', Qt::Key_Q}, {'W', Qt::Key_W}, {'E', Qt::Key_E}, {'R', Qt::Key_R}, {'T', Qt::Key_T}, {'Y', Qt::Key_Y}, {'U', Qt::Key_U}, {'I', Qt::Key_I}, {'O', Qt::Key_O}, {'P', Qt::Key_P},
@@ -92,7 +100,6 @@ public:
         {Languages::Russian, {"ru", "Русский"}}
     };
 
-    
     const QMap<GameObjectTypes, QString> INGAME_ENTITIES_STRINGS =
     {
         {GameObjectTypes::Buildings, QObject::tr("Buildings")},
@@ -104,9 +111,9 @@ public:
 public: // Methods
     ProgramConstants();
     /// @brief Parse `Resource\Settings.json`.
-    void InitializeSettingsJSON();
+    void InitializeFileSettings();
     /// @brief Returns `QSet` of available keys from `QWEWRTY` keyboard to choice by user.
-    const QSet<Qt::Key>& GetAllowedKeys();
+    const QSet<Qt::Key> GetAllowedKeys();
     /// @brief Returns field status for console from settings file.
-    bool IsConsoleEnabled();
+    const bool IsConsoleEnabled();
 };

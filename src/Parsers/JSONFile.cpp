@@ -64,7 +64,7 @@ using namespace std;
         splitList.removeFirst();
         LOGSTM << "Splited and updated query has length : " << splitList.length() << endl;
 
-        QJsonObject currObj   = jsonObject;
+        QJsonObject currObj = jsonObject;
         QJsonValue  currVal;
 
         for (int iter = 0; iter < splitList.length(); iter++)
@@ -75,7 +75,7 @@ using namespace std;
             // Current value actually is array
             if (currSplit.contains('[') && currSplit.contains(']'))
             {
-                static QRegularExpression regexp{"\\[\\d+\\]"};
+                const QRegularExpression regexp{"\\[\\d+\\]"};
 
                 // Find [xxxx] number of index in array and clear string from [] bracket
                 int arrayIndex = regexp.match(currSplit).captured(0).remove('[').remove(']').toInt();

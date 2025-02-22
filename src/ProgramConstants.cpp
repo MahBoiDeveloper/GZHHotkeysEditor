@@ -8,13 +8,6 @@ ProgramConstants::ProgramConstants()
 {
 }
 
-const QSet<Qt::Key>& ProgramConstants::GetAllowedKeys() { return keys; }
-bool ProgramConstants::IsConsoleEnabled()               { return console; }
-void ProgramConstants::InitializeSettingsJSON()
-{
-    JSONFile settings(SETTINGS_FILE);
-    console = settings.Query("$.DebugConsole").toBool();
-
-    for (const QJsonValue& ch : settings.Query("$.AllowedHotkeys").toArray())
-        keys.insert(KEYBOARD_KEYS.value(ch.toString()[0]));
-}
+const QSet<Qt::Key> ProgramConstants::GetAllowedKeys()  { return SettingsFile->GetAllowedKeys(); }
+const bool ProgramConstants::IsConsoleEnabled()         { return SettingsFile->IsConsoleEnabled(); }
+void ProgramConstants::InitializeFileSettings()         { SettingsFile = std::make_unique<Settings>(); }

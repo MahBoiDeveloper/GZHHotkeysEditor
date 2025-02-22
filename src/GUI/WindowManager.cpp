@@ -30,8 +30,8 @@ WindowManager::WindowManager()
     }
 
     LOGMSG("Loading launch window...");
-    pLaunchWidget = std::make_unique<SetUpWindowsWrapper>();
-    pLaunchWidget->setWindowTitle(strWindowName);
+    pStartUpWindow = std::make_unique<SetUpWindowsWrapper>();
+    pStartUpWindow->setWindowTitle(strWindowName);
     LOGMSG("Launch window has been loaded");
 }
 
@@ -44,7 +44,7 @@ void WindowManager::LaunchWidget_AcceptConfiguration(const QVariant& cfg)
     pHotkeysEditor = std::make_unique<HotkeysMainWindow>(cfg);
     pHotkeysEditor->setWindowTitle(strWindowName);
     pHotkeysEditor->show();
-    pLaunchWidget->close();
+    pStartUpWindow = nullptr;
     bEditorInitialized = true;
     LOGMSG("Editor window has been loaded");
 }
@@ -63,5 +63,5 @@ void WindowManager::SetTranslator(Languages lngType)
     qApp->installTranslator(pAppTranslator);
 }
 
-void WindowManager::Show()             { pLaunchWidget->show(); }
+void WindowManager::Show()             { pStartUpWindow->show(); }
 Languages WindowManager::GetLanguage() { return Language; }

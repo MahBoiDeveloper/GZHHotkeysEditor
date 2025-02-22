@@ -402,22 +402,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="98"/>
+        <location filename="../../ProgramConstants.hpp" line="105"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="99"/>
+        <location filename="../../ProgramConstants.hpp" line="106"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="100"/>
+        <location filename="../../ProgramConstants.hpp" line="107"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="101"/>
+        <location filename="../../ProgramConstants.hpp" line="108"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>

@@ -12,7 +12,7 @@
 class WindowManager final
 {
 private: // Data
-    std::unique_ptr<SetUpWindowsWrapper> pLaunchWidget      = nullptr;
+    std::unique_ptr<SetUpWindowsWrapper> pStartUpWindow     = nullptr;
     std::unique_ptr<HotkeysMainWindow>   pHotkeysEditor     = nullptr;
     inline static QTranslator*           pAppTranslator     = nullptr;
     inline static Languages              Language           = Languages::English;
