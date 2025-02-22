@@ -20,10 +20,10 @@ LaunchWidget::LaunchWidget(QWidget* parent) : QStackedWidget(parent)
 
 void LaunchWidget::AttachConnections()
 {
-    connect(pGreetingWidget, &GreetingWidget::languageChanged,
+    connect(pGreetingWidget, &GreetingWindow::languageChanged,
             this,            &LaunchWidget::GreetingWidget_LanguageChanged);
 
-    connect(pGreetingWidget, &GreetingWidget::pressed,
+    connect(pGreetingWidget, &GreetingWindow::pressed,
             this,            &LaunchWidget::BtnNewProjectOrBtnLoadProject_Clicked);
 
     connect(pLoadDialog,     &LoadDialog::btnBackClicked,
@@ -38,10 +38,10 @@ void LaunchWidget::AttachConnections()
 
 void LaunchWidget::DetachConnections()
 {
-    disconnect(pGreetingWidget, &GreetingWidget::languageChanged,
+    disconnect(pGreetingWidget, &GreetingWindow::languageChanged,
                this,            &LaunchWidget::GreetingWidget_LanguageChanged);
 
-    disconnect(pGreetingWidget, &GreetingWidget::pressed,
+    disconnect(pGreetingWidget, &GreetingWindow::pressed,
                this,            &LaunchWidget::BtnNewProjectOrBtnLoadProject_Clicked);
     
     disconnect(pLoadDialog,     &LoadDialog::btnBackClicked,
@@ -56,7 +56,7 @@ void LaunchWidget::DetachConnections()
 
 void LaunchWidget::AddWidgets()
 {
-    pGreetingWidget = new GreetingWidget(this);
+    pGreetingWidget = new GreetingWindow(this);
     pCreationDialog = new CreationDialog(pGreetingWidget);
     pLoadDialog     = new LoadDialog(pGreetingWidget);
 
@@ -85,14 +85,14 @@ void LaunchWidget::GreetingWidget_LanguageChanged(int intLngIndex)
     setCurrentWidget(pGreetingWidget);
 }
 
-void LaunchWidget::BtnNewProjectOrBtnLoadProject_Clicked(GreetingWidget::StandartButtons standartButton)
+void LaunchWidget::BtnNewProjectOrBtnLoadProject_Clicked(GreetingWindow::StandartButtons standartButton)
 {
     switch (standartButton)
     {
-        case GreetingWidget::StandartButtons::NewProject:
+        case GreetingWindow::StandartButtons::NewProject:
             setCurrentWidget(pCreationDialog);
             break;
-        case GreetingWidget::StandartButtons::LoadProject:
+        case GreetingWindow::StandartButtons::LoadProject:
             setCurrentWidget(pLoadDialog);
             break;
         default:

@@ -77,22 +77,22 @@ QPushButton
     border-radius: 3px;
 }
 
-GreetingWidget QPushButton#btnSettings
+GreetingWindow QPushButton#btnSettings
 {
     border-color: transparent;
     background-color: transparent;
 }
 
-GreetingWidget QPushButton { font-size: 18pt; }
+GreetingWindow QPushButton { font-size: 18pt; }
 
-GreetingWidget QLabel,       LoadDialog QLabel,       CreationDialog QLabel, 
-GreetingWidget QRadioButton, LoadDialog QRadioButton, CreationDialog QRadioButton, 
-GreetingWidget QCheckBox,    LoadDialog QCheckBox,    CreationDialog QCheckBox
+GreetingWindow QLabel,       LoadDialog QLabel,       CreationDialog QLabel, 
+GreetingWindow QRadioButton, LoadDialog QRadioButton, CreationDialog QRadioButton, 
+GreetingWindow QCheckBox,    LoadDialog QCheckBox,    CreationDialog QCheckBox
 {
     color: white;
 }
 
-GreetingWidget QPushButton:hover, LoadDialog QPushButton:hover, CreationDialog QPushButton:hover
+GreetingWindow QPushButton:hover, LoadDialog QPushButton:hover, CreationDialog QPushButton:hover
 {
     background-color: #3543e7;
     color: #baff0c;

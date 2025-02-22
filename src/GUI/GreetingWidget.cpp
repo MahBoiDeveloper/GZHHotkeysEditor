@@ -11,7 +11,7 @@
 #include "ImageManager.hpp"
 #include "GreetingWidget.hpp"
 
-GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
+GreetingWindow::GreetingWindow(QWidget* parent) : QWidget(parent)
 {
     QPushButton* btnNewProject  = nullptr;
     QPushButton* btnLoadProject = nullptr;
@@ -28,7 +28,7 @@ GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
     btnNewProject->setObjectName(nameof(btnNewProject));
     connect(btnNewProject, &QPushButton::clicked, this, [this](bool)
     {
-        emit pressed(GreetingWidget::StandartButtons::NewProject);
+        emit pressed(GreetingWindow::StandartButtons::NewProject);
     });
 
     btnLoadProject = new QPushButton(tr("LOAD") + '\n' + tr("PROJECT"));
@@ -36,7 +36,7 @@ GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
     btnLoadProject->setObjectName(nameof(btnLoadProject));
     connect(btnLoadProject, &QPushButton::clicked, this, [this](bool)
     {
-        emit pressed(GreetingWidget::StandartButtons::LoadProject);
+        emit pressed(GreetingWindow::StandartButtons::LoadProject);
     });
 
     lblLanguage = new QLabel(tr("LANGUAGE"));
@@ -48,7 +48,7 @@ GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
         cmbLangList->addItem(Unsorted::GetLanguageFullName(static_cast<Languages>(i)));
     cmbLangList->setCurrentIndex(static_cast<int>(WINDOW_MANAGER->GetLanguage()));
     cmbLangList->setCurrentText(PROGRAM_CONSTANTS->LANGUAGES_STRINGS.value(WINDOW_MANAGER->GetLanguage()).second);
-    connect(cmbLangList, QOverload<int>::of(&QComboBox::activated), this, &GreetingWidget::languageChanged);
+    connect(cmbLangList, QOverload<int>::of(&QComboBox::activated), this, &GreetingWindow::languageChanged);
     
     QPushButton* btnSettings = new QPushButton();
     QPixmap      pxmSettings = QPixmap{PROGRAM_CONSTANTS->GEARS_ICON_FILE};
@@ -56,7 +56,7 @@ GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
     btnSettings->setIcon(pxmSettings);
     btnSettings->setIconSize(pxmSettings.size());
     btnSettings->setFixedSize(pxmSettings.size());
-    connect(btnSettings, &QPushButton::clicked, this, &GreetingWidget::btnSettings_Clicked);
+    connect(btnSettings, &QPushButton::clicked, this, &GreetingWindow::btnSettings_Clicked);
 
     ltLanguages = new QVBoxLayout();
     ltLanguages->addStretch(1);
@@ -86,7 +86,7 @@ GreetingWidget::GreetingWidget(QWidget* parent) : QWidget(parent)
 }
 
 /// @brief Calculate size of long description text block.
-int GreetingWidget::GetGreetingTextAverageSize(const QString& text) const
+int GreetingWindow::GetGreetingTextAverageSize(const QString& text) const
 {
     QLabel lblSizeCounting(text);
     lblSizeCounting.setWordWrap(true);

@@ -91,29 +91,48 @@
         <translation type="vanished">ЗАГРУЗИТЬ ПРОЕКТ</translation>
     </message>
     <message>
+        <source>NEW</source>
+        <translation type="vanished">НОВЫЙ</translation>
+    </message>
+    <message>
+        <source>PROJECT</source>
+        <translation type="vanished">ПРОЕКТ</translation>
+    </message>
+    <message>
+        <source>LOAD</source>
+        <translation type="vanished">ЗАГРУЗИТЬ</translation>
+    </message>
+    <message>
+        <source>LANGUAGE</source>
+        <translation type="vanished">ЯЗЫК</translation>
+    </message>
+    <message>
+        <source>Greetings, %username%. You have launched the hotkey editing program for the game Command and Conquer: Generals and Command and Conquer: Generals — Zero Hour. At the moment, the program supports in test mode only the creation of hotkey maps based on pre-prepared hotkeys. We hope that you will like the program.</source>
+        <translation type="vanished">Приветствую тебя, %username%. Ты запустил программу редактирования горячих клавиш для игры Command and Conquer: Generals и Command and  Conquer: Generals — Zero Hour. На текущий момент программа поддерживает в тестовом режиме только создание карт горячих клавиш на основе заранее подготовленных горячих клавиш. Надеемся, что программа тебе понравится.</translation>
+    </message>
+</context>
+<context>
+    <name>GreetingWindow</name>
+    <message>
         <location filename="../GreetingWidget.cpp" line="26"/>
         <source>NEW</source>
-        <translation>НОВЫЙ</translation>
+        <translation type="unfinished">НОВЫЙ</translation>
     </message>
     <message>
         <location filename="../GreetingWidget.cpp" line="26"/>
         <location filename="../GreetingWidget.cpp" line="34"/>
         <source>PROJECT</source>
-        <translation>ПРОЕКТ</translation>
+        <translation type="unfinished">ПРОЕКТ</translation>
     </message>
     <message>
         <location filename="../GreetingWidget.cpp" line="34"/>
         <source>LOAD</source>
-        <translation>ЗАГРУЗИТЬ</translation>
+        <translation type="unfinished">ЗАГРУЗИТЬ</translation>
     </message>
     <message>
         <location filename="../GreetingWidget.cpp" line="42"/>
         <source>LANGUAGE</source>
-        <translation>ЯЗЫК</translation>
-    </message>
-    <message>
-        <source>Greetings, %username%. You have launched the hotkey editing program for the game Command and Conquer: Generals and Command and Conquer: Generals — Zero Hour. At the moment, the program supports in test mode only the creation of hotkey maps based on pre-prepared hotkeys. We hope that you will like the program.</source>
-        <translation type="vanished">Приветствую тебя, %username%. Ты запустил программу редактирования горячих клавиш для игры Command and Conquer: Generals и Command and  Conquer: Generals — Zero Hour. На текущий момент программа поддерживает в тестовом режиме только создание карт горячих клавиш на основе заранее подготовленных горячих клавиш. Надеемся, что программа тебе понравится.</translation>
+        <translation type="unfinished">ЯЗЫК</translation>
     </message>
 </context>
 <context>

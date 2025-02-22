@@ -2,7 +2,7 @@
 #include <QWidget>
 #include "../ProgramConstants.hpp"
 
-class GreetingWidget : public QWidget
+class GreetingWindow : public QWidget
 {
     Q_OBJECT
 public: // Data
@@ -13,12 +13,12 @@ public: // Data
     };
 
 public: // Methods
-    GreetingWidget(QWidget* parent = nullptr);
+    GreetingWindow(QWidget* parent = nullptr);
 private:
     int GetGreetingTextAverageSize(const QString& text) const;
 
 signals:
-    void pressed(GreetingWidget::StandartButtons standartButton);
+    void pressed(GreetingWindow::StandartButtons standartButton);
     void languageChanged(int index);
     void btnSettings_Clicked();
 };
