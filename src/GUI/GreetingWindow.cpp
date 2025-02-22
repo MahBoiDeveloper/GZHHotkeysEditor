@@ -9,7 +9,7 @@
 #include "../Unsorted.hpp"
 #include "WindowManager.hpp"
 #include "ImageManager.hpp"
-#include "GreetingWidget.hpp"
+#include "GreetingWindow.hpp"
 
 GreetingWindow::GreetingWindow(QWidget* parent) : QWidget(parent)
 {

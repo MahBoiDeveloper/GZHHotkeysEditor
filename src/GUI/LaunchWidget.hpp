@@ -1,6 +1,6 @@
 #pragma once
 #include <QStackedWidget>
-#include "GreetingWidget.hpp"
+#include "GreetingWindow.hpp"
 #include "CreationDialog.hpp"
 #include "LoadDialog.hpp"
 

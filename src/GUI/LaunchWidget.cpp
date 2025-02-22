@@ -1,7 +1,5 @@
 #include "../Logger.hpp"
 #include "ImageManager.hpp"
-#include "CreationDialog.hpp"
-#include "LoadDialog.hpp"
 #include "WindowManager.hpp"
 #include "LaunchWidget.hpp"
 

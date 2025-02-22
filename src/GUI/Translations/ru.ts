@@ -114,23 +114,23 @@
 <context>
     <name>GreetingWindow</name>
     <message>
-        <location filename="../GreetingWidget.cpp" line="26"/>
+        <location filename="../GreetingWindow.cpp" line="26"/>
         <source>NEW</source>
         <translation type="unfinished">НОВЫЙ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="26"/>
-        <location filename="../GreetingWidget.cpp" line="34"/>
+        <location filename="../GreetingWindow.cpp" line="26"/>
+        <location filename="../GreetingWindow.cpp" line="34"/>
         <source>PROJECT</source>
         <translation type="unfinished">ПРОЕКТ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="34"/>
+        <location filename="../GreetingWindow.cpp" line="34"/>
         <source>LOAD</source>
         <translation type="unfinished">ЗАГРУЗИТЬ</translation>
     </message>
     <message>
-        <location filename="../GreetingWidget.cpp" line="42"/>
+        <location filename="../GreetingWindow.cpp" line="42"/>
         <source>LANGUAGE</source>
         <translation type="unfinished">ЯЗЫК</translation>
     </message>

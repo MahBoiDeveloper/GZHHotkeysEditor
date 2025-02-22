@@ -12,14 +12,14 @@
 class WindowManager final
 {
 private: // Data
-    std::unique_ptr<SetUpWindowsWrapper>      pLaunchWidget      = nullptr;
-    std::unique_ptr<HotkeysMainWindow> pHotkeysEditor     = nullptr;
-    inline static QTranslator*         pAppTranslator     = nullptr;
-    inline static Languages            Language           = Languages::English;
-    QString                            strWindowName      = PROGRAM_CONSTANTS->COMMON_TITLE;
-    bool                               bEditorInitialized = false;
+    std::unique_ptr<SetUpWindowsWrapper> pLaunchWidget      = nullptr;
+    std::unique_ptr<HotkeysMainWindow>   pHotkeysEditor     = nullptr;
+    inline static QTranslator*           pAppTranslator     = nullptr;
+    inline static Languages              Language           = Languages::English;
+    QString                              strWindowName      = PROGRAM_CONSTANTS->COMMON_TITLE;
+    bool                                 bEditorInitialized = false;
 public:
-    inline static std::unique_ptr<WindowManager> Instance = nullptr;
+    inline static std::unique_ptr<WindowManager> Instance   = nullptr;
 
 public: // Methods
     WindowManager();
