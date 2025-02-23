@@ -18,7 +18,7 @@
 #include "WindowManager.hpp"
 #include "HotkeysMainWindow.hpp"
 
-HotkeysMainWindow::HotkeysMainWindow(const QVariant& configuration, QWidget* parent)
+HotkeysMainWindow::HotkeysMainWindow(QWidget* parent)
     : QMainWindow(parent)
     , pFactionsButtonsGroup{new QButtonGroup{this}}
     , pEntitiesTreeWidget{new QTreeWidget}

@@ -1,6 +1,8 @@
 #include <QFileInfo>
+#include <QMessageBox>
 #include <QApplication>
 
+#include "../Parsers/CSFParser.hpp"
 #include "../Logger.hpp"
 #include "../Unsorted.hpp"
 #include "../Convert.hpp"
@@ -35,16 +37,25 @@ WindowManager::WindowManager()
     LOGMSG("Launch window has been loaded");
 }
 
-void WindowManager::LaunchWidget_AcceptConfiguration(const QVariant& cfg)
+void WindowManager::LaunchWidget_AcceptConfiguration()
 {
     // 2nd init protection 
-    if (pHotkeysEditor != nullptr) return;
+    if (pHotkeysEditor != nullptr)
+        return;
+
+    if (strCSFFilePath == "")
+    {
+        QMessageBox::critical(nullptr, "Error with CSF file", "Unable to find selected CSF file");
+        return;
+    }
+
+    CSF_PARSER = std::make_unique<CSFParser>(strCSFFilePath);
 
     LOGMSG("Loading editor window...");
-    pHotkeysEditor = std::make_unique<HotkeysMainWindow>(cfg);
+    pHotkeysEditor = std::make_unique<HotkeysMainWindow>();
     pHotkeysEditor->setWindowTitle(strWindowName);
     pHotkeysEditor->show();
-    pStartUpWindow = nullptr;
+    pStartUpWindow->close();
     bEditorInitialized = true;
     LOGMSG("Editor window has been loaded");
 }
@@ -63,5 +74,6 @@ void WindowManager::SetTranslator(Languages lngType)
     qApp->installTranslator(pAppTranslator);
 }
 
-void WindowManager::Show()             { pStartUpWindow->show(); }
-Languages WindowManager::GetLanguage() { return Language; }
+void WindowManager::Show()                               { pStartUpWindow->show(); }
+Languages WindowManager::GetLanguage()                   { return Language; }
+void WindowManager::SetCSFFilePath(const QString& input) { strCSFFilePath = input; }

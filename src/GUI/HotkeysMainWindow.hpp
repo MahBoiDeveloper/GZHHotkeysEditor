@@ -34,7 +34,7 @@ private: // Data
     QVector<QSet<ActionHotkeyWidget*>> vHotkeyWidgets;
 
 public: // Methods
-    HotkeysMainWindow(const QVariant& configuration, QWidget* parent = nullptr);
+    HotkeysMainWindow(QWidget* parent = nullptr);
 
 private:
     /// @brief Read data from TechTree.json and parse it to game objects.

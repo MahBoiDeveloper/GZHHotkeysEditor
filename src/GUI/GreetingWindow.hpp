@@ -5,20 +5,14 @@
 class GreetingWindow : public QWidget
 {
     Q_OBJECT
-public: // Data
-    enum class StandartButtons
-    {
-        NewProject,
-        LoadProject
-    };
-
 public: // Methods
     GreetingWindow(QWidget* parent = nullptr);
 private:
     int GetGreetingTextAverageSize(const QString& text) const;
 
 signals:
-    void pressed(GreetingWindow::StandartButtons standartButton);
+    void btnLoadFromFile_Clicked();
+    void btnLoadFromGame_Clicked();
     void languageChanged(int index);
     void btnSettings_Clicked();
 };

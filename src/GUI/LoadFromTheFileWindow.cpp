@@ -30,19 +30,20 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
     connect(btnCancel, &QPushButton::clicked, this, [=, this] { emit btnBackClicked(); });
 
     // configure file path selection
-    QLineEdit* pathToFileLineEdit = new QLineEdit();
-    pathToFileLineEdit->setMaximumWidth(700);
+    QLineEdit* lneFilePath = new QLineEdit();
+    lneFilePath->setObjectName(nameof(lneFilePath));
+    lneFilePath->setMaximumWidth(700);
 
-    QFont font(pathToFileLineEdit->font());
+    QFont font(lneFilePath->font());
     font.setPointSize(font.pointSize()-2); // reduce standart font size
-    pathToFileLineEdit->setFont(font);
+    lneFilePath->setFont(font);
 
     QFileDialog* fileDialog = new QFileDialog(); // dialog for selecting the path to the file
     fileDialog->setFileMode(QFileDialog::FileMode::ExistingFile);
     fileDialog->setAcceptMode(QFileDialog::AcceptMode::AcceptOpen);
-    fileDialog->setNameFilters({tr("Text files") + "(*.txt)",
-                                tr("Any files")  + "(*)"});
-    connect(fileDialog, &QFileDialog::fileSelected, pathToFileLineEdit, &QLineEdit::setText);
+    fileDialog->setNameFilters({tr("Binary files") + " (*.csf)",
+                                tr("Any files")  + " (*)"});
+    connect(fileDialog, &QFileDialog::fileSelected, lneFilePath, &QLineEdit::setText);
     
     // review button
     QPushButton* btnReview = new QPushButton(tr("REVIEW"));
@@ -56,7 +57,7 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
     rdxLoadFromFile->setObjectName(nameof(rdxLoadFromFile));
     connect(rdxLoadFromFile, &QPushButton::toggled, this, [=, this](bool checked)
     {
-        pathToFileLineEdit->setEnabled(checked);
+        lneFilePath->setEnabled(checked);
         btnReview->setEnabled(checked);
     });
 
@@ -64,7 +65,7 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
     rdxLoadFromGame->setObjectName(nameof(rdxLoadFromGame));
 
     QHBoxLayout* ltReview = new QHBoxLayout();
-    ltReview->addWidget(pathToFileLineEdit);
+    ltReview->addWidget(lneFilePath);
     ltReview->addSpacing(5);
     ltReview->addWidget(btnReview);
     ltReview->setContentsMargins(rdxLoadFromFile->sizeHint().width() -

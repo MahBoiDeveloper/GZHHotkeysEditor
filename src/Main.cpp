@@ -10,9 +10,8 @@
 #include <QDebug>
 
 // Project headers
+// #include "Parsers/CSFParser.hpp"
 #include "GUI/WindowManager.hpp"
-#include "Parsers/CSFParser.hpp"
-#include "Parsers/JSONFile.hpp"
 #include "ProgramConstants.hpp"
 #include "Logger.hpp"
 
@@ -26,7 +25,7 @@ int ShowErrorMessage(const char* txt)
     // And show it to user
     QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, txt);
 
-    // Also return -1 as error
+    // Also return -1 as an error
     return -1;
 }
 
@@ -74,8 +73,6 @@ int main(int argc, const char** argv)
 
     // Define logger as the singleton class, that could be used anywhere in the project
     WINDOW_MANAGER = make_unique<WindowManager>();
-    // TODO: Delete later
-    CSF_PARSER->Parse(PROGRAM_CONSTANTS->RESOURCE_FOLDER + "/DataSamples/generalsRU.csf");
 
     try
     {

@@ -45,7 +45,7 @@ private: //Data
     std::list<CompiledString> Table;
 
 public:
-    inline const static std::unique_ptr<CSFParser> Instance = std::make_unique<CSFParser>();
+    inline static std::unique_ptr<CSFParser> Instance = nullptr;
 
 private: // Methods
     void ReadHeader(std::ifstream* csfFile);

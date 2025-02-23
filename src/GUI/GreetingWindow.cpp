@@ -13,31 +13,25 @@
 
 GreetingWindow::GreetingWindow(QWidget* parent) : QWidget(parent)
 {
-    QPushButton* btnNewProject  = nullptr;
-    QPushButton* btnLoadProject = nullptr;
-    QHBoxLayout* ltButtons      = nullptr;
-    QVBoxLayout* ltMain         = nullptr;
-    QHBoxLayout* ltSettings     = nullptr;
-    QLabel*      lblLanguage    = nullptr;
-    QComboBox*   cmbLangList    = nullptr;
-    QVBoxLayout* ltLanguages    = nullptr;
+    QPushButton* btnLoadFromGame = nullptr;
+    QPushButton* btnLoadFromFile = nullptr;
+    QHBoxLayout* ltButtons       = nullptr;
+    QVBoxLayout* ltMain          = nullptr;
+    QHBoxLayout* ltSettings      = nullptr;
+    QLabel*      lblLanguage     = nullptr;
+    QComboBox*   cmbLangList     = nullptr;
+    QVBoxLayout* ltLanguages     = nullptr;
 
     // Add "New Project" and "Load Project" buttons to the window
-    btnNewProject = new QPushButton(tr("NEW") + '\n' + tr("PROJECT"));
-    btnNewProject->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
-    btnNewProject->setObjectName(nameof(btnNewProject));
-    connect(btnNewProject, &QPushButton::clicked, this, [this](bool)
-    {
-        emit pressed(GreetingWindow::StandartButtons::NewProject);
-    });
+    btnLoadFromGame = new QPushButton(tr("NEW") + '\n' + tr("PROJECT"));
+    btnLoadFromGame->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
+    btnLoadFromGame->setObjectName(nameof(btnLoadFromGame));
+    connect(btnLoadFromGame, &QPushButton::clicked, this, &GreetingWindow::btnLoadFromGame_Clicked);
 
-    btnLoadProject = new QPushButton(tr("LOAD") + '\n' + tr("PROJECT"));
-    btnLoadProject->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
-    btnLoadProject->setObjectName(nameof(btnLoadProject));
-    connect(btnLoadProject, &QPushButton::clicked, this, [this](bool)
-    {
-        emit pressed(GreetingWindow::StandartButtons::LoadProject);
-    });
+    btnLoadFromFile = new QPushButton(tr("LOAD") + '\n' + tr("PROJECT"));
+    btnLoadFromFile->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
+    btnLoadFromFile->setObjectName(nameof(btnLoadFromFile));
+    connect(btnLoadFromFile, &QPushButton::clicked, this, &GreetingWindow::btnLoadFromFile_Clicked);
 
     lblLanguage = new QLabel(tr("LANGUAGE"));
     lblLanguage->setObjectName(nameof(lblLanguage));
@@ -71,8 +65,8 @@ GreetingWindow::GreetingWindow(QWidget* parent) : QWidget(parent)
     ltButtons = new QHBoxLayout();
     ltButtons->setSpacing(50);
     ltButtons->setAlignment(Qt::AlignTop);
-    ltButtons->addWidget(btnNewProject);
-    ltButtons->addWidget(btnLoadProject);
+    ltButtons->addWidget(btnLoadFromGame);
+    ltButtons->addWidget(btnLoadFromFile);
     ltButtons->setSpacing(30);
 
     ltMain = new QVBoxLayout();

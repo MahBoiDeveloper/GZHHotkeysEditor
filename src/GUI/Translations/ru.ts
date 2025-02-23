@@ -113,23 +113,23 @@
     <message>
         <location filename="../GreetingWindow.cpp" line="26"/>
         <source>NEW</source>
-        <translation type="unfinished">НОВЫЙ</translation>
+        <translation>НОВЫЙ</translation>
     </message>
     <message>
         <location filename="../GreetingWindow.cpp" line="26"/>
-        <location filename="../GreetingWindow.cpp" line="34"/>
+        <location filename="../GreetingWindow.cpp" line="31"/>
         <source>PROJECT</source>
-        <translation type="unfinished">ПРОЕКТ</translation>
+        <translation>ПРОЕКТ</translation>
     </message>
     <message>
-        <location filename="../GreetingWindow.cpp" line="34"/>
+        <location filename="../GreetingWindow.cpp" line="31"/>
         <source>LOAD</source>
-        <translation type="unfinished">ЗАГРУЗИТЬ</translation>
+        <translation>ЗАГРУЗИТЬ</translation>
     </message>
     <message>
-        <location filename="../GreetingWindow.cpp" line="42"/>
+        <location filename="../GreetingWindow.cpp" line="36"/>
         <source>LANGUAGE</source>
-        <translation type="unfinished">ЯЗЫК</translation>
+        <translation>ЯЗЫК</translation>
     </message>
 </context>
 <context>
@@ -317,37 +317,41 @@
     <message>
         <location filename="../LoadFromTheFileWindow.cpp" line="15"/>
         <source>START</source>
-        <translation type="unfinished">НАЧАТЬ</translation>
+        <translation>НАЧАТЬ</translation>
     </message>
     <message>
         <location filename="../LoadFromTheFileWindow.cpp" line="16"/>
         <source>BACK</source>
-        <translation type="unfinished">НАЗАД</translation>
+        <translation>НАЗАД</translation>
     </message>
     <message>
-        <location filename="../LoadFromTheFileWindow.cpp" line="43"/>
         <source>Text files</source>
-        <translation type="unfinished">Текстовые файлы</translation>
+        <translation type="obsolete">Текстовые файлы</translation>
     </message>
     <message>
         <location filename="../LoadFromTheFileWindow.cpp" line="44"/>
+        <source>Binary files</source>
+        <translation>Двоичные файлы</translation>
+    </message>
+    <message>
+        <location filename="../LoadFromTheFileWindow.cpp" line="45"/>
         <source>Any files</source>
-        <translation type="unfinished">Все файлы</translation>
+        <translation>Все файлы</translation>
     </message>
     <message>
-        <location filename="../LoadFromTheFileWindow.cpp" line="48"/>
+        <location filename="../LoadFromTheFileWindow.cpp" line="49"/>
         <source>REVIEW</source>
-        <translation type="unfinished">ОБЗОР</translation>
+        <translation>ОБЗОР</translation>
     </message>
     <message>
-        <location filename="../LoadFromTheFileWindow.cpp" line="54"/>
+        <location filename="../LoadFromTheFileWindow.cpp" line="55"/>
         <source>Load project</source>
-        <translation type="unfinished">Загрузить проект</translation>
+        <translation>Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../LoadFromTheFileWindow.cpp" line="63"/>
+        <location filename="../LoadFromTheFileWindow.cpp" line="64"/>
         <source>Load installed game hotkey map</source>
-        <translation type="unfinished">Загрузить горячие клавиши из игры</translation>
+        <translation>Загрузить горячие клавиши из игры</translation>
     </message>
 </context>
 <context>
@@ -355,17 +359,17 @@
     <message>
         <location filename="../LoadFromTheGameWindow.cpp" line="17"/>
         <source>START</source>
-        <translation type="unfinished">НАЧАТЬ</translation>
+        <translation>НАЧАТЬ</translation>
     </message>
     <message>
         <location filename="../LoadFromTheGameWindow.cpp" line="18"/>
         <source>BACK</source>
-        <translation type="unfinished">НАЗАД</translation>
+        <translation>НАЗАД</translation>
     </message>
     <message>
         <location filename="../LoadFromTheGameWindow.cpp" line="56"/>
         <source>Save hotkeys dirrectly to the game.</source>
-        <translation type="unfinished">Сохранять горячие клавиши в игре.</translation>
+        <translation>Сохранять горячие клавиши в игре.</translation>
     </message>
 </context>
 <context>

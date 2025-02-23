@@ -9,8 +9,8 @@ class SetUpWindowsWrapper final : public QStackedWidget
     Q_OBJECT
 private: // Data
     GreetingWindow* pGreetingWidget = nullptr;
-    LoadFromTheGameWindow* pCreationDialog = nullptr;
-    LoadFromTheFileWindow*     pLoadDialog     = nullptr;
+    LoadFromTheGameWindow* pLoadFromTheGameWindow = nullptr;
+    LoadFromTheFileWindow* pLoadFromTheFileWindow = nullptr;
 
 private: // Methods
     /// @brief Connects slots and singals.
@@ -29,8 +29,12 @@ private slots:
     void BtnBack_Clicked();
     /// @brief Change language by its index if language has been changed via select list.
     void GreetingWidget_LanguageChanged(int intLngIndex);
-    /// @brief Open create/loader widget if start button has been clicked.
-    void BtnNewProjectOrBtnLoadProject_Clicked(GreetingWindow::StandartButtons standartButton);
+    /// @brief Show window to load hotkeys information from .csf file.
+    void BtnLoadFromFile_Clicked();
+    /// @brief Show window to load hotkeys information from the game.
+    void BtnLoadFromGame_Clicked();
     /// @brief Returns checked configuration of user preferences.
-    void CreationDialog_AcceptConfiguration();
+    void LoadFromTheFileWindow_AcceptConfiguration();
+    /// @brief Returns checked configuration of user preferences.
+    void LoadFromTheGameWindow_AcceptConfiguration();
 };

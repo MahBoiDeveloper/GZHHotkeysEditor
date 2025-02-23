@@ -18,6 +18,7 @@ private: // Data
     inline static Languages              Language           = Languages::English;
     QString                              strWindowName      = PROGRAM_CONSTANTS->COMMON_TITLE;
     bool                                 bEditorInitialized = false;
+    QString                              strCSFFilePath     = "";
 public:
     inline static std::unique_ptr<WindowManager> Instance   = nullptr;
 
@@ -29,6 +30,8 @@ public: // Methods
     void SetTranslator(Languages language);
     /// @brief Return current language type for the editor. To set language use `SetTranslator`.
     Languages GetLanguage();
-    /// @brief Due to Qt limitations this slot is a public and should be calls only in `SetUpWindowsWrapper` to launch editor.
-    void LaunchWidget_AcceptConfiguration(const QVariant& cfg);
+    /// @brief Set CSF file path. Uses if in `LoadFromTheFileWindow` file has been set.
+    void SetCSFFilePath(const QString& filepath);
+    /// @brief Return CSF file path. Uses if in `LoadFromTheFileWindow` file has been set.
+    void LaunchWidget_AcceptConfiguration();
 };
