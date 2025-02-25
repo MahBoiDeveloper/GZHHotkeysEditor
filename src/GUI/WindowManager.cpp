@@ -51,6 +51,12 @@ void WindowManager::LaunchWidget_AcceptConfiguration()
 
     CSF_PARSER = std::make_unique<CSFParser>(strCSFFilePath);
 
+    if (!CSF_PARSER->ExistCategory(PROGRAM_CONSTANTS->HOTKEY_CSF_CATEGORY))
+    {
+        QMessageBox::critical(nullptr, "Error with CSF file", "Choosen CSF file doesn't have CONTROLBAR category.\nMake sure that you are load correct file.");
+        return;
+    }
+
     LOGMSG("Loading editor window...");
     pHotkeysEditor = std::make_unique<HotkeysMainWindow>();
     pHotkeysEditor->setWindowTitle(strWindowName);

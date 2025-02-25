@@ -8,32 +8,34 @@ using namespace std;
 
 #pragma region CTORs and DTORs
     CSFParser::CSFParser()                        {}
-    CSFParser::CSFParser(const string&  filePath) {Parse(filePath);}
-    CSFParser::CSFParser(const char*    filePath) {Parse(filePath);}
-    CSFParser::CSFParser(const QString& filePath) {Parse(filePath);}
+    CSFParser::CSFParser(const wstring& filePath) { Parse(filePath); }
+    CSFParser::CSFParser(const string&  filePath) { Parse(filePath); }
+    CSFParser::CSFParser(const char*    filePath) { Parse(filePath); }
+    CSFParser::CSFParser(const QString& filePath) { Parse(filePath); }
 #pragma endregion
 
 #pragma region Parsing
     void CSFParser::Parse(const char* strFilePath)
     {
-        Path = QString{strFilePath}.toStdString();
-        ifstream csfFile(Path, ios::binary | ios::in);
-        LOGMSG("Attempt to read binary file \"" + Path + "\"...");
+        Path = QString(strFilePath).toStdWString();
+        ifstream csfFile(Path.c_str(), ios::binary | ios::in);
+        LOGMSG("Attempt to read binary file \"" + Path.c_str() + "\"...");
 
         if (csfFile.is_open())
         {
             ReadHeader(&csfFile);
             ReadBody(&csfFile);
 
-            LOGMSG("File \"" + Path + "\" has been parsed; strings count : " + Table.size());
+            LOGMSG("File \"" + Path.c_str() + "\" has been parsed; strings count : " + Table.size());
         }
         else
         {
-            throw Exception("Bad file name; unable to open file \"" + Path + "\"");
+            throw Exception(QString("") + "Bad file name; unable to open file \"" + Path + "\"");
         }
     }
-    void CSFParser::Parse(const std::string& strFilePath) {Parse(strFilePath.c_str());}
-    void CSFParser::Parse(const QString& strFilePath)     {Parse(strFilePath.toStdString().c_str());}
+    void CSFParser::Parse(const wstring& filePath)        { Parse(filePath.c_str()); }
+    void CSFParser::Parse(const std::string& strFilePath) { Parse(strFilePath.c_str()); }
+    void CSFParser::Parse(const QString& strFilePath)     { Parse(strFilePath.toStdString().c_str()); }
 
     void CSFParser::ReadHeader(ifstream* csfFile)
     {
@@ -132,40 +134,29 @@ using namespace std;
         }
     }
 
-    void CSFParser::Save(const string& strFileName)
+    void CSFParser::Save(const char*    strFileName) { wstring tmp = Path; Path = QString(strFileName).toStdWString();                Save(); Path = tmp; }
+    void CSFParser::Save(const wstring& strFileName) { wstring tmp = Path; Path = strFileName;                                        Save(); Path = tmp; }
+    void CSFParser::Save(const string&  strFileName) { wstring tmp = Path; Path = QString::fromStdString(strFileName).toStdWString(); Save(); Path = tmp; }
+    void CSFParser::Save(const QString& strFileName) { wstring tmp = Path; Path = strFileName.toStdWString();                         Save(); Path = tmp; }
+    void CSFParser::Save()
     {
-        ofstream csfFile{strFileName, ios::binary | ios::out};
+        ofstream csfFile{Path.c_str(), ios::binary | ios::out};
 
         if(csfFile.is_open())
         {
-            LOGSTM << "Attempt to write binary file \"" << strFileName << "\"" << endl;
+            LOGSTM << ("Attempt to write binary file \"" + Path + "\"").toStdString() << endl;
 
             CSFParser::WriteHeader(&csfFile);
             CSFParser::WriteBody(&csfFile);
 
-            LOGSTM << "File saved as \"" << strFileName << "\"" << endl;
+            LOGSTM << ("File saved as \"" + Path + "\"").toStdString() << endl;
         }
         else
         {
-            LOGSTM << "Could not open file \"" << strFileName << "\" to save" << endl;
+            LOGSTM << ("Could not open file \"" + Path + "\" to save").toStdString() << endl;
         }
 
         csfFile.close();
-    }
-
-    void CSFParser::Save(const char* strFileName)
-    {
-        Save(string{strFileName});
-    }
-
-    void CSFParser::Save(const QString& strFileName)
-    {
-        Save(strFileName.toStdString());
-    }
-
-    void CSFParser::Save()
-    {
-        Save(Path);
     }
 
     void CSFParser::WriteHeader(ofstream* csfFile)
@@ -454,7 +445,33 @@ using namespace std;
     }
 #pragma endregion
 
-#pragma region Support methods
+#pragma region Checkers
+    
+    const bool CSFParser::ExistString(const std::string value)   const 
+    {
+        for (const auto& elem : Table)
+        if (elem.Name == value)
+            return true;
+
+        return false;
+    }
+    const bool CSFParser::ExistString(const QString& value)      const { return ExistString(value.toStdString()); }
+    const bool CSFParser::ExistString(const char* value)         const { return ExistString(std::string(value)); }
+
+    const bool CSFParser::ExistCategory(const std::string value) const 
+    { 
+        for (const auto& elem : Table)
+            if (elem.Name.substr(0, elem.Name.find_first_of(':', 0) ) == value)
+                return true;;
+
+        return false;
+    }
+    const bool CSFParser::ExistCategory(const QString& value)    const { return ExistCategory(value.toStdString()); }
+    const bool CSFParser::ExistCategory(const char* value)       const { return ExistCategory(QString(value)); }
+    
+#pragma endregion
+
+#pragma region Internal methods
     string CSFParser::CharArrayToString(const size_t& arrayLength, const char* pArray) const
     {
         stringstream ss;

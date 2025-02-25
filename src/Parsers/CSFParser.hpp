@@ -40,7 +40,7 @@ private: //Data
     const uint8_t  WRTS[4] {'W', 'R', 'T', 'S'}; // Begining of any string with extra value
     const uint32_t CNC_CSF_VERSION = 3;          // Standart file format. Legacy by WW
     
-    std::string               Path;
+    std::wstring              Path;
     CSFHeader                 Header;
     std::list<CompiledString> Table;
 
@@ -61,25 +61,30 @@ private: // Methods
 
 public:
     CSFParser();
-    CSFParser(const std::string& strFilePath);
-    CSFParser(const char*        strFilePath);
-    CSFParser(const QString&     strFilePath);
+    CSFParser(const std::wstring& strFilePath);
+    CSFParser(const std::string&  strFilePath);
+    CSFParser(const char*         strFilePath);
+    CSFParser(const QString&      strFilePath);
 
     /// @brief Parse .csf file with direct path.
-    void Parse(const std::string& strFilePath);
+    void Parse(const std::wstring& strFilePath);
     /// @brief Parse .csf file with direct path.
-    void Parse(const char*        strFilePath);
+    void Parse(const std::string&  strFilePath);
     /// @brief Parse .csf file with direct path.
-    void Parse(const QString&     strFilePath);
+    void Parse(const char*         strFilePath);
+    /// @brief Parse .csf file with direct path.
+    void Parse(const QString&      strFilePath);
 
     /// @brief Save compiled sting table data to the parsed file before.
     void Save();
     /// @brief Save compiled string table data to the specific file.
-    void Save(const std::string& strFileName);
+    void Save(const std::wstring& strFileName);
     /// @brief Save compiled string table data to the specific file.
-    void Save(const char* strFileName);
+    void Save(const std::string&  strFileName);
     /// @brief Save compiled string table data to the specific file.
-    void Save(const QString& strFileName);
+    void Save(const char*         strFileName);
+    /// @brief Save compiled string table data to the specific file.
+    void Save(const QString&      strFileName);
 
     /// @brief Returns first string value by name match. The same string in uppercase and in lowercase aren't identical.
     std::wstring              GetStringValue(const std::string& strName)                                       const;
@@ -110,11 +115,11 @@ public:
     QString GetClearName(const QString& strName)                                                               const;
 
     /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
-    QChar GetHotkey(const std::string& strName)                                                                const;
+    QChar   GetHotkey(const std::string& strName)                                                              const;
     /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
-    QChar GetHotkey(const char* strName)                                                                       const;
+    QChar   GetHotkey(const char* strName)                                                                     const;
     /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
-    QChar GetHotkey(const QString& strName)                                                                    const;
+    QChar   GetHotkey(const QString& strName)                                                                  const;
     /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
     wchar_t GetHotkeyWchar(const std::string& strName)                                                         const;
     /// @brief Returns wide character (letter after & sign) assinged to keyboard key.
@@ -136,4 +141,17 @@ public:
     void SetStringValue(const CompiledString& stString);
     /// @brief Searchs any match for string names and rewriting its values.
     void SetStringsValue(const std::list<CompiledString>& lstChanges);
+
+    /// @brief Checks if string exist by name match.
+    const bool ExistString(const QString& value)      const;
+    /// @brief Checks if string exist by name match.
+    const bool ExistString(const char* value)         const;
+    /// @brief Checks if string exist by name match.
+    const bool ExistString(const std::string value)   const;
+    /// @brief Checks if category exist by name match.
+    const bool ExistCategory(const QString& value)    const;
+    /// @brief Checks if category exist by name match.
+    const bool ExistCategory(const char* value)       const;
+    /// @brief Checks if category exist by name match.
+    const bool ExistCategory(const std::string value) const;
 };

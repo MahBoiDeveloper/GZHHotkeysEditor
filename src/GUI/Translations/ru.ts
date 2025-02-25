@@ -111,20 +111,32 @@
 <context>
     <name>GreetingWindow</name>
     <message>
-        <location filename="../GreetingWindow.cpp" line="26"/>
         <source>NEW</source>
-        <translation>НОВЫЙ</translation>
+        <translation type="vanished">НОВЫЙ</translation>
+    </message>
+    <message>
+        <source>PROJECT</source>
+        <translation type="vanished">ПРОЕКТ</translation>
+    </message>
+    <message>
+        <source>LOAD</source>
+        <translation type="vanished">ЗАГРУЗИТЬ</translation>
     </message>
     <message>
         <location filename="../GreetingWindow.cpp" line="26"/>
         <location filename="../GreetingWindow.cpp" line="31"/>
-        <source>PROJECT</source>
-        <translation>ПРОЕКТ</translation>
+        <source>LOAD FROM</source>
+        <translation>ЗАГРУЗИТЬ</translation>
+    </message>
+    <message>
+        <location filename="../GreetingWindow.cpp" line="26"/>
+        <source>THE GAME</source>
+        <translation>ИЗ ИГРЫ</translation>
     </message>
     <message>
         <location filename="../GreetingWindow.cpp" line="31"/>
-        <source>LOAD</source>
-        <translation>ЗАГРУЗИТЬ</translation>
+        <source>THE FILE</source>
+        <translation>ИЗ ФАЙЛА</translation>
     </message>
     <message>
         <location filename="../GreetingWindow.cpp" line="36"/>
@@ -406,22 +418,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="105"/>
+        <location filename="../../ProgramConstants.hpp" line="106"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="106"/>
+        <location filename="../../ProgramConstants.hpp" line="107"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="107"/>
+        <location filename="../../ProgramConstants.hpp" line="108"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="108"/>
+        <location filename="../../ProgramConstants.hpp" line="109"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>

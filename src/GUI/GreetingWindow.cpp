@@ -23,12 +23,12 @@ GreetingWindow::GreetingWindow(QWidget* parent) : QWidget(parent)
     QVBoxLayout* ltLanguages     = nullptr;
 
     // Add "New Project" and "Load Project" buttons to the window
-    btnLoadFromGame = new QPushButton(tr("NEW") + '\n' + tr("PROJECT"));
+    btnLoadFromGame = new QPushButton(tr("LOAD FROM") + '\n' + tr("THE GAME"));
     btnLoadFromGame->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
     btnLoadFromGame->setObjectName(nameof(btnLoadFromGame));
     connect(btnLoadFromGame, &QPushButton::clicked, this, &GreetingWindow::btnLoadFromGame_Clicked);
 
-    btnLoadFromFile = new QPushButton(tr("LOAD") + '\n' + tr("PROJECT"));
+    btnLoadFromFile = new QPushButton(tr("LOAD FROM") + '\n' + tr("THE FILE"));
     btnLoadFromFile->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
     btnLoadFromFile->setObjectName(nameof(btnLoadFromFile));
     connect(btnLoadFromFile, &QPushButton::clicked, this, &GreetingWindow::btnLoadFromFile_Clicked);

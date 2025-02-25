@@ -76,6 +76,7 @@ public:
     const char*            UNKNOWN_ERROR           = "Unknown error has been occured.";
 
     // Other constants
+    const QString          HOTKEY_CSF_CATEGORY     = "CONTROLBAR";
     const QVector<QString> GLA_SHORT_NAMES         = {"GLA", "TOX", "STL", "DML"};
     const QVector<QString> USA_SHORT_NAMES         = {"USA", "SWG", "AIR", "LSR"};
     const QVector<QString> PRC_SHORT_NAMES         = {"PRC", "TNK", "INF", "NUK"};
