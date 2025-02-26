@@ -5,6 +5,7 @@
 #include <QPair>
 #include <QSize>
 #include <QObject>
+#include <QTranslator>
 
 #include "Settings.hpp"
 
@@ -68,12 +69,16 @@ public:
     const int              EMPTY_KEY_WIDTH         = 25;
 
     // Errors
-    const char*            SETTINGS_NO_FOUND       = "Unable to find Settings.json in Resource folder.";
-    const char*            TECH_TREE_NO_FOUND      = "Unable to find TechTree.json in Resource folder.";
-    const char*            THEME_FOLDER_NO_FOUND   = "Unable to find Resource/Theme folder.";
-    const char*            ICONS_FOLDER_NO_FOUND   = "Unable to find Resource/Icons folder.";
-    const char*            TRANSLATIONS_NO_FOUND   = "Unable to find Resource/Translations folder.";
-    const char*            UNKNOWN_ERROR           = "Unknown error has been occured.";
+    const char*            SETTINGS_NO_FOUND       = QObject::tr("Unable to find Settings.json in Resource folder.").toStdString().c_str();
+    const char*            TECH_TREE_NO_FOUND      = QObject::tr("Unable to find TechTree.json in Resource folder.").toStdString().c_str();
+    const char*            THEME_FOLDER_NO_FOUND   = QObject::tr("Unable to find Resource/Theme folder.").toStdString().c_str();
+    const char*            ICONS_FOLDER_NO_FOUND   = QObject::tr("Unable to find Resource/Icons folder.").toStdString().c_str();
+    const char*            TRANSLATIONS_NO_FOUND   = QObject::tr("Unable to find Resource/Translations folder.").toStdString().c_str();
+    const char*            UNKNOWN_ERROR           = QObject::tr("Unknown error has been occured.").toStdString().c_str();
+    const QString          CSF_ERROR_HEADER        = QObject::tr("Error with CSF file");
+    const QString          CSF_EMPTY_STRING_ERROR  = QObject::tr("Cannot process the empty file.");
+    const QString          CSF_DOESNTEXIST_ERROR   = QObject::tr("Unable to find selected CSF file.");
+    const QString          CSF_NOCTLBAR_ERROR      = QObject::tr("Choosen CSF file doesn't have CONTROLBAR category.\nMake sure that you are load correct file.");
 
     // Other constants
     const QString          HOTKEY_CSF_CATEGORY     = "CONTROLBAR";

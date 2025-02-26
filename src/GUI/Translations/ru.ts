@@ -418,22 +418,74 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="106"/>
+        <location filename="../../ProgramConstants.hpp" line="71"/>
+        <source>Unable to find Settings.json in Resource folder.</source>
+        <translation>Невозможно найти файл Settings.json в папке Resources.</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="72"/>
+        <source>Unable to find TechTree.json in Resource folder.</source>
+        <translation>Невозможно найти файл TechTree.json в папке Resources.</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="73"/>
+        <source>Unable to find Resource/Theme folder.</source>
+        <translation>Невозможно найти папку Resource/Theme.</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="74"/>
+        <source>Unable to find Resource/Icons folder.</source>
+        <translation>Невозможно найти папку Resource/Icons.</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="75"/>
+        <source>Unable to find Resource/Translations folder.</source>
+        <translation>Невозможно найти папку Resource/Translations.</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="76"/>
+        <source>Unknown error has been occured.</source>
+        <translation>Возникла неизвестная ошибка</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="77"/>
+        <source>Error with CSF file</source>
+        <translation>Ошибка с CSF файлом</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="78"/>
+        <source>Cannot process the empty file.</source>
+        <translation>Невозможно обработать пустой файл.</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="79"/>
+        <source>Unable to find selected CSF file.</source>
+        <translation>Невозможно найти указанный CSF файл.</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="80"/>
+        <source>Choosen CSF file doesn&apos;t have CONTROLBAR category.
+Make sure that you are load correct file.</source>
+        <translation>У выбранного CSF файла отсутствует категория CONTROLBAR
+Проверьте, что вы загружаете правильный файл.</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="110"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="107"/>
+        <location filename="../../ProgramConstants.hpp" line="111"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="108"/>
+        <location filename="../../ProgramConstants.hpp" line="112"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="109"/>
+        <location filename="../../ProgramConstants.hpp" line="113"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>
