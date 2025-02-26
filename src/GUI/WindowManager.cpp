@@ -45,13 +45,15 @@ void WindowManager::LaunchWidget_AcceptConfiguration()
 
     if (strCSFFilePath == "")
     {
-        QMessageBox::critical(nullptr, PROGRAM_CONSTANTS->CSF_ERROR_HEADER, PROGRAM_CONSTANTS->CSF_EMPTY_STRING_ERROR);
+        QMessageBox::critical(nullptr, L10N(PROGRAM_CONSTANTS->CSF_ERROR_HEADER),
+                                       L10N(PROGRAM_CONSTANTS->CSF_EMPTY_STRING_ERROR));
         return;
     }
 
     if (!QFile::exists(strCSFFilePath))
     {
-        QMessageBox::critical(nullptr, PROGRAM_CONSTANTS->CSF_ERROR_HEADER, PROGRAM_CONSTANTS->CSF_DOESNTEXIST_ERROR);
+        QMessageBox::critical(nullptr, L10N(PROGRAM_CONSTANTS->CSF_ERROR_HEADER),
+                                       L10N(PROGRAM_CONSTANTS->CSF_DOESNT_EXIST_ERROR));
         return;
     }
 
@@ -59,7 +61,8 @@ void WindowManager::LaunchWidget_AcceptConfiguration()
 
     if (!CSF_PARSER->ExistCategory(PROGRAM_CONSTANTS->HOTKEY_CSF_CATEGORY))
     {
-        QMessageBox::critical(nullptr, PROGRAM_CONSTANTS->CSF_ERROR_HEADER, PROGRAM_CONSTANTS->CSF_NOCTLBAR_ERROR);
+        QMessageBox::critical(nullptr, L10N(PROGRAM_CONSTANTS->CSF_ERROR_HEADER), 
+                                       L10N(PROGRAM_CONSTANTS->CSF_NO_CTLBAR_ERROR));
         return;
     }
 

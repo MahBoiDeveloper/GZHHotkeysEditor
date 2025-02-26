@@ -286,45 +286,6 @@
     </message>
 </context>
 <context>
-    <name>LoadDialog</name>
-    <message>
-        <source>START</source>
-        <translation type="vanished">НАЧАТЬ</translation>
-    </message>
-    <message>
-        <source>BACK</source>
-        <translation type="vanished">НАЗАД</translation>
-    </message>
-    <message>
-        <source>Text files</source>
-        <translation type="vanished">Текстовые файлы</translation>
-    </message>
-    <message>
-        <source>Any files</source>
-        <translation type="vanished">Все файлы</translation>
-    </message>
-    <message>
-        <source>REVIEW</source>
-        <translation type="vanished">ОБЗОР</translation>
-    </message>
-    <message>
-        <source>LOAD PROJECT</source>
-        <translation type="vanished">ЗАГРУЗИТЬ ПРОЕКТ</translation>
-    </message>
-    <message>
-        <source>Review</source>
-        <translation type="vanished">Обзор</translation>
-    </message>
-    <message>
-        <source>Load project</source>
-        <translation type="vanished">Загрузить проект</translation>
-    </message>
-    <message>
-        <source>Load installed game hotkey map</source>
-        <translation type="vanished">Загрузить горячие клавиши из игры</translation>
-    </message>
-</context>
-<context>
     <name>LoadFromTheFileWindow</name>
     <message>
         <location filename="../LoadFromTheFileWindow.cpp" line="15"/>
@@ -385,107 +346,70 @@
     </message>
 </context>
 <context>
-    <name>LoadWindow</name>
-    <message>
-        <source>START</source>
-        <translation type="obsolete">НАЧАТЬ</translation>
-    </message>
-    <message>
-        <source>BACK</source>
-        <translation type="obsolete">НАЗАД</translation>
-    </message>
-    <message>
-        <source>Text files</source>
-        <translation type="obsolete">Текстовые файлы</translation>
-    </message>
-    <message>
-        <source>Any files</source>
-        <translation type="obsolete">Все файлы</translation>
-    </message>
-    <message>
-        <source>REVIEW</source>
-        <translation type="obsolete">ОБЗОР</translation>
-    </message>
-    <message>
-        <source>Load project</source>
-        <translation type="obsolete">Загрузить проект</translation>
-    </message>
-    <message>
-        <source>Load installed game hotkey map</source>
-        <translation type="obsolete">Загрузить горячие клавиши из игры</translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="71"/>
         <source>Unable to find Settings.json in Resource folder.</source>
-        <translation>Невозможно найти файл Settings.json в папке Resources.</translation>
+        <translation type="vanished">Невозможно найти файл Settings.json в папке Resources.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="72"/>
         <source>Unable to find TechTree.json in Resource folder.</source>
-        <translation>Невозможно найти файл TechTree.json в папке Resources.</translation>
+        <translation type="vanished">Невозможно найти файл TechTree.json в папке Resources.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="73"/>
         <source>Unable to find Resource/Theme folder.</source>
-        <translation>Невозможно найти папку Resource/Theme.</translation>
+        <translation type="vanished">Невозможно найти папку Resource/Theme.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="74"/>
         <source>Unable to find Resource/Icons folder.</source>
-        <translation>Невозможно найти папку Resource/Icons.</translation>
+        <translation type="vanished">Невозможно найти папку Resource/Icons.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="75"/>
         <source>Unable to find Resource/Translations folder.</source>
-        <translation>Невозможно найти папку Resource/Translations.</translation>
+        <translation type="vanished">Невозможно найти папку Resource/Translations.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="76"/>
         <source>Unknown error has been occured.</source>
-        <translation>Возникла неизвестная ошибка</translation>
+        <translation type="vanished">Возникла неизвестная ошибка</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="77"/>
+        <location filename="../../ProgramConstants.hpp" line="79"/>
         <source>Error with CSF file</source>
         <translation>Ошибка с CSF файлом</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="78"/>
+        <location filename="../../ProgramConstants.hpp" line="80"/>
         <source>Cannot process the empty file.</source>
         <translation>Невозможно обработать пустой файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="79"/>
+        <location filename="../../ProgramConstants.hpp" line="81"/>
         <source>Unable to find selected CSF file.</source>
         <translation>Невозможно найти указанный CSF файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="80"/>
+        <location filename="../../ProgramConstants.hpp" line="82"/>
         <source>Choosen CSF file doesn&apos;t have CONTROLBAR category.
 Make sure that you are load correct file.</source>
         <translation>У выбранного CSF файла отсутствует категория CONTROLBAR
 Проверьте, что вы загружаете правильный файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="110"/>
+        <location filename="../../ProgramConstants.hpp" line="112"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="111"/>
+        <location filename="../../ProgramConstants.hpp" line="113"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="112"/>
+        <location filename="../../ProgramConstants.hpp" line="114"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="113"/>
+        <location filename="../../ProgramConstants.hpp" line="115"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>

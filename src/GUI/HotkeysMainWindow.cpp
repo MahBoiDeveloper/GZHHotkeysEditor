@@ -211,7 +211,7 @@ void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
     {
         // Create new section of tree list
         QTreeWidgetItem* newTopEntityItem = new QTreeWidgetItem();
-        newTopEntityItem->setText(0, QCoreApplication::translate("QObject", PROGRAM_CONSTANTS->INGAME_ENTITIES_STRINGS.value(objectType).toUtf8().constData()));
+        newTopEntityItem->setText(0, L10N(PROGRAM_CONSTANTS->INGAME_ENTITIES_STRINGS.value(objectType)));
 
         // Decorate
         newTopEntityItem->setIcon(0, ImageManager::GetGameObjectTypePixmap(objectType)

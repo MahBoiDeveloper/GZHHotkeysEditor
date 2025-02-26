@@ -17,10 +17,10 @@
 
 using namespace std;
 
-int ShowErrorMessage(const char* txt)
+int ShowErrorMessage(const QString& txt)
 {
     // Log exception message
-    LOGGER->LogException(txt);
+    LOGGER->LogException(txt.toUtf8().constData());
     
     // And show it to user
     QMessageBox::critical(nullptr, LOGGER->EXCEPTION_HEADER, txt);
