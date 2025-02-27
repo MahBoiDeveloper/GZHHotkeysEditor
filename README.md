@@ -34,7 +34,7 @@ GZH Hotkeys Editor is an attempt to create a useful tool for editing C&C: Genera
 * [WebM Project](https://github.com/webmproject) — [webp library](https://github.com/webmproject/libwebp) (WebM Project License)
 
 ## Legal 
-This project has no direct affiliation with Electronic Arts Inc. Command & Conquer, Command & Conquer Generals, Command & Conquer Generals Zero Hour are registered trademarks of Electronic Arts Inc. All Rights Reserved.
+EA has not endorsed and does not support this product. Command & Conquer, Command & Conquer: Generals, Command & Conquer: Generals — Zero Hour are registered trademarks of Electronic Arts Inc. All Rights Reserved.
 
 ## License
 The GZH Hotkeys Editor is an unofficial open-source community project licensed with [GNU GPL v3](https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE).
