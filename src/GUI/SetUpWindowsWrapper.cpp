@@ -24,11 +24,14 @@ void SetUpWindowsWrapper::AttachConnections()
     connect(pGreetingWidget,        &GreetingWindow::languageChanged,
             this,                   &SetUpWindowsWrapper::GreetingWidget_LanguageChanged);
 
-    connect(pGreetingWidget,        &GreetingWindow::btnLoadFromFile_Clicked,
+    connect(pGreetingWidget,        &GreetingWindow::btnLoadFromFileClicked,
             this,                   &SetUpWindowsWrapper::BtnLoadFromFile_Clicked);
     
-    connect(pGreetingWidget,        &GreetingWindow::btnLoadFromGame_Clicked,
+    connect(pGreetingWidget,        &GreetingWindow::btnLoadFromGameClicked,
             this,                   &SetUpWindowsWrapper::BtnLoadFromGame_Clicked);
+
+    connect(pGreetingWidget,        &GreetingWindow::btnSettingsClicked,
+            this,                   &SetUpWindowsWrapper::BtnSettings_Clicked);
 
     connect(pLoadFromTheFileWindow, &LoadFromTheFileWindow::btnBackClicked,
             this,                   &SetUpWindowsWrapper::BtnBack_Clicked);
@@ -41,6 +44,9 @@ void SetUpWindowsWrapper::AttachConnections()
     
     // connect(pLoadFromTheGameWindow, &LoadFromTheGameWindow::btnStartClicked,
     //         this,                   &SetUpWindowsWrapper::LoadFromTheGameWindow_AcceptConfiguration);
+
+    connect(pSettingsWindow,        &SettingsWindow::btnBackClicked,
+            this,                   &SetUpWindowsWrapper::BtnBack_Clicked);
 }
 
 void SetUpWindowsWrapper::DetachConnections()
@@ -48,11 +54,14 @@ void SetUpWindowsWrapper::DetachConnections()
     disconnect(pGreetingWidget,        &GreetingWindow::languageChanged,
                this,                   &SetUpWindowsWrapper::GreetingWidget_LanguageChanged);
 
-    disconnect(pGreetingWidget,        &GreetingWindow::btnLoadFromFile_Clicked,
+    disconnect(pGreetingWidget,        &GreetingWindow::btnLoadFromFileClicked,
                this,                   &SetUpWindowsWrapper::BtnLoadFromFile_Clicked);
         
-    disconnect(pGreetingWidget,        &GreetingWindow::btnLoadFromGame_Clicked,
+    disconnect(pGreetingWidget,        &GreetingWindow::btnLoadFromGameClicked,
                this,                   &SetUpWindowsWrapper::BtnLoadFromGame_Clicked);
+
+    disconnect(pGreetingWidget,        &GreetingWindow::btnSettingsClicked,
+               this,                   &SetUpWindowsWrapper::BtnBack_Clicked);
     
     disconnect(pLoadFromTheFileWindow, &LoadFromTheFileWindow::btnBackClicked,
                this,                   &SetUpWindowsWrapper::BtnBack_Clicked);
@@ -65,6 +74,9 @@ void SetUpWindowsWrapper::DetachConnections()
 
     // disconnect(pLoadFromTheGameWindow, &LoadFromTheGameWindow::btnStartClicked,
     //            this,                   &SetUpWindowsWrapper::LoadFromTheGameWindow_AcceptConfiguration);
+
+    disconnect(pSettingsWindow,        &SettingsWindow::btnBackClicked,
+               this,                   &SetUpWindowsWrapper::BtnBack_Clicked);
 }
 
 void SetUpWindowsWrapper::AddWidgets()
@@ -72,14 +84,17 @@ void SetUpWindowsWrapper::AddWidgets()
     pGreetingWidget        = new GreetingWindow(this);
     pLoadFromTheGameWindow = new LoadFromTheGameWindow(pGreetingWidget);
     pLoadFromTheFileWindow = new LoadFromTheFileWindow(pGreetingWidget);
+    pSettingsWindow        = new SettingsWindow(pGreetingWidget);
 
     pGreetingWidget->setFixedSize(size());
     pLoadFromTheGameWindow->setFixedSize(size());
     pLoadFromTheFileWindow->setFixedSize(size());
+    pSettingsWindow->setFixedSize(size());
 
     addWidget(pGreetingWidget);
     addWidget(pLoadFromTheGameWindow);
     addWidget(pLoadFromTheFileWindow);
+    addWidget(pSettingsWindow);
 }
 
 void SetUpWindowsWrapper::GreetingWidget_LanguageChanged(int intLngIndex)
@@ -100,13 +115,12 @@ void SetUpWindowsWrapper::GreetingWidget_LanguageChanged(int intLngIndex)
 
 void SetUpWindowsWrapper::LoadFromTheFileWindow_AcceptConfiguration() 
 {
-    QString objName = "lneFilePath";
-    QString txt = pLoadFromTheFileWindow->findChild<QLineEdit*>("lneFilePath", Qt::FindChildrenRecursively)->text();
-    WINDOW_MANAGER->SetCSFFilePath(txt);
+    WINDOW_MANAGER->SetCSFFilePath(pLoadFromTheFileWindow->findChild<QLineEdit*>("lneFilePath", Qt::FindChildrenRecursively)->text());
     WINDOW_MANAGER->LaunchWidget_AcceptConfiguration();
 }
 
 void SetUpWindowsWrapper::BtnLoadFromFile_Clicked()                   { setCurrentWidget(pLoadFromTheFileWindow); }
 void SetUpWindowsWrapper::BtnLoadFromGame_Clicked()                   { setCurrentWidget(pLoadFromTheGameWindow); }
+void SetUpWindowsWrapper::BtnSettings_Clicked()                       { setCurrentWidget(pSettingsWindow); }
 void SetUpWindowsWrapper::BtnBack_Clicked()                           { WINDOW_MANAGER->SetCSFFilePath(""); setCurrentWidget(pGreetingWidget); }
 void SetUpWindowsWrapper::LoadFromTheGameWindow_AcceptConfiguration() { WINDOW_MANAGER->LaunchWidget_AcceptConfiguration(); }

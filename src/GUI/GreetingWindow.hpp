@@ -11,8 +11,8 @@ private:
     int GetGreetingTextAverageSize(const QString& text) const;
 
 signals:
-    void btnLoadFromFile_Clicked();
-    void btnLoadFromGame_Clicked();
+    void btnLoadFromFileClicked();
+    void btnLoadFromGameClicked();
     void languageChanged(int index);
-    void btnSettings_Clicked();
+    void btnSettingsClicked();
 };

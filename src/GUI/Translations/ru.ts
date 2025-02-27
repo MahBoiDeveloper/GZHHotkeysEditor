@@ -418,4 +418,26 @@ Make sure that you are load correct file.</source>
         <translation type="vanished">Авиация</translation>
     </message>
 </context>
+<context>
+    <name>SettingsWindow</name>
+    <message>
+        <source>Back</source>
+        <translation type="obsolete">Назад</translation>
+    </message>
+    <message>
+        <location filename="../SettingsWindow.cpp" line="17"/>
+        <source>SAVE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SettingsWindow.cpp" line="21"/>
+        <source>RESET ALL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SettingsWindow.cpp" line="25"/>
+        <source>BACK</source>
+        <translation type="unfinished">НАЗАД</translation>
+    </message>
+</context>
 </TS>

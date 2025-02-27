@@ -26,12 +26,12 @@ GreetingWindow::GreetingWindow(QWidget* parent) : QWidget(parent)
     btnLoadFromGame = new QPushButton(tr("LOAD FROM") + '\n' + tr("THE GAME"));
     btnLoadFromGame->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
     btnLoadFromGame->setObjectName(nameof(btnLoadFromGame));
-    connect(btnLoadFromGame, &QPushButton::clicked, this, &GreetingWindow::btnLoadFromGame_Clicked);
+    connect(btnLoadFromGame, &QPushButton::clicked, this, &GreetingWindow::btnLoadFromGameClicked);
 
     btnLoadFromFile = new QPushButton(tr("LOAD FROM") + '\n' + tr("THE FILE"));
     btnLoadFromFile->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
     btnLoadFromFile->setObjectName(nameof(btnLoadFromFile));
-    connect(btnLoadFromFile, &QPushButton::clicked, this, &GreetingWindow::btnLoadFromFile_Clicked);
+    connect(btnLoadFromFile, &QPushButton::clicked, this, &GreetingWindow::btnLoadFromFileClicked);
 
     lblLanguage = new QLabel(tr("LANGUAGE"));
     lblLanguage->setObjectName(nameof(lblLanguage));
@@ -50,7 +50,7 @@ GreetingWindow::GreetingWindow(QWidget* parent) : QWidget(parent)
     btnSettings->setIcon(pxmSettings);
     btnSettings->setIconSize(pxmSettings.size());
     btnSettings->setFixedSize(pxmSettings.size());
-    connect(btnSettings, &QPushButton::clicked, this, &GreetingWindow::btnSettings_Clicked);
+    connect(btnSettings, &QPushButton::clicked, this, &GreetingWindow::btnSettingsClicked);
 
     ltLanguages = new QVBoxLayout();
     ltLanguages->addStretch(1);
