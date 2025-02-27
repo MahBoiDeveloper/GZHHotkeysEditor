@@ -3,6 +3,8 @@
 #include <concepts>
 #include <QString>
 
+#define L10N(x) StringExt::l10n(x)
+
 template<class T>
 concept IsSymbol = std::same_as<T, char> || std::same_as<T, wchar_t> || std::same_as<T, QChar>;
 
@@ -27,3 +29,11 @@ template<IsSymbol C> inline QString operator+ (const C& ch,                 cons
                      inline QString operator+ (const std::wstring& stdwstr, const QString& qstr)         { return QString::fromStdWString(stdwstr).append(qstr); }
                      inline QString operator+ (const QString& qstr,         const std::string& stdstr)   { return QString(qstr).append(QString::fromStdString(stdstr)); }
                      inline QString operator+ (const std::string& stdstr,   const QString& qstr)         { return QString::fromStdString(stdstr).append(qstr); }
+
+namespace StringExt
+{
+    QString l10n(const char*         string);
+    QString l10n(const QString&      string);
+    QString l10n(const std::string&  string);
+    QString l10n(const std::wstring& string);
+}

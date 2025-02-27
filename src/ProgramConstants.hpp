@@ -6,9 +6,9 @@
 #include <QSize>
 #include <QObject>
 
+#include "StringExt.hpp"
 #include "Settings.hpp"
 
-#define L10N(x) QCoreApplication::translate("QObject",x.toUtf8().constData())
 #define PROGRAM_CONSTANTS ProgramConstants::Instance
 
 enum class GameObjectTypes
