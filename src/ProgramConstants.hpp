@@ -69,17 +69,18 @@ public:
     const int              EMPTY_KEY_WIDTH         = 25;
 
     // Errors
-    const char*            SETTINGS_NO_FOUND       = "Unable to find Settings.json in Resource folder.";
-    const char*            TECH_TREE_NO_FOUND      = "Unable to find TechTree.json in Resource folder.";
-    const char*            THEME_FOLDER_NO_FOUND   = "Unable to find Resource/Theme folder.";
-    const char*            ICONS_FOLDER_NO_FOUND   = "Unable to find Resource/Icons folder.";
-    const char*            TRANSLATIONS_NO_FOUND   = "Unable to find Resource/Translations folder.";
+    const char*            SETTINGS_NO_FOUND       = "Unable to find \"Settings.json\" in \"Resource\" folder.";
+    const char*            TECH_TREE_NO_FOUND      = "Unable to find \"TechTree.json\" in \"Resource\" folder.";
+    const char*            THEME_FOLDER_NO_FOUND   = "Unable to find \"Resource/Theme\" folder.";
+    const char*            ICONS_FOLDER_NO_FOUND   = "Unable to find \"Resource/Icons\" folder.";
+    const char*            TRANSLATIONS_NO_FOUND   = "Unable to find \"Resource/Translations\" folder.";
     const char*            UNKNOWN_ERROR           = "Unknown error has been occured.";
 
     const QString          CSF_ERROR_HEADER        = QObject::tr("Error with CSF file");
     const QString          CSF_EMPTY_STRING_ERROR  = QObject::tr("Cannot process the empty file.");
     const QString          CSF_DOESNT_EXIST_ERROR  = QObject::tr("Unable to find selected CSF file.");
-    const QString          CSF_NO_CTLBAR_ERROR     = QObject::tr("Choosen CSF file doesn't have CONTROLBAR category.\nMake sure that you are load correct file.");
+    const QString          CSF_NO_CTLBAR_ERROR     = QObject::tr("Choosen CSF file doesn't have CONTROLBAR category. Make sure that you are load correct file.");
+    const QString          CSF_EMPTY_DATA_ENGLISH  = QObject::tr("Unable find \"generals.csf\" file in \"Game/Data/English\" folder.");
 
     // Other constants
     const QString          HOTKEY_CSF_CATEGORY     = "CONTROLBAR";

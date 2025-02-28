@@ -36,79 +36,6 @@
     </message>
 </context>
 <context>
-    <name>BaseConfigurationDialog</name>
-    <message>
-        <source>Configure</source>
-        <translation type="vanished">Настройка</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation type="vanished">Назад</translation>
-    </message>
-    <message>
-        <source>CONFIGURE</source>
-        <translation type="vanished">НАСТРОЙКА</translation>
-    </message>
-    <message>
-        <source>BACK</source>
-        <translation type="vanished">НАЗАД</translation>
-    </message>
-</context>
-<context>
-    <name>CreationDialog</name>
-    <message>
-        <source>START</source>
-        <translation type="vanished">НАЧАТЬ</translation>
-    </message>
-    <message>
-        <source>BACK</source>
-        <translation type="vanished">НАЗАД</translation>
-    </message>
-    <message>
-        <source>Save hotkeys dirrectly to the game.</source>
-        <translation type="vanished">Сохранять горячие клавиши в игре.</translation>
-    </message>
-</context>
-<context>
-    <name>GreetingWidget</name>
-    <message>
-        <source>Load Project</source>
-        <translation type="vanished">Загрузить проект</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation type="vanished">Язык</translation>
-    </message>
-    <message>
-        <source>NEW PROJECT</source>
-        <translation type="vanished">НОВЫЙ ПРОЕКТ</translation>
-    </message>
-    <message>
-        <source>LOAD PROJECT</source>
-        <translation type="vanished">ЗАГРУЗИТЬ ПРОЕКТ</translation>
-    </message>
-    <message>
-        <source>NEW</source>
-        <translation type="vanished">НОВЫЙ</translation>
-    </message>
-    <message>
-        <source>PROJECT</source>
-        <translation type="vanished">ПРОЕКТ</translation>
-    </message>
-    <message>
-        <source>LOAD</source>
-        <translation type="vanished">ЗАГРУЗИТЬ</translation>
-    </message>
-    <message>
-        <source>LANGUAGE</source>
-        <translation type="vanished">ЯЗЫК</translation>
-    </message>
-    <message>
-        <source>Greetings, %username%. You have launched the hotkey editing program for the game Command and Conquer: Generals and Command and Conquer: Generals — Zero Hour. At the moment, the program supports in test mode only the creation of hotkey maps based on pre-prepared hotkeys. We hope that you will like the program.</source>
-        <translation type="vanished">Приветствую тебя, %username%. Ты запустил программу редактирования горячих клавиш для игры Command and Conquer: Generals и Command and  Conquer: Generals — Zero Hour. На текущий момент программа поддерживает в тестовом режиме только создание карт горячих клавиш на основе заранее подготовленных горячих клавиш. Надеемся, что программа тебе понравится.</translation>
-    </message>
-</context>
-<context>
     <name>GreetingWindow</name>
     <message>
         <source>NEW</source>
@@ -142,21 +69,6 @@
         <location filename="../GreetingWindow.cpp" line="36"/>
         <source>LANGUAGE</source>
         <translation>ЯЗЫК</translation>
-    </message>
-</context>
-<context>
-    <name>HotkeyElement</name>
-    <message>
-        <source>Press any key...</source>
-        <translation type="vanished">Нажмите любую клавишу...</translation>
-    </message>
-    <message>
-        <source>It isn&apos;t latin key...</source>
-        <translation type="vanished">Это не латинская клавиша...</translation>
-    </message>
-    <message>
-        <source>Press latin key...</source>
-        <translation type="vanished">Нажмите латинскую клавишу...</translation>
     </message>
 </context>
 <context>
@@ -386,29 +298,46 @@
         <translation>Невозможно найти указанный CSF файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="82"/>
         <source>Choosen CSF file doesn&apos;t have CONTROLBAR category.
 Make sure that you are load correct file.</source>
-        <translation>У выбранного CSF файла отсутствует категория CONTROLBAR
+        <translation type="vanished">У выбранного CSF файла отсутствует категория CONTROLBAR
 Проверьте, что вы загружаете правильный файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="112"/>
+        <location filename="../../ProgramConstants.hpp" line="82"/>
+        <source>Choosen CSF file doesn&apos;t have CONTROLBAR category. Make sure that you are load correct file.</source>
+        <translation>У выбранного CSF файла отсутствует категория CONTROLBAR. Проверьте, что вы загружаете правильный файл.</translation>
+    </message>
+    <message>
+        <source>Unable find CSF file in &quot;Game\Data\English\&quot; folder.</source>
+        <translation type="vanished">Невозможно найти &quot;generals.csf&quot; в папке &quot;Game\Data\English\&quot;.</translation>
+    </message>
+    <message>
+        <source>Unable find &quot;generals.csf&quot; file in &quot;Game\Data\English\&quot; folder.</source>
+        <translation type="vanished">Невозможно найти &quot;generals.csf&quot; в папке &quot;Game/Data/English&quot;.</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="83"/>
+        <source>Unable find &quot;generals.csf&quot; file in &quot;Game/Data/English&quot; folder.</source>
+        <translation>Невозможно найти &quot;generals.csf&quot; в папке &quot;Game/Data/English&quot;.</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="113"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="113"/>
+        <location filename="../../ProgramConstants.hpp" line="114"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="114"/>
+        <location filename="../../ProgramConstants.hpp" line="115"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="115"/>
+        <location filename="../../ProgramConstants.hpp" line="116"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>

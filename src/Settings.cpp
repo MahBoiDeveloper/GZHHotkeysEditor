@@ -20,8 +20,9 @@ Settings::~Settings()
 
 void Settings::SetToDefault()
 {
-    allowedKeys    = PROGRAM_CONSTANTS->DEFAULT_ALLOWED_KEYS;
-    enabledConsole = false;
+    allowedKeys       = PROGRAM_CONSTANTS->DEFAULT_ALLOWED_KEYS;
+    enabledConsole    = false;
+    enabledDiscordRPC = true;
 }
 
 void Settings::Parse()
