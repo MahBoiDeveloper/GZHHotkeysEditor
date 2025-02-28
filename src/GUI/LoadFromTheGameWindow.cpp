@@ -51,18 +51,11 @@ LoadFromTheGameWindow::LoadFromTheGameWindow(QWidget* parent) : QWidget(parent)
     ltChoiseGame->addWidget(rdxGenerals);
     ltChoiseGame->addWidget(rdxZeroHour);
 
-    // configure save option
-    QCheckBox* chkSaveToGame = new QCheckBox();
-    chkSaveToGame->setText(tr("Save hotkeys dirrectly to the game."));
-    chkSaveToGame->setObjectName(nameof(chkSaveToGame));
-
     // configure dialog view
     QVBoxLayout* ltMainBlock = new QVBoxLayout();
     ltMainBlock->setAlignment(Qt::Alignment::enum_type::AlignCenter);
     ltMainBlock->addStretch(5);
     ltMainBlock->addLayout(ltChoiseGame);
-    ltMainBlock->addStretch(2);
-    ltMainBlock->addWidget(chkSaveToGame);
     ltMainBlock->addStretch(5);
     ltMainBlock->addLayout(ltOkAndCancel);
     ltMainBlock->addStretch(1);

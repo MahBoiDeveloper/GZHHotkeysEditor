@@ -68,8 +68,8 @@ int main(int argc, const char** argv)
     PROGRAM_CONSTANTS->InitializeFileSettings();
 
     // Hides console
-    if (!PROGRAM_CONSTANTS->IsConsoleEnabled()) 
-        ShowWindow(GetConsoleWindow(), SW_HIDE);
+    if (PROGRAM_CONSTANTS->IsConsoleEnabled()) 
+        ShowWindow(GetConsoleWindow(), SW_SHOW);
 
     // Define logger as the singleton class, that could be used anywhere in the project
     WINDOW_MANAGER = make_unique<WindowManager>();

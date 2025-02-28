@@ -340,9 +340,8 @@
         <translation>НАЗАД</translation>
     </message>
     <message>
-        <location filename="../LoadFromTheGameWindow.cpp" line="56"/>
         <source>Save hotkeys dirrectly to the game.</source>
-        <translation>Сохранять горячие клавиши в игре.</translation>
+        <translation type="vanished">Сохранять горячие клавиши в игре.</translation>
     </message>
 </context>
 <context>
@@ -425,19 +424,29 @@ Make sure that you are load correct file.</source>
         <translation type="obsolete">Назад</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="17"/>
+        <location filename="../SettingsWindow.cpp" line="19"/>
+        <source>Enable debug console</source>
+        <translation>Включить отладочную консоль</translation>
+    </message>
+    <message>
+        <location filename="../SettingsWindow.cpp" line="26"/>
+        <source>Enable Discord RPC (WIP)</source>
+        <translation>Включить Discord RPC (WIP)</translation>
+    </message>
+    <message>
+        <location filename="../SettingsWindow.cpp" line="39"/>
         <source>SAVE</source>
-        <translation type="unfinished"></translation>
+        <translation>СОХРАНИТЬ</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="21"/>
+        <location filename="../SettingsWindow.cpp" line="43"/>
         <source>RESET ALL</source>
-        <translation type="unfinished"></translation>
+        <translation>СБРОСИТЬ ВСЁ</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="25"/>
+        <location filename="../SettingsWindow.cpp" line="47"/>
         <source>BACK</source>
-        <translation type="unfinished">НАЗАД</translation>
+        <translation>НАЗАД</translation>
     </message>
 </context>
 </TS>

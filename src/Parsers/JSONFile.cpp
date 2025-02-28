@@ -35,25 +35,11 @@ using namespace std;
 #pragma endregion
 
 #pragma region Getters
-    const QJsonObject& JSONFile::GetMainObject() const
-    {
-        return JsonMainObject;
-    }
-
-    QJsonValue JSONFile::Query(const QString& strQuery) const
-    {
-        return Query(JsonMainObject, strQuery);
-    }
-
-    QJsonValue JSONFile::Query(const char* strQuery) const
-    {
-        return Query(JsonMainObject, QString{strQuery});
-    }
-
-    QJsonValue JSONFile::Query(const std::string& strQuery) const
-    {
-        return Query(JsonMainObject, QString::fromStdString(strQuery));
-    }
+    const QJsonObject& JSONFile::GetMainObject() const { return JsonMainObject; }
+    
+    QJsonValue JSONFile::Query(const QString&     strQuery) const { return Query(JsonMainObject, strQuery); }
+    QJsonValue JSONFile::Query(const char*        strQuery) const { return Query(JsonMainObject, QString{strQuery}); }
+    QJsonValue JSONFile::Query(const std::string& strQuery) const { return Query(JsonMainObject, QString::fromStdString(strQuery)); }
 
     QJsonValue JSONFile::Query(const QJsonObject& jsonObject, const QString& strQuery)
     {

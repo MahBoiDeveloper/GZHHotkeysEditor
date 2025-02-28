@@ -77,6 +77,12 @@ QPushButton
     border-radius: 3px;
 }
 
+QPushButton:hover
+{
+    background-color: #3543e7;
+    color: #baff0c;
+}
+
 GreetingWindow QPushButton#btnSettings
 {
     border-color: transparent;
@@ -85,18 +91,7 @@ GreetingWindow QPushButton#btnSettings
 
 GreetingWindow QPushButton { font-size: 18pt; }
 
-GreetingWindow QLabel,       LoadFromTheFileWindow QLabel,       LoadFromTheGameWindow QLabel, 
-GreetingWindow QRadioButton, LoadFromTheFileWindow QRadioButton, LoadFromTheGameWindow QRadioButton, 
-GreetingWindow QCheckBox,    LoadFromTheFileWindow QCheckBox,    LoadFromTheGameWindow QCheckBox
-{
-    color: white;
-}
-
-GreetingWindow QPushButton:hover, LoadFromTheFileWindow QPushButton:hover, LoadFromTheGameWindow QPushButton:hover
-{
-    background-color: #3543e7;
-    color: #baff0c;
-}
+QLabel, QRadioButton, QCheckBox { color: white; }
 
 QPushButton#btnReview
 {

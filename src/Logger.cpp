@@ -13,6 +13,7 @@ using namespace std;
 #pragma region ctor and dtor
     Logger::Logger()
     {
+        ShowWindow(GetConsoleWindow(), SW_HIDE);
         LogFile.open(GetLogFileName());
         
         // Due to Logger is a singleton, we must create check if folder Logs exists.
