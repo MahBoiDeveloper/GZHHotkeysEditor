@@ -107,6 +107,7 @@ void SetUpWindowsWrapper::GreetingWidget_LanguageChanged(int intLngIndex)
     pGreetingWidget->deleteLater();
     pLoadFromTheGameWindow->deleteLater();
     pLoadFromTheFileWindow->deleteLater();
+    pSettingsWindow->deleteLater();
 
     AddWidgets();
     AttachConnections();
