@@ -66,6 +66,13 @@ void WindowManager::LaunchWidget_AcceptConfiguration()
         return;
     }
 
+    if (!CSF_PARSER->ExistCategory(PROGRAM_CONSTANTS->OBJECT_CSF_CATEGORY))
+    {
+        QMessageBox::critical(nullptr, L10N(PROGRAM_CONSTANTS->CSF_ERROR_HEADER), 
+                                       L10N(PROGRAM_CONSTANTS->CSF_NO_OBJECT_ERROR));
+        return;
+    }
+
     LOGMSG("Loading editor window...");
     pHotkeysEditor = std::make_unique<HotkeysMainWindow>();
     pHotkeysEditor->setWindowTitle(strWindowName);

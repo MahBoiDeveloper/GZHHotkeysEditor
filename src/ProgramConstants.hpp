@@ -80,10 +80,12 @@ public:
     const QString          CSF_EMPTY_STRING_ERROR  = QObject::tr("Cannot process the empty file.");
     const QString          CSF_DOESNT_EXIST_ERROR  = QObject::tr("Unable to find selected CSF file.");
     const QString          CSF_NO_CTLBAR_ERROR     = QObject::tr("Choosen CSF file doesn't have CONTROLBAR category. Make sure that you are load correct file.");
+    const QString          CSF_NO_OBJECT_ERROR     = QObject::tr("Choosen CSF file doesn't have OBJECT category. Make sure that you are load correct file.");
     const QString          CSF_EMPTY_DATA_ENGLISH  = QObject::tr("Unable find \"generals.csf\" file in \"Game/Data/English\" folder.");
 
     // Other constants
     const QString          HOTKEY_CSF_CATEGORY     = "CONTROLBAR";
+    const QString          OBJECT_CSF_CATEGORY     = "OBJECT";
     const QVector<QString> GLA_SHORT_NAMES         = {"GLA", "TOX", "STL", "DML"};
     const QVector<QString> USA_SHORT_NAMES         = {"USA", "SWG", "AIR", "LSR"};
     const QVector<QString> PRC_SHORT_NAMES         = {"PRC", "TNK", "INF", "NUK"};

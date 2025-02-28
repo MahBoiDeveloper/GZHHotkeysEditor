@@ -318,26 +318,31 @@ Make sure that you are load correct file.</source>
     </message>
     <message>
         <location filename="../../ProgramConstants.hpp" line="83"/>
+        <source>Choosen CSF file doesn&apos;t have OBJECT category. Make sure that you are load correct file.</source>
+        <translation>У выбранного CSF файла отсутствует категория OBJECT. Проверьте, что вы загружаете правильный файл.</translation>
+    </message>
+    <message>
+        <location filename="../../ProgramConstants.hpp" line="84"/>
         <source>Unable find &quot;generals.csf&quot; file in &quot;Game/Data/English&quot; folder.</source>
         <translation>Невозможно найти &quot;generals.csf&quot; в папке &quot;Game/Data/English&quot;.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="113"/>
+        <location filename="../../ProgramConstants.hpp" line="115"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="114"/>
+        <location filename="../../ProgramConstants.hpp" line="116"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="115"/>
+        <location filename="../../ProgramConstants.hpp" line="117"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="116"/>
+        <location filename="../../ProgramConstants.hpp" line="118"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>
