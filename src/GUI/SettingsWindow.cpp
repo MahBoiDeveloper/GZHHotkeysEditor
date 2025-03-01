@@ -9,20 +9,20 @@
 
 SettingsWindow::SettingsWindow(QWidget* parent) : QWidget(parent)
 {
-    ltMain                 = new QVBoxLayout();
-    ltButtons              = new QHBoxLayout();
-    ltSettings             = new QHBoxLayout();
-    ltLeftColumn           = new QVBoxLayout();
-    ltRightColumn          = new QVBoxLayout();
-    ltLanguage             = new QHBoxLayout();
-    btnBack                = new QPushButton();
-    btnSave                = new QPushButton();
-    btnResetAll            = new QPushButton();
-    chkEnableDebugConsole  = new QCheckBox();
-    chkEnableDiscordRPC    = new QCheckBox();
-    chkForceSystemLanguage = new QCheckBox();
-    lblLanguage            = new QLabel();
-    cmbLanguage            = new QComboBox();
+    ltMain                          = new QVBoxLayout();
+    ltButtons                       = new QHBoxLayout();
+    ltSettings                      = new QHBoxLayout();
+    ltLeftColumn                    = new QVBoxLayout();
+    ltRightColumn                   = new QVBoxLayout();
+    ltLanguage                      = new QHBoxLayout();
+    btnBack                         = new QPushButton();
+    btnSave                         = new QPushButton();
+    btnResetAll                     = new QPushButton();
+    chkEnableDebugConsole           = new QCheckBox();
+    chkEnableDiscordRPC             = new QCheckBox();
+    chkForceSystemLanguageOnStartUp = new QCheckBox();
+    lblLanguage                     = new QLabel();
+    cmbLanguage                     = new QComboBox();
 
     chkEnableDebugConsole->setText(tr("Enable debug console"));
     chkEnableDebugConsole->setObjectName(nameof(chkEnableDebugConsole));
@@ -38,8 +38,12 @@ SettingsWindow::SettingsWindow(QWidget* parent) : QWidget(parent)
     else
         chkEnableDiscordRPC->setCheckState(Qt::CheckState::Unchecked);
 
-    chkForceSystemLanguage->setText(tr("Force editor use system language"));
-    chkForceSystemLanguage->setObjectName(nameof(chkForceSystemLanguage));
+    chkForceSystemLanguageOnStartUp->setText(tr("Force editor to use system language on start up"));
+    chkForceSystemLanguageOnStartUp->setObjectName(nameof(chkForceSystemLanguageOnStartUp));
+    if (PROGRAM_CONSTANTS->pSettingsFile->IsForceSystemLanguageOnStartUpEnabled())
+        chkForceSystemLanguageOnStartUp->setCheckState(Qt::CheckState::Checked);
+    else
+        chkForceSystemLanguageOnStartUp->setCheckState(Qt::CheckState::Unchecked);
 
     lblLanguage->setText(tr("Language:"));
     lblLanguage->setObjectName(nameof(lblLanguage));
@@ -55,7 +59,7 @@ SettingsWindow::SettingsWindow(QWidget* parent) : QWidget(parent)
 
     ltLeftColumn->addWidget(chkEnableDebugConsole);
     ltLeftColumn->addWidget(chkEnableDiscordRPC);
-    ltLeftColumn->addWidget(chkForceSystemLanguage);
+    ltLeftColumn->addWidget(chkForceSystemLanguageOnStartUp);
     ltLeftColumn->addLayout(ltLanguage);
 
     btnSave->setText(tr("SAVE"));
@@ -85,7 +89,7 @@ SettingsWindow::SettingsWindow(QWidget* parent) : QWidget(parent)
     setLayout(ltMain);
 }
 
-void SettingsWindow::BtnSave_Clicked() 
+void SettingsWindow::BtnSave_Clicked()
 {
     PROGRAM_CONSTANTS->pSettingsFile->SetConsoleStatus(chkEnableDebugConsole->checkState());
     ConsoleWindowStateUpdate(chkEnableDebugConsole->checkState());
@@ -93,13 +97,18 @@ void SettingsWindow::BtnSave_Clicked()
     PROGRAM_CONSTANTS->pSettingsFile->SetDiscordRPCStatus(chkEnableDiscordRPC->checkState());
     DiscordRPCStateUpdate(chkEnableDiscordRPC->checkState());
 
-    PROGRAM_CONSTANTS->pSettingsFile->SetLanguage(static_cast<Languages>(cmbLanguage->currentIndex()));
-    emit languageChanged();
+    PROGRAM_CONSTANTS->pSettingsFile->SetForceSystemLanguageOnStartUp(chkForceSystemLanguageOnStartUp->checkState());
+    
+    if (static_cast<Languages>(cmbLanguage->currentIndex()) != PROGRAM_CONSTANTS->pSettingsFile->GetLanguage())
+    {
+        PROGRAM_CONSTANTS->pSettingsFile->SetLanguage(static_cast<Languages>(cmbLanguage->currentIndex()));
+        emit languageChanged();
+    }
 
     PROGRAM_CONSTANTS->pSettingsFile->Save();
 }
 
-void SettingsWindow::BtnResetAll_Clicked() 
+void SettingsWindow::BtnResetAll_Clicked()
 { 
     PROGRAM_CONSTANTS->pSettingsFile->SetToDefault();
 
@@ -108,9 +117,19 @@ void SettingsWindow::BtnResetAll_Clicked()
     else
         chkEnableDebugConsole->setCheckState(Qt::CheckState::Unchecked);
 
+    if (PROGRAM_CONSTANTS->pSettingsFile->IsDiscordRPCEnabled())
+        chkEnableDiscordRPC->setCheckState(Qt::CheckState::Checked);
+    else
+        chkEnableDiscordRPC->setCheckState(Qt::CheckState::Unchecked);
+    
+    if (PROGRAM_CONSTANTS->pSettingsFile->IsForceSystemLanguageOnStartUpEnabled())
+        chkForceSystemLanguageOnStartUp->setCheckState(Qt::CheckState::Checked);
+    else
+        chkForceSystemLanguageOnStartUp->setCheckState(Qt::CheckState::Unchecked);
+
     chkEnableDebugConsole->update();
     chkEnableDiscordRPC->update();
-    chkForceSystemLanguage->update();
+    chkForceSystemLanguageOnStartUp->update();
 }
 
 void SettingsWindow::ConsoleWindowStateUpdate(const Qt::CheckState& state)

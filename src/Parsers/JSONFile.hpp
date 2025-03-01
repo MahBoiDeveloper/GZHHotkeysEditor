@@ -9,6 +9,7 @@ private: // Data
     QJsonObject JsonMainObject;
 
 public: // Methods
+    JSONFile();
     JSONFile(const QString&     filePath);
     JSONFile(const std::string& filePath);
     JSONFile(const char*        filePath);

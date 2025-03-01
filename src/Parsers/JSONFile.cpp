@@ -9,6 +9,10 @@
 using namespace std;
 
 #pragma region CTORs and DTORs
+    JSONFile::JSONFile()
+    {
+    }
+    
     JSONFile::JSONFile(const QString& filePath)
     {
         QFile openedFile(filePath);

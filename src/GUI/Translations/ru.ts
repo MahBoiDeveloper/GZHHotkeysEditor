@@ -368,26 +368,26 @@ Make sure that you are load correct file.</source>
     </message>
     <message>
         <location filename="../SettingsWindow.cpp" line="41"/>
-        <source>Force editor use system language</source>
-        <translation type="unfinished"></translation>
+        <source>Force editor to use system language on start up</source>
+        <translation>Использовать язык системы при запуске</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="44"/>
+        <location filename="../SettingsWindow.cpp" line="48"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Язык:</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="61"/>
+        <location filename="../SettingsWindow.cpp" line="65"/>
         <source>SAVE</source>
         <translation>СОХРАНИТЬ</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="65"/>
+        <location filename="../SettingsWindow.cpp" line="69"/>
         <source>RESET ALL</source>
         <translation>СБРОСИТЬ ВСЁ</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="69"/>
+        <location filename="../SettingsWindow.cpp" line="73"/>
         <source>BACK</source>
         <translation>НАЗАД</translation>
     </message>

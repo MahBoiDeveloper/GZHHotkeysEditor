@@ -11,20 +11,20 @@ class SettingsWindow final : public QWidget
 {
     Q_OBJECT
 private: // Data
-    QPushButton* btnBack                = nullptr;
-    QPushButton* btnSave                = nullptr;
-    QPushButton* btnResetAll            = nullptr;
-    QCheckBox*   chkEnableDebugConsole  = nullptr;
-    QCheckBox*   chkEnableDiscordRPC    = nullptr;
-    QCheckBox*   chkForceSystemLanguage = nullptr;
-    QLabel*      lblLanguage            = nullptr;
-    QComboBox*   cmbLanguage            = nullptr;
-    QVBoxLayout* ltMain                 = nullptr;
-    QHBoxLayout* ltButtons              = nullptr;
-    QHBoxLayout* ltSettings             = nullptr;
-    QVBoxLayout* ltLeftColumn           = nullptr;
-    QVBoxLayout* ltRightColumn          = nullptr;
-    QHBoxLayout* ltLanguage             = nullptr;
+    QPushButton* btnBack                         = nullptr;
+    QPushButton* btnSave                         = nullptr;
+    QPushButton* btnResetAll                     = nullptr;
+    QCheckBox*   chkEnableDebugConsole           = nullptr;
+    QCheckBox*   chkEnableDiscordRPC             = nullptr;
+    QCheckBox*   chkForceSystemLanguageOnStartUp = nullptr;
+    QLabel*      lblLanguage                     = nullptr;
+    QComboBox*   cmbLanguage                     = nullptr;
+    QVBoxLayout* ltMain                          = nullptr;
+    QHBoxLayout* ltButtons                       = nullptr;
+    QHBoxLayout* ltSettings                      = nullptr;
+    QVBoxLayout* ltLeftColumn                    = nullptr;
+    QVBoxLayout* ltRightColumn                   = nullptr;
+    QHBoxLayout* ltLanguage                      = nullptr;
 
 private: // Methods
     /// @brief Enable/disable debug console.

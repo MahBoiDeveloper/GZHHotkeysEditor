@@ -12,13 +12,16 @@ enum class Languages
 class Settings final
 {
 private: // Data
+    JSONFile      json;
     QSet<Qt::Key> allowedKeys;
     bool          enabledConsole;
     bool          enabledDiscordRPC;
-    bool          enabledForceOSLang;
+    bool          enabledForceOSLangOnStartUp;
     Languages     language;
 
-public: // Method
+private: // Methods
+    bool FromQtCheckState(const Qt::CheckState& state);
+public:
     Settings();
     ~Settings();
 
@@ -34,7 +37,7 @@ public: // Method
     /// @brief Returns status for Discord RPC from settings file.
     const bool IsDiscordRPCEnabled() const;
     /// @brief Returns status for force editor use system language from settings file.
-    const bool IsForceSystemLanguageEnabled() const;
+    const bool IsForceSystemLanguageOnStartUpEnabled() const;
     /// @brief Returns `QSet` of available keys from `QWEWRTY` keyboard to choice by user.
     const QSet<Qt::Key> GetAllowedKeys() const;
     /// @brief Returns enum `Languages` value of current language from settings file.
@@ -51,7 +54,9 @@ public: // Method
     /// @brief Sets status for Discord RPC.
     void SetDiscordRPCStatus(const bool state);
     /// @brief Sets status to force editor use system language.
-    void SetForceSystemLanguage(const bool state);
+    void SetForceSystemLanguageOnStartUp(const bool state);
+    /// @brief Sets status to force editor use system language.
+    void SetForceSystemLanguageOnStartUp(const Qt::CheckState& state);
     /// @brief Sets editor's language.
     void SetLanguage(const Languages& locale);
 };

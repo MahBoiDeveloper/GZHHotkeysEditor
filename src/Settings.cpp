@@ -5,11 +5,12 @@
 
 #include "Settings.hpp"
 #include "Convert.hpp"
-
+#include "Registry.hpp"
 #include "Logger.hpp"
 
 Settings::Settings()
 {
+    json = JSONFile(PROGRAM_CONSTANTS->SETTINGS_FILE);
     SetToDefault();
     Parse();
 }
@@ -20,21 +21,22 @@ Settings::~Settings()
 
 void Settings::SetToDefault()
 {
-    allowedKeys        = PROGRAM_CONSTANTS->DEFAULT_ALLOWED_KEYS;
-    enabledConsole     = false;
-    enabledDiscordRPC  = true;
-    enabledForceOSLang = true;
-    language           = Languages::English;
+    allowedKeys                 = PROGRAM_CONSTANTS->DEFAULT_ALLOWED_KEYS;
+    enabledConsole              = false;
+    enabledDiscordRPC           = true;
+    enabledForceOSLangOnStartUp = true;
+    language                    = Languages::English;
 }
 
 void Settings::Parse()
 {
-    JSONFile json(PROGRAM_CONSTANTS->SETTINGS_FILE);
-
-    enabledConsole     = json.Query("$.DebugConsole").toBool();
-    enabledDiscordRPC  = json.Query("$.DiscordRPC").toBool();
-    enabledForceOSLang = json.Query("$.ForceSystemLanguage").toBool();
-    language           = Convert::ToLangEnum(json.Query("$.Language").toString());
+    enabledConsole              = json.Query("$.DebugConsole").toBool();
+    enabledDiscordRPC           = json.Query("$.DiscordRPC").toBool();
+    enabledForceOSLangOnStartUp = json.Query("$.ForceSystemLanguage").toBool();
+    if (enabledForceOSLangOnStartUp)
+        language = Convert::ToLangEnum(Registry::GetCurrentUserLanguage());
+    else
+        language = Convert::ToLangEnum(json.Query("$.Language").toString());
 
     for (const QJsonValue& ch : json.Query("$.AllowedHotkeys").toArray())
         allowedKeys.insert(PROGRAM_CONSTANTS->KEYBOARD_KEYS.value(ch.toString()[0]));
@@ -42,11 +44,10 @@ void Settings::Parse()
 
 void Settings::Save()
 {
-    JSONFile json(PROGRAM_CONSTANTS->SETTINGS_FILE);
     QJsonObject jsMainObj            = json.GetMainObject();
     jsMainObj["DebugConsole"]        = enabledConsole;
     jsMainObj["DiscordRPC"]          = enabledDiscordRPC;
-    jsMainObj["ForceSystemLanguage"] = enabledForceOSLang;
+    jsMainObj["ForceSystemLanguage"] = enabledForceOSLangOnStartUp;
     jsMainObj["Language"]            = Convert::ToQString(language);
 
     QJsonDocument jsDoc;
@@ -61,40 +62,32 @@ void Settings::Save()
     LOGMSG("Setting changes has been saved.");
 }
 
-const QSet<Qt::Key> Settings::GetAllowedKeys()               const { return allowedKeys; }
-const bool          Settings::IsConsoleEnabled()             const { return enabledConsole; }
-const bool          Settings::IsDiscordRPCEnabled()          const { return enabledDiscordRPC; }
-const bool          Settings::IsForceSystemLanguageEnabled() const { return enabledForceOSLang; }
-const Languages     Settings::GetLanguage()                  const { return language; }
-
-void Settings::SetAllowedKeys(const QSet<Qt::Key>& keys) { allowedKeys = keys; }
-void Settings::SetConsoleStatus(const bool state)        { enabledConsole = state; }
-void Settings::SetConsoleStatus(const Qt::CheckState& state)
+bool Settings::FromQtCheckState(const Qt::CheckState& state)
 {
+    bool flag;
     switch (state)
     {
         case (Qt::CheckState::Checked):
-            enabledConsole = true;
+            flag = true;
             break;
         case (Qt::CheckState::Unchecked):
-            enabledConsole = false;
+            flag = false;
             break;
     }
+    return flag;
 }
 
-void Settings::SetDiscordRPCStatus(const bool state) { enabledDiscordRPC = state; }
-void Settings::SetDiscordRPCStatus(const Qt::CheckState& state)
-{
-    switch (state)
-    {
-        case (Qt::CheckState::Checked):
-            enabledDiscordRPC = true;
-            break;
-        case (Qt::CheckState::Unchecked):
-            enabledDiscordRPC = false;
-            break;
-    }
-}
+const QSet<Qt::Key> Settings::GetAllowedKeys()                        const { return allowedKeys; }
+const bool          Settings::IsConsoleEnabled()                      const { return enabledConsole; }
+const bool          Settings::IsDiscordRPCEnabled()                   const { return enabledDiscordRPC; }
+const bool          Settings::IsForceSystemLanguageOnStartUpEnabled() const { return enabledForceOSLangOnStartUp; }
+const Languages     Settings::GetLanguage()                           const { return language; }
 
-void Settings::SetForceSystemLanguage(const bool state) { enabledForceOSLang = state; }
-void Settings::SetLanguage(const Languages& locale)     { language = locale; }
+void Settings::SetAllowedKeys(const QSet<Qt::Key>& keys)                    { allowedKeys                 = keys; }
+void Settings::SetConsoleStatus(const bool state)                           { enabledConsole              = state; }
+void Settings::SetConsoleStatus(const Qt::CheckState& state)                { enabledConsole              = FromQtCheckState(state); }
+void Settings::SetDiscordRPCStatus(const bool state)                        { enabledDiscordRPC           = state; }
+void Settings::SetDiscordRPCStatus(const Qt::CheckState& state)             { enabledDiscordRPC           = FromQtCheckState(state); }
+void Settings::SetForceSystemLanguageOnStartUp(const bool state)            { enabledForceOSLangOnStartUp = state; }
+void Settings::SetForceSystemLanguageOnStartUp(const Qt::CheckState& state) { enabledForceOSLangOnStartUp = FromQtCheckState(state); }
+void Settings::SetLanguage(const Languages& locale)                         { language                    = locale; }
