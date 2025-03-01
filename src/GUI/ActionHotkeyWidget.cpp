@@ -68,7 +68,7 @@ void ActionHotkeyWidget::keyPressEvent(QKeyEvent* event)
     }
 
     int key = event->nativeVirtualKey();
-    if (PROGRAM_CONSTANTS->GetAllowedKeys().contains(static_cast<Qt::Key>(key)))
+    if (PROGRAM_CONSTANTS->pSettingsFile->GetAllowedKeys().contains(static_cast<Qt::Key>(key)))
     {
         // Set new text
         hotkey = QKeySequence(key).toString();

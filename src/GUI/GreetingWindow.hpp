@@ -13,6 +13,5 @@ private:
 signals:
     void btnLoadFromFileClicked();
     void btnLoadFromGameClicked();
-    void languageChanged(int index);
     void btnSettingsClicked();
 };

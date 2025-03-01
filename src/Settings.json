@@ -1,7 +1,9 @@
 {
-    "Theme"        : "Default",
-    "DebugConsole" : false,
-    "DiscordRPC"   : false,
+    "Theme"               : "Default",
+    "DebugConsole"        : false,
+    "DiscordRPC"          : true,
+    "ForceSystemLanguage" : true,
+    "Language"            : "en",
 
     "AllowedHotkeys" :
     [

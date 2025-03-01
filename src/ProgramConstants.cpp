@@ -8,6 +8,4 @@ ProgramConstants::ProgramConstants()
 {
 }
 
-const QSet<Qt::Key> ProgramConstants::GetAllowedKeys()  { return SettingsFile->GetAllowedKeys(); }
-const bool ProgramConstants::IsConsoleEnabled()         { return SettingsFile->IsConsoleEnabled(); }
-void ProgramConstants::InitializeFileSettings()         { SettingsFile = std::make_unique<Settings>(); }
+void ProgramConstants::InitializeFileSettings() { pSettingsFile = std::make_unique<Settings>(); }

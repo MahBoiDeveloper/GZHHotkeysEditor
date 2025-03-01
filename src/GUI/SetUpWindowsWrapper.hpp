@@ -29,8 +29,8 @@ private:
 private slots:
     /// @brief Show `GreetingWindow`, if button `Back` has been clicked.
     void BtnBack_Clicked();
-    /// @brief Change language by its index if language has been changed via select list.
-    void GreetingWidget_LanguageChanged(int intLngIndex);
+    /// @brief Change app language.
+    void SettingsWindow_LanguageChanged();
     /// @brief Show `SettingsWindow` if button `btnSettings` has been clicked.
     void BtnSettings_Clicked();
     /// @brief Show window to load hotkeys information from .csf file.

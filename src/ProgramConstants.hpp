@@ -19,19 +19,11 @@ enum class GameObjectTypes
     Aircrafts
 };
 
-enum class Languages
-{
-    English,
-    Russian,
-    Count
-};
-
 class ProgramConstants
 {
-private: // Data
-    std::unique_ptr<Settings>                       SettingsFile = nullptr;
 public:
     inline static std::unique_ptr<ProgramConstants> Instance     = nullptr;
+    std::unique_ptr<Settings>                       pSettingsFile = nullptr;
 
     // Folders
     const QString          RESOURCE_FOLDER         = "Resources";
@@ -120,10 +112,6 @@ public:
 
 public: // Methods
     ProgramConstants();
-    /// @brief Parse `Resource\Settings.json`.
+    /// @brief Parse `Resource\Settings.json` to the `Settings` class.
     void InitializeFileSettings();
-    /// @brief Returns `QSet` of available keys from `QWEWRTY` keyboard to choice by user.
-    const QSet<Qt::Key> GetAllowedKeys();
-    /// @brief Returns field status for console from settings file.
-    const bool IsConsoleEnabled();
 };

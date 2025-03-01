@@ -18,8 +18,6 @@ GreetingWindow::GreetingWindow(QWidget* parent) : QWidget(parent)
     QHBoxLayout* ltButtons       = nullptr;
     QVBoxLayout* ltMain          = nullptr;
     QHBoxLayout* ltSettings      = nullptr;
-    QLabel*      lblLanguage     = nullptr;
-    QComboBox*   cmbLangList     = nullptr;
     QVBoxLayout* ltLanguages     = nullptr;
 
     // Add "New Project" and "Load Project" buttons to the window
@@ -32,17 +30,6 @@ GreetingWindow::GreetingWindow(QWidget* parent) : QWidget(parent)
     btnLoadFromFile->setFixedSize(PROGRAM_CONSTANTS->START_BUTTON_SIZE);
     btnLoadFromFile->setObjectName(nameof(btnLoadFromFile));
     connect(btnLoadFromFile, &QPushButton::clicked, this, &GreetingWindow::btnLoadFromFileClicked);
-
-    lblLanguage = new QLabel(tr("LANGUAGE"));
-    lblLanguage->setObjectName(nameof(lblLanguage));
-
-    cmbLangList = new QComboBox();
-    cmbLangList->setObjectName(nameof(cmbLangList));
-    for (int i = 0; i < static_cast<int>(Languages::Count); ++i)
-        cmbLangList->addItem(Unsorted::GetLanguageFullName(static_cast<Languages>(i)));
-    cmbLangList->setCurrentIndex(static_cast<int>(WINDOW_MANAGER->GetLanguage()));
-    cmbLangList->setCurrentText(PROGRAM_CONSTANTS->LANGUAGES_STRINGS.value(WINDOW_MANAGER->GetLanguage()).second);
-    connect(cmbLangList, QOverload<int>::of(&QComboBox::activated), this, &GreetingWindow::languageChanged);
     
     QPushButton* btnSettings = new QPushButton();
     QPixmap      pxmSettings = QPixmap{PROGRAM_CONSTANTS->GEARS_ICON_FILE};
@@ -54,9 +41,6 @@ GreetingWindow::GreetingWindow(QWidget* parent) : QWidget(parent)
 
     ltLanguages = new QVBoxLayout();
     ltLanguages->addStretch(1);
-    ltLanguages->setSpacing(10);
-    ltLanguages->addWidget(lblLanguage);
-    ltLanguages->addWidget(cmbLangList);
 
     ltSettings = new QHBoxLayout();
     ltSettings->addLayout(ltLanguages);

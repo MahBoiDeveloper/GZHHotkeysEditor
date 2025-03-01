@@ -67,8 +67,8 @@ int main(int argc, const char** argv)
 
     PROGRAM_CONSTANTS->InitializeFileSettings();
 
-    // Hides console
-    if (PROGRAM_CONSTANTS->IsConsoleEnabled()) 
+    // Show console, that by default is hiding by Logger class.
+    if (PROGRAM_CONSTANTS->pSettingsFile->IsConsoleEnabled()) 
         ShowWindow(GetConsoleWindow(), SW_SHOW);
 
     // Define logger as the singleton class, that could be used anywhere in the project

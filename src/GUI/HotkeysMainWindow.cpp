@@ -357,7 +357,7 @@ void HotkeysMainWindow::HighlightCurrentKeys()
             if (keysCollisions.count(thisHotkey) < 2) hotkeyWidget->HighlightKey(false);
             else                                      hotkeyWidget->HighlightKey(true);
 
-            if (!PROGRAM_CONSTANTS->GetAllowedKeys().contains(Convert::ToQtKey(thisHotkey[0])))
+            if (!PROGRAM_CONSTANTS->pSettingsFile->GetAllowedKeys().contains(Convert::ToQtKey(thisHotkey[0])))
                 hotkeyWidget->HighlightKey(true);
         }
     }
@@ -391,7 +391,7 @@ void HotkeysMainWindow::KeyboardWindow_Update(int id)
         if (accum.count(ch) < 2) key->setProperty("status", "good");
         else                     key->setProperty("status", "bad");
 
-        if (!PROGRAM_CONSTANTS->GetAllowedKeys().contains(Convert::ToQtKey(ch)))
+        if (!PROGRAM_CONSTANTS->pSettingsFile->GetAllowedKeys().contains(Convert::ToQtKey(ch)))
             key->setProperty("status", "bad");
         
         key->style()->unpolish(key);
@@ -500,8 +500,8 @@ void HotkeysMainWindow::ActLanguage_Triggered()
         return;
     }
 
-    Languages currLang = WINDOW_MANAGER->GetLanguage();
-    Languages actLang = Languages::English;
+    Languages currLang = PROGRAM_CONSTANTS->pSettingsFile->GetLanguage();
+    Languages actLang  = Languages::English;
 
     pWindowToChangeLanguage = new QDialog{this};
     pWindowToChangeLanguage->setWindowTitle(tr("Lanugage"));

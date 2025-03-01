@@ -53,7 +53,7 @@ public: // Methods
 
     /// @brief Sets paths to all games (C&C: Generals and C&C: Generals - Zero Hour).
     static std::string GetPathToGame(Games game);
-    /// @brief Returns current user language from HKCU\\Control Panel\\International\\Geo\\Name.
+    /// @brief Returns current user language from HKCU\\Control Panel\\International\\Geo\\Name (example: EN).
     static std::string GetCurrentUserLanguage();
     /// @brief Returns Windows version from HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProductName.
     static std::string GetWindowsVersion();

@@ -50,25 +50,24 @@
         <translation type="vanished">ЗАГРУЗИТЬ</translation>
     </message>
     <message>
-        <location filename="../GreetingWindow.cpp" line="26"/>
-        <location filename="../GreetingWindow.cpp" line="31"/>
+        <location filename="../GreetingWindow.cpp" line="24"/>
+        <location filename="../GreetingWindow.cpp" line="29"/>
         <source>LOAD FROM</source>
         <translation>ЗАГРУЗИТЬ</translation>
     </message>
     <message>
-        <location filename="../GreetingWindow.cpp" line="26"/>
+        <location filename="../GreetingWindow.cpp" line="24"/>
         <source>THE GAME</source>
         <translation>ИЗ ИГРЫ</translation>
     </message>
     <message>
-        <location filename="../GreetingWindow.cpp" line="31"/>
+        <location filename="../GreetingWindow.cpp" line="29"/>
         <source>THE FILE</source>
         <translation>ИЗ ФАЙЛА</translation>
     </message>
     <message>
-        <location filename="../GreetingWindow.cpp" line="36"/>
         <source>LANGUAGE</source>
-        <translation>ЯЗЫК</translation>
+        <translation type="vanished">ЯЗЫК</translation>
     </message>
 </context>
 <context>
@@ -283,17 +282,17 @@
         <translation type="vanished">Возникла неизвестная ошибка</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="79"/>
+        <location filename="../../ProgramConstants.hpp" line="71"/>
         <source>Error with CSF file</source>
         <translation>Ошибка с CSF файлом</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="80"/>
+        <location filename="../../ProgramConstants.hpp" line="72"/>
         <source>Cannot process the empty file.</source>
         <translation>Невозможно обработать пустой файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="81"/>
+        <location filename="../../ProgramConstants.hpp" line="73"/>
         <source>Unable to find selected CSF file.</source>
         <translation>Невозможно найти указанный CSF файл.</translation>
     </message>
@@ -304,7 +303,7 @@ Make sure that you are load correct file.</source>
 Проверьте, что вы загружаете правильный файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="82"/>
+        <location filename="../../ProgramConstants.hpp" line="74"/>
         <source>Choosen CSF file doesn&apos;t have CONTROLBAR category. Make sure that you are load correct file.</source>
         <translation>У выбранного CSF файла отсутствует категория CONTROLBAR. Проверьте, что вы загружаете правильный файл.</translation>
     </message>
@@ -317,32 +316,32 @@ Make sure that you are load correct file.</source>
         <translation type="vanished">Невозможно найти &quot;generals.csf&quot; в папке &quot;Game/Data/English&quot;.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="83"/>
+        <location filename="../../ProgramConstants.hpp" line="75"/>
         <source>Choosen CSF file doesn&apos;t have OBJECT category. Make sure that you are load correct file.</source>
         <translation>У выбранного CSF файла отсутствует категория OBJECT. Проверьте, что вы загружаете правильный файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="84"/>
+        <location filename="../../ProgramConstants.hpp" line="76"/>
         <source>Unable find &quot;generals.csf&quot; file in &quot;Game/Data/English&quot; folder.</source>
         <translation>Невозможно найти &quot;generals.csf&quot; в папке &quot;Game/Data/English&quot;.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="115"/>
+        <location filename="../../ProgramConstants.hpp" line="107"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="116"/>
+        <location filename="../../ProgramConstants.hpp" line="108"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="117"/>
+        <location filename="../../ProgramConstants.hpp" line="109"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="118"/>
+        <location filename="../../ProgramConstants.hpp" line="110"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>
@@ -358,27 +357,37 @@ Make sure that you are load correct file.</source>
         <translation type="obsolete">Назад</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="19"/>
+        <location filename="../SettingsWindow.cpp" line="27"/>
         <source>Enable debug console</source>
         <translation>Включить отладочную консоль</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="26"/>
+        <location filename="../SettingsWindow.cpp" line="34"/>
         <source>Enable Discord RPC (WIP)</source>
         <translation>Включить Discord RPC (WIP)</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="39"/>
+        <location filename="../SettingsWindow.cpp" line="41"/>
+        <source>Force editor use system language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SettingsWindow.cpp" line="44"/>
+        <source>Language:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SettingsWindow.cpp" line="61"/>
         <source>SAVE</source>
         <translation>СОХРАНИТЬ</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="43"/>
+        <location filename="../SettingsWindow.cpp" line="65"/>
         <source>RESET ALL</source>
         <translation>СБРОСИТЬ ВСЁ</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="47"/>
+        <location filename="../SettingsWindow.cpp" line="69"/>
         <source>BACK</source>
         <translation>НАЗАД</translation>
     </message>

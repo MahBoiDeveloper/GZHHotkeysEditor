@@ -12,9 +12,8 @@
 #include "WindowManager.hpp"
 
 WindowManager::WindowManager()
-{
-    Language = Convert::ToLangEnum(Registry::GetCurrentUserLanguage());
-    SetTranslator(Language);
+{    
+    SetTranslator();
 
     qApp->setWindowIcon(QIcon(QPixmap::fromImage(ImageManager::DecodeEditorWebpIcon())));
     
@@ -32,12 +31,12 @@ WindowManager::WindowManager()
     }
 
     LOGMSG("Loading launch window...");
-    pStartUpWindow = std::make_unique<SetUpWindowsWrapper>();
+    pStartUpWindow = new SetUpWindowsWrapper();
     pStartUpWindow->setWindowTitle(strWindowName);
     LOGMSG("Launch window has been loaded");
 }
 
-void WindowManager::LaunchWidget_AcceptConfiguration()
+void WindowManager::StartUpWindow_AcceptConfiguration()
 {
     // 2nd init protection 
     if (pHotkeysEditor != nullptr)
@@ -74,28 +73,39 @@ void WindowManager::LaunchWidget_AcceptConfiguration()
     }
 
     LOGMSG("Loading editor window...");
-    pHotkeysEditor = std::make_unique<HotkeysMainWindow>();
+    pHotkeysEditor = new HotkeysMainWindow();
     pHotkeysEditor->setWindowTitle(strWindowName);
     pHotkeysEditor->show();
     pStartUpWindow->close();
-    bEditorInitialized = true;
     LOGMSG("Editor window has been loaded");
 }
 
-void WindowManager::SetTranslator(Languages lngType)
+void WindowManager::SetTranslator()
 {
     if (pAppTranslator != nullptr) 
         qApp->removeTranslator(pAppTranslator);
     
-    QString lngShortName = Unsorted::GetLanguageShortName(lngType);
+    Languages lang;
+    
+    if (PROGRAM_CONSTANTS->pSettingsFile->IsForceSystemLanguageEnabled())
+        lang = Convert::ToLangEnum(Registry::GetCurrentUserLanguage());
+    else
+        lang = PROGRAM_CONSTANTS->pSettingsFile->GetLanguage();
+
+    QString lngShortName = Unsorted::GetLanguageShortName(lang);
     LOGMSG("Set editor language to " + lngShortName.toUpper());
 
-    Language       = lngType;
     pAppTranslator = new QTranslator();
     pAppTranslator->load(lngShortName, PROGRAM_CONSTANTS->TRANSLATIONS_FOLDER);
     qApp->installTranslator(pAppTranslator);
 }
 
 void WindowManager::Show()                               { pStartUpWindow->show(); }
-Languages WindowManager::GetLanguage()                   { return Language; }
 void WindowManager::SetCSFFilePath(const QString& input) { strCSFFilePath = input; }
+
+WindowManager::~WindowManager()
+{
+    if (pHotkeysEditor != nullptr) pHotkeysEditor->deleteLater();
+    if (pStartUpWindow != nullptr) pStartUpWindow->deleteLater();
+    if (pAppTranslator != nullptr) pAppTranslator->deleteLater();
+}

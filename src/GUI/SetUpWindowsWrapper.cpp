@@ -24,8 +24,8 @@ SetUpWindowsWrapper::SetUpWindowsWrapper(QWidget* parent) : QStackedWidget(paren
 
 void SetUpWindowsWrapper::AttachConnections()
 {
-    connect(pGreetingWidget,        &GreetingWindow::languageChanged,
-            this,                   &SetUpWindowsWrapper::GreetingWidget_LanguageChanged);
+    connect(pSettingsWindow,        &SettingsWindow::languageChanged,
+            this,                   &SetUpWindowsWrapper::SettingsWindow_LanguageChanged);
 
     connect(pGreetingWidget,        &GreetingWindow::btnLoadFromFileClicked,
             this,                   &SetUpWindowsWrapper::BtnLoadFromFile_Clicked);
@@ -54,8 +54,8 @@ void SetUpWindowsWrapper::AttachConnections()
 
 void SetUpWindowsWrapper::DetachConnections()
 {
-    disconnect(pGreetingWidget,        &GreetingWindow::languageChanged,
-               this,                   &SetUpWindowsWrapper::GreetingWidget_LanguageChanged);
+    disconnect(pSettingsWindow,        &SettingsWindow::languageChanged,
+               this,                   &SetUpWindowsWrapper::SettingsWindow_LanguageChanged);
 
     disconnect(pGreetingWidget,        &GreetingWindow::btnLoadFromFileClicked,
                this,                   &SetUpWindowsWrapper::BtnLoadFromFile_Clicked);
@@ -84,10 +84,10 @@ void SetUpWindowsWrapper::DetachConnections()
 
 void SetUpWindowsWrapper::AddWidgets()
 {
-    pGreetingWidget        = new GreetingWindow(this);
-    pLoadFromTheGameWindow = new LoadFromTheGameWindow(pGreetingWidget);
-    pLoadFromTheFileWindow = new LoadFromTheFileWindow(pGreetingWidget);
-    pSettingsWindow        = new SettingsWindow(pGreetingWidget);
+    pGreetingWidget        = new GreetingWindow();
+    pLoadFromTheGameWindow = new LoadFromTheGameWindow();
+    pLoadFromTheFileWindow = new LoadFromTheFileWindow();
+    pSettingsWindow        = new SettingsWindow();
 
     pGreetingWidget->setFixedSize(size());
     pLoadFromTheGameWindow->setFixedSize(size());
@@ -100,11 +100,9 @@ void SetUpWindowsWrapper::AddWidgets()
     addWidget(pSettingsWindow);
 }
 
-void SetUpWindowsWrapper::GreetingWidget_LanguageChanged(int intLngIndex)
+void SetUpWindowsWrapper::SettingsWindow_LanguageChanged()
 {
-    Languages lngType = static_cast<Languages>(intLngIndex);
-
-    WINDOW_MANAGER->SetTranslator(lngType);
+    WINDOW_MANAGER->SetTranslator();
 
     DetachConnections();
     pGreetingWidget->deleteLater();
@@ -114,7 +112,7 @@ void SetUpWindowsWrapper::GreetingWidget_LanguageChanged(int intLngIndex)
 
     AddWidgets();
     AttachConnections();
-    setCurrentWidget(pGreetingWidget);
+    setCurrentWidget(pSettingsWindow);
 }
 
 void SetUpWindowsWrapper::BtnLoadFromFile_Clicked() { setCurrentWidget(pLoadFromTheFileWindow); }
@@ -127,7 +125,6 @@ void SetUpWindowsWrapper::LoadFromTheGameWindow_AcceptConfiguration()
     // TODO: Make it load vanila Generals
     //       Also as work with non-ascii paths
     //       Also as search in big-archives (see more at GZH source code)
-    //       Also as if-protection when `Game\English` doesnt have `generals.csf`
     QString path = QString::fromStdString(Registry::GetPathToGame(Registry::Games::GeneralsZeroHour)) + "\\Data\\English\\generals.csf";
     
     if (!QFile::exists(path))
@@ -138,11 +135,11 @@ void SetUpWindowsWrapper::LoadFromTheGameWindow_AcceptConfiguration()
     }
     
     WINDOW_MANAGER->SetCSFFilePath(path);
-    WINDOW_MANAGER->LaunchWidget_AcceptConfiguration();
+    WINDOW_MANAGER->StartUpWindow_AcceptConfiguration();
 }
 
 void SetUpWindowsWrapper::LoadFromTheFileWindow_AcceptConfiguration() 
 {
     WINDOW_MANAGER->SetCSFFilePath(pLoadFromTheFileWindow->findChild<QLineEdit*>("lneFilePath", Qt::FindChildrenRecursively)->text());
-    WINDOW_MANAGER->LaunchWidget_AcceptConfiguration();
+    WINDOW_MANAGER->StartUpWindow_AcceptConfiguration();
 }
