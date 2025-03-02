@@ -74,22 +74,15 @@ string Registry::ToString(Games game)
 
 QString Registry::ToQString(Games game) { return QString::fromStdString(Registry::ToString(game)); }
 
-bool Registry::IsWindow64bit()
-{
-    return GetWindowsBit() == WindowsBit::Win64;
-}
-
-bool Registry::IsWindow32bit()
-{
-    return GetWindowsBit() == WindowsBit::Win32;
-}
+bool Registry::IsWindow64bit() { return GetWindowsBit() == WindowsBit::Win64; }
+bool Registry::IsWindow32bit() { return GetWindowsBit() == WindowsBit::Win32; }
 
 #pragma region Logger methods
     string Registry::GetCurrentUserLanguage()
     {
-        const char Path[] = {"Control Panel\\International\\Geo"};
-        const char Key[]  = {"Name"};
-        return GetTextFromKey(Registry::RootFolder::HKCU, &Path[0], &Key[0]);
+        const char Path[] = {"Control Panel\\International"};
+        const char Key[]  = {"LocaleName"};
+        return GetTextFromKey(Registry::RootFolder::HKCU, &Path[0], &Key[0]).substr(0, 2);
     }
 
     string Registry::GetWindowsVersion()
