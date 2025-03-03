@@ -112,19 +112,19 @@
     endforeach()
 
     # Create datasamples directory
-    file(MAKE_DIRECTORY ${PROJECT_DESTINATION_RESOURCES_FOLDER}/DataSamples)
+    file(MAKE_DIRECTORY ${PROJECT_DESTINATION_RESOURCES_FOLDER}/Presets)
 
     # Find datasamples files
     file(
         GLOB_RECURSE DATA_SAMPLES_FILES
-        ${CMAKE_CURRENT_SOURCE_DIR}/DataSamples/*
+        ${CMAKE_CURRENT_SOURCE_DIR}/Presets/*
     )
     
     # Copy datasamples files
     foreach(CURRENT_FILE ${DATA_SAMPLES_FILES})
         configure_file(
             ${CURRENT_FILE}
-            ${PROJECT_DESTINATION_RESOURCES_FOLDER}/DataSamples
+            ${PROJECT_DESTINATION_RESOURCES_FOLDER}/Presets
             COPYONLY
         )
     endforeach()
