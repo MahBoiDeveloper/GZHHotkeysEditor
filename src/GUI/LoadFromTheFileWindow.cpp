@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QLineEdit>
 #include <QFontMetrics>
+#include <QLabel>
 
 #include "../NameOfExt.hpp"
 #include "LoadFromTheFileWindow.hpp"
@@ -16,6 +17,8 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
     QPushButton* btnCancel     = new QPushButton(tr("BACK"));
     QHBoxLayout* ltBtnOk       = new QHBoxLayout();
     QHBoxLayout* ltBtnCancel   = new QHBoxLayout();
+    QLabel*      lblSelectFile = new QLabel(tr("Select .csf file:"));
+
     btnOk->setObjectName(nameof(btnOk));
     btnOk->setFixedWidth(80);
     ltBtnOk->setAlignment(Qt::Alignment::enum_type::AlignRight);
@@ -28,6 +31,9 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
     ltOkAndCancel->addLayout(ltBtnCancel);
     connect(btnOk,     &QPushButton::clicked, this, [=, this] { emit btnStartClicked(); });
     connect(btnCancel, &QPushButton::clicked, this, [=, this] { emit btnBackClicked(); });
+
+    lblSelectFile->setObjectName(nameof(lblSelectFile));
+    lblSelectFile->setAlignment(Qt::AlignLeft);
 
     // configure file path selection
     QLineEdit* lneFilePath = new QLineEdit();
@@ -57,14 +63,16 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
     ltReview->addWidget(btnReview);
 
     // configure dialog view
-    QVBoxLayout* ltMainBlock = new QVBoxLayout();
-    ltMainBlock->setContentsMargins(80,0,80,0);
-    ltMainBlock->setAlignment(Qt::Alignment::enum_type::AlignCenter);
-    ltMainBlock->addStretch(5);
-    ltMainBlock->addLayout(ltReview);
-    ltMainBlock->addStretch(2);
-    ltMainBlock->addLayout(ltOkAndCancel);
-    ltMainBlock->addStretch(1);
+    QVBoxLayout* ltMain = new QVBoxLayout();
+    ltMain->setContentsMargins(80,0,80,0);
+    ltMain->setAlignment(Qt::Alignment::enum_type::AlignCenter);
+    ltMain->addStretch(3);
+    ltMain->addWidget(lblSelectFile);
+    ltMain->addSpacing(5);
+    ltMain->addLayout(ltReview);
+    ltMain->addStretch(2);
+    ltMain->addLayout(ltOkAndCancel);
+    ltMain->addStretch(1);
 
-    setLayout(ltMainBlock);
+    setLayout(ltMain);
 }

@@ -199,12 +199,12 @@
 <context>
     <name>LoadFromTheFileWindow</name>
     <message>
-        <location filename="../LoadFromTheFileWindow.cpp" line="15"/>
+        <location filename="../LoadFromTheFileWindow.cpp" line="16"/>
         <source>START</source>
         <translation>НАЧАТЬ</translation>
     </message>
     <message>
-        <location filename="../LoadFromTheFileWindow.cpp" line="16"/>
+        <location filename="../LoadFromTheFileWindow.cpp" line="17"/>
         <source>BACK</source>
         <translation>НАЗАД</translation>
     </message>
@@ -213,17 +213,22 @@
         <translation type="obsolete">Текстовые файлы</translation>
     </message>
     <message>
-        <location filename="../LoadFromTheFileWindow.cpp" line="44"/>
+        <location filename="../LoadFromTheFileWindow.cpp" line="20"/>
+        <source>Select .csf file:</source>
+        <translation>Выберите .csf файл:</translation>
+    </message>
+    <message>
+        <location filename="../LoadFromTheFileWindow.cpp" line="50"/>
         <source>Binary files</source>
         <translation>Двоичные файлы</translation>
     </message>
     <message>
-        <location filename="../LoadFromTheFileWindow.cpp" line="45"/>
+        <location filename="../LoadFromTheFileWindow.cpp" line="51"/>
         <source>Any files</source>
         <translation>Все файлы</translation>
     </message>
     <message>
-        <location filename="../LoadFromTheFileWindow.cpp" line="49"/>
+        <location filename="../LoadFromTheFileWindow.cpp" line="55"/>
         <source>REVIEW</source>
         <translation>ОБЗОР</translation>
     </message>
