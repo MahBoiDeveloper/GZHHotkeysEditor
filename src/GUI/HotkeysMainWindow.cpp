@@ -382,11 +382,14 @@ void HotkeysMainWindow::KeyboardWindow_Update(int id)
         
     QString accum;
     for (const auto& elem : currTab->findChildren<ActionHotkeyWidget*>(QString(), Qt::FindChildrenRecursively))
-        accum += QString(elem->GetHotkey());
+        accum += QString(elem->GetHotkey()).toUpper();
 
     for (const QChar& ch : accum)
     {
         auto key = pKeyboardWindow->findChild<QPushButton*>(ch, Qt::FindChildrenRecursively);
+
+        if (key == nullptr)
+            continue;
 
         if (accum.count(ch) < 2) key->setProperty("status", "good");
         else                     key->setProperty("status", "bad");

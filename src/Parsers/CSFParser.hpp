@@ -13,13 +13,13 @@ class CSFParser final
 public: // Types
     struct CompiledString
     {
-        std::string  Name;
-        std::wstring Value;
+        QString Name;
+        QString Value;
     };
 
     struct HotkeyAssociation
     {
-        std::string StringName;
+        QString StringName;
         wchar_t HotkeyLetter;
     };
 
@@ -143,15 +143,15 @@ public:
     void SetStringsValue(const std::list<CompiledString>& lstChanges);
 
     /// @brief Checks if string exist by name match.
-    const bool ExistString(const QString& value)      const;
+    const bool ExistString(const QString& value)       const;
     /// @brief Checks if string exist by name match.
-    const bool ExistString(const char* value)         const;
+    const bool ExistString(const char* value)          const;
     /// @brief Checks if string exist by name match.
-    const bool ExistString(const std::string value)   const;
+    const bool ExistString(const std::string& value)   const;
     /// @brief Checks if category exist by name match.
-    const bool ExistCategory(const QString& value)    const;
+    const bool ExistCategory(const QString& value)     const;
     /// @brief Checks if category exist by name match.
-    const bool ExistCategory(const char* value)       const;
+    const bool ExistCategory(const char* value)        const;
     /// @brief Checks if category exist by name match.
-    const bool ExistCategory(const std::string value) const;
+    const bool ExistCategory(const std::string& value) const;
 };

@@ -129,7 +129,7 @@
     </message>
     <message>
         <location filename="../HotkeysMainWindow.cpp" line="195"/>
-        <location filename="../HotkeysMainWindow.cpp" line="473"/>
+        <location filename="../HotkeysMainWindow.cpp" line="476"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
@@ -139,47 +139,47 @@
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="453"/>
+        <location filename="../HotkeysMainWindow.cpp" line="456"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="454"/>
+        <location filename="../HotkeysMainWindow.cpp" line="457"/>
         <source>Version: </source>
         <translation>Версия: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="455"/>
+        <location filename="../HotkeysMainWindow.cpp" line="458"/>
         <source>Program licensed with </source>
         <translation>Программа лицензирована под </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="456"/>
+        <location filename="../HotkeysMainWindow.cpp" line="459"/>
         <source>GitHub repository:</source>
         <translation>Репозиторий на GitHub:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="458"/>
+        <location filename="../HotkeysMainWindow.cpp" line="461"/>
         <source>Support development:</source>
         <translation>Поддержать разработку:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="507"/>
+        <location filename="../HotkeysMainWindow.cpp" line="510"/>
         <source>Lanugage</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="516"/>
+        <location filename="../HotkeysMainWindow.cpp" line="519"/>
         <source>LANGUAGE</source>
         <translation>ЯЗЫК</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="528"/>
+        <location filename="../HotkeysMainWindow.cpp" line="531"/>
         <source>OK</source>
         <translation>Ок</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="529"/>
+        <location filename="../HotkeysMainWindow.cpp" line="532"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
@@ -228,14 +228,12 @@
         <translation>ОБЗОР</translation>
     </message>
     <message>
-        <location filename="../LoadFromTheFileWindow.cpp" line="55"/>
         <source>Load project</source>
-        <translation>Загрузить проект</translation>
+        <translation type="vanished">Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../LoadFromTheFileWindow.cpp" line="64"/>
         <source>Load installed game hotkey map</source>
-        <translation>Загрузить горячие клавиши из игры</translation>
+        <translation type="vanished">Загрузить горячие клавиши из игры</translation>
     </message>
 </context>
 <context>

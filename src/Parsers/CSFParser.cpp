@@ -92,9 +92,9 @@ using namespace std;
             csfFile->read(reinterpret_cast<char*>(&labelName), sizeof(labelName));
 
             // Write string name with a special method due to string name doesn't have \0 sign
-            string  stringName = CharArrayToString(sizeof(labelName), reinterpret_cast<const char*>(labelName));
-            wstring stringValue;
-            string  extraStringValue;
+            QString stringName = QString::fromStdString(CharArrayToString(sizeof(labelName), reinterpret_cast<const char*>(labelName)));
+            QString stringValue;
+            QString extraStringValue;
 
             // There possible situation where exists empty strings
             if(countOfStrings != 0)
@@ -116,7 +116,7 @@ using namespace std;
                     wchBufferValue[tmp] = ~wchBufferValue[tmp];
 
                 // Write string name with a special method due to string name doesn't have \0 sign
-                stringValue = WharArrayToWstring(valueLenght, reinterpret_cast<const wchar_t*>(wchBufferValue));
+                stringValue = QString::fromStdWString(WharArrayToWstring(valueLenght, reinterpret_cast<const wchar_t*>(wchBufferValue)));
 
                 // Read extra value and do not write bcs it's useless
                 if((char)rtsOrWrts[0] == 'W')
@@ -130,6 +130,10 @@ using namespace std;
 
                 // Add CompiledString{string Name, wstring Value} to list
                 Table.push_back({stringName, stringValue});
+                if (stringValue.trimmed() == "")
+                {
+                    LOGMSG("Warning: read value can be trimmed to empty string");
+                }
             }
         }
     }
@@ -172,16 +176,19 @@ using namespace std;
         // Write normal strings
         for(const auto& elem : Table)
         {
-            uint32_t labelLength  = elem.Name.size();
-            uint32_t valueLength  = elem.Value.size();
+            string name   = elem.Name.toStdString();
+            wstring value = elem.Value.toStdWString();
+
+            uint32_t labelLength  = name.size();
+            uint32_t valueLength  = value.size();
             char     labelName      [labelLength];
             wchar_t  valueInversed  [valueLength];
          
             for(uint32_t i = 0; i < labelLength; i++)
-                labelName[i] = elem.Name[i];
+                labelName[i] = name[i];
 
             for(uint32_t i = 0; i < valueLength; i++)
-                valueInversed[i] = ~elem.Value[i];
+                valueInversed[i] = ~value[i];
 
             csfFile->write(reinterpret_cast<const char*>(LBL), sizeof(LBL));
             csfFile->write(reinterpret_cast<const char*>(&ONE_STRING), sizeof(ONE_STRING));
@@ -196,9 +203,11 @@ using namespace std;
 #pragma endregion
 
 #pragma region Getters
-    wstring CSFParser::GetStringValue(const string& strName) const
+    QString CSFParser::GetStringValue(const char* strName)   const { return GetStringValue(QString{strName}); }
+    wstring CSFParser::GetStringValue(const string& strName) const { return GetStringValue(QString::fromStdString(strName)).toStdWString(); }
+    QString CSFParser::GetStringValue(const QString& strName) const
     {
-        wstring returnValue;
+        QString returnValue;
 
         for (const auto& elem : Table)
             if (elem.Name == strName)
@@ -210,22 +219,12 @@ using namespace std;
         return returnValue;
     }
 
-    QString CSFParser::GetStringValue(const QString& strName) const
-    {
-        return QString::fromStdWString(GetStringValue(strName.toStdString()));
-    }
-
-    QString CSFParser::GetStringValue(const char* strName) const
-    {
-        return GetStringValue(QString{strName});
-    }
-
     list<string> CSFParser::GetStringNames() const
     {
         list<string> returnList;
        
         for (const auto& elem : Table)
-            returnList.push_back(elem.Name);
+            returnList.push_back(elem.Name.toStdString());
 
         return returnList;
     }
@@ -235,7 +234,7 @@ using namespace std;
         list<string> returnList;
 
         for (const auto& elem : Table)
-            returnList.push_back(elem.Name.substr(0, elem.Name.find_first_of(':', 0) ));
+            returnList.push_back(elem.Name.toStdString().substr(0, elem.Name.toStdString().find_first_of(':', 0) ));
 
         returnList.sort();
         returnList.unique();
@@ -247,8 +246,8 @@ using namespace std;
         list<string> returnList;
 
         for (const auto& elem : Table)
-            if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
-                returnList.push_back(elem.Name.substr(elem.Name.find_first_of(':', 0) + 1, elem.Name.size() - 1));
+            if (elem.Name.toStdString().substr(0, elem.Name.toStdString().find_first_of(':', 0)) == strCategoryName)
+                returnList.push_back(elem.Name.toStdString().substr(elem.Name.toStdString().find_first_of(':', 0) + 1, elem.Name.size() - 1));
 
         returnList.sort();
         return returnList;
@@ -265,8 +264,8 @@ using namespace std;
         list<string> returnList;
 
         for (const auto& elem : Table)
-            if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
-                returnList.push_back(elem.Name);
+            if (elem.Name.toStdString().substr(0, elem.Name.toStdString().find_first_of(':', 0)) == strCategoryName)
+                returnList.push_back(elem.Name.toStdString());
 
         returnList.sort();
         return returnList;
@@ -283,8 +282,8 @@ using namespace std;
         list<string> returnList;
        
         for (const auto& elem : Table)
-            if (elem.Value.find(wch) <= elem.Value.size())
-                returnList.push_back(elem.Name);
+            if (elem.Value.toStdWString().find(wch) <= elem.Value.size())
+                returnList.push_back(elem.Name.toStdString());
 
         returnList.sort();
         return returnList;
@@ -295,9 +294,9 @@ using namespace std;
         list<string> returnList;
 
         for (const auto& elem : Table)
-            if (elem.Name.substr(0, elem.Name.find_first_of(':', 0)) == strCategoryName)
-                if (elem.Value.find_first_of(wch) <= elem.Value.size())
-                    returnList.push_back(elem.Name);
+            if (elem.Name.toStdString().substr(0, elem.Name.toStdString().find_first_of(':', 0)) == strCategoryName)
+                if (elem.Value.toStdWString().find_first_of(wch) <= elem.Value.size())
+                    returnList.push_back(elem.Name.toStdString());
 
         returnList.sort();
         return returnList;
@@ -309,7 +308,7 @@ using namespace std;
 
         for (const auto& strName : lstNames)
             for (const auto& elem : Table)
-                if (elem.Name == strName)
+                if (elem.Name == QString::fromStdString(strName))
                 {
                     returnList.push_back(elem);
                     break;
@@ -318,50 +317,34 @@ using namespace std;
         return returnList;
     }
 
-    QString CSFParser::GetClearName(const QString& strName) const
+    QString CSFParser::GetClearName(const QString& strName)   const { return GetStringValue(strName).remove(QRegExp{"((\\[|\\()&([A-Z]|[a-z])(\\]|\\)))|&"}).trimmed(); }
+    QChar   CSFParser::GetHotkey(const string& strName)       const { return QChar(GetHotkeyWchar(strName)); }
+    QChar   CSFParser::GetHotkey(const char* strName)         const { return QChar(GetHotkeyWchar(strName)); }
+    QChar   CSFParser::GetHotkey(const QString& strName)      const { return QChar(GetHotkeyWchar(strName)); }
+    wchar_t CSFParser::GetHotkeyWchar(const char* strName)    const { return GetHotkeyWchar(string(strName)); }
+    wchar_t CSFParser::GetHotkeyWchar(const string& strName)  const { return GetHotkeyWchar(QString::fromStdString(strName)); }
+    wchar_t CSFParser::GetHotkeyWchar(const QString& strName) const
     {
-        return GetStringValue(strName).remove(QRegExp{"\\[&[A-Z]\\]"}).trimmed();
-    }
-
-    QChar CSFParser::GetHotkey(const string& strName) const
-    {
-        return QChar(GetHotkeyWchar(strName));
-    }
-
-    QChar CSFParser::GetHotkey(const char* strName) const
-    {
-        return QChar(GetHotkeyWchar(strName));
-    }
-
-    QChar CSFParser::GetHotkey(const QString& strName) const
-    {
-        return QChar(GetHotkeyWchar(strName));
-    }
-
-    wchar_t CSFParser::GetHotkeyWchar(const string& strName) const
-    {
-        wchar_t hk    = L'\0';
+        wchar_t hk    = L' ';
         size_t  index = 0;
 
         for (const auto& elem : Table)
-            if (elem.Name == strName)
-                if ((index = elem.Value.find_first_of(L'&')) <= elem.Value.size())
+            if (elem.Name.toUpper() == strName.trimmed().toUpper())
+            {
+                index = elem.Value.indexOf(L'&');
+                if (index != -1 )
                 {
-                    hk = elem.Value.at(index + 1);
+                    hk = elem.Value.toUpper().toStdWString().at(index + 1);
                     break;
                 }
+            }
 
+        if (hk == L' ')
+        {
+            LOGMSG("Warning: unable to find hotkey character for " + strName);
+        }
+        
         return hk;
-    }
-
-    wchar_t CSFParser::GetHotkeyWchar(const char* strName) const
-    {
-        return GetHotkeyWchar(string(strName));
-    }
-
-    wchar_t CSFParser::GetHotkeyWchar(const QString& strName) const
-    {
-        return GetHotkeyWchar(strName.toStdString());
     }
 
     list<CSFParser::HotkeyAssociation> CSFParser::GetHotkeys(const list<string>& lstStringNames) const
@@ -370,9 +353,9 @@ using namespace std;
 
         for (const auto& strName : lstStringNames)
             for (const auto& elem : Table)
-                if (strName == elem.Name)
+                if (elem.Name == QString::fromStdString(strName))
                 {
-                    returnList.push_back({strName, CSFParser::GetHotkeyWchar(strName)});
+                    returnList.push_back({QString::fromStdString(strName), CSFParser::GetHotkeyWchar(strName)});
                     break;
                 }
 
@@ -381,17 +364,19 @@ using namespace std;
 #pragma endregion
 
 #pragma region Setters
-    void CSFParser::SetHotkey(const string& strName, const wchar_t& wchLetter)
+    void CSFParser::SetHotkey(const string& input, const wchar_t& wchLetter)
     {
-        LOGSTM << "Changing for string \"" << strName << "\" hotkey assingment to letter \"" << (const char)wchLetter << "\"" << endl;
+        LOGSTM << "Changing for string \"" << input << "\" hotkey assingment to letter \"" << (const char)wchLetter << "\"" << endl;
 
+        QString strName = QString::fromStdString(input);
+        
         for (auto& elem : Table)
         {
             if (elem.Name == strName)
             {
-                size_t index = 0;
+                int index = 0;
 
-                index = elem.Value.find_first_of(L'&');
+                index = elem.Value.indexOf(L'&');
 
                 if(index <= elem.Value.size())
                 {
@@ -403,35 +388,29 @@ using namespace std;
                     // If no, then we add [&wch] to begin of the value and delete & in text
                     else
                     {
-                        elem.Value = elem.Value.erase(index, 1);
+                        elem.Value = elem.Value.remove(index, 1);
                     }
                 }
             }
         }
     }
 
-    void CSFParser::SetHotkey(const char* strName, const wchar_t& wchLetter)
-    {
-        SetHotkey(string(strName), wchLetter);
-    }
-
-    void CSFParser::SetHotkey(const QString& strName, const wchar_t& wchLetter)
-    {
-        SetHotkey(strName.toStdString(), wchLetter);
-    }
+    void CSFParser::SetHotkey(const char* strName, const wchar_t& wchLetter)    { SetHotkey(string(strName), wchLetter); }
+    void CSFParser::SetHotkey(const QString& strName, const wchar_t& wchLetter) { SetHotkey(strName.toStdString(), wchLetter); }
 
     void CSFParser::SetStringValue(const string& strName, const wstring& wstrValue)
     {
         LOGSTM << "Changing value for string \"" << strName << "\"" << endl;
 
+        QString name = QString::fromStdString(strName);
         for (auto& elem : Table)
-            if (elem.Name == strName)
-                elem.Value = wstrValue;
+            if (elem.Name == name)
+                elem.Value = QString::fromStdWString(wstrValue);
     }
 
     void CSFParser::SetStringValue(const CompiledString& stString)
     {
-        LOGSTM << "Changing value for string \"" << stString.Name << "\"" << endl;
+        LOGSTM << "Changing value for string \"" << stString.Name.toStdString() << "\"" << endl;
 
         for (auto& elem : Table)
             if (elem.Name == stString.Name)
@@ -446,29 +425,31 @@ using namespace std;
 #pragma endregion
 
 #pragma region Checkers
-    
-    const bool CSFParser::ExistString(const std::string value)   const 
+    const bool CSFParser::ExistString(const char* value)        const { return ExistString(QString(value)); }
+    const bool CSFParser::ExistString(const std::string& value) const { return ExistString(QString::fromStdString(value)); }
+    const bool CSFParser::ExistString(const QString& value)     const 
     {
+        QString valueUpper = value.toUpper();
+
         for (const auto& elem : Table)
-        if (elem.Name == value)
-            return true;
+            if (elem.Name.toUpper() == valueUpper)
+                return true;
 
         return false;
     }
-    const bool CSFParser::ExistString(const QString& value)      const { return ExistString(value.toStdString()); }
-    const bool CSFParser::ExistString(const char* value)         const { return ExistString(std::string(value)); }
 
-    const bool CSFParser::ExistCategory(const std::string value) const 
-    { 
+    const bool CSFParser::ExistCategory(const char* value)        const { return ExistCategory(QString(value)); }
+    const bool CSFParser::ExistCategory(const std::string& value) const { return ExistCategory(QString::fromStdString(value)); }
+    const bool CSFParser::ExistCategory(const QString& value)     const 
+    {
+        QString searchValue = (value + ":").toUpper();
+
         for (const auto& elem : Table)
-            if (elem.Name.substr(0, elem.Name.find_first_of(':', 0) ) == value)
-                return true;;
+            if (elem.Name.toUpper().startsWith(searchValue))
+                return true;
 
         return false;
     }
-    const bool CSFParser::ExistCategory(const QString& value)    const { return ExistCategory(value.toStdString()); }
-    const bool CSFParser::ExistCategory(const char* value)       const { return ExistCategory(QString(value)); }
-    
 #pragma endregion
 
 #pragma region Internal methods

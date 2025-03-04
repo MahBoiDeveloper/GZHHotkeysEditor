@@ -51,38 +51,18 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
     btnReview->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(btnReview, &QPushButton::clicked, fileDialog, &QFileDialog::exec);
 
-    // configure choise buttons
-    QRadioButton* rdxLoadFromFile = new QRadioButton(tr("Load project"));
-    rdxLoadFromFile->setChecked(true);
-    rdxLoadFromFile->setObjectName(nameof(rdxLoadFromFile));
-    connect(rdxLoadFromFile, &QPushButton::toggled, this, [=, this](bool checked)
-    {
-        lneFilePath->setEnabled(checked);
-        btnReview->setEnabled(checked);
-    });
-
-    QRadioButton* rdxLoadFromGame = new QRadioButton(tr("Load installed game hotkey map"));
-    rdxLoadFromGame->setObjectName(nameof(rdxLoadFromGame));
-
     QHBoxLayout* ltReview = new QHBoxLayout();
     ltReview->addWidget(lneFilePath);
     ltReview->addSpacing(5);
     ltReview->addWidget(btnReview);
-    ltReview->setContentsMargins(rdxLoadFromFile->sizeHint().width() -
-                                QFontMetrics(rdxLoadFromFile->font()).horizontalAdvance(rdxLoadFromFile->text()),
-                                0,0,0);
 
     // configure dialog view
     QVBoxLayout* ltMainBlock = new QVBoxLayout();
     ltMainBlock->setContentsMargins(80,0,80,0);
     ltMainBlock->setAlignment(Qt::Alignment::enum_type::AlignCenter);
     ltMainBlock->addStretch(5);
-    ltMainBlock->addWidget(rdxLoadFromFile);
-    ltMainBlock->addSpacing(10);
     ltMainBlock->addLayout(ltReview);
     ltMainBlock->addStretch(2);
-    ltMainBlock->addWidget(rdxLoadFromGame);
-    ltMainBlock->addStretch(5);
     ltMainBlock->addLayout(ltOkAndCancel);
     ltMainBlock->addStretch(1);
 
