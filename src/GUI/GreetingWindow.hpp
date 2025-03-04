@@ -7,8 +7,6 @@ class GreetingWindow : public QWidget
     Q_OBJECT
 public: // Methods
     GreetingWindow(QWidget* parent = nullptr);
-private:
-    int GetGreetingTextAverageSize(const QString& text) const;
 
 signals:
     void btnLoadFromFileClicked();

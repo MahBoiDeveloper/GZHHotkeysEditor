@@ -63,10 +63,3 @@ GreetingWindow::GreetingWindow(QWidget* parent) : QWidget(parent)
     setLayout(ltMain);
 }
 
-/// @brief Calculate size of long description text block.
-int GreetingWindow::GetGreetingTextAverageSize(const QString& text) const
-{
-    QLabel lblSizeCounting(text);
-    lblSizeCounting.setWordWrap(true);
-    return (int)((lblSizeCounting.sizeHint().height() + lblSizeCounting.sizeHint().width()) / 2.);
-}
