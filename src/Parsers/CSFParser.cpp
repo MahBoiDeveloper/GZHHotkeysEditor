@@ -130,10 +130,6 @@ using namespace std;
 
                 // Add CompiledString{string Name, wstring Value} to list
                 Table.push_back({stringName, stringValue});
-                if (stringValue.trimmed() == "")
-                {
-                    LOGMSG("Warning: read value can be trimmed to empty string");
-                }
             }
         }
     }
@@ -208,9 +204,10 @@ using namespace std;
     QString CSFParser::GetStringValue(const QString& strName) const
     {
         QString returnValue;
+        auto tmp = strName.toUpper();
 
         for (const auto& elem : Table)
-            if (elem.Name == strName)
+            if (elem.Name.toUpper() == tmp)
             {
                 returnValue = elem.Value;
                 break;
