@@ -56,7 +56,7 @@ QComboBox::down-arrow { image: url(Resources/Theme/ScrollArrowDown.webp); }
 QComboBox::up-arrow   { image: url(Resources/Theme/ScrollArrowUp.webp); }
 
 /* Start widget style setting */
-LoadFromTheFileWindow, SetUpWindowsWrapper, LoadFromTheGameWindow
+LoadFromTheFileWindow, SetUpWindowsWrapper, LoadFromTheGameWindow, SettingsWindow#pSettingsWindow
 {
     border-image: url(Resources/Theme/StartMenuBackground.webp) 0 0 0 0 stretch stretch;
     background-color: black;

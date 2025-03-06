@@ -6,6 +6,7 @@
 #include <QHBoxLayout>
 
 #include "../Parsers/JSONFile.hpp"
+#include "SettingsWindow.hpp"
 #include "ActionHotkeyWidget.hpp"
 #include "Faction.hpp"
 
@@ -27,9 +28,9 @@ private: // Data
     QScrollArea*  pKeyboardWindow       = nullptr;
 
     // Renewable widgets
-    QTabWidget*   pHotkeysPanelsWidget    = nullptr;
-    QDialog*      pAboutDialog            = nullptr;
-    QDialog*      pWindowToChangeLanguage = nullptr;
+    QTabWidget*     pHotkeysPanelsWidget = nullptr;
+    QDialog*        pAboutDialog         = nullptr;
+    SettingsWindow* pSettingsWindow      = nullptr;
 
     QVector<QSet<ActionHotkeyWidget*>> vHotkeyWidgets;
 

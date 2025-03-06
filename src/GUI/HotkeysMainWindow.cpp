@@ -123,9 +123,9 @@ HotkeysMainWindow::HotkeysMainWindow(QWidget* parent)
     btnEmptyButton->setProperty("key", "null");
     btnEmptyButton->setFixedWidth(PROGRAM_CONSTANTS->EMPTY_KEY_WIDTH);
 
-    pKeyboardFirstLine = CreateKeysOnKeyboard("QWERTYUIOP");
+    pKeyboardFirstLine  = CreateKeysOnKeyboard("QWERTYUIOP");
     pKeyboardSecondLine = CreateKeysOnKeyboard("ASDFGHJKL");
-    pKeyboardThirdLine = CreateKeysOnKeyboard("ZXCVBNM");
+    pKeyboardThirdLine  = CreateKeysOnKeyboard("ZXCVBNM");
     
     pKeyboardThirdLine->addWidget(btnEmptyButton);
 
@@ -184,17 +184,14 @@ void HotkeysMainWindow::ConfigureMenu()
     mnStatusBarChecbox->addAction(tr("Disable"));
     mnViewOptions->addMenu(mnStatusBarChecbox);
     menuBar()->addMenu(mnViewOptions);
-
-    QMenu* mnSettingsOptions = new QMenu(tr("Settings"));
-    menuBar()->addMenu(mnSettingsOptions);
-    
-    QAction* actLanguage = new QAction(tr("Language"));
-    connect(actLanguage, &QAction::triggered, this, &HotkeysMainWindow::ActLanguage_Triggered);
-    mnSettingsOptions->addAction(actLanguage);
+   
+    QAction* actSettings = new QAction(tr("Settings"));
+    connect(actSettings, &QAction::triggered, this, &HotkeysMainWindow::ActLanguage_Triggered);
+    menuBar()->addAction(actSettings);
 
     QAction* actAbout = new QAction(tr("About"));
     connect(actAbout, &QAction::triggered, this, &HotkeysMainWindow::ActAbout_Triggered);
-    mnSettingsOptions->addAction(actAbout);
+    menuBar()->addAction(actAbout);
 }
 
 void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
@@ -479,12 +476,6 @@ void HotkeysMainWindow::ActAbout_Triggered()
                                ~Qt::WindowContextHelpButtonHint |
                                 Qt::MSWindowsFixedSizeDialogHint);
 
-    connect(pAboutDialog, &QDialog::finished, this, [this]()
-    {
-        pAboutDialog->deleteLater();
-        pAboutDialog = nullptr;
-    });
-
     QVBoxLayout* ltMainBlock = new QVBoxLayout();
     ltMainBlock->addLayout(lblContent);
 
@@ -492,78 +483,27 @@ void HotkeysMainWindow::ActAbout_Triggered()
     pAboutDialog->show();
     pAboutDialog->raise();
     pAboutDialog->activateWindow();
+
+    connect(pAboutDialog, &QDialog::finished, this, [this]()
+    {
+        pAboutDialog->deleteLater();
+        pAboutDialog = nullptr;
+    });
 }
 
 void HotkeysMainWindow::ActLanguage_Triggered()
 {
-    // if dialog already exists
-    if (pWindowToChangeLanguage != nullptr)
+    if (pSettingsWindow != nullptr)
     {
-        pWindowToChangeLanguage->activateWindow();
+        pSettingsWindow->show();
         return;
     }
 
-    Languages currLang = PROGRAM_CONSTANTS->pSettingsFile->GetLanguage();
-    Languages actLang  = Languages::English;
-
-    pWindowToChangeLanguage = new QDialog{this};
-    pWindowToChangeLanguage->setWindowTitle(tr("Lanugage"));
-    pWindowToChangeLanguage->setObjectName("WindowToChangeLanguage");
-    pWindowToChangeLanguage->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    // pWindowToChangeLanguage->setFixedSize(LANGUAGE_CHANGE_SIZE);
-    pWindowToChangeLanguage->setWindowFlags(pWindowToChangeLanguage->windowFlags() &
-                               ~Qt::WindowContextHelpButtonHint |
-                                Qt::MSWindowsFixedSizeDialogHint);
-
-    QHBoxLayout* ltLanguageAndCombobox = new QHBoxLayout();
-    QLabel*      lblLanguage           = new QLabel(tr("LANGUAGE"));
-    QComboBox*   cmbLangList           = new QComboBox();
-
-    for (int i = 0; i < static_cast<int>(Languages::Count); ++i)
-        cmbLangList->addItem(Unsorted::GetLanguageFullName(static_cast<Languages>(i)));
-    
-    cmbLangList->setCurrentIndex(static_cast<int>(currLang));
-
-    ltLanguageAndCombobox->addWidget(lblLanguage);
-    ltLanguageAndCombobox->addWidget(cmbLangList);
-
-    QHBoxLayout*  ltOkAndCancel   = new QHBoxLayout();
-    QPushButton*  btnOk           = new QPushButton(tr("OK"));
-    QPushButton*  btnCancel       = new QPushButton(tr("Cancel"));
-    ltOkAndCancel->addWidget(btnOk);
-    ltOkAndCancel->addWidget(btnCancel);
-
-    QVBoxLayout* ltMainBlock = new QVBoxLayout();
-    ltMainBlock->addLayout(ltLanguageAndCombobox);
-    ltMainBlock->addLayout(ltOkAndCancel);
-
-    pWindowToChangeLanguage->setLayout(ltMainBlock);
-    pWindowToChangeLanguage->show();
-    pWindowToChangeLanguage->raise();
-    pWindowToChangeLanguage->activateWindow();
-
-    // TODO: Make it work. Need to recreate HotkeysMainWindow through WindowManager
-    connect(cmbLangList, QOverload<int>::of(&QComboBox::activated), this, &HotkeysMainWindow::languageChanged);
-
-    connect(pWindowToChangeLanguage, &QDialog::finished, this, [this]()
-    {
-        pWindowToChangeLanguage->deleteLater();
-        pWindowToChangeLanguage = nullptr;
-    });
-
-    connect(btnCancel, &QPushButton::clicked, this, [this]()
-    {
-        pWindowToChangeLanguage->deleteLater();
-        pWindowToChangeLanguage = nullptr;
-    });
-
-    // TODO: Make there emit signal to WindowsManager and 
-    //       show 2nd window to ask to apply new language and reset unsaved changes.
-    connect(btnOk, &QPushButton::clicked, this, [this]()
-    {
-        pWindowToChangeLanguage->deleteLater();
-        pWindowToChangeLanguage = nullptr;
-    });
+    pSettingsWindow = new SettingsWindow();
+    pSettingsWindow->setObjectName(nameof(pSettingsWindow));
+    pSettingsWindow->setWindowTitle(tr("Settings"));
+    pSettingsWindow->setWindowModality(Qt::WindowModality::ApplicationModal);
+    pSettingsWindow->show();
 }
 
 QHBoxLayout* HotkeysMainWindow::CreateKeysOnKeyboard(const QString& str)
