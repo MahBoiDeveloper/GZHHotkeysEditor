@@ -15,11 +15,11 @@ GZH Hotkeys Editor is an attempt to create a useful tool for editing C&C: Genera
 * Memory: 128 MB RAM
 
 ## Project Features
-* [ ] C&C: Generals — Zero Hour support
+* [x] C&C: Generals — Zero Hour support
 * [ ] C&C: Generals support
 * [ ] Mod support (GZH only)
-* [ ] Multilanguage support
-* [ ] GUI customization
+* [x] Multilanguage support
+* [x] GUI customization
 * [ ] Discord Rich Presence support
 
 ## Credits
