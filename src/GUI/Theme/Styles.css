@@ -55,13 +55,6 @@ QComboBox::drop-down
 QComboBox::down-arrow { image: url(Resources/Theme/ScrollArrowDown.webp); }
 QComboBox::up-arrow   { image: url(Resources/Theme/ScrollArrowUp.webp); }
 
-/* Start widget style setting */
-LoadFromTheFileWindow, SetUpWindowsWrapper, LoadFromTheGameWindow, SettingsWindow#pSettingsWindow
-{
-    border-image: url(Resources/Theme/StartMenuBackground.webp) 0 0 0 0 stretch stretch;
-    background-color: black;
-}
-
 QPushButton
 {
     font-family: Calibri;
@@ -109,6 +102,13 @@ QPushButton#btnOk
 {
     margin-bottom: 40px;
     padding-left: 10px;
+}
+
+/* Start widget style setting */
+LoadFromTheFileWindow, SetUpWindowsWrapper, LoadFromTheGameWindow, SettingsWindow
+{
+    border-image: url(Resources/Theme/StartMenuBackground.webp) 0 0 0 0 stretch stretch;
+    background-color: black;
 }
 
 /* Main editor window style settings */
