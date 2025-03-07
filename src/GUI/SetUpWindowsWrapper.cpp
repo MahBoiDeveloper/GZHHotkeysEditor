@@ -12,7 +12,7 @@
 SetUpWindowsWrapper::SetUpWindowsWrapper(QWidget* parent) : QStackedWidget(parent)
 {
     // Makes window unresizeable and equal to the size of the background
-    setFixedSize(795, 440);
+    setFixedSize(PROGRAM_CONSTANTS->SET_UP_WINDOW_SIZE);
     setWindowFlags(windowFlags() |  Qt::MSWindowsFixedSizeDialogHint);
     setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint &
                                    ~Qt::WindowMinimizeButtonHint);

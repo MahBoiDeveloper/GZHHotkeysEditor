@@ -55,6 +55,7 @@ public:
     const double           START_WIDGET_SIZE_RATIO = 3./7.;
     const QSize            START_BUTTON_SIZE       = QSize(230, 110);
     const QSize            LANGUAGE_CHANGE_SIZE    = QSize(250, 100);
+    const QSize            SET_UP_WINDOW_SIZE      = QSize(795, 440);
     const int              ICON_MIN_HEIGHT         = 80;
     const int              ICON_SCALING_HEIGHT     = 25;
     const int              KEYBOARD_KEY_WIDTH      = 50;

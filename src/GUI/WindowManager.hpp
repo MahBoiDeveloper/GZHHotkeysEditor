@@ -4,18 +4,18 @@
 #include "../ProgramConstants.hpp"
 
 #include "SetUpWindowsWrapper.hpp"
-#include "HotkeysMainWindow.hpp"
+#include "EditorWindow.hpp"
 
 #define WINDOW_MANAGER WindowManager::Instance
 
 class WindowManager final
 {
 private: // Data
-    SetUpWindowsWrapper*       pStartUpWindow     = nullptr;
-    HotkeysMainWindow*         pHotkeysEditor     = nullptr;
-    QTranslator*               pAppTranslator     = nullptr;
-    QString                    strWindowName      = PROGRAM_CONSTANTS->COMMON_TITLE;
-    QString                    strCSFFilePath     = "";
+    SetUpWindowsWrapper* pStartUpWindow = nullptr;
+    EditorWindow*        pHotkeysEditor = nullptr;
+    QTranslator*         pAppTranslator = nullptr;
+    QString              strWindowName  = PROGRAM_CONSTANTS->COMMON_TITLE;
+    QString              strCSFFilePath = "";
 public:
     inline static std::unique_ptr<WindowManager> Instance   = nullptr;
 

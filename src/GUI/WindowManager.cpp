@@ -73,7 +73,7 @@ void WindowManager::StartUpWindow_AcceptConfiguration()
     }
 
     LOGMSG("Loading editor window...");
-    pHotkeysEditor = new HotkeysMainWindow();
+    pHotkeysEditor = new EditorWindow();
     pHotkeysEditor->setWindowTitle(strWindowName);
     pHotkeysEditor->show();
     pStartUpWindow->close();

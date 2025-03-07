@@ -36,6 +36,96 @@
     </message>
 </context>
 <context>
+    <name>EditorWindow</name>
+    <message>
+        <location filename="../EditorWindow.cpp" line="168"/>
+        <source>File</source>
+        <translation type="unfinished">Файл</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="169"/>
+        <source>Open</source>
+        <translation type="unfinished">Открыть</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="170"/>
+        <source>Save</source>
+        <translation type="unfinished">Сохранить</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="171"/>
+        <source>Save As...</source>
+        <translation type="unfinished">Сохранить как...</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="172"/>
+        <source>Special</source>
+        <translation type="unfinished">Дополнительно</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="183"/>
+        <source>View</source>
+        <translation type="unfinished">Вид</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="184"/>
+        <source>Status Bar</source>
+        <translation type="unfinished">Строка состояния</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="185"/>
+        <source>Enable</source>
+        <translation type="unfinished">Включить</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="186"/>
+        <source>Disable</source>
+        <translation type="unfinished">Отключить</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="190"/>
+        <location filename="../EditorWindow.cpp" line="510"/>
+        <source>Settings</source>
+        <translation type="unfinished">Настройки</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="194"/>
+        <location filename="../EditorWindow.cpp" line="475"/>
+        <source>About</source>
+        <translation type="unfinished">О программе</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="325"/>
+        <source>Layout %1</source>
+        <translation type="unfinished">Раскладка %1</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="455"/>
+        <source>Authors: </source>
+        <translation type="unfinished">Авторы: </translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="456"/>
+        <source>Version: </source>
+        <translation type="unfinished">Версия: </translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="457"/>
+        <source>Program licensed with </source>
+        <translation type="unfinished">Программа лицензирована под </translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="458"/>
+        <source>GitHub repository:</source>
+        <translation type="unfinished">Репозиторий на GitHub:</translation>
+    </message>
+    <message>
+        <location filename="../EditorWindow.cpp" line="460"/>
+        <source>Support development:</source>
+        <translation type="unfinished">Поддержать разработку:</translation>
+    </message>
+</context>
+<context>
     <name>GreetingWindow</name>
     <message>
         <source>NEW</source>
@@ -73,95 +163,76 @@
 <context>
     <name>HotkeysMainWindow</name>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="166"/>
         <source>File</source>
-        <translation>Файл</translation>
+        <translation type="vanished">Файл</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="167"/>
         <source>Open</source>
-        <translation>Открыть</translation>
+        <translation type="vanished">Открыть</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="168"/>
         <source>Save</source>
-        <translation>Сохранить</translation>
+        <translation type="vanished">Сохранить</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="169"/>
         <source>Save As...</source>
-        <translation>Сохранить как...</translation>
+        <translation type="vanished">Сохранить как...</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="170"/>
         <source>Special</source>
-        <translation>Дополнительно</translation>
+        <translation type="vanished">Дополнительно</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="181"/>
         <source>View</source>
-        <translation>Вид</translation>
+        <translation type="vanished">Вид</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="182"/>
         <source>Status Bar</source>
-        <translation>Строка состояния</translation>
+        <translation type="vanished">Строка состояния</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="183"/>
         <source>Enable</source>
-        <translation>Включить</translation>
+        <translation type="vanished">Включить</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="184"/>
         <source>Disable</source>
-        <translation>Отключить</translation>
+        <translation type="vanished">Отключить</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="188"/>
-        <location filename="../HotkeysMainWindow.cpp" line="504"/>
         <source>Settings</source>
-        <translation>Настройки</translation>
+        <translation type="vanished">Настройки</translation>
     </message>
     <message>
         <source>Language</source>
         <translation type="vanished">Язык</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="192"/>
-        <location filename="../HotkeysMainWindow.cpp" line="473"/>
         <source>About</source>
-        <translation>О программе</translation>
+        <translation type="vanished">О программе</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="323"/>
         <source>Layout %1</source>
-        <translation>Раскладка %1</translation>
+        <translation type="vanished">Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="453"/>
         <source>Authors: </source>
-        <translation>Авторы: </translation>
+        <translation type="vanished">Авторы: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="454"/>
         <source>Version: </source>
-        <translation>Версия: </translation>
+        <translation type="vanished">Версия: </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="455"/>
         <source>Program licensed with </source>
-        <translation>Программа лицензирована под </translation>
+        <translation type="vanished">Программа лицензирована под </translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="456"/>
         <source>GitHub repository:</source>
-        <translation>Репозиторий на GitHub:</translation>
+        <translation type="vanished">Репозиторий на GitHub:</translation>
     </message>
     <message>
-        <location filename="../HotkeysMainWindow.cpp" line="458"/>
         <source>Support development:</source>
-        <translation>Поддержать разработку:</translation>
+        <translation type="vanished">Поддержать разработку:</translation>
     </message>
     <message>
         <source>Lanugage</source>
@@ -281,17 +352,17 @@
         <translation type="vanished">Возникла неизвестная ошибка</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="71"/>
+        <location filename="../../ProgramConstants.hpp" line="72"/>
         <source>Error with CSF file</source>
         <translation>Ошибка с CSF файлом</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="72"/>
+        <location filename="../../ProgramConstants.hpp" line="73"/>
         <source>Cannot process the empty file.</source>
         <translation>Невозможно обработать пустой файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="73"/>
+        <location filename="../../ProgramConstants.hpp" line="74"/>
         <source>Unable to find selected CSF file.</source>
         <translation>Невозможно найти указанный CSF файл.</translation>
     </message>
@@ -302,7 +373,7 @@ Make sure that you are load correct file.</source>
 Проверьте, что вы загружаете правильный файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="74"/>
+        <location filename="../../ProgramConstants.hpp" line="75"/>
         <source>Choosen CSF file doesn&apos;t have CONTROLBAR category. Make sure that you are load correct file.</source>
         <translation>У выбранного CSF файла отсутствует категория CONTROLBAR. Проверьте, что вы загружаете правильный файл.</translation>
     </message>
@@ -315,32 +386,32 @@ Make sure that you are load correct file.</source>
         <translation type="vanished">Невозможно найти &quot;generals.csf&quot; в папке &quot;Game/Data/English&quot;.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="75"/>
+        <location filename="../../ProgramConstants.hpp" line="76"/>
         <source>Choosen CSF file doesn&apos;t have OBJECT category. Make sure that you are load correct file.</source>
         <translation>У выбранного CSF файла отсутствует категория OBJECT. Проверьте, что вы загружаете правильный файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="76"/>
+        <location filename="../../ProgramConstants.hpp" line="77"/>
         <source>Unable find &quot;generals.csf&quot; file in &quot;Game/Data/English&quot; folder.</source>
         <translation>Невозможно найти &quot;generals.csf&quot; в папке &quot;Game/Data/English&quot;.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="107"/>
+        <location filename="../../ProgramConstants.hpp" line="108"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="108"/>
+        <location filename="../../ProgramConstants.hpp" line="109"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="109"/>
+        <location filename="../../ProgramConstants.hpp" line="110"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="110"/>
+        <location filename="../../ProgramConstants.hpp" line="111"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>

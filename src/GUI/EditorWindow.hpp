@@ -6,11 +6,10 @@
 #include <QHBoxLayout>
 
 #include "../Parsers/JSONFile.hpp"
-#include "SettingsWindow.hpp"
 #include "ActionHotkeyWidget.hpp"
 #include "Faction.hpp"
 
-class HotkeysMainWindow final : public QMainWindow
+class EditorWindow final : public QMainWindow
 {
     Q_OBJECT
 
@@ -28,19 +27,19 @@ private: // Data
     QScrollArea*  pKeyboardWindow       = nullptr;
 
     // Renewable widgets
-    QTabWidget*     pHotkeysPanelsWidget = nullptr;
-    QDialog*        pAboutDialog         = nullptr;
-    SettingsWindow* pSettingsWindow      = nullptr;
+    QTabWidget*   pHotkeysPanelsWidget  = nullptr;
+    QDialog*      pAboutDialog          = nullptr;
+    QWidget*      pSettingsWindow       = nullptr;
 
     QVector<QSet<ActionHotkeyWidget*>> vHotkeyWidgets;
 
 public: // Methods
-    HotkeysMainWindow(QWidget* parent = nullptr);
+    EditorWindow(QWidget* parent = nullptr);
 
 private:
     /// @brief Read data from TechTree.json and parse it to game objects.
     void SetFactions();
-    /// @brief Return faction from HotkeysMainWindow::factionVector vector.
+    /// @brief Return faction from EditorWindow::factionVector vector.
     const Faction& GetFactionRef(const QString& name);
     /// @brief Set context menu bar functions and logics.
     void ConfigureMenu();
@@ -62,7 +61,7 @@ private:
 private slots:
     void KeyboardWindow_Update(int id = 0);
     void ActAbout_Triggered();
-    void ActLanguage_Triggered();
+    void ActSettings_Triggered();
     void ActSave_Triggered();
     void ActSaveAs_Triggered();
     void ActOpen_Triggered();

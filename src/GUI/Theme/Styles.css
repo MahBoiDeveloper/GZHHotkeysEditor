@@ -104,21 +104,21 @@ QPushButton#btnOk
     padding-left: 10px;
 }
 
-/* Start widget style setting */
-LoadFromTheFileWindow, SetUpWindowsWrapper, LoadFromTheGameWindow, SettingsWindow
+/* Start widgets and SettingsWindow style settings */
+LoadFromTheFileWindow, SetUpWindowsWrapper, LoadFromTheGameWindow, SettingsWindow, QWidget#pSettingsWindow
 {
     border-image: url(Resources/Theme/StartMenuBackground.webp) 0 0 0 0 stretch stretch;
     background-color: black;
 }
 
 /* Main editor window style settings */
-HotkeysMainWindow
+EditorWindow
 {
     border-image: url(Resources/Theme/EditorBackground.webp) 0 0 0 0 stretch stretch;
     background-color: black;
 }
 
-HotkeysMainWindow QPushButton
+EditorWindow QPushButton
 {
     font-family: Calibri;
     font-weight: bold;
@@ -133,11 +133,9 @@ HotkeysMainWindow QPushButton
     border-radius: 3px;
 }
 
-HotkeysMainWindow QPushButton:hover         { background-color: #3543e7; color: #baff0c; }
-HotkeysMainWindow QPushButton:pressed       { background-color: #3543e7; color: white; }
-HotkeysMainWindow QPushButton:pressed:hover { background-color: #3543e7; color: #baff0c; }
-
-/* QPushButton[faction="USA"] */ /* Already defined as basic non-property */
+EditorWindow QPushButton:hover           { background-color: #3543e7; color: #baff0c; }
+EditorWindow QPushButton:pressed         { background-color: #3543e7; color: white; }
+EditorWindow QPushButton:pressed:hover   { background-color: #3543e7; color: #baff0c; }
 
 QPushButton[faction="GLA"]               { background-color: #185a22; border-color: #b1ffbf; }
 QPushButton[faction="GLA"]:pressed       { background-color: #427b32; /*color: black;*/ }
@@ -149,14 +147,17 @@ QPushButton[faction="PRC"]:hover         { background-color: #e74135; color: #ba
 QPushButton[faction="PRC"]:pressed       { background-color: #e74135; color: white; }
 QPushButton[faction="PRC"]:pressed:hover { background-color: #e74135; color: #baff0c; }
 
-HotkeysMainWindow QTreeWidget, HotkeysMainWindow QTabWidget, HotkeysMainWindow QScrollArea
+/* QPushButton[faction="USA"] already defined as basic non-property */
+/* If you want to change -- copy and edit styles down below */
+
+EditorWindow QTreeWidget, EditorWindow QTabWidget, EditorWindow QScrollArea
 {
     background: rgba(0, 0, 0, 0.7);
     border-radius: 3px;
     border-width: 1px;
     border-style: outset;
     border-color: white;
-    
+
     color: white;
 }
 
@@ -210,7 +211,7 @@ QTabBar::tab:selected
     border-right-width: 1px;
     border-right-style: outset;
     border-right-color: white;
-    
+
     background: #3543e7;
 }
 
@@ -256,7 +257,7 @@ QDialog QLabel#left  { margin: 0px 0px 0px 60px; }
 QDialog QLabel#right { margin: 30px 40px 30px 0px; }
 
 /* Maybe will be useful in future */
-/* HotkeysMainWindow QMenu
+/* EditorWindow QMenu
 {
     background: rgba(0, 0, 0, 0);
     color: white;

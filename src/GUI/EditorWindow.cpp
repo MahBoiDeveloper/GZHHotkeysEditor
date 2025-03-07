@@ -16,9 +16,10 @@
 
 #include "ImageManager.hpp"
 #include "WindowManager.hpp"
-#include "HotkeysMainWindow.hpp"
+#include "SettingsWindow.hpp"
+#include "EditorWindow.hpp"
 
-HotkeysMainWindow::HotkeysMainWindow(QWidget* parent)
+EditorWindow::EditorWindow(QWidget* parent)
     : QMainWindow(parent)
     , pFactionsButtonsGroup{new QButtonGroup{this}}
     , pEntitiesTreeWidget{new QTreeWidget}
@@ -39,7 +40,7 @@ HotkeysMainWindow::HotkeysMainWindow(QWidget* parent)
     // Set icon size
     pEntitiesTreeWidget->setIconSize(QSize{PROGRAM_CONSTANTS->ICON_MIN_HEIGHT, PROGRAM_CONSTANTS->ICON_MIN_HEIGHT});
 
-    connect(pEntitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &HotkeysMainWindow::SetHotkeysPanels);
+    connect(pEntitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &EditorWindow::SetHotkeysPanels);
 
     QBoxLayout* ltFactions = nullptr;
     int factonsCount = factionVector.size();
@@ -64,7 +65,8 @@ HotkeysMainWindow::HotkeysMainWindow(QWidget* parent)
                 QPushButton* factionButton = new QPushButton{currFaction.GetDisplayName()};
 
                 auto shortName = currFaction.GetShortName();
-                if (PROGRAM_CONSTANTS->USA_SHORT_NAMES.contains(shortName)) ;
+                if (PROGRAM_CONSTANTS->USA_SHORT_NAMES.contains(shortName))
+                factionButton->setProperty("faction", "USA");
 
                 if (PROGRAM_CONSTANTS->PRC_SHORT_NAMES.contains(shortName))
                     factionButton->setProperty("faction", "PRC");
@@ -161,7 +163,7 @@ HotkeysMainWindow::HotkeysMainWindow(QWidget* parent)
     if (firstFactionButton != nullptr) firstFactionButton->click();
 }
 
-void HotkeysMainWindow::ConfigureMenu()
+void EditorWindow::ConfigureMenu()
 {
     QMenu* mnFileOptions = new QMenu(tr("File"));
     QAction* actOpen     = new QAction(tr("Open"));
@@ -174,9 +176,9 @@ void HotkeysMainWindow::ConfigureMenu()
     mnFileOptions->addAction(actSpecial);
     menuBar()->addMenu(mnFileOptions);
 
-    connect(actOpen, &QAction::triggered, this, &HotkeysMainWindow::ActOpen_Triggered);
-    connect(actSave, &QAction::triggered, this, &HotkeysMainWindow::ActSave_Triggered);
-    connect(actSaveAs, &QAction::triggered, this, &HotkeysMainWindow::ActSaveAs_Triggered);
+    connect(actOpen, &QAction::triggered, this, &EditorWindow::ActOpen_Triggered);
+    connect(actSave, &QAction::triggered, this, &EditorWindow::ActSave_Triggered);
+    connect(actSaveAs, &QAction::triggered, this, &EditorWindow::ActSaveAs_Triggered);
 
     QMenu* mnViewOptions = new QMenu(tr("View"));
     QMenu* mnStatusBarChecbox = new QMenu(tr("Status Bar"));
@@ -186,15 +188,15 @@ void HotkeysMainWindow::ConfigureMenu()
     menuBar()->addMenu(mnViewOptions);
    
     QAction* actSettings = new QAction(tr("Settings"));
-    connect(actSettings, &QAction::triggered, this, &HotkeysMainWindow::ActLanguage_Triggered);
+    connect(actSettings, &QAction::triggered, this, &EditorWindow::ActSettings_Triggered);
     menuBar()->addAction(actSettings);
 
     QAction* actAbout = new QAction(tr("About"));
-    connect(actAbout, &QAction::triggered, this, &HotkeysMainWindow::ActAbout_Triggered);
+    connect(actAbout, &QAction::triggered, this, &EditorWindow::ActAbout_Triggered);
     menuBar()->addAction(actAbout);
 }
 
-void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
+void EditorWindow::SetGameObjectList(const QString& factionShortName)
 {
     pEntitiesTreeWidget->clear();
 
@@ -247,7 +249,7 @@ void HotkeysMainWindow::SetGameObjectList(const QString& factionShortName)
     pEntitiesTreeWidget->setCurrentItem(firstEntity);
 }
 
-void HotkeysMainWindow::SetHotkeysPanels()
+void EditorWindow::SetHotkeysPanels()
 {
     // Skip if there are no selected items
     if (pEntitiesTreeWidget->selectedItems().isEmpty()) return;
@@ -329,12 +331,12 @@ void HotkeysMainWindow::SetHotkeysPanels()
     pHotkeysPanelsWidget->setMinimumSize(pHotkeysPanelsWidget->sizeHint());
     pHotkeysArea->setWidget(pHotkeysPanelsWidget);
 
-    connect(pHotkeysPanelsWidget, &QTabWidget::currentChanged, this, &HotkeysMainWindow::KeyboardWindow_Update);
+    connect(pHotkeysPanelsWidget, &QTabWidget::currentChanged, this, &EditorWindow::KeyboardWindow_Update);
 
     emit pHotkeysPanelsWidget->currentChanged(0);
 }
 
-void HotkeysMainWindow::HighlightCurrentKeys()
+void EditorWindow::HighlightCurrentKeys()
 {
     // Skip if no widgets
     if (vHotkeyWidgets.isEmpty()) return;
@@ -360,7 +362,7 @@ void HotkeysMainWindow::HighlightCurrentKeys()
     }
 }
 
-void HotkeysMainWindow::KeyboardWindow_Nullify()
+void EditorWindow::KeyboardWindow_Nullify()
 {
     for (QChar& qc : QString("QWERTYUIOPASDFGHJKLZXCVBNM")) 
     {
@@ -372,7 +374,7 @@ void HotkeysMainWindow::KeyboardWindow_Nullify()
     }
 }
 
-void HotkeysMainWindow::KeyboardWindow_Update(int id)
+void EditorWindow::KeyboardWindow_Update(int id)
 {
     KeyboardWindow_Nullify();
     auto currTab = pHotkeysPanelsWidget->findChild<QWidget*>(QString("Layout ") + QString::number(id + 1), Qt::FindChildrenRecursively);
@@ -400,13 +402,13 @@ void HotkeysMainWindow::KeyboardWindow_Update(int id)
     }
 }
 
-void HotkeysMainWindow::SetFactions()
+void EditorWindow::SetFactions()
 {
     for(const auto& elem : TECH_TREE_SOURCE.Query("$.TechTree").toArray())
         factionVector.push_back(Faction{elem.toObject()});
 }
 
-const Faction& HotkeysMainWindow::GetFactionRef(const QString& name)
+const Faction& EditorWindow::GetFactionRef(const QString& name)
 {
     int tmp = 0;
 
@@ -424,7 +426,7 @@ const Faction& HotkeysMainWindow::GetFactionRef(const QString& name)
     return factionVector.at(tmp);
 }
 
-void HotkeysMainWindow::SetActionHotkey(const QString& fctShortName, const QString& goName, const QString& actName, const QString& hk)
+void EditorWindow::SetActionHotkey(const QString& fctShortName, const QString& goName, const QString& actName, const QString& hk)
 {
     for(Faction& fct : factionVector)
     {
@@ -436,7 +438,7 @@ void HotkeysMainWindow::SetActionHotkey(const QString& fctShortName, const QStri
     }
 }
 
-void HotkeysMainWindow::ActAbout_Triggered()
+void EditorWindow::ActAbout_Triggered()
 {
     // if dialog already exists
     if (pAboutDialog != nullptr)
@@ -480,10 +482,10 @@ void HotkeysMainWindow::ActAbout_Triggered()
     ltMainBlock->addLayout(lblContent);
 
     pAboutDialog->setLayout(ltMainBlock);
+    pAboutDialog->setWindowModality(Qt::WindowModality::ApplicationModal);
     pAboutDialog->show();
-    pAboutDialog->raise();
     pAboutDialog->activateWindow();
-
+    
     connect(pAboutDialog, &QDialog::finished, this, [this]()
     {
         pAboutDialog->deleteLater();
@@ -491,22 +493,33 @@ void HotkeysMainWindow::ActAbout_Triggered()
     });
 }
 
-void HotkeysMainWindow::ActLanguage_Triggered()
+void EditorWindow::ActSettings_Triggered()
 {
-    if (pSettingsWindow != nullptr)
+    if (pSettingsWindow == nullptr)
     {
-        pSettingsWindow->show();
-        return;
+        // Read this thread: 
+        //    https://forum.qt.io/topic/146107/can-t-show-the-border-of-the-class-inheriting-qwidget-class
+        // to understand why QWidget's inherited class has been wrapped into another native QWidget
+
+        auto sw         = new SettingsWindow();
+        auto lt         = new QVBoxLayout();
+        lt->addWidget(sw);
+
+        pSettingsWindow = new QWidget();
+        pSettingsWindow->setObjectName(nameof(pSettingsWindow));
+        pSettingsWindow->setWindowTitle(tr("Settings"));
+        pSettingsWindow->setFixedSize(PROGRAM_CONSTANTS->SET_UP_WINDOW_SIZE);
+        pSettingsWindow->setWindowFlags(windowFlags() |  Qt::MSWindowsFixedSizeDialogHint);
+        pSettingsWindow->setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint
+                                                      & ~Qt::WindowMinimizeButtonHint);
+        pSettingsWindow->setWindowModality(Qt::WindowModality::ApplicationModal);
+        pSettingsWindow->setLayout(lt);
     }
 
-    pSettingsWindow = new SettingsWindow();
-    pSettingsWindow->setObjectName(nameof(pSettingsWindow));
-    pSettingsWindow->setWindowTitle(tr("Settings"));
-    pSettingsWindow->setWindowModality(Qt::WindowModality::ApplicationModal);
     pSettingsWindow->show();
 }
 
-QHBoxLayout* HotkeysMainWindow::CreateKeysOnKeyboard(const QString& str)
+QHBoxLayout* EditorWindow::CreateKeysOnKeyboard(const QString& str)
 {
     QHBoxLayout* pKeys = new QHBoxLayout();
     for (const auto& ch : str)
@@ -520,17 +533,17 @@ QHBoxLayout* HotkeysMainWindow::CreateKeysOnKeyboard(const QString& str)
     return pKeys;
 }
 
-void HotkeysMainWindow::ActSave_Triggered()
+void EditorWindow::ActSave_Triggered()
 {
     LOGMSG("Saving changes to .csf file...");
     CSF_PARSER->Save();
     LOGMSG("Changes has been saved");
 }
 
-void HotkeysMainWindow::ActSaveAs_Triggered()
+void EditorWindow::ActSaveAs_Triggered()
 {
 }
 
-void HotkeysMainWindow::ActOpen_Triggered()
+void EditorWindow::ActOpen_Triggered()
 {
 }
