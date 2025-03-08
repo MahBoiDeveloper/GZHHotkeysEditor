@@ -1,7 +1,7 @@
 #include <QSet>
-#include "../Parsers/CSFParser.hpp"
-#include "../Parsers/JSONFile.hpp"
-#include "../Logger.hpp"
+#include "Parsers/CSFParser.hpp"
+#include "Parsers/JSONFile.hpp"
+#include "Logger.hpp"
 #include "Faction.hpp"
 
 Faction::Faction(const QString& _shortName, const QString& _displayName, const QString& _displayNameDescription)

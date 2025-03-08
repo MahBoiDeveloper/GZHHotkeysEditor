@@ -4,7 +4,7 @@
 #include <QString>
 #include <QJsonArray>
 #include <QJsonObject>
-#include "../ProgramConstants.hpp"
+#include "ProgramConstants.hpp"
 
 class Faction
 {

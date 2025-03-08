@@ -6,8 +6,8 @@
 #include <QHBoxLayout>
 
 #include "../Parsers/JSONFile.hpp"
+#include "../Faction.hpp"
 #include "ActionHotkeyWidget.hpp"
-#include "Faction.hpp"
 
 class EditorWindow final : public QMainWindow
 {
