@@ -17,7 +17,7 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
     QPushButton* btnCancel     = new QPushButton(tr("BACK"));
     QHBoxLayout* ltBtnOk       = new QHBoxLayout();
     QHBoxLayout* ltBtnCancel   = new QHBoxLayout();
-    QLabel*      lblSelectFile = new QLabel(tr("Select .csf file:"));
+    QLabel*      lblSelectFile = new QLabel(tr("Select .csf or .big file:"));
 
     btnOk->setObjectName(nameof(btnOk));
     btnOk->setFixedWidth(80);
@@ -47,7 +47,7 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
     QFileDialog* fileDialog = new QFileDialog(); // dialog for selecting the path to the file
     fileDialog->setFileMode(QFileDialog::FileMode::ExistingFile);
     fileDialog->setAcceptMode(QFileDialog::AcceptMode::AcceptOpen);
-    fileDialog->setNameFilters({tr("Binary files") + " (*.csf)",
+    fileDialog->setNameFilters({tr("Binary files") + " (*.csf, *.big)",
                                 tr("Any files")  + " (*)"});
     connect(fileDialog, &QFileDialog::fileSelected, lneFilePath, &QLineEdit::setText);
     

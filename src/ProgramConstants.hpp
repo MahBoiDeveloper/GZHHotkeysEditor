@@ -26,62 +26,68 @@ public:
     std::unique_ptr<Settings>                       pSettingsFile = nullptr;
 
     // Folders
-    const QString          RESOURCE_FOLDER         = "Resources";
-    const QString          BINARIES_FOLDER         = RESOURCE_FOLDER + "\\Binaries";
-    const QString          TRANSLATIONS_FOLDER     = RESOURCE_FOLDER + "/Translations";
-    const QString          ICONS_FOLDER            = RESOURCE_FOLDER + "/Icons";
-    const QString          THEME_FOLDER            = RESOURCE_FOLDER + "/Theme";
-    const QString          QT_ICONS_FOLDER         = ":/icons";
+    const QString RESOURCE_FOLDER         = "Resources";
+    const QString BINARIES_FOLDER         = RESOURCE_FOLDER + "\\Binaries";
+    const QString TRANSLATIONS_FOLDER     = RESOURCE_FOLDER + "/Translations";
+    const QString ICONS_FOLDER            = RESOURCE_FOLDER + "/Icons";
+    const QString THEME_FOLDER            = RESOURCE_FOLDER + "/Theme";
+    const QString QT_ICONS_FOLDER         = ":/icons";
     
     // Resource files
-    const QString          TECH_TREE_FILE          = RESOURCE_FOLDER + "/TechTree.json";
-    const QString          SETTINGS_FILE           = RESOURCE_FOLDER + "/Settings.json";
-    const QString          STYLES_SHEET_FILE       = THEME_FOLDER    + "/Styles.css";
+    const QString TECH_TREE_FILE          = RESOURCE_FOLDER + "/TechTree.json";
+    const QString SETTINGS_FILE           = RESOURCE_FOLDER + "/Settings.json";
+    const QString STYLES_SHEET_FILE       = THEME_FOLDER    + "/Styles.css";
 
     // Build-in files
-    const QString          MISSING_ICON_FILE       = QT_ICONS_FOLDER + "/NoImageSmall.webp";
-    const QString          EDITOR_ICON_FILE        = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
-    const QString          EDITOR_BIG_ICON_FILE    = QT_ICONS_FOLDER + "/EditorIconBig.webp";
-    const QString          GEARS_ICON_FILE         = QT_ICONS_FOLDER + "/Gears.webp";
+    const QString MISSING_ICON_FILE       = QT_ICONS_FOLDER + "/NoImageSmall.webp";
+    const QString EDITOR_ICON_FILE        = QT_ICONS_FOLDER + "/EditorIconSmall.webp";
+    const QString EDITOR_BIG_ICON_FILE    = QT_ICONS_FOLDER + "/EditorIconBig.webp";
+    const QString GEARS_ICON_FILE         = QT_ICONS_FOLDER + "/Gears.webp";
 
     // Window titles
-    const QString          COMMON_TITLE            = "C&C: Generals Zero Hour Hotkey Editor";
-    const QString          SHORT_COMMON_TITLE      = "C&C: GZH Hotkey Editor";
-    const QString          EDITOR_TITLE            = SHORT_COMMON_TITLE + " — Editor";
-    const QString          LOAD_TITLE              = SHORT_COMMON_TITLE + " — Load";
-    const QString          CREATE_TITLE            = SHORT_COMMON_TITLE + " — New Set Up";
+    const QString COMMON_TITLE            = "C&C: Generals Zero Hour Hotkey Editor";
+    const QString SHORT_COMMON_TITLE      = "C&C: GZH Hotkey Editor";
+    const QString EDITOR_TITLE            = SHORT_COMMON_TITLE + " — Editor";
+    const QString LOAD_TITLE              = SHORT_COMMON_TITLE + " — Load";
+    const QString CREATE_TITLE            = SHORT_COMMON_TITLE + " — New Set Up";
 
     // Magic numbers that become known
-    const double           START_WIDGET_SIZE_RATIO = 3./7.;
-    const QSize            START_BUTTON_SIZE       = QSize(230, 110);
-    const QSize            LANGUAGE_CHANGE_SIZE    = QSize(250, 100);
-    const QSize            SET_UP_WINDOW_SIZE      = QSize(795, 440);
-    const int              ICON_MIN_HEIGHT         = 80;
-    const int              ICON_SCALING_HEIGHT     = 25;
-    const int              KEYBOARD_KEY_WIDTH      = 50;
-    const int              EMPTY_KEY_WIDTH         = 25;
+    const double  START_WIDGET_SIZE_RATIO = 3./7.;
+    const QSize   START_BUTTON_SIZE       = QSize(230, 110);
+    const QSize   LANGUAGE_CHANGE_SIZE    = QSize(250, 100);
+    const QSize   SET_UP_WINDOW_SIZE      = QSize(795, 440);
+    const int     ICON_MIN_HEIGHT         = 80;
+    const int     ICON_SCALING_HEIGHT     = 25;
+    const int     KEYBOARD_KEY_WIDTH      = 50;
+    const int     EMPTY_KEY_WIDTH         = 25;
 
-    // Errors
-    const char*            SETTINGS_NO_FOUND       = "Unable to find \"Settings.json\" in \"Resource\" folder.";
-    const char*            TECH_TREE_NO_FOUND      = "Unable to find \"TechTree.json\" in \"Resource\" folder.";
-    const char*            THEME_FOLDER_NO_FOUND   = "Unable to find \"Resource/Theme\" folder.";
-    const char*            ICONS_FOLDER_NO_FOUND   = "Unable to find \"Resource/Icons\" folder.";
-    const char*            TRANSLATIONS_NO_FOUND   = "Unable to find \"Resource/Translations\" folder.";
-    const char*            UNKNOWN_ERROR           = "Unknown error has been occured.";
+    // Error strings
+    const char*   SETTINGS_NO_FOUND       = "Unable to find \"Settings.json\" in \"Resource\" folder.";
+    const char*   TECH_TREE_NO_FOUND      = "Unable to find \"TechTree.json\" in \"Resource\" folder.";
+    const char*   THEME_FOLDER_NO_FOUND   = "Unable to find \"Resource/Theme\" folder.";
+    const char*   ICONS_FOLDER_NO_FOUND   = "Unable to find \"Resource/Icons\" folder.";
+    const char*   TRANSLATIONS_NO_FOUND   = "Unable to find \"Resource/Translations\" folder.";
+    const char*   UNKNOWN_ERROR           = "Unknown error has been occured.";
 
-    const QString          CSF_ERROR_HEADER        = QObject::tr("Error with CSF file");
-    const QString          CSF_EMPTY_STRING_ERROR  = QObject::tr("Cannot process the empty file.");
-    const QString          CSF_DOESNT_EXIST_ERROR  = QObject::tr("Unable to find selected CSF file.");
-    const QString          CSF_NO_CTLBAR_ERROR     = QObject::tr("Choosen CSF file doesn't have CONTROLBAR category. Make sure that you are load correct file.");
-    const QString          CSF_NO_OBJECT_ERROR     = QObject::tr("Choosen CSF file doesn't have OBJECT category. Make sure that you are load correct file.");
-    const QString          CSF_EMPTY_DATA_ENGLISH  = QObject::tr("Unable find \"generals.csf\" file in \"Game/Data/English\" folder.");
+    // Translated error strings
+    const QString CSF_ERROR_HEADER        = QObject::tr("Error with CSF file");
+    const QString CSF_EMPTY_STRING_ERROR  = QObject::tr("Cannot process the empty file.");
+    const QString CSF_DOESNT_EXIST_ERROR  = QObject::tr("Unable to find selected CSF file.");
+    const QString CSF_NO_CTLBAR_ERROR     = QObject::tr("Choosen CSF file doesn't have CONTROLBAR category. Make sure that you are load correct file.");
+    const QString CSF_NO_OBJECT_ERROR     = QObject::tr("Choosen CSF file doesn't have OBJECT category. Make sure that you are load correct file.");
+    const QString CSF_EMPTY_DATA_ENGLISH  = QObject::tr("Unable to find \"generals.csf\" file in \"%1\" folder.");
+    const QString CSF_NO_CSF_IN_BIG       = QObject::tr("Unable to find CSF file inside BIG archive \"%1\"");
+    const QString GMFILES_SRCH_ERR_HEADER = QObject::tr("Game files search error");
+    const QString BIG_NO_ENGLISH_ZH       = QObject::tr("Unable to find \"EnglishZH.big\" archive in \"%1\" folder.");
 
-    // Other constants
-    const QString          HOTKEY_CSF_CATEGORY     = "CONTROLBAR";
-    const QString          OBJECT_CSF_CATEGORY     = "OBJECT";
-    const QVector<QString> GLA_SHORT_NAMES         = {"GLA", "TOX", "STL", "DML"};
-    const QVector<QString> USA_SHORT_NAMES         = {"USA", "SWG", "AIR", "LSR"};
-    const QVector<QString> PRC_SHORT_NAMES         = {"PRC", "TNK", "INF", "NUK"};
+    // Other string constants
+    const QString HOTKEY_CSF_CATEGORY     = "CONTROLBAR";
+    const QString OBJECT_CSF_CATEGORY     = "OBJECT";
+
+    // Constant containers
+    const QVector<QString> GLA_SHORT_NAMES = {"GLA", "TOX", "STL", "DML"};
+    const QVector<QString> USA_SHORT_NAMES = {"USA", "SWG", "AIR", "LSR"};
+    const QVector<QString> PRC_SHORT_NAMES = {"PRC", "TNK", "INF", "NUK"};
 
     const QSet<Qt::Key> DEFAULT_ALLOWED_KEYS =
     {

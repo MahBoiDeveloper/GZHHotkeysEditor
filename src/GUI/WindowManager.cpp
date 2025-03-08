@@ -7,6 +7,7 @@
 #include "../Unsorted.hpp"
 #include "../Convert.hpp"
 #include "../Registry.hpp"
+#include "../Exception.hpp"
 
 #include "ImageManager.hpp"
 #include "WindowManager.hpp"
@@ -56,7 +57,17 @@ void WindowManager::StartUpWindow_AcceptConfiguration()
         return;
     }
 
-    CSF_PARSER = std::make_unique<CSFParser>(strCSFFilePath);
+    try
+    {
+        CSF_PARSER = std::make_unique<CSFParser>(strCSFFilePath);
+    }
+    catch(const Exception& e)
+    {
+        QMessageBox::critical(nullptr, L10N(PROGRAM_CONSTANTS->CSF_ERROR_HEADER),
+                                       e.what());
+        return;
+    }
+    
 
     if (!CSF_PARSER->ExistCategory(PROGRAM_CONSTANTS->HOTKEY_CSF_CATEGORY))
     {

@@ -2,9 +2,7 @@
 #include <list>
 #include <memory>
 #include <string>
-#include <sstream>
 #include <fstream>
-#include <QStringList>
 
 #define CSF_PARSER CSFParser::Instance
 

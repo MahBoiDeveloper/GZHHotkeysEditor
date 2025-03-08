@@ -1,3 +1,6 @@
+#include <sstream>
+#include <QStringList>
+
 #include "../Logger.hpp"
 #include "../Convert.hpp"
 #include "../Unsorted.hpp"
@@ -17,20 +20,46 @@ using namespace std;
 #pragma region Parsing
     void CSFParser::Parse(const char* strFilePath)
     {
-        Path = QString(strFilePath).toStdWString();
-        ifstream csfFile(Path.c_str(), ios::binary | ios::in);
-        LOGMSG("Attempt to read binary file \"" + Path.c_str() + "\"...");
+        Path = QString(strFilePath).toUpper().toStdWString();
+        ifstream file(Path.c_str(), ios::binary | ios::in);
 
-        if (csfFile.is_open())
+        if (file.is_open())
         {
-            ReadHeader(&csfFile);
-            ReadBody(&csfFile);
+            if (Path.ends_with(L".BIG"))
+            {
+                LOGMSG("BIG archive detected. Try to find CSF file inside...");
+                
+                bool searchResult = false;
+                char fourC[4] = {' ', ' ', ' ', ' '};
+                std::streampos fourCharOffset = sizeof(char) * 4;
 
+                while (!searchResult && file.good())
+                {
+                    file.read(fourC, fourCharOffset);
+                    searchResult = (fourC[0] == FSC[0]) && (fourC[1] == FSC[1]) && (fourC[2] == FSC[2]) && (fourC[3] == FSC[3]);
+                }
+                
+                if (!file.good())
+                {
+                    LOGMSG(PROGRAM_CONSTANTS->CSF_NO_CSF_IN_BIG.arg(Path));
+                    throw Exception(L10N(PROGRAM_CONSTANTS->CSF_NO_CSF_IN_BIG).arg(Path));
+                }
+
+                auto offset = file.tellg();
+                file.clear();
+                file.seekg(offset - fourCharOffset);
+    
+                LOGMSG("CSF file data found at offset : " + reinterpret_cast<const uint64_t&>(offset));
+            }
+
+            LOGMSG("Attempt to read string table from \"" + Path.c_str() + "\" file...");
+            ReadHeader(&file);
+            ReadBody(&file);
             LOGMSG("File \"" + Path.c_str() + "\" has been parsed; strings count : " + Table.size());
         }
         else
         {
-            throw Exception(QString("") + "Bad file name; unable to open file \"" + Path + "\"");
+            throw Exception(QString("") + "Bad file name error; unable to open file \"" + Path + "\"");
         }
     }
     void CSFParser::Parse(const wstring& filePath)        { Parse(filePath.c_str()); }
