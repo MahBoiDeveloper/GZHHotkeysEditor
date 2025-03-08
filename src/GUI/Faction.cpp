@@ -89,22 +89,21 @@ void Faction::SetHotkey(const QString& goName, const QString& actName, const QSt
 {
     for(Faction::GameObject& currGO : techTree.keys())
     {
-        if(currGO.iconName == goName)
-        {
-            for(QVector<Faction::Action> currLt : currGO.keyboardLayouts)
-            {
-                for(Faction::Action currAct : currLt)
-                {
-                    if(currAct.iconName == actName)
-                    {
-                        CSF_PARSER->SetHotkey(currAct.hotkeyString, hk.toStdWString()[0]);
-                        break;
-                    }
-                }
-            }
+        if(currGO.iconName != goName)
+            continue;
 
-            break;
+        for(QVector<Faction::Action> currLt : currGO.keyboardLayouts)
+        {
+            for(Faction::Action currAct : currLt)
+            {
+                if(currAct.iconName != actName)
+                    continue;
+                
+                CSF_PARSER->SetHotkey(currAct.hotkeyString, hk.toStdWString()[0]);
+                break;
+            }
         }
+        break;
     }
 }
 
