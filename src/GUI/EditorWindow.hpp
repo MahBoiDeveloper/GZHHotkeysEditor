@@ -7,6 +7,7 @@
 
 #include "../Parsers/JSONFile.hpp"
 #include "../Faction.hpp"
+#include "KeyboardLayout.hpp"
 #include "ActionHotkeyWidget.hpp"
 
 class EditorWindow final : public QMainWindow
@@ -22,9 +23,9 @@ private: // Data
     QButtonGroup* pFactionsButtonsGroup = nullptr;
 
     // Graphic widgets in a single copy
-    QTreeWidget*  pEntitiesTreeWidget   = nullptr;
-    QScrollArea*  pHotkeysArea          = nullptr;
-    QScrollArea*  pKeyboardWindow       = nullptr;
+    QTreeWidget*    pEntitiesTreeWidget = nullptr;
+    QScrollArea*    pHotkeysArea        = nullptr;
+    KeyboardLayout* pKeyboardLayout     = nullptr;
 
     // Renewable widgets
     QTabWidget*   pHotkeysPanelsWidget  = nullptr;
@@ -49,8 +50,6 @@ private:
     void SetHotkeysPanels();
     /// @brief Set hotkeys colors. Default color is black. Changes color to red for keys, that is conflict to each other in one unit/building.
     void HighlightCurrentKeys();
-    /// @brief Set key's styles on keyboard block to property `status=null`.
-    void KeyboardWindow_Nullify();
     /// @brief Replace current action assigned hotkey with new one.
     void SetActionHotkey(const QString& fctShortName, const QString& goName, const QString& actName, const QString& hk);
     /// @brief Creates line of keys for keyboard layout.
@@ -59,7 +58,6 @@ private:
     void Save();
 
 private slots:
-    void KeyboardWindow_Update(int id = 0);
     void ActAbout_Triggered();
     void ActSettings_Triggered();
     void ActSave_Triggered();

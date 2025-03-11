@@ -16,6 +16,7 @@
 
 #include "ImageManager.hpp"
 #include "WindowManager.hpp"
+#include "KeyboardLayout.hpp"
 #include "SettingsWindow.hpp"
 #include "EditorWindow.hpp"
 
@@ -24,7 +25,6 @@ EditorWindow::EditorWindow(QWidget* parent)
     , pFactionsButtonsGroup{new QButtonGroup{this}}
     , pEntitiesTreeWidget{new QTreeWidget}
     , pHotkeysArea{new QScrollArea}
-    , pKeyboardWindow{new QScrollArea}
     , pHotkeysPanelsWidget{nullptr}
     , pAboutDialog{nullptr}
 {
@@ -115,31 +115,10 @@ EditorWindow::EditorWindow(QWidget* parent)
     pHotkeysArea->setWidgetResizable(true);
 
     // Draw keyboard with letters
+    pKeyboardLayout = new KeyboardLayout();
+    QScrollArea* pKeyboardWindow = new QScrollArea();
     pKeyboardWindow->setObjectName("Keyboard");
-    QHBoxLayout* pKeyboardFirstLine;
-    QHBoxLayout* pKeyboardSecondLine;
-    QHBoxLayout* pKeyboardThirdLine;
-    QVBoxLayout* pKeyboardLines = new QVBoxLayout();
-    
-    QPushButton* btnEmptyButton= new QPushButton();
-    btnEmptyButton->setProperty("key", "null");
-    btnEmptyButton->setFixedWidth(PROGRAM_CONSTANTS->EMPTY_KEY_WIDTH);
-
-    pKeyboardFirstLine  = CreateKeysOnKeyboard("QWERTYUIOP");
-    pKeyboardSecondLine = CreateKeysOnKeyboard("ASDFGHJKL");
-    pKeyboardThirdLine  = CreateKeysOnKeyboard("ZXCVBNM");
-    
-    pKeyboardThirdLine->addWidget(btnEmptyButton);
-
-    pKeyboardFirstLine->setAlignment(Qt::AlignHCenter);
-    pKeyboardSecondLine->setAlignment(Qt::AlignHCenter);
-    pKeyboardThirdLine->setAlignment(Qt::AlignHCenter);
-
-    pKeyboardLines->addLayout(pKeyboardFirstLine);
-    pKeyboardLines->addLayout(pKeyboardSecondLine);
-    pKeyboardLines->addLayout(pKeyboardThirdLine);
-
-    pKeyboardWindow->setLayout(pKeyboardLines);
+    pKeyboardWindow->setLayout(pKeyboardLayout);
 
     QVBoxLayout* ltGameObject = new QVBoxLayout();
     ltGameObject->addWidget(pHotkeysArea, 2);
@@ -331,7 +310,7 @@ void EditorWindow::SetHotkeysPanels()
     pHotkeysPanelsWidget->setMinimumSize(pHotkeysPanelsWidget->sizeHint());
     pHotkeysArea->setWidget(pHotkeysPanelsWidget);
 
-    connect(pHotkeysPanelsWidget, &QTabWidget::currentChanged, this, &EditorWindow::KeyboardWindow_Update);
+    connect(pHotkeysPanelsWidget, &QTabWidget::currentChanged, this, [this](int id){ pKeyboardLayout->Update(*pHotkeysPanelsWidget, id);});
 
     emit pHotkeysPanelsWidget->currentChanged(0);
 }
@@ -359,46 +338,6 @@ void EditorWindow::HighlightCurrentKeys()
             if (!PROGRAM_CONSTANTS->pSettingsFile->GetAllowedKeys().contains(Convert::ToQtKey(thisHotkey[0])))
                 hotkeyWidget->HighlightKey(true);
         }
-    }
-}
-
-void EditorWindow::KeyboardWindow_Nullify()
-{
-    for (QChar& qc : QString("QWERTYUIOPASDFGHJKLZXCVBNM")) 
-    {
-        auto key = pKeyboardWindow->findChild<QPushButton*>(qc, Qt::FindChildrenRecursively);
-        key->setProperty("status", "null");
-        key->style()->unpolish(key);
-        key->style()->polish(key);
-        key->update();
-    }
-}
-
-void EditorWindow::KeyboardWindow_Update(int id)
-{
-    KeyboardWindow_Nullify();
-    auto currTab = pHotkeysPanelsWidget->findChild<QWidget*>(QString("Layout ") + QString::number(id + 1), Qt::FindChildrenRecursively);
-        
-    QString accum;
-    for (const auto& elem : currTab->findChildren<ActionHotkeyWidget*>(QString(), Qt::FindChildrenRecursively))
-        accum += QString(elem->GetHotkey()).toUpper();
-
-    for (const QChar& ch : accum)
-    {
-        auto key = pKeyboardWindow->findChild<QPushButton*>(ch, Qt::FindChildrenRecursively);
-
-        if (key == nullptr)
-            continue;
-
-        if (accum.count(ch) < 2) key->setProperty("status", "good");
-        else                     key->setProperty("status", "bad");
-
-        if (!PROGRAM_CONSTANTS->pSettingsFile->GetAllowedKeys().contains(Convert::ToQtKey(ch)))
-            key->setProperty("status", "bad");
-        
-        key->style()->unpolish(key);
-        key->style()->polish(key);
-        key->update();
     }
 }
 
@@ -517,20 +456,6 @@ void EditorWindow::ActSettings_Triggered()
     }
 
     pSettingsWindow->show();
-}
-
-QHBoxLayout* EditorWindow::CreateKeysOnKeyboard(const QString& str)
-{
-    QHBoxLayout* pKeys = new QHBoxLayout();
-    for (const auto& ch : str)
-    {
-        auto tmp = new QPushButton(ch);
-        tmp->setProperty("key", ch);
-        tmp->setObjectName(ch);
-        tmp->setFixedWidth(PROGRAM_CONSTANTS->KEYBOARD_KEY_WIDTH);
-        pKeys->addWidget(tmp);
-    }
-    return pKeys;
 }
 
 void EditorWindow::ActSave_Triggered()
