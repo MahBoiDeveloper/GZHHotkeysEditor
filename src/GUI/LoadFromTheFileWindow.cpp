@@ -47,7 +47,7 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
     QFileDialog* fileDialog = new QFileDialog(); // dialog for selecting the path to the file
     fileDialog->setFileMode(QFileDialog::FileMode::ExistingFile);
     fileDialog->setAcceptMode(QFileDialog::AcceptMode::AcceptOpen);
-    fileDialog->setNameFilters({tr("Binary files") + " (*.csf, *.big)",
+    fileDialog->setNameFilters({tr("Binary files") + " (*.csf *.big)",
                                 tr("Any files")  + " (*)"});
     connect(fileDialog, &QFileDialog::fileSelected, lneFilePath, &QLineEdit::setText);
     
