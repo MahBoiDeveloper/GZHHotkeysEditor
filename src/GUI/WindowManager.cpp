@@ -53,6 +53,12 @@ bool WindowManager::InitializeCSFParser()
         return false;
     }
 
+    if (CSF_PARSER != nullptr)
+    {
+        LOGMSG("CSF parser has been initialized. Re-initializing existing parser.");
+        CSF_PARSER = nullptr;
+    }
+    
     try
     {
         CSF_PARSER = std::make_unique<CSFParser>(strCSFFilePath);
