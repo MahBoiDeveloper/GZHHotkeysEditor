@@ -19,7 +19,10 @@ private: // Data
 public:
     inline static std::unique_ptr<WindowManager> Instance   = nullptr;
 
-public: // Methods
+private: // Methods
+    /// @brief Checks csf file to be compitable with GZH format.
+    bool InitializeCSFParser();
+public:
     WindowManager();
     ~WindowManager();
     /// @brief Enable start widget rendering.

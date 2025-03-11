@@ -37,24 +37,20 @@ WindowManager::WindowManager()
     LOGMSG("Launch window has been loaded");
 }
 
-void WindowManager::StartUpWindow_AcceptConfiguration()
+bool WindowManager::InitializeCSFParser()
 {
-    // 2nd init protection 
-    if (pHotkeysEditor != nullptr)
-        return;
-
     if (strCSFFilePath == "")
     {
         QMessageBox::critical(nullptr, L10N(PROGRAM_CONSTANTS->CSF_ERROR_HEADER),
                                        L10N(PROGRAM_CONSTANTS->CSF_EMPTY_STRING_ERROR));
-        return;
+        return false;
     }
 
     if (!QFile::exists(strCSFFilePath))
     {
         QMessageBox::critical(nullptr, L10N(PROGRAM_CONSTANTS->CSF_ERROR_HEADER),
                                        L10N(PROGRAM_CONSTANTS->CSF_DOESNT_EXIST_ERROR));
-        return;
+        return false;
     }
 
     try
@@ -65,7 +61,7 @@ void WindowManager::StartUpWindow_AcceptConfiguration()
     {
         QMessageBox::critical(nullptr, L10N(PROGRAM_CONSTANTS->CSF_ERROR_HEADER),
                                        e.what());
-        return;
+        return false;
     }
     
 
@@ -73,15 +69,27 @@ void WindowManager::StartUpWindow_AcceptConfiguration()
     {
         QMessageBox::critical(nullptr, L10N(PROGRAM_CONSTANTS->CSF_ERROR_HEADER), 
                                        L10N(PROGRAM_CONSTANTS->CSF_NO_CTLBAR_ERROR));
-        return;
+        return false;
     }
 
     if (!CSF_PARSER->ExistCategory(PROGRAM_CONSTANTS->OBJECT_CSF_CATEGORY))
     {
         QMessageBox::critical(nullptr, L10N(PROGRAM_CONSTANTS->CSF_ERROR_HEADER), 
                                        L10N(PROGRAM_CONSTANTS->CSF_NO_OBJECT_ERROR));
-        return;
+        return false;
     }
+
+    return true;
+}
+
+void WindowManager::StartUpWindow_AcceptConfiguration()
+{
+    // 2nd init protection 
+    if (pHotkeysEditor != nullptr)
+        return;
+
+    if (!InitializeCSFParser())
+        return;
 
     LOGMSG("Loading editor window...");
     pHotkeysEditor = new EditorWindow();
