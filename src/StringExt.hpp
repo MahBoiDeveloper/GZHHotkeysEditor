@@ -3,7 +3,8 @@
 #include <concepts>
 #include <QString>
 
-#define L10N(x) StringExt::l10n(x)
+#define L10N(x)   StringExt::l10n(x)
+#define nameof(x) QString(#x)
 
 template<class T>
 concept IsSymbol = std::same_as<T, char> || std::same_as<T, wchar_t> || std::same_as<T, QChar>;

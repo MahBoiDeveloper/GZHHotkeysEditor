@@ -7,7 +7,7 @@
 #include <QFontMetrics>
 #include <QLabel>
 
-#include "../NameOfExt.hpp"
+#include "../StringExt.hpp"
 #include "LoadFromTheFileWindow.hpp"
 
 LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
@@ -35,7 +35,6 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
     lblSelectFile->setObjectName(nameof(lblSelectFile));
     lblSelectFile->setAlignment(Qt::AlignLeft);
 
-    // configure file path selection
     QLineEdit* lneFilePath = new QLineEdit();
     lneFilePath->setObjectName(nameof(lneFilePath));
     lneFilePath->setMaximumWidth(700);
@@ -51,7 +50,6 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
                                 tr("Any files")  + " (*)"});
     connect(fileDialog, &QFileDialog::fileSelected, lneFilePath, &QLineEdit::setText);
     
-    // review button
     QPushButton* btnReview = new QPushButton(tr("REVIEW"));
     btnReview->setObjectName(nameof(btnReview));
     btnReview->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -62,7 +60,6 @@ LoadFromTheFileWindow::LoadFromTheFileWindow(QWidget* parent) : QWidget(parent)
     ltReview->addSpacing(5);
     ltReview->addWidget(btnReview);
 
-    // configure dialog view
     QVBoxLayout* ltMain = new QVBoxLayout();
     ltMain->setContentsMargins(80,0,80,0);
     ltMain->setAlignment(Qt::Alignment::enum_type::AlignCenter);

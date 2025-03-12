@@ -10,7 +10,6 @@
 #include "../Parsers/CSFParser.hpp"
 #include "../Info.hpp"
 #include "../Logger.hpp"
-#include "../NameOfExt.hpp"
 #include "../Unsorted.hpp"
 #include "../Convert.hpp"
 

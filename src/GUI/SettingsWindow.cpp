@@ -1,7 +1,6 @@
 #include <windows.h> // Allows disable console
 
 #include "../Logger.hpp"
-#include "../NameOfExt.hpp"
 #include "../ProgramConstants.hpp"
 #include "../Unsorted.hpp"
 #include "WindowManager.hpp"

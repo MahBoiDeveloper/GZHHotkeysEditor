@@ -8,7 +8,6 @@
 
 #include "../Logger.hpp"
 #include "../Registry.hpp"
-#include "../NameOfExt.hpp"
 #include "LoadFromTheGameWindow.hpp"
 
 LoadFromTheGameWindow::LoadFromTheGameWindow(QWidget* parent) : QWidget(parent)

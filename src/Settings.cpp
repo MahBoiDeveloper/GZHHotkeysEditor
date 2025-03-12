@@ -3,7 +3,6 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
-#include "NameOfExt.hpp"
 #include "Convert.hpp"
 #include "Registry.hpp"
 #include "Logger.hpp"
