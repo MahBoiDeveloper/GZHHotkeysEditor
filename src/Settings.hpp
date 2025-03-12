@@ -13,11 +13,11 @@ class Settings final
 {
 private: // Data
     JSONFile      json;
-    QSet<Qt::Key> allowedKeys;
-    bool          enabledConsole;
-    bool          enabledDiscordRPC;
-    bool          enabledForceOSLangOnStartUp;
-    Languages     language;
+    QSet<Qt::Key> AllowedHotkeys;
+    bool          DebugConsole;
+    bool          DiscordRPC;
+    bool          ForceSystemLanguage;
+    Languages     Language;
 
 private: // Methods
     bool FromQtCheckState(const Qt::CheckState& state);
