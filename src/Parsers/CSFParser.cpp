@@ -55,11 +55,11 @@ using namespace std;
             LOGMSG("Attempt to read string table from \"" + Path.c_str() + "\" file...");
             ReadHeader(&file);
             ReadBody(&file);
-            LOGMSG("File \"" + Path.c_str() + "\" has been parsed; strings count : " + Table.size());
+            LOGMSG("CSF file has been parsed. Strings count: " + Table.size());
         }
         else
         {
-            throw Exception(QString("") + "Bad file name error; unable to open file \"" + Path + "\"");
+            throw Exception(QString("") + "Bad file name error. Unable to open file \"" + Path + "\"");
         }
     }
     void CSFParser::Parse(const wstring& filePath)        { Parse(filePath.c_str()); }
