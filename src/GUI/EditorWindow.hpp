@@ -67,5 +67,5 @@ private slots:
     void ActOpen_Triggered();
 
 signals:
-    Languages languageChanged(int index);
+    void languageChanged();
 };

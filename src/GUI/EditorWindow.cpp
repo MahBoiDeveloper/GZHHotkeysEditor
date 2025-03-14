@@ -361,6 +361,20 @@ void EditorWindow::HighlightCurrentKeys()
     }
 }
 
+QHBoxLayout* EditorWindow::CreateKeysOnKeyboard(const QString& str)
+{
+    QHBoxLayout* pKeys = new QHBoxLayout();
+    for (const auto& ch : str)
+    {
+        auto tmp = new QPushButton(ch);
+        tmp->setProperty("key", ch);
+        tmp->setObjectName(ch);
+        tmp->setFixedWidth(PROGRAM_CONSTANTS->KEYBOARD_KEY_WIDTH);
+        pKeys->addWidget(tmp);
+    }
+    return pKeys;
+}
+
 void EditorWindow::KeyboardWindow_Nullify()
 {
     for (QChar& qc : QString("QWERTYUIOPASDFGHJKLZXCVBNM")) 
@@ -513,23 +527,12 @@ void EditorWindow::ActSettings_Triggered()
                                                       & ~Qt::WindowMinimizeButtonHint);
         pSettingsWindow->setWindowModality(Qt::WindowModality::ApplicationModal);
         pSettingsWindow->setLayout(lt);
+
+        connect(sw, &SettingsWindow::languageChanged, this,            [this](){ emit languageChanged(); });
+        connect(sw, &SettingsWindow::btnBackClicked,  pSettingsWindow, &QWidget::close);
     }
 
     pSettingsWindow->show();
-}
-
-QHBoxLayout* EditorWindow::CreateKeysOnKeyboard(const QString& str)
-{
-    QHBoxLayout* pKeys = new QHBoxLayout();
-    for (const auto& ch : str)
-    {
-        auto tmp = new QPushButton(ch);
-        tmp->setProperty("key", ch);
-        tmp->setObjectName(ch);
-        tmp->setFixedWidth(PROGRAM_CONSTANTS->KEYBOARD_KEY_WIDTH);
-        pKeys->addWidget(tmp);
-    }
-    return pKeys;
 }
 
 void EditorWindow::ActSave_Triggered()

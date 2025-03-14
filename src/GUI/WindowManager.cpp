@@ -56,7 +56,7 @@ bool WindowManager::InitializeCSFParser()
     if (CSF_PARSER != nullptr)
     {
         LOGMSG("CSF parser has been initialized. Re-initializing existing parser.");
-        CSF_PARSER = nullptr;
+        CSF_PARSER = nullptr; // It will cause a bug, if it will be used twice.
     }
     
     try
@@ -69,7 +69,6 @@ bool WindowManager::InitializeCSFParser()
                                        e.what());
         return false;
     }
-    
 
     if (!CSF_PARSER->ExistCategory(PROGRAM_CONSTANTS->HOTKEY_CSF_CATEGORY))
     {

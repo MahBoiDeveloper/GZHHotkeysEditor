@@ -19,12 +19,10 @@ private: // Methods
     void AttachConnections();
     /// @brief Disconnects slots and signals.
     void DetachConnections();
-public:
-    SetUpWindowsWrapper(QWidget* parent = nullptr);
-
-private:
     /// @brief Initialize `GreetingWindow`, `LoadFromTheGameWindow`, `LoadFromTheFileWindow`.
     void AddWidgets();
+public:
+    SetUpWindowsWrapper(QWidget* parent = nullptr);
 
 private slots:
     /// @brief Show `GreetingWindow`, if button `Back` has been clicked.
