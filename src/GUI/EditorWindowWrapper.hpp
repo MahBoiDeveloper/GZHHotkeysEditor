@@ -13,6 +13,10 @@ private: // Methods
     void AttachConnections();
     /// @brief Disconnects slots and signals.
     void DetachConnections();
+    /// @brief Add editor window widget to this wrapper.
+    void AddWidgets();
 public:
     EditorWindowWrapper(QWidget* parent = nullptr);
+public slots:
+    void EditorWindow_LanguageChanged();
 };
