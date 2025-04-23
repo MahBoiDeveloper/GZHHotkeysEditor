@@ -101,6 +101,16 @@ void SettingsWindow::BtnSave_Clicked()
     if (static_cast<Languages>(cmbLanguage->currentIndex()) != PROGRAM_CONSTANTS->pSettingsFile->GetLanguage())
     {
         PROGRAM_CONSTANTS->pSettingsFile->SetLanguage(static_cast<Languages>(cmbLanguage->currentIndex()));
+
+        if (WINDOW_MANAGER->pHotkeysEditor != nullptr)
+        {
+            if (WINDOW_MANAGER->pHotkeysEditor->hasDataChanged)
+            {
+                // TODO:
+                //      Show message box about drop all changes in editor
+            }
+        }
+
         emit languageChanged();
     }
 

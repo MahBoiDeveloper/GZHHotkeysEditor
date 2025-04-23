@@ -5,7 +5,9 @@
 class EditorWindowWrapper final : public QStackedWidget
 {
     Q_OBJECT
-private: // Data
+public: // Data
+    bool hasDataChanged = false;
+private:
     EditorWindow* pEditorWindow = nullptr;
 
 private: // Methods

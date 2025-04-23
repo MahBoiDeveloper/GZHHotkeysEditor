@@ -253,17 +253,17 @@
         <translation type="vanished">Возникла неизвестная ошибка</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="73"/>
+        <location filename="../../ProgramConstants.hpp" line="74"/>
         <source>Error with CSF file</source>
         <translation>Ошибка с CSF файлом</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="74"/>
+        <location filename="../../ProgramConstants.hpp" line="75"/>
         <source>Cannot process the empty file.</source>
         <translation>Невозможно обработать пустой файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="75"/>
+        <location filename="../../ProgramConstants.hpp" line="76"/>
         <source>Unable to find selected CSF file.</source>
         <translation>Невозможно найти указанный CSF файл.</translation>
     </message>
@@ -274,7 +274,7 @@ Make sure that you are load correct file.</source>
 Проверьте, что вы загружаете правильный файл.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="76"/>
+        <location filename="../../ProgramConstants.hpp" line="77"/>
         <source>Choosen CSF file doesn&apos;t have CONTROLBAR category. Make sure that you are load correct file.</source>
         <translation>У выбранного CSF файла отсутствует категория CONTROLBAR. Проверьте, что вы загружаете правильный файл.</translation>
     </message>
@@ -287,7 +287,7 @@ Make sure that you are load correct file.</source>
         <translation type="vanished">Невозможно найти &quot;generals.csf&quot; в папке &quot;Game/Data/English&quot;.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="77"/>
+        <location filename="../../ProgramConstants.hpp" line="78"/>
         <source>Choosen CSF file doesn&apos;t have OBJECT category. Make sure that you are load correct file.</source>
         <translation>У выбранного CSF файла отсутствует категория OBJECT. Проверьте, что вы загружаете правильный файл.</translation>
     </message>
@@ -296,42 +296,42 @@ Make sure that you are load correct file.</source>
         <translation type="vanished">Невозможно найти &quot;generals.csf&quot; в папке &quot;Game/Data/English&quot;.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="78"/>
+        <location filename="../../ProgramConstants.hpp" line="79"/>
         <source>Unable to find &quot;generals.csf&quot; file in &quot;%1&quot; folder.</source>
         <translation>Невозможно найти &quot;generals.csf&quot; в папке &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="79"/>
+        <location filename="../../ProgramConstants.hpp" line="80"/>
         <source>Unable to find CSF file inside BIG archive &quot;%1&quot;</source>
         <translation>Невозможно найти CSF файл внутри BIG архива &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="80"/>
+        <location filename="../../ProgramConstants.hpp" line="81"/>
         <source>Game files search error</source>
         <translation>Ошибка поиска по игровым файлам</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="81"/>
+        <location filename="../../ProgramConstants.hpp" line="82"/>
         <source>Unable to find &quot;EnglishZH.big&quot; archive in &quot;%1&quot; folder.</source>
         <translation>Невозможно найти &quot;EnglishZH.big&quot; в папке &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="114"/>
+        <location filename="../../ProgramConstants.hpp" line="115"/>
         <source>Buildings</source>
         <translation>Здания</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="115"/>
+        <location filename="../../ProgramConstants.hpp" line="116"/>
         <source>Infantry</source>
         <translation>Пехота</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="116"/>
+        <location filename="../../ProgramConstants.hpp" line="117"/>
         <source>Vehicles</source>
         <translation>Техника</translation>
     </message>
     <message>
-        <location filename="../../ProgramConstants.hpp" line="117"/>
+        <location filename="../../ProgramConstants.hpp" line="118"/>
         <source>Aircrafts</source>
         <translation>Авиация</translation>
     </message>

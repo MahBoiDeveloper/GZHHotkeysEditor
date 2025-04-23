@@ -30,7 +30,7 @@ EditorWindow::EditorWindow(QWidget* parent)
     SetFactions();
     LOGMSG("Total faction count that has been read from json file: " + factionVector.size());
 
-    resize(1200, 800);
+    resize(PROGRAM_CONSTANTS->EDITOR_WINDOW_SIZE);
     ConfigureMenu();
 
     pEntitiesTreeWidget->header()->hide();
@@ -49,7 +49,7 @@ EditorWindow::EditorWindow(QWidget* parent)
         ltFactions = new QHBoxLayout();
         ltFactions->setObjectName(nameof(ltFactions));
 
-        // only 3 sections with factions and subfactions, 4 in each
+        // Only 3 blocks with factions and subfactions. 4 in each block and 12 in total
         for (int sectionIndex = 0; sectionIndex < Faction::BASIC_FACTION_COUNT; sectionIndex += 4)
         {
             QVBoxLayout* ltCurrentFaction    = new QVBoxLayout();
@@ -298,6 +298,9 @@ void EditorWindow::SetHotkeysPanels()
 
                 // Highlight keys for entity
                 HighlightCurrentKeys();
+
+                // Set flag into wrapper
+                WINDOW_MANAGER->pHotkeysEditor->hasDataChanged = true;
 
                 emit pHotkeysPanelsWidget->currentChanged(i);
             });

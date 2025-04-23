@@ -97,7 +97,7 @@ void WindowManager::StartUpWindow_AcceptConfiguration()
         return;
 
     LOGMSG("Loading editor window...");
-    pHotkeysEditor = new EditorWindow();
+    pHotkeysEditor = new EditorWindowWrapper();
     pHotkeysEditor->setWindowTitle(strWindowName);
     pHotkeysEditor->show();
     pStartUpWindow->close();
@@ -112,7 +112,7 @@ void WindowManager::SetTranslator()
         qApp->removeTranslator(pAppTranslator);
 
     lang = PROGRAM_CONSTANTS->pSettingsFile->GetLanguage();
-    
+
     QString lngShortName = Unsorted::GetLanguageShortName(lang);
     LOGMSG("Set editor language to " + lngShortName.toUpper());
 

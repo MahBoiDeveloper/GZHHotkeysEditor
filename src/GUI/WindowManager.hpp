@@ -4,7 +4,7 @@
 #include "../ProgramConstants.hpp"
 
 #include "SetUpWindowsWrapper.hpp"
-#include "EditorWindow.hpp"
+#include "EditorWindowWrapper.hpp"
 
 #define WINDOW_MANAGER WindowManager::Instance
 
@@ -12,12 +12,12 @@ class WindowManager final
 {
 private: // Data
     SetUpWindowsWrapper* pStartUpWindow = nullptr;
-    EditorWindow*        pHotkeysEditor = nullptr;
     QTranslator*         pAppTranslator = nullptr;
     QString              strWindowName  = PROGRAM_CONSTANTS->COMMON_TITLE;
     QString              strCSFFilePath = "";
 public:
-    inline static std::unique_ptr<WindowManager> Instance   = nullptr;
+    inline static std::unique_ptr<WindowManager> Instance = nullptr;
+    EditorWindowWrapper* pHotkeysEditor = nullptr;
 
 private: // Methods
     /// @brief Checks csf file to be compitable with GZH format.
