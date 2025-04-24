@@ -1,4 +1,5 @@
 #include <windows.h> // Allows disable console
+#include <QMessageBox>
 
 #include "../Logger.hpp"
 #include "../ProgramConstants.hpp"
@@ -90,6 +91,8 @@ SettingsWindow::SettingsWindow(QWidget* parent) : QWidget(parent)
 
 void SettingsWindow::BtnSave_Clicked()
 {
+    bool isRestartRequired = false;
+    
     PROGRAM_CONSTANTS->pSettingsFile->SetConsoleStatus(chkEnableDebugConsole->checkState());
     ConsoleWindowStateUpdate(chkEnableDebugConsole->checkState());
 
@@ -98,23 +101,43 @@ void SettingsWindow::BtnSave_Clicked()
 
     PROGRAM_CONSTANTS->pSettingsFile->SetForceSystemLanguageOnStartUp(chkForceSystemLanguageOnStartUp->checkState());
     
-    if (static_cast<Languages>(cmbLanguage->currentIndex()) != PROGRAM_CONSTANTS->pSettingsFile->GetLanguage())
-    {
+    bool isNewLanguageAssigned = static_cast<Languages>(cmbLanguage->currentIndex()) != PROGRAM_CONSTANTS->pSettingsFile->GetLanguage();
+    
+    if (isNewLanguageAssigned)
         PROGRAM_CONSTANTS->pSettingsFile->SetLanguage(static_cast<Languages>(cmbLanguage->currentIndex()));
 
-        if (WINDOW_MANAGER->pHotkeysEditor != nullptr)
-        {
-            if (WINDOW_MANAGER->pHotkeysEditor->hasDataChanged)
-            {
-                // TODO:
-                //      Show message box about drop all changes in editor
-            }
-        }
+    PROGRAM_CONSTANTS->pSettingsFile->Save();
 
-        emit languageChanged();
+    // Might be useful in future, but right now -- dead code
+    if (isRestartRequired)
+    {
+        QMessageBox msgBox(nullptr);
+        msgBox.setModal(true);
+        msgBox.setIcon(QMessageBox::Icon::Warning);
+        msgBox.setWindowTitle(tr("Setting Apply Confirmation"));
+        msgBox.setInformativeText(tr("You have selected settings that require a complete restart of the editor. Do you want to apply new settings and restart editor?"));
+
+        QPushButton* btnMsgYes    = msgBox.addButton(tr("YES"), QMessageBox::YesRole);
+        QPushButton* btnMsgCancel = msgBox.addButton(tr("CANCEL"), QMessageBox::RejectRole);
+
+        int ret = msgBox.exec();
+
+        switch (ret)
+        {
+            case QMessageBox::RejectRole:
+                PROGRAM_CONSTANTS->pSettingsFile->Parse();
+                return;
+                break;
+            case QMessageBox::AcceptRole:
+            default:
+                break;
+        }
     }
 
-    PROGRAM_CONSTANTS->pSettingsFile->Save();
+    // Moved to last command due to compatibility issues
+    // to save settings into file before other code would be executed
+    if (isNewLanguageAssigned)
+        emit languageChanged();
 }
 
 void SettingsWindow::BtnResetAll_Clicked()

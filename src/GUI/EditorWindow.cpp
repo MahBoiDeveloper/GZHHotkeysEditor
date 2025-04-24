@@ -517,8 +517,8 @@ void EditorWindow::ActSettings_Triggered()
         //    https://forum.qt.io/topic/146107/can-t-show-the-border-of-the-class-inheriting-qwidget-class
         // to understand why QWidget's inherited class has been wrapped into another native QWidget
 
-        auto sw         = new SettingsWindow();
-        auto lt         = new QVBoxLayout();
+        auto sw = new SettingsWindow();
+        auto lt = new QVBoxLayout();
         lt->addWidget(sw);
 
         pSettingsWindow = new QWidget();
@@ -531,7 +531,7 @@ void EditorWindow::ActSettings_Triggered()
         pSettingsWindow->setWindowModality(Qt::WindowModality::ApplicationModal);
         pSettingsWindow->setLayout(lt);
 
-        connect(sw, &SettingsWindow::languageChanged, this,            [this](){ emit languageChanged(); });
+        connect(sw, &SettingsWindow::languageChanged, this,            [this](){ this->pSettingsWindow->close(); emit languageChanged(); });
         connect(sw, &SettingsWindow::btnBackClicked,  pSettingsWindow, &QWidget::close);
     }
 

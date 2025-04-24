@@ -84,43 +84,43 @@
     </message>
     <message>
         <location filename="../EditorWindow.cpp" line="189"/>
-        <location filename="../EditorWindow.cpp" line="523"/>
+        <location filename="../EditorWindow.cpp" line="526"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../EditorWindow.cpp" line="193"/>
-        <location filename="../EditorWindow.cpp" line="488"/>
+        <location filename="../EditorWindow.cpp" line="491"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="324"/>
+        <location filename="../EditorWindow.cpp" line="327"/>
         <source>Layout %1</source>
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="468"/>
+        <location filename="../EditorWindow.cpp" line="471"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="469"/>
+        <location filename="../EditorWindow.cpp" line="472"/>
         <source>Version: </source>
         <translation>Версия: </translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="470"/>
+        <location filename="../EditorWindow.cpp" line="473"/>
         <source>Program licensed with </source>
         <translation>Программа лицензирована под </translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="471"/>
+        <location filename="../EditorWindow.cpp" line="474"/>
         <source>GitHub repository:</source>
         <translation>Репозиторий на GitHub:</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="473"/>
+        <location filename="../EditorWindow.cpp" line="476"/>
         <source>Support development:</source>
         <translation>Поддержать разработку:</translation>
     </message>
@@ -347,39 +347,67 @@ Make sure that you are load correct file.</source>
         <translation type="obsolete">Назад</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="26"/>
+        <location filename="../SettingsWindow.cpp" line="27"/>
         <source>Enable debug console</source>
         <translation>Включить отладочную консоль</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="33"/>
+        <location filename="../SettingsWindow.cpp" line="34"/>
         <source>Enable Discord RPC (WIP)</source>
         <translation>Включить Discord RPC (WIP)</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="40"/>
+        <location filename="../SettingsWindow.cpp" line="41"/>
         <source>Force editor to use system language on start up</source>
         <translation>Использовать язык системы при запуске</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="47"/>
+        <location filename="../SettingsWindow.cpp" line="48"/>
         <source>Language:</source>
         <translation>Язык:</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="64"/>
+        <location filename="../SettingsWindow.cpp" line="65"/>
         <source>SAVE</source>
         <translation>СОХРАНИТЬ</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="68"/>
+        <location filename="../SettingsWindow.cpp" line="69"/>
         <source>RESET ALL</source>
         <translation>СБРОСИТЬ ВСЁ</translation>
     </message>
     <message>
-        <location filename="../SettingsWindow.cpp" line="72"/>
+        <location filename="../SettingsWindow.cpp" line="73"/>
         <source>BACK</source>
         <translation>НАЗАД</translation>
+    </message>
+    <message>
+        <location filename="../SettingsWindow.cpp" line="117"/>
+        <source>Setting Apply Confirmation</source>
+        <translation>Подтверждение применения настроек</translation>
+    </message>
+    <message>
+        <location filename="../SettingsWindow.cpp" line="118"/>
+        <source>You have selected settings that require a complete restart of the editor. Do you want to apply new settings and restart editor?</source>
+        <translation>Вы выбрали настройки, которые требуют полного перезапуска редактора. Вы желаете применить новые настройки и перезапустить редактор?</translation>
+    </message>
+    <message>
+        <location filename="../SettingsWindow.cpp" line="120"/>
+        <source>YES</source>
+        <translation>ДА</translation>
+    </message>
+    <message>
+        <location filename="../SettingsWindow.cpp" line="121"/>
+        <source>CANCEL</source>
+        <translation>ОТМЕНА</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="vanished">Да</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="vanished">Отмена</translation>
     </message>
 </context>
 </TS>
