@@ -9,6 +9,8 @@
 #define LOGSTM      Logger::Instance->Log()
 #define LOGMSG(msg) Logger::Instance->Log(QString("")+msg);Logger::Instance->LogToConsole(QString("")+msg)
 
+#define MAX_LOGS_COUNT 10
+
 class Logger final
 {
 public: // Data

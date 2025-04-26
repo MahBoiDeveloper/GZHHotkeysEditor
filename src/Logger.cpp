@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <ctime>
 #include <filesystem>
+#include <vector>
 #include <QMessageBox>
 #include <QDebug>
 
@@ -13,7 +14,32 @@ using namespace std;
 #pragma region ctor and dtor
     Logger::Logger()
     {
+        // Disable console if it is really opened.
         ShowWindow(GetConsoleWindow(), SW_HIDE);
+        
+        int i = 0;
+
+        vector<filesystem::directory_entry> files;
+        for (const auto& entry : filesystem::directory_iterator("..\\..\\Logs"))
+            if (entry.is_regular_file())
+                files.push_back(entry);
+
+        sort(files.begin(), files.end(), [](const filesystem::directory_entry& a, const filesystem::directory_entry& b)
+        {
+            return filesystem::last_write_time(a) > filesystem::last_write_time(b);
+        });
+
+        for (auto it = files.begin() + MAX_LOGS_COUNT; it != files.end(); ++it)
+        {
+            try
+            {
+                filesystem::remove(it->path());
+            }
+            catch (...)
+            {
+            }
+        }
+
         LogFile.open(GetLogFileName());
         
         // Due to Logger is a singleton, we must create check if folder Logs exists.
@@ -24,7 +50,7 @@ using namespace std;
         }
 
         if (!LogFile.is_open()) 
-            QMessageBox::critical(nullptr, EXCEPTION_HEADER, "Unable to create log file; Make sure \"Logs\" folder are exists.");
+            QMessageBox::critical(nullptr, EXCEPTION_HEADER, "Unable to  create log file; Make sure \"Logs\" folder are exists.");
         
         string title   = "C&C Generals and Generals Zero Hour hotkey editor";
         string version = string("Version: ") + VERSION;
