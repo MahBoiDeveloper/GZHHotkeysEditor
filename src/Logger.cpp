@@ -24,19 +24,22 @@ using namespace std;
             if (entry.is_regular_file())
                 files.push_back(entry);
 
-        sort(files.begin(), files.end(), [](const filesystem::directory_entry& a, const filesystem::directory_entry& b)
+        if (files.size() > MAX_LOGS_COUNT)
         {
-            return filesystem::last_write_time(a) > filesystem::last_write_time(b);
-        });
+            sort(files.begin(), files.end(), [](const filesystem::directory_entry& a, const filesystem::directory_entry& b)
+            {
+                return filesystem::last_write_time(a) > filesystem::last_write_time(b);
+            });
 
-        for (auto it = files.begin() + MAX_LOGS_COUNT; it != files.end(); ++it)
-        {
-            try
+            for (auto it = files.begin() + MAX_LOGS_COUNT; it != files.end(); ++it)
             {
-                filesystem::remove(it->path());
-            }
-            catch (...)
-            {
+                try
+                {
+                    filesystem::remove(it->path());
+                }
+                catch (...)
+                {
+                }
             }
         }
 
