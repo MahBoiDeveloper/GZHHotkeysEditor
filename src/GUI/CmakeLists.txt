@@ -70,7 +70,7 @@
         
         # Define command to create translation files
         add_custom_command(
-            PRE_BUILD
+            # PRE_BUILD
             OUTPUT ${QM_FILE}
             # Generate translation source file
             COMMAND ${LUPDATE_EXECUTABLE} ${CMAKE_SOURCE_DIR} -recursive -ts ${TS_FILE} # -no-obsolete
