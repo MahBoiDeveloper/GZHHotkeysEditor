@@ -1,7 +1,7 @@
-# C&C: Generals — Zero Hour Hotkeys Editor
+# GenHotkeys
 [![Support me on Boosty](https://img.shields.io/badge/boosty-50₽/month-green.svg?logo=boosty)](https://boosty.to/mah_boi)
 ## About the project
-GZH Hotkeys Editor is an attempt to create a useful tool for editing C&C: Generals and C&C: Generals - Zero Hour hotkeys without editing the main game text file (`generals.csf`). At the moment the editor is in alpha stage, which means that the program is unstable and many features aren't implemented yet.
+GenHotkeys is an attempt to create a useful tool for editing C&C: Generals and C&C: Generals - Zero Hour hotkeys without editing the main game text file (`generals.csf`). At the moment the editor is in beta stage, which means that the program is unstable and many features aren't implemented yet.
 
 ## Building Manually
 0. Download and install [Qt 5.15.2](https://www.qt.io/offline-installers) to the `C:\Qt` folder
@@ -16,11 +16,9 @@ GZH Hotkeys Editor is an attempt to create a useful tool for editing C&C: Genera
 
 ## Project Features
 * [x] C&C: Generals — Zero Hour support
-* [ ] C&C: Generals support
-* [ ] Mod support (GZH only)
+* [x] Mod support (GZH only)
 * [x] Multilanguage support
 * [x] GUI customization
-* [ ] Discord Rich Presence support
 
 ## Credits
 ### Developers
@@ -36,4 +34,4 @@ GZH Hotkeys Editor is an attempt to create a useful tool for editing C&C: Genera
 EA has not endorsed and does not support this product. Command & Conquer, Command & Conquer: Generals, Command & Conquer: Generals — Zero Hour are registered trademarks of Electronic Arts Inc. All Rights Reserved.
 
 ## License
-The GZH Hotkeys Editor is an unofficial open-source community project licensed with [GNU GPL v3](https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE).
+The GenHotkeys is an unofficial open-source community project licensed with [GNU GPL v3](https://github.com/MahBoiDeveloper/GZHHotkeysEditor/blob/main/LICENSE).

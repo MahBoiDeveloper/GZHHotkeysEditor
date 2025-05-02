@@ -11,14 +11,14 @@ BEGIN
             VALUE "FileDescription",  "Hotkeys Editor For C&C: Generals"
             VALUE "ProductVersion",   "0.1.0.0"
             VALUE "FileVersion",      "0.1.0.0"
-            VALUE "ProductName",      "GZH Hotkeys Editor"
-            VALUE "InternalName",     "GZHHotkeyEditor"
+            VALUE "ProductName",      "GenHotkeys"
+            VALUE "InternalName",     "GenHotkeys"
             VALUE "OriginalFilename", "LoadEditor.exe"
-            VALUE "CompanyName",      "GZH Hotkey Editor Developers. All rights reserved."
-            VALUE "LegalCopyright",   "Copyright (C) GZHHE Devs 2023-2025"
+            VALUE "CompanyName",      "GenHotkeys Developers. All rights reserved."
+            VALUE "LegalCopyright",   "Copyright (C) GenHotkeys Devs 2023-2025"
             VALUE "Licence",          "GNU GPL v3"
             VALUE "Info",             "https://github.com/MahBoiDeveloper/GZHHotkeysEditor"
-            VALUE "Comment",          "GZH Hotkeys Editor"
+            VALUE "Comment",          "GenHotkeys"
         END
     END
 

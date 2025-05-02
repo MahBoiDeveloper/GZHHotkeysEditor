@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 > nul
 
-echo Generals Zero Hour Hotkeys editor
+echo Program: GenHotkeys
 echo Authors: mah_boi, nikitvs
 echo.
 

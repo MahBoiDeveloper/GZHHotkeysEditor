@@ -57,7 +57,7 @@ jobs:
           set PATH=%PATH%;C:\Qt\5.15.2\mingw81_64\bin;C:\Qt\Tools\mingw_64\bin
           
           :: Print header
-          echo Generals Zero Hour Hotkeys editor
+          echo Program: GenHotkeys
           echo Authors: mah_boi, nikitvs
           echo.
 
