@@ -14,10 +14,10 @@ GenHotkeys is an attempt to create a useful tool for editing C&C: Generals and C
 * OS: Windows 10 x64 or newer
 * Memory: 128 MB RAM
 
-## Project Features
+## Main Project's Features
 * [x] C&C: Generals — Zero Hour support
-* [x] Mod support (GZH only)
-* [x] Multilanguage support
+* [x] Mods support (ZH only)
+* [x] Multilingual interface (English and Russian)
 * [x] GUI customization
 
 ## Credits
