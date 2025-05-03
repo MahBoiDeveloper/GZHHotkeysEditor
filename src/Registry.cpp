@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <tchar.h>
 
+#include "StringExt.hpp"
 #include "Registry.hpp"
 
 using namespace std;
@@ -22,7 +23,7 @@ Registry::WindowsBit Registry::GetWindowsBit()
     return windowsBit;
 }
 
-string Registry::GetTextFromKey(const Registry::RootFolder Folder, const char* pPathToFolder, const char* pKeyName)
+string Registry::GetTextFromKeyA(const Registry::RootFolder Folder, const char* pPathToFolder, const char* pKeyName)
 {
     HKEY  rKey;
     DWORD Size = 256;
@@ -48,11 +49,37 @@ string Registry::GetTextFromKey(const Registry::RootFolder Folder, const char* p
     return returnValue;
 }
 
-string Registry::GetPathToGame(const Games game)
+wstring Registry::GetTextFromKeyW(const Registry::RootFolder Folder, const wchar_t* pPathToFolder, const wchar_t* pKeyName)
 {
-    string Key  = "InstallPath";
-    string Path = Registry::PATHS_TO_GAMES.find(game)->second.find(GetWindowsBit())->second;
-    return GetTextFromKey(Registry::RootFolder::HKLM, Path.c_str(), Key.c_str());
+    HKEY  rKey;
+    DWORD Size = 256;
+    WCHAR Reget[Size] = { 0 };
+
+    switch (Folder)
+    {
+        case Registry::RootFolder::HKCU :
+            RegOpenKeyExW(HKEY_CURRENT_USER, pPathToFolder, 0, KEY_READ, &rKey);
+            break;
+        
+        case Registry::RootFolder::HKLM :
+            RegOpenKeyExW(HKEY_LOCAL_MACHINE, pPathToFolder, 0, KEY_READ, &rKey);
+            break;
+    }
+
+    RegQueryValueExW(rKey, pKeyName, NULL, NULL, (LPBYTE)&Reget, &Size);
+    RegCloseKey(rKey);
+    
+    wstring returnValue(Reget);
+    returnValue.shrink_to_fit();
+         
+    return returnValue;
+}
+
+wstring Registry::GetPathToGame(const Games game)
+{
+    wstring Key  = L"InstallPath";
+    wstring Path = Registry::PATHS_TO_GAMES.find(game)->second.find(GetWindowsBit())->second;
+    return GetTextFromKeyW(Registry::RootFolder::HKLM, Path.c_str(), Key.c_str());
 }
 
 string Registry::ToString(Games game)
@@ -82,21 +109,21 @@ bool Registry::IsWindow32bit() { return GetWindowsBit() == WindowsBit::Win32; }
     {
         const char Path[] = {"Control Panel\\International"};
         const char Key[]  = {"LocaleName"};
-        return GetTextFromKey(Registry::RootFolder::HKCU, &Path[0], &Key[0]).substr(0, 2);
+        return GetTextFromKeyA(Registry::RootFolder::HKCU, &Path[0], &Key[0]).substr(0, 2);
     }
 
     string Registry::GetWindowsVersion()
     {
         const char Path[] = {"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"};
         const char Key[]  = {"ProductName"};
-        return GetTextFromKey(Registry::RootFolder::HKLM, &Path[0], &Key[0]);
+        return GetTextFromKeyA(Registry::RootFolder::HKLM, &Path[0], &Key[0]);
     }
 
     string Registry::GetProcessorInfo()
     {
         const char Path[]  = {"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"};
         const char Value[] = {"ProcessorNameString"};
-        return GetTextFromKey(Registry::RootFolder::HKLM, &Path[0], &Value[0]);
+        return GetTextFromKeyA(Registry::RootFolder::HKLM, &Path[0], &Value[0]);
     }
 
     string Registry::GetMemoryInfo()

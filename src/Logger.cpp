@@ -98,7 +98,7 @@ using namespace std;
                 Log() << "C&C: " << Registry::ToString(game)  << " not installed" << endl;
             else
                 Log() << "C&C: " << Registry::ToString(game)  << " installed at ["
-                                 << Registry::GetPathToGame(game) << ']' << endl;
+                                 << ToQString(Registry::GetPathToGame(game)).toStdString() << ']' << endl;
         }
 
         LogFile << endl;

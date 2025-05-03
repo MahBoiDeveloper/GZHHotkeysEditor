@@ -6,6 +6,11 @@
 #define L10N(x)   StringExt::l10n(x)
 #define nameof(x) QString(#x)
 
+inline QString ToQString(std::string str)   { return QString::fromStdString(str); }
+inline QString ToQString(std::wstring str)  { return QString::fromStdWString(str); }
+inline QString ToQString(const char* ch)    { return QString(ch); }
+inline QString ToQString(const wchar_t* ch) { return ToQString(std::wstring(ch)); }
+
 template<class T>
 concept IsSymbol = std::same_as<T, char> || std::same_as<T, wchar_t> || std::same_as<T, QChar>;
 
