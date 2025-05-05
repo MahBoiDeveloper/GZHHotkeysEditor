@@ -6,10 +6,25 @@
 #define L10N(x)   StringExt::l10n(x)
 #define nameof(x) QString(#x)
 
-inline QString ToQString(std::string str)   { return QString::fromStdString(str); }
-inline QString ToQString(std::wstring str)  { return QString::fromStdWString(str); }
-inline QString ToQString(const char* ch)    { return QString(ch); }
-inline QString ToQString(const wchar_t* ch) { return ToQString(std::wstring(ch)); }
+inline QString ToQString(const std::string& str)  { return QString::fromStdString(str); }
+inline QString ToQString(const std::wstring& str) { return QString::fromStdWString(str); }
+inline QString ToQString(const QString& str)      { return str; }
+inline QString ToQString(const char* ch)          { return ToQString(std::string(ch)); }
+inline QString ToQString(const wchar_t* ch)       { return ToQString(std::wstring(ch)); }
+inline QString ToQString(const char ch)           { return QString(QChar(ch)); }
+inline QString ToQString(const wchar_t ch)        { return QString(QChar(ch)); }
+
+namespace StringExt
+{
+    const QString EmptyString("");
+    QString l10n(const char*         string);
+    QString l10n(const QString&      string);
+    QString l10n(const std::string&  string);
+    QString l10n(const std::wstring& string);
+}
+
+template<class T>
+concept IsNumber = std::same_as<T, int> || std::same_as<T, size_t> || std::same_as<T, std::size_t> || std::same_as<T, ushort>;
 
 template<class T>
 concept IsSymbol = std::same_as<T, char> || std::same_as<T, wchar_t> || std::same_as<T, QChar>;
@@ -21,26 +36,13 @@ template<class T>
 concept IsSTDString = std::same_as<T, std::string> || std::same_as<T, std::wstring>;
 
 template<class T>
-concept IsNumber = std::same_as<T, int> || std::same_as<T, size_t> || std::same_as<T, std::size_t> || std::same_as<T, ushort>;
+concept IsString = std::same_as<T, const char*> || std::same_as<T, const wchar_t*> || 
+                   std::same_as<T, std::string> || std::same_as<T, std::wstring> || 
+                   std::same_as<T, QString>;
 
-template<IsNumber N> inline QString operator+ (const QString& str,          const N& num)                { return QString(str).append(QString::number(num)); }
-template<IsNumber N> inline QString operator+ (const N& num,                const QString& str)          { return QString::number(num).append(str); }
-template<IsNumber N> inline QString operator+ (const N& num,                const std::string& str)      { return QString::number(num).append(QString::fromStdString(str)); }
-template<IsNumber N> inline QString operator+ (const std::string& str,      const N& num)                { return QString::fromStdString(str).append(QString::number(num)); }
-template<IsSymbol C> inline QString operator+ (const C& char1,              const C& char2)              { return QString(char1).append(char2); }
-template<IsSymbol C> inline QString operator+ (const QString& str,          const C& ch)                 { return QString(str).append(ch); }
-template<IsSymbol C> inline QString operator+ (const C& ch,                 const QString& str)          { return QString(ch).append(str); }
-                     inline QString operator+ (const QString& qstr,         const wchar_t* wstr)         { return QString(qstr).append(QString::fromStdWString(std::wstring(wstr))); }
-                     inline QString operator+ (const QString& qstr,         const std::wstring& stdwstr) { return QString(qstr).append(QString::fromStdWString(stdwstr)); }
-                     inline QString operator+ (const std::wstring& stdwstr, const QString& qstr)         { return QString::fromStdWString(stdwstr).append(qstr); }
-                     inline QString operator+ (const QString& qstr,         const std::string& stdstr)   { return QString(qstr).append(QString::fromStdString(stdstr)); }
-                     inline QString operator+ (const std::string& stdstr,   const QString& qstr)         { return QString::fromStdString(stdstr).append(qstr); }
-                     inline QString operator+ (const QString qstr,          const bool& flag)            { return QString(qstr).append(flag ? "true" : "false"); }
-
-namespace StringExt
-{
-    QString l10n(const char*         string);
-    QString l10n(const QString&      string);
-    QString l10n(const std::string&  string);
-    QString l10n(const std::wstring& string);
-}
+template<IsString S, IsString T> inline QString operator+ (const S& str1, const T& str2)          { return ToQString(str1).append(ToQString(str2)); }
+template<IsString S, IsNumber N> inline QString operator+ (const S& str,  const N& num)           { return ToQString(str).append(QString::number(num)); }
+template<IsNumber N, IsString S> inline QString operator+ (const N& num,  const S& str)           { return QString::number(num).append(ToQString(str)); }
+template<IsString S, IsSymbol C> inline QString operator+ (const S& str,  const C& ch)            { return ToQString(str).append(ToQString(ch)); }
+template<IsSymbol C, IsString S> inline QString operator+ (const S& str,  const C& ch)            { return ToQString(str).append(ToQString(ch)); }
+                                 inline QString operator+ (const QString& qstr, const bool& flag) { return QString(qstr).append(flag ? "true" : "false"); }

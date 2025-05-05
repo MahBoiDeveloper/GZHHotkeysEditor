@@ -173,16 +173,16 @@ using namespace std;
 
         if(csfFile.is_open())
         {
-            LOGSTM << ("Attempt to write binary file \"" + Path + "\"").toStdString() << endl;
+            LOGSTM << (StringExt::EmptyString + "Attempt to write binary file \"" + Path + "\"").toStdString() << endl;
 
             CSFParser::WriteHeader(&csfFile);
             CSFParser::WriteBody(&csfFile);
 
-            LOGSTM << ("File saved as \"" + Path + "\"").toStdString() << endl;
+            LOGSTM << (StringExt::EmptyString + "File saved as \"" + Path + "\"").toStdString() << endl;
         }
         else
         {
-            LOGSTM << ("Could not open file \"" + Path + "\" to save").toStdString() << endl;
+            LOGSTM << (StringExt::EmptyString + "Could not open file \"" + Path + "\" to save").toStdString() << endl;
         }
 
         csfFile.close();
