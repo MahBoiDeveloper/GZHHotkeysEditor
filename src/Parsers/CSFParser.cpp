@@ -28,7 +28,7 @@ using namespace std;
             if (Path.ends_with(L".BIG"))
             {
                 LOGMSG("BIG archive detected. Try to find CSF file inside...");
-                
+
                 bool searchResult = false;
                 char fourC[4] = {' ', ' ', ' ', ' '};
                 std::streampos fourCharOffset = sizeof(char) * 4;
@@ -38,7 +38,7 @@ using namespace std;
                     file.read(fourC, fourCharOffset);
                     searchResult = (fourC[0] == FSC[0]) && (fourC[1] == FSC[1]) && (fourC[2] == FSC[2]) && (fourC[3] == FSC[3]);
                 }
-                
+
                 if (!file.good())
                 {
                     LOGMSG(PROGRAM_CONSTANTS->CSF_NO_CSF_IN_BIG.arg(Path));
@@ -48,8 +48,10 @@ using namespace std;
                 auto offset = file.tellg();
                 file.clear();
                 file.seekg(offset - fourCharOffset);
-    
+
                 LOGMSG("CSF file data found at offset : " + reinterpret_cast<const uint64_t&>(offset));
+
+                Path = Path.substr(0, Path.find_last_of('\\') + 1) + L"Data\\English\\generals.csf";
             }
 
             LOGMSG("Attempt to read string table from \"" + Path.c_str() + "\" file...");
