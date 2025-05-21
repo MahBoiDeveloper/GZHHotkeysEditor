@@ -17,25 +17,10 @@ Faction::Faction(const QJsonObject& factionAsObject)
     , techTree{ParseJsonObject(factionAsObject)}
 {}
 
-const QString& Faction::GetShortName() const
-{
-    return shortName;
-}
-
-const QString& Faction::GetDisplayName() const
-{
-    return displayName;
-}
-
-const QString& Faction::GetDisplayNameDescription() const
-{
-    return displayNameDescription;
-}
-
-const QMap<Faction::GameObject, GameObjectTypes>& Faction::GetTechTree() const
-{
-    return techTree;
-}
+const QString& Faction::GetShortName() const { return shortName; }
+const QString& Faction::GetDisplayName() const { return displayName; }
+const QString& Faction::GetDisplayNameDescription() const { return displayNameDescription; }
+const QMap<Faction::GameObject, GameObjectTypes>& Faction::GetTechTree() const { return techTree; }
 
 const QVector<QVector<Faction::Action>> Faction::GetKeyboardLayoutsByObjectName(const QString& objName) const
 {
@@ -107,7 +92,5 @@ void Faction::SetHotkey(const QString& goName, const QString& actName, const QSt
     }
 }
 
-bool operator < (Faction::GameObject a, Faction::GameObject b)
-{
-    return a.iconName < b.iconName ? true : false;
-}
+// Method used for QMap.insert
+bool operator < (Faction::GameObject a, Faction::GameObject b) { return a.iconName < b.iconName ? true : false; }
