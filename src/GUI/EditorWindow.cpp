@@ -12,6 +12,7 @@
 #include "../Logger.hpp"
 #include "../Unsorted.hpp"
 #include "../Convert.hpp"
+#include "../FactionsManager.hpp"
 
 #include "ImageManager.hpp"
 #include "WindowManager.hpp"
@@ -27,8 +28,7 @@ EditorWindow::EditorWindow(QWidget* parent)
     , pHotkeysPanelsWidget{nullptr}
     , pAboutDialog{nullptr}
 {
-    SetFactions();
-    LOGMSG("Total faction count that has been read from json file: " + factionVector.size());
+    LOGMSG("Total faction count that has been read from json file: " + FACTIONS_MANAGER->Count());
 
     resize(PROGRAM_CONSTANTS->EDITOR_WINDOW_SIZE);
     ConfigureMenu();
@@ -42,7 +42,7 @@ EditorWindow::EditorWindow(QWidget* parent)
     connect(pEntitiesTreeWidget, &QTreeWidget::itemSelectionChanged, this, &EditorWindow::SetHotkeysPanels);
 
     QBoxLayout* ltFactions = nullptr;
-    int factonsCount = factionVector.size();
+    int factonsCount = FACTIONS_MANAGER->Count();
 
     if (factonsCount == Faction::BASIC_FACTION_COUNT)
     {
@@ -59,7 +59,7 @@ EditorWindow::EditorWindow(QWidget* parent)
 
             for (int i = 0; i < 4; ++i)
             {
-                const Faction currFaction = factionVector.at(sectionIndex + i);
+                const Faction currFaction = FACTIONS_MANAGER->FindByIndex(sectionIndex + i);
 
                 QPushButton* factionButton = new QPushButton{currFaction.GetDisplayName()};
 
@@ -199,7 +199,7 @@ void EditorWindow::SetGameObjectList(const QString& factionShortName)
 {
     pEntitiesTreeWidget->clear();
 
-    QMap<Faction::GameObject, GameObjectTypes> goMap = GetFactionRef(factionShortName).GetTechTree();
+    QMap<Faction::GameObject, GameObjectTypes> goMap = FACTIONS_MANAGER->FindByShortName(factionShortName).GetTechTree();
 
     // Skip if there are no entities of that type
     if(goMap.isEmpty()) return;
@@ -265,7 +265,7 @@ void EditorWindow::SetHotkeysPanels()
     const QString& factionShortName = specialItemInfo.first;
     const QString& gameObjectName   = specialItemInfo.second;
 
-    const auto gameObjectKeyboardLayouts = GetFactionRef(factionShortName).GetKeyboardLayoutsByObjectName(gameObjectName);
+    const auto gameObjectKeyboardLayouts = FACTIONS_MANAGER->FindByShortName(factionShortName).GetKeyboardLayoutsByObjectName(gameObjectName);
 
     // Recreate panels widget
     if (pHotkeysPanelsWidget != nullptr) pHotkeysPanelsWidget->deleteLater();
@@ -418,40 +418,10 @@ void EditorWindow::KeyboardWindow_Update(int id)
     }
 }
 
-void EditorWindow::SetFactions()
-{
-    for(const auto& elem : TECH_TREE_SOURCE.Query("$.TechTree").toArray())
-        factionVector.push_back(Faction{elem.toObject()});
-}
-
-const Faction& EditorWindow::GetFactionRef(const QString& name)
-{
-    int tmp = 0;
-
-    for(int i = 0; i < factionVector.count(); i++)
-    {
-        const Faction& elem = factionVector[i];
-        
-        if(elem.GetShortName() == name)
-        {
-            tmp = i;
-            break;
-        }
-    }
-    
-    return factionVector.at(tmp);
-}
-
 void EditorWindow::SetActionHotkey(const QString& fctShortName, const QString& goName, const QString& actName, const QString& hk)
 {
-    for(Faction& fct : factionVector)
-    {
-        if(fct.GetShortName() == fctShortName)
-        {
-            fct.SetHotkey(goName, actName, hk);
-            break;
-        }
-    }
+    Faction& fct = const_cast<Faction&>(FACTIONS_MANAGER->FindByShortName(fctShortName));
+    fct.SetHotkey(goName, actName, hk);
 }
 
 void EditorWindow::ActAbout_Triggered()

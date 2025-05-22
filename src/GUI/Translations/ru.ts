@@ -84,13 +84,13 @@
     </message>
     <message>
         <location filename="../EditorWindow.cpp" line="189"/>
-        <location filename="../EditorWindow.cpp" line="526"/>
+        <location filename="../EditorWindow.cpp" line="496"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../EditorWindow.cpp" line="193"/>
-        <location filename="../EditorWindow.cpp" line="491"/>
+        <location filename="../EditorWindow.cpp" line="461"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
@@ -100,27 +100,27 @@
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="471"/>
+        <location filename="../EditorWindow.cpp" line="441"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="472"/>
+        <location filename="../EditorWindow.cpp" line="442"/>
         <source>Version: </source>
         <translation>Версия: </translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="473"/>
+        <location filename="../EditorWindow.cpp" line="443"/>
         <source>Program licensed with </source>
         <translation>Программа лицензирована под </translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="474"/>
+        <location filename="../EditorWindow.cpp" line="444"/>
         <source>GitHub repository:</source>
         <translation>Репозиторий на GitHub:</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="476"/>
+        <location filename="../EditorWindow.cpp" line="446"/>
         <source>Support development:</source>
         <translation>Поддержать разработку:</translation>
     </message>

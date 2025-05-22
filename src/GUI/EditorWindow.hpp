@@ -6,7 +6,6 @@
 #include <QHBoxLayout>
 
 #include "../Parsers/JSONFile.hpp"
-#include "../Faction.hpp"
 #include "ActionHotkeyWidget.hpp"
 
 class EditorWindow final : public QMainWindow
@@ -14,10 +13,6 @@ class EditorWindow final : public QMainWindow
     Q_OBJECT
 
 private: // Data
-    JSONFile TECH_TREE_SOURCE{PROGRAM_CONSTANTS->TECH_TREE_FILE};
-
-    QVector<Faction> factionVector;
-
     // Qt object in a single copy
     QButtonGroup* pFactionsButtonsGroup = nullptr;
 
@@ -37,10 +32,6 @@ public: // Methods
     EditorWindow(QWidget* parent = nullptr);
 
 private:
-    /// @brief Read data from TechTree.json and parse it to game objects.
-    void SetFactions();
-    /// @brief Return faction from EditorWindow::factionVector vector.
-    const Faction& GetFactionRef(const QString& name);
     /// @brief Set context menu bar functions and logics.
     void ConfigureMenu();
     /// @brief Set game object and their actions for window by short faction name.

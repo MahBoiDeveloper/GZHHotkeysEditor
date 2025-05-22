@@ -10,8 +10,8 @@
 #include <QDebug>
 
 // Project headers
-// #include "Parsers/CSFParser.hpp"
 #include "GUI/WindowManager.hpp"
+#include "FactionsManager.hpp"
 #include "ProgramConstants.hpp"
 #include "Logger.hpp"
 
@@ -67,9 +67,12 @@ int main(int argc, const char** argv)
 
     PROGRAM_CONSTANTS->InitializeFileSettings();
 
-    // Show console, that by default is hiding by Logger class.
+    // Show console, that by default is hiding by Logger class
     if (PROGRAM_CONSTANTS->pSettingsFile->IsConsoleEnabled()) 
         ShowWindow(GetConsoleWindow(), SW_SHOW);
+
+    // Initialize TechTree.json parsing
+    FACTIONS_MANAGER = make_unique<FactionManager>();
 
     // Define logger as the singleton class, that could be used anywhere in the project
     WINDOW_MANAGER = make_unique<WindowManager>();
