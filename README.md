@@ -17,10 +17,10 @@ GenHotkeys is an attempt to create a tool for editing C&C: Generals and C&C: Gen
 * Memory: 128 MB RAM
 
 ## Main Project's Features
-* [x] C&C: Generals — Zero Hour support
-* [x] Mods support (ZH only)
-* [x] Multilingual interface (English and Russian)
-* [x] GUI customization
+* C&C: Generals — Zero Hour support
+* Mods support (ZH only)
+* Multilingual interface (English and Russian)
+* GUI customization
 
 ## Credits
 ### Developers
