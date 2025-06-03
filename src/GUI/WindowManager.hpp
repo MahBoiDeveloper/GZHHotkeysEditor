@@ -31,6 +31,8 @@ public:
     void SetTranslator();
     /// @brief Set CSF file path. Uses if in `LoadFromTheFileWindow` file has been set.
     void SetCSFFilePath(const QString& filepath);
+    /// @brief Reinitialize CSF parser and editor window when new CSF/BIG file has been selected.
+    void EditorWindow_NewHotkeyFileSelected();
     /// @brief Return CSF file path. Uses if in `LoadFromTheFileWindow` file has been set.
     void StartUpWindow_AcceptConfiguration();
 };

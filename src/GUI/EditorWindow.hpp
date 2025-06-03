@@ -56,7 +56,9 @@ private slots:
     void ActSave_Triggered();
     void ActSaveAs_Triggered();
     void ActOpen_Triggered();
+    void ActOpen_NewHotkeyFileSelected(const QString& filepath);
 
 signals:
     void languageChanged();
+    void newHotkeyFileSelected(const QString& filepath);
 };

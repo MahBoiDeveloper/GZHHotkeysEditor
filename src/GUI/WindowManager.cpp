@@ -124,6 +124,15 @@ void WindowManager::SetTranslator()
 void WindowManager::Show()                               { pStartUpWindow->show(); }
 void WindowManager::SetCSFFilePath(const QString& input) { strCSFFilePath = input; }
 
+void WindowManager::EditorWindow_NewHotkeyFileSelected()
+{
+    CSF_PARSER = nullptr;
+    pHotkeysEditor->close();
+    pHotkeysEditor = nullptr;
+    InitializeCSFParser();
+    StartUpWindow_AcceptConfiguration();
+}
+
 WindowManager::~WindowManager()
 {
     if (pHotkeysEditor != nullptr) pHotkeysEditor->deleteLater();

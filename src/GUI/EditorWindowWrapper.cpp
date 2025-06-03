@@ -19,12 +19,18 @@ void EditorWindowWrapper::AttachConnections()
 {
     connect(pEditorWindow, &EditorWindow::languageChanged, 
             this,          &EditorWindowWrapper::EditorWindow_LanguageChanged);
+
+    connect(pEditorWindow, &EditorWindow::newHotkeyFileSelected, 
+            this,          &EditorWindowWrapper::EditorWindow_NewHotkeyFileSelected);
 }
 
 void EditorWindowWrapper::DetachConnections()
 {
     disconnect(pEditorWindow, &EditorWindow::languageChanged, 
                this,          &EditorWindowWrapper::EditorWindow_LanguageChanged);
+
+    disconnect(pEditorWindow, &EditorWindow::newHotkeyFileSelected, 
+               this,          &EditorWindowWrapper::EditorWindow_NewHotkeyFileSelected);
 }
 
 void EditorWindowWrapper::EditorWindow_LanguageChanged()
@@ -37,4 +43,10 @@ void EditorWindowWrapper::EditorWindow_LanguageChanged()
     AddWidgets();
     AttachConnections();
     setCurrentWidget(pEditorWindow);
+}
+
+void EditorWindowWrapper::EditorWindow_NewHotkeyFileSelected(const QString& filepath)
+{
+    WINDOW_MANAGER->SetCSFFilePath(filepath);
+    WINDOW_MANAGER->EditorWindow_NewHotkeyFileSelected();
 }

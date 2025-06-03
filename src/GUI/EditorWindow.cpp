@@ -6,6 +6,7 @@
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
 #include <QComboBox>
+#include <QFileDialog>
 
 #include "../Parsers/CSFParser.hpp"
 #include "../Info.hpp"
@@ -426,12 +427,13 @@ void EditorWindow::SetActionHotkey(const QString& fctShortName, const QString& g
 
 void EditorWindow::ActAbout_Triggered()
 {
-    // if dialog already exists
+    // If dialog already exists, we reuse created window
     if (pAboutDialog != nullptr)
     {
         pAboutDialog->activateWindow();
         return;
     }
+
     QGridLayout* lblContent = new QGridLayout();
     lblContent->setSizeConstraint(QLayout::SetFixedSize);
         
@@ -521,4 +523,17 @@ void EditorWindow::ActSaveAs_Triggered()
 
 void EditorWindow::ActOpen_Triggered()
 {
+    QFileDialog* fdSelectFileWindow = new QFileDialog();
+    connect(fdSelectFileWindow, &QFileDialog::fileSelected, this, &EditorWindow::ActOpen_NewHotkeyFileSelected);
+    fdSelectFileWindow->setFileMode(QFileDialog::FileMode::ExistingFile);
+    fdSelectFileWindow->setAcceptMode(QFileDialog::AcceptMode::AcceptOpen);
+    fdSelectFileWindow->setNameFilters({tr("Binary files") + " (*.csf *.big)",
+                                        tr("Any files")  + " (*)"});
+    fdSelectFileWindow->exec();
+}
+
+void EditorWindow::ActOpen_NewHotkeyFileSelected(const QString& filepath)
+{
+    LOGMSG("Selected file: " + filepath);
+    emit newHotkeyFileSelected(filepath);
 }
