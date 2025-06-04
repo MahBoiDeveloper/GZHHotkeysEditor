@@ -170,6 +170,11 @@ void EditorWindow::ConfigureMenu()
     QAction* actSave     = new QAction(tr("Save"));
     QAction* actSaveAs   = new QAction(tr("Save As..."));
     QAction* actSpecial  = new QAction(tr("Special"));
+
+    actOpen->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
+    actSave->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_S));
+    actSaveAs->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_S));
+
     mnFileOptions->addAction(actOpen);
     mnFileOptions->addAction(actSave);
     mnFileOptions->addAction(actSaveAs);
@@ -379,6 +384,13 @@ QHBoxLayout* EditorWindow::CreateKeysOnKeyboard(const QString& str)
     return pKeys;
 }
 
+
+void EditorWindow::SetActionHotkey(const QString& fctShortName, const QString& goName, const QString& actName, const QString& hk)
+{
+    Faction& fct = const_cast<Faction&>(FACTIONS_MANAGER->FindByShortName(fctShortName));
+    fct.SetHotkey(goName, actName, hk);
+}
+
 void EditorWindow::KeyboardWindow_Nullify()
 {
     for (QChar& qc : QString("QWERTYUIOPASDFGHJKLZXCVBNM")) 
@@ -417,12 +429,6 @@ void EditorWindow::KeyboardWindow_Update(int id)
         key->style()->polish(key);
         key->update();
     }
-}
-
-void EditorWindow::SetActionHotkey(const QString& fctShortName, const QString& goName, const QString& actName, const QString& hk)
-{
-    Faction& fct = const_cast<Faction&>(FACTIONS_MANAGER->FindByShortName(fctShortName));
-    fct.SetHotkey(goName, actName, hk);
 }
 
 void EditorWindow::ActAbout_Triggered()
@@ -519,6 +525,7 @@ void EditorWindow::ActSave_Triggered()
 
 void EditorWindow::ActSaveAs_Triggered()
 {
+    LOGMSG("ActSaveAs_Triggered");
 }
 
 void EditorWindow::ActOpen_Triggered()

@@ -63,74 +63,74 @@
         <translation>Дополнительно</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="183"/>
+        <location filename="../EditorWindow.cpp" line="188"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="184"/>
+        <location filename="../EditorWindow.cpp" line="189"/>
         <source>Status Bar</source>
         <translation>Строка состояния</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="185"/>
+        <location filename="../EditorWindow.cpp" line="190"/>
         <source>Enable</source>
         <translation>Включить</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="186"/>
+        <location filename="../EditorWindow.cpp" line="191"/>
         <source>Disable</source>
         <translation>Отключить</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="190"/>
-        <location filename="../EditorWindow.cpp" line="498"/>
+        <location filename="../EditorWindow.cpp" line="195"/>
+        <location filename="../EditorWindow.cpp" line="504"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="194"/>
-        <location filename="../EditorWindow.cpp" line="463"/>
+        <location filename="../EditorWindow.cpp" line="199"/>
+        <location filename="../EditorWindow.cpp" line="469"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="328"/>
+        <location filename="../EditorWindow.cpp" line="333"/>
         <source>Layout %1</source>
         <translation>Раскладка %1</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="443"/>
+        <location filename="../EditorWindow.cpp" line="449"/>
         <source>Authors: </source>
         <translation>Авторы: </translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="444"/>
+        <location filename="../EditorWindow.cpp" line="450"/>
         <source>Version: </source>
         <translation>Версия: </translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="445"/>
+        <location filename="../EditorWindow.cpp" line="451"/>
         <source>Program licensed with </source>
         <translation>Программа лицензирована под </translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="446"/>
+        <location filename="../EditorWindow.cpp" line="452"/>
         <source>GitHub repository:</source>
         <translation>Репозиторий на GitHub:</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="448"/>
+        <location filename="../EditorWindow.cpp" line="454"/>
         <source>Support development:</source>
         <translation>Поддержать разработку:</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="530"/>
+        <location filename="../EditorWindow.cpp" line="537"/>
         <source>Binary files</source>
         <translation type="unfinished">Двоичные файлы</translation>
     </message>
     <message>
-        <location filename="../EditorWindow.cpp" line="531"/>
+        <location filename="../EditorWindow.cpp" line="538"/>
         <source>Any files</source>
         <translation type="unfinished">Все файлы</translation>
     </message>
