@@ -83,6 +83,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
            # ${{github.sha}} - commit long hash name
-           name: GZHHotkeyEditor-${{github.sha}}
+           name: GenHotkeys-${{github.sha}}
            # zip all content in the "build\exe" folder
            path: build/exe/**
