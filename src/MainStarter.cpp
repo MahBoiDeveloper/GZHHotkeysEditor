@@ -3,32 +3,40 @@
 #define EXCEPTION_HEADER "I'VE GOT A PRESENT FOR YA"
 #define RESOURCES "Resources"
 #define BINARIES "Resources/Binaries"
+#define ERROR_HEADER "Error"
 
 #include <vector>
-#include <cstdlib>
 #include <string>
 #include <filesystem>
 #include <iostream>
+#include <windows.h>
 
 // Links local executable to the main application of the project
 int main(int argc, const char** argv)
 {
+    // Disable console from the start
+    ShowWindow(GetConsoleWindow(), SW_HIDE);
+
     // Create /Logs if they doesn't exists
     std::filesystem::create_directory("Logs");
 
     if (!std::filesystem::exists(RESOURCES))
     {
-        std::cout << "Folder \""<< RESOURCES <<"\" doesn't exist!" << std::endl 
-                  << "You cannot use Hotkey Editor without configs and Qt binary files." << std::endl
-                  << "Check your installation instruction." << std::endl;
+        std::string msg = std::string() + RESOURCES + " folder doesn't exist!" + '\n' +
+                          "You cannot use Hotkey Editor without configs and Qt binary files." + '\n' +
+                          "Please, check your installation instruction." + '\n';
+        std::cout << msg.c_str() << std::endl;
+        MessageBox(HWND_DESKTOP, msg.c_str(), ERROR_HEADER, MB_OK);
         return -1;
     }
 
     if (!std::filesystem::exists(BINARIES))
     {
-        std::cout << "Folder \"" << BINARIES << "\" doesn't exist!" << std::endl 
-                  << "You cannot use Hotkey Editor without Qt binary files." << std::endl
-                  << "Check your installation instruction." << std::endl;
+        std::string msg = std::string() + BINARIES + " folder doesn't exist!" + '\n' +
+                          "You cannot use Hotkey Editor without configs and Qt binary files." + '\n' +
+                          "Please, check your installation instruction." + '\n';
+        std::cout << msg.c_str() << std::endl;
+        MessageBox(HWND_DESKTOP, msg.c_str(), ERROR_HEADER, MB_OK);
         return -1;
     }
 
@@ -38,23 +46,31 @@ int main(int argc, const char** argv)
     std::vector<std::string> vec;
     vec.reserve(3);
 
-    // Split Cmake's path by / in PROJECT_EXE_RELATIVE_PATH
+    // Split Cmake's path by / in PROJECT_EXE_RELATIVE_PATH string
     while (getline(ss, tmp, del))
         vec.push_back(tmp);
 
-    // Concat all stirng parts with \ character and excluding the last
-    std::string accum = vec.at(0);
+    // Combine all dirs into single string
+    std::string dir = vec.at(0);
     for (int i = 1; i < vec.size() - 1; i++)
-        accum += '\\' + vec.at(i);
+        dir += '\\' + vec.at(i);
 
-    // Form command like `start /D "Resources\Binaries" LoadEditor.exe`
-    std::string realExecutablePath = "start /D \"" + accum + "\"" + " " + vec.at(vec.size() - 1);
+    // Refactor later to work with UTF-8 and provide args to the real executable.
+    HINSTANCE hRet = ShellExecuteA(
+        HWND_DESKTOP,                   // Parent window
+        "open",                         // Operation to perform
+        vec.at(vec.size() - 1).c_str(), // Path to program
+        NULL,                           // Parameters
+        dir.c_str(),                    // Default directory
+        SW_HIDE);                       // How to open
 
-    // Add commands from argv. Skip first argument because it is just MainStarter.cpp .exe name
-    for (int i = 1; i < argc; i++)
-        realExecutablePath += " " + std::string(argv[i]);
+    if (reinterpret_cast<size_t>(hRet) <= 32)
+    {
+        std::string msg = std::string() + "Unable to start editor, error code: " + std::to_string(reinterpret_cast<size_t>(hRet));
+        MessageBox(HWND_DESKTOP, msg.c_str(), ERROR_HEADER, MB_OK);
+        return -1;
+    }
 
-    // Call the main executable
-    return system(realExecutablePath.c_str());
+    return 0;
 }
 #endif
