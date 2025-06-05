@@ -7,20 +7,9 @@
 using namespace std;
 
 #pragma region CTORs and DTORs
-    GINIParser::GINIParser(const string& filePath)  : Path(filePath)
-    {
-        Parse();
-    }
-
-    GINIParser::GINIParser(const char* filePath)    : Path(string(filePath))
-    {
-        Parse();
-    }
-
-    GINIParser::GINIParser(const QString& filePath) : Path(filePath.toStdString())
-    {
-        Parse();
-    }
+    GINIParser::GINIParser(const string& filePath)  : Path(filePath)               { Parse(); }
+    GINIParser::GINIParser(const char*   filePath)  : Path(string(filePath))       { Parse(); }
+    GINIParser::GINIParser(const QString& filePath) : Path(filePath.toStdString()) { Parse(); }
 #pragma endregion
 
 #pragma region Parsing
