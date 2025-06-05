@@ -4,6 +4,7 @@
 #define RESOURCES "Resources"
 #define BINARIES "Resources/Binaries"
 
+#include <vector>
 #include <cstdlib>
 #include <string>
 #include <filesystem>
@@ -30,19 +31,28 @@ int main(int argc, const char** argv)
                   << "Check your installation instruction." << std::endl;
         return -1;
     }
-    
-    std::string realExecutablePath(PROJECT_EXE_RELATIVE_PATH);
 
-    // Replace the forward slash with the reverse slash
-    size_t pos = 0;
+    std::stringstream ss(PROJECT_EXE_RELATIVE_PATH);
+    std::string tmp = "";
+    const char del = '/';
+    std::vector<std::string> vec;
+    vec.reserve(3);
 
-    // Replace Cmake's path with '/' to '\\'
-    while ((pos = realExecutablePath.find('/',pos)) != std::string::npos)
-        realExecutablePath.replace(pos++, 1, "\\\\");
+    // Split Cmake's path by / in PROJECT_EXE_RELATIVE_PATH
+    while (getline(ss, tmp, del))
+        vec.push_back(tmp);
+
+    // Concat all stirng parts with \ character and excluding the last
+    std::string accum = vec.at(0);
+    for (int i = 1; i < vec.size() - 1; i++)
+        accum += '\\' + vec.at(i);
+
+    // Form command like `start /D "Resources\Binaries" LoadEditor.exe`
+    std::string realExecutablePath = "start /D \"" + accum + "\"" + " " + vec.at(vec.size() - 1);
 
     // Add commands from argv. Skip first argument because it is just MainStarter.cpp .exe name
     for (int i = 1; i < argc; i++)
-        realExecutablePath += std::string(" ") + std::string(argv[i]);
+        realExecutablePath += " " + std::string(argv[i]);
 
     // Call the main executable
     return system(realExecutablePath.c_str());
