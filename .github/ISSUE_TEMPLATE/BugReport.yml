@@ -1,0 +1,88 @@
+name: Bug Report
+description: Open an issue to ask for a GenHotkeys bug to be fixed.
+title: "Your bug report title here"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > [!WARNING]
+        > Before posting an issue, please read the **checklist at the bottom**.
+        
+        Thanks for taking the time to fill out this bug report!
+        Please make sure you follow these instructions and fill in every question with as much detail as possible.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: |
+        Write a detailed description telling us what the issue is, and if/when the bug occurs.
+    validations:
+      required: true
+
+  - type: input
+    id: genhotkeys-version
+    attributes:
+      label: GenHotkeys Version
+      description: |
+        What version of GenHotkeys are you using? Please provide a link to the exact GenHotkeys build used, especially if it's not a release build.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps To Reproduce
+      description: |
+        Tell us how to reproduce this issue so the developer(s) can reproduce the bug.
+      value: |
+        1.
+        2.
+        3.
+        ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behaviour
+      description: |
+        Tell us what should happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behaviour
+      description: |
+        Tell us what actually happens instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: |
+        Attach additional files or links to content related to the bug report here, like:
+        - images/gifs/videos to illustrate the bug;
+        - files or configs that are needed to reproduce the bug;
+        - a debug log.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      description: Please read and ensure you followed all the following options.
+      options:
+        - label: The issue happens on the **latest** version of GenHotkeys and wasn't fixed yet.
+          required: true
+        - label: I agree to elaborate the details if requested and provide thorough testing if the bugfix is implemented.
+          required: true
+        - label: I added a very descriptive title to this issue.
+          required: true
+        - label: I used the GitHub search and read the issue list to find a similar issue and didn't find it.
+          required: true
+        - label: I have attached as much information as possible *(screenshots, gifs, videos, client logs, etc)*.
+          required: true
