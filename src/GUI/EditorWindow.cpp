@@ -20,6 +20,8 @@
 #include "SettingsWindow.hpp"
 #include "EditorWindow.hpp"
 
+#pragma region CTORs and Setters
+
 EditorWindow::EditorWindow(QWidget* parent)
     : QMainWindow(parent)
     , pFactionsButtonsGroup{new QButtonGroup{this}}
@@ -391,6 +393,10 @@ void EditorWindow::SetActionHotkey(const QString& fctShortName, const QString& g
     fct.SetHotkey(goName, actName, hk);
 }
 
+#pragma endregion
+
+#pragma region Handlers
+
 void EditorWindow::KeyboardWindow_Nullify()
 {
     for (QChar& qc : QString("QWERTYUIOPASDFGHJKLZXCVBNM")) 
@@ -525,8 +531,15 @@ void EditorWindow::ActSave_Triggered()
 
 void EditorWindow::ActSaveAs_Triggered()
 {
-    LOGMSG("ActSaveAs_Triggered");
+    QFileDialog* fdSelectFileWindow = new QFileDialog();
+    connect(fdSelectFileWindow, &QFileDialog::fileSelected, this, &EditorWindow::ActSaveAs_SaveToSelectedFile);
+    fdSelectFileWindow->setFileMode(QFileDialog::FileMode::AnyFile);
+    fdSelectFileWindow->setAcceptMode(QFileDialog::AcceptMode::AcceptSave);
+    fdSelectFileWindow->setDefaultSuffix("csf");
+    fdSelectFileWindow->exec();
 }
+
+void EditorWindow::ActSaveAs_SaveToSelectedFile(const QString& filepath) { CSF_PARSER->Save(filepath); }
 
 void EditorWindow::ActOpen_Triggered()
 {
@@ -544,3 +557,5 @@ void EditorWindow::ActOpen_NewHotkeyFileSelected(const QString& filepath)
     LOGMSG("Selected file: " + filepath);
     emit newHotkeyFileSelected(filepath);
 }
+
+#pragma endregion
