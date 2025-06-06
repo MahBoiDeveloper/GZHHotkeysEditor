@@ -1,5 +1,5 @@
-name: Bug Report
-description: Open an issue to ask for a XNA Client feature to be implemented.
+name: Feature Request
+description: Open an issue to ask for a GenHotkeys feature to be implemented.
 title: "Your feature request title here"
 labels: ["feature"]
 body:
@@ -13,6 +13,6 @@ body:
     attributes:
       label: Description
       description: |
-        Write a detailed description telling us what the feature you want to be implemented in the XNA Client.
+        Write a detailed description telling us what the feature you want to be implemented in the GenHotkeys.
     validations:
       required: true
